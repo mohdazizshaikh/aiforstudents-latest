@@ -18,9 +18,9 @@ Priority: P0 = required to avoid unsafe/misleading release; P1 = next core featu
 | M15-05 | P1 | M15 | Connect lesson attempts to existing local-history reset, with accurate versioned feedback | M15-03 | CODED + tested: studioAttempts in versioned browser history | Eng TBD |
 | M15-06 | P1 | M15 | Topic-matched official resource links, provenance, external-link labeling and link health checks | M15-01 + resource policy | PARTIAL: official provider homepages linked; exact chapter matching pending | Content TBD |
 | M15-07 | P1 | M15 | Independent answer-key checks, original examples, Hindi review, mobile/keyboard regression | M15-03 through 06 | PARTIAL: Node + isolated browser pass; human Hindi and real device QA pending | QA/Review TBD |
-| M16-01 | P1 | M16 | Design fractions manipulation simulation, keyboard and no-motion alternative | M15 reusable schema | TODO | Eng TBD |
-| M16-02 | P1 | M16 | Design educational circuit-path simulation (not a real wiring guide) | Science reference review | TODO | Eng TBD |
-| M16-03 | P1 | M16 | Test simulation state and explanations, touch/keyboard, offline repeatability | M16-01/02 | TODO | QA TBD |
+| M16-01 | P1 | M16 | Design fractions manipulation simulation, keyboard and no-motion alternative | M15 reusable schema | **CODED** — two strips, cross-product comparison/equivalence; user QA pending | Eng TBD |
+| M16-02 | P1 | M16 | Design educational circuit-path simulation (not a real wiring guide) | Science reference review | **CODED** — conceptual two-switch series model; educator approval pending | Eng TBD |
+| M16-03 | P1 | M16 | Test simulation state and explanations, touch/keyboard, offline repeatability | M16-01/02 | **PARTIAL** — Node truth tables and isolated browser pass; actual device/offline/live HTTPS still pending | QA TBD |
 | M17-01 | P1 | M17 | Teacher-run classroom flow for one projector / shared phone, no student identities | Reviewed M15 content | TODO | Teaching TBD |
 | M17-02 | P1 | M17 | Original print-friendly worksheet and teacher facilitation notes | M17-01 + licensing check | TODO | Teaching TBD |
 | M17-03 | P1 | M17 | Small ethical teacher feedback pilot and iteration | Safety and staging gates | BLOCKED until gates | Research TBD |
@@ -47,3 +47,5 @@ Priority: P0 = required to avoid unsafe/misleading release; P1 = next core featu
 - **2026-11-23:** Roadmap and backlog documented. **No M15–M18 implementation code added.**
 
 - **2026-11-23 M15:** Fractions and circuit-path pilot journeys coded, source reviewed structurally, 69 automated tests + isolated Chromium passed. NO public approval, no verified class/board/chapter mapping, no actual Hostinger staging, no human bilingual review. M16–M18 unchanged.
+
+- **2026-11-23 M16:** Two original virtual experiment prototypes implemented. Four checks recorded locally, 77 Node tests pass, isolated mobile browser smoke passed. **Qualified bilingual educator review, actual device/accessibility/Hostinger tests and public approval are still TODO.** M17 and M18 not coded.

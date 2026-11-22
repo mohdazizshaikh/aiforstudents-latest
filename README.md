@@ -1,4 +1,4 @@
-# AI for Students — M15 partial staging prototype
+# AI for Students — M16 partial staging prototype
 
 **Updated 23 November 2026.** Educational practice and exploration prototype for staging, **not** an expert-validated assessment, public child-ready service, or deployed Hostinger website.
 
@@ -76,3 +76,8 @@ Use Node.js 22 or a current supported version. Run `npm test` for deterministic 
 Two original bilingual pilot journeys under #smart-studio: fractions (shade 2/4, reason about equivalence) and simplified low-voltage circuit-path model (toggle an open/closed switch and explain the model bulb). Interactive Try and Play steps, explanations, optional paper missions and link-only official provider resources. Four task responses can be recorded in the existing versioned, optional local browser history and erased with Clear local history. No new accounts, paid AI, remote student data, or school-marks prediction. **Neither lesson has human educator/Hindi approval or confirmed class/chapter mapping.**
 
 **QA:** 69/69 Node tests, isolated Chromium two-journey flow; 18 static HTML pages, 15 JS modules. [M15 QA](M15_QA_STATUS.md) · [M15 notes](docs/M15_IMPLEMENTATION_NOTES.md). Hostinger live deployment, M16–M18 and public launch are still pending.
+
+## M16 — Virtual Experiment Lab (first coding pilot, 2026-11-23)
+Two original bilingual, keyboard-operable browser experiments now live inside `#experiment-lab` and `/virtual-experiment-lab/`: interactive comparison/equivalence of two equal-whole fraction strips, and a conceptual **two-switch series circuit**. Four task checks are recorded in versioned `experimentAttempts` within the existing private browser history, with opt-in persistence and shared Clear local history. No paid AI API, child data export or real electrical equipment. Materials remain **unreviewed educational drafts**, not board-aligned science assessments.
+
+**Engineering evidence:** 77/77 Node tests passed; isolated Chromium M15/M16 flows, Hindi language and reset passed; 19 static pages and 17 JS modules validated. See [M16 QA](M16_QA_STATUS.md) and [M16 implementation notes](docs/M16_IMPLEMENTATION_NOTES.md). Hostinger, low-end phones, actual assistive technology, educator/Hindi review and child-safety release approval remain pending. M17–M18 are planned, not implemented.

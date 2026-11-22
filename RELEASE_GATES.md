@@ -45,7 +45,7 @@ Node tests validate deterministic logic and structural properties. The isolated 
 | Workstream | Current status | Must be evidenced before milestone can be called complete |
 |---|---|---|
 | M15 Smart Learning Studio | **2 ORIGINAL CONCEPT PILOTS CODED; STAGING ONLY, EDUCATIONAL APPROVAL PENDING** | Two sourced original bilingual lesson flows, reviewed concept explanations, keyboard alternatives, local progress/reset, official external links and real mobile QA |
-| M16 Virtual Experiment Lab | **PLANNED, NOT CODED** | Independent fraction/circuit model truth checks; accessible touch/keyboard alternatives; offline mobile tests; safe simulation wording |
+| M16 Virtual Experiment Lab | **TWO ORIGINAL SIMULATIONS CODED; STAGING ONLY** | Independent fraction/circuit model truth checks; accessible touch/keyboard alternatives; offline mobile tests; safe simulation wording |
 | M17 Classroom and Teacher Kit | **PLANNED, NOT CODED** | Reviewed projector-friendly group lesson, original licensed printable materials, no child roster, teacher feedback and safeguarding gates |
 | M18 AI & Digital Skills | **PLANNED, NOT CODED** | Age-appropriate AI literacy and critical thinking, safety-checked deterministic activities and truthful limitations; no unrestricted generative AI |
 | Resource Catalog | **POLICY DOCUMENTED ONLY** | Exact official links, copyright/license per item, reviewer verification, external-site privacy notice and accessible fallback |
@@ -56,3 +56,9 @@ Never mark a product design/plan document as an implemented code feature. See [P
 
 ### M15 evidence (not approval)
 The two bilingual concept-pilot journeys and four exercise checks are implemented. 69 Node tests + isolated Chromium smoke pass, with 18 pages and 15 JS modules validated structurally. External references are provider homepages only. **No expert/Hindi signoff, class/board alignment, actual Android/assistive-technology/Hostinger HTTPS QA or child-oriented public release.** M16–M18 are not built.
+
+### M16 first pilot gates, 2026-11-23
+- **Code implemented:** two original browser simulations, four recorded challenges, English/Hindi drafts, numeric/text alternatives, local-only progress/clear and updated static cache, no electrical hardware activity.
+- **Automated evidence:** 77 Node tests and isolated Chromium M15+M16 regression smoke pass; 19 HTML pages and 17 JS modules have no missing static-import/cache targets.
+- **Still blocking M16 completion/public launch:** independent educator/Hindi review of four new challenges, class/chapter/copyright mapping, low-end Android + TalkBack/VoiceOver and live Hostinger HTTPS/server/service-worker test, privacy/legal/safeguarding approval.
+- Existing unreviewed scope: **3,200 game + 32 Study Lab + 4 M15 + 4 M16 task checks**, before any qualified review. Not psychometrically validated. M17–M18 are still **PLANNED**.

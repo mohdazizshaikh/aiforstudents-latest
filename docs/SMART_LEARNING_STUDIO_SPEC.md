@@ -77,3 +77,6 @@ Build tests, record evidence and human content approvals separately. No public r
 
 ### Evidence addendum
 Two original pilot journeys now implement equal-part fraction selection and a conceptual circuit switch with separate Play choices. This is not an M16 full virtual lab. External links are official provider homepages, not verified chapter-aligned materials; curriculum and bilingual reviews remain pending. [M15 implementation](M15_IMPLEMENTATION_NOTES.md).
+
+### M16 implementation note (2026-11-23)
+An initial **Virtual Experiment Lab** now exists, using two fraction strips with labelled arithmetic controls and a conceptual two-switch series circuit. Includes two task prompts per simulation, deterministic explanations, keyboard buttons and optional no-screen activity. This is **a prototype**, not a realistic electrical hardware simulation, a fully reviewed virtual lab or curriculum certification. [M16 evidence](M16_IMPLEMENTATION_NOTES.md).

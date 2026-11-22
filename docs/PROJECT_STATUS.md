@@ -14,7 +14,7 @@
 | Stage | Next development increment | Status |
 |---|---|---|
 | M15 | Two original interactive concept journeys, four practice checks and local history | **FIRST PILOT CODED; unreviewed, live staging pending** |
-| M16 | Fractions and circuits mobile simulations with accessible alternatives | **PLANNED** |
+| M16 | Two fractions/circuit simulations, 4 recorded checks, bilingual drafts | **FIRST PILOT CODED; real devices/educator review pending** |
 | M17 | Projector/shared-phone teacher-led classroom kit and original printables | **PLANNED** |
 | M18 | AI literacy and digital skills with no open chatbot | **PLANNED** |
 
@@ -34,3 +34,6 @@
 
 ### M15 coding status, 2026-11-23
 Two original bilingual concept pilots are implemented (fractions and circuit-path). The previously planned full curriculum, source-specific verified chapter resources and independent educational signoff are not complete. M16–M18 remain planned. [Evidence](../M15_QA_STATUS.md).
+
+### Latest engineering update — M16 first pilot (2026-11-23)
+Two interactive conceptual simulations (two fraction strips and a two-switch series path) plus four locally recorded checks have passed **77/77 Node tests** and an isolated Chromium smoke test. This is **not live Hostinger testing, accessible-device approval or educational validation**. M17–M18 remain planned. [Details](../M16_QA_STATUS.md).
