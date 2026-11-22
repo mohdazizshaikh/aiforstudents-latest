@@ -38,3 +38,11 @@ See `RELEASE_GATES.md`, `ONLINE_SOCIAL_FUTURE_SPEC.md`, `QA_STATUS.md`, `CONTENT
 - Content and interface tests do not establish test reliability, construct validity or fairness. No IQ, aptitude, personality or definitive career-future claims.
 - Sharing invitations, safe child accounts and free-text messaging remain **disabled**; online social features cannot be marked complete without governance, guardian authorization/age safeguards and human incident response.
 - SEO acquisition and educator revenue remain hypotheses, not implemented business outcomes.
+
+## GitHub checkout and development
+
+The complete runnable **M13 prototype source and test suite** lives in this repository. The 3,200-record human-review queue is archived as `docs/CONTENT_REVIEW_QUEUE.jsonl.gz` to avoid checking in a large generated JSONL file. To restore it on a development machine, run `gzip -dc docs/CONTENT_REVIEW_QUEUE.jsonl.gz > CONTENT_REVIEW_QUEUE.jsonl` on macOS/Linux, or use any gzip-compatible extraction tool. Alternatively, regenerate the review queue with `node tools/export-review-queue.mjs`.
+
+Run tests with `npm test` (Node.js 22 recommended); check staging structure with `node tools/verify-static-release.mjs` and `node tools/audit-content.mjs`. The GitHub workflow in `.github/workflows/ci.yml` runs these checks on pushes and pull requests.
+
+This repository is **a staging prototype only**. It is not live on Hostinger, has no authenticated multiplayer or cloud AI backend, and is not approved as a psychometric assessment or child-oriented public production service. Pages intentionally have staging `noindex` directives.
