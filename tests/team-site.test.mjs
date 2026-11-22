@@ -12,7 +12,7 @@ test('M9 co-op renders in main page with standalone ES module and no remote play
 });
 test('Service worker caches M10 assets and public guide; private history never cached',()=>{
  const sw=read('../service-worker.js');
- assert.ok(sw.includes('aifs-discovery-m12b-m13'));
+ assert.ok(sw.includes('aifs-discovery-m14'));
  for(const f of ['team-engine.js','team-app.js','grow-together/'])assert.ok(sw.includes(f),f);
  assert.ok(!sw.includes('sessionStorage')&&!sw.includes('localStorage'));
 });

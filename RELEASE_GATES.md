@@ -29,3 +29,13 @@ Node tests validate deterministic logic and structural properties. The isolated 
 4. Do not collect information from children or invite public child users before review.
 5. To prepare SEO URLs **after** selecting a controlled verified domain, run `node tools/configure-domain.mjs https://verified.example` on a **copy** of source and rebuild the hosting ZIP. This will retain noindex and deliberately omit hreflang until equivalent Hindi URLs exist.
 6. If a release gate fails, retain the private staging build; do not switch indexing on.
+
+## M14 additions
+
+| Gate | State |
+|---|---|
+| Starter Study Lab / basic exam study habits | IMPLEMENTED (32 short practice items; not board-specific) |
+| Study Lab data stored only locally by default | IMPLEMENTED; shared-device privacy review pending |
+| Educator + Hindi review of new Lab checks | **32/32 PENDING** |
+| Detailed subject/board-aligned learning and exam content | NOT IMPLEMENTED |
+| M14 real device accessibility and live Hostinger | NOT TESTED |

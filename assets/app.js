@@ -141,6 +141,10 @@ $('remember').addEventListener('change',e=>{ST.remember=Boolean(e.target.checked
  $('privacy-status').textContent=ST.remember?tr('Remembered only on this device.','सिर्फ़ इसी डिवाइस पर सेव।'):tr('Kept only in this tab until closed.','टैब बंद होने तक ही रहेगा।');});
 $('clear-progress').addEventListener('click',()=>{for(const key of [KEY,OLD_KEY,V1_KEY])remove(safeStorage('localStorage'),key);for(const key of [SESSION_KEY,OLD_SESSION,V1_SESSION])remove(safeStorage('sessionStorage'),key);ST.history=emptyHistory();window.dispatchEvent(new Event('aifs-team-reset'));window.dispatchEvent(new Event('aifs-team-history-changed'));window.dispatchEvent(new Event('aifs-history-cleared'));ST.remember=false;ST.playing=false;window.AIFS_ACTIVITY.solo=false;window.dispatchEvent(new Event('aifs-solo-state-changed'));ST.items=[];ST.responses=[];$('remember').checked=false;$('strategy-note').hidden=true;$('storage-warning').hidden=true;show('lobby');refresh();$('privacy-status').textContent=tr('Local history cleared.','स्थानीय इतिहास मिटा दिया गया।')});
 $('save-reflection').addEventListener('click',()=>{const val=$('reflection-choice').value;if(!val){$('reflection-status').textContent=tr('Choose a statement first.','पहले विकल्प चुनें।');return}ST.history=saveReflection(ST.history,localDay(),val);store();renderDashboard()});
+window.AIFS_LAB_BRIDGE={
+ getHistory:()=>ST.history,
+ record:entry=>{ST.history=recordLabAttempt(ST.history,entry);store();renderDashboard();window.dispatchEvent(new Event('aifs-lab-history-changed'))}
+};
 window.AIFS_FUTURE_BRIDGE={
  getHistory:()=>ST.history,
  record:entry=>{ST.history=recordCareerMission(ST.history,entry);store();renderDashboard();window.dispatchEvent(new Event('aifs-future-history-changed'))}

@@ -39,10 +39,20 @@ See `RELEASE_GATES.md`, `ONLINE_SOCIAL_FUTURE_SPEC.md`, `QA_STATUS.md`, `CONTENT
 - Sharing invitations, safe child accounts and free-text messaging remain **disabled**; online social features cannot be marked complete without governance, guardian authorization/age safeguards and human incident response.
 - SEO acquisition and educator revenue remain hypotheses, not implemented business outcomes.
 
+## M14 — Skill Development Lab + Exam Study Support starter (23 November 2026)
+
+- Adds an interactive `#study-lab` section and a detailed `/study-lab/` support guide. The initial module has **4 subject tracks, 8 lesson themes, 32 short bilingual age-scaffolded practice questions**, teaching tips and answer explanations. These are original starter examples, **not** aligned with a particular school board/competitive exam and **not expert-reviewed**.
+- Local-first `labAttempts` integrates with the original browser history, optional persistent storage and the existing clear-history control. It adds a truthful activity-based Proud Today event, but never diagnoses ability or forecasts exam grades.
+- `labProgress` presents completed topics and suggested revisits after 1–2 days. Recommendations are simple product heuristics rather than validated spaced-learning optimizations.
+- New `LAB_CONTENT_REVIEW_QUEUE.jsonl` lists all 32 M14 educational tasks for human review separately from 3,200 existing game challenges.
+- Tests: **63/63** automated Node tests; isolated Chromium checks **88 previous game rounds + 32 study questions**, language switch and progress reset. See `M14_QA_STATUS.md` for full limitations.
+
+Run `npm test`, `node tools/verify-static-release.mjs`, and `python3 tests/browser_m14.py` (with Playwright + Chromium on the developer's machine). Hosting remains staged and `noindex`.
+
 ## GitHub checkout and development
 
-The complete runnable **M13 prototype source and test suite** lives in this repository. The 3,200-record human-review queue is archived as `docs/CONTENT_REVIEW_QUEUE.jsonl.gz` to avoid checking in a large generated JSONL file. To restore it on a development machine, run `gzip -dc docs/CONTENT_REVIEW_QUEUE.jsonl.gz > CONTENT_REVIEW_QUEUE.jsonl` on macOS/Linux, or use any gzip-compatible extraction tool. Alternatively, regenerate the review queue with `node tools/export-review-queue.mjs`.
+The complete source and tests live in this repository. The earlier 3,200-record game review queue is archived at `docs/CONTENT_REVIEW_QUEUE.jsonl.gz`; restore with `gzip -dc docs/CONTENT_REVIEW_QUEUE.jsonl.gz > CONTENT_REVIEW_QUEUE.jsonl`, or regenerate using `node tools/export-review-queue.mjs`. The 32 M14 lesson checks appear in `LAB_CONTENT_REVIEW_QUEUE.jsonl`.
 
-Run tests with `npm test` (Node.js 22 recommended); check staging structure with `node tools/verify-static-release.mjs` and `node tools/audit-content.mjs`. The GitHub workflow in `.github/workflows/ci.yml` runs these checks on pushes and pull requests.
+Use Node.js 22 or a current supported version. Run `npm test` for deterministic checks; run `node tools/verify-static-release.mjs`, `node tools/audit-content.mjs`, and optionally `python3 tests/browser_m14.py` with Playwright + Chromium. CI runs unit, static and structural checks but not the isolated Chromium tests.
 
-This repository is **a staging prototype only**. It is not live on Hostinger, has no authenticated multiplayer or cloud AI backend, and is not approved as a psychometric assessment or child-oriented public production service. Pages intentionally have staging `noindex` directives.
+**Private staging prototype only:** Not deployed to Hostinger, not expert-approved for child-focused public launch, not an assessment or board-aligned tutoring system, and intentionally `noindex,nofollow` until launch approval.
