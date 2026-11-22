@@ -1,6 +1,6 @@
 {
-  "name": "aifs-discovery-m17",
-  "version": "0.13.0",
+  "name": "aifs-discovery-m18",
+  "version": "0.14.0",
   "private": true,
   "type": "module",
   "scripts": {

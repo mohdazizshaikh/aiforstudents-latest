@@ -86,3 +86,9 @@ Two original 5-step teacher-led lesson plans: Fraction Shares and Two Switches /
 **Code QA:** 84/84 automated Node tests, isolated Chromium M15/M16/M17 UI smoke, 22 HTML pages, 19 JavaScript modules, no broken static imports/cache targets. M17 has ten unreviewed bilingual facilitation-step records in `CLASSROOM_CONTENT_REVIEW_QUEUE.jsonl` (not scored learner questions); review of worksheets and guides is also pending. Use `node tools/export-classroom-review-queue.mjs` to regenerate the review queue. See `M17_QA_STATUS.md`.
 
 **Release boundary:** A draft classroom toolkit is not a teacher trial, school partnership or approved curriculum. No public child-oriented launch or actual Hostinger HTTPS/device/accessibility approval. M18 AI & Digital Skills is still planned, not implemented.
+
+## M18 — AI & Digital Skills Lab first private staging pilot (2026-11-23)
+
+Four original bilingual topic tracks and 32 authored age-scaffolded question records explain AI patterns/limitations, deterministic algorithms, misinformation/evidence checks and personal digital privacy. All run locally with fixed explanatory feedback; no chatbot, remote model, paid API, child identity, personal messages or recruitment pressure. Versioned `digitalAttempts` reuses the existing opt-in browser history and clear-all control, with a genuine daily practice event (not an ability score).
+
+**Software evidence:** 93/93 Node tests; isolated Chromium all 32 scenarios plus M15–M17 regressions; static package 23 HTML pages / 21 JS modules. See `M18_QA_STATUS.md`, `DIGITAL_CONTENT_REVIEW_QUEUE.jsonl` and `/ai-digital-skills/`. **32/32 new learning tasks are unreviewed; this is not professional fact-checking or approved educational curriculum.** Public child-facing launch, real Hostinger and real assistive-device tests remain pending.

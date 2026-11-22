@@ -79,3 +79,16 @@ See `M16_QA_STATUS.md`, `EXPERIMENT_CONTENT_REVIEW_QUEUE.jsonl`. No project test
 | Public child release | NOT APPROVED | Existing release gates (including 3,200 games + 32 Study Lab + 4 M15 + 4 M16 reviews) remain open |
 
 M18 AI literacy and online child social features remain unimplemented.
+
+## M18 — AI & Digital Skills first code pilot (2026-11-23)
+
+| Gate | Status |
+|---|---|
+| 4 original bilingual digital strands, 32 draft scenario checks | **CODED — STAGING ONLY** |
+| No live AI model, data export or open chat | **IMPLEMENTED BY DESIGN** |
+| 93 Node automated tests, isolated browser 32 M18 checks | **SOFTWARE PASS; NOT A REAL DEVICE** |
+| Educator, Hindi and age suitability review for 32 M18 items | **32/32 PENDING** |
+| Real Android, assistive tech, legal/privacy/Hostinger HTTPS | **PENDING** |
+| Child-oriented public deployment | **NOT APPROVED** |
+
+No digital practice result claims aptitude, grade or trustworthy fact-checking proficiency. All M17 and earlier gates remain open.

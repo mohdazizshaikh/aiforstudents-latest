@@ -1,0 +1,4 @@
+import fs from 'node:fs';import {DIGITAL_TOPICS,DIGITAL_AGES,digitalTask,DIGITAL_VERSION} from '../assets/digital-engine.js';
+const out=[];for(const topic of DIGITAL_TOPICS)for(const age of DIGITAL_AGES)for(let i=0;i<2;i++){
+ const x=digitalTask(topic.id,age,i);out.push({id:x.id,contentVersion:DIGITAL_VERSION,topic:topic.id,ageBand:age,language:['en','hi'],question:x.question,options:x.options,answer:x.answer,explanation:x.explanation,educationReview:'pending',hindiReview:'pending',copyrightStatus:'original-draft',classBoardMapping:'unverified',notPsychometric:true});}
+fs.writeFileSync(new URL('../DIGITAL_CONTENT_REVIEW_QUEUE.jsonl',import.meta.url),out.map(x=>JSON.stringify(x)).join('\n')+'\n');console.log('Wrote',out.length,'unreviewed digital literacy items');

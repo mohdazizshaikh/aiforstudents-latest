@@ -4,6 +4,7 @@ import {validateMissionRecord} from './future-engine.js';
 import {isValidLabAttempt} from './lab-engine.js';
 import {isValidStudioAttempt} from './studio-engine.js';
 import {isValidExperimentAttempt} from './experiment-engine.js';
+import {isValidDigitalAttempt} from './digital-engine.js';
 export const REFLECTIONS=[
  {id:'tried',en:'I tried something new.',hi:'मैंने कुछ नया करने की कोशिश की।'},
  {id:'mistake',en:'I learned from a mistake.',hi:'मैंने अपनी गलती से कुछ सीखा।'},
@@ -18,7 +19,7 @@ export const localDay=(v=new Date())=>{const d=v instanceof Date?v:new Date(v);i
 const gameId=a=>a.gameId||'pattern-quest';
 const validAttempt=a=>a && typeof a==='object' && BANDS.includes(a.ageBand) && GAME_IDS.includes(gameId(a)) && typeof a.scenarioId==='string' && a.scenarioId.length<110 && typeof a.kind==='string' && a.kind.length<45 && (typeof a.correct==='boolean' || a.correct===null) && validISO(a.at) && typeof a.sessionId==='string' && a.sessionId.length<100;
 const validSession=s=>s && typeof s==='object' && BANDS.includes(s.ageBand) && GAME_IDS.includes(gameId(s)) && Number.isInteger(s.attempted) && s.attempted>=0 && s.attempted<=5 && (s.correct===null||(Number.isInteger(s.correct) && s.correct>=0 && s.correct<=s.attempted)) && validISO(s.completedAt) && typeof s.id==='string' && s.id.length<110;
-export const emptyHistory=()=>({seen:[],attempts:[],sessions:[],reflections:[],dailyActions:[],teamSessions:[],careerMissions:[],labAttempts:[],studioAttempts:[],experimentAttempts:[]});
+export const emptyHistory=()=>({seen:[],attempts:[],sessions:[],reflections:[],dailyActions:[],teamSessions:[],careerMissions:[],labAttempts:[],studioAttempts:[],experimentAttempts:[],digitalAttempts:[]});
 const TEAM_MODES=new Set(['pattern-partners','number-bridge','story-signals']);
 const validTeamSession=s=>s&&typeof s==='object'&&typeof s.id==='string'&&s.id.length>0&&s.id.length<110&&BANDS.includes(s.ageBand)&&TEAM_MODES.has(s.mode)&&validISO(s.completedAt)&&validDay(s.day)&&Number.isInteger(s.attempted)&&s.attempted>0&&s.attempted<=3&&Number.isInteger(s.solved)&&s.solved>=0&&s.solved<=s.attempted&&Array.isArray(s.missionIds)&&s.missionIds.length===s.attempted&&new Set(s.missionIds).size===s.attempted&&s.missionIds.every(x=>typeof x==='string'&&x.startsWith(s.mode+':'+s.ageBand+':')&&x.length<100)&&s.roleActions?.p1===s.attempted&&s.roleActions?.p2===s.attempted;
 export function recordTeamSession(history,session){if(!validTeamSession(session))throw Error('Invalid co-op session');const h=normalizeHistory(history);if(!h.teamSessions.some(x=>x.id===session.id))h.teamSessions.push(session);return normalizeHistory(h)}
@@ -35,7 +36,8 @@ export function normalizeHistory(value){const h=value&&typeof value==='object'?v
   careerMissions:dedupe((Array.isArray(h.careerMissions)?h.careerMissions:[]).filter(validateMissionRecord).map(x=>({...x})),x=>x.missionId,100),
   labAttempts:dedupe((Array.isArray(h.labAttempts)?h.labAttempts:[]).filter(isValidLabAttempt).map(x=>({...x})),x=>x.id,600),
   studioAttempts:dedupe((Array.isArray(h.studioAttempts)?h.studioAttempts:[]).filter(isValidStudioAttempt).map(x=>({...x})),x=>x.id,300),
-  experimentAttempts:dedupe((Array.isArray(h.experimentAttempts)?h.experimentAttempts:[]).filter(isValidExperimentAttempt).map(x=>({...x,response:JSON.parse(JSON.stringify(x.response))})),x=>x.id,400)
+  experimentAttempts:dedupe((Array.isArray(h.experimentAttempts)?h.experimentAttempts:[]).filter(isValidExperimentAttempt).map(x=>({...x,response:JSON.parse(JSON.stringify(x.response))})),x=>x.id,400),
+  digitalAttempts:dedupe((Array.isArray(h.digitalAttempts)?h.digitalAttempts:[]).filter(isValidDigitalAttempt).map(x=>({...x})),x=>x.id,480)
  };
 }
 export function mergeHistory(...sources){let all=emptyHistory();for(const source of sources){const h=normalizeHistory(source);for(const key of Object.keys(all))all[key].push(...h[key]);}return normalizeHistory(all)}
@@ -48,6 +50,7 @@ export function recordSession(history,session){if(!validSession(session))throw n
 export function recordCareerMission(history,entry){if(!validateMissionRecord(entry))throw Error('Invalid self-reported exploration');const h=normalizeHistory(history);if(!h.careerMissions.some(x=>x.missionId===entry.missionId))h.careerMissions.push({...entry});return normalizeHistory(h)}
 export function recordStudioAttempt(history,entry){if(!isValidStudioAttempt(entry))throw Error('Invalid studio attempt');const h=normalizeHistory(history);if(!h.studioAttempts.some(x=>x.id===entry.id))h.studioAttempts.push({...entry});return normalizeHistory(h)}
 export function recordExperimentAttempt(history,entry){if(!isValidExperimentAttempt(entry))throw Error('Invalid experiment attempt');const h=normalizeHistory(history);if(!h.experimentAttempts.some(x=>x.id===entry.id))h.experimentAttempts.push({...entry,response:JSON.parse(JSON.stringify(entry.response))});return normalizeHistory(h)}
+export function recordDigitalAttempt(history,entry){if(!isValidDigitalAttempt(entry))throw Error('Invalid digital practice');const h=normalizeHistory(history);if(!h.digitalAttempts.some(x=>x.id===entry.id))h.digitalAttempts.push({...entry});return normalizeHistory(h)}
 export function recordLabAttempt(history,entry){if(!isValidLabAttempt(entry))throw Error('Invalid study attempt');const h=normalizeHistory(history);if(!h.labAttempts.some(x=>x.id===entry.id))h.labAttempts.push({...entry});return normalizeHistory(h)}
 export function saveReflection(history,day,choiceId){if(!validDay(day)||!REFLECTIONS.some(x=>x.id===choiceId))throw new Error('Invalid reflection');const h=normalizeHistory(history);h.reflections=h.reflections.filter(x=>x.day!==day);h.reflections.push({day,choiceId});return normalizeHistory(h)}
 export function markReview(history,day){if(!validDay(day))throw new Error('Invalid date');const h=normalizeHistory(history);if(!h.dailyActions.some(x=>x.day===day&&x.actionId==='review'))h.dailyActions.push({day,actionId:'review'});return normalizeHistory(h)}
@@ -79,6 +82,7 @@ export function getAchievements(history,today=localDay()){
   if(s.correct===5)list.push({id:`five:${s.id}`,title:'Five Puzzles Solved',titleHi:'पाँच पहेलियाँ हल',detail:'You answered all five scored questions in this round.',detailHi:'इस दौर में आपने पाँचों अंकित सवाल सही किए।'});
  }
  if(todayAttempts.some(a=>a.correct===null))list.push({id:`reflective:${today}`,title:'Thoughtful Explorer',titleHi:'सोचने वाला खोजी',detail:'You tried an open-ended reflection activity.',detailHi:'आपने एक खुली चिंतन गतिविधि आज़माई।'});
+ if(h.digitalAttempts.some(x=>x.day===today))list.push({id:`digital:${today}`,title:'Digital Safety Explorer',titleHi:'डिजिटल सुरक्षा खोजकर्ता',detail:'You tried a digital literacy exercise. This is practice, not a test of intelligence.',detailHi:'आपने डिजिटल कौशल का सवाल आज़माया। यह अभ्यास है, बुद्धि की परीक्षा नहीं।'});
  if(h.experimentAttempts.some(x=>x.day===today))list.push({id:`experiment:${today}`,title:'Virtual Lab Explorer',titleHi:'वर्चुअल प्रयोग खोजकर्ता',detail:'You tested a simulation setup today. This records exploration, not expertise.',detailHi:'आज आपने एक मॉडल प्रयोग आज़माया। यह अनुभव का रिकॉर्ड है, विशेषज्ञता का नहीं।'});
  if(h.studioAttempts.some(x=>x.day===today))list.push({id:`studio:${today}`,title:'Smart Studio Practice',titleHi:'स्मार्ट स्टूडियो अभ्यास',detail:'You tried an interactive learning step today. This records activity, not mastery.',detailHi:'आज आपने एक इंटरैक्टिव सीखने वाला चरण आज़माया। यह अभ्यास का रिकॉर्ड है, पूर्ण दक्षता नहीं।'});
  if(h.labAttempts.some(x=>x.day===today))list.push({id:`lab:${today}`,title:'Study Check Tried',titleHi:'अध्ययन जाँच की',detail:'You answered at least one short study question today. This is practice, not a mastery certificate.',detailHi:'आज आपने कम से कम एक छोटा अध्ययन प्रश्न हल किया। यह अभ्यास है, पूर्ण दक्षता का प्रमाणपत्र नहीं।'});
