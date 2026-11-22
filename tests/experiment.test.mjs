@@ -56,7 +56,7 @@ test('Four distinct task IDs count as two explored experiments only when recorde
 test('M16 links, static guide, cache, privacy reset, and accessible controls present',()=>{
  const root=new URL('../',import.meta.url);const read=p=>fs.readFileSync(new URL(p,root),'utf8');const html=read('index.html'),sw=read('service-worker.js'),app=read('assets/app.js'),ui=read('assets/experiment-app.js'),guide=read('virtual-experiment-lab/index.html');
  for(const text of ['id="experiment-lab"','id="experiment-feedback"','assets/experiment-app.js','href="virtual-experiment-lab/"'])assert.ok(html.includes(text));
- for(const text of ['experiment-engine.js','experiment-app.js','virtual-experiment-lab/','aifs-discovery-m16'])assert.ok(sw.includes(text));
+ for(const text of ['experiment-engine.js','experiment-app.js','virtual-experiment-lab/','aifs-discovery-m17'])assert.ok(sw.includes(text));
  assert.match(app,/AIFS_EXPERIMENT_BRIDGE/);assert.match(app,/recordExperimentAttempt/);
  assert.match(guide,/noindex,nofollow/);assert.match(guide,/not expert-reviewed/);
  for(const text of ['aria-label','aria-pressed','role\x27,\x27img','aifs-history-cleared'])assert.ok(ui.includes(text),text);

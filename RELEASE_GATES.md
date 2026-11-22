@@ -40,25 +40,42 @@ Node tests validate deterministic logic and structural properties. The isolated 
 | Detailed subject/board-aligned learning and exam content | NOT IMPLEMENTED |
 | M14 real device accessibility and live Hostinger | NOT TESTED |
 
-## M15–M18 rollout gates — first M15 prototype coded 2026-11-23
+## M15 pilot implementation addendum (2026-11-23)
 
-| Workstream | Current status | Must be evidenced before milestone can be called complete |
+| M15 acceptance part | State | Outstanding evidence |
 |---|---|---|
-| M15 Smart Learning Studio | **2 ORIGINAL CONCEPT PILOTS CODED; STAGING ONLY, EDUCATIONAL APPROVAL PENDING** | Two sourced original bilingual lesson flows, reviewed concept explanations, keyboard alternatives, local progress/reset, official external links and real mobile QA |
-| M16 Virtual Experiment Lab | **TWO ORIGINAL SIMULATIONS CODED; STAGING ONLY** | Independent fraction/circuit model truth checks; accessible touch/keyboard alternatives; offline mobile tests; safe simulation wording |
-| M17 Classroom and Teacher Kit | **PLANNED, NOT CODED** | Reviewed projector-friendly group lesson, original licensed printable materials, no child roster, teacher feedback and safeguarding gates |
-| M18 AI & Digital Skills | **PLANNED, NOT CODED** | Age-appropriate AI literacy and critical thinking, safety-checked deterministic activities and truthful limitations; no unrestricted generative AI |
-| Resource Catalog | **POLICY DOCUMENTED ONLY** | Exact official links, copyright/license per item, reviewer verification, external-site privacy notice and accessible fallback |
-| Content and curriculum pilot | **BLOCKED pending educational approval** | Correct class/board/edition mapping for provisional fractions/circuit concepts; no premature NCERT-aligned claims |
-| Existing game and Study Lab content | **3,232 items without documented expert signoff** | Individual bilingual review, corrections, review audit trail; 54 repeating age positions examined |
+| Two original bilingual concept journeys | IMPLEMENTED AS PROTOTYPE | Qualified educator review of correctness and Hindi |
+| Learn–Try–Play–Understand–Grow interaction | IMPLEMENTED AS PROTOTYPE | Actual device/teacher usability testing |
+| Local progress and clear history | IMPLEMENTED; automated/isolated checks | Shared-device privacy field test |
+| External official reference links | LINK-ONLY HOMEPAGES | Exact chapter matching, license, editorial checks |
+| Class/board syllabus alignment | **UNVERIFIED** | Current official edition/chapter review |
+| Virtual experiments / teacher kit / AI literacy | **M16–M18 PLANNED** | Implement and independently review |
+| M15 public launch approval | **NOT GRANTED** | All previously listed education, safety, hosting and accessibility gates |
 
-Never mark a product design/plan document as an implemented code feature. See [Project Status](docs/PROJECT_STATUS.md), [Milestone Tracker](docs/MILESTONE_TRACKER.md), and [Resource Policy](docs/RESOURCE_INTEGRATION_POLICY.md). All previous release blockers remain in force; staging remains noindex.
+## M16 virtual experiment pilot gates — 2026-11-23
 
-### M15 evidence (not approval)
-The two bilingual concept-pilot journeys and four exercise checks are implemented. 69 Node tests + isolated Chromium smoke pass, with 18 pages and 15 JS modules validated structurally. External references are provider homepages only. **No expert/Hindi signoff, class/board alignment, actual Android/assistive-technology/Hostinger HTTPS QA or child-oriented public release.** M16–M18 are not built.
+| Gate | Actual status | Remaining evidence |
+|---|---|---|
+| Two original conceptual simulations | CODED (fractions and two-switch series model) | Educator/Hindi human validation |
+| Four recorded experiment checks | CODED and Node-verified | Age/class appropriateness, independent educational review |
+| Keyboard/text alternative in browser UI | CODED + isolated Chromium smoke | Real TalkBack, keyboard, zoom, contrast, low-end phone QA |
+| Privacy and local clear integration | CODED + mocked-browser test | Shared-device and production policy review |
+| Hostinger private staging | NOT DEPLOYED | Real HTTPS/module/service worker tests, backup/rollback |
+| Public child-oriented release | NOT APPROVED | Child legal/safeguarding and education approvals |
+| M17/M18 | PLANNED, NOT CODED | Separate implementation and QA |
 
-### M16 first pilot gates, 2026-11-23
-- **Code implemented:** two original browser simulations, four recorded challenges, English/Hindi drafts, numeric/text alternatives, local-only progress/clear and updated static cache, no electrical hardware activity.
-- **Automated evidence:** 77 Node tests and isolated Chromium M15+M16 regression smoke pass; 19 HTML pages and 17 JS modules have no missing static-import/cache targets.
-- **Still blocking M16 completion/public launch:** independent educator/Hindi review of four new challenges, class/chapter/copyright mapping, low-end Android + TalkBack/VoiceOver and live Hostinger HTTPS/server/service-worker test, privacy/legal/safeguarding approval.
-- Existing unreviewed scope: **3,200 game + 32 Study Lab + 4 M15 + 4 M16 task checks**, before any qualified review. Not psychometrically validated. M17–M18 are still **PLANNED**.
+See `M16_QA_STATUS.md`, `EXPERIMENT_CONTENT_REVIEW_QUEUE.jsonl`. No project test may override a human release gate.
+
+
+## M17 classroom/teacher first implementation — additional gates
+
+| M17 gate | Status | Evidence required |
+|---|---|---|
+| Two 5-step original teacher-led flows with rotating generic roles | CODED, STAGING ONLY | 84 automated tests and isolated Chromium smoke; no school pilot |
+| Projector-friendly UI and two original bilingual A4 printables | CODED, UNREVIEWED | Real projector/A4 printing, nonvisual and low-end Android usability checks |
+| Teacher answers and Hindi content | 10/10 classroom facilitation steps PENDING REVIEW | Qualified bilingual educator approval and worksheet review |
+| Student identities, attendance and classroom analytics | NOT COLLECTED BY TEACHER MODE | Confirm on-host privacy and school operating processes |
+| Classroom trial | NOT PERFORMED | School authorization, child-safety/consent rules, responsible teacher and actual observational evidence |
+| Public child release | NOT APPROVED | Existing release gates (including 3,200 games + 32 Study Lab + 4 M15 + 4 M16 reviews) remain open |
+
+M18 AI literacy and online child social features remain unimplemented.

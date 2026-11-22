@@ -1,4 +1,4 @@
-# AI for Students — M16 partial staging prototype
+# AI for Students — M12-B + M13 consolidated private staging prototype
 
 **Updated 23 November 2026.** Educational practice and exploration prototype for staging, **not** an expert-validated assessment, public child-ready service, or deployed Hostinger website.
 
@@ -57,27 +57,32 @@ Use Node.js 22 or a current supported version. Run `npm test` for deterministic 
 
 **Private staging prototype only:** Not deployed to Hostinger, not expert-approved for child-focused public launch, not an assessment or board-aligned tutoring system, and intentionally `noindex,nofollow` until launch approval.
 
-## Project planning & tracking — M15–M18 (design only; updated 2026-11-23)
+## M15 — Smart Learning Studio first working concept pilots (2026-11-23)
 
-**As of the first documentation-only update the app was M14; M15 first pilot code is now implemented (2026-11-23).** The next feature direction is a Smart Learning Studio inspired by active-learning classrooms, adapted for Indian schools and shared/low-end devices. The proposed five-step learning loop is **Learn → Try → Play → Understand → Grow**, with legal link-first connections to official learning resources. **Two M15 first-pilot concept journeys are now coded; M16–M18 remain unimplemented and M15 public approval is pending.**
+**Partial prototype implemented; M15 is NOT human-approved or production-complete.** Added two original, beginner-friendly bilingual mini learning journeys to `#smart-studio` and `/smart-learning-studio/`:
 
-- [Project status dashboard](docs/PROJECT_STATUS.md) — what exists versus what is pending.
-- [Project charter](docs/PROJECT_CHARTER.md) — mission, user groups, architecture, cost and child-safety boundaries.
-- [M15–M18 roadmap](docs/ROADMAP.md) — staged lessons, virtual experiments, teacher kit and AI literacy.
-- [Milestone tracker](docs/MILESTONE_TRACKER.md) and [implementation backlog](docs/IMPLEMENTATION_BACKLOG.md) — statuses, task IDs, dependencies, evidence and TBD owners.
-- [Smart Learning Studio specification](docs/SMART_LEARNING_STUDIO_SPEC.md) — proposed lesson experience and acceptance criteria.
-- [Official resource and licensing policy](docs/RESOURCE_INTEGRATION_POLICY.md) — DIKSHA, NCERT ePathshala, Virtual Labs and PM eVIDYA; links by default, not bulk content copying.
-- [Teacher classroom pilot](docs/TEACHER_CLASSROOM_PILOT.md) — one-screen group learning, no login/roster requirement.
-- [Decision and risk register](docs/DECISIONS_AND_RISKS.md) — unresolved decisions, risks, and human signoff requirements.
+1. **Equal-part fractions:** Learn 2/4 = 1/2 for the same whole → tap accessible +/− controls to shade 2 of 4 → choose an equivalent fraction → explanation → optional original paper activity.
+2. **Simple circuit path:** Learn the conceptual complete-path model → toggle an open/closed switch → reason about a model bulb → explanation → optional paper-only diagram activity (no real wiring instruction).
 
-**Status boundary:** M14's 63 automated tests and passing GitHub CI do not establish human educational review, actual Hostinger deployment or approval for public child-oriented use.
+Both link out to official NCERT ePathshala/DIKSHA resource homepages for independent browsing, **not to verified topic/grade-specific lessons**. No third-party content is copied, embedded or cached. The original draft explanations and Hindi text require qualified educator and translator approval. The shared 4 age bands are **not** grade-aligned or a psychometric difficulty scale.
 
-## M15 coding increment — Smart Learning Studio
-Two original bilingual pilot journeys under #smart-studio: fractions (shade 2/4, reason about equivalence) and simplified low-voltage circuit-path model (toggle an open/closed switch and explain the model bulb). Interactive Try and Play steps, explanations, optional paper missions and link-only official provider resources. Four task responses can be recorded in the existing versioned, optional local browser history and erased with Clear local history. No new accounts, paid AI, remote student data, or school-marks prediction. **Neither lesson has human educator/Hindi approval or confirmed class/chapter mapping.**
+`studioAttempts` is added to the existing local-first progress schema; default sessionStorage, opt-in localStorage and Clear local history cover these new records. An activity-backed Proud Today item appears only after a check is submitted. Completing both steps is **not proof of mastery**. No user account, remote student data or AI API is involved.
 
-**QA:** 69/69 Node tests, isolated Chromium two-journey flow; 18 static HTML pages, 15 JS modules. [M15 QA](M15_QA_STATUS.md) · [M15 notes](docs/M15_IMPLEMENTATION_NOTES.md). Hostinger live deployment, M16–M18 and public launch are still pending.
+New checks: `tests/studio.test.mjs` and isolated Chromium `tests/browser_m15.py`; the latter tests inlined equivalent JS, **not a live HTTP/Hostinger PWA**. See `M15_QA_STATUS.md` and `STUDIO_CONTENT_REVIEW_QUEUE.jsonl`. M16 virtual laboratory and M17/M18 remain planned.
 
-## M16 — Virtual Experiment Lab (first coding pilot, 2026-11-23)
-Two original bilingual, keyboard-operable browser experiments now live inside `#experiment-lab` and `/virtual-experiment-lab/`: interactive comparison/equivalence of two equal-whole fraction strips, and a conceptual **two-switch series circuit**. Four task checks are recorded in versioned `experimentAttempts` within the existing private browser history, with opt-in persistence and shared Clear local history. No paid AI API, child data export or real electrical equipment. Materials remain **unreviewed educational drafts**, not board-aligned science assessments.
+## M16 — Virtual Experiment Lab (first coding increment, 2026-11-23)
 
-**Engineering evidence:** 77/77 Node tests passed; isolated Chromium M15/M16 flows, Hindi language and reset passed; 19 static pages and 17 JS modules validated. See [M16 QA](M16_QA_STATUS.md) and [M16 implementation notes](docs/M16_IMPLEMENTATION_NOTES.md). Hostinger, low-end phones, actual assistive technology, educator/Hindi review and child-safety release approval remain pending. M17–M18 are planned, not implemented.
+Two new original mobile-first interactive simulations under `#experiment-lab`: comparison/equivalence of fraction strips and a conceptual two-switch series path. **Four question/setup checks** are available across two experiments. Separate engine (`assets/experiment-engine.js`) and UI (`assets/experiment-app.js`) use buttons, textual alternatives, bilingual drafts and optional offline paper activities. This is educational exploration only, **not expert-reviewed or board-calibrated** and **not an instruction to work with real electricity**.
+
+`experimentAttempts` joins the existing locally controlled history and optional persistence; it is cleared by the same Clear local history control. `node --test tests/*.test.mjs` runs 77 Node tests including the M16 engine. `python3 tests/browser_m16.py` runs the isolated Chromium smoke (Playwright installed on developer machine). `node tools/verify-static-release.mjs` checks static paths. The public guide is `/virtual-experiment-lab/`. See `M16_QA_STATUS.md` and `EXPERIMENT_CONTENT_REVIEW_QUEUE.jsonl`.
+
+**Still pending:** qualified educator/Hindi review, exact curriculum/chapter mapping, real Android/Hostinger HTTPS accessibility checks, child-safety approval and M17/M18 development. Private staging defaults (`noindex,nofollow`) remain enabled.
+
+
+## M17 — Smart Classroom & Teacher Kit (first implementation)
+
+Two original 5-step teacher-led lesson plans: Fraction Shares and Two Switches / One Path, each designed for a **single projector/laptop or shared phone**. Class flow: Prepare → Predict → Explore → Explain → Apply. Teacher may rotate **generic, non-identifying** group roles, show/hide reference explanations, select projector-friendly typography, use existing M16 virtual lab and open two original A4 printer-friendly bilingual worksheets. No accounts, child names, class roster, online peers or student records are collected by **Teacher Mode**. Estimated 15-minute lessons are design targets, not evaluated classroom durations.
+
+**Code QA:** 84/84 automated Node tests, isolated Chromium M15/M16/M17 UI smoke, 22 HTML pages, 19 JavaScript modules, no broken static imports/cache targets. M17 has ten unreviewed bilingual facilitation-step records in `CLASSROOM_CONTENT_REVIEW_QUEUE.jsonl` (not scored learner questions); review of worksheets and guides is also pending. Use `node tools/export-classroom-review-queue.mjs` to regenerate the review queue. See `M17_QA_STATUS.md`.
+
+**Release boundary:** A draft classroom toolkit is not a teacher trial, school partnership or approved curriculum. No public child-oriented launch or actual Hostinger HTTPS/device/accessibility approval. M18 AI & Digital Skills is still planned, not implemented.
