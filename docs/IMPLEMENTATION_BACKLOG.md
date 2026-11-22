@@ -21,8 +21,8 @@ Priority: P0 = required to avoid unsafe/misleading release; P1 = next core featu
 | M16-01 | P1 | M16 | Design fractions manipulation simulation, keyboard and no-motion alternative | M15 reusable schema | **CODED** — two strips, cross-product comparison/equivalence; user QA pending | Eng TBD |
 | M16-02 | P1 | M16 | Design educational circuit-path simulation (not a real wiring guide) | Science reference review | **CODED** — conceptual two-switch series model; educator approval pending | Eng TBD |
 | M16-03 | P1 | M16 | Test simulation state and explanations, touch/keyboard, offline repeatability | M16-01/02 | **PARTIAL** — Node truth tables and isolated browser pass; actual device/offline/live HTTPS still pending | QA TBD |
-| M17-01 | P1 | M17 | Teacher-run classroom flow for one projector / shared phone, no student identities | Reviewed M15 content | TODO | Teaching TBD |
-| M17-02 | P1 | M17 | Original print-friendly worksheet and teacher facilitation notes | M17-01 + licensing check | TODO | Teaching TBD |
+| M17-01 | P1 | M17 | Teacher-run classroom flow for one projector/shared phone, no student identities | Existing M15/M16 prototypes | **CODED** — 2 original 5-step lesson plans, generic roles/projector mode; human approval pending | Teaching TBD |
+| M17-02 | P1 | M17 | Original print-friendly worksheet and teacher facilitation notes | M17-01 + licensing check | **CODED** — 2 original bilingual HTML A4 sheets + facilitator guide; review/real print pending | Teaching TBD |
 | M17-03 | P1 | M17 | Small ethical teacher feedback pilot and iteration | Safety and staging gates | BLOCKED until gates | Research TBD |
 | M18-01 | P2 | M18 | Age-appropriate AI literacy, digital safety, misinformation and computational-thinking outline | Educational/safety review | TODO | Curriculum TBD |
 | M18-02 | P2 | M18 | Build small deterministic non-generative activities with explanation | M18-01 | TODO | Eng TBD |
@@ -49,3 +49,5 @@ Priority: P0 = required to avoid unsafe/misleading release; P1 = next core featu
 - **2026-11-23 M15:** Fractions and circuit-path pilot journeys coded, source reviewed structurally, 69 automated tests + isolated Chromium passed. NO public approval, no verified class/board/chapter mapping, no actual Hostinger staging, no human bilingual review. M16–M18 unchanged.
 
 - **2026-11-23 M16:** Two original virtual experiment prototypes implemented. Four checks recorded locally, 77 Node tests pass, isolated mobile browser smoke passed. **Qualified bilingual educator review, actual device/accessibility/Hostinger tests and public approval are still TODO.** M17 and M18 not coded.
+
+- **2026-11-23 M17:** first teacher kit coded, 2 subjects × 5 steps, two print worksheets, no pupil roster or account; Node tests 84/84, isolated Chromium UI and print CSS. M17-03 **remains BLOCKED** until school authorization, educator review, safeguarding and consent requirements are met. M18 still unimplemented.

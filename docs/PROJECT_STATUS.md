@@ -1,6 +1,6 @@
 # Project Status Dashboard — AI for Students
 
-**As of 2026-11-23** | **Latest coded milestone: M16 first pilot** | **Public release: NOT APPROVED**
+**As of 2026-11-23** | **Latest coded milestone: M17 first pilot** | **Public release: NOT APPROVED**
 
 ## Working today in the private prototype
 - 40 solo game modules in 8 categories; 3 same-device Grow Together modes.
@@ -15,7 +15,7 @@
 |---|---|---|
 | M15 | Two original interactive concept journeys, four practice checks and local history | **FIRST PILOT CODED; unreviewed, live staging pending** |
 | M16 | Two fractions/circuit simulations, 4 recorded checks, bilingual drafts | **FIRST PILOT CODED; real devices/educator review pending** |
-| M17 | Projector/shared-phone teacher-led classroom kit and original printables | **PLANNED** |
+| M17 | 2 original bilingual teacher-led 5-step plans, projector view and 2 print worksheets | **FIRST PILOT CODED; unreviewed and not school-trialled** |
 | M18 | AI literacy and digital skills with no open chatbot | **PLANNED** |
 
 ## Release blockers
@@ -27,7 +27,7 @@
 - Online friends, accounts and Quick Chat are deliberately **not shipped**.
 
 ## What success means next
-**Next delivery priority:** qualified bilingual review, verified curriculum links and real Android/Hostinger staging checks for M15–M16, followed by M17 teacher classroom kit. These first pilots do not authorize a public launch.
+**Next delivery priority:** educator/Hindi review and actual Android/projector/Hostinger staging checks for M15–M17, followed by planned M18 AI literacy. These first pilots do not authorize a public launch.
 
 ## Links
 [Project Charter](PROJECT_CHARTER.md) · [Roadmap](ROADMAP.md) · [Milestone Tracker](MILESTONE_TRACKER.md) · [Detailed Backlog](IMPLEMENTATION_BACKLOG.md) · [Smart Learning Studio Spec](SMART_LEARNING_STUDIO_SPEC.md) · [Resource Policy](RESOURCE_INTEGRATION_POLICY.md) · [Teacher Pilot](TEACHER_CLASSROOM_PILOT.md) · [Decisions & Risks](DECISIONS_AND_RISKS.md) · [Release Gates](../RELEASE_GATES.md)
@@ -37,3 +37,6 @@ Two original bilingual concept pilots are implemented (fractions and circuit-pat
 
 ### Latest engineering update — M16 first pilot (2026-11-23)
 Two interactive conceptual simulations (two fraction strips and a two-switch series path) plus four locally recorded checks have passed **77/77 Node tests** and an isolated Chromium smoke test. This is **not live Hostinger testing, accessible-device approval or educational validation**. M17–M18 remain planned. [Details](../M16_QA_STATUS.md).
+
+### M17 pilot update — 2026-11-23
+Smart Classroom Teacher Kit first coding pilot has two bilingual 5-step group plans, rotating generic roles, teacher guidance and two original printable worksheets. **84 automated Node tests** plus isolated UI and print-CSS browser checks passed. Ten teaching-step records remain **unreviewed**; real teacher pilot, Hostinger HTTPS, accessibility and legal/safeguarding signoff remain pending. [M17 QA](../M17_QA_STATUS.md). M18 not started.

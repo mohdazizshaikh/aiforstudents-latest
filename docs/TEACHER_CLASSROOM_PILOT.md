@@ -1,6 +1,6 @@
 # M17 Teacher-Led Smart Classroom Pilot — Proposed Plan
 
-**Status:** DESIGN ONLY; no school, teacher, learner or pilot participant has been recruited. A future pilot must satisfy applicable institutional, child privacy and safeguarding requirements.
+**Status:** FIRST TEACHER-KIT CODE PILOT IMPLEMENTED (2026-11-23); **no school, teacher, learner or pilot participant recruited**. A future pilot must satisfy applicable institutional, child privacy and safeguarding requirements.
 
 ## Purpose
 Adapt useful smart-classroom teaching practices to Indian schools without assuming individual laptops. Demonstrate a lesson on **one teacher laptop/projector or a shared mobile device**; make interaction, peer reasoning and offline follow-through more valuable than screen time.
@@ -43,3 +43,6 @@ No public leaderboard, named team rank, strangers, uncontrolled chat, image uplo
 
 ## Deliverable acceptance for M17
 One reviewed teacher lesson with a projector mode, printable activity, accessibility alternatives, offline fallback and documented teacher feedback from an ethical pilot **if one occurs**. The pilot is not counted complete merely by publishing a PDF or JavaScript button.
+
+## Engineering update (2026-11-23)
+The teacher-led original fraction/circuit scripts (5 steps each) now work under `#classroom` with a projector button, three generic rotating roles, show/hide teacher guidance, and two A4 print-friendly original bilingual worksheets. **84 automated Node tests** and isolated Chromium/print CSS checks passed. This **does not** constitute a real pilot, a school-approved teaching unit or validated pupil learning outcomes. School access, human review, child-safety authorization and real classroom observation remain pending. [Implementation](M17_IMPLEMENTATION_NOTES.md).

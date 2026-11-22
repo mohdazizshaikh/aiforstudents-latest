@@ -22,7 +22,7 @@
 | **M14** | Study Lab, 32 bilingual checks | **Implemented** | **63/63 Node tests, GitHub CI green; 32/32 unreviewed** | Human correctness/Hindi review | Content TBD |
 | **M15** | Smart Learning Studio: two concept pilot journeys | **Partial prototype implemented** | 69 Node tests and isolated Chromium; no educational signoff or live Android/HTTPS | Expert/Hindi review, chapter mapping, accessibility, restricted Hostinger staging | Product/Content TBD |
 | **M16** | Fraction strips + two-switch series circuit | **First coding pilot implemented** | 77 Node tests; isolated Chromium; 4 unreviewed checks | Qualified educational review, real Android/Hostinger validation | Engineering/Teaching TBD |
-| **M17** | Classroom & Teacher Kit | **Planned** | Not applicable yet | Reviewed lessons + teacher needs discovery | Teaching TBD |
+| **M17** | 2 original 5-step teacher plans + 2 A4 worksheets | **First coding pilot implemented** | 84/84 Node tests, isolated Chromium UI/print; 10 teacher steps unreviewed | Qualified bilingual review, live projector/real devices, ethical teacher pilot, Hostinger verification | Teaching TBD |
 | **M18** | AI & Digital Skills Lab | **Planned** | Not applicable yet | AI literacy + child-safety content outline | Teaching/Safety TBD |
 
 ## Operational and safety gates (not milestones)
@@ -48,3 +48,5 @@ When work starts or finishes, record: **date**, milestone/task ID, status, linke
 - **2026-11-23:** M15 two-journey pilot code pushed and browser smoke tested; 69 Node tests. This is staging-only and unreviewed; public release, M16–M18 remain pending. [M15 QA](../M15_QA_STATUS.md).
 
 - **2026-11-23:** M16 first pilot coded and pushed (two experiments, four exercises, privacy-first history, bilingual drafts). Automated 77/77 and isolated Chromium pass; **NOT** human-validated, hosted or approved for public child-facing launch. [Evidence](../M16_QA_STATUS.md).
+
+- **2026-11-23:** M17 first classroom kit code pushed (two original teacher plans, 10 facilitated steps, two A4 printable worksheets, projector/role guidance). **84/84 Node tests** and isolated Chromium UI/print checks pass. **No real school pilot or teacher/child safety approval.** [M17 QA](../M17_QA_STATUS.md).
