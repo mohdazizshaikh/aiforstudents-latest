@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+# Canonical domain and sitemap will be configured after deployment URL is known.
