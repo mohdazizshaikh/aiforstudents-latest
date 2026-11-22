@@ -83,3 +83,6 @@ An initial **Virtual Experiment Lab** now exists, using two fraction strips with
 
 ### M17 implemented pilot note — 2026-11-23
 Two original classroom teacher plans and print-friendly bilingual worksheet pages are coded, using the M15/M16 concepts. Projector typography, generic group roles and hide/reveal teacher explanations are available. No child accounts, student records, classroom analytics or internet peers are collected by this mode. Teacher-led real-school pilot, specialist content review and production approval are **not complete**. [M17 evidence](M17_IMPLEMENTATION_NOTES.md).
+
+### M18 first implemented pilot (2026-11-23)
+Four strands (AI patterns/limitations, algorithms, evidence verification and personal privacy) now have two original scenario questions per experimental age band, totalling 32 bilingual learning records. Explanations and offline reflection activities are offered; progress is private browser storage and can be cleared. **No open chatbot, online messages, API calls, official curriculum calibration or expert approval.** [Implementation notes](M18_IMPLEMENTATION_NOTES.md).

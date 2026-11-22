@@ -22,7 +22,7 @@
 | ID | Question | Proposed resolution | Responsible role |
 |---|---|---|---|
 | Q-01 | Which current textbook/class edition defines the M15 pilot mapping? | Educator verifies actual chapters and versions | Curriculum reviewer TBD |
-| Q-02 | Who can sign the 3,232 unreviewed game/Study Lab items or a safely scoped public subset? | Recruit and document qualified bilingual reviewers | Product/education TBD |
+| Q-02 | Who can sign the 3,272 unreviewed question items and 10 classroom steps or a safely scoped public subset? | Recruit and document qualified bilingual reviewers | Product/education TBD |
 | Q-03 | What exact Hostinger staging domain and access restriction? | Choose separate subdomain, backup, verify HTTPS | Operations TBD |
 | Q-04 | Who is accountable for child safeguarding/incident response? | Assign responsible operator and legal/safety review | Product/safety TBD |
 | Q-05 | Which devices and languages can be tested ethically? | Create actual low-end Android, TalkBack and Hindi QA matrix | QA TBD |
@@ -32,7 +32,7 @@
 ## Risk register
 | Risk | Impact | Probability (qualitative) | Mitigation | State |
 |---|---|---|---|---|
-| R-01 Incorrect/ambiguous age-inappropriate content | High | Open | Item-level bilingual review, answer truth tests, no assessment promises | Open: **3,232 items unreviewed** |
+| R-01 Incorrect/ambiguous age-inappropriate content | High | Open | Item-level bilingual review, answer truth tests, no assessment promises | Open: **3,272 question items + 10 facilitation steps unreviewed** |
 | R-02 Confusing smart learning with passive screen time | Medium | Open | Short five-step active learning loop and teacher-led alternatives | Design mitigation |
 | R-03 Shared-device privacy leak | High | Open | Session default, clear data, opt-in local storage, plain-language parental guidance | Human testing pending |
 | R-04 Hostinger limits/HTTP asset or service worker errors | High | Open | Restricted staging, backup/rollback, real HTTPS tests | Not deployed |
@@ -46,3 +46,6 @@
 
 ## Review cadence
 Update this register when an evidence-backed decision changes, before a new milestone begins, after every pilot, or at least once per release. Include date, decision owner and PR/commit evidence. Never turn **TBD** into a fictitious approval.
+
+### M18 safety boundary (2026-11-23)
+The offline AI literacy module is deterministic, avoids open-ended chatbot responses and does not request children's credentials. A successful automated answer check does **not** certify a learner as safe online or qualify as a current, comprehensive fact-checking system. Periodic educational and Hindi updates, child-safety reviewer ownership and real teacher/child usability are still open.

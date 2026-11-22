@@ -23,7 +23,7 @@
 | **M15** | Smart Learning Studio: two concept pilot journeys | **Partial prototype implemented** | 69 Node tests and isolated Chromium; no educational signoff or live Android/HTTPS | Expert/Hindi review, chapter mapping, accessibility, restricted Hostinger staging | Product/Content TBD |
 | **M16** | Fraction strips + two-switch series circuit | **First coding pilot implemented** | 77 Node tests; isolated Chromium; 4 unreviewed checks | Qualified educational review, real Android/Hostinger validation | Engineering/Teaching TBD |
 | **M17** | 2 original 5-step teacher plans + 2 A4 worksheets | **First coding pilot implemented** | 84/84 Node tests, isolated Chromium UI/print; 10 teacher steps unreviewed | Qualified bilingual review, live projector/real devices, ethical teacher pilot, Hostinger verification | Teaching TBD |
-| **M18** | AI & Digital Skills Lab | **Planned** | Not applicable yet | AI literacy + child-safety content outline | Teaching/Safety TBD |
+| **M18** | 4 original bilingual digital literacy strands, 32 checks | **First coding pilot implemented** | 93 Node tests and isolated Chromium; **32/32 items unreviewed** | Qualified educator/Hindi review; real device, safety and Hostinger staging evidence | Teaching/Safety TBD |
 
 ## Operational and safety gates (not milestones)
 | ID | Workstream | Status | Proof required before mark complete | Owner |
@@ -50,3 +50,5 @@ When work starts or finishes, record: **date**, milestone/task ID, status, linke
 - **2026-11-23:** M16 first pilot coded and pushed (two experiments, four exercises, privacy-first history, bilingual drafts). Automated 77/77 and isolated Chromium pass; **NOT** human-validated, hosted or approved for public child-facing launch. [Evidence](../M16_QA_STATUS.md).
 
 - **2026-11-23:** M17 first classroom kit code pushed (two original teacher plans, 10 facilitated steps, two A4 printable worksheets, projector/role guidance). **84/84 Node tests** and isolated Chromium UI/print checks pass. **No real school pilot or teacher/child safety approval.** [M17 QA](../M17_QA_STATUS.md).
+
+- **2026-11-23:** M18 first code pilot pushed (32 bilingual scenario questions across four topics and four experimental ages, local browser-only practice). **93/93 Node tests** and isolated Chromium including all 32 pass. No expert signoff, actual school deployment or real-world fact-checking certification. [M18 QA](../M18_QA_STATUS.md).

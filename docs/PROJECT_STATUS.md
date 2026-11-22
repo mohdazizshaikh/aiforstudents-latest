@@ -1,6 +1,6 @@
 # Project Status Dashboard — AI for Students
 
-**As of 2026-11-23** | **Latest coded milestone: M17 first pilot** | **Public release: NOT APPROVED**
+**As of 2026-11-23** | **Latest coded milestone: M18 first pilot** | **Public release: NOT APPROVED**
 
 ## Working today in the private prototype
 - 40 solo game modules in 8 categories; 3 same-device Grow Together modes.
@@ -16,18 +16,18 @@
 | M15 | Two original interactive concept journeys, four practice checks and local history | **FIRST PILOT CODED; unreviewed, live staging pending** |
 | M16 | Two fractions/circuit simulations, 4 recorded checks, bilingual drafts | **FIRST PILOT CODED; real devices/educator review pending** |
 | M17 | 2 original bilingual teacher-led 5-step plans, projector view and 2 print worksheets | **FIRST PILOT CODED; unreviewed and not school-trialled** |
-| M18 | AI literacy and digital skills with no open chatbot | **PLANNED** |
+| M18 | 4 digital literacy strands, 32 bilingual draft scenarios, private practice and no live AI | **FIRST PILOT CODED; expert/real device review pending** |
 
 ## Release blockers
 - Actual Hostinger staging and real device/browser/service-worker verification.
-- Item-level qualified educator and Hindi review of **3,200 game + 32 Study Lab + 4 M15 + 4 M16 checks**; 54 repetitive age-band positions need attention.
+- Qualified educator/Hindi review of **3,200 games + 32 Study Lab + 4 M15 + 4 M16 + 32 M18 = 3,272 question records**, plus **10 M17 classroom facilitation steps**; 54 game positions repeat across age bands.
 - Actual assistive-tech/low-end mobile QA and educational accuracy.
 - Child privacy/legal/safeguarding signoff and accountable human operators.
 - Verified public domain/canonicals/sitemap, Search Console and deliberate noindex removal only after approval.
 - Online friends, accounts and Quick Chat are deliberately **not shipped**.
 
 ## What success means next
-**Next delivery priority:** educator/Hindi review and actual Android/projector/Hostinger staging checks for M15–M17, followed by planned M18 AI literacy. These first pilots do not authorize a public launch.
+**Next delivery priority:** bilingual educational review across M1–M18, real Android/projector/Hostinger staging, accessibility and safeguarding before child-oriented public launch. These first pilots do not authorize a public launch.
 
 ## Links
 [Project Charter](PROJECT_CHARTER.md) · [Roadmap](ROADMAP.md) · [Milestone Tracker](MILESTONE_TRACKER.md) · [Detailed Backlog](IMPLEMENTATION_BACKLOG.md) · [Smart Learning Studio Spec](SMART_LEARNING_STUDIO_SPEC.md) · [Resource Policy](RESOURCE_INTEGRATION_POLICY.md) · [Teacher Pilot](TEACHER_CLASSROOM_PILOT.md) · [Decisions & Risks](DECISIONS_AND_RISKS.md) · [Release Gates](../RELEASE_GATES.md)
@@ -40,3 +40,6 @@ Two interactive conceptual simulations (two fraction strips and a two-switch ser
 
 ### M17 pilot update — 2026-11-23
 Smart Classroom Teacher Kit first coding pilot has two bilingual 5-step group plans, rotating generic roles, teacher guidance and two original printable worksheets. **84 automated Node tests** plus isolated UI and print-CSS browser checks passed. Ten teaching-step records remain **unreviewed**; real teacher pilot, Hostinger HTTPS, accessibility and legal/safeguarding signoff remain pending. [M17 QA](../M17_QA_STATUS.md). M18 not started.
+
+### M18 engineering update — 2026-11-23
+AI & Digital Skills Lab now includes 32 bilingual original author-draft questions in four distinct topics and four age bands. These are deterministic fixed checks, **not a live AI tutor**. 93 Node tests and an isolated Chromium playthrough pass, with local progress reset verified. Hostinger live deployment, educator/translation signoff, actual Android/screen reader and child protection approval remain undone. [M18 QA](../M18_QA_STATUS.md).

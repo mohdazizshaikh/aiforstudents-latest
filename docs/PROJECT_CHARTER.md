@@ -55,3 +55,6 @@ The 54 individual game challenge positions reported as identical across all four
 No individual assignee has been confirmed. Track roles without inventing personnel: product decision owner, engineering owner, educational reviewer, Hindi reviewer, accessibility reviewer, child-safety/legal reviewer, staging/operations owner. A role marked **TBD** is not an approval. The human project owner chooses actual individuals and signs public-release gates.
 
 For current priorities use [ROADMAP.md](ROADMAP.md), [MILESTONE_TRACKER.md](MILESTONE_TRACKER.md), [IMPLEMENTATION_BACKLOG.md](IMPLEMENTATION_BACKLOG.md), [SMART_LEARNING_STUDIO_SPEC.md](SMART_LEARNING_STUDIO_SPEC.md), and root [RELEASE_GATES.md](../RELEASE_GATES.md).
+
+### Current code milestone (2026-11-23)
+M15 Smart Studio, M16 Virtual Lab, M17 Classroom Kit and **M18 Digital Skills** now have **first functional prototype increments**. M18 has four original, bilingual digital literacy strands and 32 unreviewed checks. **All are staging-only**; the original project mission and free/local-first child safeguards are unchanged. 3,272 practice questions (plus 10 classroom steps) still require recorded qualified bilingual educational review. Hosting, actual child/teacher pilot and launch approvals are incomplete.
