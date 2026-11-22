@@ -1,0 +1,57 @@
+# AI for Students — Project Charter
+
+**Documentation baseline:** 2026-11-23  
+**Status:** M14 functional **private staging prototype**; not deployed to Hostinger and not approved for public child-oriented launch.  
+**Canonical code repository:** https://github.com/mohdazizshaikh/aiforstudents-latest
+
+## Mission
+Give learners, especially those using shared or inexpensive Android phones in India, free, joyful and meaningful opportunities to **Discover → Develop → Decide**. Combine original educational games, short lessons, hands-on simulations, reflection, teacher-supported classroom activity, and trustworthy links to public learning resources.
+
+The goal is **better opportunities to practise and explore**, not a diagnostic intelligence test, a guaranteed career prediction, or a substitute for qualified teachers.
+
+## People served and access
+- Initial focus: India, low-bandwidth mobile access, Hindi and English; extend to more languages only after accurate translation and review.
+- Existing experimental age bands: 6–10, 11–14, 15–17, 18+. These are activity bands, **not** evidence of psychometrically calibrated difficulty; a learner may need accessible difficulty choices.
+- One phone shared by learners, a teacher's laptop/projector, and fully individual access are all valid contexts.
+- Optional local progress; essential activities should remain usable without account creation or surrendering personal information.
+- No paid subscription for core student learning, no pressure streaks, public leaderboards, or recruitment rewards for children.
+
+## Product pillars
+1. **Discover:** 40 current solo practice modules in 8 domains, My Growth, Proud Today, and 3 same-device cooperative modes.
+2. **Develop:** M14 starter Study Lab; proposed M15 Smart Learning Studio, M16 Virtual Experiment Lab, M17 Classroom and Teacher Kit, M18 AI & Digital Skills.
+3. **Decide:** Current Future Explorer is interest-led with small offline missions; never assign a definitive career based on game scores.
+4. **Trust:** Original/licensed educational material, clear limitations, safeguarding, truthful metrics, optional local-first history, meaningful feedback, inclusive design.
+
+## Non-negotiable engineering constraints
+- Existing domain + Hostinger Business shared hosting; **near-zero additional cash spend** is the design constraint, not a claim of unlimited free hosting resources.
+- Static HTML/CSS/JavaScript for learning features, small assets, progressive enhancement; no long-running server or paid inference API required for the core.
+- Low-end Android, keyboard and screen reader operation, reduced motion, no forced video, no reliance on high bandwidth.
+- PHP/MySQL is a *future option* for controlled low-frequency asynchronous adult-eligible rooms after security/legal approval, not an active dependency.
+- No strangers, open DMs, contact harvesting, open free chat, unconsented behavioral tracking, identity claims, or public rankings for minors.
+
+## Baseline at M14 — evidence versus approval
+| Area | Evidence-backed implementation | Still unapproved |
+|---|---|---|
+| Game library | 40 playable **modules**, 8 categories, 3,200 generated question records, 4 experimental bands | Not 40 independent animated engines; **3,200/3,200 lack documented educator/Hindi signoff** |
+| Co-op | 3 same-device, two-role mission modes | No online friends, chat, or minors' remote social features |
+| Development | My Growth, Proud Today, Daily Growth, M14 Study Lab with 4 tracks/8 themes/**32** checks | Not a mapped board/exam curriculum; 32/32 checks lack educator signoff |
+| Explore | 12 interest-led field cards with age-scaffolded offline missions | Not a validated career recommendation or eligibility system |
+| Quality | Latest M14: **63/63 Node tests** and isolated browser smoke reported; latest GitHub CI passed | Actual HTTPS hosting, child usability, Android assistive technology, legal/safeguarding and real learning impact untested |
+
+The 54 individual game challenge positions reported as identical across all four age bands remain review candidates. Structural age variation is not a fairness or learning-outcome finding.
+
+## Scope and explicit exclusions
+**In scope next:** small high-quality bilingual learning slices, approved resource linking, visual interactive experiments, teacher-led group packs, AI literacy without a live AI chat bot, local progress integration, educator-reviewed content and staging QA.
+
+**Out of scope until separate gates:** paid generative AI, broad automated scraping or redistribution of copyrighted textbooks, accounts for children, open multiplayer, unrestricted AI chat, guaranteed exam results, biometric/psychometric profiling, public analytics of children, automatic monetization.
+
+## Release definition
+- **Code-ready:** reproducible build, tests green, no obvious broken links, privacy-safe defaults.
+- **Private-staging-ready:** live HTTPS domain, backups and rollback, assets fetch correctly, access restricted and noindex maintained.
+- **Public-child-ready:** qualified bilingual content review of published scope, accessibility and real-device evidence, child privacy/legal and incident-response approval, support capacity and correct resource licensing.
+- **Growth-ready:** consented learner/educator feedback and meaningful quality improvements; SEO and business validation are separate evidence gates.
+
+## Governance and ownership
+No individual assignee has been confirmed. Track roles without inventing personnel: product decision owner, engineering owner, educational reviewer, Hindi reviewer, accessibility reviewer, child-safety/legal reviewer, staging/operations owner. A role marked **TBD** is not an approval. The human project owner chooses actual individuals and signs public-release gates.
+
+For current priorities use [ROADMAP.md](ROADMAP.md), [MILESTONE_TRACKER.md](MILESTONE_TRACKER.md), [IMPLEMENTATION_BACKLOG.md](IMPLEMENTATION_BACKLOG.md), [SMART_LEARNING_STUDIO_SPEC.md](SMART_LEARNING_STUDIO_SPEC.md), and root [RELEASE_GATES.md](../RELEASE_GATES.md).
