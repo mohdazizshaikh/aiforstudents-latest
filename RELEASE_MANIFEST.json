@@ -21,5 +21,11 @@
   "study_lesson_themes": 8,
   "study_question_records": 32,
   "study_items_expert_approved": 0,
-  "isolated_browser_study_checks": 32
+  "isolated_browser_study_checks": 32,
+  "currentMilestone": "M15_FIRST_PILOT",
+  "status": "private-staging-prototype-unreviewed",
+  "date": "2026-11-23",
+  "studioLessons": 2,
+  "studioExercises": 4,
+  "studioHumanApproval": false
 }
