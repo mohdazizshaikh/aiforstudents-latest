@@ -1,6 +1,6 @@
 # Smart Learning Studio — M15–M18 Product Specification (PROPOSED)
 
-**Status: DESIGN ONLY as of 2026-11-23.** The current app is M14. This document takes ideas from purposeful smart-classroom practices; it does **not** claim every Chinese school gives every student a laptop or that computers alone improve learning.
+**Status: FIRST M15 CODING PILOT IMPLEMENTED as of 2026-11-23, NOT APPROVED FOR PUBLIC USE.** The current app is M15 staging. This document takes ideas from purposeful smart-classroom practices; it does **not** claim every Chinese school gives every student a laptop or that computers alone improve learning.
 
 ## Purpose
 A free Indian-school-friendly learning journey, enjoyable on a low-end phone, a shared family device or a single teacher projector. Build understanding through a short guided experience rather than passive video watching or high-pressure testing.
@@ -14,7 +14,7 @@ A free Indian-school-friendly learning journey, enjoyable on a low-end phone, a 
 
 Time ranges are design targets, not a tested completion estimate. A learner can pause, skip and revisit.
 
-## M15 minimum pilot (not yet implemented)
+## M15 minimum pilot (two first concept journeys coded; content review pending)
 **Provisional** Classes 6–8 concepts: fractions and basic circuits. Final grade/chapter alignment must be verified against the *current* relevant textbook edition before any NCERT-aligned claim.
 
 - Two complete original topic journeys with English/Hindi drafts, concept introduction, 2–4 exercises each, a reviewed explanation for each response, optional low-data illustrations, relevant official public-resource links, and a real-world mission.
@@ -74,3 +74,6 @@ On an actual mobile browser, a learner can:
 6. Use the next-day revision prompt without guilt or “streak broken” language.
 
 Build tests, record evidence and human content approvals separately. No public rollout follows automatically.
+
+### Evidence addendum
+Two original pilot journeys now implement equal-part fraction selection and a conceptual circuit switch with separate Play choices. This is not an M16 full virtual lab. External links are official provider homepages, not verified chapter-aligned materials; curriculum and bilingual reviews remain pending. [M15 implementation](M15_IMPLEMENTATION_NOTES.md).

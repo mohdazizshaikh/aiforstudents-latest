@@ -1,6 +1,6 @@
 # Project Status Dashboard — AI for Students
 
-**As of 2026-11-23** | **Latest coded milestone: M14** | **Public release: NOT APPROVED**
+**As of 2026-11-23** | **Latest coded milestone: M15 partial pilot** | **Public release: NOT APPROVED**
 
 ## Working today in the private prototype
 - 40 solo game modules in 8 categories; 3 same-device Grow Together modes.
@@ -13,7 +13,7 @@
 ## Planned next — not implemented in code
 | Stage | Next development increment | Status |
 |---|---|---|
-| M15 | Two carefully reviewed Smart Learning Studio learning journeys + link-first resource finder | **PLANNED** |
+| M15 | Two original interactive concept journeys, four practice checks and local history | **FIRST PILOT CODED; unreviewed, live staging pending** |
 | M16 | Fractions and circuits mobile simulations with accessible alternatives | **PLANNED** |
 | M17 | Projector/shared-phone teacher-led classroom kit and original printables | **PLANNED** |
 | M18 | AI literacy and digital skills with no open chatbot | **PLANNED** |
@@ -31,3 +31,6 @@
 
 ## Links
 [Project Charter](PROJECT_CHARTER.md) · [Roadmap](ROADMAP.md) · [Milestone Tracker](MILESTONE_TRACKER.md) · [Detailed Backlog](IMPLEMENTATION_BACKLOG.md) · [Smart Learning Studio Spec](SMART_LEARNING_STUDIO_SPEC.md) · [Resource Policy](RESOURCE_INTEGRATION_POLICY.md) · [Teacher Pilot](TEACHER_CLASSROOM_PILOT.md) · [Decisions & Risks](DECISIONS_AND_RISKS.md) · [Release Gates](../RELEASE_GATES.md)
+
+### M15 coding status, 2026-11-23
+Two original bilingual concept pilots are implemented (fractions and circuit-path). The previously planned full curriculum, source-specific verified chapter resources and independent educational signoff are not complete. M16–M18 remain planned. [Evidence](../M15_QA_STATUS.md).

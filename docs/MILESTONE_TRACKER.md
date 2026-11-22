@@ -20,7 +20,7 @@
 | M12-A/B | Age-variation redesign | Implemented | Structural pass; 54 item positions still identical | Content signoff and targeted corrections | Content TBD |
 | M13 | 12-field Future Explorer | Implemented | Pathway and external link accuracy review pending | Expert pathway review | Content TBD |
 | **M14** | Study Lab, 32 bilingual checks | **Implemented** | **63/63 Node tests, GitHub CI green; 32/32 unreviewed** | Human correctness/Hindi review | Content TBD |
-| **M15** | Smart Learning Studio | **Planned** | Not applicable yet | Two sourced pilot lesson specifications | Product/Content TBD |
+| **M15** | Smart Learning Studio: two concept pilot journeys | **Partial prototype implemented** | 69 Node tests and isolated Chromium; no educational signoff or live Android/HTTPS | Expert/Hindi review, chapter mapping, accessibility, restricted Hostinger staging | Product/Content TBD |
 | **M16** | Virtual Experiment Lab | **Planned** | Not applicable yet | Approved M15 schemas and simulation truth tables | Engineering/Teaching TBD |
 | **M17** | Classroom & Teacher Kit | **Planned** | Not applicable yet | Reviewed lessons + teacher needs discovery | Teaching TBD |
 | **M18** | AI & Digital Skills Lab | **Planned** | Not applicable yet | AI literacy + child-safety content outline | Teaching/Safety TBD |
@@ -44,3 +44,5 @@ When work starts or finishes, record: **date**, milestone/task ID, status, linke
 
 ## Change log
 - **2026-11-23:** Documentation-only baseline created; M14 identified as last implemented code milestone; M15–M18 added as **proposed**. No hosting deployment or educational approvals claimed.
+
+- **2026-11-23:** M15 two-journey pilot code pushed and browser smoke tested; 69 Node tests. This is staging-only and unreviewed; public release, M16–M18 remain pending. [M15 QA](../M15_QA_STATUS.md).

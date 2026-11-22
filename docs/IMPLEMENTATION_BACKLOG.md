@@ -13,11 +13,11 @@ Priority: P0 = required to avoid unsafe/misleading release; P1 = next core featu
 | GATE-06 | P0 | Content | Review 54 age-repeating challenge positions and 3,232 current unreviewed game + Lab items | GATE-03 | TODO | Content TBD |
 | M15-01 | P1 | M15 | Confirm Class 6–8 pilot topic-source mapping for fractions and circuits (provisional) | GATE-03 | TODO | Educator TBD |
 | M15-02 | P1 | M15 | Define reusable original bilingual lesson + explanation + source/license data schema | M15-01 | TODO | Product/Eng TBD |
-| M15-03 | P1 | M15 | Build first **Learn → Try → Play → Understand → Grow** lesson path, mobile first | M15-02 | TODO / NO CODE YET | Eng TBD |
-| M15-04 | P1 | M15 | Build second lesson path with different concept mechanic | M15-03 | TODO | Eng TBD |
-| M15-05 | P1 | M15 | Connect lesson attempts to existing local-history reset, with accurate versioned feedback | M15-03 | TODO | Eng TBD |
-| M15-06 | P1 | M15 | Topic-matched official resource links, provenance, external-link labeling and link health checks | M15-01 + resource policy | TODO | Content TBD |
-| M15-07 | P1 | M15 | Independent answer-key checks, original examples, Hindi review, mobile/keyboard regression | M15-03 through 06 | TODO | QA/Review TBD |
+| M15-03 | P1 | M15 | Build first Learn → Try → Play → Understand → Grow lesson path | M15-02 | CODED: fractions concept pilot; human QA pending | Eng TBD |
+| M15-04 | P1 | M15 | Build second lesson path with different concept mechanic | M15-03 | CODED: circuit-path concept pilot; not a wiring lab | Eng TBD |
+| M15-05 | P1 | M15 | Connect lesson attempts to existing local-history reset, with accurate versioned feedback | M15-03 | CODED + tested: studioAttempts in versioned browser history | Eng TBD |
+| M15-06 | P1 | M15 | Topic-matched official resource links, provenance, external-link labeling and link health checks | M15-01 + resource policy | PARTIAL: official provider homepages linked; exact chapter matching pending | Content TBD |
+| M15-07 | P1 | M15 | Independent answer-key checks, original examples, Hindi review, mobile/keyboard regression | M15-03 through 06 | PARTIAL: Node + isolated browser pass; human Hindi and real device QA pending | QA/Review TBD |
 | M16-01 | P1 | M16 | Design fractions manipulation simulation, keyboard and no-motion alternative | M15 reusable schema | TODO | Eng TBD |
 | M16-02 | P1 | M16 | Design educational circuit-path simulation (not a real wiring guide) | Science reference review | TODO | Eng TBD |
 | M16-03 | P1 | M16 | Test simulation state and explanations, touch/keyboard, offline repeatability | M16-01/02 | TODO | QA TBD |
@@ -45,3 +45,5 @@ Priority: P0 = required to avoid unsafe/misleading release; P1 = next core featu
 
 ### Progress log
 - **2026-11-23:** Roadmap and backlog documented. **No M15–M18 implementation code added.**
+
+- **2026-11-23 M15:** Fractions and circuit-path pilot journeys coded, source reviewed structurally, 69 automated tests + isolated Chromium passed. NO public approval, no verified class/board/chapter mapping, no actual Hostinger staging, no human bilingual review. M16–M18 unchanged.

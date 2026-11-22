@@ -1,4 +1,4 @@
-# AI for Students — M14 private staging prototype
+# AI for Students — M15 partial staging prototype
 
 **Updated 23 November 2026.** Educational practice and exploration prototype for staging, **not** an expert-validated assessment, public child-ready service, or deployed Hostinger website.
 
@@ -59,7 +59,7 @@ Use Node.js 22 or a current supported version. Run `npm test` for deterministic 
 
 ## Project planning & tracking — M15–M18 (design only; updated 2026-11-23)
 
-**Application code remains at M14.** The next feature direction is a Smart Learning Studio inspired by active-learning classrooms, adapted for Indian schools and shared/low-end devices. The proposed five-step learning loop is **Learn → Try → Play → Understand → Grow**, with legal link-first connections to official learning resources. **No M15–M18 code has been implemented by this documentation update.**
+**As of the first documentation-only update the app was M14; M15 first pilot code is now implemented (2026-11-23).** The next feature direction is a Smart Learning Studio inspired by active-learning classrooms, adapted for Indian schools and shared/low-end devices. The proposed five-step learning loop is **Learn → Try → Play → Understand → Grow**, with legal link-first connections to official learning resources. **Two M15 first-pilot concept journeys are now coded; M16–M18 remain unimplemented and M15 public approval is pending.**
 
 - [Project status dashboard](docs/PROJECT_STATUS.md) — what exists versus what is pending.
 - [Project charter](docs/PROJECT_CHARTER.md) — mission, user groups, architecture, cost and child-safety boundaries.
@@ -71,3 +71,8 @@ Use Node.js 22 or a current supported version. Run `npm test` for deterministic 
 - [Decision and risk register](docs/DECISIONS_AND_RISKS.md) — unresolved decisions, risks, and human signoff requirements.
 
 **Status boundary:** M14's 63 automated tests and passing GitHub CI do not establish human educational review, actual Hostinger deployment or approval for public child-oriented use.
+
+## M15 coding increment — Smart Learning Studio
+Two original bilingual pilot journeys under #smart-studio: fractions (shade 2/4, reason about equivalence) and simplified low-voltage circuit-path model (toggle an open/closed switch and explain the model bulb). Interactive Try and Play steps, explanations, optional paper missions and link-only official provider resources. Four task responses can be recorded in the existing versioned, optional local browser history and erased with Clear local history. No new accounts, paid AI, remote student data, or school-marks prediction. **Neither lesson has human educator/Hindi approval or confirmed class/chapter mapping.**
+
+**QA:** 69/69 Node tests, isolated Chromium two-journey flow; 18 static HTML pages, 15 JS modules. [M15 QA](M15_QA_STATUS.md) · [M15 notes](docs/M15_IMPLEMENTATION_NOTES.md). Hostinger live deployment, M16–M18 and public launch are still pending.
