@@ -1,0 +1,24 @@
+import {PATHS,AGE_BANDS,OFFICIAL_RESOURCES,getMission,explorePaths} from './future-engine.js';
+const byId=x=>document.getElementById(x);
+const selected=new Set();
+const topics=[...new Set(PATHS.flatMap(p=>p.interests))];
+const labels={
+ 'logical-reasoning':['Logic','तर्क'],numerical:['Numbers','संख्याएँ'],language:['Language','भाषा'],spatial:['Shapes','आकृतियाँ'],practical:['Practical','व्यावहारिक'],creative:['Creative','रचनात्मक'],social:['Teamwork','सहयोग'],planning:['Planning','योजना']
+};
+let age='11-14',lang='en';
+function element(tag,cls='',text=''){const e=document.createElement(tag);if(cls)e.className=cls;if(text)e.textContent=text;return e;}
+const translated=(en,hi)=>lang==='hi'?hi:en;
+function render(){const view=byId('future-paths');if(!view)return;view.replaceChildren();const history=window.AIFS_FUTURE_BRIDGE?.getHistory?.()||{};const completed=new Set((history.careerMissions||[]).map(x=>x.missionId));let count=0;
+ for(const path of explorePaths([...selected])){
+  const card=element('article','future-card'),header=element('div','future-card-head'),title=element('h3','',translated(path.en,path.hi)),detail=element('p','small muted',translated(path.desc,path.descHi)),mission=getMission(path.id,age),p=element('p','future-mission',translated(mission.en,mission.hi)),id=mission.id,isDone=completed.has(id),button=element('button','btn compact'+(isDone?' outline':''),isDone?translated('Marked explored','खोजा हुआ चिह्नित'):translated('I tried this mission','मैंने यह मिशन आज़माया'));
+  button.type='button';button.disabled=isDone;button.setAttribute('aria-label',translated(`Mark ${path.en} mission as explored (self-reported)`,`'${path.hi}' मिशन को खुद आज़माया हुआ चिह्नित करें`));
+  button.addEventListener('click',()=>{const day=new Date(),row={pathId:path.id,missionId:id,ageBand:age,selfReported:true,day:`${day.getFullYear()}-${String(day.getMonth()+1).padStart(2,'0')}-${String(day.getDate()).padStart(2,'0')}`,at:day.toISOString()};try{window.AIFS_FUTURE_BRIDGE?.record?.(row);render();byId('future-status').textContent=translated('Your self-reported exploration was recorded on this device. This is not an aptitude badge.','आपने स्वयं यह खोज पूरी होने की जानकारी दी है और यह इसी डिवाइस पर दर्ज हुई है। यह क्षमता का बैज नहीं है।');}catch{byId('future-status').textContent=translated('Could not save the mission.','मिशन सेव नहीं हो सका।');}});
+  if(isDone)count++;
+  header.append(title,element('span','pill subdued',translated('Explore, not predict','खोजें, भविष्यवाणी नहीं')));card.append(header,detail,p,element('p','tiny',translated(`About ${mission.expectedMinutes} minutes · offline, optional`,`लगभग ${mission.expectedMinutes} मिनट · ऑफ़लाइन, वैकल्पिक`)),button);view.append(card);
+ }
+ byId('future-count').textContent=translated(`${count} displayed missions marked explored`,`दिखाए गए ${count} मिशन खोजे हुए चिह्नित`);
+ const interestBox=byId('future-interests');interestBox.replaceChildren();for(const t of topics){const button=element('button','future-interest'+(selected.has(t)?' selected':''),translated(...labels[t]));button.type='button';button.setAttribute('aria-pressed',String(selected.has(t)));button.addEventListener('click',()=>{selected.has(t)?selected.delete(t):selected.add(t);render();const current=[...byId('future-interests').querySelectorAll('button')].find(x=>x.textContent===translated(...labels[t]));current?.focus({preventScroll:true})});interestBox.append(button)}
+ const links=byId('future-sources');links.replaceChildren();for(const s of OFFICIAL_RESOURCES){const li=element('li'),a=element('a','',translated(s.en,s.hi));a.href=s.url;a.target='_blank';a.rel='noopener noreferrer';li.append(a);links.append(li)}
+}
+function sync(){const chosen=byId('age-select')?.value;if(AGE_BANDS.includes(chosen))age=chosen;lang=byId('lang')?.value==='hi'?'hi':'en';const title=byId('future-heading'),intro=byId('future-intro'),help=byId('future-help');title.textContent=translated('Future Explorer: choose what interests you','भविष्य की खोज: अपनी पसंद चुनें');intro.textContent=translated('Browse many possibilities. Game scores never determine your career. Choose topics yourself, try a small real-world mission, and reflect.','कई संभावनाएँ देखें। खेल के अंक आपका करियर तय नहीं करते। अपनी पसंद चुनें, छोटा वास्तविक मिशन आज़माएँ और सोचें।');help.textContent=translated('Select interests to reorder paths (not rank your talent). All paths remain available. Missions are optional and marked done only by you.','खोज के क्रम के लिए रुचियाँ चुनें (क्षमता की रैंकिंग नहीं)। सभी क्षेत्र उपलब्ध हैं। मिशन वैकल्पिक हैं और आप स्वयं पूरे हुए चिह्नित करते हैं।');render()}
+byId('age-select')?.addEventListener('change',sync);byId('lang')?.addEventListener('change',sync);window.addEventListener('aifs-history-cleared',()=>{selected.clear();byId('future-status').textContent='';sync()});window.addEventListener('aifs-future-history-changed',sync);sync();
