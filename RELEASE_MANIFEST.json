@@ -1,8 +1,8 @@
 {
-  "release": "M14 private staging prototype: learning and exam support starter",
+  "release": "M16 first Virtual Experiment Lab private staging prototype",
   "release_date": "2026-11-23",
-  "hosting_zip": "aiforstudents_hostinger_staging_m14.zip",
-  "source_zip": "aiforstudents_m14_source_tests.zip",
+  "hosting_zip": "aiforstudents_hostinger_staging_m16.zip",
+  "source_zip": "aiforstudents_m16_source_tests.zip",
   "game_modules": 40,
   "age_bands": 4,
   "content_records": 3200,
@@ -11,8 +11,8 @@
   "expert_approved_items": 0,
   "cooperative_same_device_modes": 3,
   "future_exploration_paths": 12,
-  "static_html_pages": 17,
-  "automated_tests": 63,
+  "static_html_pages": 19,
+  "automated_tests": 77,
   "isolated_browser_rounds": 88,
   "isolated_browser_game_questions": 440,
   "online_social_features": false,
@@ -22,10 +22,13 @@
   "study_question_records": 32,
   "study_items_expert_approved": 0,
   "isolated_browser_study_checks": 32,
-  "currentMilestone": "M15_FIRST_PILOT",
+  "currentMilestone": "M16_FIRST_PILOT",
   "status": "private-staging-prototype-unreviewed",
   "date": "2026-11-23",
   "studioLessons": 2,
   "studioExercises": 4,
-  "studioHumanApproval": false
+  "studioHumanApproval": false,
+  "experimentSimulations": 2,
+  "experimentChecks": 4,
+  "experimentExpertApproved": 0
 }

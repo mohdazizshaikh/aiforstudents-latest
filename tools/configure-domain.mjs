@@ -9,7 +9,7 @@ const given=process.argv[2];
 if(!given){console.error('Usage: node tools/configure-domain.mjs https://your-verified-domain.example');process.exit(1)}
 let origin;try{const u=new URL(given);if(u.protocol!=='https:'||u.pathname!=='/'||u.search||u.hash)throw Error();origin=u.origin}catch{throw Error('Pass a verified HTTPS site origin without path, query or fragment')}
 const root=path.resolve(import.meta.dirname,'..');
-const pages=[{file:'index.html',url:'/'},{file:'grow-together/index.html',url:'/grow-together/'},...['future-explorer','study-lab','smart-learning-studio','privacy','for-parents','methodology','accessibility','hi'].map(name=>({file:`${name}/index.html`,url:`/${name}/`})),...fs.readdirSync(path.join(root,'games'),{withFileTypes:true}).filter(d=>d.isDirectory()).map(d=>({file:`games/${d.name}/index.html`,url:`/games/${d.name}/`}))];
+const pages=[{file:'index.html',url:'/'},{file:'grow-together/index.html',url:'/grow-together/'},...['future-explorer','study-lab','smart-learning-studio','virtual-experiment-lab','privacy','for-parents','methodology','accessibility','hi'].map(name=>({file:`${name}/index.html`,url:`/${name}/`})),...fs.readdirSync(path.join(root,'games'),{withFileTypes:true}).filter(d=>d.isDirectory()).map(d=>({file:`games/${d.name}/index.html`,url:`/games/${d.name}/`}))];
 for(const page of pages){const file=path.join(root,page.file);let html=fs.readFileSync(file,'utf8');const canonical=`<link rel="canonical" href="${origin}${page.url}">`;
  html=html.replace(/<link rel="canonical"[^>]*>/g,'');html=html.replace('</head>',canonical+'</head>');fs.writeFileSync(file,html)}
 const escapeXml=s=>s.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;');

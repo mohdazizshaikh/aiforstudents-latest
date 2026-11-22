@@ -13,7 +13,7 @@
 <a class="skip" href="#practice" data-i18n="skip">Skip to games</a>
 <header class="header"><div class="wrap bar">
   <a class="brand" href="./"><span class="mark" aria-hidden="true">a</span><span>AI <em>for</em> Students<small>Discover · Develop · Decide</small></span></a>
-  <nav aria-label="Primary navigation"><a href="#practice" data-i18n="navGames">Games</a><a href="#growth" data-i18n="navGrowth">My growth</a><a href="#daily" data-i18n="navDaily">Daily plan</a><a href="#smart-studio" id="studio-nav">Smart Studio</a><a href="#study-lab" id="nav-study">Study Lab</a><a href="#future-explorer">Future Explorer</a><a href="#team-play" data-i18n="navTeam">Grow Together</a><a href="#privacy" data-i18n="navPrivacy">Privacy</a></nav>
+  <nav aria-label="Primary navigation"><a href="#practice" data-i18n="navGames">Games</a><a href="#growth" data-i18n="navGrowth">My growth</a><a href="#daily" data-i18n="navDaily">Daily plan</a><a href="#smart-studio" id="studio-nav">Smart Studio</a><a href="#experiment-lab" id="experiment-nav">Virtual Lab</a><a href="#study-lab" id="nav-study">Study Lab</a><a href="#future-explorer">Future Explorer</a><a href="#team-play" data-i18n="navTeam">Grow Together</a><a href="#privacy" data-i18n="navPrivacy">Privacy</a></nav>
   <label class="language-label" for="lang"><span data-i18n="language">Language</span><select id="lang" aria-label="Language / भाषा"><option value="en">English</option><option value="hi">हिन्दी</option></select></label>
  </div></header>
 <main class="wrap">
@@ -49,7 +49,27 @@
  <p><a href="smart-learning-studio/">Smart Studio guide, learning goals and limitations / स्मार्ट स्टूडियो जानकारी</a></p>
 </section>
 
- <section id="study-lab" class="section" aria-labelledby="lab-heading">
+ <section id="experiment-lab" class="section" aria-labelledby="experiment-heading">
+ <div class="heading"><div><div class="eyebrow">M16 · FIRST VIRTUAL EXPERIMENT PILOT</div><h2 id="experiment-heading">Virtual Experiment Lab</h2><p id="experiment-desc">Explore original fraction strips and a conceptual two-switch circuit.</p></div></div>
+ <div class="panel experiment-panel">
+  <p class="small muted" id="experiment-notice">Educational prototype: explanations await qualified educator and Hindi review.</p>
+  <div class="experiment-tabs" id="experiment-tabs" role="group" aria-label="Choose a virtual experiment"></div>
+  <p class="small muted" id="experiment-summary" role="status"></p>
+  <div class="experiment-surface">
+   <h3 id="experiment-title" tabindex="-1">Fraction Explorer</h3><p id="experiment-overview"></p>
+   <div id="experiment-tasks" class="experiment-tabs" role="group" aria-label="Choose experiment challenge"></div>
+   <h4 id="experiment-question" tabindex="-1"></h4>
+   <div id="experiment-controls" class="experiment-controls"></div>
+   <p class="small muted" id="experiment-hint"></p>
+   <div class="experiment-actions"><button class="btn" type="button" id="experiment-check">Check this setup</button><button class="btn outline" type="button" id="experiment-reset">Reset setup</button></div>
+   <div id="experiment-feedback" class="feedback" role="status" aria-live="polite" tabindex="-1" hidden></div>
+   <h4 id="experiment-mission-title">Optional paper-only mission</h4><p id="experiment-mission"></p>
+   <a id="experiment-source" href="https://epathshala.ncert.gov.in/" rel="noopener noreferrer" target="_blank">Browse official resource (external)</a>
+  </div>
+  <p><a href="virtual-experiment-lab/">Virtual Experiment Lab guide, sources, and limitations / प्रयोगशाला की जानकारी</a></p>
+ </div>
+</section>
+<section id="study-lab" class="section" aria-labelledby="lab-heading">
   <div class="heading"><div><div class="eyebrow" id="lab-eyebrow">SKILL DEVELOPMENT LAB · STUDY SUPPORT</div><h2 id="lab-heading">Study Lab: learn, recall, check</h2><p id="lab-intro">Choose a subject and practise a short idea. Suggested revisions are optional, not reminders or exam-score predictions.</p></div></div>
   <div class="panel lab-panel"><p class="small muted" id="lab-disclaimer">32 original bilingual, age-scaffolded checks. Not aligned to a particular board, syllabus or competitive exam. Content review is pending.</p>
    <div class="lab-layout"><div><h3 id="lab-topics-heading">Subjects / विषय</h3><div id="lab-topics" class="lab-topics" role="group" aria-labelledby="lab-topics-heading"></div><h3 id="lab-lessons-heading">Choose a lesson</h3><div id="lab-lessons" class="lab-lessons" role="group" aria-labelledby="lab-lessons-heading"></div><p class="small muted" id="lab-progress" role="status"></p></div>
@@ -73,11 +93,12 @@
  </section>
  <section id="proud-today" class="section"><div class="panel reflection"><div><div class="eyebrow" data-i18n="reflectionTag">PROUD TODAY</div><h2 data-i18n="reflectionTitle">What felt meaningful today?</h2><p class="muted" data-i18n="reflectionText">Choose a truthful personal reflection. We never invent achievements or score your feelings.</p></div><div><label for="reflection-choice" data-i18n="reflectionLabel">My reflection</label><select id="reflection-choice"></select><button id="save-reflection" class="btn" type="button" data-i18n="saveReflection">Save reflection</button><p id="reflection-status" class="small muted" role="status"></p></div></div></section>
  <section id="methodology" class="section methodology"><div class="eyebrow" data-i18n="methodTag">HOW IT WORKS</div><h2 data-i18n="methodTitle">Play, reflect, return when it helps</h2><div class="method-grid"><article><span>01</span><h3 data-i18n="step1">Pick a category</h3><p data-i18n="step1b">Choose one of forty games. Age-band options are experimental and some tasks repeat across age bands.</p></article><article><span>02</span><h3 data-i18n="step2">Learn from feedback</h3><p data-i18n="step2b">You see explanations or thoughtful prompts. No rankings or life labels.</p></article><article><span>03</span><h3 data-i18n="step3">Celebrate a real step</h3><p data-i18n="step3b">See an activity-based achievement, choose a reflection, and take a break.</p></article></div><p class="small muted" data-i18n="methodCaution">This prototype's games are not expert-validated or calibrated across ages/languages. Different scores cannot establish which field a student is naturally best at. Content and accessibility reviews are still required before a public child-oriented launch.</p></section>
-<section class="section" id="game-guides"><div class="eyebrow">EXPLORE THE GAMES</div><h2>Game guides & learning tips</h2><p class="muted">Read what each activity practices and what its results do not mean.</p><div class="guide-links"><a href="games/pattern-quest/">Pattern Quest</a><a href="games/number-market/">Number Market</a><a href="games/story-detective/">Story Detective</a><a href="games/shape-builder/">Shape Builder</a><a href="games/fix-the-machine/">Fix the Machine</a><a href="games/creative-studio/">Creative Studio</a><a href="games/perspective-explorer/">Perspective Explorer</a><a href="games/strategy-island/">Strategy Island</a><a href="grow-together/">Grow Together safety and co-op guide</a><a href="study-lab/">Study Lab guide</a><a href="smart-learning-studio/">Smart Learning Studio pilot guide</a></div></section></main>
+<section class="section" id="game-guides"><div class="eyebrow">EXPLORE THE GAMES</div><h2>Game guides & learning tips</h2><p class="muted">Read what each activity practices and what its results do not mean.</p><div class="guide-links"><a href="games/pattern-quest/">Pattern Quest</a><a href="games/number-market/">Number Market</a><a href="games/story-detective/">Story Detective</a><a href="games/shape-builder/">Shape Builder</a><a href="games/fix-the-machine/">Fix the Machine</a><a href="games/creative-studio/">Creative Studio</a><a href="games/perspective-explorer/">Perspective Explorer</a><a href="games/strategy-island/">Strategy Island</a><a href="grow-together/">Grow Together safety and co-op guide</a><a href="study-lab/">Study Lab guide</a><a href="smart-learning-studio/">Smart Learning Studio pilot guide</a><a href="virtual-experiment-lab/">Virtual Experiment Lab pilot guide</a></div></section></main>
 <footer><div class="wrap foot"><span>AI for Students · 40-game exploratory prototype · No career prediction</span><span><a href="privacy/">Privacy</a> · <a href="for-parents/">Parents</a> · <a href="methodology/">Methodology</a> · <a href="accessibility/">Accessibility</a> · <a href="hi/" lang="hi">हिन्दी</a></span></div></footer>
 <script type="module" src="assets/app.js"></script>
 <script type="module" src="assets/team-app.js"></script>
 <script type="module" src="assets/future-app.js"></script>
 <script type="module" src="assets/lab-app.js"></script>
 <script type="module" src="assets/studio-app.js"></script>
+<script type="module" src="assets/experiment-app.js"></script>
 </body></html>
