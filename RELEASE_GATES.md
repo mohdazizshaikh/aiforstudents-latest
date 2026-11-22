@@ -39,3 +39,17 @@ Node tests validate deterministic logic and structural properties. The isolated 
 | Educator + Hindi review of new Lab checks | **32/32 PENDING** |
 | Detailed subject/board-aligned learning and exam content | NOT IMPLEMENTED |
 | M14 real device accessibility and live Hostinger | NOT TESTED |
+
+## M15–M18 planning gates — added 2026-11-23 (NO CODE SHIPPED)
+
+| Workstream | Current status | Must be evidenced before milestone can be called complete |
+|---|---|---|
+| M15 Smart Learning Studio | **PLANNED, NOT CODED** | Two sourced original bilingual lesson flows, reviewed concept explanations, keyboard alternatives, local progress/reset, official external links and real mobile QA |
+| M16 Virtual Experiment Lab | **PLANNED, NOT CODED** | Independent fraction/circuit model truth checks; accessible touch/keyboard alternatives; offline mobile tests; safe simulation wording |
+| M17 Classroom and Teacher Kit | **PLANNED, NOT CODED** | Reviewed projector-friendly group lesson, original licensed printable materials, no child roster, teacher feedback and safeguarding gates |
+| M18 AI & Digital Skills | **PLANNED, NOT CODED** | Age-appropriate AI literacy and critical thinking, safety-checked deterministic activities and truthful limitations; no unrestricted generative AI |
+| Resource Catalog | **POLICY DOCUMENTED ONLY** | Exact official links, copyright/license per item, reviewer verification, external-site privacy notice and accessible fallback |
+| Content and curriculum pilot | **BLOCKED pending educational approval** | Correct class/board/edition mapping for provisional fractions/circuit concepts; no premature NCERT-aligned claims |
+| Existing game and Study Lab content | **3,232 items without documented expert signoff** | Individual bilingual review, corrections, review audit trail; 54 repeating age positions examined |
+
+Never mark a product design/plan document as an implemented code feature. See [Project Status](docs/PROJECT_STATUS.md), [Milestone Tracker](docs/MILESTONE_TRACKER.md), and [Resource Policy](docs/RESOURCE_INTEGRATION_POLICY.md). All previous release blockers remain in force; staging remains noindex.

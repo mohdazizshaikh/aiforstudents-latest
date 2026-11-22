@@ -1,4 +1,4 @@
-# AI for Students — M12-B + M13 consolidated private staging prototype
+# AI for Students — M14 private staging prototype
 
 **Updated 23 November 2026.** Educational practice and exploration prototype for staging, **not** an expert-validated assessment, public child-ready service, or deployed Hostinger website.
 
@@ -56,3 +56,18 @@ The complete source and tests live in this repository. The earlier 3,200-record 
 Use Node.js 22 or a current supported version. Run `npm test` for deterministic checks; run `node tools/verify-static-release.mjs`, `node tools/audit-content.mjs`, and optionally `python3 tests/browser_m14.py` with Playwright + Chromium. CI runs unit, static and structural checks but not the isolated Chromium tests.
 
 **Private staging prototype only:** Not deployed to Hostinger, not expert-approved for child-focused public launch, not an assessment or board-aligned tutoring system, and intentionally `noindex,nofollow` until launch approval.
+
+## Project planning & tracking — M15–M18 (design only; updated 2026-11-23)
+
+**Application code remains at M14.** The next feature direction is a Smart Learning Studio inspired by active-learning classrooms, adapted for Indian schools and shared/low-end devices. The proposed five-step learning loop is **Learn → Try → Play → Understand → Grow**, with legal link-first connections to official learning resources. **No M15–M18 code has been implemented by this documentation update.**
+
+- [Project status dashboard](docs/PROJECT_STATUS.md) — what exists versus what is pending.
+- [Project charter](docs/PROJECT_CHARTER.md) — mission, user groups, architecture, cost and child-safety boundaries.
+- [M15–M18 roadmap](docs/ROADMAP.md) — staged lessons, virtual experiments, teacher kit and AI literacy.
+- [Milestone tracker](docs/MILESTONE_TRACKER.md) and [implementation backlog](docs/IMPLEMENTATION_BACKLOG.md) — statuses, task IDs, dependencies, evidence and TBD owners.
+- [Smart Learning Studio specification](docs/SMART_LEARNING_STUDIO_SPEC.md) — proposed lesson experience and acceptance criteria.
+- [Official resource and licensing policy](docs/RESOURCE_INTEGRATION_POLICY.md) — DIKSHA, NCERT ePathshala, Virtual Labs and PM eVIDYA; links by default, not bulk content copying.
+- [Teacher classroom pilot](docs/TEACHER_CLASSROOM_PILOT.md) — one-screen group learning, no login/roster requirement.
+- [Decision and risk register](docs/DECISIONS_AND_RISKS.md) — unresolved decisions, risks, and human signoff requirements.
+
+**Status boundary:** M14's 63 automated tests and passing GitHub CI do not establish human educational review, actual Hostinger deployment or approval for public child-oriented use.
