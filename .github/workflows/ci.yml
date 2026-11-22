@@ -1,0 +1,22 @@
+name: Prototype checks
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Automated tests
+        run: node --test tests/*.test.mjs
+      - name: Verify static release
+        run: node tools/verify-static-release.mjs
+      - name: Structural content audit
+        run: node tools/audit-content.mjs
