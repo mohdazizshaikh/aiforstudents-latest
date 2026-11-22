@@ -1,0 +1,22 @@
+{
+  "release": "M12-B/M13 consolidated PRIVATE STAGING prototype",
+  "release_date": "2026-11-23",
+  "hosting_zip": "aiforstudents_hostinger_staging_m13.zip",
+  "hosting_files": 33,
+  "source_zip": "aiforstudents_m12b_m13_source_tests.zip",
+  "source_files": 77,
+  "game_modules": 40,
+  "age_bands": 4,
+  "content_records": 3200,
+  "fully_identical_age_banks": 0,
+  "identical_task_positions_across_age_bands": 54,
+  "expert_approved_items": 0,
+  "cooperative_same_device_modes": 3,
+  "future_exploration_paths": 12,
+  "static_html_pages": 16,
+  "automated_tests": 57,
+  "isolated_browser_rounds": 88,
+  "isolated_browser_game_questions": 440,
+  "online_social_features": false,
+  "production_launch_approved": false
+}

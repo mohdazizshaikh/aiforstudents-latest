@@ -1,0 +1,25 @@
+{
+  "generatedDate": "2026-11-23",
+  "status": "STRUCTURAL_CHECKS_PASS_ONLY",
+  "counts": {
+    "categories": 8,
+    "games": 40,
+    "ageBands": 4,
+    "items": 3200,
+    "scored": 2240,
+    "reflective": 960,
+    "missingHumanReview": 3200,
+    "englishHindiNumericMismatch": 0,
+    "ageIdenticalTasks": 54,
+    "ageIdenticalGames": 0,
+    "independentCircuitsChecked": 80,
+    "independentArithmeticChecked": 400
+  },
+  "errors": [],
+  "flags": [
+    "All content items explicitly unreviewed by a human educational specialist. Public child-assessment launch blocked.",
+    "Reflection completion is self-reported; the platform does not verify a project was completed or a person performed it.",
+    "Potential overlap between game mechanics and some ambiguous sequence/semantic tasks requires human content review."
+  ],
+  "ageRepeats": []
+}
