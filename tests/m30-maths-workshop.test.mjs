@@ -67,7 +67,7 @@ test('M30 Maths review queue is integrated with original 3,282-record human revi
   assert.equal(row.content_sha256.length,64);
   assert.ok(row.hindi_draft.length>10);
   assert.ok(row.english_draft.length>10);
-  assert.match(row.answer_or_guidance,/State-dependent/);
+  assert.match(row.answer_or_guidance,/Target-state numeric check/);
  }
 });
 test('M30 workshop UI is accessible, no drag, no API, local-only and existing conceptual circuit safety remains intact',()=>{
