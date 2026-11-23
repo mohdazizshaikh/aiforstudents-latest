@@ -3,7 +3,7 @@
  * It cannot authenticate reviewers, certify content, change review queues or authorize launch.
  * Never upload completed forms or private reviewer references to a public repository.
  */
-import {readFileSync,writeFileSync,mkdirSync,statSync} from 'node:fs';
+import {readFileSync,writeFileSync,mkdirSync,statSync,existsSync} from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {buildReviewRows} from './build-review-packet.mjs';
@@ -75,6 +75,7 @@ export function validateReviewEvidence(data,rows=buildReviewRows()) {
   return {schemaValid:false,recordsChecked:0,expectedRecords:0,recordsReadyForIndependentHumanAudit:0,
    errors:['Invalid M23 evidence document'],humanApprovalAuthenticated:false,publicReleaseApproved:false};
  }
+ if('publicReleaseApproved' in data||'humanApprovalAuthenticated' in data)errors.push('Prohibited top-level release-approval field');
  const expected=makeReviewTemplate(rows,data.scope).records;
  const byKey=new Map(expected.map(x=>[key(x.queue,x.content_id),x]));
  const seen=new Set();let reviewComplete=0;
@@ -117,6 +118,7 @@ export function validateReviewEvidence(data,rows=buildReviewRows()) {
 }
 export function writeTemplate(output,scope='pilot-first',rows=buildReviewRows()){
  const template=makeReviewTemplate(rows,scope);
+ if(existsSync(output))throw Error('Refusing to overwrite existing reviewer evidence file: '+output);
  mkdirSync(path.dirname(output),{recursive:true});
  writeFileSync(output,JSON.stringify(template,null,2)+'\n','utf8');
  return {path:output,scope,items:template.records.length,allDecisions:'pending',publicReleaseApproved:false};
