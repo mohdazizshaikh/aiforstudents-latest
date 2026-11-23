@@ -66,3 +66,10 @@ The `--full` read-only audit derives allowable routes/assets from repository sou
 - [ ] Test a second unauthenticated browser cannot browse restricted staging, plus genuine HTTPS/CSP, real low-end Android, assistive technology and rollback. A noindex header or hash PASS is **not authentication**.
 - [ ] Keep source ZIP, approval/incident records and unreviewed content queues **off the web document root**. Log only minimal operator evidence in a restricted internal register.
 - [ ] Public child release remains blocked. [M27 instructions](docs/M27_STAGING_INTEGRITY.md).
+
+### M28 — Latest shared-device privacy and PWA update (overrides older M24 filename guidance)
+- [ ] Use the verified **M28** Hostinger ZIP `aiforstudents_hostinger_staging_m28.zip` from the same checked-out commit (not the older M24 ZIP); keep site independently restricted and noindex. The source/tests ZIP is **not** web-deployable.
+- [ ] On actual Android/shared classroom browser, create dummy practice in one tab (default session), clear from another same-site tab, and confirm the first tab no longer displays history. Repeat with **Remember my progress** opt-in and an independent new tab. No child personal data during tests.
+- [ ] Test sleeping/background/discarded tabs, browsers without BroadcastChannel, multiple browser profiles, physical reset, browser restart and actual upgrade from M24 service worker to **aifs-discovery-m28-2026-11-23**; record issues and qualified operator/guardian review.
+- [ ] Run [M27 byte-integrity checker](docs/M27_STAGING_INTEGRITY.md) against **actual authorized HTTPS staging**, and manually verify backup/rollback, headers and no source-only files exposed.
+- [ ] Explain that clearing this browser does **not** erase other devices, backups or hosting logs. Child-oriented public release remains NOT APPROVED.

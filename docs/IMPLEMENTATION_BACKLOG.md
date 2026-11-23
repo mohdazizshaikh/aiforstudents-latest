@@ -149,3 +149,13 @@ See [M26 runbook](M26_CHILD_SAFETY_OPERATIONS.md); public child-oriented release
 | M27-04 | P0 | Independent ZIP byte parity check for all source and staging archive files | **IMPLEMENTED IN CI** | Actual operator backup/extraction/rollback |
 
 [M27 runbook](M27_STAGING_INTEGRITY.md). M27 has no power to approve children, content, legal or safeguarding. Public launch remains blocked.
+
+### M28 — Shared-device privacy hardening (2026-11-23)
+| ID | Priority | Output | Engineering status | External dependency |
+|---|---|---|---|---|
+| M28-01 | P0 | Same-browser BroadcastChannel clear signal, no progress payload | **CODED + TESTED** | Real multi-tab child-safe shared-device field QA |
+| M28-02 | P0 | Persisted local-storage removal fallback and full peer in-memory reset | **CODED + REAL LOCAL CHROMIUM QA** | Older-browser and sleeping-tab compatibility tests |
+| M28-03 | P0 | Bilingual shared-device caution and privacy disclosure | **CODED, HUMAN HINDI REVIEW PENDING** | Actual parent/legal language approval |
+| M28-04 | P0 | M28 SW cache and Hostinger/source ZIP names, browser suite evidence | **CI VERSIONED** | Real restricted Hostinger site upgrade/rollback |
+
+See [M28 QA](M28_SHARED_DEVICE_PRIVACY.md). Public launch blocked until independent human gates.

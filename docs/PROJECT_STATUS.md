@@ -1,6 +1,6 @@
 # Project Status Dashboard — AI for Students
 
-**As of 2026-11-23** | **M20–M26 merged; M27 staging-integrity engineering verified in branch; external launch gates pending** | **Public release: NOT APPROVED**
+**As of 2026-11-23** | **M20–M27 merged; M28 cross-tab privacy engineering with Chromium QA; external launch gates pending** | **Public release: NOT APPROVED**
 
 ## Working today in the private prototype
 - 40 solo game modules in 8 categories; 3 same-device Grow Together modes.
@@ -76,3 +76,6 @@ Added a local-only six-gate draft safety/incident/readiness template and validat
 
 ### M27 — actual hosted content integrity verification (2026-11-23)
 A read-only full-manifest SHA-256 verifier now checks whether served private staging bytes exactly match source, including `robots.txt`. It also probes seven source-only URLs without reading/reporting sensitive response bodies. CI verifies these checks against source-backed mocked responses and checks ZIP member hashes, **not an actual Hostinger deployment**. [M27 runbook](M27_STAGING_INTEGRITY.md). 3,282 human educational reviews, six safety operation gates, actual host and real Android/AT testing remain pending.
+
+### M28 — shared-device privacy clear (2026-11-23)
+A same-origin, no-data BroadcastChannel signal now clears known practice state across already-open browser tabs after local clear. A storage-key event provides fallback for opted-in persisted history. Real Chromium checks cover non-opt-in session tabs and persisted opt-in tabs, while the service-worker asset cache and restricted staging ZIP are versioned M28. This is **not evidence of physical Android or legal child-safety approval**, and cannot clear other devices/browser profiles. See [M28 QA](M28_SHARED_DEVICE_PRIVACY.md).

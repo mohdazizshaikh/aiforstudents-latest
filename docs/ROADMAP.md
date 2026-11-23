@@ -81,3 +81,6 @@ A privacy-first, **local-only** draft incident/safety handoff with six required 
 
 ### M27 — Private staging release-source parity, not public launch (2026-11-23)
 Adds source SHA-256 comparison for all M22 static routes, robots.txt and stronger header checks; also tests that sensitive source and review paths are not readable. CI compares ZIP bytes against checked-out source. This provides a **future manual Hostinger deployment diagnostic**, not a hosted URL or consent/legal signoff. [M27 guide](M27_STAGING_INTEGRITY.md).
+
+### M28 — Practical shared-device browser privacy (2026-11-23)
+Hardens privacy on shared phones/computers by propagating a **clear-only, no-student-payload** signal across active tabs from the same origin/browser profile and resetting stale in-memory learning history. Real local Chromium tests cover default tab session and saved opt-in modes. M28 cache/versioned ZIP avoids serving stale local JS after update. Must still test on real Android/older browsers and obtain legal/child-safety review before public use. [M28 guide](M28_SHARED_DEVICE_PRIVACY.md).

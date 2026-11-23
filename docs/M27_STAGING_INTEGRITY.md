@@ -44,3 +44,6 @@ Store any real staging operator report, source commit and ZIP hash in a **restri
 ## Sensitive source-only exposure probes
 
 M27 strict mode also checks seven URLs that **must not be served from the static website**: .htaccess, the release manifest, the original content review queues, the archived review queue in docs, a local reviewer evidence template and a local child-safety handoff. Acceptable responses are 401, 403, 404 or 410; HTTP 200, other status, redirect or network ambiguity fails strict mode. HTTP response bodies are never consumed or printed for these probes. Test must be performed only on a staging origin that the operator has explicit permission to inspect. A passing probe does not demonstrate that unlisted private paths or server backups are secure; manual hosting account inspection remains mandatory.
+
+### M28 staged asset revision note (2026-11-23)
+The **current learner application cache is M28**, with downloadable staging package `aiforstudents_hostinger_staging_m28.zip`. The original M27 historical text mentions the M24-named archive that was current when M27 shipped. Always run the M27 full hash checker from **the exact source commit used to create the actually deployed ZIP**. No real Hostinger deployment is implied by a new archive name.

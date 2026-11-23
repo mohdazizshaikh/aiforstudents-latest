@@ -76,3 +76,7 @@ The offline AI literacy module is deterministic, avoids open-ended chatbot respo
 ### M27 — Old release or exposed source assets (2026-11-23)
 - **D-17:** Compare live private staging responses to the **same** source revision using read-only SHA-256 across the complete file/route manifest; read-only proof supplements but never replaces human and operator approvals.
 - **R-16:** An accidental stale/mismatched upload or source ZIP extraction could expose review queues, safety notes or mixed PWA files. Mitigation: 141 Node tests, full static response hashes, seven forbidden source-only URL probes without body logging, strict headers, archive source-byte parity, operator backup/rollback procedure and deliberate public gate remaining blocked. **No real-host verification is recorded.**
+
+### M28 — Cross-tab shared-browser privacy (2026-11-23)
+- **D-18:** Clearing local learning history should broadcast only a non-identifying clear action to other currently active same-origin tabs in a supported browser profile; reset known local/session storage and active in-memory learning UI conservatively. Do not transmit progress/identity/attempt records over BroadcastChannel or network.
+- **R-17:** Shared-device history can remain visible in another previously opened tab or a stale cached app; mitigate via M28 peer reset, storage-event fallback, service worker cache bump, bilingual clear/close guidance and local Chromium multi-tab regressions. Frozen tabs, other browser profiles, backups and real physical phone behavior remain unverified.

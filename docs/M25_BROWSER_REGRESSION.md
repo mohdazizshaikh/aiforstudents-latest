@@ -45,3 +45,6 @@ CI uses a separate `browser-smoke` job on an explicitly supported `ubuntu-24.04`
 ## GitHub engineering evidence — 2026-11-23
 - [PR #11](https://github.com/mohdazizshaikh/aiforstudents-latest/pull/11) merged into main at `397cf2e983589a1376b07064838ad2c4c230a345`.
 - [Merged main CI run](https://github.com/mohdazizshaikh/aiforstudents-latest/actions/runs/45199972263) passed both Node/static and local Chromium browser jobs. The JSON smoke report lists seven passed browser checks and explicitly sets `realHostingerVerified:false`, `realDeviceAccessibilityVerified:false`, `educationalHumanApproval:false` and `publicReleaseApproved:false`.
+
+### M28 extension (2026-11-23)
+The same Python Chromium script now performs **nine** browser checks, including two active-tab shared-device privacy scenarios: clearing default session history from a peer tab, and clearing remembered opt-in history with the original tab still open. GitHub Actions report artifact is now named `m28-local-browser-regression` and emitted under `test-results/m28-browser/`. The script filename remains `tests/browser_m25_ci.py` for backwards-compatibility. [M28 details](M28_SHARED_DEVICE_PRIVACY.md). Real physical devices remain untested.
