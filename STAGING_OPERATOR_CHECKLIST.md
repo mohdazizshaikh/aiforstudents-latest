@@ -8,7 +8,7 @@
 - [ ] Install password/access restriction using Hostinger hPanel or appropriate platform controls. `noindex` alone **does not protect a private site**.
 - [ ] Confirm staging site has a valid HTTPS certificate and the correct document root.
 - [ ] Review whether `.htaccess` on the actual Hostinger plan supports `Header` directives and strict CSP; correct at the server level if not.
-- [ ] From a clean source checkout run `python3 tools/package-release.py` and use the generated `aiforstudents_hostinger_staging_m19.zip` from the checkout's parent directory; extract **ZIP contents** into the staging site's document root, not the source/tests ZIP. A local packaging path is not evidence of a file already uploaded. No Node process or paid API required on hosting.
+- [ ] From a clean source checkout run `python3 tools/package-release.py` and use the generated `aiforstudents_hostinger_staging_m24.zip` from the checkout's parent directory; extract **ZIP contents** into the staging site's document root, not the source/tests ZIP. A local packaging path is not evidence of a file already uploaded. No Node process or paid API required on hosting.
 
 ## Smoke on the actual HTTPS staging site
 - [ ] Load root page and Smart Studio, Virtual Lab, Teacher Kit, Digital Skills in English and Hindi on a low-end phone.
@@ -38,3 +38,12 @@
 **Stop condition:** If privacy, page source, headers, security access, educational content or accessibility gate fails, keep the release private and `noindex`. Do not invite child users or enable online social interactions.
 ### M22 note — complete manifest checker
 The `--full` read-only audit derives allowable routes/assets from repository source and the service-worker manifest; it does not authenticate the staging site, simulate actual navigation/keyboard interaction or substitute for a real phone, screen reader or rollback. See [M22 guide](docs/M22_FULL_STAGING_AUDIT.md). Never commit/live-share staging auth headers or reports containing secrets.
+
+### M24 source/asset and accessibility checks
+- [ ] Use the current **M24** Hostinger ZIP from a clean repository checkout. Run `npm run audit-a11y`, `python3 tools/package-release.py` and `python3 tools/check-package-privacy.py` locally before authorized private upload; do not include reviewer evidence or secrets.
+- [ ] Verify **every static guide page** offers keyboard Skip to content navigation and one main landmark; screen-reader and physical keyboard navigation require human checks.
+- [ ] Test service worker **aifs-discovery-m24-2026-11-23** upgrade/refresh from any prior private staging cache and verify all 41 referenced cache paths after the new archive is installed.
+- [ ] Confirm worksheet skip controls are not printed and teacher-only notes remain hidden on a real A4 printer.
+- [ ] Record real-site and real-device evidence (not credentials) against [M24 QA](M24_QA_STATUS.md); no child/public access pending approvals.
+
+- [ ] If using the CI artifact, choose the latest passing M24 workflow run, download the `m24-hostinger-private-staging-noindex` ZIP artifact within its seven-day retention, inspect it, and upload only its contained Hostinger ZIP file contents to an access-controlled staging document root. The artifact does **not** install itself or provide privacy access restrictions.

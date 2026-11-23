@@ -104,3 +104,13 @@ Details: [M22 staging audit](M22_FULL_STAGING_AUDIT.md). No public release appro
 | M23-04 | P0 | Accountable reviewer handoff and verified evidence | **OPEN / HUMAN REQUIRED** | Appointed qualified humans, official chapter review, child-safety owner |
 
 See [M23 reviewer guide](M23_REVIEW_EVIDENCE.md). Review files are local-only and should not be committed. No child-facing public release approval.
+
+### M24 — Static accessibility and release packaging (2026-11-23)
+| ID | Priority | Deliverable | Engineering status | External dependency |
+|---|---|---|---|---|
+| M24-01 | P0 | Skip links with meaningful targets on all 23 static HTML pages | **CODED, Node structural tested** | Physical keyboard/AT pilot |
+| M24-02 | P0 | Semantic main landmark for teacher print worksheets; print-only CSS unaffected | **CODED** | Real A4/projector and AT verification |
+| M24-03 | P0 | Versioned offline cache and M24 restricted staging ZIP | **CODED, packaged in CI** | Actual Hostinger install/upgrade/rollback |
+| M24-04 | P0 | Block private reviewer evidence from source archive | **CODED, CI ZIP safety check** | Human operational privacy review |
+
+See [M24 QA status](../M24_QA_STATUS.md). Nothing here is certification of WCAG, education, child safety or a live hosted launch.

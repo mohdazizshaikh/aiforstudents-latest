@@ -7,11 +7,13 @@ from zipfile import ZipFile, ZIP_DEFLATED
 import json, sys
 ROOT=Path(__file__).resolve().parent.parent
 OUT=ROOT.parent
-HOST=OUT/'aiforstudents_hostinger_staging_m19.zip'
-SOURCE=OUT/'aiforstudents_m19_source_tests.zip'
+HOST=OUT/'aiforstudents_hostinger_staging_m24.zip'
+SOURCE=OUT/'aiforstudents_m24_source_tests.zip'
 ROOT_DEPLOY={'.htaccess','index.html','service-worker.js','manifest.webmanifest','robots.txt'}
 SITE_DIRS={'assets','games','privacy','for-parents','methodology','accessibility','future-explorer','grow-together','study-lab','smart-learning-studio','virtual-experiment-lab','teacher-kit','ai-digital-skills','hi'}
-SKIP_SOURCE={'__pycache__','.git','node_modules','.pytest_cache'}
+SKIP_SOURCE={'__pycache__','.git','node_modules','.pytest_cache','review-packet','review-evidence','playwright-report','test-results','.venv','venv'}
+SOURCE_SUFFIXES={'.html','.js','.mjs','.py','.md','.json','.jsonl','.css','.svg','.webmanifest','.yml','.yaml','.gz'}
+SOURCE_ROOT_FILES={'.htaccess','.gitignore','robots.txt'}
 
 def static_files():
     files=[]
@@ -23,7 +25,11 @@ def static_files():
     return sorted(files)
 
 def source_files():
-    return sorted(p for p in ROOT.rglob('*') if p.is_file() and not (set(p.relative_to(ROOT).parts)&SKIP_SOURCE) and p.suffix.lower() not in {'.png','.jpg','.webp','.zip','.pyc'} and p.name not in {'apply_m18.py','finalize_m18.py','create_m18_browser.py'})
+    return sorted(p for p in ROOT.rglob('*') if p.is_file()
+                  and not (set(p.relative_to(ROOT).parts)&SKIP_SOURCE)
+                  and not p.name.startswith(('.env','preview-'))
+                  and (p.suffix.lower() in SOURCE_SUFFIXES or p.name in SOURCE_ROOT_FILES)
+                  and p.name not in {'apply_m18.py','finalize_m18.py','create_m18_browser.py'})
 
 def build(files,dest):
     with ZipFile(dest,'w',ZIP_DEFLATED,compresslevel=9) as z:
@@ -39,5 +45,6 @@ if __name__=='__main__':
     h=static_files();s=source_files()
     assert all(p.relative_to(ROOT).as_posix() not in {'CONTENT_REVIEW_QUEUE.jsonl','LAB_CONTENT_REVIEW_QUEUE.jsonl','DIGITAL_CONTENT_REVIEW_QUEUE.jsonl','STUDIO_CONTENT_REVIEW_QUEUE.jsonl'} for p in h)
     assert len(h)>=50 and any(p.relative_to(ROOT).as_posix()=='assets/worksheet-print.js' for p in h)
+    assert all(not(set(p.relative_to(ROOT).parts)&SKIP_SOURCE) and not p.name.startswith('.env') for p in s)
     assert len(s)>90 and any(p.relative_to(ROOT).as_posix()=='tools/release-preflight.mjs' for p in s)
     print(json.dumps({'staging':str(HOST),'staticFiles':build(h,HOST),'source':str(SOURCE),'sourceFiles':build(s,SOURCE),'hostingBytes':HOST.stat().st_size,'sourceBytes':SOURCE.stat().st_size},indent=2))

@@ -64,3 +64,7 @@ The offline AI literacy module is deterministic, avoids open-ended chatbot respo
 ### M23 evidence handling and risk control — 2026-11-23
 - **D-14:** Only offline draft review-evidence templates are generated. Reviewer references are opaque internal IDs; sensitive reviewer credentials, student records, school rosters and completed review evidence must not be committed to the public repository. No online review portal or child login is created.
 - **R-13:** Editable JSON could falsely imply signoff, and outdated content hashes can hide stale reviews. Mitigation: strict source ID/version/digest validation, distinct subject/Hindi references, explicit unauthenticated-evidence caveat and a separate required human governance process. The offline tool does **not** authenticate a reviewer or approve release.
+
+### M24 static accessibility and source-archive confidentiality (2026-11-23)
+- **D-15:** All static pages should offer a keyboard skip link to one main landmark; generated game guides and teacher print worksheets must retain this property after rebuild. Check structure in CI but still require manual AT/low-end phone testing.
+- **R-14:** Local reviewer evidence or secrets could accidentally enter broad source archives during ZIP creation. M24 adds explicit exclusions and a ZIP inspection guard. Human operators must still inspect staging contents, backups, credentials and disclosure risks; CI cannot verify local account configuration.

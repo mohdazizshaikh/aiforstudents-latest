@@ -89,3 +89,13 @@ When work starts or finishes, record: **date**, milestone/task ID, status, linke
 | M23 rollout | Pending independent reviewer handoff and ethical field pilot | Hostinger actual staging, safeguarding, Android accessibility and approvals |
 
 See [M23 review evidence](M23_REVIEW_EVIDENCE.md). No signed reviews exist merely because the template passes CI; public launch remains **BLOCKED**.
+
+### M24 — Static a11y and packaging guard (2026-11-23)
+| Workstream | Code/QA status | Still required |
+|---|---|---|
+| M24-01 | **CODED:** Skip links and semantic main landmarks across 23 static pages; root skip focus, worksheets print-safe | Real keyboard, TalkBack/VoiceOver/NVDA and Hindi usability validation |
+| M24-02 | **CODED:** Source-level accessibility checker + regression tests, 125 Node tests in suite | Professional human accessibility assessment |
+| M24-03 | **CODED:** Versioned service-worker cache and M24 staging ZIP names | Actual restricted HTTPS PWA upgrade and rollback evidence |
+| M24-04 | **CODED:** Exclude local reviewer evidence/secrets from source ZIP, CI archive privacy assertion | Operator verified secure backup/deploy/data-handling process |
+
+[Engineering evidence](../M24_QA_STATUS.md). All original GATE-01/02/03/04/05 remain OPEN; public launch **not approved**.

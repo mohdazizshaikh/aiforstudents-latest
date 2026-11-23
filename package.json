@@ -1,6 +1,6 @@
 {
-  "name": "aifs-discovery-m19",
-  "version": "0.15.0",
+  "name": "aifs-discovery-m24",
+  "version": "0.16.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -9,6 +9,7 @@
     "serve": "python3 -m http.server 8000",
     "review-packet": "node tools/build-review-packet.mjs --out review-packet",
     "review-evidence:template": "node tools/review-evidence.mjs --template review-evidence/pilot-first.json",
-    "review-evidence:check": "node tools/review-evidence.mjs --check review-evidence/pilot-first.json"
+    "review-evidence:check": "node tools/review-evidence.mjs --check review-evidence/pilot-first.json",
+    "audit-a11y": "node tools/audit-static-accessibility.mjs"
   }
 }

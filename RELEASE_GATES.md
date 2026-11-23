@@ -115,3 +115,8 @@ The read-only `tools/check-live-staging.mjs --full` mode expands the 12-target c
 
 ## M23 reviewer evidence (2026-11-23)
 An offline template + source-hash validator helps qualified reviewers hand off 18 prioritized concept/classroom records (or 3,282 full-scope records). A structurally valid JSON report cannot establish reviewer identity, curriculum correctness, Hindi suitability, child-safety/legal approval or copyright rights. A new CI assertion explicitly expects `release-preflight.mjs --public` to fail. Actual Hostinger, real low-end Android accessibility, safeguarding and human reviews remain blocked. See [M23 documentation](docs/M23_REVIEW_EVIDENCE.md).
+
+## M24 — Keyboard navigation and ZIP confidentiality (2026-11-23)
+The static source now gives all 23 HTML pages one main landmark and valid skip link; a deterministic CI audit checks language, target IDs, duplicate IDs and static image alt. Two original teacher print worksheets gain main landmarks while teacher-only guidance remains hidden in print. Versioned M24 service-worker cache and M24 ZIP names support future private staging updates. Release packaging ignores local reviewer evidence and common secret files; an independent ZIP integrity/privacy check runs in CI.
+
+**Not certified:** Static checks are not WCAG 2.2 AA or real TalkBack/VoiceOver/NVDA testing. Actual restricted Hostinger HTTPS upload, backup/rollback, educator/Hindi signoffs, safeguarding/legal review and school pilot remain **PENDING**. Public child-oriented launch remains **NOT APPROVED**. [M24 QA](M24_QA_STATUS.md).
