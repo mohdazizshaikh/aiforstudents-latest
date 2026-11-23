@@ -32,8 +32,17 @@
       "priority": "P0",
       "execution": "ENGINEERING_OR_CONTENT",
       "dependsOn": [],
-      "status": "NOT_STARTED",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "docs/FULL_PRODUCT_SCOPE_AND_DONE.md"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m29-master-plan.test.mjs"
+        }
+      ]
     },
     {
       "id": "FP-002",
@@ -47,8 +56,17 @@
       "dependsOn": [
         "FP-001"
       ],
-      "status": "NOT_STARTED",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "docs/FULL_PRODUCT_SCOPE_AND_DONE.md"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m29-master-plan.test.mjs"
+        }
+      ]
     },
     {
       "id": "FP-003",
@@ -62,8 +80,17 @@
       "dependsOn": [
         "FP-001"
       ],
-      "status": "NOT_STARTED",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "docs/FULL_PRODUCT_SCOPE_AND_DONE.md"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m29-master-plan.test.mjs"
+        }
+      ]
     },
     {
       "id": "FP-004",
@@ -77,8 +104,17 @@
       "dependsOn": [
         "FP-001"
       ],
-      "status": "NOT_STARTED",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "docs/MASTER_EXECUTION_PLAN.md"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m29-master-plan.test.mjs"
+        }
+      ]
     },
     {
       "id": "FP-005",
@@ -92,8 +128,17 @@
       "dependsOn": [
         "FP-001"
       ],
-      "status": "NOT_STARTED",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "tools/workplan-status.mjs"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m30-b1-workplan.test.mjs"
+        }
+      ]
     },
     {
       "id": "FP-006",
@@ -180,8 +225,17 @@
       "priority": "P1",
       "execution": "ENGINEERING_OR_CONTENT",
       "dependsOn": [],
-      "status": "NOT_STARTED",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "docs/B1_CURRICULUM_SOURCE_OPTIONS.json"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m30-b1-foundation-contracts.test.mjs"
+        }
+      ]
     },
     {
       "id": "FP-012",
@@ -195,8 +249,17 @@
       "dependsOn": [
         "FP-011"
       ],
-      "status": "NOT_STARTED",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "tools/validate-curriculum-map.mjs"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m30-b1-foundation-contracts.test.mjs"
+        }
+      ]
     },
     {
       "id": "FP-013",
@@ -210,7 +273,7 @@
       "dependsOn": [
         "FP-011"
       ],
-      "status": "NOT_STARTED",
+      "status": "BLOCKED_EXTERNAL",
       "evidence": []
     },
     {
@@ -225,8 +288,17 @@
       "dependsOn": [
         "FP-011"
       ],
-      "status": "NOT_STARTED",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "docs/B1_CURRICULUM_SOURCE_OPTIONS.json"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m30-b1-foundation-contracts.test.mjs"
+        }
+      ]
     },
     {
       "id": "FP-015",
@@ -240,8 +312,17 @@
       "dependsOn": [
         "FP-011"
       ],
-      "status": "NOT_STARTED",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "docs/B1_CURRICULUM_SOURCE_OPTIONS.json"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m30-b1-foundation-contracts.test.mjs"
+        }
+      ]
     },
     {
       "id": "FP-016",
@@ -328,8 +409,17 @@
       "priority": "P1",
       "execution": "ENGINEERING_OR_CONTENT",
       "dependsOn": [],
-      "status": "NOT_STARTED",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "index.html"
+        },
+        {
+          "kind": "test",
+          "path": "tests/browser_m25_ci.py"
+        }
+      ]
     },
     {
       "id": "FP-022",
@@ -373,8 +463,17 @@
       "dependsOn": [
         "FP-021"
       ],
-      "status": "NOT_STARTED",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/experiment-app.js"
+        },
+        {
+          "kind": "test",
+          "path": "tests/browser_m25_ci.py"
+        }
+      ]
     },
     {
       "id": "FP-025",
@@ -388,8 +487,17 @@
       "dependsOn": [
         "FP-021"
       ],
-      "status": "NOT_STARTED",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "docs/B1_FOUNDATION_CONTRACTS.md"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m30-b1-foundation-contracts.test.mjs"
+        }
+      ]
     },
     {
       "id": "FP-026",
@@ -476,8 +584,17 @@
       "priority": "P1",
       "execution": "ENGINEERING_OR_CONTENT",
       "dependsOn": [],
-      "status": "NOT_STARTED",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "docs/B1_CURRICULUM_SOURCE_OPTIONS.json"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m30-b1-foundation-contracts.test.mjs"
+        }
+      ]
     },
     {
       "id": "FP-032",
@@ -506,8 +623,17 @@
       "dependsOn": [
         "FP-031"
       ],
-      "status": "NOT_STARTED",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/experiment-engine.js"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m30-maths-workshop.test.mjs"
+        }
+      ]
     },
     {
       "id": "FP-034",
@@ -521,8 +647,17 @@
       "dependsOn": [
         "FP-031"
       ],
-      "status": "NOT_STARTED",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/experiment-engine.js"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m30-maths-workshop.test.mjs"
+        }
+      ]
     },
     {
       "id": "FP-035",
@@ -536,8 +671,17 @@
       "dependsOn": [
         "FP-031"
       ],
-      "status": "NOT_STARTED",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/experiment-engine.js"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m30-maths-workshop.test.mjs"
+        }
+      ]
     },
     {
       "id": "FP-036",
@@ -624,8 +768,17 @@
       "priority": "P1",
       "execution": "ENGINEERING_OR_CONTENT",
       "dependsOn": [],
-      "status": "NOT_STARTED",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "docs/B1_CURRICULUM_SOURCE_OPTIONS.json"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m30-b1-foundation-contracts.test.mjs"
+        }
+      ]
     },
     {
       "id": "FP-042",
@@ -639,8 +792,17 @@
       "dependsOn": [
         "FP-041"
       ],
-      "status": "NOT_STARTED",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/experiment-engine.js"
+        },
+        {
+          "kind": "test",
+          "path": "tests/experiment.test.mjs"
+        }
+      ]
     },
     {
       "id": "FP-043",
@@ -772,8 +934,17 @@
       "priority": "P1",
       "execution": "ENGINEERING_OR_CONTENT",
       "dependsOn": [],
-      "status": "NOT_STARTED",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "docs/B1_FOUNDATION_CONTRACTS.md"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m30-b1-foundation-contracts.test.mjs"
+        }
+      ]
     },
     {
       "id": "FP-052",
@@ -920,8 +1091,17 @@
       "priority": "P1",
       "execution": "ENGINEERING_OR_CONTENT",
       "dependsOn": [],
-      "status": "NOT_STARTED",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "docs/B1_FOUNDATION_CONTRACTS.md"
+        },
+        {
+          "kind": "test",
+          "path": "tests/site.test.mjs"
+        }
+      ]
     },
     {
       "id": "FP-062",
@@ -935,7 +1115,7 @@
       "dependsOn": [
         "FP-061"
       ],
-      "status": "NOT_STARTED",
+      "status": "BLOCKED_EXTERNAL",
       "evidence": []
     },
     {
@@ -1068,8 +1248,17 @@
       "priority": "P1",
       "execution": "ENGINEERING_OR_CONTENT",
       "dependsOn": [],
-      "status": "NOT_STARTED",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "docs/B1_FOUNDATION_CONTRACTS.md"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m28-shared-device-privacy.test.mjs"
+        }
+      ]
     },
     {
       "id": "FP-072",
@@ -1216,8 +1405,17 @@
       "priority": "P1",
       "execution": "ENGINEERING_OR_CONTENT",
       "dependsOn": [],
-      "status": "NOT_STARTED",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "docs/B1_FOUNDATION_CONTRACTS.md"
+        },
+        {
+          "kind": "test",
+          "path": "tests/classroom.test.mjs"
+        }
+      ]
     },
     {
       "id": "FP-082",
@@ -1276,7 +1474,7 @@
       "dependsOn": [
         "FP-081"
       ],
-      "status": "NOT_STARTED",
+      "status": "BLOCKED_EXTERNAL",
       "evidence": []
     },
     {
@@ -1364,8 +1562,17 @@
       "priority": "P0",
       "execution": "ENGINEERING_OR_CONTENT",
       "dependsOn": [],
-      "status": "NOT_STARTED",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "docs/B1_FOUNDATION_CONTRACTS.md"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m30-b1-foundation-contracts.test.mjs"
+        }
+      ]
     },
     {
       "id": "FP-092",
@@ -1409,8 +1616,17 @@
       "dependsOn": [
         "FP-091"
       ],
-      "status": "NOT_STARTED",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "tools/check-package-privacy.py"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m27-staging-integrity.test.mjs"
+        }
+      ]
     },
     {
       "id": "FP-095",
@@ -1424,8 +1640,17 @@
       "dependsOn": [
         "FP-091"
       ],
-      "status": "NOT_STARTED",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "tools/workplan-status.mjs"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m30-b1-workplan.test.mjs"
+        }
+      ]
     },
     {
       "id": "FP-096",
@@ -1502,5 +1727,12 @@
       "status": "NOT_STARTED",
       "evidence": []
     }
-  ]
+  ],
+  "updatedOn": "2026-11-24",
+  "currentEngineeringMilestone": "M30_B1_FIRST_IMPLEMENTATION",
+  "additionalNewMathsDrafts": 3,
+  "currentPendingContentRecords": 3285,
+  "batch1VerifiedEngineeringAndDesignTasks": 25,
+  "batch2VerifiedEngineeringAndDesignTasks": 0,
+  "statusCaveat": "DONE_VERIFIED means source and automated/structural engineering evidence, never qualified teaching, legal, privacy or live hosting approval. B1 includes reused verified M29 governance documentation and new M30 code/draft specifications."
 }
