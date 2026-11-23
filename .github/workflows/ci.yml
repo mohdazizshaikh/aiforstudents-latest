@@ -39,3 +39,5 @@ jobs:
         run: node tools/release-preflight.mjs
       - name: Verify release ZIP integrity and static allowlist
         run: python3 tools/package-release.py
+      - name: Ensure no private reviewer evidence or secrets in archives
+        run: python3 tools/check-package-privacy.py
