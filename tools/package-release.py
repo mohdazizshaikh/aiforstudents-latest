@@ -7,8 +7,8 @@ from zipfile import ZipFile, ZIP_DEFLATED
 import json, sys
 ROOT=Path(__file__).resolve().parent.parent
 OUT=ROOT.parent
-HOST=OUT/'aiforstudents_hostinger_staging_m19.zip'
-SOURCE=OUT/'aiforstudents_m19_source_tests.zip'
+HOST=OUT/'aiforstudents_hostinger_staging_m24.zip'
+SOURCE=OUT/'aiforstudents_m24_source_tests.zip'
 ROOT_DEPLOY={'.htaccess','index.html','service-worker.js','manifest.webmanifest','robots.txt'}
 SITE_DIRS={'assets','games','privacy','for-parents','methodology','accessibility','future-explorer','grow-together','study-lab','smart-learning-studio','virtual-experiment-lab','teacher-kit','ai-digital-skills','hi'}
 SKIP_SOURCE={'__pycache__','.git','node_modules','.pytest_cache'}
