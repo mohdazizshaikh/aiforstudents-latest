@@ -62,7 +62,7 @@ export function recommendPractice(input){
   standard:P('Standard practice chosen by you.','आपने सामान्य अभ्यास चुना।'),
   explore:P('Exploratory challenge chosen by you; you may change it any time.','आपने खोज वाला अभ्यास चुना; कभी भी बदल सकते हैं।')
  })[difficulty]);
- return {subject,difficulty,lang,reason:reason+' '+difficultyNote,href:TOPIC_PATHS[subject],declinable:true,
+ return {subject,difficulty,lang,reason:title(lang,P('Optional practice: ','वैकल्पिक अभ्यास: '))+reason+' '+difficultyNote,href:TOPIC_PATHS[subject],declinable:true,
   reviewStatus:REFERENCE_STATUS,isMasteryPrediction:false,persists:false};
 }
 export function optionalReviewDay(isoDay,gapDays){
