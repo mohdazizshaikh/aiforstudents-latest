@@ -69,3 +69,9 @@ When work starts or finishes, record: **date**, milestone/task ID, status, linke
 | GATE-01/02/04/05 | **OPEN / BLOCKED** | M19 runbooks and local preflight | Actual Hostinger, Android AT, privacy and safeguarding evidence |
 
 - **2026-11-23:** M20 branch began after comparing live GitHub M19 state to planning docs. No claim of school pilot, live deployment, human approval or public release.
+
+### M21 — Review packet content integrity (2026-11-23)
+- **Engineering:** Studio/Experiment metadata-only queues now map to original bilingual authored prompts in source engines for review. SHA-256 over normalized item text highlights content changes without claiming educational correctness.
+- **QA:** M21 regression and full CI (check GitHub run/PR), `npm run review-packet` added to CI; no recorded human approvals.
+- **Still OPEN:** 3,282 qualified subject/Hindi content reviews; actual Hostinger restricted staging, child legal/safeguarding, TalkBack/VoiceOver, low-end phone and school evidence.
+- Details: [M21 QA / Integrity](M21_REVIEW_INTEGRITY.md) · [review issue](https://github.com/mohdazizshaikh/aiforstudents-latest/issues/3). **Public launch remains BLOCKED.**
