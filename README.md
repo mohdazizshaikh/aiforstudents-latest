@@ -113,3 +113,7 @@ This repository now includes a **read-only review-packet exporter**: run `npm ru
 ## M21 — Reviewer source-content integrity (2026-11-23)
 
 The offline `npm run review-packet` exporter now joins **Studio and Virtual Lab source-engine bilingual text** to their metadata-only review queues, includes answer/hint fields and a SHA-256 digest of draft reviewer-visible content. It rejects stale or missing pilot content IDs/versions and still **cannot** approve any material. CI exercises the generator, not just its unit functions. See [M21 notes](docs/M21_REVIEW_INTEGRITY.md). The 3,282 pending qualified reviews and all real-world child-safety/hosting/accessibility release gates remain outstanding.
+
+## M22 — Optional complete private-staging HTTPS audit
+
+After an authorized operator deploys the reviewed archive to an **access-restricted HTTPS staging origin**, run `node tools/check-live-staging.mjs https://YOUR-STAGING-ORIGIN --full`. It examines all source-declared static pages and service-worker paths (rather than only the 12 core targets) for response status, MIME and configured security headers without following external links. It does not deploy, send student data, store auth credentials or approve a public release. [Operator notes](docs/M22_FULL_STAGING_AUDIT.md).
