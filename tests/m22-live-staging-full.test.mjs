@@ -4,7 +4,8 @@ import {TARGETS,FULL_TARGETS,verifyLive,validateOrigin} from '../tools/check-liv
 
 const headersFor=target=>new Headers({
  'content-type':target.endsWith('.css')?'text/css':target.endsWith('.js')?'application/javascript':
-  target.endsWith('.svg')?'image/svg+xml':target.endsWith('.webmanifest')?'application/manifest+json':'text/html; charset=utf-8',
+  target.endsWith('.svg')?'image/svg+xml':target.endsWith('.webmanifest')?'application/manifest+json':
+  target.endsWith('.txt')?'text/plain':'text/html; charset=utf-8',
  'x-robots-tag':'noindex, nofollow',
  'x-content-type-options':'nosniff',
  'content-security-policy':"default-src 'self'; script-src 'self'",
