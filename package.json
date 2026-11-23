@@ -10,6 +10,8 @@
     "review-packet": "node tools/build-review-packet.mjs --out review-packet",
     "review-evidence:template": "node tools/review-evidence.mjs --template review-evidence/pilot-first.json",
     "review-evidence:check": "node tools/review-evidence.mjs --check review-evidence/pilot-first.json",
-    "audit-a11y": "node tools/audit-static-accessibility.mjs"
+    "audit-a11y": "node tools/audit-static-accessibility.mjs",
+    "safety-handoff:template": "node tools/safety-handoff.mjs --template safety-handoff/operations.json",
+    "safety-handoff:check": "node tools/safety-handoff.mjs --check safety-handoff/operations.json"
   }
 }

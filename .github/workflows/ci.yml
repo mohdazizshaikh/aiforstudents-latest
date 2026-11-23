@@ -22,6 +22,10 @@ jobs:
         run: |
           npm run review-evidence:template
           npm run review-evidence:check
+      - name: Validate pending M26 safety handoff (NOT legal approval)
+        run: |
+          npm run safety-handoff:template
+          npm run safety-handoff:check
       - name: Assert public preflight remains blocked
         run: |
           if node tools/release-preflight.mjs --public > /dev/null; then

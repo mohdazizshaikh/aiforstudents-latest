@@ -1,6 +1,6 @@
 # Project Status Dashboard — AI for Students
 
-**As of 2026-11-23** | **M20–M24 engineering merged; M25 browser regression CI in development; still a private-staging prototype** | **Public release: NOT APPROVED**
+**As of 2026-11-23** | **M20–M25 engineering merged and verified; M26 safeguarding operations in development; still private-staging prototype** | **Public release: NOT APPROVED**
 
 ## Working today in the private prototype
 - 40 solo game modules in 8 categories; 3 same-device Grow Together modes.
@@ -67,3 +67,6 @@ PR [#10](https://github.com/mohdazizshaikh/aiforstudents-latest/pull/10) was mer
 
 ### M25 — browser regression verification (2026-11-23)
 An independent GitHub Actions Chromium job is being integrated to exercise native modules, Hindi language, on-device opt-in and clear history, M24 keyboard/print semantics, mobile layout and localhost service-worker offline cache. This increases software confidence but **does not** create actual Hostinger HTTPS staging, low-end Android/TalkBack/VoiceOver field evidence or child-safety/educational review. See [M25 procedure](M25_BROWSER_REGRESSION.md). All human release blockers remain **PENDING**.
+
+### M26 — safeguarding operations handoff (2026-11-23)
+Added a local-only six-gate draft safety/incident/readiness template and validator with overwrite protection, opaque references and prohibited auto-approval fields. This assists **future** accountable humans; it does not appoint staff, complete India-specific counsel/guardian review, accept a real school pilot, certify accessibility or approve the public site. The source ZIP excludes local safety evidence. [M26 operator protocol](M26_CHILD_SAFETY_OPERATIONS.md).

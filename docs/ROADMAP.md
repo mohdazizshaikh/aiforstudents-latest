@@ -75,3 +75,6 @@ Four deterministic AI/digital-literacy strands and 32 original bilingual age-sca
 
 ### M25 — Browser automation before external private staging (2026-11-23)
 Add native ES-module Chromium checks in GitHub CI for bilingual learner workflows, local data/reset, keyboard Skip, print and offline cache in a temporary `localhost` browser secure context. This precedes but does **not replace** real Hostinger HTTPS, qualified educational/Hindi reviews, device accessibility/safeguarding or ethical school feedback. [Details](M25_BROWSER_REGRESSION.md).
+
+### M26 — Responsible child-safeguarding operations preparation (2026-11-23)
+A privacy-first, **local-only** draft incident/safety handoff with six required human checks and structural CI verification. Does not activate online student social/chat, deploy hosting or invent accountable people/legal signoff. Operators must still conduct true India-relevant privacy/legal review, supervised school protocol and actual child protection response drill. [M26 details](M26_CHILD_SAFETY_OPERATIONS.md).

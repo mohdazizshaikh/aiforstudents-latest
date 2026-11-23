@@ -68,3 +68,7 @@ The offline AI literacy module is deterministic, avoids open-ended chatbot respo
 ### M24 static accessibility and source-archive confidentiality (2026-11-23)
 - **D-15:** All static pages should offer a keyboard skip link to one main landmark; generated game guides and teacher print worksheets must retain this property after rebuild. Check structure in CI but still require manual AT/low-end phone testing.
 - **R-14:** Local reviewer evidence or secrets could accidentally enter broad source archives during ZIP creation. M24 adds explicit exclusions and a ZIP inspection guard. Human operators must still inspect staging contents, backups, credentials and disclosure risks; CI cannot verify local account configuration.
+
+### M26 safety governance safeguard — 2026-11-23
+- **D-16:** Record safeguarding, incident-response, legal/privacy, shared-device, school-pilot and independent launch-decision requirements as six **human-operated** gates; never certify them automatically. Keep evidence only in a restricted operational register using opaque references, not public GitHub or CI artifacts.
+- **R-15:** A machine-valid JSON template could be mistaken for true child-protection, legal or school consent approval. Mitigation: `humanReviewAuthenticated:false`, `publicReleaseApproved:false` on every validation report; pending by default; forbid forged approval keys; publicly documented **NO LAUNCH** gate until independent professional review.

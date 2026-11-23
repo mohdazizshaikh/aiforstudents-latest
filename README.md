@@ -131,3 +131,7 @@ The GitHub Actions workflow also attaches the verified **M24 private-staging/noi
 ## M25 — Browser-level local regression CI
 
 A separate Chromium job now serves the static source on temporary `localhost` (native ES modules, **not** a live Hostinger site), and tests game/Studio/Virtual Lab/Classroom/Digital boot, Hindi switching, optional local progress and clear-all privacy, keyboard Skip navigation, screen/print behavior, mobile horizontal overflow, and PWA cache-first offline reopening. It records a privacy-safe JSON test result with no real learner or reviewer data. Browser testing does not approve the 3,282 pending educational records, school pilots, accessibility certification or public launch. See [M25 QA](docs/M25_BROWSER_REGRESSION.md).
+
+## M26 — Safeguarding operator readiness (no signoffs granted)
+
+Generate a local-only, Git-ignored safety evidence worksheet with `npm run safety-handoff:template` and validate it with `npm run safety-handoff:check`. The six required **human** gates cover accountable safety owners, an incident-response drill, independent India-relevant privacy/legal review, real shared-device and hosting data-flow audit, ethical school-pilot permission, and an independent go/no-go decision. A successful JSON/schema check **does not authenticate people, certify compliance or allow public release**. CI uses an all-pending dummy template, and archive guards exclude the local worksheet. See [M26 runbook](docs/M26_CHILD_SAFETY_OPERATIONS.md). No child identities or private evidence should be committed.

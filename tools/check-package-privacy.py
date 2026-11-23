@@ -6,7 +6,7 @@ ROOT=Path(__file__).resolve().parent.parent
 OUT=ROOT.parent
 HOST=OUT/'aiforstudents_hostinger_staging_m24.zip'
 SOURCE=OUT/'aiforstudents_m24_source_tests.zip'
-BLOCKED_DIRS={'review-evidence','review-packet','node_modules','.git','__pycache__','.venv','venv'}
+BLOCKED_DIRS={'review-evidence','review-packet','safety-handoff','node_modules','.git','__pycache__','.venv','venv'}
 BLOCKED_SUFFIXES={'.pem','.key','.p12','.sqlite','.db','.zip','.pyc'}
 BLOCKED_NAMES={'CONTENT_REVIEW_QUEUE.jsonl','.env','id_rsa','id_ed25519'}
 

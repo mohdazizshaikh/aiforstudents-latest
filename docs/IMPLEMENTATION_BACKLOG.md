@@ -124,3 +124,13 @@ See [M24 QA status](../M24_QA_STATUS.md). Nothing here is certification of WCAG,
 | M25-04 | P0 | Separate browser job plus privacy-safe 7-day local report | **CI WORKFLOW ADDED** | No human content/signoff authority |
 
 See [M25 QA](M25_BROWSER_REGRESSION.md). Public child-oriented launch remains **BLOCKED**.
+
+### M26 — Child safety and response readiness (2026-11-23)
+| ID | Priority | Operator-safe engineering output | Engineering state | External evidence still required |
+|---|---|---|---|---|
+| M26-01 | P0 | Six-issue child-safety/incident/consent handoff JSON template, opaque refs | **CODED + TESTS** | Actually appointed safeguarding lead, deputy, response cover |
+| M26-02 | P0 | Structural validation: missing/duplicate gates, pending evidence, dated refs, forged approvals | **CODED + NODE TESTS** | Counsel and actual school/operator proof |
+| M26-03 | P0 | Protect local safety evidence from Git and static/source ZIP | **CODED + ARCHIVE GUARD** | Actual access-controlled human record system |
+| M26-04 | P0 | Runnable adult-run incident tabletop guide | **DOCUMENTED ONLY** | Live drill, real owner contact and verified escalation |
+
+See [M26 runbook](M26_CHILD_SAFETY_OPERATIONS.md); public child-oriented release remains **NOT APPROVED**.
