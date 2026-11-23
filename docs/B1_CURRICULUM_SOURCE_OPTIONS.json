@@ -1,0 +1,287 @@
+{
+  "schema": "m30-draft-curriculum-options-v1",
+  "preparedOn": "2026-11-24",
+  "disclaimer": "Illustrative topic discovery only. Not NCERT/CBSE/state-board edition or chapter verified. No claim of grade-level coverage or educational review.",
+  "providerOptions": [
+    {
+      "id": "ncert-epathshala",
+      "homepage": "https://epathshala.ncert.gov.in/",
+      "use": "EXTERNAL_LINK_ONLY",
+      "exactEditionVerified": false,
+      "redistributionPermission": "NOT_ASSESSED"
+    },
+    {
+      "id": "diksha",
+      "homepage": "https://diksha.gov.in/",
+      "use": "EXTERNAL_LINK_ONLY",
+      "exactEditionVerified": false,
+      "redistributionPermission": "NOT_ASSESSED"
+    },
+    {
+      "id": "diksha-virtual-labs",
+      "homepage": "https://diksha.gov.in/virtuallabs.html",
+      "use": "EXTERNAL_LINK_ONLY",
+      "exactEditionVerified": false,
+      "redistributionPermission": "NOT_ASSESSED"
+    }
+  ],
+  "lessonRecordTemplate": {
+    "lessonId": "example-unpublished",
+    "grade": 1,
+    "ageBand": null,
+    "board": "UNMAPPED",
+    "subject": "mathematics",
+    "sourceProviderId": null,
+    "bookTitle": null,
+    "bookEdition": null,
+    "chapterId": null,
+    "rightsStatus": "UNASSESSED",
+    "englishReview": "PENDING",
+    "hindiReview": "PENDING",
+    "teacherApproval": "PENDING",
+    "releaseEligible": false
+  },
+  "mathsGradeOutcomes": [
+    {
+      "grade": 1,
+      "board": "UNMAPPED",
+      "bookEdition": null,
+      "chapterId": null,
+      "ageBand": null,
+      "reviewStatus": "PENDING",
+      "curriculumVerified": false,
+      "illustrativeOutcomes": [
+        "counting and comparing small quantities",
+        "shapes in surroundings"
+      ],
+      "publishedCoverage": false
+    },
+    {
+      "grade": 2,
+      "board": "UNMAPPED",
+      "bookEdition": null,
+      "chapterId": null,
+      "ageBand": null,
+      "reviewStatus": "PENDING",
+      "curriculumVerified": false,
+      "illustrativeOutcomes": [
+        "place value and simple operations",
+        "measuring lengths informally"
+      ],
+      "publishedCoverage": false
+    },
+    {
+      "grade": 3,
+      "board": "UNMAPPED",
+      "bookEdition": null,
+      "chapterId": null,
+      "ageBand": null,
+      "reviewStatus": "PENDING",
+      "curriculumVerified": false,
+      "illustrativeOutcomes": [
+        "place value and multiplication patterns",
+        "introductory fractional parts"
+      ],
+      "publishedCoverage": false
+    },
+    {
+      "grade": 4,
+      "board": "UNMAPPED",
+      "bookEdition": null,
+      "chapterId": null,
+      "ageBand": null,
+      "reviewStatus": "PENDING",
+      "curriculumVerified": false,
+      "illustrativeOutcomes": [
+        "multi-digit arithmetic",
+        "geometry and measurement"
+      ],
+      "publishedCoverage": false
+    },
+    {
+      "grade": 5,
+      "board": "UNMAPPED",
+      "bookEdition": null,
+      "chapterId": null,
+      "ageBand": null,
+      "reviewStatus": "PENDING",
+      "curriculumVerified": false,
+      "illustrativeOutcomes": [
+        "fraction comparison",
+        "area and volume introduction"
+      ],
+      "publishedCoverage": false
+    },
+    {
+      "grade": 6,
+      "board": "UNMAPPED",
+      "bookEdition": null,
+      "chapterId": null,
+      "ageBand": null,
+      "reviewStatus": "PENDING",
+      "curriculumVerified": false,
+      "illustrativeOutcomes": [
+        "number line with negative integers",
+        "ratio and proportional reasoning"
+      ],
+      "publishedCoverage": false
+    },
+    {
+      "grade": 7,
+      "board": "UNMAPPED",
+      "bookEdition": null,
+      "chapterId": null,
+      "ageBand": null,
+      "reviewStatus": "PENDING",
+      "curriculumVerified": false,
+      "illustrativeOutcomes": [
+        "rational numbers",
+        "basic algebraic relations"
+      ],
+      "publishedCoverage": false
+    },
+    {
+      "grade": 8,
+      "board": "UNMAPPED",
+      "bookEdition": null,
+      "chapterId": null,
+      "ageBand": null,
+      "reviewStatus": "PENDING",
+      "curriculumVerified": false,
+      "illustrativeOutcomes": [
+        "linear expressions and equations",
+        "data interpretation"
+      ],
+      "publishedCoverage": false
+    },
+    {
+      "grade": 9,
+      "board": "UNMAPPED",
+      "bookEdition": null,
+      "chapterId": null,
+      "ageBand": null,
+      "reviewStatus": "PENDING",
+      "curriculumVerified": false,
+      "illustrativeOutcomes": [
+        "coordinate plane",
+        "geometry and algebra"
+      ],
+      "publishedCoverage": false
+    },
+    {
+      "grade": 10,
+      "board": "UNMAPPED",
+      "bookEdition": null,
+      "chapterId": null,
+      "ageBand": null,
+      "reviewStatus": "PENDING",
+      "curriculumVerified": false,
+      "illustrativeOutcomes": [
+        "measurement and trigonometric ideas",
+        "quadratic relationships"
+      ],
+      "publishedCoverage": false
+    },
+    {
+      "grade": 11,
+      "board": "UNMAPPED",
+      "bookEdition": null,
+      "chapterId": null,
+      "ageBand": null,
+      "reviewStatus": "PENDING",
+      "curriculumVerified": false,
+      "illustrativeOutcomes": [
+        "functions and graphs",
+        "probability and introductory calculus notions"
+      ],
+      "publishedCoverage": false
+    },
+    {
+      "grade": 12,
+      "board": "UNMAPPED",
+      "bookEdition": null,
+      "chapterId": null,
+      "ageBand": null,
+      "reviewStatus": "PENDING",
+      "curriculumVerified": false,
+      "illustrativeOutcomes": [
+        "advanced functions and change",
+        "statistics and mathematical reasoning"
+      ],
+      "publishedCoverage": false
+    }
+  ],
+  "provisionalGrades1to2": [
+    {
+      "id": "g1-count-and-compare",
+      "grade": 1,
+      "board": "UNMAPPED",
+      "concept": "Counting and comparing quantities with everyday objects",
+      "reviewStatus": "PENDING",
+      "chapterVerified": false
+    },
+    {
+      "id": "g1-shape-sort",
+      "grade": 1,
+      "board": "UNMAPPED",
+      "concept": "Sorting familiar 2D shapes by observable features",
+      "reviewStatus": "PENDING",
+      "chapterVerified": false
+    },
+    {
+      "id": "g2-place-value",
+      "grade": 2,
+      "board": "UNMAPPED",
+      "concept": "Grouping small quantities into tens and ones",
+      "reviewStatus": "PENDING",
+      "chapterVerified": false
+    },
+    {
+      "id": "g2-lengths",
+      "grade": 2,
+      "board": "UNMAPPED",
+      "concept": "Comparing object lengths using consistent units",
+      "reviewStatus": "PENDING",
+      "chapterVerified": false
+    }
+  ],
+  "physicsConceptOptions": [
+    {
+      "gradeRange": "6–8 (provisional)",
+      "concepts": [
+        "force and observable motion",
+        "light reflection concept",
+        "basic low-voltage *schematic* paths"
+      ],
+      "realHardware": false,
+      "verifiedSyllabus": false
+    },
+    {
+      "gradeRange": "9–10 (provisional)",
+      "concepts": [
+        "speed and distance relationships",
+        "simple energy transfer",
+        "series-circuit truth model"
+      ],
+      "realHardware": false,
+      "verifiedSyllabus": false
+    },
+    {
+      "gradeRange": "11–12 (provisional)",
+      "concepts": [
+        "graphing motions in ideal models",
+        "waves and energy conservation"
+      ],
+      "realHardware": false,
+      "verifiedSyllabus": false
+    }
+  ],
+  "chemistryBioSafetyExclusions": [
+    "No real mixing, heating, pressurizing or synthesizing hazardous chemicals",
+    "No household mains, live wiring, battery short-circuiting or risky electricity experiment instructions",
+    "No biological sampling, cultivation, clinical/medical risk inference or genetic profiling",
+    "No misleading unsupervised home experiments; any adult-supervised physical work needs approved school guidance",
+    "Mark all models as simplified and require qualified Hindi/subject/safety review"
+  ],
+  "intendedUse": "Reviewer/engineering planning inputs only; never published as authenticated syllabus."
+}
