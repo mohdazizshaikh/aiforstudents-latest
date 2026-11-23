@@ -1,5 +1,8 @@
 # Release gates — M28 private prototype and M29 full-product plan
 
+> **M31 PRIVATE RELEASE STATE — 2026-11-24: NO PUBLIC CHILD-FACING LAUNCH APPROVAL.** B1 **35/50 engineering/design** source/test tasks, B2 **0/50**; seven new unreviewed science concept models. Total **3,292 outstanding subject/Hindi item reviews** and six human safeguarding operational gates remain pending. No real authorized restricted Hostinger staging, physical Android accessibility approval, school pilot or complete grade-wise science. M31 private ZIP is an *artifact*, not a deployed or approved product. [M31 QA](docs/M31_SCIENCE_LABS.md).
+
+
 > **M30 RELEASE STATE (2026-11-24): PRIVATE PROTOTYPE; PUBLIC CHILD RELEASE NOT APPROVED.** New 3-mode Maths Workshop source contents remain unreviewed; all **3,285** combined educational records require qualified subject/Hindi review before publication. B1 planning verification **25/50** does not imply Class 1–12 Maths/Physics/Chemistry/Biology completion, AI tutor operation, validated mastery or full teacher dashboard. Actual real-device, restricted Hostinger HTTPS, safeguarding/legal and school-pilot proof still absent. [M30 QA](docs/M30_MATHS_WORKSHOP_QA.md) · [B1 evidence](docs/B1_PROGRESS_DASHBOARD.md).
 
 

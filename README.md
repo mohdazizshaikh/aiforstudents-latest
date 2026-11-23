@@ -1,5 +1,8 @@
 # AI for Students — Partial Prototype + Full Product Roadmap (M29)
 
+> **M31 B1 UPDATE — 2026-11-24: B1 35/50 scoped engineering/design tasks verified, B2 0/50.** Seven new original bilingual draft Physics/Chemistry/Biology concept models now use a reusable five-step lesson flow; a cross-module English/Hindi completeness CI audit covers older and new draft sources. **3,292 educational records still await qualified human review.** Four B1 tasks blocked on independent expert inputs. Comprehensive Class 1–12 science, an actual AI tutor, validated mastery, full teacher dashboard and public launch are **NOT COMPLETE**. [M31 QA](docs/M31_SCIENCE_LABS.md) · [B1 tracker](docs/B1_PROGRESS_DASHBOARD.md).
+
+
 > **M30 B1 ENGINEERING CHECKPOINT (2026-11-24): 25/50 source-and-test-backed foundation tasks verified (B2: 0/50).** New **Maths Workshop** has three bilingual, keyboard-operable draft mini-labs: signed number line, rectangle area/perimeter and a two-group data table. Three new human-review records bring the current pending total to **3,285**. Curriculum source options, grade 1–12 *illustrative* map, safe modelling, no-paid-API tutor/teacher contracts and evidence/a11y QA tests are documented. **Not** complete Maths/Science, validated AI tutor, approved curriculum or public-ready school platform. [M30 QA](docs/M30_MATHS_WORKSHOP_QA.md) · [Live B1 progress](docs/B1_PROGRESS_DASHBOARD.md) · [No-approval release gates](RELEASE_GATES.md).
 
 

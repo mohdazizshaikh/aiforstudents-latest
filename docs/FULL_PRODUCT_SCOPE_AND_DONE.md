@@ -1,5 +1,8 @@
 # M29 — Full-product scope and completion criteria
 
+> **M31 SCOPE ADDENDUM — 2026-11-24:** Added seven **original draft** Physics/Chemistry/Biology conceptual mini-labs (steady motion, ray reflection, energy accounting, matter states, change sorting, cell comparison and food-chain example), reusable Learn/Try/Play/Understand/Grow UI, and cross-module bilingual structural checks. B1 **35/50 engineering/design tasks verified**, not product completion. All **3,292** current educational records are pending qualified review. Comprehensive Class 1–12 Maths/Science, governed live AI tutor, validated adaptive mastery, full teacher dashboard and actual school/Hostinger operation **remain incomplete**. [M31 QA](M31_SCIENCE_LABS.md).
+
+
 > **M30 PROTOTYPE ADDENDUM — 2026-11-24:** Three further **draft** Maths mini-labs (signed number line, rectangle area/perimeter, two-group data-table practice) are implemented and locally tested; 25/50 B1 *engineering/design* tasks now carry source/test evidence. This adds **three unreviewed content items**, total **3,285 pending records**. **It does not complete Maths for Class 1–12**, nor full Physics/Chemistry/Biology, tutor, adaptive mastery, teacher dashboard or real release. [M30 QA](M30_MATHS_WORKSHOP_QA.md) and [B1 dashboard](B1_PROGRESS_DASHBOARD.md).
 
 

@@ -1,5 +1,8 @@
 # AI for Students — Product Roadmap
 
+> **M31 DELIVERY CHECKPOINT (2026-11-24):** B1 **35/50** engineering/design tasks evidence-backed; B2 **0/50**. Reusable five-stage learning UI and seven draft Physics/Chemistry/Biology interactive conceptual models, plus structural bilingual completeness checks, are new. **3,292** content reviews, four B1 expert dependencies, six child-safety gates and live school/device/hosting proof remain. [M31 details](M31_SCIENCE_LABS.md) · [B1 dashboard](B1_PROGRESS_DASHBOARD.md). This is not full Class 1–12 coverage or public readiness.
+
+
 > **M30 IMPLEMENTATION PROGRESS (2026-11-24):** B1 **25/50** engineering/design acceptance items verified, B2 **0/50**. Three new keyboard/Hindi offline Maths mini-labs are coded (not a complete maths syllabus); draft source options include an explicit 12-grade **unverified** topic discovery matrix, safety/teacher/AI contracts and a CI-checked [progress dashboard](B1_PROGRESS_DASHBOARD.md). Human educational reviews **3,285 pending**, live hosting and real classroom/device evidence still missing. [M30 implementation](M30_MATHS_WORKSHOP_QA.md).
 
 

@@ -1,5 +1,8 @@
 # Smart Learning Studio — M15–M18 Product Specification (PROPOSED)
 
+> **M31 DEVELOPMENT NOTE — 2026-11-24:** Beyond the original two M15 Studio journeys and two M16 Virtual Lab examples, a separate M31 section now has **seven draft conceptual science models** and a reusable five-step interaction. This does **not** make the Class 1–12 Smart Lab, generic AI tutor, adaptive learning, full teacher dashboard or board-aligned curriculum complete. [M31 description](M31_SCIENCE_LABS.md) and [full-scope DoD](FULL_PRODUCT_SCOPE_AND_DONE.md).
+
+
 > **M29 CLARIFICATION — 2026-11-24:** M15–M18 described below are **initial working prototypes** (two Studio journeys, two conceptual simulations, two teacher plans, 32 offline AI-literacy scenarios), **not** implementation of full Class 1–12 Maths/Physics/Chemistry/Biology, a live AI tutor, scientifically validated adaptive learning or full teacher management. The wording “current app is M15 staging” below is historical. See [full scope/DoD](FULL_PRODUCT_SCOPE_AND_DONE.md) and [100-task future roadmap](MASTER_EXECUTION_PLAN.md).
 
 
