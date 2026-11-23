@@ -1,6 +1,6 @@
 # Project Status Dashboard — AI for Students
 
-**As of 2026-11-23** | **M19 staging baseline; M20–M22 engineering merged; M23 review evidence in development** | **Public release: NOT APPROVED**
+**As of 2026-11-23** | **M19 staging baseline; M20–M23 engineering merged; M24 accessibility and packaging privacy in development** | **Public release: NOT APPROVED**
 
 ## Working today in the private prototype
 - 40 solo game modules in 8 categories; 3 same-device Grow Together modes.
@@ -58,3 +58,6 @@ A full-static-manifest read-only HTTPS audit mode is coded for an authorized res
 
 ### M23 — Independent review evidence workflow (2026-11-23)
 A local-only template/validator records draft educator and Hindi review evidence against the *current* source SHA-256 for a prioritized 18-record pilot-first worklist, without overwriting submitted reviewer notes or editing canonical queues. CI checks pending template structure; **no real educator, Hindi, safety or copyright approval** is claimed. See [M23 guide](M23_REVIEW_EVIDENCE.md). All public release gates remain open.
+
+### M24 — structural keyboard navigation (2026-11-23)
+All 23 static HTML pages now have verifiable skip-to-content destinations and one main landmark, including eight game guides and two original printable worksheets. A local structural checker and tests are added; service-worker cache and output staging archive are versioned to M24. Source archive packaging now excludes local review evidence and common secrets. This is **not** a real phone/TalkBack/VoiceOver or WCAG assessment; no Hostinger/public child release occurred. See [M24 QA](../M24_QA_STATUS.md).
