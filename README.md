@@ -92,3 +92,17 @@ Two original 5-step teacher-led lesson plans: Fraction Shares and Two Switches /
 Four original bilingual topic tracks and 32 authored age-scaffolded question records explain AI patterns/limitations, deterministic algorithms, misinformation/evidence checks and personal digital privacy. All run locally with fixed explanatory feedback; no chatbot, remote model, paid API, child identity, personal messages or recruitment pressure. Versioned `digitalAttempts` reuses the existing opt-in browser history and clear-all control, with a genuine daily practice event (not an ability score).
 
 **Software evidence:** 93/93 Node tests; isolated Chromium all 32 scenarios plus M15–M17 regressions; static package 23 HTML pages / 21 JS modules. See `M18_QA_STATUS.md`, `DIGITAL_CONTENT_REVIEW_QUEUE.jsonl` and `/ai-digital-skills/`. **32/32 new learning tasks are unreviewed; this is not professional fact-checking or approved educational curriculum.** Public child-facing launch, real Hostinger and real assistive-device tests remain pending.
+
+## M19 — Staging hardening and offline release preflight (23 November 2026)
+
+**No new learner game or public AI features:** this milestone removes inline printable styles/scripts to support a strict self-only staging CSP, adds a redundant `X-Robots-Tag: noindex` response-header config, a release preflight and read-only HTTPS smoke command. Two original worksheets still print with teacher guidance hidden, and all prior games/modules remain available.
+
+```sh
+npm test                              # 101 automated Node tests
+npm run preflight                    # offline staging-only security and content inventory
+node tools/release-preflight.mjs --public  # EXPECTED TO FAIL: human approvals missing
+node tools/check-live-staging.mjs https://your-authorized-staging.example # ONLY after deploying privately
+python3 tools/package-release.py     # builds and CRC-checks separate Hostinger/source ZIP files
+```
+
+See [M19 QA](M19_QA_STATUS.md) and [Staging operator checklist](STAGING_OPERATOR_CHECKLIST.md). **Do not confuse ZIP or local preflight success with actual Hostinger server, accessibility, Hindi/educator, legal or child-safety approval**. All **3,282 review records** still require documented qualified human decisions. Public child launch remains **NOT APPROVED**.

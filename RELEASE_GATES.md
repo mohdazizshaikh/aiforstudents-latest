@@ -92,3 +92,17 @@ M18 offline AI literacy pilot is now coded. Online child social features remain 
 | Child-oriented public deployment | **NOT APPROVED** |
 
 No digital practice result claims aptitude, grade or trustworthy fact-checking proficiency. All M17 and earlier gates remain open.
+
+## M19 release-hardening gate — 2026-11-23
+
+| Area | Engineering evidence | Human/real-world status |
+|---|---|---|
+| Strict self-only staging CSP | Configured in `.htaccess`; removed inline worksheet actions/style and 8 guide inline styles | **Actual Hostinger header responses NOT VERIFIED** |
+| Noindex defense in depth | Every HTML page has noindex; `X-Robots-Tag` configured | **Not a substitute for access restriction** |
+| Service worker asset integrity | M19 version, 41 cache paths and two new worksheet assets validated | Live upgrade/offline on real device **PENDING** |
+| Deterministic staging preflight | **101 Node tests**, 23 HTML / 22 JS modules; offline checks pass | Staging deployment **NOT DONE** |
+| Read-only live HTTPS verifier | Script exists and has mock-based tests | Requires operator-approved HTTPS URL and credentials/controls; **NOT RUN** |
+| Qualified bilingual education review | Queue counting: **3,282 records, 3,282 pending** | **BLOCKS PUBLIC RELEASE** |
+| Child protection, accessibility, hosting rollback | Checklist and explicit independent signoff gates recorded | **PENDING** |
+
+`node tools/release-preflight.mjs --public` fails deliberately even if engineering tests pass. Only human authorization and actual evidence can change public status. No online social features were added.

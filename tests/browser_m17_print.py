@@ -7,6 +7,8 @@ with sync_playwright() as p:
  page=b.new_page(viewport={'width':820,'height':1050})
  for lesson in ['fractions','circuits']:
   html=(ROOT/'teacher-kit'/'worksheets'/lesson/'index.html').read_text()
+  css=(ROOT/'assets'/'worksheet-print.css').read_text()
+  html=html.replace('<link rel="stylesheet" href="../../../assets/worksheet-print.css">', '<style>'+css+'</style>')
   page.set_content(html)
   assert page.locator('ol li').count()==3
   assert page.locator('.teacher-notes').is_visible()

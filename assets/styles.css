@@ -54,3 +54,6 @@ h1,h2,h3,p{margin-top:0}h1,h2,h3{line-height:1.16;letter-spacing:-.04em}h1{font-
 
 /* M18: lightweight digital-literacy choices; keyboard focus and mobile widths */
 .digital-panel{max-width:960px}.digital-tabs,.digital-choices,.digital-actions{display:flex;gap:.55rem;flex-wrap:wrap;margin:1rem 0}.digital-choices{flex-direction:column;align-items:stretch}.digital-choices button{text-align:left;width:100%;min-height:48px}.digital-choices button[aria-pressed="true"],.digital-tabs button[aria-pressed="true"]{outline:3px solid #258c78;outline-offset:2px}.digital-surface{padding:1.1rem;border:1px solid var(--line,#d5e7df);border-radius:1rem;background:var(--panel,#fff)}.digital-surface h4{margin-top:1.4rem}.digital-panel button:focus-visible{outline:3px solid #174b9c;outline-offset:3px}.digital-panel .feedback{padding:.9rem;border-radius:.7rem;background:#e6f5ed;color:#143d40}@media(max-width:550px){.digital-surface{padding:.75rem}.digital-tabs button{flex:1 1 130px}.digital-choices button{white-space:normal}}
+
+/* M19: replace guide inline attributes to support strict self-only CSP. */
+.guide-intro{max-width:750px}.guide-play-link{display:inline-block;text-decoration:none}
