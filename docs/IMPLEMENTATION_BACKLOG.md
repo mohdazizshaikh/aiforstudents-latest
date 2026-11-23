@@ -74,3 +74,13 @@ Priority: P0 = required to avoid unsafe/misleading release; P1 = next core featu
 | M20-04 | P0 | Restricted Hostinger HTTPS + real low-end Android/screen reader + A4/teacher pilot | **NOT PERFORMED** | Authorized operator, real devices and safeguards |
 
 No new learning material is approved, and none of these engineering tasks authorizes child-facing public release.
+
+### M21 — Review-packet data fidelity (2026-11-23)
+| ID | Priority | Task | Implementation | Remaining independent gate |
+|---|---|---|---|---|
+| M21-01 | P0 | Include original Studio/Experiment bilingual questions instead of queue IDs alone | **CODED** — source engine hydrating and strict version matching | Human subject/Hindi check against displayed activity |
+| M21-02 | P0 | Detect draft content drift via item-specific hash | **CODED** — SHA-256 over authored worklist fields, independent of review status | Actual reviewer decisions tied to exact version |
+| M21-03 | P0 | Build review packet automatically during CI and test review/answer integrity | **CI step + Node regression added; run outcome to verify** | Not a public-release approval |
+| GATE-03/06 | P0 | Review all 3,282 records with real qualified human reviewers | **STILL OPEN** | Named reviewers and recorded individual signoff |
+
+See [M21 procedure](M21_REVIEW_INTEGRITY.md). No public child-facing launch or Hostinger deployment is claimed.
