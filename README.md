@@ -1,5 +1,8 @@
 # AI for Students — Partial Prototype + Full Product Roadmap (M29)
 
+> **M30 B1 ENGINEERING CHECKPOINT (2026-11-24): 25/50 source-and-test-backed foundation tasks verified (B2: 0/50).** New **Maths Workshop** has three bilingual, keyboard-operable draft mini-labs: signed number line, rectangle area/perimeter and a two-group data table. Three new human-review records bring the current pending total to **3,285**. Curriculum source options, grade 1–12 *illustrative* map, safe modelling, no-paid-API tutor/teacher contracts and evidence/a11y QA tests are documented. **Not** complete Maths/Science, validated AI tutor, approved curriculum or public-ready school platform. [M30 QA](docs/M30_MATHS_WORKSHOP_QA.md) · [Live B1 progress](docs/B1_PROGRESS_DASHBOARD.md) · [No-approval release gates](RELEASE_GATES.md).
+
+
 > **M29 PRODUCT STATUS — 24 November 2026: PARTIAL WORKING PROTOTYPE, FULL PRODUCT NOT COMPLETE.** Eight categories/40 games and limited M15–M18 lesson/lab/teacher/digital-skills prototypes exist. **NOT COMPLETE:** Class 1–12 chapter-wise curriculum, complete Maths/Physics/Chemistry/Biology labs, AI-powered tutor, validated adaptive mastery, full teacher dashboard, real school pilot and public launch. “M28 engineering complete” does **not** mean product complete. [Official completion criteria](docs/FULL_PRODUCT_SCOPE_AND_DONE.md) · [100-task roadmap (2 × 50)](docs/MASTER_EXECUTION_PLAN.md).
 
 

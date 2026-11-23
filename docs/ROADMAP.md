@@ -1,5 +1,8 @@
 # AI for Students — Product Roadmap
 
+> **M30 IMPLEMENTATION PROGRESS (2026-11-24):** B1 **25/50** engineering/design acceptance items verified, B2 **0/50**. Three new keyboard/Hindi offline Maths mini-labs are coded (not a complete maths syllabus); draft source options include an explicit 12-grade **unverified** topic discovery matrix, safety/teacher/AI contracts and a CI-checked [progress dashboard](B1_PROGRESS_DASHBOARD.md). Human educational reviews **3,285 pending**, live hosting and real classroom/device evidence still missing. [M30 implementation](M30_MATHS_WORKSHOP_QA.md).
+
+
 > **M29 REBASELINE — 2026-11-24:** The old M1–M28 entries below are **historical engineering milestones and prototypes**, not a complete Class 1–12 smart-learning ecosystem. The current coordinated delivery roadmap is [100 new concrete tasks in two 50-item batches](MASTER_EXECUTION_PLAN.md), with [full-product completion criteria](FULL_PRODUCT_SCOPE_AND_DONE.md). No dates, public child launch or guarantees of complete board/edition syllabus coverage are implied by those 100 tasks.
 
 

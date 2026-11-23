@@ -1,5 +1,8 @@
 # M29 — Full-product scope and completion criteria
 
+> **M30 PROTOTYPE ADDENDUM — 2026-11-24:** Three further **draft** Maths mini-labs (signed number line, rectangle area/perimeter, two-group data-table practice) are implemented and locally tested; 25/50 B1 *engineering/design* tasks now carry source/test evidence. This adds **three unreviewed content items**, total **3,285 pending records**. **It does not complete Maths for Class 1–12**, nor full Physics/Chemistry/Biology, tutor, adaptive mastery, teacher dashboard or real release. [M30 QA](M30_MATHS_WORKSHOP_QA.md) and [B1 dashboard](B1_PROGRESS_DASHBOARD.md).
+
+
 **Rebaseline 2026-11-24: PARTIAL WORKING PROTOTYPE. FULL PRODUCT NOT COMPLETE. PUBLIC LAUNCH NOT APPROVED.**
 
 This document corrects any earlier use of “complete” that referred to M1–M28 engineering milestones rather than the original full smart-classroom educational ecosystem. The Chinese-smart-classroom concept is **an inspiration for teaching methods**, not a claim that all schools in China follow one particular laptop model.
