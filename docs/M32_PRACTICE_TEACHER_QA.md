@@ -1,6 +1,6 @@
 # M32 B1 — Optional Practice Guide, reused fraction journey, teacher navigation and print cards
 
-**Date:** 2026-11-24. **Status:** Code/testing prototype ONLY. **B1:** 46/50 source-and-test-scoped tasks; exactly 4 need real external subject/Hindi reviewer evidence. **B2:** not started in this checkpoint. **Public child launch:** NOT APPROVED.
+**Date:** 2026-11-24. **Status:** Code/testing prototype ONLY. **B1:** 46/50 source-and-test-scoped tasks; exactly 4 need real external subject/Hindi reviewer evidence. **B2:** 4/50 B2 governance/source-traceability items verified at this checkpoint; remaining 46 pending. **Public child launch:** NOT APPROVED.
 
 ## Actual new working code
 
@@ -26,6 +26,6 @@
 
 Four B1 expert-dependent tasks: **FP-013** educational/Hindi review rubric validation, **FP-062** human-approved tutor hint contract, **FP-085** authentic review of fraction/circuit classroom plans, **FP-092** expert-approved Maths/science reference fixtures. **All BLOCKED_EXTERNAL, no fabricated approvals.**
 
-B2 still contains expanded grade/board verified work, maths/science concepts, privacy/offline audit, research protocols and real-device/Hostinger/school gates. Real comprehensive Class 1–12 labs, full teacher dashboard, true AI tutoring, validated adaptive mastery, legal/safeguarding and school pilot remain **NOT IMPLEMENTED/NOT APPROVED** until independently evidenced.
+B2 has 4 source/test-backed governance items (status CI, unassigned owner ledger, evidence traceability, and scope-change protocol); it still contains expanded grade/board verified work, maths/science concepts, privacy/offline audit, research protocols and real-device/Hostinger/school gates. Real comprehensive Class 1–12 labs, full teacher dashboard, true AI tutoring, validated adaptive mastery, legal/safeguarding and school pilot remain **NOT IMPLEMENTED/NOT APPROVED** until independently evidenced.
 
 [Plan](MASTER_EXECUTION_PLAN.md) · [Current B1 dashboard](B1_PROGRESS_DASHBOARD.md) · [Release gates](../RELEASE_GATES.md) · [M31 science pilots](M31_SCIENCE_LABS.md).

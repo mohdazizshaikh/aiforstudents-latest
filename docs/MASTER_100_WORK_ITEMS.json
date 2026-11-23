@@ -152,8 +152,17 @@
       "dependsOn": [
         "FP-005"
       ],
-      "status": "NOT_STARTED",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "tools/plan-evidence-check.mjs"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m32-b2-governance.test.mjs"
+        }
+      ]
     },
     {
       "id": "FP-007",
@@ -167,8 +176,17 @@
       "dependsOn": [
         "FP-005"
       ],
-      "status": "NOT_STARTED",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "docs/B2_ROLE_LEDGER.json"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m32-b2-governance.test.mjs"
+        }
+      ]
     },
     {
       "id": "FP-008",
@@ -182,8 +200,17 @@
       "dependsOn": [
         "FP-005"
       ],
-      "status": "NOT_STARTED",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "tools/plan-evidence-check.mjs"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m32-b2-governance.test.mjs"
+        }
+      ]
     },
     {
       "id": "FP-009",
@@ -197,8 +224,17 @@
       "dependsOn": [
         "FP-005"
       ],
-      "status": "NOT_STARTED",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "docs/B2_SCOPE_CHANGE_PROTOCOL.md"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m32-b2-governance.test.mjs"
+        }
+      ]
     },
     {
       "id": "FP-010",
@@ -1918,11 +1954,11 @@
     }
   ],
   "updatedOn": "2026-11-24",
-  "currentEngineeringMilestone": "M32_B1_PRACTICE_GUIDE_AND_TEACHER_CARDS",
+  "currentEngineeringMilestone": "M32_B1_PRACTICE_TEACHER_B2_GOVERNANCE",
   "additionalNewMathsDrafts": 3,
   "currentPendingContentRecords": 3292,
   "batch1VerifiedEngineeringAndDesignTasks": 46,
-  "batch2VerifiedEngineeringAndDesignTasks": 0,
-  "statusCaveat": "DONE_VERIFIED means bounded code/tests/design evidence, not accepted educational content, a verified AI chatbot, adaptive mastery, legal/safeguarding approval, actual hosting or school pilot. Exactly four B1 expert gates remain blocked.",
+  "batch2VerifiedEngineeringAndDesignTasks": 4,
+  "statusCaveat": "B1 46/50 source/test only, remaining four expert review BLOCKED_EXTERNAL; B2 4/50 governance/source and CI tooling only. No human approvals, public child launch, AI tutor, physical devices, syllabus or Hostinger verified.",
   "newScienceDraftReviewRecords": 7
 }
