@@ -39,7 +39,18 @@ function pathAllowed(p){
  if(p.includes('//')||p.split('/').some(x=>x==='.'||x==='..'))return false;
  return !/%(?:2e|2f|5c)/i.test(p);
 }
-export const FULL_TARGETS=Object.freeze([...new Set([...TARGETS,...staticPages(),...swPaths()])].sort());
+export const FULL_TARGETS=Object.freeze([...new Set([...TARGETS,...staticPages(),...swPaths(),'/robots.txt'])].sort());
+/** Sensitive source-only paths must NOT be readable at a web origin.
+ * These probes never read/log response bodies. 401/403/404/410 are inaccessible.
+ * Redirect/network failures are inconclusive and fail strict integrity closed.
+ */
+export const FORBIDDEN_PUBLIC_PATHS=Object.freeze([
+ '/.htaccess','/RELEASE_MANIFEST.json','/CONTENT_REVIEW_QUEUE.jsonl',
+ '/LAB_CONTENT_REVIEW_QUEUE.jsonl','/docs/CONTENT_REVIEW_QUEUE.jsonl.gz',
+ '/review-evidence/pilot-first.json','/safety-handoff/operations.json'
+]);
+if(FORBIDDEN_PUBLIC_PATHS.some(x=>!pathAllowed(x)))throw Error('Invalid forbidden source path');
+
 if(!FULL_TARGETS.every(pathAllowed))throw Error('Invalid path from static source');
 const MAX_STATIC_BYTES=2*1024*1024;
 const sha256=bytes=>createHash('sha256').update(bytes).digest('hex');
@@ -72,6 +83,7 @@ function typeProblem(target,contentType){
  if(target.endsWith('.css'))return !/text\/css/i.test(contentType)?'Expected CSS content-type':null;
  if(target.endsWith('.svg'))return !/image\/svg\+xml/i.test(contentType)?'Expected SVG content-type':null;
  if(target.endsWith('.webmanifest'))return !/(?:application\/(?:manifest\+json|json))/i.test(contentType)?'Expected webmanifest JSON content-type':null;
+ if(target.endsWith('.txt'))return !/text\/plain/i.test(contentType)?'Expected text/plain content-type':null;
  return null;
 }
 export async function verifyLive(origin,fetcher=fetch,authHeader='',targets=TARGETS,integrity=false){
@@ -123,8 +135,26 @@ export async function verifyLive(origin,fetcher=fetch,authHeader='',targets=TARG
   }
   out.push({path:target,status:response.status,problems});
  }
+ const exposureChecks=[];
+ if(integrity){
+  for(const target of FORBIDDEN_PUBLIC_PATHS){
+   let status='network-error',problems=[];
+   try{
+    const res=await fetcher(safe+target,{redirect:'error',headers:authHeader?{Authorization:authHeader}:{},signal:AbortSignal.timeout(12000)});
+    status=res.status;
+    if(![401,403,404,410].includes(res.status))problems.push('Sensitive source-only URL may be exposed or response is not safely inaccessible');
+    // Do not consume or log bodies, even when the server incorrectly returns 200.
+    if(typeof res.body?.cancel==='function')await res.body.cancel();
+   }catch{
+    problems.push('Cannot confirm source-only URL is blocked; verify real server access rules');
+   }
+   exposureChecks.push({path:target,status,problems});
+  }
+ }
  return {origin:safe,mode:'read-only',scope:targets===FULL_TARGETS?'full':'core',
-  integrity,checked:out.length,passed:out.every(x=>x.problems.length===0),results:out,
+  integrity,checked:out.length,exposureChecked:exposureChecks.length,
+  passed:out.every(x=>x.problems.length===0)&&exposureChecks.every(x=>x.problems.length===0),
+  results:out,exposureChecks,
   approval:'NOT A PUBLIC LAUNCH APPROVAL'};
 }
 if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)){
