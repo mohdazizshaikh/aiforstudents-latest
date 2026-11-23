@@ -1,6 +1,6 @@
 # Project Status Dashboard — AI for Students
 
-**As of 2026-11-23** | **M20–M24 engineering merged and GitHub CI verified; still a private-staging prototype** | **Public release: NOT APPROVED**
+**As of 2026-11-23** | **M20–M24 engineering merged; M25 browser regression CI in development; still a private-staging prototype** | **Public release: NOT APPROVED**
 
 ## Working today in the private prototype
 - 40 solo game modules in 8 categories; 3 same-device Grow Together modes.
@@ -64,3 +64,6 @@ All 23 static HTML pages now have verifiable skip-to-content destinations and on
 
 ### Final M24 merge/CI verification — 2026-11-23
 PR [#10](https://github.com/mohdazizshaikh/aiforstudents-latest/pull/10) was merged to `main` (`a236544724f7fc1ced19fc1111798374dfcfbfea`); [GitHub Actions run 45180325206](https://github.com/mohdazizshaikh/aiforstudents-latest/actions/runs/45180325206) completed **successfully** with 125 Node tests and a 23-page static semantic check. The private-staging/noindex Hostinger archive is a short-lived CI artifact, **not a live deployment**. All human education, accessibility, legal/safeguarding and on-host release blockers remain OPEN.
+
+### M25 — browser regression verification (2026-11-23)
+An independent GitHub Actions Chromium job is being integrated to exercise native modules, Hindi language, on-device opt-in and clear history, M24 keyboard/print semantics, mobile layout and localhost service-worker offline cache. This increases software confidence but **does not** create actual Hostinger HTTPS staging, low-end Android/TalkBack/VoiceOver field evidence or child-safety/educational review. See [M25 procedure](M25_BROWSER_REGRESSION.md). All human release blockers remain **PENDING**.

@@ -114,3 +114,13 @@ See [M23 reviewer guide](M23_REVIEW_EVIDENCE.md). Review files are local-only an
 | M24-04 | P0 | Block private reviewer evidence from source archive | **CODED, CI ZIP safety check** | Human operational privacy review |
 
 See [M24 QA status](../M24_QA_STATUS.md). Nothing here is certification of WCAG, education, child safety or a live hosted launch.
+
+### M25 — Native browser regression gate (2026-11-23)
+| ID | Priority | Testable engineering output | Status | Human/real-world dependency |
+|---|---|---|---|---|
+| M25-01 | P0 | Headless Chromium against local HTTP static server with actual ES module imports | **BRANCH IMPLEMENTATION; check CI** | Actual restricted Hostinger HTTPS and CSP/network verification |
+| M25-02 | P0 | Hindi, opt-in/clear history, keyboard Skip and 390px responsive smoke | **BRANCH IMPLEMENTATION; check CI** | Real user accessibility on Android/TalkBack/VoiceOver |
+| M25-03 | P0 | PWA cache install, reload, offline Studio/learner browser flow and print media | **BRANCH IMPLEMENTATION; check CI** | Real low-end offline/device update and actual A4 printer |
+| M25-04 | P0 | Separate browser job plus privacy-safe 7-day local report | **CI WORKFLOW ADDED** | No human content/signoff authority |
+
+See [M25 QA](M25_BROWSER_REGRESSION.md). Public child-oriented launch remains **BLOCKED**.

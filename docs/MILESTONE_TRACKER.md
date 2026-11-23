@@ -104,3 +104,8 @@ See [M23 review evidence](M23_REVIEW_EVIDENCE.md). No signed reviews exist merel
 - **M23:** PR #9 merged; no independent reviewer identity/qualification verification and no human signoff. **3,282/3,282 recorded content review items still pending**.
 - **M24:** PR #10 merged, code commit `a236544724f7fc1ced19fc1111798374dfcfbfea`; [main CI passed](https://github.com/mohdazizshaikh/aiforstudents-latest/actions/runs/45180325206). 125 Node tests, 23-page static a11y structural audit, staging/security checks, archive privacy guard and 7-day noindex Hostinger ZIP artifact passed in CI.
 - **GATE-01/02/03/04/05 unchanged:** Actual authorized Hostinger deployment, human subject/Hindi review, real Android/TalkBack/VoiceOver, safeguarding/legal ownership and ethical teacher pilot are not complete. Public indexing stays **BLOCKED**.
+
+### M25 — Real Chromium browser CI (2026-11-23)
+- **Implemented on M25 branch:** separate GitHub Actions `browser-smoke` job using Python Playwright and Chromium, unmodified local ES modules, 390 px viewport, print media, Hindi UI, keyboard Skip navigation, local privacy controls and service-worker offline cache.
+- **Evidence:** See latest M25 PR/Actions run; test outcome must be confirmed before merged status is claimed. A local HTTP browser secure context is **not Hostinger HTTPS**.
+- **Remaining GATE-01–06:** 3,282 qualified content records, real private staging/rollback, physical Android/AT QA, legal/child-safety owners and ethical pilot are not completed by CI. [M25 guide](M25_BROWSER_REGRESSION.md).
