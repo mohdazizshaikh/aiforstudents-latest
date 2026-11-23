@@ -57,3 +57,15 @@ h1,h2,h3,p{margin-top:0}h1,h2,h3{line-height:1.16;letter-spacing:-.04em}h1{font-
 
 /* M19: replace guide inline attributes to support strict self-only CSP. */
 .guide-intro{max-width:750px}.guide-play-link{display:inline-block;text-decoration:none}
+/* M30 draft Maths Workshop; keyboard-first three small deterministic models. */
+.maths-workshop{margin:22px 0}.maths-workshop h3{margin-bottom:10px}
+.workshop-controls{display:flex;align-items:center;flex-wrap:wrap;gap:12px;margin:16px 0;min-width:0}
+.workshop-controls .btn{min-height:44px}.workshop-numeric{font-size:1.5rem;font-weight:850;min-width:40px;text-align:center}
+.workshop-group{display:flex;align-items:center;gap:9px;padding:10px;border:1px solid #d3e6de;border-radius:12px;flex-wrap:wrap}
+.workshop-readable{flex:1 1 100%;margin:6px 0;font-weight:650;overflow-wrap:anywhere}
+.workshop-table{width:min(100%,420px);border-collapse:collapse;flex:1 1 100%;margin-top:7px}
+.workshop-table th,.workshop-table td{border:1px solid #cadfd6;padding:10px;text-align:left}
+.workshop-table caption{font-weight:750;text-align:left;margin:5px 0}
+.maths-workshop button[aria-pressed="true"]{background:#155d4e;color:#fff}
+.maths-workshop button:focus-visible{outline:3px solid #ad7525;outline-offset:3px}
+@media(max-width:500px){.workshop-group{flex:1 1 100%}.maths-workshop{padding:14px}}

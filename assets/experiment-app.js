@@ -1,5 +1,5 @@
 /** M16 interactive virtual experiments. All input stays in current browser. */
-import {EXPERIMENTS,EXPERIMENT_IDS,EXPERIMENT_VERSION,experimentTask,experimentText,relation,bulbLit,evaluateExperiment,experimentSummary} from './experiment-engine.js';
+import {EXPERIMENTS,EXPERIMENT_IDS,EXPERIMENT_VERSION,experimentTask,experimentText,relation,bulbLit,evaluateExperiment,experimentSummary,WORKSHOP_MODES,WORKSHOP_CONTENT,evaluateWorkshop} from './experiment-engine.js';
 const $=id=>document.getElementById(id), el=(tag,cls,txt)=>{const n=document.createElement(tag);n.className=cls;if(txt!==undefined)n.textContent=txt;return n};
 const S={id:'fractions-lab',index:0,lang:'en',ageBand:'11-14',frac:{a:{n:1,d:2},b:{n:2,d:3}},switches:{a:false,b:false},choice:null,feedback:null};
 const loc=(en,hi)=>S.lang==='hi'?hi:en;
@@ -55,3 +55,90 @@ $('lang').addEventListener('change',render);$('age-select').addEventListener('ch
 window.addEventListener('aifs-history-cleared',()=>{S.index=0;resetTask();render()});
 window.addEventListener('aifs-experiment-history-changed',render);
 resetTask();render();
+/** M30 independent Maths Workshop: in-memory only, zero remote API, no profile.
+ * The experimental three mini-labs deliberately do NOT record learner scores.
+ */
+const WORKSHOP_DEFAULTS=()=>({mode:'number-line',values:{position:0,width:2,height:2,a:1,b:1},checked:false});
+let W=WORKSHOP_DEFAULTS();
+const workshopLang=(en,hi)=>$('lang')?.value==='hi'?hi:en;
+const workshopPair=(p)=>p[$('lang')?.value==='hi'?1:0];
+function workshopButton(action,label,pressed=false,disabled=false){
+ const b=el('button','btn outline compact',label);
+ b.type='button';b.dataset.workshopAction=action;b.disabled=disabled;
+ if(pressed!==null)b.setAttribute('aria-pressed',String(pressed));
+ return b;
+}
+function renderWorkshop(){
+ const root=$('math-workshop');if(!root)return;
+ const meta=WORKSHOP_CONTENT[W.mode],v=W.values,mode=W.mode;
+ $('math-workshop-nav').textContent=workshopLang('Maths Workshop','गणित कार्यशाला');
+ $('math-workshop-title').textContent=workshopLang('Maths Workshop — 3 pilot mini-labs','गणित कार्यशाला — 3 प्रारंभिक छोटे प्रयोग');
+ $('math-workshop-intro').textContent=workshopLang('Practice with buttons or keyboard, without dragging or student accounts. Draft, not an approved Class 1–12 syllabus.','बिना खींचे बटन या कीबोर्ड से अभ्यास करें। खाता नहीं चाहिए। यह मसौदा है, मान्यता प्राप्त कक्षा 1–12 पाठ्यक्रम नहीं।');
+ const tabs=$('math-workshop-tabs');tabs.replaceChildren();
+ for(const name of WORKSHOP_MODES)tabs.append(workshopButton('mode:'+name,workshopPair(WORKSHOP_CONTENT[name].title),W.mode===name));
+ $('math-workshop-question').textContent=workshopPair(meta.prompt);
+ $('math-workshop-hint').textContent=workshopPair(meta.hint);
+ const control=$('math-workshop-controls');control.replaceChildren();
+ if(mode==='number-line'){
+  const out=el('output','workshop-numeric',String(v.position));out.setAttribute('aria-label',workshopLang('Position on the number line','संख्या रेखा पर स्थिति'));out.id='math-workshop-number';
+  control.append(workshopButton('line:dec',workshopLang('Move left −1','एक कदम बाएँ −1'),null,v.position<=-10),out,workshopButton('line:inc',workshopLang('Move right +1','एक कदम दाएँ +1'),null,v.position>=10));
+  const strip=el('p','workshop-readable',workshopLang(`Current position: ${v.position}. Each step changes the number by one. Range −10 to 10.`,`वर्तमान स्थिति: ${v.position}। हर कदम संख्या को एक से बदलता है। सीमा −10 से 10।`));
+  control.append(strip);
+ }else if(mode==='rectangle'){
+  const names=[['width','Width','चौड़ाई'],['height','Height','ऊँचाई']];
+  for(const [dim,en,hi] of names){
+   const field=el('div','workshop-group');field.append(el('strong','',workshopLang(en,hi)));
+   field.append(workshopButton(dim+':dec','−',null,v[dim]<=1));
+   field.append(el('output','workshop-numeric',String(v[dim])));
+   field.append(workshopButton(dim+':inc','+',null,v[dim]>=12));
+   control.append(field);
+  }
+  const result=evaluateWorkshop('rectangle',v);
+  const out=el('p','workshop-readable',workshopLang(`Width ${v.width} and height ${v.height}. Area: ${result.metrics.area} square units. Perimeter: ${result.metrics.perimeter} units.`,`चौड़ाई ${v.width}, ऊँचाई ${v.height}। क्षेत्रफल: ${result.metrics.area} वर्ग इकाई। परिमाप: ${result.metrics.perimeter} इकाई।`));
+  control.append(out);
+ }else{
+  for(const [group,label] of [['a','A'],['b','B']]){
+   const field=el('div','workshop-group');field.append(el('strong','',workshopLang('Group ','समूह ')+label));
+   field.append(workshopButton(group+':dec','−',null,v[group]<=0));
+   field.append(el('output','workshop-numeric',String(v[group])));
+   field.append(workshopButton(group+':inc','+',null,v[group]>=10));
+   control.append(field);
+  }
+  const table=el('table','workshop-table');
+  const caption=el('caption','',workshopLang('Accessible data table (items)','सुलभ आँकड़ा तालिका (वस्तुएँ)'));
+  const head=el('tr');head.append(el('th','',workshopLang('Group','समूह')),el('th','',workshopLang('Count','संख्या')));
+  const body=el('tbody');for(const group of ['a','b']){const row=el('tr');row.append(el('th','',group.toUpperCase()),el('td','',String(v[group])));body.append(row)}
+  const thead=el('thead');thead.append(head);table.append(caption,thead,body);control.append(table);
+  control.append(el('p','workshop-readable',workshopLang(`A minus B = ${v.a-v.b} items.`,`A घटा B = ${v.a-v.b} वस्तुएँ।`)));
+ }
+ $('math-workshop-check').textContent=workshopLang('Check my setup','मेरी स्थिति जाँचें');
+ $('math-workshop-reset').textContent=workshopLang('Reset this activity','यह गतिविधि फिर शुरू करें');
+ const feedback=$('math-workshop-feedback');
+ feedback.hidden=!W.checked;
+ if(W.checked){
+  const result=evaluateWorkshop(W.mode,v);
+  feedback.textContent=workshopLang(result.correct?'Goal reached. ':'Try adjusting the values again. ',result.correct?'लक्ष्य पूरा हुआ। ':'संख्याएँ बदलकर फिर कोशिश करें। ')+workshopPair(result.explanation);
+ }
+}
+$('math-workshop').addEventListener('click',event=>{
+ const b=event.target.closest('button[data-workshop-action]');if(!b)return;
+ const action=b.dataset.workshopAction;
+ if(action.startsWith('mode:')){
+  W={...WORKSHOP_DEFAULTS(),mode:action.slice(5)};
+  renderWorkshop();$('math-workshop-question').focus();
+  return;
+ }
+ const [key,delta]=action.split(':');
+ const limits=key==='line'?[-10,10]:['width','height'].includes(key)?[1,12]:[0,10];
+ const name=key==='line'?'position':key;
+ const old=W.values[name];
+ W.values[name]=Math.min(limits[1],Math.max(limits[0],old+(delta==='inc'?1:-1)));
+ W.checked=false;renderWorkshop();
+ const peer=[...$('math-workshop').querySelectorAll('button[data-workshop-action]')].find(x=>x.dataset.workshopAction===action);
+ if(peer&&!peer.disabled)peer.focus();
+});
+$('math-workshop-check').addEventListener('click',()=>{W.checked=true;renderWorkshop();$('math-workshop-feedback').focus()});
+$('math-workshop-reset').addEventListener('click',()=>{W={...WORKSHOP_DEFAULTS(),mode:W.mode};renderWorkshop();$('math-workshop-question').focus()});
+$('lang').addEventListener('change',renderWorkshop);
+window.addEventListener('aifs-history-cleared',()=>{W=WORKSHOP_DEFAULTS();renderWorkshop()});
+renderWorkshop();
