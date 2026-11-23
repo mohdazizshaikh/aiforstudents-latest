@@ -26,9 +26,9 @@ test('M28 clearing peer tab history removes both local and session stores and cl
  const fallback=source.slice(source.indexOf("window.addEventListener('storage'"));
  assert.match(fallback,/event\.newValue===null/);
 });
-test('M28 offline worker cache version advances and retains local-only static asset list',()=>{
+test('M28 peer-tab privacy still runs with M30 worker cache version and retains local-only static asset list',()=>{
  const sw=read('service-worker.js');
- assert.match(sw,/aifs-discovery-m28-2026-11-23/);
+ assert.match(sw,/aifs-discovery-m30-2026-11-23/);
  assert.match(sw,/keys\.filter\(k=>/);
  assert.match(sw,/self\.location\.origin/);
  assert.doesNotMatch(sw,/fetch\([^)]*analytics|tracker|remote/);

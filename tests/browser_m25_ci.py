@@ -13,7 +13,7 @@ import threading
 from playwright.sync_api import sync_playwright
 
 ROOT = Path(__file__).resolve().parents[1]
-OUTPUT = ROOT / 'test-results' / 'm28-browser'
+OUTPUT = ROOT / 'test-results' / 'm30-browser'
 OUTPUT.mkdir(parents=True, exist_ok=True)
 
 
@@ -34,7 +34,7 @@ def check_no_runtime_errors(page, errors):
 
 
 def run():
-    report = {'milestone': 'M28', 'execution': 'headless local Chromium with real ES modules',
+    report = {'milestone': 'M30', 'execution': 'headless local Chromium with real ES modules',
               'realHostingerVerified': False, 'realDeviceAccessibilityVerified': False,
               'educationalHumanApproval': False, 'publicReleaseApproved': False, 'checks': []}
     server = ThreadingHTTPServer(('127.0.0.1', 0), partial(QuietStaticHandler, directory=str(ROOT)))
@@ -181,11 +181,11 @@ def run():
                 phone.wait_for_function('navigator.serviceWorker.controller !== null')
                 cache = phone.evaluate("""async () => {
                   const keys = await caches.keys();
-                  return {keys, count: (await caches.open(keys.find(k => k.startsWith('aifs-discovery-m28'))))
-                    ? (await (await caches.open(keys.find(k => k.startsWith('aifs-discovery-m28')))).keys()).length : 0}
+                  return {keys, count: (await caches.open(keys.find(k => k.startsWith('aifs-discovery-m30'))))
+                    ? (await (await caches.open(keys.find(k => k.startsWith('aifs-discovery-m30')))).keys()).length : 0}
                 }""")
-                check(any(k.startswith('aifs-discovery-m28') for k in cache['keys']),
-                      'M24 service-worker cache not created')
+                check(any(k.startswith('aifs-discovery-m30') for k in cache['keys']),
+                      'M30 service-worker cache not created')
                 check(cache['count'] >= 40, 'Service-worker precache incomplete: ' + str(cache))
                 mobile.set_offline(True)
                 phone.goto(origin + '/smart-learning-studio/', wait_until='domcontentloaded')
@@ -195,7 +195,7 @@ def run():
                 check(phone.locator('#game-grid button').count() == 5,
                       'Offline native learner modules not bootstrapped from cache')
                 check_no_runtime_errors(phone, mobile_errors)
-                report['checks'].append('M28 SW installs 40+ assets and loads Studio guide + learner app offline')
+                report['checks'].append('M30 SW installs 40+ assets and loads Studio guide + learner app offline')
                 mobile.close()
             finally:
                 browser.close()
@@ -208,7 +208,7 @@ def run():
         server.server_close()
     report['result'] = 'PASS'
     (OUTPUT / 'report.json').write_text(json.dumps(report, indent=2, ensure_ascii=False) + '\n')
-    print('M28 LOCAL CHROMIUM CI SMOKE PASS:', json.dumps(report, ensure_ascii=False))
+    print('M30 LOCAL CHROMIUM CI SMOKE PASS:', json.dumps(report, ensure_ascii=False))
 
 
 if __name__ == '__main__':

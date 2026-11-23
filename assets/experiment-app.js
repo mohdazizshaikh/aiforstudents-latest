@@ -65,6 +65,11 @@ const workshopPair=(p)=>p[$('lang')?.value==='hi'?1:0];
 function workshopButton(action,label,pressed=false,disabled=false){
  const b=el('button','btn outline compact',label);
  b.type='button';b.dataset.workshopAction=action;b.disabled=disabled;
+ if(action.includes(':')&&!action.startsWith('mode:')){
+  const [control,direction]=action.split(':');
+  const names={line:['number-line position','संख्या रेखा पर स्थिति'],width:['rectangle width','आयत की चौड़ाई'],height:['rectangle height','आयत की ऊँचाई'],a:['group A count','समूह A की संख्या'],b:['group B count','समूह B की संख्या']};
+  b.setAttribute('aria-label',workshopLang(`Change ${names[control][0]} ${direction==='inc'?'up':'down'} by one`,`${names[control][1]} एक ${direction==='inc'?'बढ़ाएँ':'घटाएँ'}`));
+ }
  if(pressed!==null)b.setAttribute('aria-pressed',String(pressed));
  return b;
 }
