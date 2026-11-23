@@ -53,7 +53,8 @@ jobs:
 
   browser-smoke:
     name: Local Chromium browser smoke (NOT live hosting)
-    runs-on: ubuntu-latest
+    # Playwright 1.56 browser install is not supported on ubuntu-26.04 runner images.
+    runs-on: ubuntu-24.04
     timeout-minutes: 20
     steps:
       - name: Checkout
