@@ -38,3 +38,10 @@
 **Stop condition:** If privacy, page source, headers, security access, educational content or accessibility gate fails, keep the release private and `noindex`. Do not invite child users or enable online social interactions.
 ### M22 note — complete manifest checker
 The `--full` read-only audit derives allowable routes/assets from repository source and the service-worker manifest; it does not authenticate the staging site, simulate actual navigation/keyboard interaction or substitute for a real phone, screen reader or rollback. See [M22 guide](docs/M22_FULL_STAGING_AUDIT.md). Never commit/live-share staging auth headers or reports containing secrets.
+
+### M24 source/asset and accessibility checks
+- [ ] Use the current **M24** Hostinger ZIP from a clean repository checkout. Run `npm run audit-a11y`, `python3 tools/package-release.py` and `python3 tools/check-package-privacy.py` locally before authorized private upload; do not include reviewer evidence or secrets.
+- [ ] Verify **every static guide page** offers keyboard Skip to content navigation and one main landmark; screen-reader and physical keyboard navigation require human checks.
+- [ ] Test service worker **aifs-discovery-m24-2026-11-23** upgrade/refresh from any prior private staging cache and verify all 41 referenced cache paths after the new archive is installed.
+- [ ] Confirm worksheet skip controls are not printed and teacher-only notes remain hidden on a real A4 printer.
+- [ ] Record real-site and real-device evidence (not credentials) against [M24 QA](M24_QA_STATUS.md); no child/public access pending approvals.
