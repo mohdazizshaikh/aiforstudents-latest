@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Private Pilot · Original Classroom Cards | AI for Students</title>
+<link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../assets/worksheet-print.css">
+<style>
+.controls{display:flex;gap:12px;flex-wrap:wrap;margin:20px 0;align-items:end}
+label{display:flex;flex-direction:column;gap:7px;font-weight:700}
+select{border:1px solid #6f9f90;border-radius:9px;padding:9px;background:white;color:#163a34;min-height:44px}
+#learner-card{max-width:850px}#teacher-guidance{border-left:4px solid #145d4d;padding:13px;background:#e6f4eb}
+#card-heading{font-size:1.4rem}button:focus-visible,select:focus-visible{outline:3px solid #ac7b2d;outline-offset:3px}
+@media print{.no-print,.teacher-notes,#teacher-guidance{display:none!important}#learner-card{border:1px solid #222;color:#111;break-inside:avoid}body{font-size:14pt}#learner-card .writing{height:80px}#card-heading{color:black}}
+</style></head>
+<body>
+<a class="skip no-print" href="#learner-card">Skip to the learner worksheet</a>
+<header class="no-print"><a href="../../#classroom">Back to classroom / कक्षा में लौटें</a>
+<h1>Original learner-only discussion cards · कक्षा चर्चा कार्ड</h1>
+<p>UNREVIEWED teacher kit. No student names, homework uploads, grades or dashboards. Teacher answers visible on screen but always hidden from the A4 learner printout.</p></header>
+<div class="controls no-print">
+ <label for="card-language">Language / भाषा <select id="card-language"><option value="en">English</option><option value="hi">हिन्दी</option></select></label>
+ <label for="card-lesson">Lesson / पाठ <select id="card-lesson"><option value="fractions">Fractions</option><option value="circuits">Circuits</option></select></label>
+ <label for="card-step">Step / चरण <select id="card-step"></select></label>
+ <button type="button" class="btn" id="card-print" data-print-worksheet>Print learner card / अभ्यास कार्ड छापें</button>
+</div>
+<main>
+<section id="learner-card" aria-labelledby="card-heading">
+ <p id="card-warning">Unreviewed pilot / असमीक्षित मसौदा</p>
+ <h2 id="card-heading" tabindex="-1">Discussion</h2>
+ <h3 id="card-question-label">Discuss this question</h3>
+ <p id="card-question"></p>
+ <h3 id="card-action-label">Group task</h3>
+ <p id="card-action"></p>
+ <div class="writing" aria-label="Empty writing space for learner's answer"></div>
+ <p id="card-no-data">Write on your paper. Nothing is submitted or stored by this page.</p>
+</section>
+<section class="teacher-notes" id="teacher-guidance" aria-labelledby="card-answer-heading">
+ <h2 id="card-answer-heading">Teacher-only guidance — NEVER on printed learner sheet</h2>
+ <p id="card-teacher-speech"></p><p id="card-answer"></p>
+</section>
+</main>
+<footer class="no-print"><small>Original prototype prompts need qualified subject and Hindi review. Printed content cannot be remotely deleted or controlled.</small></footer>
+<script type="module" src="./cards.js"></script><script src="../../assets/worksheet-print.js" defer></script>
+</body></html>
