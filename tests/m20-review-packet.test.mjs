@@ -38,7 +38,7 @@ test('M20 can materialize reviewer packet without writing source approvals',()=>
    'CONTENT_REVIEW_QUEUE.jsonl':[{id:'game1',question_en:'What?',question_hi:'क्या?',review_status:'UNREVIEWED',approved_for_child_launch:false}],
    'LAB_CONTENT_REVIEW_QUEUE.jsonl':[{id:'study1',questionEn:'2+2',questionHi:'२+२',subjectExpertReview:'pending'}],
    'STUDIO_CONTENT_REVIEW_QUEUE.jsonl':[{journeyId:'fractions',stageId:'try',contentVersion:1,englishHumanReview:'pending'}],
-   'EXPERIMENT_CONTENT_REVIEW_QUEUE.jsonl':[{experimentId:'fractions-lab',taskId:'compare',educationalReview:'pending'}],
+   'EXPERIMENT_CONTENT_REVIEW_QUEUE.jsonl':[{experimentId:'fractions-lab',taskId:'compare',contentVersion:1,educationalReview:'pending'}],
    'CLASSROOM_CONTENT_REVIEW_QUEUE.jsonl':[{id:'class1',question:{en:'Show one fourth',hi:'चौथाई दिखाएँ'},educationalReview:'PENDING',publicReleaseApproved:false}],
    'DIGITAL_CONTENT_REVIEW_QUEUE.jsonl':[{id:'digital1',question:{en:'Safe?',hi:'सुरक्षित?'},educationReview:'pending'}]
   };
