@@ -15,7 +15,7 @@ test('M29 master plan contains exactly 100 unique NEW tasks, two real 50-item ba
   assert.equal(tracker.items.filter(x=>x.batch===batch).length,n);
   assert.equal(tracker.batches.find(x=>x.id===batch).items,n);
  }
- assert.equal((plan.match(/FP-\\d{3}/g)||[]).length,100);
+ assert.equal((plan.match(/FP-\d{3}/g)||[]).length,100);
 });
 
 test('M29 plan covers ten balanced workstreams with acceptance and valid dependencies',()=>{
@@ -24,7 +24,7 @@ test('M29 plan covers ten balanced workstreams with acceptance and valid depende
  const indexes=new Map(tracker.items.map((x,i)=>[x.id,i]));
  for(const stream of streams)assert.equal(tracker.items.filter(x=>x.stream===stream).length,10);
  for(const x of tracker.items){
-  assert.match(x.id,/^FP-\\d{3}$/);
+  assert.match(x.id,/^FP-\d{3}$/);
   assert.ok(x.acceptance.length>=20,x.id+' must have useful acceptance proof');
   assert.ok(x.title.length>=15,x.id+' must have a precise work title');
   assert.ok(['ENGINEERING_OR_CONTENT','HUMAN_GATE'].includes(x.execution));
@@ -46,13 +46,13 @@ test('M29 no planned work or historical code pilot is promoted to human/public a
  assert.ok(tracker.items.some(x=>x.execution==='HUMAN_GATE'));
  assert.match(scope,/FULL PRODUCT NOT COMPLETE/);
  assert.match(scope,/PUBLIC LAUNCH NOT APPROVED/);
- assert.match(plan,/0\\/50/);
+ assert.match(plan,/0\/50/);
 });
 
 test('M29 root and status docs display truthful planned product state prominently',()=>{
  for(const name of ['README.md','docs/PROJECT_STATUS.md','docs/ROADMAP.md','docs/IMPLEMENTATION_BACKLOG.md','docs/MILESTONE_TRACKER.md','RELEASE_GATES.md']){
   const first=file(name).slice(0,1600);
   assert.match(first,/M29/,name);
-  assert.match(first,/MASTER_EXECUTION_PLAN\\.md/,name);
+  assert.match(first,/MASTER_EXECUTION_PLAN\.md/,name);
  }
 });
