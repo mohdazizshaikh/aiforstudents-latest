@@ -69,3 +69,26 @@ h1,h2,h3,p{margin-top:0}h1,h2,h3{line-height:1.16;letter-spacing:-.04em}h1{font-
 .maths-workshop button[aria-pressed="true"]{background:#155d4e;color:#fff}
 .maths-workshop button:focus-visible{outline:3px solid #ad7525;outline-offset:3px}
 @media(max-width:500px){.workshop-group{flex:1 1 100%}.maths-workshop{padding:14px}}
+
+/* M31: scientific concept models are deliberately textual and keyboard-first. */
+.science-panel{max-width:1050px}.science-tabs{display:flex;flex-wrap:wrap;gap:9px;margin:14px 0}
+.science-tabs button{flex:1 1 175px;min-height:48px;white-space:normal;text-align:left}
+.science-tabs button[aria-pressed="true"],.science-control-choices button[aria-pressed="true"],.science-quiz button[aria-pressed="true"]{background:#145d4d;color:#fff}
+.science-surface{border:1px solid #cbded7;border-radius:15px;background:#f5faf7;padding:18px}
+.science-surface h3{margin:12px 0}.science-surface h4{margin:18px 0 10px;line-height:1.4}
+.science-caveat{padding:11px;border-left:4px solid #456e62;background:#e6f2ed}
+.science-controls{display:flex;flex-wrap:wrap;gap:13px;margin:16px 0}
+.science-control-group{flex:1 1 220px;background:white;border:1px solid #d2e4da;border-radius:12px;padding:13px;min-width:0}
+.science-control-group strong{display:block;margin:0 0 8px}
+.science-number-control,.science-control-choices{display:flex;gap:9px;align-items:center;flex-wrap:wrap}
+.science-number-value{min-width:80px;font-size:1.2rem;font-weight:800;text-align:center}
+.science-control-group button,.science-quiz button{min-height:44px;white-space:normal}
+.science-control-choices{align-items:stretch}.science-control-choices button{flex:1 1 130px}
+.science-explanation{flex-basis:100%;line-height:1.7;font-weight:650;overflow-wrap:anywhere}
+.science-actions{display:flex;gap:11px;flex-wrap:wrap;margin-top:14px}
+.science-quiz-fieldset{border:1px solid #c0d9cb;border-radius:12px;padding:12px;background:white}
+.science-quiz-fieldset legend{font-weight:700;line-height:1.5}
+.science-quiz-fieldset button{display:block;margin:9px 0;width:100%;text-align:left}
+.science-surface .feedback{margin-top:12px}
+.science-surface button:focus-visible{outline:3px solid #ad7525;outline-offset:3px}
+@media(max-width:550px){.science-surface{padding:12px}.science-control-group{flex-basis:100%}.science-tabs button{flex:1 1 130px}}
