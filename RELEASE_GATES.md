@@ -1,5 +1,8 @@
 # Release gates — M28 private prototype and M29 full-product plan
 
+> **M30 RELEASE STATE (2026-11-24): PRIVATE PROTOTYPE; PUBLIC CHILD RELEASE NOT APPROVED.** New 3-mode Maths Workshop source contents remain unreviewed; all **3,285** combined educational records require qualified subject/Hindi review before publication. B1 planning verification **25/50** does not imply Class 1–12 Maths/Physics/Chemistry/Biology completion, AI tutor operation, validated mastery or full teacher dashboard. Actual real-device, restricted Hostinger HTTPS, safeguarding/legal and school-pilot proof still absent. [M30 QA](docs/M30_MATHS_WORKSHOP_QA.md) · [B1 evidence](docs/B1_PROGRESS_DASHBOARD.md).
+
+
 > **M29 PUBLIC RELEASE TRUTH — 2026-11-24: NOT APPROVED.** 145 Node + nine Chromium local checks at M28 verify **software prototypes**, not a complete curriculum or safety. New 100-task plan is **PLANNED, 0/100 done**. The comprehensive Class 1–12 labs, AI tutor, validated adaptive learning, teacher dashboard, real host, physical accessibility and classroom/educational/child-safety approval are absent or pending. [Full product scope](docs/FULL_PRODUCT_SCOPE_AND_DONE.md) · [2 × 50 execution batches](docs/MASTER_EXECUTION_PLAN.md).
 
 

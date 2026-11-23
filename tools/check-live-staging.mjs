@@ -118,7 +118,7 @@ export async function verifyLive(origin,fetcher=fetch,authHeader='',targets=TARG
   if(!h.get('x-content-type-options')?.includes('nosniff'))problems.push('Missing nosniff header');
   if(!h.get('content-security-policy')?.includes("script-src 'self'"))problems.push('Missing strict self-only CSP');
   if(!h.get('referrer-policy'))problems.push('Missing Referrer-Policy');
-  if(target==='/service-worker.js'&&!body.includes('aifs-discovery-m28'))problems.push('Old service-worker version');
+  if(target==='/service-worker.js'&&!body.includes('aifs-discovery-m30'))problems.push('Old service-worker version');
   if(integrity){
    const csp=h.get('content-security-policy')||'';
    for(const directive of ["default-src 'self'","script-src 'self'","object-src 'none'","frame-ancestors 'none'"]){

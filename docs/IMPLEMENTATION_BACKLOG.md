@@ -1,5 +1,8 @@
 # Implementation & Dependency Backlog
 
+> **M30 B1 DELIVERY UPDATE — 2026-11-24:** Use [machine-verifiable tracker](MASTER_100_WORK_ITEMS.json) and [B1 progress snapshot](B1_PROGRESS_DASHBOARD.md), **25/50 B1 tasks done in engineering/design scope; B2 0/50**. The M29 0/100 text below is an **earlier historical starting baseline**, not current progress. A three-mode Maths Workshop prototype and three new review records exist; qualified content reviews **3,285 pending**, no actual school/Hostinger approvals.
+
+
 > **M29 PRIORITY UPDATE — 2026-11-24:** The historical backlog below tracks prior engineering work. The new **full-product** backlog is [100 NEW planned tasks across 10 streams, B1 50 + B2 50](MASTER_EXECUTION_PLAN.md), also provided as [machine-readable tracker](MASTER_100_WORK_ITEMS.json). **0/100 new tasks completed**. No prior game/Studio/Lab prototype is counted as complete Class 1–12 subject coverage. [Definition of Done](FULL_PRODUCT_SCOPE_AND_DONE.md). External human/Hostinger gates remain open.
 
 

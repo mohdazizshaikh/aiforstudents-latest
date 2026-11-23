@@ -1,5 +1,8 @@
 # Milestone and Release Tracker
 
+> **M30 CURRENT WORK CHECKPOINT (2026-11-24):** B1 **25/50 verified engineering/design tasks**, including three interactive bilingual maths mini-labs and draft curricular/safety model; B2 **0/50**. See [B1 evidence dashboard](B1_PROGRESS_DASHBOARD.md) and [M30 QA](M30_MATHS_WORKSHOP_QA.md). All **3,285** existing+new educational records pending; six safeguarding gates, actual Hostinger/physical devices/approved school pilot remain OPEN. Previous M29 0/100 notes are historical initial planning, not the latest snapshot.
+
+
 > **M29 CURRENT TRUTH — 2026-11-24:** This is a **partial working prototype**, not a completed school platform. Historical M1–M28 successes below are *code/testing only*. The [100-task new master plan](MASTER_EXECUTION_PLAN.md) contains 50 B1 + 50 B2 items, **all NOT_STARTED**; [full completion criteria](FULL_PRODUCT_SCOPE_AND_DONE.md). Comprehensive Class 1–12 science/maths, generative tutor, evidence-validated adaptive mastery, full teacher dashboard and approved real school trial are **unfinished**. Six human safeguarding gates and 3,282 content records remain pending.
 
 

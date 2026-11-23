@@ -1,6 +1,6 @@
 {
-  "name": "aifs-discovery-m28",
-  "version": "0.17.0",
+  "name": "aifs-discovery-m30",
+  "version": "0.18.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -12,6 +12,9 @@
     "review-evidence:check": "node tools/review-evidence.mjs --check review-evidence/pilot-first.json",
     "audit-a11y": "node tools/audit-static-accessibility.mjs",
     "safety-handoff:template": "node tools/safety-handoff.mjs --template safety-handoff/operations.json",
-    "safety-handoff:check": "node tools/safety-handoff.mjs --check safety-handoff/operations.json"
+    "safety-handoff:check": "node tools/safety-handoff.mjs --check safety-handoff/operations.json",
+    "plan:status": "node tools/workplan-status.mjs",
+    "plan:check": "node tools/workplan-status.mjs --check",
+    "curriculum:check": "node tools/validate-curriculum-map.mjs"
   }
 }

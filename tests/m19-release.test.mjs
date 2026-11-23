@@ -14,7 +14,7 @@ test('M19 human review gate blocks all public release until genuinely signed off
  const r=releaseAudit(undefined,'public');assert.equal(r.ready,false);assert.ok(r.failures.some(x=>x.includes('human signoff')));assert.ok(r.failures.some(x=>x.includes('child-safety/legal')));
 });
 test('M19 review inventory is counted without inventing approvals',()=>{
- const x=auditContentQueues();assert.equal(x.total,3282);assert.equal(x.pending,3282);assert.deepEqual(Object.fromEntries(Object.entries(x.counts).map(([k,v])=>[k,v.total])),{game:3200,study:32,studio:4,experiment:4,classroom:10,digital:32});
+ const x=auditContentQueues();assert.equal(x.total,3285);assert.equal(x.pending,3285);assert.deepEqual(Object.fromEntries(Object.entries(x.counts).map(([k,v])=>[k,v.total])),{game:3200,study:32,studio:4,experiment:4,classroom:10,digital:32,maths:3});
 });
 test('M19 GitHub checkout archived game review queue is counted without pretending approvals',()=>{
  const tmp=fs.mkdtempSync(path.join(os.tmpdir(),'aifs-m19-'));try{
@@ -22,8 +22,8 @@ test('M19 GitHub checkout archived game review queue is counted without pretendi
   const rawPath=new URL('CONTENT_REVIEW_QUEUE.jsonl',root),archivePath=new URL('docs/CONTENT_REVIEW_QUEUE.jsonl.gz',root);
   const game=fs.existsSync(rawPath)?fs.readFileSync(rawPath):gunzipSync(fs.readFileSync(archivePath));
   fs.writeFileSync(path.join(tmp,'docs','CONTENT_REVIEW_QUEUE.jsonl.gz'),gzipSync(game));
-  for(const f of ['LAB_CONTENT_REVIEW_QUEUE.jsonl','STUDIO_CONTENT_REVIEW_QUEUE.jsonl','EXPERIMENT_CONTENT_REVIEW_QUEUE.jsonl','CLASSROOM_CONTENT_REVIEW_QUEUE.jsonl','DIGITAL_CONTENT_REVIEW_QUEUE.jsonl'])fs.copyFileSync(new URL(f,root),path.join(tmp,f));
-  const r=auditContentQueues(tmp);assert.deepEqual(r.problems,[]);assert.equal(r.total,3282);assert.equal(r.pending,3282);
+  for(const f of ['LAB_CONTENT_REVIEW_QUEUE.jsonl','STUDIO_CONTENT_REVIEW_QUEUE.jsonl','EXPERIMENT_CONTENT_REVIEW_QUEUE.jsonl','CLASSROOM_CONTENT_REVIEW_QUEUE.jsonl','DIGITAL_CONTENT_REVIEW_QUEUE.jsonl','MATHS_CONTENT_REVIEW_QUEUE.jsonl'])fs.copyFileSync(new URL(f,root),path.join(tmp,f));
+  const r=auditContentQueues(tmp);assert.deepEqual(r.problems,[]);assert.equal(r.total,3285);assert.equal(r.pending,3285);
  }finally{fs.rmSync(tmp,{recursive:true,force:true})}
 });
 test('M19 all pages and static assets compatible with self-only CSP',()=>{
@@ -39,7 +39,7 @@ test('M19 live-host checker rejects insecure/malformed origins',()=>{
 });
 test('M19 live-host checker audits all endpoints and validates expected headers',async()=>{
  const headers=new Headers({'content-type':'text/html; charset=utf-8','x-robots-tag':'noindex, nofollow','x-content-type-options':'nosniff','content-security-policy':"default-src 'self'; script-src 'self'",'referrer-policy':'strict-origin-when-cross-origin'});
- const fetcher=async url=>{let h=new Headers(headers);if(url.endsWith('.js'))h.set('content-type','text/javascript');if(url.endsWith('.css'))h.set('content-type','text/css');return {status:200,headers:h,text:async()=>url.endsWith('service-worker.js')?'aifs-discovery-m28':'<meta name="robots" content="noindex,nofollow">'};};
+ const fetcher=async url=>{let h=new Headers(headers);if(url.endsWith('.js'))h.set('content-type','text/javascript');if(url.endsWith('.css'))h.set('content-type','text/css');return {status:200,headers:h,text:async()=>url.endsWith('service-worker.js')?'aifs-discovery-m30':'<meta name="robots" content="noindex,nofollow">'};};
  const r=await verifyLive('https://example.org',fetcher);assert.equal(r.checked,TARGETS.length);assert.equal(r.passed,true);
 });
 test('M19 live-host checker detects unsafe or stale staging server replies',async()=>{

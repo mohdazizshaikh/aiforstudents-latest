@@ -13,14 +13,14 @@ const exampleRow=Object.freeze({
  content_sha256:'a'.repeat(64),priority:'pilot-first'
 });
 const review=(ref)=>({decision:'pass',reviewerRef:ref,reviewDate:'2026-11-23',rationale:'Checked against source and learner explanation.'});
-test('M23 pilots start with exactly 18 review records; no human approvals',()=>{
+test('M23 pilots start with exactly 21 review records; no human approvals',()=>{
  const rows=buildReviewRows();
- assert.equal(rows.length,3282);
+ assert.equal(rows.length,3285);
  const data=makeReviewTemplate(rows);
  assert.equal(data.schema,EVIDENCE_SCHEMA);
  assert.equal(data.scope,'pilot-first');
- assert.equal(data.records.length,18);
- assert.deepEqual(Object.fromEntries(['studio','experiment','classroom'].map(k=>[k,data.records.filter(x=>x.queue===k).length])),{studio:4,experiment:4,classroom:10});
+ assert.equal(data.records.length,21);
+ assert.deepEqual(Object.fromEntries(['studio','experiment','classroom','maths'].map(k=>[k,data.records.filter(x=>x.queue===k).length])),{studio:4,experiment:4,classroom:10,maths:3});
  const result=validateReviewEvidence(data,rows);
  assert.equal(result.schemaValid,true);
  assert.equal(result.recordsReadyForIndependentHumanAudit,0);
@@ -28,11 +28,11 @@ test('M23 pilots start with exactly 18 review records; no human approvals',()=>{
  assert.equal(result.humanApprovalAuthenticated,false);
  assert.ok(data.records.every(x=>x.subjectReview.decision==='pending'&&x.hindiReview.decision==='pending'));
 });
-test('M23 all-scope worklist can represent complete 3,282-record inventory',()=>{
+test('M23 all-scope worklist can represent complete 3,285-record inventory',()=>{
  const rows=buildReviewRows();
  const data=makeReviewTemplate(rows,'all');
- assert.equal(data.records.length,3282);
- assert.equal(validateReviewEvidence(data,rows).expectedRecords,3282);
+ assert.equal(data.records.length,3285);
+ assert.equal(validateReviewEvidence(data,rows).expectedRecords,3285);
 });
 test('M23 stale fingerprints, stale versions, missing items and duplicates fail closed',()=>{
  const original=makeReviewTemplate([exampleRow]);

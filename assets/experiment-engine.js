@@ -43,3 +43,58 @@ export function isValidExperimentAttempt(attempt){
  try{return evaluateExperiment(attempt.experimentId,attempt.taskId,attempt.response).correct===attempt.correct;}catch{return false}
 }
 export function experimentSummary(attempts=[],age){const valid=(Array.isArray(attempts)?attempts:[]).filter(x=>isValidExperimentAttempt(x)&&(!age||x.ageBand===age));const results=EXPERIMENT_IDS.map(id=>({id,attempts:valid.filter(x=>x.experimentId===id).length,tasksTried:new Set(valid.filter(x=>x.experimentId===id).map(x=>x.taskId)).size}));return {attempts:valid.length,experiments:results,explored:results.filter(x=>x.tasksTried===2).length};}
+/** M30 B1: three original, fully local Maths Workshop mini-labs.
+ * Draft concepts, NOT a full Class 1–12 maths syllabus or reviewed curriculum.
+ * Pure functions enable independent numeric assertions and text-only alternatives.
+ */
+export const WORKSHOP_MODES=Object.freeze(['number-line','rectangle','data-table']);
+export const WORKSHOP_DRAFT_REVIEW='pending-subject-and-Hindi-review';
+export const WORKSHOP_CONTENT={
+ 'number-line':{
+  title:['Number line: move to −3','संख्या रेखा: −3 पर जाएँ'],
+  prompt:['Start at zero. Move left or right to −3. Negative values sit to the left of zero.','शून्य से शुरू करें। बाएँ या दाएँ चलते हुए −3 पर पहुँचें। ऋणात्मक संख्याएँ शून्य के बाएँ होती हैं।'],
+  hint:['Each arrow changes the position by exactly one.','हर तीर स्थिति को ठीक एक से बदलता है।']
+ },
+ rectangle:{
+  title:['Rectangle: area and perimeter','आयत: क्षेत्रफल और परिमाप'],
+  prompt:['Make a rectangle 4 units wide and 3 units high. Count square units for area; add all sides for perimeter.','4 इकाई चौड़ा और 3 इकाई ऊँचा आयत बनाएँ। क्षेत्रफल के लिए वर्ग इकाइयाँ और परिमाप के लिए चारों भुजाएँ जोड़ें।'],
+  hint:['Area = width × height; perimeter = 2 × (width + height).','क्षेत्रफल = चौड़ाई × ऊँचाई; परिमाप = 2 × (चौड़ाई + ऊँचाई)।']
+ },
+ 'data-table':{
+  title:['Compare a simple data table','सरल आँकड़ा तालिका की तुलना'],
+  prompt:['Set group A to 4 items and B to 2 items. How many more are in A than B?','समूह A को 4 और B को 2 वस्तुओं पर रखें। A में B से कितनी अधिक हैं?'],
+  hint:['Compare counts by subtracting smaller from larger.','संख्याओं का अंतर जानने के लिए छोटी संख्या बड़ी से घटाएँ।']
+ }
+};
+export function workshopValues(mode,values){
+ if(!WORKSHOP_MODES.includes(mode)||!values||typeof values!=='object')throw Error('Unknown workshop mode or values');
+ const int=(v,min,max)=>Number.isInteger(v)&&v>=min&&v<=max;
+ if(mode==='number-line'){
+  if(!int(values.position,-10,10))throw Error('Number line must be an integer between -10 and 10');
+  return {position:values.position};
+ }
+ if(mode==='rectangle'){
+  if(!int(values.width,1,12)||!int(values.height,1,12))throw Error('Rectangle dimensions must be whole units 1–12');
+  return {width:values.width,height:values.height};
+ }
+ if(!int(values.a,0,10)||!int(values.b,0,10))throw Error('Data groups must be whole counts 0–10');
+ return {a:values.a,b:values.b};
+}
+export function evaluateWorkshop(mode,values){
+ const v=workshopValues(mode,values);
+ if(mode==='number-line')return{
+  correct:v.position===-3,metrics:{position:v.position},
+  explanation:[`The marker is at ${v.position}. Three steps left from zero reaches −3. This is one practice task, not proof of mastery.`,
+   `बिंदु ${v.position} पर है। शून्य से तीन कदम बाएँ चलकर −3 आता है। यह अभ्यास है, पूर्ण दक्षता का प्रमाण नहीं।`]
+ };
+ if(mode==='rectangle'){
+  const area=v.width*v.height,perimeter=2*(v.width+v.height);
+  return {correct:v.width===4&&v.height===3,metrics:{area,perimeter},
+   explanation:[`Width ${v.width}, height ${v.height}: area = ${area} square units, perimeter = ${perimeter} units. This simplified rectangle uses whole-number units.`,
+    `चौड़ाई ${v.width}, ऊँचाई ${v.height}: क्षेत्रफल = ${area} वर्ग इकाई, परिमाप = ${perimeter} इकाई। यह पूर्णांक इकाइयों वाला सरल आयत है।`]};
+ }
+ const difference=v.a-v.b;
+ return {correct:v.a===4&&v.b===2,metrics:{difference},
+  explanation:[`A has ${v.a} and B has ${v.b}. A − B = ${difference}; negative means A has fewer. Try the goal 4 and 2.`,
+   `A में ${v.a} और B में ${v.b} हैं। A − B = ${difference}; ऋणात्मक होने पर A में कम हैं। लक्ष्य 4 और 2 है।`]};
+}

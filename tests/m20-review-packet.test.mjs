@@ -7,15 +7,15 @@ import {buildReviewRows,buildSummary,csvCell,packetCsv,exportPacket} from '../to
 
 test('M20 exports the current six source review inventories, not fabricated approvals',()=>{
  const rows=buildReviewRows(),summary=buildSummary(undefined,rows);
- assert.equal(rows.length,3282);
- assert.equal(summary.totalRows,3282);
- assert.equal(summary.pendingHumanReviewRecords,3282);
+ assert.equal(rows.length,3285);
+ assert.equal(summary.totalRows,3285);
+ assert.equal(summary.pendingHumanReviewRecords,3285);
  assert.deepEqual(Object.fromEntries(Object.entries(summary.byQueue).map(([kind,count])=>[kind,count.total])),{
-  game:3200,study:32,studio:4,experiment:4,classroom:10,digital:32
+  game:3200,study:32,studio:4,experiment:4,classroom:10,digital:32,maths:3
  });
  assert.equal(summary.publicReleaseApproved,false);
  assert.equal(summary.humanApprovalGrantedByTool,false);
- assert.equal(new Set(rows.map(x=>x.queue+':'+x.content_id)).size,3282);
+ assert.equal(new Set(rows.map(x=>x.queue+':'+x.content_id)).size,3285);
  for(const row of rows){
   assert.ok(row.source_file);
   assert.ok(row.line>0);
@@ -40,15 +40,16 @@ test('M20 can materialize reviewer packet without writing source approvals',()=>
    'STUDIO_CONTENT_REVIEW_QUEUE.jsonl':[{journeyId:'fractions',stageId:'try',contentVersion:1,englishHumanReview:'pending'}],
    'EXPERIMENT_CONTENT_REVIEW_QUEUE.jsonl':[{experimentId:'fractions-lab',taskId:'compare',contentVersion:1,educationalReview:'pending'}],
    'CLASSROOM_CONTENT_REVIEW_QUEUE.jsonl':[{id:'class1',question:{en:'Show one fourth',hi:'चौथाई दिखाएँ'},educationalReview:'PENDING',publicReleaseApproved:false}],
-   'DIGITAL_CONTENT_REVIEW_QUEUE.jsonl':[{id:'digital1',question:{en:'Safe?',hi:'सुरक्षित?'},educationReview:'pending'}]
+   'DIGITAL_CONTENT_REVIEW_QUEUE.jsonl':[{id:'digital1',question:{en:'Safe?',hi:'सुरक्षित?'},educationReview:'pending'}],
+   'MATHS_CONTENT_REVIEW_QUEUE.jsonl':[{id:'workshop:number-line',contentVersion:1,englishHumanReview:'pending',hindiHumanReview:'pending'}]
   };
   for(const [name,records] of Object.entries(sources))writeFileSync(path.join(root,name),records.map(JSON.stringify).join('\n')+'\n');
   const destination=path.join(root,'generated');
   const summary=exportPacket(destination,root);
-  assert.equal(summary.totalRows,6);
-  assert.equal(summary.pendingHumanReviewRecords,6);
+  assert.equal(summary.totalRows,7);
+  assert.equal(summary.pendingHumanReviewRecords,7);
   const csv=readFileSync(path.join(destination,'review-packet.csv'),'utf8');
-  assert.equal(csv.trim().split('\n').length,7);
+  assert.equal(csv.trim().split('\n').length,8);
   assert.match(csv,/चौथाई दिखाएँ/);
   assert.match(readFileSync(path.join(destination,'README.txt'),'utf8'),/NOT HUMAN APPROVAL/);
   assert.ok(existsSync(path.join(destination,'summary.json')));

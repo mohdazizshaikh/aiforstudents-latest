@@ -1,5 +1,8 @@
 # Project Status Dashboard — AI for Students
 
+> **M30 LATEST ENGINEERING STATUS — 2026-11-24:** **B1 25/50 work items verified (5 reuse M29 documentation foundations + 20 additional scoped tasks); B2 0/50.** Three new offline bilingual draft Maths activities (number line, rectangle, table) are visible. Original 3,282 pending reviews + 3 new drafts = **3,285 educational records pending qualified human reviews**. Three B1 human-dependent items are BLOCKED_EXTERNAL; **full Class 1–12 labs, safe live AI tutor, adaptive mastery, full teacher dashboard, actual Hostinger HTTPS, real devices and authorized school pilot still NOT DONE**. [Evidence dashboard](B1_PROGRESS_DASHBOARD.md) · [M30 QA](M30_MATHS_WORKSHOP_QA.md). **Public launch blocked.**
+
+
 > **LATEST STATUS (24 November 2026): PARTIAL WORKING PROTOTYPE — FULL PRODUCT INCOMPLETE — PUBLIC RELEASE BLOCKED.** M1–M28 engineering evidence covers narrow vertical slices, **not** comprehensive Class 1–12 interactive Maths/Physics/Chemistry/Biology labs, generative tutoring, validated adaptive mastery, complete teacher dashboard or a real classroom pilot. **M29 is documentation/planning only:** [100 new tasks](MASTER_EXECUTION_PLAN.md), **B1 0/50 and B2 0/50 done**; [official product scope and Definition of Done](FULL_PRODUCT_SCOPE_AND_DONE.md). Existing **3,282 educational review records and six human safety gates still pending**.
 
 

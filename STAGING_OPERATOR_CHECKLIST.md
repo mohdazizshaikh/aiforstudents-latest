@@ -1,5 +1,8 @@
 # Hostinger Business — Private Staging Operator Checklist
 
+> **M30 NOTE (2026-11-24):** Latest private-staging archive for this changed learner JS is `aiforstudents_hostinger_staging_m30.zip` with service worker `aifs-discovery-m30-2026-11-24` (in source). Old M24/M28 filename instructions below are historical. Operator must use the **matching exact source commit** to run M27 `--full --integrity` on **real authorized restricted Hostinger HTTPS**. ZIP artifact is not a deployment; no child access or noindex removal is authorized. The new Maths Workshop and 3 review records remain unapproved.
+
+
 **Draft runbook, 2026-11-23. Not evidence of deployment.** Use only an existing authorized Hostinger account, never send passwords into GitHub, chat or review files.
 
 ## Preparation — manual operator gates

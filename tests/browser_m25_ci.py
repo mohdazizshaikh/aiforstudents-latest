@@ -13,7 +13,7 @@ import threading
 from playwright.sync_api import sync_playwright
 
 ROOT = Path(__file__).resolve().parents[1]
-OUTPUT = ROOT / 'test-results' / 'm28-browser'
+OUTPUT = ROOT / 'test-results' / 'm30-browser'
 OUTPUT.mkdir(parents=True, exist_ok=True)
 
 
@@ -34,7 +34,7 @@ def check_no_runtime_errors(page, errors):
 
 
 def run():
-    report = {'milestone': 'M28', 'execution': 'headless local Chromium with real ES modules',
+    report = {'milestone': 'M30', 'execution': 'headless local Chromium with real ES modules',
               'realHostingerVerified': False, 'realDeviceAccessibilityVerified': False,
               'educationalHumanApproval': False, 'publicReleaseApproved': False, 'checks': []}
     server = ThreadingHTTPServer(('127.0.0.1', 0), partial(QuietStaticHandler, directory=str(ROOT)))
@@ -74,6 +74,49 @@ def run():
                       'Digital Skills did not switch to Hindi')
                 page.locator('#lang').select_option('en')
                 report['checks'].append('Hindi language updates document, Virtual Lab and Digital Skills')
+
+                # M30: real native-ESM Maths Workshop with keyboard/button alternatives.
+                check(page.locator('#math-workshop-tabs button').count() == 3,
+                      'Maths Workshop three original activity tabs missing')
+                page.locator('[data-workshop-action="line:inc"]').focus()
+                page.keyboard.press('Enter')
+                check(page.locator('#math-workshop-number').inner_text() == '1',
+                      'Keyboard-only Enter did not move Maths marker')
+                check(page.evaluate("document.activeElement?.dataset.workshopAction") == 'line:inc',
+                      'Keyboard focus lost after Maths control rerender')
+                check(page.locator('#math-workshop-feedback').get_attribute('aria-live') == 'polite',
+                      'Screen-reader feedback region is not announced politely')
+                for _ in range(4):
+                    page.locator('[data-workshop-action="line:dec"]').click()
+                check(page.locator('#math-workshop-number').inner_text() == '-3',
+                      'Maths number line position incorrect')
+                page.locator('#math-workshop-check').click()
+                check('Goal reached' in page.locator('#math-workshop-feedback').inner_text(),
+                      'Number-line expected target not recognized')
+                page.locator('#lang').select_option('hi')
+                check('गणित' in page.locator('#math-workshop-title').inner_text(),
+                      'Maths Workshop did not localize to Hindi')
+                page.locator('#lang').select_option('en')
+                report['checks'].append('M30 number line and Hindi Maths Workshop with accessible numeric state')
+
+                page.locator('[data-workshop-action="mode:rectangle"]').click()
+                page.locator('[data-workshop-action="width:inc"]').click()
+                page.locator('[data-workshop-action="width:inc"]').click()
+                page.locator('[data-workshop-action="height:inc"]').click()
+                page.locator('#math-workshop-check').click()
+                rect = page.locator('#math-workshop-feedback').inner_text()
+                check('area = 12' in rect and 'perimeter = 14' in rect,
+                      'Rectangle area and perimeter feedback incorrect: ' + rect)
+                page.locator('[data-workshop-action="mode:data-table"]').click()
+                for _ in range(3):
+                    page.locator('[data-workshop-action="a:inc"]').click()
+                page.locator('[data-workshop-action="b:inc"]').click()
+                check(page.locator('#math-workshop-controls table tbody tr').count() == 2,
+                      'Accessible two-row data table missing')
+                page.locator('#math-workshop-check').click()
+                check('Goal reached' in page.locator('#math-workshop-feedback').inner_text(),
+                      'Data-table 4 minus 2 goal not recognized')
+                report['checks'].append('M30 geometry and two-row data table, no dragging or network data')
 
                 page.locator('#remember').check()
                 check(page.evaluate('localStorage.length > 0'), 'Opt-in local history is not persistent')
@@ -168,7 +211,13 @@ def run():
                 check(overflow['actual'] <= overflow['viewport'] + 4,
                       'Unexpected horizontal overflow at 390px: ' + str(overflow))
                 check_no_runtime_errors(phone, mobile_errors)
-                report['checks'].append('390px viewport renders without document-level horizontal overflow')
+                navigation = phone.evaluate("""() => {
+                  const n=performance.getEntriesByType('navigation')[0];
+                  return n ? Math.round(n.domContentLoadedEventEnd) : null;
+                }""")
+                check(navigation is not None and navigation <= 12000,
+                      'CI localhost DOMContentLoaded exceeds 12-second engineering budget: ' + str(navigation))
+                report['checks'].append('390px viewport and localhost cold-load within 12-second engineering budget')
 
                 ready = phone.evaluate("""async () => {
                   const registration = await navigator.serviceWorker.ready;
@@ -181,11 +230,11 @@ def run():
                 phone.wait_for_function('navigator.serviceWorker.controller !== null')
                 cache = phone.evaluate("""async () => {
                   const keys = await caches.keys();
-                  return {keys, count: (await caches.open(keys.find(k => k.startsWith('aifs-discovery-m28'))))
-                    ? (await (await caches.open(keys.find(k => k.startsWith('aifs-discovery-m28')))).keys()).length : 0}
+                  return {keys, count: (await caches.open(keys.find(k => k.startsWith('aifs-discovery-m30'))))
+                    ? (await (await caches.open(keys.find(k => k.startsWith('aifs-discovery-m30')))).keys()).length : 0}
                 }""")
-                check(any(k.startswith('aifs-discovery-m28') for k in cache['keys']),
-                      'M24 service-worker cache not created')
+                check(any(k.startswith('aifs-discovery-m30') for k in cache['keys']),
+                      'M30 service-worker cache not created')
                 check(cache['count'] >= 40, 'Service-worker precache incomplete: ' + str(cache))
                 mobile.set_offline(True)
                 phone.goto(origin + '/smart-learning-studio/', wait_until='domcontentloaded')
@@ -194,8 +243,10 @@ def run():
                 phone.goto(origin + '/', wait_until='load')
                 check(phone.locator('#game-grid button').count() == 5,
                       'Offline native learner modules not bootstrapped from cache')
+                check(phone.locator('#math-workshop-tabs button').count() == 3,
+                      'Offline Maths Workshop failed to bootstrap')
                 check_no_runtime_errors(phone, mobile_errors)
-                report['checks'].append('M28 SW installs 40+ assets and loads Studio guide + learner app offline')
+                report['checks'].append('M30 SW installs 40+ assets and loads Studio guide + learner app offline')
                 mobile.close()
             finally:
                 browser.close()
@@ -208,7 +259,7 @@ def run():
         server.server_close()
     report['result'] = 'PASS'
     (OUTPUT / 'report.json').write_text(json.dumps(report, indent=2, ensure_ascii=False) + '\n')
-    print('M28 LOCAL CHROMIUM CI SMOKE PASS:', json.dumps(report, ensure_ascii=False))
+    print('M30 LOCAL CHROMIUM CI SMOKE PASS:', json.dumps(report, ensure_ascii=False))
 
 
 if __name__ == '__main__':

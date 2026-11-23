@@ -39,6 +39,6 @@ test('M18 linked main UI, privacy-safe events and static precache are present',(
  const html=read('../index.html'),script=read('../assets/digital-app.js'),app=read('../assets/app.js'),sw=read('../service-worker.js'),config=read('../tools/configure-domain.mjs');
  for(const id of ['digital-skills','digital-title','digital-topics','digital-choices','digital-question','digital-feedback','digital-retry','digital-next'])assert.ok(html.includes(`id="${id}"`),id);
  assert.match(html,/assets\/digital-app\.js/);assert.match(app,/AIFS_DIGITAL_BRIDGE/);assert.match(app,/recordDigitalAttempt/);assert.match(app,/aifs-history-cleared/);assert.doesNotMatch(script,/fetch\(|XMLHttpRequest|navigator\.sendBeacon|WebSocket|localStorage|sessionStorage/);
- for(const x of ['./assets/digital-engine.js','./assets/digital-app.js','./ai-digital-skills/'])assert.ok(sw.includes(x));assert.match(sw,/aifs-discovery-m28/);assert.match(config,/ai-digital-skills/);
+ for(const x of ['./assets/digital-engine.js','./assets/digital-app.js','./ai-digital-skills/'])assert.ok(sw.includes(x));assert.match(sw,/aifs-discovery-m30/);assert.match(config,/ai-digital-skills/);
  const guide=read('../ai-digital-skills/index.html');assert.match(guide,/noindex,nofollow/);assert.match(guide,/32\/32 tasks await/);
 });
