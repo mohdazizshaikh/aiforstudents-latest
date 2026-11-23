@@ -1,5 +1,8 @@
 # Implementation & Dependency Backlog
 
+> **M29 PRIORITY UPDATE — 2026-11-24:** The historical backlog below tracks prior engineering work. The new **full-product** backlog is [100 NEW planned tasks across 10 streams, B1 50 + B2 50](MASTER_EXECUTION_PLAN.md), also provided as [machine-readable tracker](MASTER_100_WORK_ITEMS.json). **0/100 new tasks completed**. No prior game/Studio/Lab prototype is counted as complete Class 1–12 subject coverage. [Definition of Done](FULL_PRODUCT_SCOPE_AND_DONE.md). External human/Hostinger gates remain open.
+
+
 **Snapshot:** 2026-11-23, through M26 engineering merge; all external release gates remain open. **This is a tracking document, not a claim that future features were coded.**  
 Priority: P0 = required to avoid unsafe/misleading release; P1 = next core feature; P2 = later capability. Role ownership stays **TBD** until assigned.
 

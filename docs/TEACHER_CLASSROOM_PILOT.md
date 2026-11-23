@@ -1,5 +1,8 @@
 # M17 Teacher-Led Smart Classroom Pilot — Proposed Plan
 
+> **M29 SCOPE CORRECTION — 2026-11-24:** The Teacher Kit currently provides **two prototype guided lessons and worksheets**, **not** a complete teacher dashboard, approved study or real classroom pilot. Future planning/assignment workflows and an authorized school trial are defined in [100-task plan](MASTER_EXECUTION_PLAN.md) and [full product scope](FULL_PRODUCT_SCOPE_AND_DONE.md). Real school/guardian and child-safety permissions are pending.
+
+
 **Status:** FIRST TEACHER-KIT CODE PILOT IMPLEMENTED (2026-11-23); **no school, teacher, learner or pilot participant recruited**. A future pilot must satisfy applicable institutional, child privacy and safeguarding requirements.
 
 ## Purpose

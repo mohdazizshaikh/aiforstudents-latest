@@ -1,5 +1,8 @@
 # AI for Students — Project Charter
 
+> **M29 CHARTER UPDATE — 2026-11-24:** Historical “M14 functional prototype” status below predates the **M28 engineering** baseline. Despite later technical pilots, the agreed full Indian smart-classroom vision is **not finished**. Full Maths/Physics/Chemistry/Biology labs, Class 1–12 edition-wise learning, an AI tutor, adaptive mastery and a teacher dashboard are future deliverables. [Scope and truthful done criteria](FULL_PRODUCT_SCOPE_AND_DONE.md) · [100-task fast-batch roadmap](MASTER_EXECUTION_PLAN.md). Public launch: **NOT APPROVED**.
+
+
 **Documentation baseline:** 2026-11-23  
 **Status:** M14 functional **private staging prototype**; not deployed to Hostinger and not approved for public child-oriented launch.  
 **Canonical code repository:** https://github.com/mohdazizshaikh/aiforstudents-latest

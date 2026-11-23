@@ -1,5 +1,8 @@
 # Decision Register, Assumptions and Risk Tracker
 
+> **M29 DECISION — 2026-11-24:** Do not report **full product complete** based on a completed M1–M28 code increment. New implementation plan = **2 × 50 planned tasks**, [100-task register](MASTER_EXECUTION_PLAN.md), with human, live-device and legal release evidence independent of CI. Risk: premature child launch or unsupported Class 1–12 / AI tutor claims. Mitigation: [explicit Definition of Done](FULL_PRODUCT_SCOPE_AND_DONE.md), truthful status vocabulary and still-blocking release gates.
+
+
 **Snapshot:** 2026-11-23. Decisions below reflect the project discussion and current technical constraints. They can be revisited by the actual product owner. No named legal/content reviewer has been appointed.
 
 ## Decision register

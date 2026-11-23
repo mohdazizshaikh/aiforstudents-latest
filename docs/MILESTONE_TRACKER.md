@@ -1,5 +1,8 @@
 # Milestone and Release Tracker
 
+> **M29 CURRENT TRUTH — 2026-11-24:** This is a **partial working prototype**, not a completed school platform. Historical M1–M28 successes below are *code/testing only*. The [100-task new master plan](MASTER_EXECUTION_PLAN.md) contains 50 B1 + 50 B2 items, **all NOT_STARTED**; [full completion criteria](FULL_PRODUCT_SCOPE_AND_DONE.md). Comprehensive Class 1–12 science/maths, generative tutor, evidence-validated adaptive mastery, full teacher dashboard and approved real school trial are **unfinished**. Six human safeguarding gates and 3,282 content records remain pending.
+
+
 **Snapshot:** 2026-11-23 | Current tracked baseline M19; M20 code under review | Source of truth for current status: repository code/tests plus [M14_QA_STATUS.md](../M14_QA_STATUS.md) and [RELEASE_GATES.md](../RELEASE_GATES.md).
 
 ### Status vocabulary
