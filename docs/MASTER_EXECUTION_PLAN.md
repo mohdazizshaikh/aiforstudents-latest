@@ -11,6 +11,8 @@
 - **Completion status:** NOT_STARTED → IN_PROGRESS → CODE_COMPLETE_TESTED → REVIEW_PENDING → DONE_VERIFIED; BLOCKED_EXTERNAL when dependencies cannot be fulfilled. Code output needs commit, tests, screenshot/QA where appropriate; real-world gates require actual human/field proof.
 - **100 tasks are a delivery register, not an assertion that two batches will finish every Class 1–12 chapter and every state board.** Full chapter/edition-by-chapter coverage requires later enumerated content records and review, not invented percentages.
 
+**GitHub execution tickets:** [Batch B1 — 50 tasks, 0 done](https://github.com/mohdazizshaikh/aiforstudents-latest/issues/16) · [Batch B2 — 50 tasks, 0 done](https://github.com/mohdazizshaikh/aiforstudents-latest/issues/17). These are two coordination issues, not 100 separate noisy issues; task detail and evidence stay in this tracked register.
+
 ## Work breakdown — 10 streams × 10 items
 
 ### 1. Product governance — GOV

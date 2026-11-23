@@ -9,12 +9,14 @@
     {
       "id": "B1",
       "items": 50,
-      "planned": "Foundation and sample interactive labs"
+      "planned": "Foundation and sample interactive labs",
+      "githubIssue": "https://github.com/mohdazizshaikh/aiforstudents-latest/issues/16"
     },
     {
       "id": "B2",
       "items": 50,
-      "planned": "Expanded subject labs, review workflow and external verification"
+      "planned": "Expanded subject labs, review workflow and external verification",
+      "githubIssue": "https://github.com/mohdazizshaikh/aiforstudents-latest/issues/17"
     }
   ],
   "existingUnreviewedContentRecords": 3282,
