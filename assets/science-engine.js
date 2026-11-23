@@ -33,7 +33,7 @@ export const SCIENCE_MODELS={
    {id:'incident',label:pair('Incident angle from normal','अभिलंब से आपतन कोण'),min:0,max:90,step:5,unit:'°'},
    {id:'reflected',label:pair('Reflected angle from normal','अभिलंब से परावर्तन कोण'),min:0,max:90,step:5,unit:'°'}],
   initial:{incident:20,reflected:10},target:{incident:35,reflected:35},
-  play:{question:pair('The incident ray meets the mirror at 35° from the normal. The reflected angle is...','आपतित किरण अभिलंब से 35° बनाती है। परावर्तन कोण होगा...'),options:[pair('35° from the normal','अभिलंब से 35°'),pair('55° from the normal','अभिलंब से 55°'),pair('70° from the normal','अभिलंब से 70°')],answer:0}
+  play:{question:pair('The incident ray meets the mirror at 35° from the normal. The reflected angle is...','आपतित किरण अभिलंब से 35° बनाती है। परावर्तन कोण होगा...'),options:[pair('55° from the normal','अभिलंब से 55°'),pair('35° from the normal','अभिलंब से 35°'),pair('70° from the normal','अभिलंब से 70°')],answer:1}
  },
  energy:{
   id:'energy',subject:'Physics',
@@ -45,7 +45,7 @@ export const SCIENCE_MODELS={
   mission:pair('On paper, split 100 J into 40 J useful and the rest thermal.','कागज़ पर 100 J को 40 J उपयोगी और बाकी ऊष्मीय भाग में बाँटें।'),
   fields:[{id:'useful',label:pair('Useful energy transfer','उपयोगी ऊर्जा स्थानांतरण'),min:0,max:100,step:10,unit:'J'}],
   initial:{useful:30},target:{useful:70},
-  play:{question:pair('In this two-pathway diagram, 70 J useful means how much thermal energy?','इस दो-रास्ते के चित्र में 70 J उपयोगी होने पर ऊष्मीय ऊर्जा कितनी है?'),options:[pair('30 J','30 J'),pair('170 J','170 J'),pair('0 J','0 J')],answer:0}
+  play:{question:pair('In this two-pathway diagram, 70 J useful means how much thermal energy?','इस दो-रास्ते के चित्र में 70 J उपयोगी होने पर ऊष्मीय ऊर्जा कितनी है?'),options:[pair('170 J','170 J'),pair('0 J','0 J'),pair('30 J','30 J')],answer:2}
  },
  matter:{
   id:'matter',subject:'Chemistry',
@@ -60,7 +60,7 @@ export const SCIENCE_MODELS={
    {value:'liquid',label:pair('Liquid','द्रव')},
    {value:'gas',label:pair('Gas','गैस')}]}],
   initial:{state:'solid'},target:{state:'liquid'},
-  play:{question:pair('Which state can flow while its particles usually stay close together?','किस अवस्था में कण सामान्यतः पास रहकर भी बह सकते हैं?'),options:[pair('Liquid','द्रव'),pair('An ideal rigid solid','आदर्श कठोर ठोस'),pair('Vacuum','निर्वात')],answer:0}
+  play:{question:pair('Which state can flow while its particles usually stay close together?','किस अवस्था में कण सामान्यतः पास रहकर भी बह सकते हैं?'),options:[pair('An ideal rigid solid','आदर्श कठोर ठोस'),pair('Liquid','द्रव'),pair('Vacuum','निर्वात')],answer:1}
  },
  changes:{
   id:'changes',subject:'Chemistry',
@@ -79,7 +79,7 @@ export const SCIENCE_MODELS={
     {value:'physical',label:pair('Physical','भौतिक')},
     {value:'chemical',label:pair('Chemical','रासायनिक')}]}],
   initial:{example:'burning',kind:'physical'},target:{example:'melting',kind:'physical'},
-  play:{question:pair('In this classroom example, paper burning is classified as...','इस कक्षा-उदाहरण में कागज़ का जलना किस प्रकार का परिवर्तन है?'),options:[pair('Chemical change','रासायनिक परिवर्तन'),pair('Only a change of shape','केवल आकार में बदलाव'),pair('No change at all','कोई बदलाव नहीं')],answer:0}
+  play:{question:pair('In this classroom example, paper burning is classified as...','इस कक्षा-उदाहरण में कागज़ का जलना किस प्रकार का परिवर्तन है?'),options:[pair('Only a change of shape','केवल आकार में बदलाव'),pair('No change at all','कोई बदलाव नहीं'),pair('Chemical change','रासायनिक परिवर्तन')],answer:2}
  },
  cells:{
   id:'cells',subject:'Biology',
@@ -94,7 +94,7 @@ export const SCIENCE_MODELS={
    {value:'animal',label:pair('Typical animal cell','सामान्य जंतु कोशिका')},
    {value:'bacterium',label:pair('Bacterium','जीवाणु')}]}],
   initial:{cell:'animal'},target:{cell:'leaf'},
-  play:{question:pair('Which example has no membrane-bound nucleus?','किस उदाहरण में झिल्ली से घिरा केंद्रक नहीं होता?'),options:[pair('Bacterium','जीवाणु'),pair('Typical green leaf cell','सामान्य हरी पत्ती कोशिका'),pair('Typical animal cell','सामान्य जंतु कोशिका')],answer:0}
+  play:{question:pair('Which example has no membrane-bound nucleus?','किस उदाहरण में झिल्ली से घिरा केंद्रक नहीं होता?'),options:[pair('Typical green leaf cell','सामान्य हरी पत्ती कोशिका'),pair('Bacterium','जीवाणु'),pair('Typical animal cell','सामान्य जंतु कोशिका')],answer:1}
  },
  'food-chain':{
   id:'food-chain',subject:'Biology',
@@ -109,7 +109,7 @@ export const SCIENCE_MODELS={
    {value:'grass-grasshopper-frog-snake',label:pair('Grass → grasshopper → frog → snake','घास → टिड्डा → मेंढक → साँप')},
    {value:'snake-grasshopper-grass',label:pair('Snake → grasshopper → grass','साँप → टिड्डा → घास')}]}],
   initial:{chain:'frog-grass-snake'},target:{chain:'grass-grasshopper-frog-snake'},
-  play:{question:pair('Food-chain arrows show energy transfer mainly from...','खाद्य शृंखला में तीर मुख्यतः ऊर्जा का प्रवाह किस ओर दिखाते हैं?'),options:[pair('Eaten organism to eater','खाए गए जीव से खाने वाले जीव की ओर'),pair('Consumer back to sunlight','उपभोक्ता से वापस सूर्य प्रकाश की ओर'),pair('Always the largest to the smallest','हमेशा बड़े से छोटे जीव की ओर')],answer:0}
+  play:{question:pair('Food-chain arrows show energy transfer mainly from...','खाद्य शृंखला में तीर मुख्यतः ऊर्जा का प्रवाह किस ओर दिखाते हैं?'),options:[pair('Consumer back to sunlight','उपभोक्ता से वापस सूर्य प्रकाश की ओर'),pair('Always the largest to the smallest','हमेशा बड़े से छोटे जीव की ओर'),pair('Eaten organism to eater','खाए गए जीव से खाने वाले जीव की ओर')],answer:2}
  }
 };
 export function scienceText(source,lang='en'){
@@ -191,7 +191,7 @@ export function auditSciencePairs(models=SCIENCE_MODELS){
   try{scienceText(m.play.question)}catch{errors.push(id+':quiz question')}
   if(!Array.isArray(m.play.options)||m.play.options.length!==3)errors.push(id+':quiz options');
   else for(const option of m.play.options)try{scienceText(option)}catch{errors.push(id+':quiz option')}
-  if(m.play.answer!==0)errors.push(id+':quiz answer unsupported');
+  if(!Number.isInteger(m.play.answer)||m.play.answer<0||m.play.answer>=m.play.options?.length)errors.push(id+':invalid quiz answer index');
   try{scienceValidateState(id,m.initial);scienceValidateState(id,m.target);if(!scienceEvaluate(id,m.target).correct)errors.push(id+':invalid target')}catch(e){errors.push(id+':'+e.message)}
  }
  return errors;

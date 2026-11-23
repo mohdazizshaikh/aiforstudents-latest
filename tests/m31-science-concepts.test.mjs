@@ -22,13 +22,12 @@ test('M31 seven distinct Physics/Chemistry/Biology draft models and full bilingu
   assert.match(m.caveat[0],/model|diagram|experiment|example|microscope|complex|classroom|teaching/i);
   assert.equal(scienceEvaluate(id,m.target).correct,true,id);
   assert.equal(scienceEvaluate(id,m.initial).correct,false,id+' unexpectedly starts at target');
-  assert.equal(scienceChoiceCheck(id,0),true);
-  assert.equal(scienceChoiceCheck(id,1),false);
-  assert.equal(scienceChoiceCheck(id,2),false);
+  for(let i=0;i<3;i++)assert.equal(scienceChoiceCheck(id,i),i===m.play.answer,id+' answer index '+i);
   assert.throws(()=>scienceChoiceCheck(id,3),/Invalid/);
   assert.throws(()=>scienceChoiceCheck(id,'0'),/Invalid/);
   assert.ok(scienceExplain(id,m.target,'hi').length>10);
  }
+ assert.deepEqual(SCIENCE_IDS.map(id=>SCIENCE_MODELS[id].play.answer),[0,1,2,1,2,1,2]);
  assert.throws(()=>scienceModel('unapproved-model'));
  assert.throws(()=>scienceText(['English','']));
  const modified=structuredClone(SCIENCE_MODELS);
