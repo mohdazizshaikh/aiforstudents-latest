@@ -139,7 +139,33 @@ $('back-home').addEventListener('click',()=>show('lobby'));
 $('remember').addEventListener('change',e=>{ST.remember=Boolean(e.target.checked);const l=safeStorage('localStorage'),s=safeStorage('sessionStorage');
  if(ST.remember){ST.history=mergeHistory(ST.history,read(s,SESSION_KEY));store();remove(s,SESSION_KEY)}else{remove(l,KEY);store()}
  $('privacy-status').textContent=ST.remember?tr('Remembered only on this device.','सिर्फ़ इसी डिवाइस पर सेव।'):tr('Kept only in this tab until closed.','टैब बंद होने तक ही रहेगा।');});
-$('clear-progress').addEventListener('click',()=>{for(const key of [KEY,OLD_KEY,V1_KEY])remove(safeStorage('localStorage'),key);for(const key of [SESSION_KEY,OLD_SESSION,V1_SESSION])remove(safeStorage('sessionStorage'),key);ST.history=emptyHistory();window.dispatchEvent(new Event('aifs-team-reset'));window.dispatchEvent(new Event('aifs-team-history-changed'));window.dispatchEvent(new Event('aifs-history-cleared'));ST.remember=false;ST.playing=false;window.AIFS_ACTIVITY.solo=false;window.dispatchEvent(new Event('aifs-solo-state-changed'));ST.items=[];ST.responses=[];$('remember').checked=false;$('strategy-note').hidden=true;$('storage-warning').hidden=true;show('lobby');refresh();$('privacy-status').textContent=tr('Local history cleared.','स्थानीय इतिहास मिटा दिया गया।')});
+// M28: a minimal same-browser signal, never student responses or identifiers.
+let privacyClearChannel=null;
+try{if(typeof BroadcastChannel==='function')privacyClearChannel=new BroadcastChannel('aifs-discovery-privacy-reset-v1')}catch{}
+function clearAllHistory(notifyPeers=true){
+ for(const key of [KEY,OLD_KEY,V1_KEY])remove(safeStorage('localStorage'),key);
+ for(const key of [SESSION_KEY,OLD_SESSION,V1_SESSION])remove(safeStorage('sessionStorage'),key);
+ ST.history=emptyHistory();
+ window.dispatchEvent(new Event('aifs-team-reset'));
+ window.dispatchEvent(new Event('aifs-team-history-changed'));
+ window.dispatchEvent(new Event('aifs-history-cleared'));
+ ST.remember=false;ST.playing=false;window.AIFS_ACTIVITY.solo=false;
+ window.dispatchEvent(new Event('aifs-solo-state-changed'));
+ ST.items=[];ST.responses=[];$('remember').checked=false;
+ $('strategy-note').hidden=true;$('storage-warning').hidden=true;
+ show('lobby');refresh();
+ $('privacy-status').textContent=tr('Local history cleared.','स्थानीय इतिहास मिटा दिया गया।');
+ if(notifyPeers){try{privacyClearChannel?.postMessage({type:'clear-history'})}catch{}}
+}
+$('clear-progress').addEventListener('click',()=>clearAllHistory(true));
+privacyClearChannel?.addEventListener('message',event=>{
+ if(event.data?.type==='clear-history')clearAllHistory(false);
+});
+// If an older browser lacks BroadcastChannel, persisted opt-in clears still notify same-origin tabs.
+window.addEventListener('storage',event=>{
+ if(event.storageArea===safeStorage('localStorage')&&
+    (event.key===KEY||event.key===null)&&event.newValue===null)clearAllHistory(false);
+});
 $('save-reflection').addEventListener('click',()=>{const val=$('reflection-choice').value;if(!val){$('reflection-status').textContent=tr('Choose a statement first.','पहले विकल्प चुनें।');return}ST.history=saveReflection(ST.history,localDay(),val);store();renderDashboard()});
 window.AIFS_DIGITAL_BRIDGE={
  getHistory:()=>ST.history,
