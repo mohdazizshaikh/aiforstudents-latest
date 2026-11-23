@@ -176,17 +176,8 @@
       "dependsOn": [
         "FP-005"
       ],
-      "status": "DONE_VERIFIED",
-      "evidence": [
-        {
-          "kind": "source",
-          "path": "docs/B2_ROLE_LEDGER.json"
-        },
-        {
-          "kind": "test",
-          "path": "tests/m32-b2-governance.test.mjs"
-        }
-      ]
+      "status": "BLOCKED_EXTERNAL",
+      "evidence": []
     },
     {
       "id": "FP-008",
@@ -200,17 +191,8 @@
       "dependsOn": [
         "FP-005"
       ],
-      "status": "DONE_VERIFIED",
-      "evidence": [
-        {
-          "kind": "source",
-          "path": "tools/plan-evidence-check.mjs"
-        },
-        {
-          "kind": "test",
-          "path": "tests/m32-b2-governance.test.mjs"
-        }
-      ]
+      "status": "IN_PROGRESS",
+      "evidence": []
     },
     {
       "id": "FP-009",
@@ -1958,7 +1940,7 @@
   "additionalNewMathsDrafts": 3,
   "currentPendingContentRecords": 3292,
   "batch1VerifiedEngineeringAndDesignTasks": 46,
-  "batch2VerifiedEngineeringAndDesignTasks": 4,
-  "statusCaveat": "B1 46/50 source/test only, remaining four expert review BLOCKED_EXTERNAL; B2 4/50 governance/source and CI tooling only. No human approvals, public child launch, AI tutor, physical devices, syllabus or Hostinger verified.",
+  "batch2VerifiedEngineeringAndDesignTasks": 2,
+  "statusCaveat": "B1 46/50 engineering/design source/test only, four B1 expert approvals blocked. B2 2/50 governance/CI tasks verified; FP-007 owner assignments BLOCKED_EXTERNAL, FP-008 commit-to-evidence tracing IN_PROGRESS. No fictional human approval, real hosting or public release.",
   "newScienceDraftReviewRecords": 7
 }

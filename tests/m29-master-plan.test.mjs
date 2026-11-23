@@ -45,11 +45,11 @@ test('M29 no planned work or historical code pilot is promoted to human/public a
  assert.ok(done.every(x=>x.execution!=='HUMAN_GATE'&&x.evidence.length>=2));
  assert.ok(tracker.items.filter(x=>x.status!=='DONE_VERIFIED').every(x=>!x.evidence.length));
  assert.equal(done.filter(x=>x.batch==='B1').length,46);
- assert.equal(done.filter(x=>x.batch==='B2').length,4);
+ assert.equal(done.filter(x=>x.batch==='B2').length,2);
  assert.ok(tracker.items.some(x=>x.execution==='HUMAN_GATE'));
  assert.match(scope,/FULL PRODUCT NOT COMPLETE/);
  assert.match(scope,/PUBLIC LAUNCH NOT APPROVED/);
- assert.match(plan,/0\/50/);
+ assert.match(plan,/2\/50/);
 });
 
 test('M29 root and status docs display truthful planned product state prominently',()=>{

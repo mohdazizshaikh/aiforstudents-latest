@@ -1,17 +1,17 @@
 # M29 — 100-work-item master execution plan (2 × 50)
 
-**M32 implementation update, 2026-11-24:** **B1 46/50 bounded engineering/design tasks source/test verified; B2 4/50 governance tasks verified.** Eleven more B1 engineering tasks include the source-backed draft-only hint guide, optional practice planner, fraction five-step shell, teacher navigation/role rotation and print-only learner cards. **Not an AI tutor, educational review, mastery system or public release.** Ten additional B1 tasks now have source/test evidence: seven safe, draft Science Concept models, reusable five-stage lesson flow, cross-module Hindi/English completeness audit, and representative keyboard/nonvisual browser sampling. Previous five M29 governance foundations and M30 Maths work remain. **Overall product remains PARTIAL WORKING PROTOTYPE, NOT COMPLETE. Public child-facing launch BLOCKED.** Qualified education/translation/field approval is not established by tests.
+**M32 implementation update, 2026-11-24:** **B1 46/50 bounded engineering/design tasks source/test verified; B2 2/50 governance tasks verified.** Eleven more B1 engineering tasks include the source-backed draft-only hint guide, optional practice planner, fraction five-step shell, teacher navigation/role rotation and print-only learner cards. **Not an AI tutor, educational review, mastery system or public release.** Ten additional B1 tasks now have source/test evidence: seven safe, draft Science Concept models, reusable five-stage lesson flow, cross-module Hindi/English completeness audit, and representative keyboard/nonvisual browser sampling. Previous five M29 governance foundations and M30 Maths work remain. **Overall product remains PARTIAL WORKING PROTOTYPE, NOT COMPLETE. Public child-facing launch BLOCKED.** Qualified education/translation/field approval is not established by tests.
 
 ## Fast batch execution rules
 
 - **B1 (50 tasks):** first five entries in each of ten workstreams. Lock scope, reusable foundations, representative safe labs and initial QA. **Current completion: 46/50**.
-- **B2 (50 tasks):** last five entries in each workstream. Broader Maths/Physics/Chemistry/Biology, governed AI/adaptive features, teacher depth, source and field reviews. **Current completion: 4/50**.
+- **B2 (50 tasks):** last five entries in each workstream. Broader Maths/Physics/Chemistry/Biology, governed AI/adaptive features, teacher depth, source and field reviews. **Current completion: 2/50**.
 - **Efficiency:** plan/triage each 50-task batch in one coordinated work cycle instead of requesting tiny steps. Run independent streams concurrently, use small coherent feature PRs rather than one unreviewable giant merge, run tests at each ~10–15-task checkpoint and consolidate progress into a single verified batch report.
 - **Non-negotiable:** a human review, real school trial, live Hostinger verification or legal approval remains **BLOCKED_EXTERNAL** unless a real authorized reviewer/operator supplies evidence. A successful Node/Chromium test or a prepared template is not that evidence.
 - **Completion status:** NOT_STARTED → IN_PROGRESS → CODE_COMPLETE_TESTED → REVIEW_PENDING → DONE_VERIFIED; BLOCKED_EXTERNAL when dependencies cannot be fulfilled. Code output needs commit, tests, screenshot/QA where appropriate; real-world gates require actual human/field proof.
 - **100 tasks are a delivery register, not an assertion that two batches will finish every Class 1–12 chapter and every state board.** Full chapter/edition-by-chapter coverage requires later enumerated content records and review, not invented percentages.
 
-**GitHub execution tickets:** [Batch B1 — 50 tasks, 0 done](https://github.com/mohdazizshaikh/aiforstudents-latest/issues/16) · [Batch B2 — 50 tasks, 0 done](https://github.com/mohdazizshaikh/aiforstudents-latest/issues/17). These are two coordination issues, not 100 separate noisy issues; task detail and evidence stay in this tracked register.
+**GitHub execution tickets:** [Batch B1 — 46 of 50 engineering tasks evidenced](https://github.com/mohdazizshaikh/aiforstudents-latest/issues/16) · [Batch B2 — 2 of 50 governance tasks evidenced](https://github.com/mohdazizshaikh/aiforstudents-latest/issues/17). These are two coordination issues, not 100 separate noisy issues; task detail and evidence stay in this tracked register.
 
 ## Work breakdown — 10 streams × 10 items
 
@@ -27,8 +27,8 @@
 | FP-004 | B1 | Map GitHub release-gate dependencies | Link P0 issues #2–#5 and P1 #6 without closing them | DONE_VERIFIED |
 | FP-005 | B1 | Record 100-work plan acceptance rules | No claimed completion without task-specific evidence | DONE_VERIFIED |
 | FP-006 | B2 | Build CI plan consistency checker | Assert 100 IDs, 2 × 50 and valid state transitions | DONE_VERIFIED |
-| FP-007 | B2 | Create role/owner ledger | Real accountable owners confirmed privately; TBD is not approval | DONE_VERIFIED |
-| FP-008 | B2 | Create source/test/evidence traceability | Each completed item links commit and relevant proof | DONE_VERIFIED |
+| FP-007 | B2 | Create role/owner ledger | Real accountable owners confirmed privately; TBD is not approval | BLOCKED_EXTERNAL |
+| FP-008 | B2 | Create source/test/evidence traceability | Each completed item links commit and relevant proof | IN_PROGRESS |
 | FP-009 | B2 | Create controlled scope-change protocol | No silent product-complete or release language | DONE_VERIFIED |
 | FP-010 | B2 | Conduct independent batch completion review | Human signoff separate from engineering checklist | NOT_STARTED |
 
@@ -208,4 +208,4 @@ B1 now **35/50 DONE_VERIFIED in strictly scoped engineering/design evidence**, i
 
 ### M32 B2 governance increment (2026-11-24)
 
-**4/50 B2 engineering governance items verified:** CI plan/check, ten strictly **unassigned** owner roles, source/test traceability, and an explicit scope-change protocol. They are templates/automation, **not human-verified appointments, legal approvals or educational signoffs**. The remaining 46 B2 tasks need actual code and/or real-world evidence.
+**2/50 B2 engineering governance items verified:** CI consistency checks (FP-006) and a documented change protocol (FP-009). FP-007 is **BLOCKED_EXTERNAL** until actual accountable role assignments; a placeholder ledger is NOT sufficient. FP-008 remains **IN_PROGRESS** until every verified item has a concrete commit-to-source/test provenance link. Governance templates and code are never substitute human approvals.
