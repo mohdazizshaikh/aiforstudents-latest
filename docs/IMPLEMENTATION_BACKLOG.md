@@ -94,3 +94,13 @@ See [M21 procedure](M21_REVIEW_INTEGRITY.md). No public child-facing launch or H
 | GATE-01/02 | P0 | Actual Hostinger private staging and release evidence | **PENDING** | Hostinger operator, site, HTTPS, access restriction |
 
 Details: [M22 staging audit](M22_FULL_STAGING_AUDIT.md). No public release approval.
+
+### M23 — Human review evidence operationalization (2026-11-23)
+| ID | Priority | Small output | Engineering state | Still needed |
+|---|---|---|---|---|
+| M23-01 | P0 | Source-hash-bound review template for 18 pilot-first items (optional full 3,282) | **IMPLEMENTED IN CODE; CI verify separately** | Human subject and Hindi review |
+| M23-02 | P0 | Offline structural checker for stale versions, duplicate rows and incomplete decisions | **IMPLEMENTED + Node tests** | Independent reviewer authenticity/qualification and actual corrections |
+| M23-03 | P0 | CI evidence template smoke, assert public release gate remains blocked | **CI WORKFLOW ADDED** | Actual real-world signoff unaffected |
+| M23-04 | P0 | Accountable reviewer handoff and verified evidence | **OPEN / HUMAN REQUIRED** | Appointed qualified humans, official chapter review, child-safety owner |
+
+See [M23 reviewer guide](M23_REVIEW_EVIDENCE.md). Review files are local-only and should not be committed. No child-facing public release approval.
