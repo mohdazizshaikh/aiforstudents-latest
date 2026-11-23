@@ -1,5 +1,8 @@
 # Smart Learning Studio — M15–M18 Product Specification (PROPOSED)
 
+> **M29 CLARIFICATION — 2026-11-24:** M15–M18 described below are **initial working prototypes** (two Studio journeys, two conceptual simulations, two teacher plans, 32 offline AI-literacy scenarios), **not** implementation of full Class 1–12 Maths/Physics/Chemistry/Biology, a live AI tutor, scientifically validated adaptive learning or full teacher management. The wording “current app is M15 staging” below is historical. See [full scope/DoD](FULL_PRODUCT_SCOPE_AND_DONE.md) and [100-task future roadmap](MASTER_EXECUTION_PLAN.md).
+
+
 **Status: FIRST M15 CODING PILOT IMPLEMENTED as of 2026-11-23, NOT APPROVED FOR PUBLIC USE.** The current app is M15 staging. This document takes ideas from purposeful smart-classroom practices; it does **not** claim every Chinese school gives every student a laptop or that computers alone improve learning.
 
 ## Purpose
