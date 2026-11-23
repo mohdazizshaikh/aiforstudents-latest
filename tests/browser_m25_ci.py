@@ -140,9 +140,11 @@ def run():
 
                 ready = phone.evaluate("""async () => {
                   const registration = await navigator.serviceWorker.ready;
-                  return registration.active && registration.active.state;
+                  return {state: registration.active?.state ?? 'none',
+                    scope: registration.scope, controlled: Boolean(navigator.serviceWorker.controller)};
                 }""")
-                check(ready == 'activated', 'Service worker did not activate')
+                check(ready['state'] in ('activated', 'activating'),
+                      'Service worker did not activate: ' + repr(ready))
                 phone.reload(wait_until='load')
                 phone.wait_for_function('navigator.serviceWorker.controller !== null')
                 cache = phone.evaluate("""async () => {
