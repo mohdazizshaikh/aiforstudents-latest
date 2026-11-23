@@ -112,3 +112,6 @@ A deterministic offline CSV/JSON review packet exporter (source file + line and 
 
 ## M22 private staging audit coverage — 2026-11-23
 The read-only `tools/check-live-staging.mjs --full` mode expands the 12-target core checker to source-declared static routes/assets and validates status, MIME and security headers using local allowlisted paths. Unit/mocked CI success is **not** proof of actual Hostinger deployment, access restriction, backup/restore, real-phone functionality, educator review or legal child safety. See [M22 operator guide](docs/M22_FULL_STAGING_AUDIT.md). Human release gates still block public indexing.
+
+## M23 reviewer evidence (2026-11-23)
+An offline template + source-hash validator helps qualified reviewers hand off 18 prioritized concept/classroom records (or 3,282 full-scope records). A structurally valid JSON report cannot establish reviewer identity, curriculum correctness, Hindi suitability, child-safety/legal approval or copyright rights. A new CI assertion explicitly expects `release-preflight.mjs --public` to fail. Actual Hostinger, real low-end Android accessibility, safeguarding and human reviews remain blocked. See [M23 documentation](docs/M23_REVIEW_EVIDENCE.md).
