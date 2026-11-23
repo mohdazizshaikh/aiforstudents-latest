@@ -3,7 +3,7 @@
 > **M29 CLARIFICATION — 2026-11-24:** M15–M18 described below are **initial working prototypes** (two Studio journeys, two conceptual simulations, two teacher plans, 32 offline AI-literacy scenarios), **not** implementation of full Class 1–12 Maths/Physics/Chemistry/Biology, a live AI tutor, scientifically validated adaptive learning or full teacher management. The wording “current app is M15 staging” below is historical. See [full scope/DoD](FULL_PRODUCT_SCOPE_AND_DONE.md) and [100-task future roadmap](MASTER_EXECUTION_PLAN.md).
 
 
-**Status: FIRST M15 CODING PILOT IMPLEMENTED as of 2026-11-23, NOT APPROVED FOR PUBLIC USE.** The current app is M15 staging. This document takes ideas from purposeful smart-classroom practices; it does **not** claim every Chinese school gives every student a laptop or that computers alone improve learning.
+**Historical M15–M18 first coding pilots implemented, latest engineering baseline M28, full-product rebaseline M29 (2026-11-24); NOT APPROVED FOR PUBLIC USE.** This file describes original small lesson pilots, not a completed smart-learning ecosystem. This document takes ideas from purposeful smart-classroom practices; it does **not** claim every Chinese school gives every student a laptop or that computers alone improve learning.
 
 ## Purpose
 A free Indian-school-friendly learning journey, enjoyable on a low-end phone, a shared family device or a single teacher projector. Build understanding through a short guided experience rather than passive video watching or high-pressure testing.

@@ -3,7 +3,7 @@
 > **LATEST STATUS (24 November 2026): PARTIAL WORKING PROTOTYPE — FULL PRODUCT INCOMPLETE — PUBLIC RELEASE BLOCKED.** M1–M28 engineering evidence covers narrow vertical slices, **not** comprehensive Class 1–12 interactive Maths/Physics/Chemistry/Biology labs, generative tutoring, validated adaptive mastery, complete teacher dashboard or a real classroom pilot. **M29 is documentation/planning only:** [100 new tasks](MASTER_EXECUTION_PLAN.md), **B1 0/50 and B2 0/50 done**; [official product scope and Definition of Done](FULL_PRODUCT_SCOPE_AND_DONE.md). Existing **3,282 educational review records and six human safety gates still pending**.
 
 
-**As of 2026-11-23** | **M20–M28 engineering merged, automated CI verified; real hosting and human release gates pending** | **Public release: NOT APPROVED**
+**As of 2026-11-24** | **M28 engineering prototype verified; M29 full-product scope and 100 tasks PLANNED, 0/100 done; real hosting and human gates pending** | **Public release: NOT APPROVED**
 
 ## Working today in the private prototype
 - 40 solo game modules in 8 categories; 3 same-device Grow Together modes.

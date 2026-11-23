@@ -1,4 +1,4 @@
-# Release gates — M12-B/M13 private staging build
+# Release gates — M28 private prototype and M29 full-product plan
 
 > **M29 PUBLIC RELEASE TRUTH — 2026-11-24: NOT APPROVED.** 145 Node + nine Chromium local checks at M28 verify **software prototypes**, not a complete curriculum or safety. New 100-task plan is **PLANNED, 0/100 done**. The comprehensive Class 1–12 labs, AI tutor, validated adaptive learning, teacher dashboard, real host, physical accessibility and classroom/educational/child-safety approval are absent or pending. [Full product scope](docs/FULL_PRODUCT_SCOPE_AND_DONE.md) · [2 × 50 execution batches](docs/MASTER_EXECUTION_PLAN.md).
 

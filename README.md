@@ -1,9 +1,9 @@
-# AI for Students — M18 first pilot private staging prototype
+# AI for Students — Partial Prototype + Full Product Roadmap (M29)
 
 > **M29 PRODUCT STATUS — 24 November 2026: PARTIAL WORKING PROTOTYPE, FULL PRODUCT NOT COMPLETE.** Eight categories/40 games and limited M15–M18 lesson/lab/teacher/digital-skills prototypes exist. **NOT COMPLETE:** Class 1–12 chapter-wise curriculum, complete Maths/Physics/Chemistry/Biology labs, AI-powered tutor, validated adaptive mastery, full teacher dashboard, real school pilot and public launch. “M28 engineering complete” does **not** mean product complete. [Official completion criteria](docs/FULL_PRODUCT_SCOPE_AND_DONE.md) · [100-task roadmap (2 × 50)](docs/MASTER_EXECUTION_PLAN.md).
 
 
-**Updated 23 November 2026.** Educational practice and exploration prototype for staging, **not** an expert-validated assessment, public child-ready service, or deployed Hostinger website.
+**Engineering baseline M28; product rebaseline 24 November 2026.** Educational practice and exploration prototype for staging, **not** an expert-validated assessment, public child-ready service, or deployed Hostinger website.
 
 ## Implemented in the static build
 

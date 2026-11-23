@@ -3,7 +3,7 @@
 > **M29 REBASELINE — 2026-11-24:** The old M1–M28 entries below are **historical engineering milestones and prototypes**, not a complete Class 1–12 smart-learning ecosystem. The current coordinated delivery roadmap is [100 new concrete tasks in two 50-item batches](MASTER_EXECUTION_PLAN.md), with [full-product completion criteria](FULL_PRODUCT_SCOPE_AND_DONE.md). No dates, public child launch or guarantees of complete board/edition syllabus coverage are implied by those 100 tasks.
 
 
-**Planning date:** 2026-11-23. **Version:** roadmap-v2 (M20 operations update). Proposed future milestones are **plans**, not deployed features or deadlines.
+**Planning rebaseline:** 2026-11-24, **M29 scope and 100-task roadmap**. Historical M1–M28 entries below describe prototypes only; they are not the current full-product delivery plan. Future tasks are **plans**, not deployed features or deadlines.
 
 ## Strategy: Discover → Develop → Decide
 - **Discover (prototype exists):** game-based exploration and evidence-based Proud Today moments.
