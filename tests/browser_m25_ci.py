@@ -90,6 +90,38 @@ def run():
                 check(not third_party, 'Unexpected third-party requests: ' + str(third_party))
                 report['checks'].append('Local opt-in, one practice record and clear-all privacy reset; no third-party calls')
 
+                # M28: real two-tab shared-device privacy. Never share responses between tabs.
+                another = desktop.new_page()
+                another.goto(origin + '/', wait_until='load')
+                another.locator('#digital-choices button').first.click()
+                check(another.evaluate("window.AIFS_DIGITAL_BRIDGE.getHistory().digitalAttempts.length") == 1,
+                      'Second tab practice did not record')
+                page.locator('#clear-progress').click()
+                another.wait_for_function("window.AIFS_DIGITAL_BRIDGE.getHistory().digitalAttempts.length === 0")
+                check(another.evaluate('sessionStorage.length === 0'),
+                      'Cross-tab clear left prior tab session history')
+                check(not another.locator('#remember').is_checked(),
+                      'Cross-tab reset accidentally kept remember enabled')
+                report['checks'].append('M28 default session history clears across same-origin open tabs')
+
+                page.locator('#remember').check()
+                page.locator('#digital-topics button').nth(1).click()
+                page.locator('#digital-choices button').first.click()
+                check(page.evaluate("window.AIFS_DIGITAL_BRIDGE.getHistory().digitalAttempts.length") == 1,
+                      'Opt-in tab did not record new attempt')
+                follower = desktop.new_page()
+                follower.goto(origin + '/', wait_until='load')
+                check(follower.evaluate("window.AIFS_DIGITAL_BRIDGE.getHistory().digitalAttempts.length") == 1,
+                      'Opt-in persisted attempt was not loaded in fresh same-browser tab')
+                follower.locator('#clear-progress').click()
+                page.wait_for_function("window.AIFS_DIGITAL_BRIDGE.getHistory().digitalAttempts.length === 0")
+                check(page.evaluate('localStorage.length === 0'), 'Cross-tab opt-in history survived clear')
+                check(not page.locator('#remember').is_checked(), 'Cross-tab opt-in remained active')
+                check_no_runtime_errors(page, errors)
+                follower.close()
+                another.close()
+                report['checks'].append('M28 opt-in persisted history and peer-tab clear with no synced learner payload')
+
                 # Keyboard: M24's focusable skip destination tested through real browser navigation.
                 keyboard_page = desktop.new_page()
                 keyboard_page.goto(origin + '/', wait_until='load')
