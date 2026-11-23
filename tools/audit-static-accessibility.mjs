@@ -22,7 +22,6 @@ export function auditStaticAccessibility(root=ROOT){
   if(!lang||!['en','hi'].includes(lang))fail('missing or unsupported HTML lang');
   const main=tags(html,'main');
   if(main.length!==1)fail('expected exactly one main landmark; found '+main.length);
-  const ids=tags(html,'[a-z]+'); // replaced below: scan arbitrary tags for id attributes
   const allIds=[...html.matchAll(/\bid=["']([^"']+)["']/gi)].map(x=>x[1]);
   const seen=new Set();
   for(const id of allIds){if(seen.has(id))fail('duplicate id '+id);seen.add(id)}
