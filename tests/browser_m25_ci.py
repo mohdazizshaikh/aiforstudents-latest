@@ -75,6 +75,41 @@ def run():
                 page.locator('#lang').select_option('en')
                 report['checks'].append('Hindi language updates document, Virtual Lab and Digital Skills')
 
+                # M30: real native-ESM Maths Workshop with keyboard/button alternatives.
+                check(page.locator('#math-workshop-tabs button').count() == 3,
+                      'Maths Workshop three original activity tabs missing')
+                for _ in range(3):
+                    page.locator('[data-workshop-action="line:dec"]').click()
+                check(page.locator('#math-workshop-number').inner_text() == '-3',
+                      'Maths number line position incorrect')
+                page.locator('#math-workshop-check').click()
+                check('Goal reached' in page.locator('#math-workshop-feedback').inner_text(),
+                      'Number-line expected target not recognized')
+                page.locator('#lang').select_option('hi')
+                check('गणित' in page.locator('#math-workshop-title').inner_text(),
+                      'Maths Workshop did not localize to Hindi')
+                page.locator('#lang').select_option('en')
+                report['checks'].append('M30 number line and Hindi Maths Workshop with accessible numeric state')
+
+                page.locator('[data-workshop-action="mode:rectangle"]').click()
+                page.locator('[data-workshop-action="width:inc"]').click()
+                page.locator('[data-workshop-action="width:inc"]').click()
+                page.locator('[data-workshop-action="height:inc"]').click()
+                page.locator('#math-workshop-check').click()
+                rect = page.locator('#math-workshop-feedback').inner_text()
+                check('area = 12' in rect and 'perimeter = 14' in rect,
+                      'Rectangle area and perimeter feedback incorrect: ' + rect)
+                page.locator('[data-workshop-action="mode:data-table"]').click()
+                for _ in range(3):
+                    page.locator('[data-workshop-action="a:inc"]').click()
+                page.locator('[data-workshop-action="b:inc"]').click()
+                check(page.locator('#math-workshop-controls table tbody tr').count() == 2,
+                      'Accessible two-row data table missing')
+                page.locator('#math-workshop-check').click()
+                check('Goal reached' in page.locator('#math-workshop-feedback').inner_text(),
+                      'Data-table 4 minus 2 goal not recognized')
+                report['checks'].append('M30 geometry and two-row data table, no dragging or network data')
+
                 page.locator('#remember').check()
                 check(page.evaluate('localStorage.length > 0'), 'Opt-in local history is not persistent')
                 page.locator('#digital-choices button').first.click()
@@ -194,6 +229,8 @@ def run():
                 phone.goto(origin + '/', wait_until='load')
                 check(phone.locator('#game-grid button').count() == 5,
                       'Offline native learner modules not bootstrapped from cache')
+                check(phone.locator('#math-workshop-tabs button').count() == 3,
+                      'Offline Maths Workshop failed to bootstrap')
                 check_no_runtime_errors(phone, mobile_errors)
                 report['checks'].append('M30 SW installs 40+ assets and loads Studio guide + learner app offline')
                 mobile.close()
