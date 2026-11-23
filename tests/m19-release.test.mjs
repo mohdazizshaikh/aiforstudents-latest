@@ -2,7 +2,7 @@ import test from 'node:test';import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import {gzipSync} from 'node:zlib';
+import {gzipSync,gunzipSync} from 'node:zlib';
 import {releaseAudit,auditContentQueues,auditStatic} from '../tools/release-preflight.mjs';
 import {verifyLive,validateOrigin,TARGETS} from '../tools/check-live-staging.mjs';
 const root=new URL('../',import.meta.url);
@@ -19,7 +19,8 @@ test('M19 review inventory is counted without inventing approvals',()=>{
 test('M19 GitHub checkout archived game review queue is counted without pretending approvals',()=>{
  const tmp=fs.mkdtempSync(path.join(os.tmpdir(),'aifs-m19-'));try{
   fs.mkdirSync(path.join(tmp,'docs'));
-  const game=fs.readFileSync(new URL('CONTENT_REVIEW_QUEUE.jsonl',root));
+  const rawPath=new URL('CONTENT_REVIEW_QUEUE.jsonl',root),archivePath=new URL('docs/CONTENT_REVIEW_QUEUE.jsonl.gz',root);
+  const game=fs.existsSync(rawPath)?fs.readFileSync(rawPath):gunzipSync(fs.readFileSync(archivePath));
   fs.writeFileSync(path.join(tmp,'docs','CONTENT_REVIEW_QUEUE.jsonl.gz'),gzipSync(game));
   for(const f of ['LAB_CONTENT_REVIEW_QUEUE.jsonl','STUDIO_CONTENT_REVIEW_QUEUE.jsonl','EXPERIMENT_CONTENT_REVIEW_QUEUE.jsonl','CLASSROOM_CONTENT_REVIEW_QUEUE.jsonl','DIGITAL_CONTENT_REVIEW_QUEUE.jsonl'])fs.copyFileSync(new URL(f,root),path.join(tmp,f));
   const r=auditContentQueues(tmp);assert.deepEqual(r.problems,[]);assert.equal(r.total,3282);assert.equal(r.pending,3282);
