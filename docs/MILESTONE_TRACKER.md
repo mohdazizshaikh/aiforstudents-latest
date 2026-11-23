@@ -99,3 +99,8 @@ See [M23 review evidence](M23_REVIEW_EVIDENCE.md). No signed reviews exist merel
 | M24-04 | **CODED:** Exclude local reviewer evidence/secrets from source ZIP, CI archive privacy assertion | Operator verified secure backup/deploy/data-handling process |
 
 [Engineering evidence](../M24_QA_STATUS.md). All original GATE-01/02/03/04/05 remain OPEN; public launch **not approved**.
+
+### Verified M23–M24 main-branch update (2026-11-23)
+- **M23:** PR #9 merged; no independent reviewer identity/qualification verification and no human signoff. **3,282/3,282 recorded content review items still pending**.
+- **M24:** PR #10 merged, code commit `a236544724f7fc1ced19fc1111798374dfcfbfea`; [main CI passed](https://github.com/mohdazizshaikh/aiforstudents-latest/actions/runs/45180325206). 125 Node tests, 23-page static a11y structural audit, staging/security checks, archive privacy guard and 7-day noindex Hostinger ZIP artifact passed in CI.
+- **GATE-01/02/03/04/05 unchanged:** Actual authorized Hostinger deployment, human subject/Hindi review, real Android/TalkBack/VoiceOver, safeguarding/legal ownership and ethical teacher pilot are not complete. Public indexing stays **BLOCKED**.
