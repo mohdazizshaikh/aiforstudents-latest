@@ -42,7 +42,7 @@ test('M30 workplan validator rejects fake signoff, absent evidence, wrong count 
 });
 test('M30 dashboard and status remain source-backed without learner info or live-host claims',()=>{
  const dashboard=load('docs/B1_PROGRESS_DASHBOARD.md');
- assert.match(dashboard,/25 \| 50 \| 25/);
+ assert.match(dashboard,/35 \| 50 \| 15/);
  assert.match(dashboard,/3,292 pending subject\/Hindi reviews/);
  assert.match(dashboard,/NOT AUTHENTICATED/);
  assert.match(dashboard,/publicReleaseApproved: false/);
