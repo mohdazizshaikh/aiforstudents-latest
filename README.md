@@ -1,4 +1,4 @@
-# AI for Students — M12-B + M13 consolidated private staging prototype
+# AI for Students — M18 first pilot private staging prototype
 
 **Updated 23 November 2026.** Educational practice and exploration prototype for staging, **not** an expert-validated assessment, public child-ready service, or deployed Hostinger website.
 
@@ -68,7 +68,7 @@ Both link out to official NCERT ePathshala/DIKSHA resource homepages for indepen
 
 `studioAttempts` is added to the existing local-first progress schema; default sessionStorage, opt-in localStorage and Clear local history cover these new records. An activity-backed Proud Today item appears only after a check is submitted. Completing both steps is **not proof of mastery**. No user account, remote student data or AI API is involved.
 
-New checks: `tests/studio.test.mjs` and isolated Chromium `tests/browser_m15.py`; the latter tests inlined equivalent JS, **not a live HTTP/Hostinger PWA**. See `M15_QA_STATUS.md` and `STUDIO_CONTENT_REVIEW_QUEUE.jsonl`. M16 virtual laboratory and M17/M18 remain planned.
+New checks: `tests/studio.test.mjs` and isolated Chromium `tests/browser_m15.py`; the latter tests inlined equivalent JS, **not a live HTTP/Hostinger PWA**. See `M15_QA_STATUS.md` and `STUDIO_CONTENT_REVIEW_QUEUE.jsonl`. Later milestones M16–M18 now have first prototype implementations; see sections below.
 
 ## M16 — Virtual Experiment Lab (first coding increment, 2026-11-23)
 
@@ -76,7 +76,7 @@ Two new original mobile-first interactive simulations under `#experiment-lab`: c
 
 `experimentAttempts` joins the existing locally controlled history and optional persistence; it is cleared by the same Clear local history control. `node --test tests/*.test.mjs` runs 77 Node tests including the M16 engine. `python3 tests/browser_m16.py` runs the isolated Chromium smoke (Playwright installed on developer machine). `node tools/verify-static-release.mjs` checks static paths. The public guide is `/virtual-experiment-lab/`. See `M16_QA_STATUS.md` and `EXPERIMENT_CONTENT_REVIEW_QUEUE.jsonl`.
 
-**Still pending:** qualified educator/Hindi review, exact curriculum/chapter mapping, real Android/Hostinger HTTPS accessibility checks, child-safety approval and M17/M18 development. Private staging defaults (`noindex,nofollow`) remain enabled.
+**Still pending:** qualified educator/Hindi review, exact curriculum/chapter mapping, real Android/Hostinger HTTPS accessibility checks, child-safety approval and independent review of later M17/M18 prototypes. Private staging defaults (`noindex,nofollow`) remain enabled.
 
 
 ## M17 — Smart Classroom & Teacher Kit (first implementation)
@@ -85,7 +85,7 @@ Two original 5-step teacher-led lesson plans: Fraction Shares and Two Switches /
 
 **Code QA:** 84/84 automated Node tests, isolated Chromium M15/M16/M17 UI smoke, 22 HTML pages, 19 JavaScript modules, no broken static imports/cache targets. M17 has ten unreviewed bilingual facilitation-step records in `CLASSROOM_CONTENT_REVIEW_QUEUE.jsonl` (not scored learner questions); review of worksheets and guides is also pending. Use `node tools/export-classroom-review-queue.mjs` to regenerate the review queue. See `M17_QA_STATUS.md`.
 
-**Release boundary:** A draft classroom toolkit is not a teacher trial, school partnership or approved curriculum. No public child-oriented launch or actual Hostinger HTTPS/device/accessibility approval. M18 AI & Digital Skills is still planned, not implemented.
+**Release boundary:** A draft classroom toolkit is not a teacher trial, school partnership or approved curriculum. No public child-oriented launch or actual Hostinger HTTPS/device/accessibility approval. M18 AI & Digital Skills first pilot is now coded; see the current M18 section below.
 
 ## M18 — AI & Digital Skills Lab first private staging pilot (2026-11-23)
 

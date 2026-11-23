@@ -49,7 +49,7 @@ Node tests validate deterministic logic and structural properties. The isolated 
 | Local progress and clear history | IMPLEMENTED; automated/isolated checks | Shared-device privacy field test |
 | External official reference links | LINK-ONLY HOMEPAGES | Exact chapter matching, license, editorial checks |
 | Class/board syllabus alignment | **UNVERIFIED** | Current official edition/chapter review |
-| Virtual experiments / teacher kit / AI literacy | **M16–M18 PLANNED** | Implement and independently review |
+| Virtual experiments / teacher kit / AI literacy | **M16–M18 FIRST PILOTS CODED; NOT APPROVED** | Independent review, accessibility, hosting and safeguards still pending |
 | M15 public launch approval | **NOT GRANTED** | All previously listed education, safety, hosting and accessibility gates |
 
 ## M16 virtual experiment pilot gates — 2026-11-23
@@ -62,7 +62,7 @@ Node tests validate deterministic logic and structural properties. The isolated 
 | Privacy and local clear integration | CODED + mocked-browser test | Shared-device and production policy review |
 | Hostinger private staging | NOT DEPLOYED | Real HTTPS/module/service worker tests, backup/rollback |
 | Public child-oriented release | NOT APPROVED | Child legal/safeguarding and education approvals |
-| M17/M18 | PLANNED, NOT CODED | Separate implementation and QA |
+| M17/M18 | **FIRST PILOTS CODED** | Independent educator/child-safety and field QA still pending |
 
 See `M16_QA_STATUS.md`, `EXPERIMENT_CONTENT_REVIEW_QUEUE.jsonl`. No project test may override a human release gate.
 
@@ -78,7 +78,7 @@ See `M16_QA_STATUS.md`, `EXPERIMENT_CONTENT_REVIEW_QUEUE.jsonl`. No project test
 | Classroom trial | NOT PERFORMED | School authorization, child-safety/consent rules, responsible teacher and actual observational evidence |
 | Public child release | NOT APPROVED | Existing release gates (including 3,200 games + 32 Study Lab + 4 M15 + 4 M16 reviews) remain open |
 
-M18 AI literacy and online child social features remain unimplemented.
+M18 offline AI literacy pilot is now coded. Online child social features remain unimplemented.
 
 ## M18 — AI & Digital Skills first code pilot (2026-11-23)
 
