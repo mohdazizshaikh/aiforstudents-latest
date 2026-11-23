@@ -1,10 +1,10 @@
 # M29 — 100-work-item master execution plan (2 × 50)
 
-**M31 implementation update, 2026-11-24:** **B1 35/50 engineering/design tasks verified; B2 0/50.** Ten additional B1 tasks now have source/test evidence: seven safe, draft Science Concept models, reusable five-stage lesson flow, cross-module Hindi/English completeness audit, and representative keyboard/nonvisual browser sampling. Previous five M29 governance foundations and M30 Maths work remain. **Overall product remains PARTIAL WORKING PROTOTYPE, NOT COMPLETE. Public child-facing launch BLOCKED.** Qualified education/translation/field approval is not established by tests.
+**M32 implementation update, 2026-11-24:** **B1 46/50 bounded engineering/design tasks source/test verified; B2 0/50.** Eleven more B1 engineering tasks include the source-backed draft-only hint guide, optional practice planner, fraction five-step shell, teacher navigation/role rotation and print-only learner cards. **Not an AI tutor, educational review, mastery system or public release.** Ten additional B1 tasks now have source/test evidence: seven safe, draft Science Concept models, reusable five-stage lesson flow, cross-module Hindi/English completeness audit, and representative keyboard/nonvisual browser sampling. Previous five M29 governance foundations and M30 Maths work remain. **Overall product remains PARTIAL WORKING PROTOTYPE, NOT COMPLETE. Public child-facing launch BLOCKED.** Qualified education/translation/field approval is not established by tests.
 
 ## Fast batch execution rules
 
-- **B1 (50 tasks):** first five entries in each of ten workstreams. Lock scope, reusable foundations, representative safe labs and initial QA. **Current completion: 35/50**.
+- **B1 (50 tasks):** first five entries in each of ten workstreams. Lock scope, reusable foundations, representative safe labs and initial QA. **Current completion: 46/50**.
 - **B2 (50 tasks):** last five entries in each workstream. Broader Maths/Physics/Chemistry/Biology, governed AI/adaptive features, teacher depth, source and field reviews. **Current completion: 0/50**.
 - **Efficiency:** plan/triage each 50-task batch in one coordinated work cycle instead of requesting tiny steps. Run independent streams concurrently, use small coherent feature PRs rather than one unreviewable giant merge, run tests at each ~10–15-task checkpoint and consolidate progress into a single verified batch report.
 - **Non-negotiable:** a human review, real school trial, live Hostinger verification or legal approval remains **BLOCKED_EXTERNAL** unless a real authorized reviewer/operator supplies evidence. A successful Node/Chromium test or a prepared template is not that evidence.
@@ -73,7 +73,7 @@
 | ID | Batch | Task | Acceptance evidence | Status |
 |---|---|---|---|---|
 | FP-031 | B1 | Map Grade 1–12 maths learning outcomes | Explicit topic coverage matrix and gaps | DONE_VERIFIED |
-| FP-032 | B1 | Migrate fractions to reusable lab framework | Correct equivalence and accessible input tests | NOT_STARTED |
+| FP-032 | B1 | Migrate fractions to reusable lab framework | Correct equivalence and accessible input tests | DONE_VERIFIED |
 | FP-033 | B1 | Build place-value and number-line manipulator | Deterministic arithmetic and audio-free text state | DONE_VERIFIED |
 | FP-034 | B1 | Build geometry/measurement manipulator | Units, area/perimeter and keyboard controls tested | DONE_VERIFIED |
 | FP-035 | B1 | Build accessible charts/data interpretation lab | Equivalent data table and verified answers | DONE_VERIFIED |
@@ -125,9 +125,9 @@
 |---|---|---|---|---|
 | FP-061 | B1 | Decide zero-paid-API tutoring architecture | Core learning stays free and usable offline | DONE_VERIFIED |
 | FP-062 | B1 | Specify reviewed-content hint contract | No general unmoderated child chatbot | BLOCKED_EXTERNAL |
-| FP-063 | B1 | Build deterministic local hint prototype | Correct source-backed explanations and safe fallback | NOT_STARTED |
-| FP-064 | B1 | Add attribution and uncertainty display | Unknown answer not fabricated | NOT_STARTED |
-| FP-065 | B1 | Define refusal/sensitive disclosure policy | Unsafe prompts lead to age-appropriate adult guidance | NOT_STARTED |
+| FP-063 | B1 | Build deterministic local hint prototype | Correct source-backed explanations and safe fallback | DONE_VERIFIED |
+| FP-064 | B1 | Add attribution and uncertainty display | Unknown answer not fabricated | DONE_VERIFIED |
+| FP-065 | B1 | Define refusal/sensitive disclosure policy | Unsafe prompts lead to age-appropriate adult guidance | DONE_VERIFIED |
 | FP-066 | B2 | Document optional generative tutor risk design | Feature OFF until real safeguards and cost approval | NOT_STARTED |
 | FP-067 | B2 | Model privacy, latency and AI inference budget | No undisclosed paid dependency | NOT_STARTED |
 | FP-068 | B2 | Prototype approved-source retrieval flow | No unauthorized copyrighted content or unsourced replies | NOT_STARTED |
@@ -141,10 +141,10 @@
 | ID | Batch | Task | Acceptance evidence | Status |
 |---|---|---|---|---|
 | FP-071 | B1 | Design minimal on-device learning event schema | No child identity or cloud tracking by default | DONE_VERIFIED |
-| FP-072 | B1 | Prevent unsupported mastery claims | Recommendations described as practice, not intelligence | NOT_STARTED |
-| FP-073 | B1 | Design optional spaced-practice schedule | No pressure streak or penalty | NOT_STARTED |
-| FP-074 | B1 | Create explainable next-task suggestions | Learner can see reason and decline | NOT_STARTED |
-| FP-075 | B1 | Add explicit difficulty and language override | No inferred fixed aptitude label | NOT_STARTED |
+| FP-072 | B1 | Prevent unsupported mastery claims | Recommendations described as practice, not intelligence | DONE_VERIFIED |
+| FP-073 | B1 | Design optional spaced-practice schedule | No pressure streak or penalty | DONE_VERIFIED |
+| FP-074 | B1 | Create explainable next-task suggestions | Learner can see reason and decline | DONE_VERIFIED |
+| FP-075 | B1 | Add explicit difficulty and language override | No inferred fixed aptitude label | DONE_VERIFIED |
 | FP-076 | B2 | Write adaptive mastery calibration protocol | Evidence thresholds documented; not yet validated | NOT_STARTED |
 | FP-077 | B2 | Specify anonymous aggregate classroom view | No individual minor scores or rosters | NOT_STARTED |
 | FP-078 | B2 | Define safe shared-device session boundaries | Cannot identify children solely through a browser | NOT_STARTED |
@@ -158,9 +158,9 @@
 | ID | Batch | Task | Acceptance evidence | Status |
 |---|---|---|---|---|
 | FP-081 | B1 | Define no-roster teacher dashboard MVP | Local lesson-planning only; no student surveillance | DONE_VERIFIED |
-| FP-082 | B1 | Enhance projector/teacher navigation | Large controls, focus, Hindi and mobile support | NOT_STARTED |
-| FP-083 | B1 | Improve anonymous collaborative role rotation | Same-device group activity without child names | NOT_STARTED |
-| FP-084 | B1 | Build reusable teacher answer/worksheet cards | Printable answers hidden from learner sheets | NOT_STARTED |
+| FP-082 | B1 | Enhance projector/teacher navigation | Large controls, focus, Hindi and mobile support | DONE_VERIFIED |
+| FP-083 | B1 | Improve anonymous collaborative role rotation | Same-device group activity without child names | DONE_VERIFIED |
+| FP-084 | B1 | Build reusable teacher answer/worksheet cards | Printable answers hidden from learner sheets | DONE_VERIFIED |
 | FP-085 | B1 | Review existing fraction/circuit teacher plans | 2 baseline prototypes remain unapproved until reviewed | BLOCKED_EXTERNAL |
 | FP-086 | B2 | Build local teacher lesson organizer | Select/queue/reset without cloud accounts | NOT_STARTED |
 | FP-087 | B2 | Create licensed offline assignment packs | No tracking links or identifiable learner export | NOT_STARTED |
@@ -201,3 +201,7 @@ Pending evidence: **3,282 educational content records**, six human safety-operat
 ### M31 Science Concept Lab checkpoint (2026-11-24)
 
 B1 now **35/50 DONE_VERIFIED in strictly scoped engineering/design evidence**, including seven new conceptual Physics/Chemistry/Biology demos, one reusable five-stage lesson UI, cross-module Hindi/English presence validator and keyboard/nonvisual browser sampling. **Four B1 external/human tasks remain BLOCKED_EXTERNAL**, including expert-reviewed scientific answer fixtures. The new seven concepts bring the pending educational review inventory from 3,285 to **3,292**. See [B1 dashboard](B1_PROGRESS_DASHBOARD.md) and [M31 QA](M31_SCIENCE_LABS.md). Completion of Class 1–12 Science, validated AI tutor, teacher dashboard or child-facing launch is explicitly **NOT CLAIMED**.
+
+### M32 B1 checkpoint (2026-11-24)
+
+**46/50 B1 scoped engineering/design task outputs verified**, with exactly four external real-human dependencies **BLOCKED_EXTERNAL (not done)**. One fraction five-stage shell reuses existing original Studio content; new local hint UI offers only original **UNREVIEWED** source-backed hints, never general AI chat or validated teaching. Optional paper review dates, learner-declinable next-practice suggestions, difficulty/language overrides and new A4 learner-only teacher cards cannot infer ability, persist child identity or imply subject approvals. B2 remains 0/50 at this checkpoint. Pending qualified educational reviews still **3,292**. [M32 QA](M32_PRACTICE_TEACHER_QA.md) and [B1 dashboard](B1_PROGRESS_DASHBOARD.md).
