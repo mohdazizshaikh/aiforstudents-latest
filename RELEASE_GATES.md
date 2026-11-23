@@ -106,3 +106,6 @@ No digital practice result claims aptitude, grade or trustworthy fact-checking p
 | Child protection, accessibility, hosting rollback | Checklist and explicit independent signoff gates recorded | **PENDING** |
 
 `node tools/release-preflight.mjs --public` fails deliberately even if engineering tests pass. Only human authorization and actual evidence can change public status. No online social features were added.
+## M20 reviewer operations — 2026-11-23
+
+A deterministic offline CSV/JSON review packet exporter (source file + line and bilingual draft fields) is provided for qualified reviewers; it **never sets a review status to approved**. The six original queues remain unreviewed until real reviewers record item/version-specific evidence. This improves the worklist, **not** public launch readiness. Actual Hostinger HTTPS, low-end Android/assistive technology and child privacy/legal/safeguarding gates remain open. See [M20 procedure](docs/M20_REVIEW_OPERATIONS.md).
