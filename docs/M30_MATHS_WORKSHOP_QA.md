@@ -21,3 +21,5 @@ New `MATHS_CONTENT_REVIEW_QUEUE.jsonl` has **3 pending draft records** with sour
 - [B1 curriculum and architecture contracts](B1_FOUNDATION_CONTRACTS.md); [Master 100-task tracker](MASTER_EXECUTION_PLAN.md).
 
 **Blocked:** full grade-wise Maths/science library, AI tutor, validated adaptive mastery, complete teacher dashboard, 3,285 human educational reviews, safeguarding/legal, real Hostinger and independent devices/school pilots.
+
+**Version pin:** service-worker cache `aifs-discovery-m30-2026-11-24`, private Hostinger ZIP `aiforstudents_hostinger_staging_m30.zip`. Both are **build artifacts only**, not proof of actual deployment.
