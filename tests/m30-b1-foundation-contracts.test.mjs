@@ -47,7 +47,7 @@ test('M30 static source remains inside first explicit low-bandwidth asset size b
  for(const file of jsFiles)assert.ok(statSync(new URL('../assets/'+file,import.meta.url)).size<160*1024,file+' exceeds JS module budget');
  const staticDirectories=['assets','games','privacy','for-parents','methodology','accessibility','future-explorer','grow-together','study-lab','smart-learning-studio','virtual-experiment-lab','teacher-kit','ai-digital-skills','hi'];
  let bytes=0;
- function walk(p){for(const entry of readdirSync(p,{withFileTypes:true})){const full=path.join(p,entry.name);if(entry.isDirectory())walk(full);else if(entry.isFile()&&/\\.(?:js|css|html|svg|webmanifest)$/.test(entry.name))bytes+=statSync(full).size}}
+ function walk(p){for(const entry of readdirSync(p,{withFileTypes:true})){const full=path.join(p,entry.name);if(entry.isDirectory())walk(full);else if(entry.isFile()&&/\.(?:js|css|html|svg|webmanifest)$/.test(entry.name))bytes+=statSync(full).size}}
  for(const directory of staticDirectories)walk(new URL('../'+directory+'/',import.meta.url).pathname);
  for(const name of ['index.html','service-worker.js','manifest.webmanifest','robots.txt','.htaccess'])bytes+=statSync(new URL('../'+name,import.meta.url)).size;
  assert.ok(bytes<2*1024*1024,'Static hosting bytes exceed 2MiB budget: '+bytes);

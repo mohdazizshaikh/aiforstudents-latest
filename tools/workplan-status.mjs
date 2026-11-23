@@ -8,7 +8,7 @@ export const PLAN=new URL('../docs/MASTER_100_WORK_ITEMS.json',import.meta.url);
 export const DASHBOARD=new URL('../docs/B1_PROGRESS_DASHBOARD.md',import.meta.url);
 export const STATES=Object.freeze(['NOT_STARTED','IN_PROGRESS','CODE_COMPLETE_TESTED','REVIEW_PENDING','BLOCKED_EXTERNAL','DONE_VERIFIED']);
 const validEvidence=e=>e&&typeof e==='object'&&['source','test'].includes(e.kind)&&typeof e.path==='string'&&
- /^(?:docs|tests|tools|assets)\/[A-Za-z0-9_./-]+$/.test(e.path)&&!e.path.includes('..');
+ /^(?:(?:docs|tests|tools|assets)\/[A-Za-z0-9_./-]+|index\.html|service-worker\.js)$/.test(e.path)&&!e.path.includes('..');
 export function auditWorkPlan(p){
  const errors=[];
  if(p?.schema!=='aifs-full-product-100-work-v1'||!Array.isArray(p.items)||p.items.length!==100)
