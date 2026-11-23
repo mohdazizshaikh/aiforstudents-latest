@@ -46,12 +46,12 @@ jobs:
       - name: Ensure no private reviewer evidence or secrets in archives
         run: python3 tools/check-package-privacy.py
       - name: Prepare verified staging ZIP inside workflow workspace
-        run: cp ../aiforstudents_hostinger_staging_m24.zip ./aiforstudents_hostinger_staging_m24.zip
+        run: cp ../aiforstudents_hostinger_staging_m28.zip ./aiforstudents_hostinger_staging_m28.zip
       - name: Attach verified private-staging-only Hostinger ZIP (never auto-deploy)
         uses: actions/upload-artifact@v4
         with:
-          name: m24-hostinger-private-staging-noindex
-          path: aiforstudents_hostinger_staging_m24.zip
+          name: m28-hostinger-private-staging-noindex
+          path: aiforstudents_hostinger_staging_m28.zip
           if-no-files-found: error
           retention-days: 7
 
