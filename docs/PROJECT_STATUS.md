@@ -1,6 +1,6 @@
 # Project Status Dashboard — AI for Students
 
-**As of 2026-11-23** | **M19 staging baseline; M20 review operations merged; M21 content integrity in development** | **Public release: NOT APPROVED**
+**As of 2026-11-23** | **M19 staging baseline; M20–M21 engineering merged; M22 full staging audit in development** | **Public release: NOT APPROVED**
 
 ## Working today in the private prototype
 - 40 solo game modules in 8 categories; 3 same-device Grow Together modes.
@@ -52,3 +52,6 @@ A read-only bilingual review worklist exporter and automated checks are being ad
 
 ### M21 — reviewer source integrity, 2026-11-23
 Source-backed Studio/Experiment bilingual prompts, teaching hints and version-sensitive content hashes added to the M20 worklist. This improves ability for real reviewers to inspect draft educational material, **not** the documented approval count. See [M21 review integrity](M21_REVIEW_INTEGRITY.md). Hostinger and school/child approval work remains open.
+
+### M22 staging verification upgrade — 2026-11-23
+A full-static-manifest read-only HTTPS audit mode is coded for an authorized restricted site. It checks the project-declared paths, MIME/security response requirements and versioned service worker; CI exercises mocks only. **No actual Hostinger staging evidence or child-oriented public approval**. [M22 details](M22_FULL_STAGING_AUDIT.md).
