@@ -38,3 +38,6 @@ The following require human testing on real devices and school contexts: keyboar
 [Milestone tracker](docs/MILESTONE_TRACKER.md) · [Staging checklist](STAGING_OPERATOR_CHECKLIST.md) · [A11y issue](https://github.com/mohdazizshaikh/aiforstudents-latest/issues/5) · [Release gates](RELEASE_GATES.md).
 
 **Verdict:** M24 source/code/CI checks for private staging only; **public child-oriented launch remains NOT APPROVED**.
+
+## CI staging ZIP handoff (not deployment)
+The pipeline first runs source/static tests and ZIP privacy checks, then attaches the **M24 Hostinger private-staging/noindex ZIP** as a GitHub Actions artifact with **7-day retention**. An authorized operator must download, inspect, back up the intended restricted staging site and deploy manually; the artifact is **not** a live site, does not grant authentication and must never be treated as launch approval. GitHub Actions artifacts on a public repository may be accessible to people with GitHub access; no reviewer decisions or secrets should be present.
