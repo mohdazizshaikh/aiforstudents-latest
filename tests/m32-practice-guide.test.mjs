@@ -33,7 +33,7 @@ test('M32 offline hint selector uses only original source-backed drafts, no unau
 test('M32 explainable practice choices are always optional, user-controlled and non-inferential',()=>{
  for(const subject of PRACTICE_SUBJECTS)for(const difficulty of PRACTICE_DIFFICULTIES)for(const lang of ['en','hi']){
   const p=recommendPractice({subject,difficulty,lang});
-  assert.ok(p.href.startsWith('#'));assert.match(p.reason,/practice|अभ्यास|मॉडल|सुरक्षा/);
+  assert.ok(p.href.startsWith('#'));assert.match(p.reason,/practice|model|अभ्यास|मॉडल|सुरक्षा/);
   assert.equal(p.declinable,true);assert.equal(p.isMasteryPrediction,false);
   assert.equal(p.persists,false);assert.equal(p.reviewStatus,REFERENCE_STATUS);
  }

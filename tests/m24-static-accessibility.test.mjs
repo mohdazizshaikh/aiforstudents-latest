@@ -7,9 +7,9 @@ import {auditStaticAccessibility} from '../tools/audit-static-accessibility.mjs'
 
 const root=new URL('../',import.meta.url);
 const read=p=>readFileSync(new URL(p,root),'utf8');
-test('M24 all 23 static HTML pages have one main landmark, skip destination, HTML lang and unique IDs',()=>{
+test('M24 all 24 static HTML pages have one main landmark, skip destination, HTML lang and unique IDs',()=>{
  const r=auditStaticAccessibility();
- assert.equal(r.htmlPages,23);
+ assert.equal(r.htmlPages,24);
  assert.deepEqual(r.problems,[]);
  assert.equal(r.structuralOnly,true);
  assert.match(r.approval,/No WCAG/);
