@@ -66,3 +66,6 @@ Four deterministic AI/digital-literacy strands and 32 original bilingual age-sca
 
 ### M20 — Review operations, not content approval (2026-11-23)
 **Next engineering increment:** A deterministic six-queue bilingual reviewer packet and tests to make the 3,282 outstanding human review records actionable. Prioritize a small, supervised, ethical educator pilot and verify actual official grade/edition references before expanding. **No automatic approval, no new child accounts, no live AI, no deployed site.** CI, human reviews and real staging evidence remain separate tasks. [M20 process](M20_REVIEW_OPERATIONS.md). Historical milestone appendices above reflect progress at their respective dates.
+
+### M23 review-evidence workflow (2026-11-23)
+**Engineering continuation:** a local-only template and structural validator for subject/Hindi decisions tied to M21's exact source content fingerprints. It prioritizes the 18 Studio/Experiment/Classroom record worklist while preserving a 3,282-record full scope option. **No educational or safeguarding approval is implied**; only authorized qualified reviewers can complete the actual human work. See [M23 guide](M23_REVIEW_EVIDENCE.md). Actual restricted Hostinger/Android school evidence remains a blocking dependency.
