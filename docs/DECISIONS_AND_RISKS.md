@@ -60,3 +60,7 @@ The offline AI literacy module is deterministic, avoids open-ended chatbot respo
 - **D-13:** Keep an offline, read-only exported *worklist* separate from any accountable human subject/Hindi signoff. Exporting or editing a CSV does not create launch approval.
 - **R-12:** Unqualified automatic approval or stale educational content could mislead children. Mitigate through item/version traceability, independent reviewer evidence, safe private pilot scope and public gate remaining blocked.
 - **Still TBD:** human curriculum/Hindi/safeguarding owners, real site/operator and tested devices.
+
+### M23 evidence handling and risk control — 2026-11-23
+- **D-14:** Only offline draft review-evidence templates are generated. Reviewer references are opaque internal IDs; sensitive reviewer credentials, student records, school rosters and completed review evidence must not be committed to the public repository. No online review portal or child login is created.
+- **R-13:** Editable JSON could falsely imply signoff, and outdated content hashes can hide stale reviews. Mitigation: strict source ID/version/digest validation, distinct subject/Hindi references, explicit unauthenticated-evidence caveat and a separate required human governance process. The offline tool does **not** authenticate a reviewer or approve release.

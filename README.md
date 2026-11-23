@@ -117,3 +117,7 @@ The offline `npm run review-packet` exporter now joins **Studio and Virtual Lab 
 ## M22 — Optional complete private-staging HTTPS audit
 
 After an authorized operator deploys the reviewed archive to an **access-restricted HTTPS staging origin**, run `node tools/check-live-staging.mjs https://YOUR-STAGING-ORIGIN --full`. It examines all source-declared static pages and service-worker paths (rather than only the 12 core targets) for response status, MIME and configured security headers without following external links. It does not deploy, send student data, store auth credentials or approve a public release. [Operator notes](docs/M22_FULL_STAGING_AUDIT.md).
+
+## M23 — Offline educator/Hindi review evidence (development increment)
+
+Run `npm run review-evidence:template` to generate a **local, ignored** `review-evidence/pilot-first.json` covering 18 Studio/Virtual Lab/Classroom items; then `npm run review-evidence:check` to validate schema and source hashes. Do not commit reviewer notes or identifying details. The tool refuses to overwrite existing evidence, rejects stale content or unauthorized release flags, and **never authenticates reviewers, signs off content, or approves public launch**. See [M23 guide](docs/M23_REVIEW_EVIDENCE.md). All 3,282 existing source review records remain unapproved until real qualified people assess them.

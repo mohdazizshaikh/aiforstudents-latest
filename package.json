@@ -7,6 +7,8 @@
     "test": "node --test tests/*.test.mjs",
     "preflight": "node tools/release-preflight.mjs",
     "serve": "python3 -m http.server 8000",
-    "review-packet": "node tools/build-review-packet.mjs --out review-packet"
+    "review-packet": "node tools/build-review-packet.mjs --out review-packet",
+    "review-evidence:template": "node tools/review-evidence.mjs --template review-evidence/pilot-first.json",
+    "review-evidence:check": "node tools/review-evidence.mjs --check review-evidence/pilot-first.json"
   }
 }

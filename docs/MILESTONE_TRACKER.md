@@ -80,3 +80,12 @@ When work starts or finishes, record: **date**, milestone/task ID, status, linke
 - **CODED:** optional `--full` local static-page, JS/CSS/SVG and service-worker-manifest HTTPS verifier; 12-target original core check remains. It checks MIME/security response headers and blocks unsafe origin/target paths; no credentials appear in results.
 - **AUTOMATED ONLY:** mocked CLI/HTTP regression tests; verify CI on the PR and merged main.
 - **PENDING:** actual Hostinger restricted staging origin, deployment, rollback, low-end Android, TalkBack/VoiceOver and human educational/child-safety signoff. See [M22](M22_FULL_STAGING_AUDIT.md) and [Issue #2](https://github.com/mohdazizshaikh/aiforstudents-latest/issues/2).
+
+### M23 — Review evidence schema and human handoff (2026-11-23)
+| Workstream | Engineering status | Independent dependency |
+|---|---|---|
+| M23 review-evidence template | **Code + tests added**; 18 prioritized Studio/Experiment/Classroom records and optional all-3,282 scope | Real qualified reviewers and school-appropriate curriculum mapping |
+| M23 source/version validation | **Code + tests added**; stale digests, duplicate/missing items, role consistency, malformed evidence and forbidden auto-approval fields rejected | Accountable identity/qualification verification beyond source code |
+| M23 rollout | Pending independent reviewer handoff and ethical field pilot | Hostinger actual staging, safeguarding, Android accessibility and approvals |
+
+See [M23 review evidence](M23_REVIEW_EVIDENCE.md). No signed reviews exist merely because the template passes CI; public launch remains **BLOCKED**.
