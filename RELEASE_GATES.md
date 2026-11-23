@@ -1,5 +1,8 @@
 # Release gates — M28 private prototype and M29 full-product plan
 
+> **M32 RELEASE VERDICT — 2026-11-24: NOT APPROVED FOR PUBLIC CHILD ACCESS.** B1 **46/50** source/test items, **4 BLOCKED_EXTERNAL**; B2 **2/50** governance tasks, **48 pending**. Unreviewed original source-backed hints must not be advertised as teacher-reviewed AI tutoring. Printable student cards hide teacher answer via CSS but real printer/A4/AT approval absent. **3,292 educational records**, six actual child safety/legal gates, authorized restricted Hostinger HTTPS, real low-end devices, qualified reviewers and school ethics pilot still pending. [M32 QA](docs/M32_PRACTICE_TEACHER_QA.md).
+
+
 > **M31 PRIVATE RELEASE STATE — 2026-11-24: NO PUBLIC CHILD-FACING LAUNCH APPROVAL.** B1 **35/50 engineering/design** source/test tasks, B2 **0/50**; seven new unreviewed science concept models. Total **3,292 outstanding subject/Hindi item reviews** and six human safeguarding operational gates remain pending. No real authorized restricted Hostinger staging, physical Android accessibility approval, school pilot or complete grade-wise science. M31 private ZIP is an *artifact*, not a deployed or approved product. [M31 QA](docs/M31_SCIENCE_LABS.md).
 
 

@@ -1,5 +1,8 @@
 # Implementation & Dependency Backlog
 
+> **M32 STATUS UPDATE — 2026-11-24:** B1 **46/50 evidence-backed scoped engineering tasks; 4 real expert-dependent items blocked.** B2 **2/50** governance verified (CI consistency and scope-change protocol), owner assignments externally blocked, commit-level traceability in progress. Old 0/100, 25/50 and 35/50 figures below are historical snapshots. Current qualified content reviews **3,292 pending**; actual all-grades curriculum, real AI tutor, adaptive mastery, teacher dashboard, real devices and authorized school pilot incomplete. [Current dashboard](B1_PROGRESS_DASHBOARD.md).
+
+
 > **M31 EXECUTION UPDATE — 2026-11-24:** [B1 progress dashboard](B1_PROGRESS_DASHBOARD.md): **35/50 engineering/design tasks evidenced, 15 B1 items remain** (including four external expert/human dependencies); B2 **0/50**. Seven more unreviewed science models add to **3,292 outstanding content reviews**. Previous M29 0/100 and M30 25/50 notes below are historical checkpoints only. The **full school platform remains incomplete**.
 
 

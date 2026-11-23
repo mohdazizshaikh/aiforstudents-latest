@@ -1,5 +1,8 @@
 # M29 — Full-product scope and completion criteria
 
+> **M32 FULL-PRODUCT STATUS — 2026-11-24:** New optional source-labelled offline guidance, 2/4 fractions five-stage shell and anonymous teacher print/navigation tools. **NOT** a real generative AI tutor, approved source-retrieval pipeline, learner mastery engine or grade 1–12 dashboard. B1 **46/50** engineering/design tasks source/test evidenced, four external expert gates remain; B2 **2/50** governance tasks evidenced. Qualified educational reviews **3,292 pending**, six safeguarding operational gates, actual private Hostinger/physical devices and school pilot unresolved. No public child release approved. [M32 QA](M32_PRACTICE_TEACHER_QA.md).
+
+
 > **M31 SCOPE ADDENDUM — 2026-11-24:** Added seven **original draft** Physics/Chemistry/Biology conceptual mini-labs (steady motion, ray reflection, energy accounting, matter states, change sorting, cell comparison and food-chain example), reusable Learn/Try/Play/Understand/Grow UI, and cross-module bilingual structural checks. B1 **35/50 engineering/design tasks verified**, not product completion. All **3,292** current educational records are pending qualified review. Comprehensive Class 1–12 Maths/Science, governed live AI tutor, validated adaptive mastery, full teacher dashboard and actual school/Hostinger operation **remain incomplete**. [M31 QA](M31_SCIENCE_LABS.md).
 
 

@@ -1,5 +1,8 @@
 # Hostinger Business — Private Staging Operator Checklist
 
+> **M32 STAGING BUILD (2026-11-24):** Matching source/ZIP names are `aiforstudents_hostinger_staging_m32.zip`, `aiforstudents_m32_source_tests.zip`, and worker `aifs-discovery-m32-2026-11-24`. New printable learner-only cards use **external CSS** for strict CSP and contain no accounts/rosters. An archive and CI success are **not** real Hostinger restricted HTTPS, password protection, source-byte integrity, real print testing or public launch approval. Operator must still perform all actual gates. [M32 QA](docs/M32_PRACTICE_TEACHER_QA.md).
+
+
 > **M31 OPERATOR NOTE — 2026-11-24:** The matching current artifact names are `aiforstudents_hostinger_staging_m31.zip` and `aiforstudents_m31_source_tests.zip`, service-worker cache `aifs-discovery-m31-2026-11-24`. Do not use historical M28/M30 ZIPs for new code. Build ZIP is private/noindex and **not an actual Hostinger deployment**; an authorized operator must still verify HTTPS, access control, headers, source bytes, sensitive URLs, backup and rollback before any ethical school trial. The new seven science drafts have no human subject/Hindi approval.
 
 

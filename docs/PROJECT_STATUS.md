@@ -1,5 +1,8 @@
 # Project Status Dashboard — AI for Students
 
+> **M32 CURRENT PRODUCT STATUS — 2026-11-24:** PARTIAL WORKING PROTOTYPE. **B1 46/50 bounded engineering tasks source/test evidenced; 4/50 blocked on real external expert reviewers. B2 2/50 governance-source tasks evidenced**; B2 owner assignment unapproved and commit traceability still in progress. New local draft-only hints, opt-in practice schedule, five-stage fraction UI, teacher step jump and A4 learner cards **do not constitute** an AI tutor, adaptive mastery, complete teacher dashboard or Class 1–12 teaching. **3,292 unreviewed records**, all six child-safety gates, real Hostinger/devices/school verification pending; public launch NOT APPROVED. [Details](M32_PRACTICE_TEACHER_QA.md) · [Dashboard](B1_PROGRESS_DASHBOARD.md).
+
+
 > **M31 LATEST — 2026-11-24: PARTIAL WORKING PROTOTYPE, B1 35/50 engineering/design work items source/test verified; B2 0/50.** Seven additional conceptual Physics/Chemistry/Biology interactive drafts, an accessible five-stage shell and structural English/Hindi CI check implemented. Pending qualified review records **3,292** (3,282 original +3 Maths +7 Science); no subject approvals authenticated. **Four B1 human/expert work items remain BLOCKED_EXTERNAL**, real Hostinger/physical Android/legal/school gates unchanged. No complete Class 1–12 labs or live AI tutor. [Evidence](B1_PROGRESS_DASHBOARD.md) · [M31 details](M31_SCIENCE_LABS.md). Public release: **NOT APPROVED**.
 
 
