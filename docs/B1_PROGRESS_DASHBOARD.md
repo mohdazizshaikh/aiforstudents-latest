@@ -21,6 +21,6 @@ FP-013 (BLOCKED_EXTERNAL), FP-022 (NOT_STARTED), FP-023 (NOT_STARTED), FP-032 (N
 - All six actual safeguarding/legal operation human gates remain pending.
 - Actual restricted Hostinger HTTPS deployment, rollback, real low-end Android/assistive-technology and properly permitted classroom trial remain pending.
 - Prototype scope is NOT a comprehensive Class 1–12 mathematics/science curriculum, full teacher dashboard or real generative AI tutor.
-- `publicReleaseApproved: false`; noindex must remain in place.
+- publicReleaseApproved: false; noindex must remain in place.
 
 [Full scope](FULL_PRODUCT_SCOPE_AND_DONE.md) · [Task register](MASTER_100_WORK_ITEMS.json) · [M30 engineering QA](M30_MATHS_WORKSHOP_QA.md).
