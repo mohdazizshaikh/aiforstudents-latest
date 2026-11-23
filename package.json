@@ -1,6 +1,6 @@
 {
-  "name": "aifs-discovery-m31",
-  "version": "0.19.0",
+  "name": "aifs-discovery-m32",
+  "version": "0.20.0",
   "private": true,
   "type": "module",
   "scripts": {
