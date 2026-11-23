@@ -1,0 +1,1504 @@
+{
+  "schema": "aifs-full-product-100-work-v1",
+  "preparedOn": "2026-11-24",
+  "baselineMainSha": "837a4ec5e81270b15f5373e4050ae7fef2e880c0",
+  "productStatus": "PARTIAL_WORKING_PROTOTYPE",
+  "publicReleaseApproved": false,
+  "claim": "100 NEW planned work items, NOT 100 completed features or all Class 1-12 chapters",
+  "batches": [
+    {
+      "id": "B1",
+      "items": 50,
+      "planned": "Foundation and sample interactive labs"
+    },
+    {
+      "id": "B2",
+      "items": 50,
+      "planned": "Expanded subject labs, review workflow and external verification"
+    }
+  ],
+  "existingUnreviewedContentRecords": 3282,
+  "safeguardingHumanGatesPending": 6,
+  "items": [
+    {
+      "id": "FP-001",
+      "stream": "GOV",
+      "batch": "B1",
+      "title": "Publish truthful prototype baseline",
+      "acceptance": "Explicitly list implemented versus absent features",
+      "ownerRole": "Product/Quality",
+      "priority": "P0",
+      "execution": "ENGINEERING_OR_CONTENT",
+      "dependsOn": [],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-002",
+      "stream": "GOV",
+      "batch": "B1",
+      "title": "Define completion status vocabulary",
+      "acceptance": "Distinguish code/tests from subject, device and launch approval",
+      "ownerRole": "Product/Quality",
+      "priority": "P0",
+      "execution": "ENGINEERING_OR_CONTENT",
+      "dependsOn": [
+        "FP-001"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-003",
+      "stream": "GOV",
+      "batch": "B1",
+      "title": "Freeze comprehensive end-state scope",
+      "acceptance": "List classes, subjects, labs, AI, adaptive and teacher functions",
+      "ownerRole": "Product/Quality",
+      "priority": "P0",
+      "execution": "ENGINEERING_OR_CONTENT",
+      "dependsOn": [
+        "FP-001"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-004",
+      "stream": "GOV",
+      "batch": "B1",
+      "title": "Map GitHub release-gate dependencies",
+      "acceptance": "Link P0 issues #2–#5 and P1 #6 without closing them",
+      "ownerRole": "Product/Quality",
+      "priority": "P0",
+      "execution": "ENGINEERING_OR_CONTENT",
+      "dependsOn": [
+        "FP-001"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-005",
+      "stream": "GOV",
+      "batch": "B1",
+      "title": "Record 100-work plan acceptance rules",
+      "acceptance": "No claimed completion without task-specific evidence",
+      "ownerRole": "Product/Quality",
+      "priority": "P0",
+      "execution": "ENGINEERING_OR_CONTENT",
+      "dependsOn": [
+        "FP-001"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-006",
+      "stream": "GOV",
+      "batch": "B2",
+      "title": "Build CI plan consistency checker",
+      "acceptance": "Assert 100 IDs, 2 × 50 and valid state transitions",
+      "ownerRole": "Product/Quality",
+      "priority": "P0",
+      "execution": "ENGINEERING_OR_CONTENT",
+      "dependsOn": [
+        "FP-005"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-007",
+      "stream": "GOV",
+      "batch": "B2",
+      "title": "Create role/owner ledger",
+      "acceptance": "Real accountable owners confirmed privately; TBD is not approval",
+      "ownerRole": "Product/Quality",
+      "priority": "P0",
+      "execution": "ENGINEERING_OR_CONTENT",
+      "dependsOn": [
+        "FP-005"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-008",
+      "stream": "GOV",
+      "batch": "B2",
+      "title": "Create source/test/evidence traceability",
+      "acceptance": "Each completed item links commit and relevant proof",
+      "ownerRole": "Product/Quality",
+      "priority": "P0",
+      "execution": "ENGINEERING_OR_CONTENT",
+      "dependsOn": [
+        "FP-005"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-009",
+      "stream": "GOV",
+      "batch": "B2",
+      "title": "Create controlled scope-change protocol",
+      "acceptance": "No silent product-complete or release language",
+      "ownerRole": "Product/Quality",
+      "priority": "P0",
+      "execution": "ENGINEERING_OR_CONTENT",
+      "dependsOn": [
+        "FP-005"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-010",
+      "stream": "GOV",
+      "batch": "B2",
+      "title": "Conduct independent batch completion review",
+      "acceptance": "Human signoff separate from engineering checklist",
+      "ownerRole": "Product/Quality",
+      "priority": "P0",
+      "execution": "HUMAN_GATE",
+      "dependsOn": [
+        "FP-005"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-011",
+      "stream": "CUR",
+      "batch": "B1",
+      "title": "Inventory NCERT/DIKSHA/board source options",
+      "acceptance": "Source links and edition fields, no copied licensed materials",
+      "ownerRole": "Curriculum/Teachers",
+      "priority": "P1",
+      "execution": "ENGINEERING_OR_CONTENT",
+      "dependsOn": [],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-012",
+      "stream": "CUR",
+      "batch": "B1",
+      "title": "Create chapter/grade/board metadata model",
+      "acceptance": "Grade distinct from age band and source edition",
+      "ownerRole": "Curriculum/Teachers",
+      "priority": "P1",
+      "execution": "ENGINEERING_OR_CONTENT",
+      "dependsOn": [
+        "FP-011"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-013",
+      "stream": "CUR",
+      "batch": "B1",
+      "title": "Define educational and Hindi review rubric",
+      "acceptance": "Accuracy, language, safety, age and accessibility criteria",
+      "ownerRole": "Curriculum/Teachers",
+      "priority": "P1",
+      "execution": "HUMAN_GATE",
+      "dependsOn": [
+        "FP-011"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-014",
+      "stream": "CUR",
+      "batch": "B1",
+      "title": "Design third-party copyright/provenance registry",
+      "acceptance": "Every reused asset has permission and attribution evidence",
+      "ownerRole": "Curriculum/Teachers",
+      "priority": "P1",
+      "execution": "ENGINEERING_OR_CONTENT",
+      "dependsOn": [
+        "FP-011"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-015",
+      "stream": "CUR",
+      "batch": "B1",
+      "title": "Draft provisional Grade 1–2 concept map",
+      "acceptance": "Topic coverage clearly labelled draft until verified",
+      "ownerRole": "Curriculum/Teachers",
+      "priority": "P1",
+      "execution": "ENGINEERING_OR_CONTENT",
+      "dependsOn": [
+        "FP-011"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-016",
+      "stream": "CUR",
+      "batch": "B2",
+      "title": "Verify Grade 3–5 chapter map",
+      "acceptance": "Source editions and reviewer evidence recorded",
+      "ownerRole": "Curriculum/Teachers",
+      "priority": "P1",
+      "execution": "HUMAN_GATE",
+      "dependsOn": [
+        "FP-015"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-017",
+      "stream": "CUR",
+      "batch": "B2",
+      "title": "Verify Grade 6–8 chapter map",
+      "acceptance": "Chapter/outcome references checked by educator",
+      "ownerRole": "Curriculum/Teachers",
+      "priority": "P1",
+      "execution": "HUMAN_GATE",
+      "dependsOn": [
+        "FP-015"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-018",
+      "stream": "CUR",
+      "batch": "B2",
+      "title": "Verify Grade 9–10 chapter map",
+      "acceptance": "Board and edition-specific source references checked",
+      "ownerRole": "Curriculum/Teachers",
+      "priority": "P1",
+      "execution": "HUMAN_GATE",
+      "dependsOn": [
+        "FP-015"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-019",
+      "stream": "CUR",
+      "batch": "B2",
+      "title": "Verify Grade 11–12 chapter map",
+      "acceptance": "Stream, chapter, prerequisite and reviewer recorded",
+      "ownerRole": "Curriculum/Teachers",
+      "priority": "P1",
+      "execution": "HUMAN_GATE",
+      "dependsOn": [
+        "FP-015"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-020",
+      "stream": "CUR",
+      "batch": "B2",
+      "title": "Authorize selected curriculum pilot slice",
+      "acceptance": "Only exact approved chapters labelled reviewed",
+      "ownerRole": "Curriculum/Teachers",
+      "priority": "P1",
+      "execution": "HUMAN_GATE",
+      "dependsOn": [
+        "FP-015"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-021",
+      "stream": "UX",
+      "batch": "B1",
+      "title": "Plan new Maths/Science/Teacher navigation",
+      "acceptance": "All routes discoverable at mobile widths",
+      "ownerRole": "Frontend/A11y",
+      "priority": "P1",
+      "execution": "ENGINEERING_OR_CONTENT",
+      "dependsOn": [],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-022",
+      "stream": "UX",
+      "batch": "B1",
+      "title": "Build reusable five-step lesson shell",
+      "acceptance": "Learn/Try/Play/Understand/Grow with truthful retry",
+      "ownerRole": "Frontend/A11y",
+      "priority": "P1",
+      "execution": "ENGINEERING_OR_CONTENT",
+      "dependsOn": [
+        "FP-021"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-023",
+      "stream": "UX",
+      "batch": "B1",
+      "title": "Unify Hindi/English content validation",
+      "acceptance": "Missing translations fail tests",
+      "ownerRole": "Frontend/A11y",
+      "priority": "P1",
+      "execution": "ENGINEERING_OR_CONTENT",
+      "dependsOn": [
+        "FP-021"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-024",
+      "stream": "UX",
+      "batch": "B1",
+      "title": "Define focus/labels/live feedback contract",
+      "acceptance": "Keyboard and screen-reader paths testable",
+      "ownerRole": "Frontend/A11y",
+      "priority": "P1",
+      "execution": "ENGINEERING_OR_CONTENT",
+      "dependsOn": [
+        "FP-021"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-025",
+      "stream": "UX",
+      "batch": "B1",
+      "title": "Set low-end bandwidth/performance budgets",
+      "acceptance": "Asset and cold-start limits enforced in CI",
+      "ownerRole": "Frontend/A11y",
+      "priority": "P1",
+      "execution": "ENGINEERING_OR_CONTENT",
+      "dependsOn": [
+        "FP-021"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-026",
+      "stream": "UX",
+      "batch": "B2",
+      "title": "Audit all new offline/PWA paths",
+      "acceptance": "No broken modules when disconnected after caching",
+      "ownerRole": "Frontend/A11y",
+      "priority": "P1",
+      "execution": "ENGINEERING_OR_CONTENT",
+      "dependsOn": [
+        "FP-025"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-027",
+      "stream": "UX",
+      "batch": "B2",
+      "title": "Audit multi-tab shared-device reset",
+      "acceptance": "No stale opt-in/session history in supported browser tests",
+      "ownerRole": "Frontend/A11y",
+      "priority": "P1",
+      "execution": "ENGINEERING_OR_CONTENT",
+      "dependsOn": [
+        "FP-025"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-028",
+      "stream": "UX",
+      "batch": "B2",
+      "title": "Add non-drag alternative to every lab",
+      "acceptance": "Buttons/keyboard/numeric text equivalent",
+      "ownerRole": "Frontend/A11y",
+      "priority": "P1",
+      "execution": "ENGINEERING_OR_CONTENT",
+      "dependsOn": [
+        "FP-025"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-029",
+      "stream": "UX",
+      "batch": "B2",
+      "title": "Create accessible print/low-ink export",
+      "acceptance": "A4 layout hides teacher-only notes and private data",
+      "ownerRole": "Frontend/A11y",
+      "priority": "P1",
+      "execution": "ENGINEERING_OR_CONTENT",
+      "dependsOn": [
+        "FP-025"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-030",
+      "stream": "UX",
+      "batch": "B2",
+      "title": "Run physical accessibility usability checks",
+      "acceptance": "Actual Android, TalkBack/VoiceOver, zoom evidence",
+      "ownerRole": "Frontend/A11y",
+      "priority": "P1",
+      "execution": "ENGINEERING_OR_CONTENT",
+      "dependsOn": [
+        "FP-025"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-031",
+      "stream": "MATH",
+      "batch": "B1",
+      "title": "Map Grade 1–12 maths learning outcomes",
+      "acceptance": "Explicit topic coverage matrix and gaps",
+      "ownerRole": "Maths/Engineering",
+      "priority": "P1",
+      "execution": "ENGINEERING_OR_CONTENT",
+      "dependsOn": [],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-032",
+      "stream": "MATH",
+      "batch": "B1",
+      "title": "Migrate fractions to reusable lab framework",
+      "acceptance": "Correct equivalence and accessible input tests",
+      "ownerRole": "Maths/Engineering",
+      "priority": "P1",
+      "execution": "ENGINEERING_OR_CONTENT",
+      "dependsOn": [
+        "FP-031"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-033",
+      "stream": "MATH",
+      "batch": "B1",
+      "title": "Build place-value and number-line manipulator",
+      "acceptance": "Deterministic arithmetic and audio-free text state",
+      "ownerRole": "Maths/Engineering",
+      "priority": "P1",
+      "execution": "ENGINEERING_OR_CONTENT",
+      "dependsOn": [
+        "FP-031"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-034",
+      "stream": "MATH",
+      "batch": "B1",
+      "title": "Build geometry/measurement manipulator",
+      "acceptance": "Units, area/perimeter and keyboard controls tested",
+      "ownerRole": "Maths/Engineering",
+      "priority": "P1",
+      "execution": "ENGINEERING_OR_CONTENT",
+      "dependsOn": [
+        "FP-031"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-035",
+      "stream": "MATH",
+      "batch": "B1",
+      "title": "Build accessible charts/data interpretation lab",
+      "acceptance": "Equivalent data table and verified answers",
+      "ownerRole": "Maths/Engineering",
+      "priority": "P1",
+      "execution": "ENGINEERING_OR_CONTENT",
+      "dependsOn": [
+        "FP-031"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-036",
+      "stream": "MATH",
+      "batch": "B2",
+      "title": "Build ratios and algebra lab",
+      "acceptance": "Correct step explanations with educator review",
+      "ownerRole": "Maths/Engineering",
+      "priority": "P1",
+      "execution": "ENGINEERING_OR_CONTENT",
+      "dependsOn": [
+        "FP-035"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-037",
+      "stream": "MATH",
+      "batch": "B2",
+      "title": "Build symmetry and transformation lab",
+      "acceptance": "Rotation/reflection/translation deterministic cases",
+      "ownerRole": "Maths/Engineering",
+      "priority": "P1",
+      "execution": "ENGINEERING_OR_CONTENT",
+      "dependsOn": [
+        "FP-035"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-038",
+      "stream": "MATH",
+      "batch": "B2",
+      "title": "Build coordinate/graph lab",
+      "acceptance": "Axis signs and functions numerically verified",
+      "ownerRole": "Maths/Engineering",
+      "priority": "P1",
+      "execution": "ENGINEERING_OR_CONTENT",
+      "dependsOn": [
+        "FP-035"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-039",
+      "stream": "MATH",
+      "batch": "B2",
+      "title": "Build probability/statistics experiment lab",
+      "acceptance": "Transparent seeds, sample sizes and caveats",
+      "ownerRole": "Maths/Engineering",
+      "priority": "P1",
+      "execution": "ENGINEERING_OR_CONTENT",
+      "dependsOn": [
+        "FP-035"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-040",
+      "stream": "MATH",
+      "batch": "B2",
+      "title": "Obtain independent Maths/Hindi pilot approval",
+      "acceptance": "Reviewed exact lessons; no fake complete syllabus",
+      "ownerRole": "Maths/Engineering",
+      "priority": "P1",
+      "execution": "HUMAN_GATE",
+      "dependsOn": [
+        "FP-035"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-041",
+      "stream": "PHYS",
+      "batch": "B1",
+      "title": "Map safe grade-wise Physics concepts",
+      "acceptance": "Distinguish conceptual model from real equipment",
+      "ownerRole": "Physics/Engineering",
+      "priority": "P1",
+      "execution": "ENGINEERING_OR_CONTENT",
+      "dependsOn": [],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-042",
+      "stream": "PHYS",
+      "batch": "B1",
+      "title": "Validate existing series-switch simulation",
+      "acceptance": "Correct circuit truth table and mains safety caveat",
+      "ownerRole": "Physics/Engineering",
+      "priority": "P1",
+      "execution": "ENGINEERING_OR_CONTENT",
+      "dependsOn": [
+        "FP-041"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-043",
+      "stream": "PHYS",
+      "batch": "B1",
+      "title": "Build forces/motion interactive model",
+      "acceptance": "Units, edge cases and accessible numerical text",
+      "ownerRole": "Physics/Engineering",
+      "priority": "P1",
+      "execution": "ENGINEERING_OR_CONTENT",
+      "dependsOn": [
+        "FP-041"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-044",
+      "stream": "PHYS",
+      "batch": "B1",
+      "title": "Build light/reflection model",
+      "acceptance": "Angle relationships mathematically checked",
+      "ownerRole": "Physics/Engineering",
+      "priority": "P1",
+      "execution": "ENGINEERING_OR_CONTENT",
+      "dependsOn": [
+        "FP-041"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-045",
+      "stream": "PHYS",
+      "batch": "B1",
+      "title": "Build energy transfer model",
+      "acceptance": "No unsupported energy/efficiency claims",
+      "ownerRole": "Physics/Engineering",
+      "priority": "P1",
+      "execution": "ENGINEERING_OR_CONTENT",
+      "dependsOn": [
+        "FP-041"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-046",
+      "stream": "PHYS",
+      "batch": "B2",
+      "title": "Build heat/temperature model",
+      "acceptance": "Scientific distinction and safe non-hardware activities",
+      "ownerRole": "Physics/Engineering",
+      "priority": "P1",
+      "execution": "ENGINEERING_OR_CONTENT",
+      "dependsOn": [
+        "FP-045"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-047",
+      "stream": "PHYS",
+      "batch": "B2",
+      "title": "Build sound/wave interactive model",
+      "acceptance": "Frequency/amplitude accessible without audio",
+      "ownerRole": "Physics/Engineering",
+      "priority": "P1",
+      "execution": "ENGINEERING_OR_CONTENT",
+      "dependsOn": [
+        "FP-045"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-048",
+      "stream": "PHYS",
+      "batch": "B2",
+      "title": "Build magnetism qualitative model",
+      "acceptance": "Clear limitations and safe material instructions",
+      "ownerRole": "Physics/Engineering",
+      "priority": "P1",
+      "execution": "ENGINEERING_OR_CONTENT",
+      "dependsOn": [
+        "FP-045"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-049",
+      "stream": "PHYS",
+      "batch": "B2",
+      "title": "Build measurement/data-table practice",
+      "acceptance": "Local-only measurements and unit checks",
+      "ownerRole": "Physics/Engineering",
+      "priority": "P1",
+      "execution": "ENGINEERING_OR_CONTENT",
+      "dependsOn": [
+        "FP-045"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-050",
+      "stream": "PHYS",
+      "batch": "B2",
+      "title": "Obtain subject and classroom safety review",
+      "acceptance": "Qualified educators approve exact examples",
+      "ownerRole": "Physics/Engineering",
+      "priority": "P1",
+      "execution": "HUMAN_GATE",
+      "dependsOn": [
+        "FP-045"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-051",
+      "stream": "BIOCHEM",
+      "batch": "B1",
+      "title": "Define safe chemistry/bio exclusions",
+      "acceptance": "No unsafe hands-on reactions or medical inference",
+      "ownerRole": "Science/Safety",
+      "priority": "P1",
+      "execution": "ENGINEERING_OR_CONTENT",
+      "dependsOn": [],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-052",
+      "stream": "BIOCHEM",
+      "batch": "B1",
+      "title": "Build states-of-matter particle model",
+      "acceptance": "Correct labelled transitions and simplification caveats",
+      "ownerRole": "Science/Safety",
+      "priority": "P1",
+      "execution": "ENGINEERING_OR_CONTENT",
+      "dependsOn": [
+        "FP-051"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-053",
+      "stream": "BIOCHEM",
+      "batch": "B1",
+      "title": "Build physical/chemical change sorter",
+      "acceptance": "Correct explanations with draft-review flags",
+      "ownerRole": "Science/Safety",
+      "priority": "P1",
+      "execution": "ENGINEERING_OR_CONTENT",
+      "dependsOn": [
+        "FP-051"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-054",
+      "stream": "BIOCHEM",
+      "batch": "B1",
+      "title": "Build cell structure interactive explorer",
+      "acceptance": "Text alternative and differentiated cell types",
+      "ownerRole": "Science/Safety",
+      "priority": "P1",
+      "execution": "ENGINEERING_OR_CONTENT",
+      "dependsOn": [
+        "FP-051"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-055",
+      "stream": "BIOCHEM",
+      "batch": "B1",
+      "title": "Build life-cycle/food-chain model",
+      "acceptance": "Scientifically correct ordered relationships",
+      "ownerRole": "Science/Safety",
+      "priority": "P1",
+      "execution": "ENGINEERING_OR_CONTENT",
+      "dependsOn": [
+        "FP-051"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-056",
+      "stream": "BIOCHEM",
+      "batch": "B2",
+      "title": "Build periodic-table pattern explorer",
+      "acceptance": "Verified atomic number/group data sources",
+      "ownerRole": "Science/Safety",
+      "priority": "P1",
+      "execution": "ENGINEERING_OR_CONTENT",
+      "dependsOn": [
+        "FP-055"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-057",
+      "stream": "BIOCHEM",
+      "batch": "B2",
+      "title": "Build symbolic mass-conservation model",
+      "acceptance": "No dangerous recipes; balanced example tests",
+      "ownerRole": "Science/Safety",
+      "priority": "P1",
+      "execution": "ENGINEERING_OR_CONTENT",
+      "dependsOn": [
+        "FP-055"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-058",
+      "stream": "BIOCHEM",
+      "batch": "B2",
+      "title": "Build ecosystem interactions model",
+      "acceptance": "Food web and uncertainty clearly communicated",
+      "ownerRole": "Science/Safety",
+      "priority": "P1",
+      "execution": "ENGINEERING_OR_CONTENT",
+      "dependsOn": [
+        "FP-055"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-059",
+      "stream": "BIOCHEM",
+      "batch": "B2",
+      "title": "Build heredity/variation explainer",
+      "acceptance": "No genetic essentialism or health profiling",
+      "ownerRole": "Science/Safety",
+      "priority": "P1",
+      "execution": "ENGINEERING_OR_CONTENT",
+      "dependsOn": [
+        "FP-055"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-060",
+      "stream": "BIOCHEM",
+      "batch": "B2",
+      "title": "Obtain independent science/Hindi safety approval",
+      "acceptance": "Reviewed exact lessons before student publication",
+      "ownerRole": "Science/Safety",
+      "priority": "P1",
+      "execution": "HUMAN_GATE",
+      "dependsOn": [
+        "FP-055"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-061",
+      "stream": "TUTOR",
+      "batch": "B1",
+      "title": "Decide zero-paid-API tutoring architecture",
+      "acceptance": "Core learning stays free and usable offline",
+      "ownerRole": "AI/Safety",
+      "priority": "P1",
+      "execution": "ENGINEERING_OR_CONTENT",
+      "dependsOn": [],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-062",
+      "stream": "TUTOR",
+      "batch": "B1",
+      "title": "Specify reviewed-content hint contract",
+      "acceptance": "No general unmoderated child chatbot",
+      "ownerRole": "AI/Safety",
+      "priority": "P1",
+      "execution": "HUMAN_GATE",
+      "dependsOn": [
+        "FP-061"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-063",
+      "stream": "TUTOR",
+      "batch": "B1",
+      "title": "Build deterministic local hint prototype",
+      "acceptance": "Correct source-backed explanations and safe fallback",
+      "ownerRole": "AI/Safety",
+      "priority": "P1",
+      "execution": "ENGINEERING_OR_CONTENT",
+      "dependsOn": [
+        "FP-061"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-064",
+      "stream": "TUTOR",
+      "batch": "B1",
+      "title": "Add attribution and uncertainty display",
+      "acceptance": "Unknown answer not fabricated",
+      "ownerRole": "AI/Safety",
+      "priority": "P1",
+      "execution": "ENGINEERING_OR_CONTENT",
+      "dependsOn": [
+        "FP-061"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-065",
+      "stream": "TUTOR",
+      "batch": "B1",
+      "title": "Define refusal/sensitive disclosure policy",
+      "acceptance": "Unsafe prompts lead to age-appropriate adult guidance",
+      "ownerRole": "AI/Safety",
+      "priority": "P1",
+      "execution": "ENGINEERING_OR_CONTENT",
+      "dependsOn": [
+        "FP-061"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-066",
+      "stream": "TUTOR",
+      "batch": "B2",
+      "title": "Document optional generative tutor risk design",
+      "acceptance": "Feature OFF until real safeguards and cost approval",
+      "ownerRole": "AI/Safety",
+      "priority": "P1",
+      "execution": "ENGINEERING_OR_CONTENT",
+      "dependsOn": [
+        "FP-065"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-067",
+      "stream": "TUTOR",
+      "batch": "B2",
+      "title": "Model privacy, latency and AI inference budget",
+      "acceptance": "No undisclosed paid dependency",
+      "ownerRole": "AI/Safety",
+      "priority": "P1",
+      "execution": "ENGINEERING_OR_CONTENT",
+      "dependsOn": [
+        "FP-065"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-068",
+      "stream": "TUTOR",
+      "batch": "B2",
+      "title": "Prototype approved-source retrieval flow",
+      "acceptance": "No unauthorized copyrighted content or unsourced replies",
+      "ownerRole": "AI/Safety",
+      "priority": "P1",
+      "execution": "HUMAN_GATE",
+      "dependsOn": [
+        "FP-065"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-069",
+      "stream": "TUTOR",
+      "batch": "B2",
+      "title": "Conduct adversarial bias/hallucination review",
+      "acceptance": "Independent human evaluation and red-team defects",
+      "ownerRole": "AI/Safety",
+      "priority": "P1",
+      "execution": "HUMAN_GATE",
+      "dependsOn": [
+        "FP-065"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-070",
+      "stream": "TUTOR",
+      "batch": "B2",
+      "title": "Approve or reject AI tutor public use",
+      "acceptance": "Real safety/legal/education gate; no auto-enable",
+      "ownerRole": "AI/Safety",
+      "priority": "P1",
+      "execution": "HUMAN_GATE",
+      "dependsOn": [
+        "FP-065"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-071",
+      "stream": "ADAPT",
+      "batch": "B1",
+      "title": "Design minimal on-device learning event schema",
+      "acceptance": "No child identity or cloud tracking by default",
+      "ownerRole": "LearningScience/Privacy",
+      "priority": "P1",
+      "execution": "ENGINEERING_OR_CONTENT",
+      "dependsOn": [],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-072",
+      "stream": "ADAPT",
+      "batch": "B1",
+      "title": "Prevent unsupported mastery claims",
+      "acceptance": "Recommendations described as practice, not intelligence",
+      "ownerRole": "LearningScience/Privacy",
+      "priority": "P1",
+      "execution": "ENGINEERING_OR_CONTENT",
+      "dependsOn": [
+        "FP-071"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-073",
+      "stream": "ADAPT",
+      "batch": "B1",
+      "title": "Design optional spaced-practice schedule",
+      "acceptance": "No pressure streak or penalty",
+      "ownerRole": "LearningScience/Privacy",
+      "priority": "P1",
+      "execution": "ENGINEERING_OR_CONTENT",
+      "dependsOn": [
+        "FP-071"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-074",
+      "stream": "ADAPT",
+      "batch": "B1",
+      "title": "Create explainable next-task suggestions",
+      "acceptance": "Learner can see reason and decline",
+      "ownerRole": "LearningScience/Privacy",
+      "priority": "P1",
+      "execution": "ENGINEERING_OR_CONTENT",
+      "dependsOn": [
+        "FP-071"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-075",
+      "stream": "ADAPT",
+      "batch": "B1",
+      "title": "Add explicit difficulty and language override",
+      "acceptance": "No inferred fixed aptitude label",
+      "ownerRole": "LearningScience/Privacy",
+      "priority": "P1",
+      "execution": "ENGINEERING_OR_CONTENT",
+      "dependsOn": [
+        "FP-071"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-076",
+      "stream": "ADAPT",
+      "batch": "B2",
+      "title": "Write adaptive mastery calibration protocol",
+      "acceptance": "Evidence thresholds documented; not yet validated",
+      "ownerRole": "LearningScience/Privacy",
+      "priority": "P1",
+      "execution": "ENGINEERING_OR_CONTENT",
+      "dependsOn": [
+        "FP-075"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-077",
+      "stream": "ADAPT",
+      "batch": "B2",
+      "title": "Specify anonymous aggregate classroom view",
+      "acceptance": "No individual minor scores or rosters",
+      "ownerRole": "LearningScience/Privacy",
+      "priority": "P1",
+      "execution": "ENGINEERING_OR_CONTENT",
+      "dependsOn": [
+        "FP-075"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-078",
+      "stream": "ADAPT",
+      "batch": "B2",
+      "title": "Define safe shared-device session boundaries",
+      "acceptance": "Cannot identify children solely through a browser",
+      "ownerRole": "LearningScience/Privacy",
+      "priority": "P1",
+      "execution": "ENGINEERING_OR_CONTENT",
+      "dependsOn": [
+        "FP-075"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-079",
+      "stream": "ADAPT",
+      "batch": "B2",
+      "title": "Audit opt-in data retention and deletion",
+      "acceptance": "Local/session, background tabs and print paths tested",
+      "ownerRole": "LearningScience/Privacy",
+      "priority": "P1",
+      "execution": "ENGINEERING_OR_CONTENT",
+      "dependsOn": [
+        "FP-075"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-080",
+      "stream": "ADAPT",
+      "batch": "B2",
+      "title": "Run ethical learning-outcome validation",
+      "acceptance": "Consented study and independent evidence required",
+      "ownerRole": "LearningScience/Privacy",
+      "priority": "P1",
+      "execution": "HUMAN_GATE",
+      "dependsOn": [
+        "FP-075"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-081",
+      "stream": "TEACH",
+      "batch": "B1",
+      "title": "Define no-roster teacher dashboard MVP",
+      "acceptance": "Local lesson-planning only; no student surveillance",
+      "ownerRole": "Teachers/Engineering",
+      "priority": "P1",
+      "execution": "ENGINEERING_OR_CONTENT",
+      "dependsOn": [],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-082",
+      "stream": "TEACH",
+      "batch": "B1",
+      "title": "Enhance projector/teacher navigation",
+      "acceptance": "Large controls, focus, Hindi and mobile support",
+      "ownerRole": "Teachers/Engineering",
+      "priority": "P1",
+      "execution": "ENGINEERING_OR_CONTENT",
+      "dependsOn": [
+        "FP-081"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-083",
+      "stream": "TEACH",
+      "batch": "B1",
+      "title": "Improve anonymous collaborative role rotation",
+      "acceptance": "Same-device group activity without child names",
+      "ownerRole": "Teachers/Engineering",
+      "priority": "P1",
+      "execution": "ENGINEERING_OR_CONTENT",
+      "dependsOn": [
+        "FP-081"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-084",
+      "stream": "TEACH",
+      "batch": "B1",
+      "title": "Build reusable teacher answer/worksheet cards",
+      "acceptance": "Printable answers hidden from learner sheets",
+      "ownerRole": "Teachers/Engineering",
+      "priority": "P1",
+      "execution": "ENGINEERING_OR_CONTENT",
+      "dependsOn": [
+        "FP-081"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-085",
+      "stream": "TEACH",
+      "batch": "B1",
+      "title": "Review existing fraction/circuit teacher plans",
+      "acceptance": "2 baseline prototypes remain unapproved until reviewed",
+      "ownerRole": "Teachers/Engineering",
+      "priority": "P1",
+      "execution": "HUMAN_GATE",
+      "dependsOn": [
+        "FP-081"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-086",
+      "stream": "TEACH",
+      "batch": "B2",
+      "title": "Build local teacher lesson organizer",
+      "acceptance": "Select/queue/reset without cloud accounts",
+      "ownerRole": "Teachers/Engineering",
+      "priority": "P1",
+      "execution": "ENGINEERING_OR_CONTENT",
+      "dependsOn": [
+        "FP-085"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-087",
+      "stream": "TEACH",
+      "batch": "B2",
+      "title": "Create licensed offline assignment packs",
+      "acceptance": "No tracking links or identifiable learner export",
+      "ownerRole": "Teachers/Engineering",
+      "priority": "P1",
+      "execution": "ENGINEERING_OR_CONTENT",
+      "dependsOn": [
+        "FP-085"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-088",
+      "stream": "TEACH",
+      "batch": "B2",
+      "title": "Implement no-internet projector handoff",
+      "acceptance": "Teacher plan works in a disconnected classroom",
+      "ownerRole": "Teachers/Engineering",
+      "priority": "P1",
+      "execution": "ENGINEERING_OR_CONTENT",
+      "dependsOn": [
+        "FP-085"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-089",
+      "stream": "TEACH",
+      "batch": "B2",
+      "title": "Prepare ethical observer feedback template",
+      "acceptance": "Minimal permitted evidence and child-safe protocol",
+      "ownerRole": "Teachers/Engineering",
+      "priority": "P1",
+      "execution": "ENGINEERING_OR_CONTENT",
+      "dependsOn": [
+        "FP-085"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-090",
+      "stream": "TEACH",
+      "batch": "B2",
+      "title": "Complete authorized supervised classroom pilot",
+      "acceptance": "School/guardian permissions and real observation",
+      "ownerRole": "Teachers/Engineering",
+      "priority": "P1",
+      "execution": "HUMAN_GATE",
+      "dependsOn": [
+        "FP-085"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-091",
+      "stream": "VERIFY",
+      "batch": "B1",
+      "title": "Publish Node/Chromium acceptance matrix",
+      "acceptance": "All core/offline/privacy paths trace to tests",
+      "ownerRole": "QA/Ops/Safeguarding",
+      "priority": "P0",
+      "execution": "ENGINEERING_OR_CONTENT",
+      "dependsOn": [],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-092",
+      "stream": "VERIFY",
+      "batch": "B1",
+      "title": "Build subject-correctness regression fixtures",
+      "acceptance": "Expert-approved expected answers, equations, explanations",
+      "ownerRole": "QA/Ops/Safeguarding",
+      "priority": "P0",
+      "execution": "ENGINEERING_OR_CONTENT",
+      "dependsOn": [
+        "FP-091"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-093",
+      "stream": "VERIFY",
+      "batch": "B1",
+      "title": "Automate keyboard and non-visual flow sampling",
+      "acceptance": "Representative Hindi/English and touch-free checks",
+      "ownerRole": "QA/Ops/Safeguarding",
+      "priority": "P0",
+      "execution": "ENGINEERING_OR_CONTENT",
+      "dependsOn": [
+        "FP-091"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-094",
+      "stream": "VERIFY",
+      "batch": "B1",
+      "title": "Keep static staging ZIP privacy/integrity gates",
+      "acceptance": "Noindex, CSP, SHA-256 and source-path exclusions",
+      "ownerRole": "QA/Ops/Safeguarding",
+      "priority": "P0",
+      "execution": "ENGINEERING_OR_CONTENT",
+      "dependsOn": [
+        "FP-091"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-095",
+      "stream": "VERIFY",
+      "batch": "B1",
+      "title": "Create truthful evidence status dashboard",
+      "acceptance": "No mock result counts as human or live hosting",
+      "ownerRole": "QA/Ops/Safeguarding",
+      "priority": "P0",
+      "execution": "ENGINEERING_OR_CONTENT",
+      "dependsOn": [
+        "FP-091"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-096",
+      "stream": "VERIFY",
+      "batch": "B2",
+      "title": "Perform physical Android/AT/A4 testing",
+      "acceptance": "Real device evidence with logged failures",
+      "ownerRole": "QA/Ops/Safeguarding",
+      "priority": "P0",
+      "execution": "HUMAN_GATE",
+      "dependsOn": [
+        "FP-095"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-097",
+      "stream": "VERIFY",
+      "batch": "B2",
+      "title": "Deploy real restricted HTTPS Hostinger staging",
+      "acceptance": "Authorized HTTPS/access/backup/rollback verification",
+      "ownerRole": "QA/Ops/Safeguarding",
+      "priority": "P0",
+      "execution": "HUMAN_GATE",
+      "dependsOn": [
+        "FP-095"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-098",
+      "stream": "VERIFY",
+      "batch": "B2",
+      "title": "Complete 3,282 existing content record reviews",
+      "acceptance": "Real qualified subject/Hindi decisions recorded",
+      "ownerRole": "QA/Ops/Safeguarding",
+      "priority": "P0",
+      "execution": "HUMAN_GATE",
+      "dependsOn": [
+        "FP-095"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-099",
+      "stream": "VERIFY",
+      "batch": "B2",
+      "title": "Complete six human safeguarding operational gates",
+      "acceptance": "Owners, privacy/legal, incident drill and permissions",
+      "ownerRole": "QA/Ops/Safeguarding",
+      "priority": "P0",
+      "execution": "HUMAN_GATE",
+      "dependsOn": [
+        "FP-095"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    },
+    {
+      "id": "FP-100",
+      "stream": "VERIFY",
+      "batch": "B2",
+      "title": "Independent school/launch go-no-go decision",
+      "acceptance": "Public remains noindex until all external gates satisfied",
+      "ownerRole": "QA/Ops/Safeguarding",
+      "priority": "P0",
+      "execution": "HUMAN_GATE",
+      "dependsOn": [
+        "FP-095"
+      ],
+      "status": "NOT_STARTED",
+      "evidence": []
+    }
+  ]
+}
