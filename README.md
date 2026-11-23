@@ -109,3 +109,7 @@ See [M19 QA](M19_QA_STATUS.md) and [Staging operator checklist](STAGING_OPERATOR
 ## M20 — Bilingual content-review worklist (2026-11-23)
 
 This repository now includes a **read-only review-packet exporter**: run `npm run review-packet` to generate UTF-8 CSV and a summary in ignored local directory `review-packet/`. It enumerates all **3,282 unreviewed records** across six existing queues with source locations and draft English/Hindi fields where present, without storing children's data or approving any item. Formula-like CSV text is escaped. The generated files are review *worklists*, not a verified educator decision log. See [M20 review operations](docs/M20_REVIEW_OPERATIONS.md) and [milestone tracker](docs/MILESTONE_TRACKER.md). Public deployment, human educational/Hindi review, actual Hostinger restricted staging and child safety/accessibility approval remain **PENDING**.
+
+## M21 — Reviewer source-content integrity (2026-11-23)
+
+The offline `npm run review-packet` exporter now joins **Studio and Virtual Lab source-engine bilingual text** to their metadata-only review queues, includes answer/hint fields and a SHA-256 digest of draft reviewer-visible content. It rejects stale or missing pilot content IDs/versions and still **cannot** approve any material. CI exercises the generator, not just its unit functions. See [M21 notes](docs/M21_REVIEW_INTEGRITY.md). The 3,282 pending qualified reviews and all real-world child-safety/hosting/accessibility release gates remain outstanding.

@@ -1,6 +1,6 @@
 # M20 — Human review operations: engineering increment
 
-**Date:** 2026-11-23. **Stage:** development branch, not an approved launch, not educator certification.
+**Date:** 2026-11-23. **Stage:** merged engineering baseline; not an approved launch, not educator certification.
 
 ## Why this increment
 M19's static preflight counts **3,282 review records still lacking documented human signoff**: 3,200 game tasks, 32 Study Lab questions, 4 Smart Studio checks, 4 Virtual Lab checks, 10 Classroom steps and 32 Digital Skills questions. These counts are an inventory of **records**, not 3,282 distinct lessons. Age-band overlap and the 54 age-repeating positions deserve explicit content review.
@@ -31,10 +31,13 @@ node tools/release-preflight.mjs --public  # expected to fail; not a bug
 The output directory is generated and should be kept out of commits unless specifically reviewed: `review-packet/review-packet.csv`, `review-packet/summary.json`, `review-packet/README.txt`. It can be shared only with authorized real reviewers. No student or reviewer personal information is needed for the export.
 
 ## Acceptance / blockers
-- [ ] Source/test CI green on M20 branch (verify PR run, do not infer from this document).
-- [ ] Packet inventories all six queue types with 3,282 records and safely handles malformed/duplicate IDs.
+- [x] M20 PR #1 and merged-main GitHub Actions completed successfully (2026-11-23); this validates code, **not** learning content.
+- [x] M20 initial packet inventories six queue types with 3,282 records; M21 extends actual Studio/Experiment teaching-text integrity.
 - [ ] Human bilingual educational reviewer(s) **appointed and actual decisions recorded** — pending.
 - [ ] Pilot chapter/board references, resource link audit, real school/device/Hostinger evidence — pending.
 - [ ] Child legal/safeguarding, accessible release and explicit public launch approval — pending.
 
 **Public release remains BLOCKED** regardless of how many automated checks pass.
+
+### M21 follow-on note
+The M20 CSV listed Studio/Experiment review metadata but lacked actual source-engine questions. [M21](M21_REVIEW_INTEGRITY.md) fixes that deficiency and adds content fingerprints. Regenerate any previously exported worklist before review; do not rely on old M20 CSV for those two pilot modules.

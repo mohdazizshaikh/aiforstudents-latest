@@ -16,6 +16,8 @@ jobs:
           node-version: '22'
       - name: Automated tests
         run: node --test tests/*.test.mjs
+      - name: Build bilingual human-review worklist (not approval)
+        run: npm run review-packet
       - name: Verify static release
         run: node tools/verify-static-release.mjs
       - name: Structural content audit
