@@ -60,7 +60,7 @@ export const ADVANCED_MODELS={
   subject:'physics',title:P('Magnetic poles: qualitative interaction','चुंबकीय ध्रुव: गुणात्मक संबंध'),
   prompt:P('Choose North (N) and South (S) poles to illustrate attraction.','आकर्षण दर्शाने के लिए उत्तर (N) और दक्षिण (S) ध्रुव चुनें।'),
   hint:P('Opposite magnetic poles attract in this simple model.','इस सरल मॉडल में विपरीत चुंबकीय ध्रुव आकर्षित करते हैं।'),
-  caveat:P('Ideal two-pole sketch; not instructions for strong magnets, electrical wiring or medical devices.','यह आदर्श दो-ध्रुव चित्र है; शक्तिशाली चुंबक, बिजली के तार या चिकित्सकीय यंत्र चलाने का निर्देश नहीं।'),
+  caveat:P('Ideal two-pole sketch. Use the computer model only; do not use real magnets or electrical equipment.','यह आदर्श दो-ध्रुव चित्र है। केवल कंप्यूटर मॉडल का उपयोग करें; वास्तविक चुंबक या बिजली उपकरण न लें।'),
   fields:[O('a','Pole A','ध्रुव A',[['N','North','उत्तर'],['S','South','दक्षिण']]),O('b','Pole B','ध्रुव B',[['N','North','उत्तर'],['S','South','दक्षिण']])],
   initial:{a:'N',b:'N'},target:{a:'N',b:'S'}
  },
@@ -134,7 +134,7 @@ export function validateAdvancedState(id,state){
 export function calculateAdvanced(id,state){
  validateAdvancedState(id,state);
  switch(id){
-  case 'ratio-algebra':return {total:state.groups*state.each};
+  case 'ratio-algebra':return {total:state.groups*state.each,groupRatio:state.groups+':'+(state.groups*state.each)+' = 1:'+state.each,expression:'x = '+state.groups+' × '+state.each};
   case 'symmetry':{const {x,y,transform}=state;const [transformedX,transformedY]=transform==='reflect'?[-x,y]:transform==='rotate'?[-y,x]:[x+2,y-1];return {transformedX,transformedY};}
   case 'coordinate':return {x:state.x,y:2*state.x+1};
   case 'probability':{
@@ -162,7 +162,7 @@ export function calculateAdvanced(id,state){
  }
 }
 const LABELS={
- total:P('Total','कुल'),transformedX:P('New x','नया x'),transformedY:P('New y','नया y'),
+ total:P('Total','कुल'),groupRatio:P('Groups : total counters','समूह : कुल काउंटर'),expression:P('Expression for the total','कुल के लिए व्यंजक'),transformedX:P('New x','नया x'),transformedY:P('New y','नया y'),
  x:P('x','x'),y:P('y','y'),red:P('Red','लाल'),blue:P('Blue','नीले'),
  probabilityRed:P('Theoretical red probability','लाल की सैद्धांतिक प्रायिकता'),
  sampleSize:P('Sample size','नमूना संख्या'),sampleRed:P('Red draws','लाल नमूने'),sampleProportion:P('Observed red proportion','लाल का देखा गया अनुपात'),
@@ -179,7 +179,8 @@ export function advancedResultRows(metrics,lang='en'){
 export function evaluateAdvanced(id,state,lang='en'){
  if(!['en','hi'].includes(lang))throw Error('Unknown language');
  const m=modelAdvanced(id),result=calculateAdvanced(id,state);
- const correct=m.fields.every(f=>state[f.id]===m.target[f.id]);
+ const optional=id==='probability'?['seed','draws']:id==='sound'?['amplitude']:[];
+ const correct=m.fields.filter(f=>!optional.includes(f.id)).every(f=>state[f.id]===m.target[f.id]);
  const numbers=advancedResultRows(result,lang).map(x=>x.label+' = '+x.value).join('; ');
  return {id,correct,metrics:result,explanation:text(m.title,lang)+': '+numbers+'. '+text(m.caveat,lang),
   draftStatus:'PENDING_SUBJECT_HINDI_AND_SAFETY_REVIEW',publicReleaseApproved:false,source:'assets/advanced-lab-engine.js'};

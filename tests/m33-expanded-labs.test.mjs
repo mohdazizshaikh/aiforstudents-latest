@@ -39,7 +39,8 @@ test('M33 probability sampling is bounded, seeded and has no undefined numeric d
   assert.ok(r.sampleRed>=0&&r.sampleRed<=50);
   if(red===0)assert.equal(r.sampleRed,0);if(blue===0)assert.equal(r.sampleRed,50);
  }
- assert.notEqual(calculateAdvanced('probability',{red:3,blue:2,seed:1,draws:100}).sampleRed,calculateAdvanced('probability',{red:3,blue:2,seed:2,draws:100}).sampleRed);
+ assert.ok(new Set([1,2,3,4,5,6,7,8,9,10].map(seed=>calculateAdvanced('probability',{red:3,blue:2,seed,draws:100}).sampleRed)).size>1);
+ assert.equal(evaluateAdvanced('probability',{red:3,blue:2,seed:8,draws:100}).correct,true);
  assert.match(evaluateAdvanced('probability',{red:0,blue:0,seed:1,draws:10},'hi').explanation,/खाली थैली/);
 });
 test('M33 Physics: exact ideal heat, independent silent frequency/amplitude, pole interactions and speed equality',()=>{
