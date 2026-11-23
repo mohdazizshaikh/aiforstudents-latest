@@ -1,8 +1,8 @@
 {
-  "release": "M19 Static Staging Security & Release Readiness",
+  "release": "M24 Static Accessibility Navigation + Private Staging Hardening",
   "release_date": "2026-11-23",
-  "hosting_zip": "aiforstudents_hostinger_staging_m19.zip",
-  "source_zip": "aiforstudents_m19_source_tests.zip",
+  "hosting_zip": "aiforstudents_hostinger_staging_m24.zip",
+  "source_zip": "aiforstudents_m24_source_tests.zip",
   "game_modules": 40,
   "age_bands": 4,
   "content_records": 3200,
@@ -12,7 +12,7 @@
   "cooperative_same_device_modes": 3,
   "future_exploration_paths": 12,
   "static_html_pages": 23,
-  "automated_tests": 102,
+  "automated_tests": 125,
   "isolated_browser_rounds": 88,
   "isolated_browser_game_questions": 440,
   "online_social_features": false,
@@ -22,7 +22,7 @@
   "study_question_records": 32,
   "study_items_expert_approved": 0,
   "isolated_browser_study_checks": 32,
-  "currentMilestone": "M19_STAGING_HARDENING",
+  "currentMilestone": "M24_STATIC_A11Y_NAVIGATION",
   "status": "private-staging-prototype-unreviewed",
   "date": "2026-11-23",
   "studioLessons": 2,
@@ -49,5 +49,10 @@
   "stagingHttpHeadersConfigured": true,
   "stagingPreflightPassed": true,
   "publicReleasePreflightPassed": false,
-  "pendingHumanReviewRecords": 3282
+  "pendingHumanReviewRecords": 3282,
+  "staticA11yStructuralAudit": true,
+  "staticA11yPagesWithSkipAndMain": 23,
+  "realDeviceAccessibilityApproved": false,
+  "reviewEvidenceWorkflowVersion": "m23-review-evidence-v1",
+  "reviewEvidenceHumanApproval": false
 }
