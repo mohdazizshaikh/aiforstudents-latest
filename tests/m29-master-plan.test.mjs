@@ -44,7 +44,7 @@ test('M29 no planned work or historical code pilot is promoted to human/public a
  const done=tracker.items.filter(x=>x.status==='DONE_VERIFIED');
  assert.ok(done.every(x=>x.execution!=='HUMAN_GATE'&&x.evidence.length>=2));
  assert.ok(tracker.items.filter(x=>x.status!=='DONE_VERIFIED').every(x=>!x.evidence.length));
- assert.equal(done.filter(x=>x.batch==='B1').length,25);
+ assert.equal(done.filter(x=>x.batch==='B1').length,35);
  assert.equal(done.filter(x=>x.batch==='B2').length,0);
  assert.ok(tracker.items.some(x=>x.execution==='HUMAN_GATE'));
  assert.match(scope,/FULL PRODUCT NOT COMPLETE/);
