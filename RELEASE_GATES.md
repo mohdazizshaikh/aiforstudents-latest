@@ -109,3 +109,6 @@ No digital practice result claims aptitude, grade or trustworthy fact-checking p
 ## M20 reviewer operations — 2026-11-23
 
 A deterministic offline CSV/JSON review packet exporter (source file + line and bilingual draft fields) is provided for qualified reviewers; it **never sets a review status to approved**. The six original queues remain unreviewed until real reviewers record item/version-specific evidence. This improves the worklist, **not** public launch readiness. Actual Hostinger HTTPS, low-end Android/assistive technology and child privacy/legal/safeguarding gates remain open. See [M20 procedure](docs/M20_REVIEW_OPERATIONS.md).
+
+## M22 private staging audit coverage — 2026-11-23
+The read-only `tools/check-live-staging.mjs --full` mode expands the 12-target core checker to source-declared static routes/assets and validates status, MIME and security headers using local allowlisted paths. Unit/mocked CI success is **not** proof of actual Hostinger deployment, access restriction, backup/restore, real-phone functionality, educator review or legal child safety. See [M22 operator guide](docs/M22_FULL_STAGING_AUDIT.md). Human release gates still block public indexing.
