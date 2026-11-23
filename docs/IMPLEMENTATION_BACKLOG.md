@@ -84,3 +84,13 @@ No new learning material is approved, and none of these engineering tasks author
 | GATE-03/06 | P0 | Review all 3,282 records with real qualified human reviewers | **STILL OPEN** | Named reviewers and recorded individual signoff |
 
 See [M21 procedure](M21_REVIEW_INTEGRITY.md). No public child-facing launch or Hostinger deployment is claimed.
+
+### M22 — Hostinger staging QA support (2026-11-23)
+| ID | Priority | Scope | Engineering status | Blocking external evidence |
+|---|---|---|---|---|
+| M22-01 | P0 | Full allowlisted HTTPS static page/asset checker using source manifest | **CODED + mocked Node QA** | Authorized real HTTPS origin and restricted deployment |
+| M22-02 | P0 | MIME, noindex, CSP and nosniff checks for HTML/JS/CSS/SVG/webmanifest | **CODED + mocked Node QA** | Actual Hostinger header observations |
+| M22-03 | P0 | Extend Hostinger operator checklist to require core + full modes | **DOCUMENTED** | On-host run, backup/rollback receipt and defect fixes |
+| GATE-01/02 | P0 | Actual Hostinger private staging and release evidence | **PENDING** | Hostinger operator, site, HTTPS, access restriction |
+
+Details: [M22 staging audit](M22_FULL_STAGING_AUDIT.md). No public release approval.

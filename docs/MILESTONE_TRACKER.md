@@ -75,3 +75,8 @@ When work starts or finishes, record: **date**, milestone/task ID, status, linke
 - **QA:** M21 regression and full CI (check GitHub run/PR), `npm run review-packet` added to CI; no recorded human approvals.
 - **Still OPEN:** 3,282 qualified subject/Hindi content reviews; actual Hostinger restricted staging, child legal/safeguarding, TalkBack/VoiceOver, low-end phone and school evidence.
 - Details: [M21 QA / Integrity](M21_REVIEW_INTEGRITY.md) · [review issue](https://github.com/mohdazizshaikh/aiforstudents-latest/issues/3). **Public launch remains BLOCKED.**
+
+### M22 — Extended private staging QA (2026-11-23)
+- **CODED:** optional `--full` local static-page, JS/CSS/SVG and service-worker-manifest HTTPS verifier; 12-target original core check remains. It checks MIME/security response headers and blocks unsafe origin/target paths; no credentials appear in results.
+- **AUTOMATED ONLY:** mocked CLI/HTTP regression tests; verify CI on the PR and merged main.
+- **PENDING:** actual Hostinger restricted staging origin, deployment, rollback, low-end Android, TalkBack/VoiceOver and human educational/child-safety signoff. See [M22](M22_FULL_STAGING_AUDIT.md) and [Issue #2](https://github.com/mohdazizshaikh/aiforstudents-latest/issues/2).
