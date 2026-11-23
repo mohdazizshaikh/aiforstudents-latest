@@ -15,7 +15,7 @@ test('M29 master plan contains exactly 100 unique NEW tasks, two real 50-item ba
   assert.equal(tracker.items.filter(x=>x.batch===batch).length,n);
   assert.equal(tracker.batches.find(x=>x.id===batch).items,n);
  }
- assert.equal((plan.match(/FP-\d{3}/g)||[]).length,100);
+ assert.equal(plan.split('\n').filter(line=>/^\|\s*FP-\d{3}\s*\|/.test(line)).length,100);
 });
 
 test('M29 plan covers ten balanced workstreams with acceptance and valid dependencies',()=>{
