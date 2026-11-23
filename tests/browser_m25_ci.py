@@ -13,7 +13,7 @@ import threading
 from playwright.sync_api import sync_playwright
 
 ROOT = Path(__file__).resolve().parents[1]
-OUTPUT = ROOT / 'test-results' / 'm25-browser'
+OUTPUT = ROOT / 'test-results' / 'm28-browser'
 OUTPUT.mkdir(parents=True, exist_ok=True)
 
 
@@ -34,7 +34,7 @@ def check_no_runtime_errors(page, errors):
 
 
 def run():
-    report = {'milestone': 'M25', 'execution': 'headless local Chromium with real ES modules',
+    report = {'milestone': 'M28', 'execution': 'headless local Chromium with real ES modules',
               'realHostingerVerified': False, 'realDeviceAccessibilityVerified': False,
               'educationalHumanApproval': False, 'publicReleaseApproved': False, 'checks': []}
     server = ThreadingHTTPServer(('127.0.0.1', 0), partial(QuietStaticHandler, directory=str(ROOT)))
@@ -208,7 +208,7 @@ def run():
         server.server_close()
     report['result'] = 'PASS'
     (OUTPUT / 'report.json').write_text(json.dumps(report, indent=2, ensure_ascii=False) + '\n')
-    print('M25 LOCAL CHROMIUM CI SMOKE PASS:', json.dumps(report, ensure_ascii=False))
+    print('M28 LOCAL CHROMIUM CI SMOKE PASS:', json.dumps(report, ensure_ascii=False))
 
 
 if __name__ == '__main__':
