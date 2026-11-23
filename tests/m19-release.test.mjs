@@ -1,5 +1,8 @@
 import test from 'node:test';import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+import {gzipSync} from 'node:zlib';
 import {releaseAudit,auditContentQueues,auditStatic} from '../tools/release-preflight.mjs';
 import {verifyLive,validateOrigin,TARGETS} from '../tools/check-live-staging.mjs';
 const root=new URL('../',import.meta.url);
@@ -12,6 +15,15 @@ test('M19 human review gate blocks all public release until genuinely signed off
 });
 test('M19 review inventory is counted without inventing approvals',()=>{
  const x=auditContentQueues();assert.equal(x.total,3282);assert.equal(x.pending,3282);assert.deepEqual(Object.fromEntries(Object.entries(x.counts).map(([k,v])=>[k,v.total])),{game:3200,study:32,studio:4,experiment:4,classroom:10,digital:32});
+});
+test('M19 GitHub checkout archived game review queue is counted without pretending approvals',()=>{
+ const tmp=fs.mkdtempSync(path.join(os.tmpdir(),'aifs-m19-'));try{
+  fs.mkdirSync(path.join(tmp,'docs'));
+  const game=fs.readFileSync(new URL('CONTENT_REVIEW_QUEUE.jsonl',root));
+  fs.writeFileSync(path.join(tmp,'docs','CONTENT_REVIEW_QUEUE.jsonl.gz'),gzipSync(game));
+  for(const f of ['LAB_CONTENT_REVIEW_QUEUE.jsonl','STUDIO_CONTENT_REVIEW_QUEUE.jsonl','EXPERIMENT_CONTENT_REVIEW_QUEUE.jsonl','CLASSROOM_CONTENT_REVIEW_QUEUE.jsonl','DIGITAL_CONTENT_REVIEW_QUEUE.jsonl'])fs.copyFileSync(new URL(f,root),path.join(tmp,f));
+  const r=auditContentQueues(tmp);assert.deepEqual(r.problems,[]);assert.equal(r.total,3282);assert.equal(r.pending,3282);
+ }finally{fs.rmSync(tmp,{recursive:true,force:true})}
 });
 test('M19 all pages and static assets compatible with self-only CSP',()=>{
  const audit=auditStatic();assert.deepEqual(audit.problems,[]);assert.equal(audit.pages,23);

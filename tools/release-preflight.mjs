@@ -3,6 +3,7 @@
 import {readFileSync,readdirSync,existsSync} from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
+import {gunzipSync} from 'node:zlib';
 const projectRoot=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 export const REVIEW_FILES={game:'CONTENT_REVIEW_QUEUE.jsonl',study:'LAB_CONTENT_REVIEW_QUEUE.jsonl',studio:'STUDIO_CONTENT_REVIEW_QUEUE.jsonl',experiment:'EXPERIMENT_CONTENT_REVIEW_QUEUE.jsonl',classroom:'CLASSROOM_CONTENT_REVIEW_QUEUE.jsonl',digital:'DIGITAL_CONTENT_REVIEW_QUEUE.jsonl'};
 const scan=dir=>readdirSync(dir,{withFileTypes:true}).flatMap(x=>x.isDirectory()?scan(path.join(dir,x.name)):[path.join(dir,x.name)]);
@@ -14,8 +15,13 @@ function isPending(item){
 export function auditContentQueues(root=projectRoot){
  const counts={},problems=[];
  for(const [kind,relative] of Object.entries(REVIEW_FILES)){
-  const full=path.join(root,relative);if(!existsSync(full)){problems.push(`Missing ${relative}`);continue;}
-  const records=readFileSync(full,'utf8').split('\n').filter(Boolean);let pending=0;
+  const full=path.join(root,relative);
+  const archived=kind==='game'?path.join(root,'docs/CONTENT_REVIEW_QUEUE.jsonl.gz'):null;
+  if(!existsSync(full)&&!(archived&&existsSync(archived))){problems.push(`Missing ${relative} or reviewed source archive`);continue;}
+  // GitHub tracks the previously exported 3,200-record queue as gzip to keep checkout small;
+  // offline source ZIP also includes the raw JSONL. Never silently skip missing records.
+  const text=existsSync(full)?readFileSync(full,'utf8'):gunzipSync(readFileSync(archived)).toString('utf8');
+  const records=text.split('\n').filter(Boolean);let pending=0;
   records.forEach((line,i)=>{try{const x=JSON.parse(line);if(isPending(x))pending++;}catch{problems.push(`${relative}:${i+1} invalid JSON`)}});
   counts[kind]={total:records.length,pending};
  }

@@ -12,7 +12,7 @@
 - Added `tools/package-release.py` — verified static allowlist ZIP packaging without content-review datasets, tests or student data; generates separate source/test archive.
 
 ## Evidence
-- **101/101 Node tests pass** (previous 93 plus 8 release/preflight tests).
+- **102/102 Node tests pass** (previous 93 plus 8 release/preflight tests).
 - Isolated Chromium M18 combined regression, including Studio, Virtual Lab, Classroom and Digital Skills passed with zero observed page JS errors.
 - Isolated Chromium print-layout check passed for both original worksheet pages using the local stylesheet.
 - Static check: **23 HTML pages, 22 JavaScript modules, 41 service-worker cache paths, zero missing file paths**.

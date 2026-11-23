@@ -98,7 +98,7 @@ Four original bilingual topic tracks and 32 authored age-scaffolded question rec
 **No new learner game or public AI features:** this milestone removes inline printable styles/scripts to support a strict self-only staging CSP, adds a redundant `X-Robots-Tag: noindex` response-header config, a release preflight and read-only HTTPS smoke command. Two original worksheets still print with teacher guidance hidden, and all prior games/modules remain available.
 
 ```sh
-npm test                              # 101 automated Node tests
+npm test                              # 102 automated Node tests
 npm run preflight                    # offline staging-only security and content inventory
 node tools/release-preflight.mjs --public  # EXPECTED TO FAIL: human approvals missing
 node tools/check-live-staging.mjs https://your-authorized-staging.example # ONLY after deploying privately
