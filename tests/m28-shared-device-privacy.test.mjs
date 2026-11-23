@@ -7,7 +7,8 @@ test('M28 clear history issues only a minimal same-origin control message, no le
  const source=read('assets/app.js');
  assert.match(source,/new BroadcastChannel\('aifs-discovery-privacy-reset-v1'\)/);
  assert.match(source,/privacyClearChannel\?\.postMessage\(\{type:'clear-history'\}\)/);
- assert.doesNotMatch(source,/postMessage\(\{(?:.*?)(?:attempts|responses|history|reflection|age|school|name)[^}]*\}\)/);
+ const messages=[...source.matchAll(/privacyClearChannel\?\.postMessage\(([^)]*)\)/g)].map(x=>x[1]);
+ assert.deepEqual(messages,["{type:'clear-history'}"],'Never broadcast learner data or extra keys');
  assert.match(source,/privacyClearChannel\?\.addEventListener\('message'/);
  assert.match(source,/event\.data\?\.type==='clear-history'/);
  assert.match(source,/clearAllHistory\(false\)/);
