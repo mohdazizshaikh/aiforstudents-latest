@@ -58,3 +58,11 @@ The `--full` read-only audit derives allowable routes/assets from repository sou
 - [ ] Generate `safety-handoff/operations.json` locally with `npm run safety-handoff:template`; do not commit or deploy it. Structural `--check` success means only well-formed evidence, **not actual approval**.
 - [ ] Conduct real tabletop incident-response drill and legal/shared-device/staging log assessment with accountable humans; record access-controlled acknowledgements and unresolved issues.
 - [ ] Maintain child-facing noindex and restricted staging until independent human go/no-go decision and all other release gates are complete.
+
+### M27 — Deployed byte integrity and accidental source-file exposure
+- [ ] Verify the installed private Hostinger ZIP was generated from the **same exact checkout commit** used by the M27 checker (otherwise SHA-256 mismatch is expected). Backup before deployment.
+- [ ] Run `node tools/check-live-staging.mjs https://AUTHORIZED-PRIVATE-STAGING-ORIGIN --full --integrity` on a trusted operator machine. Provide optional `STAGING_AUTH_HEADER` only through its local protected environment; never paste secrets in issues/CI.
+- [ ] Confirm all static responses, `robots.txt`, strict headers and full content hashes match local source; seven source-only URL probes must return 401/403/404/410 (or fix server rules). Never request private data bodies for diagnosis.
+- [ ] Test a second unauthenticated browser cannot browse restricted staging, plus genuine HTTPS/CSP, real low-end Android, assistive technology and rollback. A noindex header or hash PASS is **not authentication**.
+- [ ] Keep source ZIP, approval/incident records and unreviewed content queues **off the web document root**. Log only minimal operator evidence in a restricted internal register.
+- [ ] Public child release remains blocked. [M27 instructions](docs/M27_STAGING_INTEGRITY.md).

@@ -1,5 +1,5 @@
 {
-  "release": "M26 Child-Safety Operations Handoff — Private Prototype Only",
+  "release": "M27 Read-only Staging Integrity — Private Prototype Only",
   "release_date": "2026-11-23",
   "hosting_zip": "aiforstudents_hostinger_staging_m24.zip",
   "source_zip": "aiforstudents_m24_source_tests.zip",
@@ -12,7 +12,7 @@
   "cooperative_same_device_modes": 3,
   "future_exploration_paths": 12,
   "static_html_pages": 23,
-  "automated_tests": 131,
+  "automated_tests": 141,
   "isolated_browser_rounds": 88,
   "isolated_browser_game_questions": 440,
   "online_social_features": false,
@@ -22,7 +22,7 @@
   "study_question_records": 32,
   "study_items_expert_approved": 0,
   "isolated_browser_study_checks": 32,
-  "currentMilestone": "M26_SAFETY_OPERATIONS_DRAFT",
+  "currentMilestone": "M27_STAGING_INTEGRITY",
   "status": "private-staging-prototype-unreviewed",
   "date": "2026-11-23",
   "studioLessons": 2,
@@ -60,5 +60,10 @@
   "safetyHandoffSchema": "m26-safety-handoff-v1",
   "safetyHandoffDocumentedHumanGates": 0,
   "safetyHandoffRequiredHumanGates": 6,
-  "safeguardingHumanApproved": false
+  "safeguardingHumanApproved": false,
+  "fullStagingSourceByteIntegrityAvailable": true,
+  "liveStagingSourceByteIntegrityVerified": false,
+  "sensitiveSourcePathExposureCheckAvailable": true,
+  "sensitiveSourcePathExposureVerifiedOnLiveHost": false,
+  "releaseZipSourceHashParityVerifiedInCI": true
 }

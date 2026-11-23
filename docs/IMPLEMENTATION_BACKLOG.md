@@ -139,3 +139,13 @@ See [M26 runbook](M26_CHILD_SAFETY_OPERATIONS.md); public child-oriented release
 - M25 [merged PR #11](https://github.com/mohdazizshaikh/aiforstudents-latest/pull/11), merged-main CI [45199972263](https://github.com/mohdazizshaikh/aiforstudents-latest/actions/runs/45199972263) successful (separate real local Chromium job).
 - M26 [merged PR #12](https://github.com/mohdazizshaikh/aiforstudents-latest/pull/12), branch CI [45201028124](https://github.com/mohdazizshaikh/aiforstudents-latest/actions/runs/45201028124) successful (131 Node tests, Chromium, source/ZIP privacy).
 - M26 six human gates stay **PENDING** despite successful draft structure check. Content **3,282/3,282 pending**, host/operator, legal/safeguarding, low-end Android/AT and ethical school trial require real external evidence.
+
+### M27 — Staging source-hash parity and sensitive URL exposure tests (2026-11-23)
+| ID | Priority | Deliverable | Engineering state | Real-world dependency |
+|---|---|---|---|---|
+| M27-01 | P0 | SHA-256 compare read-only actual HTTPS staging response bytes against same source commit | **IMPLEMENTED + MOCK TESTS** | Authorized restricted Hostinger HTTPS deployment |
+| M27-02 | P0 | Full HTML/assets/robots.txt + strict CSP/noindex/MIME/frame/permissions checks | **IMPLEMENTED** | Real Hostinger server header verification |
+| M27-03 | P0 | Seven forbidden source/evidence URL probes, response bodies unlogged | **IMPLEMENTED + NEGATIVE TESTS** | Real server 401/403/404 response evidence |
+| M27-04 | P0 | Independent ZIP byte parity check for all source and staging archive files | **IMPLEMENTED IN CI** | Actual operator backup/extraction/rollback |
+
+[M27 runbook](M27_STAGING_INTEGRITY.md). M27 has no power to approve children, content, legal or safeguarding. Public launch remains blocked.

@@ -72,3 +72,7 @@ The offline AI literacy module is deterministic, avoids open-ended chatbot respo
 ### M26 safety governance safeguard — 2026-11-23
 - **D-16:** Record safeguarding, incident-response, legal/privacy, shared-device, school-pilot and independent launch-decision requirements as six **human-operated** gates; never certify them automatically. Keep evidence only in a restricted operational register using opaque references, not public GitHub or CI artifacts.
 - **R-15:** A machine-valid JSON template could be mistaken for true child-protection, legal or school consent approval. Mitigation: `humanReviewAuthenticated:false`, `publicReleaseApproved:false` on every validation report; pending by default; forbid forged approval keys; publicly documented **NO LAUNCH** gate until independent professional review.
+
+### M27 — Old release or exposed source assets (2026-11-23)
+- **D-17:** Compare live private staging responses to the **same** source revision using read-only SHA-256 across the complete file/route manifest; read-only proof supplements but never replaces human and operator approvals.
+- **R-16:** An accidental stale/mismatched upload or source ZIP extraction could expose review queues, safety notes or mixed PWA files. Mitigation: 141 Node tests, full static response hashes, seven forbidden source-only URL probes without body logging, strict headers, archive source-byte parity, operator backup/rollback procedure and deliberate public gate remaining blocked. **No real-host verification is recorded.**

@@ -114,3 +114,13 @@ See [M23 review evidence](M23_REVIEW_EVIDENCE.md). No signed reviews exist merel
 - **Engineering:** offline six-gate operator checklist generator and structural validator; local-only `safety-handoff/` ignored and excluded from source/hosting ZIP. Generated default evidence is entirely pending; CI validates schema only.
 - **Owner state:** no safeguarding lead, deputy, privacy/legal counsel, incident responder or school pilot coordinator has been authenticated or appointed by code. All human reviews still **PENDING**.
 - **Public release:** blocked regardless of template completeness; educational content 3,282/3,282 human reviews pending, physical Android/AT, actual Hostinger restricted staging, permission and legal/incident signoff required. [M26 runbook](M26_CHILD_SAFETY_OPERATIONS.md), [Issue #4](https://github.com/mohdazizshaikh/aiforstudents-latest/issues/4).
+
+### M27 — Private HTTPS staging integrity and artifact provenance (2026-11-23)
+| Workstream | Engineering | External remaining |
+|---|---|---|
+| Strict SHA-256 source vs served bytes, full M22 allowlist and robots.txt | **CODE + TESTS; browser/Node CI gate** | Actual authorized Hostinger HTTPS origin and tested deployed ZIP |
+| Security header restrictions + seven source-only path probes | **CODE + MOCK TESTS**; never log request/response bodies or auth token | Real server configuration and access-control verification |
+| Hosting/source ZIP member hash source parity | **CODE + CI privacy/integrity verification** | Operator backup and rollback evidence |
+| Public child release | **STILL BLOCKED** | 3,282 human content records; six safeguarding gates; physical Android/AT; school authorization |
+
+[M27 operator guide](M27_STAGING_INTEGRITY.md). Passing CI is not evidence of live staging.
