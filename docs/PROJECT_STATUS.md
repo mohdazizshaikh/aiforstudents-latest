@@ -1,6 +1,6 @@
 # Project Status Dashboard — AI for Students
 
-**As of 2026-11-23** | **M19 staging baseline; M20–M21 engineering merged; M22 full staging audit in development** | **Public release: NOT APPROVED**
+**As of 2026-11-23** | **M19 staging baseline; M20–M22 engineering merged; M23 review evidence in development** | **Public release: NOT APPROVED**
 
 ## Working today in the private prototype
 - 40 solo game modules in 8 categories; 3 same-device Grow Together modes.
@@ -8,7 +8,7 @@
 - My Growth, Proud Today and Daily Growth.
 - Future Explorer: 12 interest-led pathway cards with offline missions.
 - Study Lab: 4 tracks, 8 themes, 32 short bilingual practice checks.
-- M19 reported **102/102 Node tests** on its staging baseline; isolated browser smoke is not live HTTPS testing. M20 CI evidence must be checked separately.
+- M19 reported **102/102 Node tests** on its staging baseline; isolated browser smoke is not live HTTPS testing. M20–M22 merged-main GitHub CI runs passed; these are software checks only.
 
 ## Milestones: first pilots versus future plans
 | Stage | Next development increment | Status |
@@ -55,3 +55,6 @@ Source-backed Studio/Experiment bilingual prompts, teaching hints and version-se
 
 ### M22 staging verification upgrade — 2026-11-23
 A full-static-manifest read-only HTTPS audit mode is coded for an authorized restricted site. It checks the project-declared paths, MIME/security response requirements and versioned service worker; CI exercises mocks only. **No actual Hostinger staging evidence or child-oriented public approval**. [M22 details](M22_FULL_STAGING_AUDIT.md).
+
+### M23 — Independent review evidence workflow (2026-11-23)
+A local-only template/validator records draft educator and Hindi review evidence against the *current* source SHA-256 for a prioritized 18-record pilot-first worklist, without overwriting submitted reviewer notes or editing canonical queues. CI checks pending template structure; **no real educator, Hindi, safety or copyright approval** is claimed. See [M23 guide](M23_REVIEW_EVIDENCE.md). All public release gates remain open.
