@@ -41,3 +41,7 @@ CI uses a separate `browser-smoke` job on an explicitly supported `ubuntu-24.04`
 - [Issue #6](https://github.com/mohdazizshaikh/aiforstudents-latest/issues/6): exact class/board/edition curriculum mapping and ethical school pilot pending.
 
 **Public launch remains BLOCKED.** Keep noindex and no online child chat/accounts; do not invite pupils to try unreviewed lessons.
+
+## GitHub engineering evidence — 2026-11-23
+- [PR #11](https://github.com/mohdazizshaikh/aiforstudents-latest/pull/11) merged into main at `397cf2e983589a1376b07064838ad2c4c230a345`.
+- [Merged main CI run](https://github.com/mohdazizshaikh/aiforstudents-latest/actions/runs/45199972263) passed both Node/static and local Chromium browser jobs. The JSON smoke report lists seven passed browser checks and explicitly sets `realHostingerVerified:false`, `realDeviceAccessibilityVerified:false`, `educationalHumanApproval:false` and `publicReleaseApproved:false`.

@@ -1,5 +1,5 @@
 {
-  "release": "M24 Static Accessibility Navigation + Private Staging Hardening",
+  "release": "M26 Child-Safety Operations Handoff — Private Prototype Only",
   "release_date": "2026-11-23",
   "hosting_zip": "aiforstudents_hostinger_staging_m24.zip",
   "source_zip": "aiforstudents_m24_source_tests.zip",
@@ -12,7 +12,7 @@
   "cooperative_same_device_modes": 3,
   "future_exploration_paths": 12,
   "static_html_pages": 23,
-  "automated_tests": 125,
+  "automated_tests": 131,
   "isolated_browser_rounds": 88,
   "isolated_browser_game_questions": 440,
   "online_social_features": false,
@@ -22,7 +22,7 @@
   "study_question_records": 32,
   "study_items_expert_approved": 0,
   "isolated_browser_study_checks": 32,
-  "currentMilestone": "M24_STATIC_A11Y_NAVIGATION",
+  "currentMilestone": "M26_SAFETY_OPERATIONS_DRAFT",
   "status": "private-staging-prototype-unreviewed",
   "date": "2026-11-23",
   "studioLessons": 2,
@@ -54,5 +54,11 @@
   "staticA11yPagesWithSkipAndMain": 23,
   "realDeviceAccessibilityApproved": false,
   "reviewEvidenceWorkflowVersion": "m23-review-evidence-v1",
-  "reviewEvidenceHumanApproval": false
+  "reviewEvidenceHumanApproval": false,
+  "localChromiumBrowserSmoke": true,
+  "localChromiumBrowserSmokeOnly": true,
+  "safetyHandoffSchema": "m26-safety-handoff-v1",
+  "safetyHandoffDocumentedHumanGates": 0,
+  "safetyHandoffRequiredHumanGates": 6,
+  "safeguardingHumanApproved": false
 }

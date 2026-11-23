@@ -1,6 +1,6 @@
 # Project Status Dashboard — AI for Students
 
-**As of 2026-11-23** | **M20–M25 engineering merged and verified; M26 safeguarding operations in development; still private-staging prototype** | **Public release: NOT APPROVED**
+**As of 2026-11-23** | **M20–M26 engineering merged; real-host/human release gates still pending** | **Public release: NOT APPROVED**
 
 ## Working today in the private prototype
 - 40 solo game modules in 8 categories; 3 same-device Grow Together modes.
@@ -70,3 +70,6 @@ An independent GitHub Actions Chromium job is being integrated to exercise nativ
 
 ### M26 — safeguarding operations handoff (2026-11-23)
 Added a local-only six-gate draft safety/incident/readiness template and validator with overwrite protection, opaque references and prohibited auto-approval fields. This assists **future** accountable humans; it does not appoint staff, complete India-specific counsel/guardian review, accept a real school pilot, certify accessibility or approve the public site. The source ZIP excludes local safety evidence. [M26 operator protocol](M26_CHILD_SAFETY_OPERATIONS.md).
+
+### M26 engineering merge verified (2026-11-23)
+[M25 PR #11](https://github.com/mohdazizshaikh/aiforstudents-latest/pull/11) merged real native Chromium CI; [M26 PR #12](https://github.com/mohdazizshaikh/aiforstudents-latest/pull/12) merged draft safety-operations handoff. M26 branch CI [45201028124](https://github.com/mohdazizshaikh/aiforstudents-latest/actions/runs/45201028124) was **successful** (131/131 Node tests, Chromium local browser and privacy-restricted build). These are engineering milestones, not authorized India-specific legal reviews, real Hostinger HTTPS, genuine student/teacher trials or content approvals. **3,282 pending human content records; six human safety operation gates unverified.** Public release is **NOT APPROVED**.

@@ -60,3 +60,8 @@ Do not insert actual names, student reports, legal opinion contents or credentia
 Related: [Issue #4](https://github.com/mohdazizshaikh/aiforstudents-latest/issues/4), [release gates](../RELEASE_GATES.md), [privacy disclosure](../privacy/), [M23 educational evidence](M23_REVIEW_EVIDENCE.md), [M25 Chromium QA](M25_BROWSER_REGRESSION.md).
 
 **Verdict:** M26 improves operator preparedness, not legal compliance certification or public launch. **Child-oriented public release remains NOT APPROVED.**
+
+## GitHub engineering evidence — 2026-11-23
+- [PR #12](https://github.com/mohdazizshaikh/aiforstudents-latest/pull/12) merged to main at `9fb143b06402efdddaeac05842a89d76fc60bd07`.
+- [M26 branch CI](https://github.com/mohdazizshaikh/aiforstudents-latest/actions/runs/45201028124) passed 131 Node tests plus separate local Chromium browser and archive privacy checks.
+- All six operator/safeguarding gates **remain pending actual human evidence and identity verification**; source template/tests are not signoffs. Public site remains blocked.

@@ -1,6 +1,6 @@
 # Implementation & Dependency Backlog
 
-**Snapshot:** 2026-11-23, including M20 operations development. **This is a tracking document, not a claim that future features were coded.**  
+**Snapshot:** 2026-11-23, through M26 engineering merge; all external release gates remain open. **This is a tracking document, not a claim that future features were coded.**  
 Priority: P0 = required to avoid unsafe/misleading release; P1 = next core feature; P2 = later capability. Role ownership stays **TBD** until assigned.
 
 | ID | Priority | Milestone | Task / smallest verifiable output | Dependency | Status | Owner |
@@ -134,3 +134,8 @@ See [M25 QA](M25_BROWSER_REGRESSION.md). Public child-oriented launch remains **
 | M26-04 | P0 | Runnable adult-run incident tabletop guide | **DOCUMENTED ONLY** | Live drill, real owner contact and verified escalation |
 
 See [M26 runbook](M26_CHILD_SAFETY_OPERATIONS.md); public child-oriented release remains **NOT APPROVED**.
+
+### M25/M26 verified engineering completion (2026-11-23)
+- M25 [merged PR #11](https://github.com/mohdazizshaikh/aiforstudents-latest/pull/11), merged-main CI [45199972263](https://github.com/mohdazizshaikh/aiforstudents-latest/actions/runs/45199972263) successful (separate real local Chromium job).
+- M26 [merged PR #12](https://github.com/mohdazizshaikh/aiforstudents-latest/pull/12), branch CI [45201028124](https://github.com/mohdazizshaikh/aiforstudents-latest/actions/runs/45201028124) successful (131 Node tests, Chromium, source/ZIP privacy).
+- M26 six human gates stay **PENDING** despite successful draft structure check. Content **3,282/3,282 pending**, host/operator, legal/safeguarding, low-end Android/AT and ethical school trial require real external evidence.
