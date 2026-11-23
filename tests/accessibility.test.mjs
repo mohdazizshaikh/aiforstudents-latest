@@ -39,6 +39,6 @@ test('M10: public co-op guide is linked, child notes and default static hosting 
  assert.match(html,/href="grow-together\/"/);
  assert.match(html,/not an IQ, psychological aptitude or career prediction test/);
  assert.match(html,/No account, ads, tracker, child profile upload or AI API call/);
- assert.match(sw,/aifs-discovery-m30/);
+ assert.match(sw,/aifs-discovery-m31/);
  assert.doesNotMatch(html,/https?:\/\/api\.openrouter\.ai|generativelanguage\.googleapis\.com/);
 });
