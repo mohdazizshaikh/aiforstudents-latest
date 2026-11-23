@@ -13,7 +13,7 @@ import threading
 from playwright.sync_api import sync_playwright
 
 ROOT = Path(__file__).resolve().parents[1]
-OUTPUT = ROOT / 'test-results' / 'm25-browser'
+OUTPUT = ROOT / 'test-results' / 'm28-browser'
 OUTPUT.mkdir(parents=True, exist_ok=True)
 
 
@@ -34,7 +34,7 @@ def check_no_runtime_errors(page, errors):
 
 
 def run():
-    report = {'milestone': 'M25', 'execution': 'headless local Chromium with real ES modules',
+    report = {'milestone': 'M28', 'execution': 'headless local Chromium with real ES modules',
               'realHostingerVerified': False, 'realDeviceAccessibilityVerified': False,
               'educationalHumanApproval': False, 'publicReleaseApproved': False, 'checks': []}
     server = ThreadingHTTPServer(('127.0.0.1', 0), partial(QuietStaticHandler, directory=str(ROOT)))
@@ -89,6 +89,38 @@ def run():
                 check_no_runtime_errors(page, errors)
                 check(not third_party, 'Unexpected third-party requests: ' + str(third_party))
                 report['checks'].append('Local opt-in, one practice record and clear-all privacy reset; no third-party calls')
+
+                # M28: real two-tab shared-device privacy. Never share responses between tabs.
+                another = desktop.new_page()
+                another.goto(origin + '/', wait_until='load')
+                another.locator('#digital-choices button').first.click()
+                check(another.evaluate("window.AIFS_DIGITAL_BRIDGE.getHistory().digitalAttempts.length") == 1,
+                      'Second tab practice did not record')
+                page.locator('#clear-progress').click()
+                another.wait_for_function("window.AIFS_DIGITAL_BRIDGE.getHistory().digitalAttempts.length === 0")
+                check(another.evaluate('sessionStorage.length === 0'),
+                      'Cross-tab clear left prior tab session history')
+                check(not another.locator('#remember').is_checked(),
+                      'Cross-tab reset accidentally kept remember enabled')
+                report['checks'].append('M28 default session history clears across same-origin open tabs')
+
+                page.locator('#remember').check()
+                page.locator('#digital-topics button').nth(1).click()
+                page.locator('#digital-choices button').first.click()
+                check(page.evaluate("window.AIFS_DIGITAL_BRIDGE.getHistory().digitalAttempts.length") == 1,
+                      'Opt-in tab did not record new attempt')
+                follower = desktop.new_page()
+                follower.goto(origin + '/', wait_until='load')
+                check(follower.evaluate("window.AIFS_DIGITAL_BRIDGE.getHistory().digitalAttempts.length") == 1,
+                      'Opt-in persisted attempt was not loaded in fresh same-browser tab')
+                follower.locator('#clear-progress').click()
+                page.wait_for_function("window.AIFS_DIGITAL_BRIDGE.getHistory().digitalAttempts.length === 0")
+                check(page.evaluate('localStorage.length === 0'), 'Cross-tab opt-in history survived clear')
+                check(not page.locator('#remember').is_checked(), 'Cross-tab opt-in remained active')
+                check_no_runtime_errors(page, errors)
+                follower.close()
+                another.close()
+                report['checks'].append('M28 opt-in persisted history and peer-tab clear with no synced learner payload')
 
                 # Keyboard: M24's focusable skip destination tested through real browser navigation.
                 keyboard_page = desktop.new_page()
@@ -149,10 +181,10 @@ def run():
                 phone.wait_for_function('navigator.serviceWorker.controller !== null')
                 cache = phone.evaluate("""async () => {
                   const keys = await caches.keys();
-                  return {keys, count: (await caches.open(keys.find(k => k.startsWith('aifs-discovery-m24'))))
-                    ? (await (await caches.open(keys.find(k => k.startsWith('aifs-discovery-m24')))).keys()).length : 0}
+                  return {keys, count: (await caches.open(keys.find(k => k.startsWith('aifs-discovery-m28'))))
+                    ? (await (await caches.open(keys.find(k => k.startsWith('aifs-discovery-m28')))).keys()).length : 0}
                 }""")
-                check(any(k.startswith('aifs-discovery-m24') for k in cache['keys']),
+                check(any(k.startswith('aifs-discovery-m28') for k in cache['keys']),
                       'M24 service-worker cache not created')
                 check(cache['count'] >= 40, 'Service-worker precache incomplete: ' + str(cache))
                 mobile.set_offline(True)
@@ -163,7 +195,7 @@ def run():
                 check(phone.locator('#game-grid button').count() == 5,
                       'Offline native learner modules not bootstrapped from cache')
                 check_no_runtime_errors(phone, mobile_errors)
-                report['checks'].append('M24 SW installs 40+ assets and loads Studio guide + learner app offline')
+                report['checks'].append('M28 SW installs 40+ assets and loads Studio guide + learner app offline')
                 mobile.close()
             finally:
                 browser.close()
@@ -176,7 +208,7 @@ def run():
         server.server_close()
     report['result'] = 'PASS'
     (OUTPUT / 'report.json').write_text(json.dumps(report, indent=2, ensure_ascii=False) + '\n')
-    print('M25 LOCAL CHROMIUM CI SMOKE PASS:', json.dumps(report, ensure_ascii=False))
+    print('M28 LOCAL CHROMIUM CI SMOKE PASS:', json.dumps(report, ensure_ascii=False))
 
 
 if __name__ == '__main__':

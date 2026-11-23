@@ -124,3 +124,13 @@ See [M23 review evidence](M23_REVIEW_EVIDENCE.md). No signed reviews exist merel
 | Public child release | **STILL BLOCKED** | 3,282 human content records; six safeguarding gates; physical Android/AT; school authorization |
 
 [M27 operator guide](M27_STAGING_INTEGRITY.md). Passing CI is not evidence of live staging.
+
+### M28 — Shared-device cross-tab privacy reset (2026-11-23)
+| Workstream | Engineering/CI | Real-world pending |
+|---|---|---|
+| Broadcast only minimal clear action across same-origin open tabs | **CODED + BROWSER TESTS**; zero learner payload | Real low-end Android/suspended-tab and older-browser trial |
+| Clear local/session and in-memory feature bridges in peer tabs | **CODED**; Chromium tests default and opt-in modes | Shared school device permission and user testing |
+| Upgrade static offline service worker M24 to M28 | **CODED + CI**; stage ZIP renamed M28 | Actual Hostinger HTTPS SW cache migration/rollback |
+| Child privacy/public launch authorization | **STILL BLOCKED** | Independent legal/safeguarding owner, 3,282 content reviews, physical AT/ethics |
+
+[M28 details](M28_SHARED_DEVICE_PRIVACY.md). Full public child launch not approved.
