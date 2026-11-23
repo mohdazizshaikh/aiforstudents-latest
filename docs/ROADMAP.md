@@ -72,3 +72,6 @@ Four deterministic AI/digital-literacy strands and 32 original bilingual age-sca
 
 ### M24 accessible static navigation (2026-11-23)
 **Engineering iteration:** Source HTML skip navigation, worksheet main landmarks and a deterministic 23-page structural audit. The cache and source/staging packaging now explicitly version M24; local reviewer evidence is excluded from release ZIPs. **Actual real-device accessibility, educational review, safeguarding and Hostinger HTTPS remain independent P0 gates**. See [M24 QA](../M24_QA_STATUS.md).
+
+### M25 — Browser automation before external private staging (2026-11-23)
+Add native ES-module Chromium checks in GitHub CI for bilingual learner workflows, local data/reset, keyboard Skip, print and offline cache in a temporary `localhost` browser secure context. This precedes but does **not replace** real Hostinger HTTPS, qualified educational/Hindi reviews, device accessibility/safeguarding or ethical school feedback. [Details](M25_BROWSER_REGRESSION.md).
