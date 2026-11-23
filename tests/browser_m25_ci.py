@@ -13,7 +13,7 @@ import threading
 from playwright.sync_api import sync_playwright
 
 ROOT = Path(__file__).resolve().parents[1]
-OUTPUT = ROOT / 'test-results' / 'm31-browser'
+OUTPUT = ROOT / 'test-results' / 'm32-browser'
 OUTPUT.mkdir(parents=True, exist_ok=True)
 
 
@@ -34,7 +34,7 @@ def check_no_runtime_errors(page, errors):
 
 
 def run():
-    report = {'milestone': 'M31', 'execution': 'headless local Chromium with real ES modules',
+    report = {'milestone': 'M32', 'execution': 'headless local Chromium with real ES modules',
               'realHostingerVerified': False, 'realDeviceAccessibilityVerified': False,
               'educationalHumanApproval': False, 'publicReleaseApproved': False, 'checks': []}
     server = ThreadingHTTPServer(('127.0.0.1', 0), partial(QuietStaticHandler, directory=str(ROOT)))
@@ -182,6 +182,76 @@ def run():
                 page.locator('#lang').select_option('en')
                 report['checks'].append('M31 reflection, safe chemistry sorter, cell text and Hindi/English equivalence')
 
+                # M32: no chatbot or private learner data; only fixed source-backed drafts.
+                check(page.locator('#local-guide-topic option').count() == 12,
+                      'M32 local hint selector expected twelve fixed draft source topics')
+                page.locator('#local-guide-topic').select_option('science:motion')
+                page.locator('#local-guide-hint').click()
+                draft = page.locator('#local-guide-draft-hint').inner_text()
+                check('Source: assets/science-engine.js' in draft and 'draft' in draft.lower(),
+                      'M32 source and unreviewed status missing from hint')
+                page.locator('#local-guide-subject').select_option('chemistry')
+                page.locator('#local-guide-difficulty').select_option('explore')
+                page.locator('#local-guide-language').select_option('hi')
+                page.locator('#local-guide-suggest').click()
+                check('रसायन' in page.locator('#local-guide-reason').inner_text() or
+                      'अभ्यास' in page.locator('#local-guide-reason').inner_text(),
+                      'M32 learner-chosen Hindi reason for practice missing')
+                check(page.locator('#local-guide-target').get_attribute('href') == '#science-lab',
+                      'M32 voluntary chemistry suggestion misrouted')
+                page.locator('#local-guide-decline').click()
+                check(page.locator('#local-guide-recommendation').is_hidden(),
+                      'M32 learner cannot decline a suggested task')
+                page.locator('#local-guide-sensitive').click()
+                check('भरोसेमंद' in page.locator('#local-guide-draft-hint').inner_text(),
+                      'M32 privacy-first trusted adult guidance unavailable in Hindi')
+                page.locator('#local-guide-review-3').click()
+                check('3' not in page.locator('#local-guide-day').inner_text() or
+                      len(page.locator('#local-guide-day').inner_text()) > 16,
+                      'M32 optional paper review date did not render')
+                page.locator('#local-guide-review-clear').click()
+                check('कोई तारीख नहीं चुनी' in page.locator('#local-guide-day').inner_text(),
+                      'M32 optional reminder cannot be cleared')
+                report['checks'].append('M32 fixed-source bilingual hints, no-chat safety fallback, voluntary practice and opt-in review')
+
+                page.locator('#local-guide-fraction-next').click()
+                check('TRY' in page.locator('#local-guide-fraction-stage').inner_text(),
+                      'M32 fraction shared stage did not enter Try')
+                page.locator('#local-guide-fraction-inc').focus()
+                page.keyboard.press('Enter')
+                page.locator('#local-guide-fraction-inc').click()
+                check(page.locator('#local-guide-fraction-count').inner_text() == '2/4',
+                      'M32 fraction keyboard input did not match 2/4')
+                page.locator('#local-guide-fraction-check').click()
+                check('उदाहरण सही' in page.locator('#local-guide-fraction-feedback').inner_text(),
+                      'M32 original fraction equivalence was not recognized')
+                page.locator('#classroom-jump').select_option('2')
+                check('Step 3' in page.locator('#classroom-step-count').inner_text(),
+                      'M32 classroom jump-to-step did not navigate')
+                check('Reason checker' in page.locator('#classroom-active-role').inner_text() or
+                      'Question asker' in page.locator('#classroom-active-role').inner_text(),
+                      'M32 generic role did not rotate on step change')
+                report['checks'].append('M32 shared five-stage fraction and accessible classroom step/anonymous role navigation')
+
+                cards = desktop.new_page()
+                cards_errors = []
+                cards.on('pageerror', lambda error: cards_errors.append(str(error)))
+                cards.goto(origin + '/teacher-kit/cards/', wait_until='load')
+                cards.locator('#card-question').wait_for()
+                check('original' in cards.locator('#card-warning').inner_text().lower(),
+                      'M32 teacher card did not identify draft provenance')
+                check(cards.locator('#card-answer').inner_text() != '',
+                      'M32 teacher-screen answer was not loaded')
+                cards.locator('#card-language').select_option('hi')
+                check('चर्चा' in cards.locator('#card-question-label').inner_text(),
+                      'M32 print card lacks Hindi question')
+                cards.emulate_media(media='print')
+                check(cards.locator('#teacher-guidance').evaluate(
+                      "(e) => getComputedStyle(e).display") == 'none',
+                      'M32 confidential teacher answer visible on learner print sheet')
+                check_no_runtime_errors(cards, cards_errors)
+                cards.close()
+                report['checks'].append('M32 standalone A4 learner card excludes teacher answers during print')
                 page.locator('#remember').check()
                 check(page.evaluate('localStorage.length > 0'), 'Opt-in local history is not persistent')
                 page.locator('#digital-choices button').first.click()
@@ -294,10 +364,10 @@ def run():
                 phone.wait_for_function('navigator.serviceWorker.controller !== null')
                 cache = phone.evaluate("""async () => {
                   const keys = await caches.keys();
-                  return {keys, count: (await caches.open(keys.find(k => k.startsWith('aifs-discovery-m31'))))
-                    ? (await (await caches.open(keys.find(k => k.startsWith('aifs-discovery-m31')))).keys()).length : 0}
+                  return {keys, count: (await caches.open(keys.find(k => k.startsWith('aifs-discovery-m32'))))
+                    ? (await (await caches.open(keys.find(k => k.startsWith('aifs-discovery-m32')))).keys()).length : 0}
                 }""")
-                check(any(k.startswith('aifs-discovery-m31') for k in cache['keys']),
+                check(any(k.startswith('aifs-discovery-m32') for k in cache['keys']),
                       'M30 service-worker cache not created')
                 check(cache['count'] >= 40, 'Service-worker precache incomplete: ' + str(cache))
                 mobile.set_offline(True)
@@ -325,7 +395,7 @@ def run():
         server.server_close()
     report['result'] = 'PASS'
     (OUTPUT / 'report.json').write_text(json.dumps(report, indent=2, ensure_ascii=False) + '\n')
-    print('M31 LOCAL CHROMIUM CI SMOKE PASS:', json.dumps(report, ensure_ascii=False))
+    print('M32 LOCAL CHROMIUM CI SMOKE PASS:', json.dumps(report, ensure_ascii=False))
 
 
 if __name__ == '__main__':

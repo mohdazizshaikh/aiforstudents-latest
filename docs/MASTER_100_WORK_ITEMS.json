@@ -152,8 +152,17 @@
       "dependsOn": [
         "FP-005"
       ],
-      "status": "NOT_STARTED",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "tools/plan-evidence-check.mjs"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m32-b2-governance.test.mjs"
+        }
+      ]
     },
     {
       "id": "FP-007",
@@ -167,7 +176,7 @@
       "dependsOn": [
         "FP-005"
       ],
-      "status": "NOT_STARTED",
+      "status": "BLOCKED_EXTERNAL",
       "evidence": []
     },
     {
@@ -182,7 +191,7 @@
       "dependsOn": [
         "FP-005"
       ],
-      "status": "NOT_STARTED",
+      "status": "IN_PROGRESS",
       "evidence": []
     },
     {
@@ -197,8 +206,17 @@
       "dependsOn": [
         "FP-005"
       ],
-      "status": "NOT_STARTED",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "docs/B2_SCOPE_CHANGE_PROTOCOL.md"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m32-b2-governance.test.mjs"
+        }
+      ]
     },
     {
       "id": "FP-010",
@@ -626,8 +644,17 @@
       "dependsOn": [
         "FP-031"
       ],
-      "status": "NOT_STARTED",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/practice-engine.js"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m32-practice-guide.test.mjs"
+        }
+      ]
     },
     {
       "id": "FP-033",
@@ -1211,8 +1238,17 @@
       "dependsOn": [
         "FP-061"
       ],
-      "status": "NOT_STARTED",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/practice-engine.js"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m32-practice-guide.test.mjs"
+        }
+      ]
     },
     {
       "id": "FP-064",
@@ -1226,8 +1262,17 @@
       "dependsOn": [
         "FP-061"
       ],
-      "status": "NOT_STARTED",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/practice-engine.js"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m32-practice-guide.test.mjs"
+        }
+      ]
     },
     {
       "id": "FP-065",
@@ -1241,8 +1286,17 @@
       "dependsOn": [
         "FP-061"
       ],
-      "status": "NOT_STARTED",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/practice-engine.js"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m32-practice-guide.test.mjs"
+        }
+      ]
     },
     {
       "id": "FP-066",
@@ -1353,8 +1407,17 @@
       "dependsOn": [
         "FP-071"
       ],
-      "status": "NOT_STARTED",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/practice-engine.js"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m32-practice-guide.test.mjs"
+        }
+      ]
     },
     {
       "id": "FP-073",
@@ -1368,8 +1431,17 @@
       "dependsOn": [
         "FP-071"
       ],
-      "status": "NOT_STARTED",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/practice-engine.js"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m32-practice-guide.test.mjs"
+        }
+      ]
     },
     {
       "id": "FP-074",
@@ -1383,8 +1455,17 @@
       "dependsOn": [
         "FP-071"
       ],
-      "status": "NOT_STARTED",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/practice-engine.js"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m32-practice-guide.test.mjs"
+        }
+      ]
     },
     {
       "id": "FP-075",
@@ -1398,8 +1479,17 @@
       "dependsOn": [
         "FP-071"
       ],
-      "status": "NOT_STARTED",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/practice-app.js"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m32-practice-guide.test.mjs"
+        }
+      ]
     },
     {
       "id": "FP-076",
@@ -1510,8 +1600,17 @@
       "dependsOn": [
         "FP-081"
       ],
-      "status": "NOT_STARTED",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/classroom-app.js"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m32-teacher-cards.test.mjs"
+        }
+      ]
     },
     {
       "id": "FP-083",
@@ -1525,8 +1624,17 @@
       "dependsOn": [
         "FP-081"
       ],
-      "status": "NOT_STARTED",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/teacher-cards-engine.js"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m32-teacher-cards.test.mjs"
+        }
+      ]
     },
     {
       "id": "FP-084",
@@ -1540,8 +1648,17 @@
       "dependsOn": [
         "FP-081"
       ],
-      "status": "NOT_STARTED",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/teacher-cards-engine.js"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m32-teacher-cards.test.mjs"
+        }
+      ]
     },
     {
       "id": "FP-085",
@@ -1819,11 +1936,11 @@
     }
   ],
   "updatedOn": "2026-11-24",
-  "currentEngineeringMilestone": "M31_B1_SCIENCE_CONCEPT_LABS",
+  "currentEngineeringMilestone": "M32_B1_PRACTICE_TEACHER_B2_GOVERNANCE",
   "additionalNewMathsDrafts": 3,
   "currentPendingContentRecords": 3292,
-  "batch1VerifiedEngineeringAndDesignTasks": 35,
-  "batch2VerifiedEngineeringAndDesignTasks": 0,
-  "statusCaveat": "Engineering/design DONE_VERIFIED requires actual source/tests; it is NOT qualified subject/Hindi review, curriculum alignment, safety approval, real-device QA or public launch. M31 implements seven experimental science concept models and shared five-step UI; no real experiments or school pilot.",
+  "batch1VerifiedEngineeringAndDesignTasks": 46,
+  "batch2VerifiedEngineeringAndDesignTasks": 2,
+  "statusCaveat": "B1 46/50 engineering/design source/test only, four B1 expert approvals blocked. B2 2/50 governance/CI tasks verified; FP-007 owner assignments BLOCKED_EXTERNAL, FP-008 commit-to-evidence tracing IN_PROGRESS. No fictional human approval, real hosting or public release.",
   "newScienceDraftReviewRecords": 7
 }

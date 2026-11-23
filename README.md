@@ -1,5 +1,8 @@
 # AI for Students — Partial Prototype + Full Product Roadmap (M29)
 
+> **M32 B1/B2 ENGINEERING CHECKPOINT — 2026-11-24:** **B1 46/50 source+test tasks, 4 human/expert tasks BLOCKED_EXTERNAL; B2 2/50 governance tasks.** New in-memory bilingual *UNREVIEWED* fixed-source hints (not a real AI tutor), learner-controlled practice recommendations and optional paper review dates (not validated mastery), reused fraction five-step practice and privacy-first teacher navigation/learner-only A4 print cards. **3,292 existing educational records still await qualified review.** Actual Hostinger, legal/child safety, low-end physical accessibility, curriculum and school pilot remain undone. [M32 QA](docs/M32_PRACTICE_TEACHER_QA.md) · [Progress](docs/B1_PROGRESS_DASHBOARD.md) · [Master plan](docs/MASTER_EXECUTION_PLAN.md).
+
+
 > **M31 B1 UPDATE — 2026-11-24: B1 35/50 scoped engineering/design tasks verified, B2 0/50.** Seven new original bilingual draft Physics/Chemistry/Biology concept models now use a reusable five-step lesson flow; a cross-module English/Hindi completeness CI audit covers older and new draft sources. **3,292 educational records still await qualified human review.** Four B1 tasks blocked on independent expert inputs. Comprehensive Class 1–12 science, an actual AI tutor, validated mastery, full teacher dashboard and public launch are **NOT COMPLETE**. [M31 QA](docs/M31_SCIENCE_LABS.md) · [B1 tracker](docs/B1_PROGRESS_DASHBOARD.md).
 
 

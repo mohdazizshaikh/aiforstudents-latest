@@ -7,8 +7,8 @@ import {releaseAudit,auditContentQueues,auditStatic} from '../tools/release-pref
 import {verifyLive,validateOrigin,TARGETS} from '../tools/check-live-staging.mjs';
 const root=new URL('../',import.meta.url);
 const file=x=>fs.readFileSync(new URL(x,root),'utf8');
-test('M19 offline staging release preflight checks 23 pages and is ready for private testing',()=>{
- const r=releaseAudit();assert.equal(r.mode,'staging');assert.equal(r.htmlPages,23);assert.deepEqual(r.failures,[]);assert.equal(r.ready,true);
+test('M19 offline staging release preflight checks 24 pages and is ready for private testing',()=>{
+ const r=releaseAudit();assert.equal(r.mode,'staging');assert.equal(r.htmlPages,24);assert.deepEqual(r.failures,[]);assert.equal(r.ready,true);
 });
 test('M19 human review gate blocks all public release until genuinely signed off',()=>{
  const r=releaseAudit(undefined,'public');assert.equal(r.ready,false);assert.ok(r.failures.some(x=>x.includes('human signoff')));assert.ok(r.failures.some(x=>x.includes('child-safety/legal')));
@@ -27,7 +27,7 @@ test('M19 GitHub checkout archived game review queue is counted without pretendi
  }finally{fs.rmSync(tmp,{recursive:true,force:true})}
 });
 test('M19 all pages and static assets compatible with self-only CSP',()=>{
- const audit=auditStatic();assert.deepEqual(audit.problems,[]);assert.equal(audit.pages,23);
+ const audit=auditStatic();assert.deepEqual(audit.problems,[]);assert.equal(audit.pages,24);
  const ht=file('.htaccess');for(const header of ['X-Robots-Tag','Content-Security-Policy','Referrer-Policy','X-Content-Type-Options'])assert.ok(ht.includes(header));assert.doesNotMatch(ht,/unsafe-inline|unsafe-eval/);
 });
 test('M19 worksheets are no-inline, printed by external local script; no student data',()=>{
@@ -39,7 +39,7 @@ test('M19 live-host checker rejects insecure/malformed origins',()=>{
 });
 test('M19 live-host checker audits all endpoints and validates expected headers',async()=>{
  const headers=new Headers({'content-type':'text/html; charset=utf-8','x-robots-tag':'noindex, nofollow','x-content-type-options':'nosniff','content-security-policy':"default-src 'self'; script-src 'self'",'referrer-policy':'strict-origin-when-cross-origin'});
- const fetcher=async url=>{let h=new Headers(headers);if(url.endsWith('.js'))h.set('content-type','text/javascript');if(url.endsWith('.css'))h.set('content-type','text/css');return {status:200,headers:h,text:async()=>url.endsWith('service-worker.js')?'aifs-discovery-m31':'<meta name="robots" content="noindex,nofollow">'};};
+ const fetcher=async url=>{let h=new Headers(headers);if(url.endsWith('.js'))h.set('content-type','text/javascript');if(url.endsWith('.css'))h.set('content-type','text/css');return {status:200,headers:h,text:async()=>url.endsWith('service-worker.js')?'aifs-discovery-m32':'<meta name="robots" content="noindex,nofollow">'};};
  const r=await verifyLive('https://example.org',fetcher);assert.equal(r.checked,TARGETS.length);assert.equal(r.passed,true);
 });
 test('M19 live-host checker detects unsafe or stale staging server replies',async()=>{

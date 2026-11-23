@@ -1,5 +1,8 @@
 # Decision Register, Assumptions and Risk Tracker
 
+> **M32 CHANGE CONTROL — 2026-11-24:** Practice Guide is intentionally closed-choice, source-attributed, local-only and labelled UNREVIEWED; adult-help fallback does not collect sensitive text. Recommendations are learner-controlled and cannot assert IQ/mastery; printed classroom cards mask answers. B1 **46/50** engineering-scope evidence; B2 **2/50** governance tasks, unassigned-role and commit-trace blockers remain. Human educational/child/legal safety approvals **NOT VERIFIED**; 3,292 review records pending. [Scope-change protocol](B2_SCOPE_CHANGE_PROTOCOL.md).
+
+
 > **M31 SAFETY DECISION (2026-11-24):** Seven new interactive Science drafts are conceptual-only and explicitly disallow unsafe hands-on mains electricity, chemicals, bright light and wildlife sampling. Reusable five-stage teaching flow is not a validated curriculum. Pending human educational records are now **3,292**; B1 **35/50 engineering/design** tasks source/test-backed, four additional items blocked on genuine experts. Risk: counting conceptual models as complete practical labs or independent educator reviews. Mitigation: [M31 limitations](M31_SCIENCE_LABS.md) and launch gates kept closed.
 
 

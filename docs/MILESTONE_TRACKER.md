@@ -1,5 +1,8 @@
 # Milestone and Release Tracker
 
+> **M32 LATEST CHECKPOINT — 2026-11-24:** B1 **46/50** code/source-and-test tasks, **four HUMAN_BLOCKED**, B2 **2/50** software governance tasks; actual owner assignments and commit-to-task provenance still pending. Implemented optional draft-only offline hint/practice UI and teacher learner-card page. Existing qualified reviews **3,292 pending**, no legal/safeguarding/Hostinger/physical Android/school signoff. [M32 QA](M32_PRACTICE_TEACHER_QA.md) · [B1 progress](B1_PROGRESS_DASHBOARD.md). Do not infer public readiness.
+
+
 > **M31 SCOPED MILESTONE (2026-11-24):** New science concept teaching prototypes implemented, seven new bilingual subject drafts; current master plan B1 **35/50** verified source-and-test tasks, B2 **0/50**. **3,292** content records need independent Hindi/subject review; four B1 items blocked externally. [M31 QA](M31_SCIENCE_LABS.md) · [current B1 tracker](B1_PROGRESS_DASHBOARD.md). No fully verified Class 1–12 curriculum, actual Hostinger HTTPS, low-end physical accessibility, safeguarding or authorized school pilot.
 
 

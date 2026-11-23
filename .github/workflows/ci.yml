@@ -36,6 +36,10 @@ jobs:
         run: npm run audit-a11y
       - name: Check English/Hindi completeness across all learner draft modules (structural, not translation approval)
         run: npm run audit:bilingual
+      - name: Verify 100-task status dashboard and owner/source/test traceability (NOT human approval)
+        run: |
+          npm run plan:check
+          npm run plan:trace
       - name: Verify static release
         run: node tools/verify-static-release.mjs
       - name: Structural content audit
@@ -48,12 +52,12 @@ jobs:
       - name: Ensure no private reviewer evidence or secrets in archives
         run: python3 tools/check-package-privacy.py
       - name: Prepare verified staging ZIP inside workflow workspace
-        run: cp ../aiforstudents_hostinger_staging_m31.zip ./aiforstudents_hostinger_staging_m31.zip
+        run: cp ../aiforstudents_hostinger_staging_m32.zip ./aiforstudents_hostinger_staging_m32.zip
       - name: Attach verified private-staging-only Hostinger ZIP (never auto-deploy)
         uses: actions/upload-artifact@v4
         with:
-          name: m31-hostinger-private-staging-noindex
-          path: aiforstudents_hostinger_staging_m31.zip
+          name: m32-hostinger-private-staging-noindex
+          path: aiforstudents_hostinger_staging_m32.zip
           if-no-files-found: error
           retention-days: 7
 
@@ -79,7 +83,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: m31-local-browser-regression
-          path: test-results/m31-browser/report.json
+          name: m32-local-browser-regression
+          path: test-results/m32-browser/report.json
           if-no-files-found: warn
           retention-days: 7

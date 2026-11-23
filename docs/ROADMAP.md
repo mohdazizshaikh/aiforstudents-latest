@@ -1,5 +1,8 @@
 # AI for Students — Product Roadmap
 
+> **M32 LATEST EXECUTION ROADMAP (2026-11-24):** **B1 46/50** source/test verified and four human expert gates blocked; **B2 2/50** governance task acceptance, 48 pending. The first two batches do not themselves guarantee all board editions/chapters. M32 adds only bounded bilingual draft-source hint UI, voluntary practice/date controls and school projector/card UX, not full generative tutoring, validated adaptive learning or a student-data teacher dashboard. [M32 design evidence](M32_PRACTICE_TEACHER_QA.md) · [Full product gaps](FULL_PRODUCT_SCOPE_AND_DONE.md).
+
+
 > **M31 DELIVERY CHECKPOINT (2026-11-24):** B1 **35/50** engineering/design tasks evidence-backed; B2 **0/50**. Reusable five-stage learning UI and seven draft Physics/Chemistry/Biology interactive conceptual models, plus structural bilingual completeness checks, are new. **3,292** content reviews, four B1 expert dependencies, six child-safety gates and live school/device/hosting proof remain. [M31 details](M31_SCIENCE_LABS.md) · [B1 dashboard](B1_PROGRESS_DASHBOARD.md). This is not full Class 1–12 coverage or public readiness.
 
 

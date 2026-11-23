@@ -79,7 +79,7 @@ test('M30 workshop UI is accessible, no drag, no API, local-only and existing co
  assert.match(app,/workshopButton/);
  assert.match(app,/aifs-history-cleared/);
  assert.doesNotMatch(app,/navigator\.geolocation|openai\.com|api\.gemini|localStorage\.setItem/);
- assert.match(sw,/aifs-discovery-m31/);
+ assert.match(sw,/aifs-discovery-m32/);
  for(const a of [false,true])for(const b of [false,true]){
   assert.equal(bulbLit({a,b}),a&&b);
   assert.equal(evaluateExperiment('series-circuit','light',{a,b}).correct,a&&b);

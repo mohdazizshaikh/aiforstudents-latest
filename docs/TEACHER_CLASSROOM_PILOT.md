@@ -1,5 +1,8 @@
 # M17 Teacher-Led Smart Classroom Pilot — Proposed Plan
 
+> **M32 TEACHER PILOT SCOPE — 2026-11-24:** Teacher UI now has keyboard-friendly step jump, anonymous generic role rotation, projector controls and original local A4 learner discussion cards that hide teacher-only notes in print. This is **NOT** a school-approved teacher dashboard, assignment management or pupil roster. Existing 2 lesson plans remain human-review PENDING. Real school, guardian, projector, printer and learning outcome testing still absent. [M32 QA](M32_PRACTICE_TEACHER_QA.md).
+
+
 > **M29 SCOPE CORRECTION — 2026-11-24:** The Teacher Kit currently provides **two prototype guided lessons and worksheets**, **not** a complete teacher dashboard, approved study or real classroom pilot. Future planning/assignment workflows and an authorized school trial are defined in [100-task plan](MASTER_EXECUTION_PLAN.md) and [full product scope](FULL_PRODUCT_SCOPE_AND_DONE.md). Real school/guardian and child-safety permissions are pending.
 
 

@@ -92,3 +92,21 @@ h1,h2,h3,p{margin-top:0}h1,h2,h3{line-height:1.16;letter-spacing:-.04em}h1{font-
 .science-surface .feedback{margin-top:12px}
 .science-surface button:focus-visible{outline:3px solid #ad7525;outline-offset:3px}
 @media(max-width:550px){.science-surface{padding:12px}.science-control-group{flex-basis:100%}.science-tabs button{flex:1 1 130px}}
+
+/* M32 local practice guide; all responses are optional and in-memory only. */
+.local-guide-panel{max-width:970px}.local-guide-selectors{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+.local-guide-selectors label{display:flex;flex-direction:column;gap:5px;font-weight:650}
+.local-guide-selectors select,.local-guide-hints select{width:100%;padding:12px;border:1px solid #b3cec5;border-radius:10px;background:#fff;color:#19343b;min-height:44px}
+.local-guide-actions{display:flex;flex-wrap:wrap;gap:10px;margin:13px 0;align-items:center}
+.local-guide-actions .btn{min-height:44px}
+.local-guide-result{border:1px solid #bdd5ce;background:#f1f8f5;padding:12px;border-radius:10px;overflow-wrap:anywhere}
+.local-guide-hints,.local-guide-reviews,.local-guide-fraction{margin:18px 0;padding:14px;border:1px solid #cadfd6;border-radius:13px}
+.local-guide-hints label{display:block;font-weight:700;margin-bottom:6px}
+.local-guide-fraction #local-guide-fraction-adjust{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.local-guide-fraction #local-guide-fraction-adjust[hidden]{display:none}
+.local-guide-fraction output{font-size:1.5rem;font-weight:800;min-width:65px;text-align:center}
+.local-guide-panel button:focus-visible,.local-guide-panel select:focus-visible{outline:3px solid #b38229;outline-offset:3px}
+.classroom-toolbar select{min-height:48px;padding:10px;border-radius:9px;border:1px solid #bdd5ce;background:white}
+.classroom-toolbar label{font-weight:700}.classroom-toolbar a{padding:8px}
+.classroom-projector #classroom .classroom-toolbar select,.classroom-projector #classroom .classroom-toolbar button{min-height:58px;font-size:1.1rem}
+@media(max-width:480px){.local-guide-selectors{grid-template-columns:1fr}.local-guide-hints,.local-guide-reviews,.local-guide-fraction{padding:9px}}

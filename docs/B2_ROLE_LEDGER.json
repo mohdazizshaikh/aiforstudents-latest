@@ -1,0 +1,125 @@
+{
+  "schema": "aifs-role-ledger-m32-v1",
+  "preparedOn": "2026-11-24",
+  "warning": "UNASSIGNED role placeholders, not real personnel or approvals",
+  "roles": [
+    {
+      "stream": "GOV",
+      "role": "Product/Quality",
+      "assignedPerson": null,
+      "assignedReviewer": null,
+      "assignmentState": "UNASSIGNED",
+      "reviewerApproval": false
+    },
+    {
+      "stream": "CUR",
+      "role": "Curriculum/Teachers",
+      "assignedPerson": null,
+      "assignedReviewer": null,
+      "assignmentState": "UNASSIGNED",
+      "reviewerApproval": false
+    },
+    {
+      "stream": "UX",
+      "role": "Frontend/A11y",
+      "assignedPerson": null,
+      "assignedReviewer": null,
+      "assignmentState": "UNASSIGNED",
+      "reviewerApproval": false
+    },
+    {
+      "stream": "MATH",
+      "role": "Maths/Engineering",
+      "assignedPerson": null,
+      "assignedReviewer": null,
+      "assignmentState": "UNASSIGNED",
+      "reviewerApproval": false
+    },
+    {
+      "stream": "PHYS",
+      "role": "Physics/Engineering",
+      "assignedPerson": null,
+      "assignedReviewer": null,
+      "assignmentState": "UNASSIGNED",
+      "reviewerApproval": false
+    },
+    {
+      "stream": "BIOCHEM",
+      "role": "Science/Safety",
+      "assignedPerson": null,
+      "assignedReviewer": null,
+      "assignmentState": "UNASSIGNED",
+      "reviewerApproval": false
+    },
+    {
+      "stream": "TUTOR",
+      "role": "AI/Safety",
+      "assignedPerson": null,
+      "assignedReviewer": null,
+      "assignmentState": "UNASSIGNED",
+      "reviewerApproval": false
+    },
+    {
+      "stream": "ADAPT",
+      "role": "LearningScience/Privacy",
+      "assignedPerson": null,
+      "assignedReviewer": null,
+      "assignmentState": "UNASSIGNED",
+      "reviewerApproval": false
+    },
+    {
+      "stream": "TEACH",
+      "role": "Teachers/Engineering",
+      "assignedPerson": null,
+      "assignedReviewer": null,
+      "assignmentState": "UNASSIGNED",
+      "reviewerApproval": false
+    },
+    {
+      "stream": "VERIFY",
+      "role": "QA/Ops/Safeguarding",
+      "assignedPerson": null,
+      "assignedReviewer": null,
+      "assignmentState": "UNASSIGNED",
+      "reviewerApproval": false
+    }
+  ],
+  "realWorldGates": [
+    {
+      "name": "qualified bilingual subject education",
+      "approved": false,
+      "authenticatedSigner": null,
+      "evidenceUrl": null,
+      "status": "BLOCKED_EXTERNAL"
+    },
+    {
+      "name": "child safeguarding and legal review",
+      "approved": false,
+      "authenticatedSigner": null,
+      "evidenceUrl": null,
+      "status": "BLOCKED_EXTERNAL"
+    },
+    {
+      "name": "restricted Hostinger operator",
+      "approved": false,
+      "authenticatedSigner": null,
+      "evidenceUrl": null,
+      "status": "BLOCKED_EXTERNAL"
+    },
+    {
+      "name": "real-device accessibility testing",
+      "approved": false,
+      "authenticatedSigner": null,
+      "evidenceUrl": null,
+      "status": "BLOCKED_EXTERNAL"
+    },
+    {
+      "name": "authorized school and guardian pilot",
+      "approved": false,
+      "authenticatedSigner": null,
+      "evidenceUrl": null,
+      "status": "BLOCKED_EXTERNAL"
+    }
+  ],
+  "publicReleaseApproved": false
+}

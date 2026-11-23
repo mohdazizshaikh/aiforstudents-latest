@@ -41,7 +41,7 @@ export function formatWorkPlanDashboard(p){
  const audit=auditWorkPlan(p);if(!audit.valid)throw Error(audit.errors.join('; '));
  const ids=p.items.filter(x=>x.status==='DONE_VERIFIED').map(x=>x.id);
  const pending=p.items.filter(x=>x.batch==='B1'&&x.status!=='DONE_VERIFIED');
- return `# B1 — Engineering Workstream Progress Dashboard (M31)
+ return `# B1 — Engineering Workstream Progress Dashboard (M32)
 
 **Computed from the machine-readable 100-task tracker.** This is engineering evidence ONLY. Human educational, legal, safety, actual Hostinger and school approvals are **NOT AUTHENTICATED**.
 
@@ -66,7 +66,7 @@ ${pending.map(x=>`${x.id} (${x.status})`).join(', ')||'None'}
 - Prototype scope is NOT a comprehensive Class 1–12 mathematics/science curriculum, full teacher dashboard or real generative AI tutor.
 - publicReleaseApproved: false; noindex must remain in place.
 
-[Full scope](FULL_PRODUCT_SCOPE_AND_DONE.md) · [Task register](MASTER_100_WORK_ITEMS.json) · [M31 engineering QA](M31_SCIENCE_LABS.md).
+[Full scope](FULL_PRODUCT_SCOPE_AND_DONE.md) · [Task register](MASTER_100_WORK_ITEMS.json) · [M32 engineering QA](M32_PRACTICE_TEACHER_QA.md).
 `;
 }
 if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)){
