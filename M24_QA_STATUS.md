@@ -41,3 +41,9 @@ The following require human testing on real devices and school contexts: keyboar
 
 ## CI staging ZIP handoff (not deployment)
 The pipeline first runs source/static tests and ZIP privacy checks, then attaches the **M24 Hostinger private-staging/noindex ZIP** as a GitHub Actions artifact with **7-day retention**. An authorized operator must download, inspect, back up the intended restricted staging site and deploy manually; the artifact is **not** a live site, does not grant authentication and must never be treated as launch approval. GitHub Actions artifacts on a public repository may be accessible to people with GitHub access; no reviewer decisions or secrets should be present.
+
+## Final merge evidence (2026-11-23)
+- [M24 PR #10](https://github.com/mohdazizshaikh/aiforstudents-latest/pull/10) **merged** into `main` at `a236544724f7fc1ced19fc1111798374dfcfbfea`.
+- [Merged main CI](https://github.com/mohdazizshaikh/aiforstudents-latest/actions/runs/45180325206) **success**, including 125/125 Node tests, 23/23 static HTML structural checks, 52-file static Hostinger ZIP and 147-file source ZIP, plus archive privacy verification.
+- GitHub Actions artifact `m24-hostinger-private-staging-noindex` verified attached. It expires on **2026-11-30**; this artifact is a handoff file, not a hosted or approved release.
+- Real Hostinger restricted HTTPS, physical Android/AT, educational and safeguarding signoffs remain **PENDING**.
