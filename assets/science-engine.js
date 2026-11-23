@@ -145,7 +145,9 @@ export function scienceExplain(id,state,lang='en'){
  }
  if(id==='changes'){
   const kind=state.example==='burning'?'chemical':'physical';
-  return scienceText(pair(`For this example, ${state.example} is classified as ${kind}; chosen label: ${state.kind}. This is not an experiment instruction.`,`इस उदाहरण में ${state.example} को ${kind} परिवर्तन माना गया है; चुना वर्ग: ${state.kind}। यह प्रयोग करने का निर्देश नहीं है।`),lang);
+  const exampleHi={melting:'बर्फ पिघलना',burning:'कागज़ जलना',dissolving:'पानी में नमक घुलना'}[state.example];
+  const kindHi={physical:'भौतिक',chemical:'रासायनिक'};
+  return scienceText(pair(`For this example, ${state.example} is classified as ${kind}; chosen label: ${state.kind}. This is not an experiment instruction.`,`इस उदाहरण में ${exampleHi} को ${kindHi[kind]} परिवर्तन माना गया है; चुना वर्ग: ${kindHi[state.kind]}। यह प्रयोग करने का निर्देश नहीं है।`),lang);
  }
  if(id==='cells'){
   const d={
@@ -155,7 +157,10 @@ export function scienceExplain(id,state,lang='en'){
   };
   return scienceText(d[state.cell],lang);
  }
- return scienceText(pair(`Selected chain: ${state.chain.replaceAll('-',' → ')}. This is one simplified classroom example; food webs are more complex.`,`चुनी खाद्य शृंखला: ${state.chain.replaceAll('-',' → ')}। यह कक्षा का सरल उदाहरण है; खाद्य-जाल अधिक जटिल होते हैं।`),lang);
+ const hi={ 'frog-grass-snake':'मेंढक → घास → साँप',
+  'grass-grasshopper-frog-snake':'घास → टिड्डा → मेंढक → साँप',
+  'snake-grasshopper-grass':'साँप → टिड्डा → घास'};
+ return scienceText(pair(`Selected chain: ${state.chain.replaceAll('-',' → ')}. This is one simplified classroom example; food webs are more complex.`,`चुनी खाद्य शृंखला: ${hi[state.chain]}। यह कक्षा का सरल उदाहरण है; खाद्य-जाल अधिक जटिल होते हैं।`),lang);
 }
 export function scienceEvaluate(id,state){
  const model=scienceModel(id);scienceValidateState(id,state);

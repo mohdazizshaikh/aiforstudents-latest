@@ -96,7 +96,9 @@ function render(){
  if(playStage)quiz();
  const feedback=$('science-feedback');feedback.hidden=!S.feedback;
  if(S.feedback){
-  feedback.textContent=p(S.feedback.correct?'This practice step matches the example. ':'Please compare with the hint and try again. ',
+  feedback.textContent=S.feedback.needsChoice?
+   p('Choose one answer before checking. No score is recorded.','जाँच से पहले एक उत्तर चुनें। कोई अंक दर्ज नहीं होगा।'):
+   p(S.feedback.correct?'This practice step matches the example. ':'Please compare with the hint and try again. ',
     S.feedback.correct?'यह अभ्यास उदाहरण से मेल खाता है। ':'संकेत देखकर फिर कोशिश करें। ')+
     (tryStage?scienceExplain(S.id,S.values,lang()):
      p('This is one example and not a validated measure of understanding.','यह केवल एक उदाहरण है, समझ की सत्यापित जाँच नहीं।'));
@@ -132,7 +134,7 @@ $('science-lab').addEventListener('click',event=>{
 $('science-check').addEventListener('click',()=>{
  if(SCIENCE_STAGES[S.stage]==='try')S.feedback={correct:scienceEvaluate(S.id,S.values).correct};
  else if(SCIENCE_STAGES[S.stage]==='play'){
-  if(S.answer===null){S.feedback=null;return}
+  if(S.answer===null){S.feedback={needsChoice:true,correct:false};render();$('science-feedback').focus();return}
   S.feedback={correct:scienceChoiceCheck(S.id,S.answer)};
  }else return;
  render();$('science-feedback').focus();
