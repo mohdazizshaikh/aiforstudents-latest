@@ -15,6 +15,7 @@
     "safety-handoff:check": "node tools/safety-handoff.mjs --check safety-handoff/operations.json",
     "plan:status": "node tools/workplan-status.mjs",
     "plan:check": "node tools/workplan-status.mjs --check",
-    "curriculum:check": "node tools/validate-curriculum-map.mjs"
+    "curriculum:check": "node tools/validate-curriculum-map.mjs",
+    "audit:bilingual": "node tools/audit-bilingual-learning.mjs"
   }
 }

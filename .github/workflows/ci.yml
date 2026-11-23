@@ -34,6 +34,8 @@ jobs:
           fi
       - name: Static semantic navigation audit (not WCAG certification)
         run: npm run audit-a11y
+      - name: Check English/Hindi completeness across all learner draft modules (structural, not translation approval)
+        run: npm run audit:bilingual
       - name: Verify static release
         run: node tools/verify-static-release.mjs
       - name: Structural content audit
