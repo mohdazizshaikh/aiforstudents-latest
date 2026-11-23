@@ -52,3 +52,9 @@ The `--full` read-only audit derives allowable routes/assets from repository sou
 - [ ] Check the latest GitHub Actions `browser-smoke` job and its seven-day `m25-local-browser-regression` report; a passing localhost Chromium run is useful engineering evidence only.
 - [ ] Repeat equivalent flows on **real authorized restricted Hostinger HTTPS** with actual CSP/noindex response headers, offline service worker upgrade, physical low-end Android, TalkBack/VoiceOver/NVDA and A4/projector. Preserve noindex and authentication independently.
 - [ ] Do not infer legal approval, qualified educational review or school pilot permission from a Playwright PASS. [M25 guide](docs/M25_BROWSER_REGRESSION.md).
+
+### M26 — Human safeguarding gate before any child access
+- [ ] Review [M26 draft runbook](docs/M26_CHILD_SAFETY_OPERATIONS.md) with real authorized safeguarding lead/deputy, privacy/legal professional, school lead and incident operator; record roles privately, not in GitHub or CI artifacts.
+- [ ] Generate `safety-handoff/operations.json` locally with `npm run safety-handoff:template`; do not commit or deploy it. Structural `--check` success means only well-formed evidence, **not actual approval**.
+- [ ] Conduct real tabletop incident-response drill and legal/shared-device/staging log assessment with accountable humans; record access-controlled acknowledgements and unresolved issues.
+- [ ] Maintain child-facing noindex and restricted staging until independent human go/no-go decision and all other release gates are complete.

@@ -109,3 +109,8 @@ See [M23 review evidence](M23_REVIEW_EVIDENCE.md). No signed reviews exist merel
 - **Implemented on M25 branch:** separate GitHub Actions `browser-smoke` job using Python Playwright and Chromium, unmodified local ES modules, 390 px viewport, print media, Hindi UI, keyboard Skip navigation, local privacy controls and service-worker offline cache.
 - **Evidence:** See latest M25 PR/Actions run; test outcome must be confirmed before merged status is claimed. A local HTTP browser secure context is **not Hostinger HTTPS**.
 - **Remaining GATE-01–06:** 3,282 qualified content records, real private staging/rollback, physical Android/AT QA, legal/child-safety owners and ethical pilot are not completed by CI. [M25 guide](M25_BROWSER_REGRESSION.md).
+
+### M26 — Safety operations ownership and independent release handoff (2026-11-23)
+- **Engineering:** offline six-gate operator checklist generator and structural validator; local-only `safety-handoff/` ignored and excluded from source/hosting ZIP. Generated default evidence is entirely pending; CI validates schema only.
+- **Owner state:** no safeguarding lead, deputy, privacy/legal counsel, incident responder or school pilot coordinator has been authenticated or appointed by code. All human reviews still **PENDING**.
+- **Public release:** blocked regardless of template completeness; educational content 3,282/3,282 human reviews pending, physical Android/AT, actual Hostinger restricted staging, permission and legal/incident signoff required. [M26 runbook](M26_CHILD_SAFETY_OPERATIONS.md), [Issue #4](https://github.com/mohdazizshaikh/aiforstudents-latest/issues/4).
