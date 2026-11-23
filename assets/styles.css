@@ -110,3 +110,6 @@ h1,h2,h3,p{margin-top:0}h1,h2,h3{line-height:1.16;letter-spacing:-.04em}h1{font-
 .classroom-toolbar label{font-weight:700}.classroom-toolbar a{padding:8px}
 .classroom-projector #classroom .classroom-toolbar select,.classroom-projector #classroom .classroom-toolbar button{min-height:58px;font-size:1.1rem}
 @media(max-width:480px){.local-guide-selectors{grid-template-columns:1fr}.local-guide-hints,.local-guide-reviews,.local-guide-fraction{padding:9px}}
+
+/* M33 interactive conceptual models: visual equivalents plus accessible numeric tables. */
+#advanced-topic{display:block;width:100%;padding:12px;min-height:48px;margin:8px 0 16px;border:1px solid #bdd5ce;border-radius:9px;background:white;color:#19343b}.advanced-results{width:100%;border-collapse:collapse;table-layout:fixed;overflow-wrap:anywhere}.advanced-results caption{text-align:left;font-weight:700;padding:10px 0}.advanced-results td,.advanced-results th{padding:8px;border-bottom:1px solid #bed7cb;text-align:left}.advanced-visual svg{width:100%;max-width:460px;height:auto;display:block;background:white;border:1px solid #c6d9cf;border-radius:9px}.advanced-visual{margin:12px 0}.advanced-surface label{font-weight:700}.advanced-surface .science-control-group{min-width:0}.advanced-results th:first-child{width:56%}

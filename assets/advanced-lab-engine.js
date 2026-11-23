@@ -21,8 +21,8 @@ export const ADVANCED_MODELS={
   prompt:P('Choose point (3, 2) and observe its reflection (−3, 2) in the y-axis.','बिंदु (3, 2) चुनें और y-अक्ष पर प्रतिबिंब (−3, 2) देखें।'),
   hint:P('Only the x-coordinate changes sign when reflected in the y-axis.','y-अक्ष पर प्रतिबिंब में केवल x-निर्देशांक का चिह्न बदलता है।'),
   caveat:P('Mathematical coordinate reflection only; not a claim about real mirrors or images.','यह केवल गणितीय निर्देशांक प्रतिबिंब है, असली दर्पण की तस्वीर नहीं।'),
-  fields:[N('x','x-coordinate','x-निर्देशांक',-5,5),N('y','y-coordinate','y-निर्देशांक',-5,5)],
-  initial:{x:1,y:1},target:{x:3,y:2}
+  fields:[N('x','x-coordinate','x-निर्देशांक',-5,5),N('y','y-coordinate','y-निर्देशांक',-5,5),O('transform','Transformation','रूपांतरण',[['reflect','Reflect in y-axis','y-अक्ष पर प्रतिबिंब'],['rotate','Rotate 90° counterclockwise','90° वामावर्त घुमाएँ'],['translate','Translate by (2, −1)','(2, −1) से स्थानांतरण']])],
+  initial:{x:1,y:1,transform:'reflect'},target:{x:3,y:2,transform:'reflect'}
  },
  coordinate:{
   subject:'maths',title:P('Graph a simple linear relationship','सरल रैखिक संबंध का आलेख'),
@@ -36,15 +36,15 @@ export const ADVANCED_MODELS={
   subject:'maths',title:P('Probability from a simple bag model','सरल थैली मॉडल से प्रायिकता'),
   prompt:P('Make a bag with 3 red and 2 blue counters. The theoretical probability of red is 3/5.','थैली में 3 लाल और 2 नीले काउंटर रखें। लाल आने की सैद्धांतिक प्रायिकता 3/5 है।'),
   hint:P('Set red = 3 and blue = 2. Divide the red count by the total.','लाल = 3 और नीले = 2 रखें। लाल संख्या को कुल से भाग दें।'),
-  caveat:P('Ideal equally likely counter draws, not a prediction of actual sample results or a gambling activity.','यह समान संभावना वाला आदर्श मॉडल है; असली परिणाम की भविष्यवाणी या जुआ नहीं।'),
-  fields:[N('red','Red counters','लाल काउंटर',0,10),N('blue','Blue counters','नीले काउंटर',0,10)],
-  initial:{red:1,blue:2},target:{red:3,blue:2}
+  caveat:P('Ideal draws with replacement; finite simulated samples vary by seed. Not a prediction of real samples or gambling.','यह वापस रखकर निकाले गए आदर्श नमूने हैं; सीमित नमूने बीज से बदलते हैं। वास्तविक परिणाम या जुए की भविष्यवाणी नहीं।'),
+  fields:[N('red','Red counters','लाल काउंटर',0,10),N('blue','Blue counters','नीले काउंटर',0,10),N('seed','Repeatable seed','दोहराने योग्य बीज',1,10),N('draws','Number of draws','नमूना संख्या',10,100,10)],
+  initial:{red:1,blue:2,seed:1,draws:20},target:{red:3,blue:2,seed:1,draws:20}
  },
  temperature:{
   subject:'physics',title:P('Ideal thermal energy and temperature change','आदर्श ऊष्मीय ऊर्जा और तापमान परिवर्तन'),
   prompt:P('For a fictional material with heat capacity 100 J/(kg °C), make Q = 300 J and mass = 3 kg. Compute ΔT = Q/(mc).','100 J/(kg °C) ऊष्मा क्षमता वाले काल्पनिक पदार्थ के लिए Q = 300 J और द्रव्यमान = 3 kg रखें। ΔT = Q/(mc) निकालें।'),
   hint:P('Set input energy to 300 J and mass to 3 kg. No real heating.','ऊर्जा 300 J और द्रव्यमान 3 kg रखें। वास्तविक गर्म करना नहीं है।'),
-  caveat:P('Toy constant-c model, no real heating, burn safety, phase change or human body temperature inference.','यह स्थिर c का कल्पित मॉडल है, वास्तविक गर्म करना, जलने का जोखिम, अवस्था परिवर्तन या शरीर-ताप अनुमान नहीं।'),
+  caveat:P('Heat is energy transfer; temperature is not heat. Toy constant-c model, no real heating, phase change or body temperature inference.','ऊष्मा ऊर्जा का स्थानांतरण है; तापमान ऊष्मा नहीं है। स्थिर c का काल्पनिक मॉडल; वास्तविक गर्म करना, अवस्था परिवर्तन या शरीर-ताप अनुमान नहीं।'),
   fields:[N('joules','Heat energy Q','ऊष्मा ऊर्जा Q',100,500,100,'J'),N('mass','Mass','द्रव्यमान',1,5,1,'kg')],
   initial:{joules:100,mass:2},target:{joules:300,mass:3}
  },
@@ -52,9 +52,9 @@ export const ADVANCED_MODELS={
   subject:'physics',title:P('Sound-wave frequency and period','ध्वनि तरंग की आवृत्ति और आवर्तकाल'),
   prompt:P('Set an ideal period of 5 milliseconds. The frequency is 1000/5 = 200 Hz.','आदर्श आवर्तकाल 5 मिलीसेकंड करें। आवृत्ति 1000/5 = 200 Hz है।'),
   hint:P('Select period = 5 ms; smaller period means higher frequency.','आवर्तकाल 5 ms रखें; कम आवर्तकाल पर आवृत्ति अधिक होती है।'),
-  caveat:P('Silent numeric waveform model. Does not play sound or suggest unsafe exposure to loud noise.','यह बिना ध्वनि वाला संख्यात्मक तरंग मॉडल है; तेज़ आवाज़ सुनने का निर्देश नहीं।'),
-  fields:[N('period','Period','आवर्तकाल',1,10,1,'ms')],
-  initial:{period:2},target:{period:5}
+  caveat:P('Silent numeric waveform model. Relative amplitude is not a calibrated loudness measurement. No sound playback.','यह मौन संख्यात्मक तरंग मॉडल है। सापेक्ष आयाम वास्तविक ध्वनि-तीव्रता का मापन नहीं। ध्वनि नहीं बजती।'),
+  fields:[N('period','Period','आवर्तकाल',1,10,1,'ms'),N('amplitude','Relative amplitude','सापेक्ष आयाम',1,5)],
+  initial:{period:2,amplitude:2},target:{period:5,amplitude:2}
  },
  magnetism:{
   subject:'physics',title:P('Magnetic poles: qualitative interaction','चुंबकीय ध्रुव: गुणात्मक संबंध'),
@@ -92,7 +92,7 @@ export const ADVANCED_MODELS={
   subject:'biology',title:P('Different ecosystem interactions','पारितंत्र में अलग-अलग संबंध'),
   prompt:P('Select flower + bee as a commonly taught pollination example.','परागण के सामान्य उदाहरण के लिए फूल + मधुमक्खी चुनें।'),
   hint:P('A bee visiting a flower can transfer pollen; it is not the only pollination route.','फूल पर आने वाली मधुमक्खी पराग ले जा सकती है; परागण का यही एकमात्र तरीका नहीं।'),
-  caveat:P('Qualitative illustration, not an ecological field study or instructions to approach insects.','यह केवल गुणात्मक उदाहरण है; क्षेत्र अध्ययन या कीड़ों के पास जाने का निर्देश नहीं।'),
+  caveat:P('These links are examples in a larger food web: organisms can interact in multiple ways; actual ecosystems vary. No field study or insect handling.','ये बड़े खाद्य-जाल के उदाहरण हैं; जीव कई प्रकार से संबंध रखते हैं और वास्तविक पारितंत्र अलग होते हैं। क्षेत्र अध्ययन या कीड़ों को पकड़ना नहीं।'),
   fields:[O('pair','Choose example','उदाहरण चुनें',[
    ['flower-bee','Flower + bee (pollination example)','फूल + मधुमक्खी (परागण)'],
    ['frog-insect','Frog + insect (predation example)','मेंढक + कीट (परभक्षण)'],
@@ -135,14 +135,15 @@ export function calculateAdvanced(id,state){
  validateAdvancedState(id,state);
  switch(id){
   case 'ratio-algebra':return {total:state.groups*state.each};
-  case 'symmetry':return {reflectedX:-state.x,reflectedY:state.y};
+  case 'symmetry':{const {x,y,transform}=state;const [transformedX,transformedY]=transform==='reflect'?[-x,y]:transform==='rotate'?[-y,x]:[x+2,y-1];return {transformedX,transformedY};}
   case 'coordinate':return {x:state.x,y:2*state.x+1};
   case 'probability':{
    const total=state.red+state.blue;
-   return {red:state.red,blue:state.blue,total,probabilityRed:total?state.red/total:null};
+   let seed=state.seed,redDraws=0;for(let i=0;i<state.draws&&total;i++){seed=(Math.imul(seed,1664525)+1013904223)>>>0;if(seed/4294967296<state.red/total)redDraws++;}
+   return {red:state.red,blue:state.blue,total,probabilityRed:total?state.red/total:null,sampleSize:total?state.draws:0,sampleRed:total?redDraws:0,sampleProportion:total?redDraws/state.draws:null};
   }
   case 'temperature':return {joules:state.joules,mass:state.mass,idealDeltaC:state.joules/(state.mass*100)};
-  case 'sound':return {periodMs:state.period,frequencyHz:1000/state.period};
+  case 'sound':return {periodMs:state.period,frequencyHz:1000/state.period,relativeAmplitude:state.amplitude};
   case 'magnetism':return {interaction:state.a===state.b?'repel':'attract'};
   case 'measurement':return {speedA:state.aDistance/state.aTime,speedB:state.bDistance/state.bTime,
    equalSpeed:state.aDistance*state.bTime===state.bDistance*state.aTime};
@@ -150,7 +151,7 @@ export function calculateAdvanced(id,state){
    const [symbol,period,group]=ELEMENTS[state.atomic-1];
    return {atomicNumber:state.atomic,symbol,period,group};
   }
-  case 'mass-balance':return {massA:state.a,massB:state.b,totalG:state.a+state.b};
+  case 'mass-balance':return {massA:state.a,massB:state.b,totalG:state.a+state.b,productTotalG:state.a+state.b};
   case 'ecosystem':return {interaction:{'flower-bee':'pollination example','frog-insect':'predation example','fungus-leaf':'decomposition example'}[state.pair]};
   case 'heredity':{
    const genes=x=>x.split('');
@@ -160,11 +161,26 @@ export function calculateAdvanced(id,state){
   }
  }
 }
+const LABELS={
+ total:P('Total','कुल'),transformedX:P('New x','नया x'),transformedY:P('New y','नया y'),
+ x:P('x','x'),y:P('y','y'),red:P('Red','लाल'),blue:P('Blue','नीले'),
+ probabilityRed:P('Theoretical red probability','लाल की सैद्धांतिक प्रायिकता'),
+ sampleSize:P('Sample size','नमूना संख्या'),sampleRed:P('Red draws','लाल नमूने'),sampleProportion:P('Observed red proportion','लाल का देखा गया अनुपात'),
+ joules:P('Energy (J)','ऊर्जा (J)'),mass:P('Mass (kg)','द्रव्यमान (kg)'),idealDeltaC:P('Ideal temperature change (°C)','आदर्श तापमान परिवर्तन (°C)'),
+ periodMs:P('Period (ms)','आवर्तकाल (ms)'),frequencyHz:P('Frequency (Hz)','आवृत्ति (Hz)'),relativeAmplitude:P('Relative amplitude','सापेक्ष आयाम'),
+ interaction:P('Interaction','संबंध'),speedA:P('Speed A (m/s)','चाल A (m/s)'),speedB:P('Speed B (m/s)','चाल B (m/s)'),equalSpeed:P('Equal speeds','समान चाल'),
+ atomicNumber:P('Atomic number','परमाणु क्रमांक'),symbol:P('Symbol','प्रतीक'),period:P('Period','आवर्त'),group:P('Group','समूह'),
+ massA:P('Mass A (g)','द्रव्यमान A (g)'),massB:P('Mass B (g)','द्रव्यमान B (g)'),totalG:P('Reactant total (g)','अभिकारक कुल (g)'),productTotalG:P('Product total (g)','उत्पाद कुल (g)'),genotypeGrid:P('Hypothetical genotype counts','काल्पनिक जीनोटाइप संख्या'),outcomes:P('Grid cells','तालिका खाने')
+};
+const VALUE_LABELS={attract:P('Attract','आकर्षण'),repel:P('Repel','प्रतिकर्षण'),'pollination example':P('Pollination example','परागण उदाहरण'),'predation example':P('Predation example','परभक्षण उदाहरण'),'decomposition example':P('Decomposition example','अपघटन उदाहरण')};
+export function advancedResultRows(metrics,lang='en'){
+ return Object.entries(metrics).map(([k,v])=>({label:text(LABELS[k]||P(k,k),lang),value:v===null?text(P('Undefined: empty bag','अपरिभाषित: खाली थैली'),lang):typeof v==='boolean'?text(v?P('Yes','हाँ'):P('No','नहीं'),lang):typeof v==='object'?Object.entries(v).map(([a,b])=>a+': '+b).join(', '):typeof v==='number'?String(Number(v.toFixed(4))):text(VALUE_LABELS[v]||P(v,v),lang)}));
+}
 export function evaluateAdvanced(id,state,lang='en'){
  if(!['en','hi'].includes(lang))throw Error('Unknown language');
  const m=modelAdvanced(id),result=calculateAdvanced(id,state);
  const correct=m.fields.every(f=>state[f.id]===m.target[f.id]);
- const numbers=Object.entries(result).map(([k,v])=>k+' = '+(v===null?'undefined (empty bag)':typeof v==='object'?JSON.stringify(v):typeof v==='number'?Number(v.toFixed(4)):v)).join('; ');
+ const numbers=advancedResultRows(result,lang).map(x=>x.label+' = '+x.value).join('; ');
  return {id,correct,metrics:result,explanation:text(m.title,lang)+': '+numbers+'. '+text(m.caveat,lang),
   draftStatus:'PENDING_SUBJECT_HINDI_AND_SAFETY_REVIEW',publicReleaseApproved:false,source:'assets/advanced-lab-engine.js'};
 }

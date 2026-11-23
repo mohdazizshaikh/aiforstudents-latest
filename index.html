@@ -13,7 +13,7 @@
 <a class="skip" href="#practice" data-i18n="skip">Skip to games</a>
 <header class="header"><div class="wrap bar">
   <a class="brand" href="./"><span class="mark" aria-hidden="true">a</span><span>AI <em>for</em> Students<small>Discover · Develop · Decide</small></span></a>
-  <nav aria-label="Primary navigation"><a href="#practice" data-i18n="navGames">Games</a><a href="#growth" data-i18n="navGrowth">My growth</a><a href="#daily" data-i18n="navDaily">Daily plan</a><a href="#smart-studio" id="studio-nav">Smart Studio</a><a href="#experiment-lab" id="experiment-nav">Virtual Lab</a><a href="#math-workshop" id="math-workshop-nav">Maths Workshop</a><a href="#science-lab" id="science-nav">Science Lab</a><a href="#local-learning-guide" id="local-guide-nav">Practice Guide</a><a href="#classroom" id="classroom-nav">Classroom</a><a href="#digital-skills" id="digital-nav">Digital Skills</a><a href="#study-lab" id="nav-study">Study Lab</a><a href="#future-explorer">Future Explorer</a><a href="#team-play" data-i18n="navTeam">Grow Together</a><a href="#privacy" data-i18n="navPrivacy">Privacy</a></nav>
+  <nav aria-label="Primary navigation"><a href="#practice" data-i18n="navGames">Games</a><a href="#growth" data-i18n="navGrowth">My growth</a><a href="#daily" data-i18n="navDaily">Daily plan</a><a href="#smart-studio" id="studio-nav">Smart Studio</a><a href="#experiment-lab" id="experiment-nav">Virtual Lab</a><a href="#math-workshop" id="math-workshop-nav">Maths Workshop</a><a href="#science-lab" id="science-nav">Science Lab</a><a href="#advanced-labs" id="advanced-nav">Explore Labs</a><a href="#local-learning-guide" id="local-guide-nav">Practice Guide</a><a href="#classroom" id="classroom-nav">Classroom</a><a href="#digital-skills" id="digital-nav">Digital Skills</a><a href="#study-lab" id="nav-study">Study Lab</a><a href="#future-explorer">Future Explorer</a><a href="#team-play" data-i18n="navTeam">Grow Together</a><a href="#privacy" data-i18n="navPrivacy">Privacy</a></nav>
   <label class="language-label" for="lang"><span data-i18n="language">Language</span><select id="lang" aria-label="Language / भाषा"><option value="en">English</option><option value="hi">हिन्दी</option></select></label>
  </div></header>
 <main class="wrap">
@@ -142,6 +142,24 @@
   <p><a href="ai-digital-skills/">AI &amp; Digital Skills guide, privacy and limitations / डिजिटल कौशल जानकारी</a></p>
  </div>
 </section>
+<section id="advanced-labs" class="section" aria-labelledby="advanced-title">
+ <div class="heading"><div><div class="eyebrow">M33 · 12 ADDITIONAL DRAFT CONCEPT MODELS</div><h2 id="advanced-title">Explore Maths &amp; Science Labs</h2><p id="advanced-intro">Original offline conceptual activities; no real experiments or reviewed curriculum.</p></div></div>
+ <div class="panel science-panel">
+  <p class="small muted" id="advanced-notice">UNREVIEWED: independent subject/Hindi and safety review pending. No grade mapping, learner score or real-world measurements.</p>
+  <label for="advanced-topic" id="advanced-topic-label">Choose a concept</label>
+  <select id="advanced-topic"></select>
+  <div class="science-surface advanced-surface">
+   <h3 id="advanced-heading" tabindex="-1"></h3><p id="advanced-prompt"></p>
+   <p id="advanced-hint" class="small muted"></p><div id="advanced-controls" class="science-controls" role="group" aria-label="Concept model controls"></div>
+   <div id="advanced-visual" class="advanced-visual"></div>
+   <table class="advanced-results"><caption id="advanced-result-caption">Calculated model values</caption><thead><tr><th scope="col" id="advanced-field-label">Quantity</th><th scope="col" id="advanced-value-label">Value</th></tr></thead><tbody id="advanced-values"></tbody></table>
+   <p id="advanced-caveat" class="science-caveat"></p>
+   <div class="science-actions"><button id="advanced-check" type="button" class="btn">Check example</button><button id="advanced-reset" type="button" class="btn outline">Reset model</button></div>
+   <p id="advanced-feedback" class="feedback" role="status" aria-live="polite" tabindex="-1" hidden></p>
+  </div>
+  <p class="small muted" id="advanced-source">Original draft source: assets/advanced-lab-engine.js. No personal data stored.</p>
+ </div>
+</section>
 <section class="section" id="local-learning-guide" aria-labelledby="local-guide-title">
  <div class="heading"><div><div class="eyebrow">M32 · OPTIONAL, NO AI INFERENCE</div>
  <h2 id="local-guide-title">Local Practice Guide — draft, not an AI tutor</h2>
@@ -228,6 +246,7 @@
 <script type="module" src="assets/experiment-app.js"></script>
 <script type="module" src="assets/science-app.js"></script>
 <script type="module" src="assets/practice-app.js"></script>
+<script type="module" src="assets/advanced-lab-app.js"></script>
 <script type="module" src="assets/classroom-app.js"></script>
 <script type="module" src="assets/digital-app.js"></script>
 </body></html>
