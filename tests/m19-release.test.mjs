@@ -23,7 +23,7 @@ test('M19 GitHub checkout archived game review queue is counted without pretendi
   const game=fs.existsSync(rawPath)?fs.readFileSync(rawPath):gunzipSync(fs.readFileSync(archivePath));
   fs.writeFileSync(path.join(tmp,'docs','CONTENT_REVIEW_QUEUE.jsonl.gz'),gzipSync(game));
   for(const f of ['LAB_CONTENT_REVIEW_QUEUE.jsonl','STUDIO_CONTENT_REVIEW_QUEUE.jsonl','EXPERIMENT_CONTENT_REVIEW_QUEUE.jsonl','CLASSROOM_CONTENT_REVIEW_QUEUE.jsonl','DIGITAL_CONTENT_REVIEW_QUEUE.jsonl','MATHS_CONTENT_REVIEW_QUEUE.jsonl'])fs.copyFileSync(new URL(f,root),path.join(tmp,f));
-  const r=auditContentQueues(tmp);assert.deepEqual(r.problems,[]);assert.equal(r.total,3285);assert.equal(r.pending,3282);
+  const r=auditContentQueues(tmp);assert.deepEqual(r.problems,[]);assert.equal(r.total,3285);assert.equal(r.pending,3285);
  }finally{fs.rmSync(tmp,{recursive:true,force:true})}
 });
 test('M19 all pages and static assets compatible with self-only CSP',()=>{
