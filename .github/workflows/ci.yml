@@ -18,6 +18,16 @@ jobs:
         run: node --test tests/*.test.mjs
       - name: Build bilingual human-review worklist (not approval)
         run: npm run review-packet
+      - name: Validate pending M23 review-evidence template (NOT human approval)
+        run: |
+          npm run review-evidence:template
+          npm run review-evidence:check
+      - name: Assert public preflight remains blocked
+        run: |
+          if node tools/release-preflight.mjs --public > /dev/null; then
+            echo 'ERROR: public child release gate was unexpectedly permitted'
+            exit 1
+          fi
       - name: Verify static release
         run: node tools/verify-static-release.mjs
       - name: Structural content audit
