@@ -8,7 +8,7 @@
 - [ ] Install password/access restriction using Hostinger hPanel or appropriate platform controls. `noindex` alone **does not protect a private site**.
 - [ ] Confirm staging site has a valid HTTPS certificate and the correct document root.
 - [ ] Review whether `.htaccess` on the actual Hostinger plan supports `Header` directives and strict CSP; correct at the server level if not.
-- [ ] From a clean source checkout run `python3 tools/package-release.py` and use the generated `aiforstudents_hostinger_staging_m19.zip` from the checkout's parent directory; extract **ZIP contents** into the staging site's document root, not the source/tests ZIP. A local packaging path is not evidence of a file already uploaded. No Node process or paid API required on hosting.
+- [ ] From a clean source checkout run `python3 tools/package-release.py` and use the generated `aiforstudents_hostinger_staging_m24.zip` from the checkout's parent directory; extract **ZIP contents** into the staging site's document root, not the source/tests ZIP. A local packaging path is not evidence of a file already uploaded. No Node process or paid API required on hosting.
 
 ## Smoke on the actual HTTPS staging site
 - [ ] Load root page and Smart Studio, Virtual Lab, Teacher Kit, Digital Skills in English and Hindi on a low-end phone.
