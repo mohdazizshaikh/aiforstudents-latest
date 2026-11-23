@@ -433,8 +433,17 @@
       "dependsOn": [
         "FP-021"
       ],
-      "status": "NOT_STARTED",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/science-app.js"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m31-science-concepts.test.mjs"
+        }
+      ]
     },
     {
       "id": "FP-023",
@@ -448,8 +457,17 @@
       "dependsOn": [
         "FP-021"
       ],
-      "status": "NOT_STARTED",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "tools/audit-bilingual-learning.mjs"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m31-bilingual-audit.test.mjs"
+        }
+      ]
     },
     {
       "id": "FP-024",
@@ -816,8 +834,17 @@
       "dependsOn": [
         "FP-041"
       ],
-      "status": "NOT_STARTED",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/science-engine.js"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m31-science-concepts.test.mjs"
+        }
+      ]
     },
     {
       "id": "FP-044",
@@ -831,8 +858,17 @@
       "dependsOn": [
         "FP-041"
       ],
-      "status": "NOT_STARTED",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/science-engine.js"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m31-science-concepts.test.mjs"
+        }
+      ]
     },
     {
       "id": "FP-045",
@@ -846,8 +882,17 @@
       "dependsOn": [
         "FP-041"
       ],
-      "status": "NOT_STARTED",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/science-engine.js"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m31-science-concepts.test.mjs"
+        }
+      ]
     },
     {
       "id": "FP-046",
@@ -958,8 +1003,17 @@
       "dependsOn": [
         "FP-051"
       ],
-      "status": "NOT_STARTED",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/science-engine.js"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m31-science-concepts.test.mjs"
+        }
+      ]
     },
     {
       "id": "FP-053",
@@ -973,8 +1027,17 @@
       "dependsOn": [
         "FP-051"
       ],
-      "status": "NOT_STARTED",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/science-engine.js"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m31-science-concepts.test.mjs"
+        }
+      ]
     },
     {
       "id": "FP-054",
@@ -988,8 +1051,17 @@
       "dependsOn": [
         "FP-051"
       ],
-      "status": "NOT_STARTED",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/science-engine.js"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m31-science-concepts.test.mjs"
+        }
+      ]
     },
     {
       "id": "FP-055",
@@ -1003,8 +1075,17 @@
       "dependsOn": [
         "FP-051"
       ],
-      "status": "NOT_STARTED",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/science-engine.js"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m31-science-concepts.test.mjs"
+        }
+      ]
     },
     {
       "id": "FP-056",
@@ -1586,7 +1667,7 @@
       "dependsOn": [
         "FP-091"
       ],
-      "status": "NOT_STARTED",
+      "status": "BLOCKED_EXTERNAL",
       "evidence": []
     },
     {
@@ -1601,8 +1682,17 @@
       "dependsOn": [
         "FP-091"
       ],
-      "status": "NOT_STARTED",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/science-app.js"
+        },
+        {
+          "kind": "test",
+          "path": "tests/browser_m25_ci.py"
+        }
+      ]
     },
     {
       "id": "FP-094",
@@ -1729,10 +1819,11 @@
     }
   ],
   "updatedOn": "2026-11-24",
-  "currentEngineeringMilestone": "M30_B1_FIRST_IMPLEMENTATION",
+  "currentEngineeringMilestone": "M31_B1_SCIENCE_CONCEPT_LABS",
   "additionalNewMathsDrafts": 3,
-  "currentPendingContentRecords": 3285,
-  "batch1VerifiedEngineeringAndDesignTasks": 25,
+  "currentPendingContentRecords": 3292,
+  "batch1VerifiedEngineeringAndDesignTasks": 35,
   "batch2VerifiedEngineeringAndDesignTasks": 0,
-  "statusCaveat": "DONE_VERIFIED means source and automated/structural engineering evidence, never qualified teaching, legal, privacy or live hosting approval. B1 includes reused verified M29 governance documentation and new M30 code/draft specifications."
+  "statusCaveat": "Engineering/design DONE_VERIFIED requires actual source/tests; it is NOT qualified subject/Hindi review, curriculum alignment, safety approval, real-device QA or public launch. M31 implements seven experimental science concept models and shared five-step UI; no real experiments or school pilot.",
+  "newScienceDraftReviewRecords": 7
 }
