@@ -40,3 +40,7 @@ Store any real staging operator report, source commit and ZIP hash in a **restri
 [Hostinger issue #2](https://github.com/mohdazizshaikh/aiforstudents-latest/issues/2) · [M22 full audit](M22_FULL_STAGING_AUDIT.md) · [Operator checklist](../STAGING_OPERATOR_CHECKLIST.md).
 
 **No live site was tested during M27 implementation. Public child-oriented release remains NOT APPROVED.**
+
+## Sensitive source-only exposure probes
+
+M27 strict mode also checks seven URLs that **must not be served from the static website**: .htaccess, the release manifest, the original content review queues, the archived review queue in docs, a local reviewer evidence template and a local child-safety handoff. Acceptable responses are 401, 403, 404 or 410; HTTP 200, other status, redirect or network ambiguity fails strict mode. HTTP response bodies are never consumed or printed for these probes. Test must be performed only on a staging origin that the operator has explicit permission to inspect. A passing probe does not demonstrate that unlisted private paths or server backups are secure; manual hosting account inspection remains mandatory.

@@ -1,6 +1,6 @@
 # Project Status Dashboard — AI for Students
 
-**As of 2026-11-23** | **M20–M26 engineering merged; real-host/human release gates still pending** | **Public release: NOT APPROVED**
+**As of 2026-11-23** | **M20–M26 merged; M27 staging-integrity engineering verified in branch; external launch gates pending** | **Public release: NOT APPROVED**
 
 ## Working today in the private prototype
 - 40 solo game modules in 8 categories; 3 same-device Grow Together modes.
@@ -73,3 +73,6 @@ Added a local-only six-gate draft safety/incident/readiness template and validat
 
 ### M26 engineering merge verified (2026-11-23)
 [M25 PR #11](https://github.com/mohdazizshaikh/aiforstudents-latest/pull/11) merged real native Chromium CI; [M26 PR #12](https://github.com/mohdazizshaikh/aiforstudents-latest/pull/12) merged draft safety-operations handoff. M26 branch CI [45201028124](https://github.com/mohdazizshaikh/aiforstudents-latest/actions/runs/45201028124) was **successful** (131/131 Node tests, Chromium local browser and privacy-restricted build). These are engineering milestones, not authorized India-specific legal reviews, real Hostinger HTTPS, genuine student/teacher trials or content approvals. **3,282 pending human content records; six human safety operation gates unverified.** Public release is **NOT APPROVED**.
+
+### M27 — actual hosted content integrity verification (2026-11-23)
+A read-only full-manifest SHA-256 verifier now checks whether served private staging bytes exactly match source, including `robots.txt`. It also probes seven source-only URLs without reading/reporting sensitive response bodies. CI verifies these checks against source-backed mocked responses and checks ZIP member hashes, **not an actual Hostinger deployment**. [M27 runbook](M27_STAGING_INTEGRITY.md). 3,282 human educational reviews, six safety operation gates, actual host and real Android/AT testing remain pending.

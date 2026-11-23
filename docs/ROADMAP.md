@@ -78,3 +78,6 @@ Add native ES-module Chromium checks in GitHub CI for bilingual learner workflow
 
 ### M26 — Responsible child-safeguarding operations preparation (2026-11-23)
 A privacy-first, **local-only** draft incident/safety handoff with six required human checks and structural CI verification. Does not activate online student social/chat, deploy hosting or invent accountable people/legal signoff. Operators must still conduct true India-relevant privacy/legal review, supervised school protocol and actual child protection response drill. [M26 details](M26_CHILD_SAFETY_OPERATIONS.md).
+
+### M27 — Private staging release-source parity, not public launch (2026-11-23)
+Adds source SHA-256 comparison for all M22 static routes, robots.txt and stronger header checks; also tests that sensitive source and review paths are not readable. CI compares ZIP bytes against checked-out source. This provides a **future manual Hostinger deployment diagnostic**, not a hosted URL or consent/legal signoff. [M27 guide](M27_STAGING_INTEGRITY.md).
