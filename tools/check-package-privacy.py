@@ -2,6 +2,7 @@
 from pathlib import Path
 from zipfile import ZipFile
 from json import dumps
+from hashlib import sha256
 ROOT=Path(__file__).resolve().parent.parent
 OUT=ROOT.parent
 HOST=OUT/'aiforstudents_hostinger_staging_m24.zip'
@@ -23,6 +24,12 @@ def inspect_zip(file):
         forbidden=[x for x in names if private_member(x)]
         assert not forbidden, f'{file.name}: private/unsafe contents: {forbidden}'
         assert all(not Path(x).is_absolute() and '..' not in Path(x).parts for x in names)
+        # M27: prove the ZIP bytes match this exact source checkout; do not trust names alone.
+        for entry in names:
+            source=ROOT/entry
+            assert source.is_file(), f'{file.name}: source file missing: {entry}'
+            assert sha256(z.read(entry)).digest()==sha256(source.read_bytes()).digest(), \
+                f'{file.name}: packaged bytes differ from checkout: {entry}'
         return len(names)
 
 if __name__=='__main__':
@@ -33,4 +40,4 @@ if __name__=='__main__':
         assert 'index.html' in names and 'service-worker.js' in names and '.htaccess' in names
         assert not any(x.startswith('tests/') or x.startswith('docs/') for x in names)
     print(dumps({'hostingStaticFiles':host,'sourceFiles':source,'privateEvidenceIncluded':False,
-                 'publicReleaseApproved':False},indent=2))
+                 'sourceHashesVerified':True,'publicReleaseApproved':False},indent=2))
