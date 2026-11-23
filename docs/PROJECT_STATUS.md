@@ -1,6 +1,6 @@
 # Project Status Dashboard — AI for Students
 
-**As of 2026-11-23** | **M19 staging baseline; M20–M23 engineering merged; M24 accessibility and packaging privacy in development** | **Public release: NOT APPROVED**
+**As of 2026-11-23** | **M20–M24 engineering merged and GitHub CI verified; still a private-staging prototype** | **Public release: NOT APPROVED**
 
 ## Working today in the private prototype
 - 40 solo game modules in 8 categories; 3 same-device Grow Together modes.
@@ -61,3 +61,6 @@ A local-only template/validator records draft educator and Hindi review evidence
 
 ### M24 — structural keyboard navigation (2026-11-23)
 All 23 static HTML pages now have verifiable skip-to-content destinations and one main landmark, including eight game guides and two original printable worksheets. A local structural checker and tests are added; service-worker cache and output staging archive are versioned to M24. Source archive packaging now excludes local review evidence and common secrets. This is **not** a real phone/TalkBack/VoiceOver or WCAG assessment; no Hostinger/public child release occurred. See [M24 QA](../M24_QA_STATUS.md).
+
+### Final M24 merge/CI verification — 2026-11-23
+PR [#10](https://github.com/mohdazizshaikh/aiforstudents-latest/pull/10) was merged to `main` (`a236544724f7fc1ced19fc1111798374dfcfbfea`); [GitHub Actions run 45180325206](https://github.com/mohdazizshaikh/aiforstudents-latest/actions/runs/45180325206) completed **successfully** with 125 Node tests and a 23-page static semantic check. The private-staging/noindex Hostinger archive is a short-lived CI artifact, **not a live deployment**. All human education, accessibility, legal/safeguarding and on-host release blockers remain OPEN.
