@@ -52,3 +52,11 @@ When work starts or finishes, record: **date**, milestone/task ID, status, linke
 - **2026-11-23:** M17 first classroom kit code pushed (two original teacher plans, 10 facilitated steps, two A4 printable worksheets, projector/role guidance). **84/84 Node tests** and isolated Chromium UI/print checks pass. **No real school pilot or teacher/child safety approval.** [M17 QA](../M17_QA_STATUS.md).
 
 - **2026-11-23:** M18 first code pilot pushed (32 bilingual scenario questions across four topics and four experimental ages, local browser-only practice). **93/93 Node tests** and isolated Chromium including all 32 pass. No expert signoff, actual school deployment or real-world fact-checking certification. [M18 QA](../M18_QA_STATUS.md).
+
+### M19 — Release Readiness engineering gate, 2026-11-23
+| Milestone | Implementation status | Evidence | Independent blocker |
+|---|---|---|---|
+| M19 — Staging CSP + content gate tooling | **Code implemented; package prepared** | 101 Node tests, 23 pages/22 JS, two worksheet print smoke, verified staging ZIP | **No real Hostinger install, response headers, Android AT testing, educator/Hindi review or child-safety signoff** |
+| M19 — Public release gate | **BLOCKED, correctly** | `release-preflight.mjs --public` fails by design; 3,282 pending review records | Real content reviewer/incident owner and site evidence required |
+
+- **2026-11-23:** CI preflight and operator instructions added. Packaging a ZIP is not the same as deploying it to a site.

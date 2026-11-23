@@ -60,3 +60,6 @@ Two original teacher-led five-stage lesson plans, generic role rotation, answer 
 
 ### M18 first pilot progress — 2026-11-23
 Four deterministic AI/digital-literacy strands and 32 original bilingual age-scaffolded practice checks have been coded with local-history integration. Node QA **93/93** and isolated Chromium 32-check playthrough passed. These are **unreviewed draft lessons**; no generative AI, remote data collection or official curriculum mapping. Public child release, actual assistive technology and Hostinger deployment remain blocked. [M18 notes](M18_IMPLEMENTATION_NOTES.md).
+
+### M19 — Private staging release hardening (2026-11-23)
+**ENGINEERING IMPLEMENTED, HOSTINGER NOT DEPLOYED.** Strict self-only Apache CSP/X-Robots-Tag configuration, external print CSS/JS for two original worksheets, inline-free game guides, a deterministic offline release preflight and a read-only HTTPS live-check script. **101/101 Node tests and isolated combined M18/worksheet browser smoke passed.** A **public** release preflight deliberately fails while 3,282 human content records and actual child safety/accessibility/hosting evidence are missing. See [M19 QA](../M19_QA_STATUS.md) and [runbook](../STAGING_OPERATOR_CHECKLIST.md).

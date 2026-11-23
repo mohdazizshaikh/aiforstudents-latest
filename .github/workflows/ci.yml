@@ -20,3 +20,8 @@ jobs:
         run: node tools/verify-static-release.mjs
       - name: Structural content audit
         run: node tools/audit-content.mjs
+
+      - name: Private staging preflight (not public approval)
+        run: node tools/release-preflight.mjs
+      - name: Verify release ZIP integrity and static allowlist
+        run: python3 tools/package-release.py

@@ -53,3 +53,14 @@ Priority: P0 = required to avoid unsafe/misleading release; P1 = next core featu
 - **2026-11-23 M17:** first teacher kit coded, 2 subjects × 5 steps, two print worksheets, no pupil roster or account; Node tests 84/84, isolated Chromium UI and print CSS. M17-03 **remains BLOCKED** until school authorization, educator review, safeguarding and consent requirements are met. M18 still unimplemented.
 
 - **2026-11-23 M18:** Four-topic AI & Digital Skills pilot coded; all 32 bilingual drafts versioned and queued for qualified educator/Hindi approval. 93/93 Node tests; isolated 32-check Chromium plus M15–M17 regression passes. **No real generative chatbot**. Human child-safety/privacy and public release gates remain pending. Overall unreviewed: 3,200 games + 32 Study Lab + 4 Studio + 4 Virtual Lab + 32 Digital = **3,272 question records**, plus **10 classroom facilitation steps**.
+
+### M19 technical release safety work — 2026-11-23
+| ID | Priority | Item | Status | Evidence / remaining dependency |
+|---|---|---|---|---|
+| M19-01 | P0 | Strict self-only CSP and noindex response-header config | **CODED, NOT HOST-VERIFIED** | Actual Hostinger `.htaccess` output and policy console test required |
+| M19-02 | P0 | Remove inline worksheet JS/CSS and eight guide style attributes | **CODED + ISOLATED TESTED** | Real A4 printer, projection/device and CSP on server |
+| M19-03 | P0 | Automated staging preflight and public review block | **CODED + 101 NODE TESTS** | Human educational/Hindi review of 3,282 records |
+| M19-04 | P0 | Read-only HTTPS staging audit tool and operator runbook | **CODED, NOT RUN LIVE** | Authorized HTTPS origin, restricted access and operator |
+| M19-05 | P0 | Safe zipped static packaging | **CODED + ZIP INTEGRITY VERIFIED** | Actual staging upload, backup/rollback and network QA |
+
+**No public child-facing release approved.** Never mark an automated preflight as qualified educational or legal review.

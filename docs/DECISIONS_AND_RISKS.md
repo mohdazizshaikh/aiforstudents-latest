@@ -49,3 +49,9 @@ Update this register when an evidence-backed decision changes, before a new mile
 
 ### M18 safety boundary (2026-11-23)
 The offline AI literacy module is deterministic, avoids open-ended chatbot responses and does not request children's credentials. A successful automated answer check does **not** certify a learner as safe online or qualify as a current, comprehensive fact-checking system. Periodic educational and Hindi updates, child-safety reviewer ownership and real teacher/child usability are still open.
+
+### M19 deployment and privacy risk update (2026-11-23)
+- A self-only Content Security Policy and `X-Robots-Tag: noindex` header are **configured locally**, not yet confirmed applied by Hostinger/LiteSpeed. Restrict staging access in hPanel; noindex is not authentication.
+- Eight old game guides and two worksheets have been refactored to avoid inline CSS/JavaScript; reduce XSS exposure without claiming a penetration test.
+- Staging automated preflight passes but intentionally refuses public approval while **3,282 content/review records** are pending. Live-host header probes and operator backup/rollback are not yet complete.
+- Do not collect account credentials or send authorization secrets into GitHub/source/docs. Optional staging auth header for a **manual** local verifier must remain unlogged.
