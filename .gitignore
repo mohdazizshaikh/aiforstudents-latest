@@ -12,3 +12,6 @@ preview-*.png
 
 # Generated local-only M20 human-review packet (not a signoff)
 review-packet/
+
+# Sensitive human-review notes remain local; never commit unverified reviewer evidence.
+review-evidence/
