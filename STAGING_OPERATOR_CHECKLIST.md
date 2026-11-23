@@ -45,3 +45,5 @@ The `--full` read-only audit derives allowable routes/assets from repository sou
 - [ ] Test service worker **aifs-discovery-m24-2026-11-23** upgrade/refresh from any prior private staging cache and verify all 41 referenced cache paths after the new archive is installed.
 - [ ] Confirm worksheet skip controls are not printed and teacher-only notes remain hidden on a real A4 printer.
 - [ ] Record real-site and real-device evidence (not credentials) against [M24 QA](M24_QA_STATUS.md); no child/public access pending approvals.
+
+- [ ] If using the CI artifact, choose the latest passing M24 workflow run, download the `m24-hostinger-private-staging-noindex` ZIP artifact within its seven-day retention, inspect it, and upload only its contained Hostinger ZIP file contents to an access-controlled staging document root. The artifact does **not** install itself or provide privacy access restrictions.
