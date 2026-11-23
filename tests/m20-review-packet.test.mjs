@@ -7,15 +7,15 @@ import {buildReviewRows,buildSummary,csvCell,packetCsv,exportPacket} from '../to
 
 test('M20 exports the current six source review inventories, not fabricated approvals',()=>{
  const rows=buildReviewRows(),summary=buildSummary(undefined,rows);
- assert.equal(rows.length,3292);
- assert.equal(summary.totalRows,3292);
- assert.equal(summary.pendingHumanReviewRecords,3292);
+ assert.equal(rows.length,3304);
+ assert.equal(summary.totalRows,3304);
+ assert.equal(summary.pendingHumanReviewRecords,3304);
  assert.deepEqual(Object.fromEntries(Object.entries(summary.byQueue).map(([kind,count])=>[kind,count.total])),{
-  game:3200,study:32,studio:4,experiment:4,classroom:10,digital:32,maths:3,science:7
+  game:3200,study:32,studio:4,experiment:4,classroom:10,digital:32,maths:3,science:7,advanced:12
  });
  assert.equal(summary.publicReleaseApproved,false);
  assert.equal(summary.humanApprovalGrantedByTool,false);
- assert.equal(new Set(rows.map(x=>x.queue+':'+x.content_id)).size,3292);
+ assert.equal(new Set(rows.map(x=>x.queue+':'+x.content_id)).size,3304);
  for(const row of rows){
   assert.ok(row.source_file);
   assert.ok(row.line>0);
@@ -42,15 +42,16 @@ test('M20 can materialize reviewer packet without writing source approvals',()=>
    'CLASSROOM_CONTENT_REVIEW_QUEUE.jsonl':[{id:'class1',question:{en:'Show one fourth',hi:'चौथाई दिखाएँ'},educationalReview:'PENDING',publicReleaseApproved:false}],
    'DIGITAL_CONTENT_REVIEW_QUEUE.jsonl':[{id:'digital1',question:{en:'Safe?',hi:'सुरक्षित?'},educationReview:'pending'}],
    'MATHS_CONTENT_REVIEW_QUEUE.jsonl':[{id:'workshop:number-line',contentVersion:1,englishHumanReview:'pending',hindiHumanReview:'pending'}],
-   'SCIENCE_CONTENT_REVIEW_QUEUE.jsonl':[{id:'science:motion',contentVersion:1,englishHumanReview:'pending',hindiHumanReview:'pending'}]
+   'SCIENCE_CONTENT_REVIEW_QUEUE.jsonl':[{id:'science:motion',contentVersion:1,englishHumanReview:'pending',hindiHumanReview:'pending'}],
+   'ADVANCED_CONTENT_REVIEW_QUEUE.jsonl':[{id:'advanced:coordinate',contentVersion:1,englishHumanReview:'pending',hindiHumanReview:'pending'}]
   };
   for(const [name,records] of Object.entries(sources))writeFileSync(path.join(root,name),records.map(JSON.stringify).join('\n')+'\n');
   const destination=path.join(root,'generated');
   const summary=exportPacket(destination,root);
-  assert.equal(summary.totalRows,8);
-  assert.equal(summary.pendingHumanReviewRecords,8);
+  assert.equal(summary.totalRows,9);
+  assert.equal(summary.pendingHumanReviewRecords,9);
   const csv=readFileSync(path.join(destination,'review-packet.csv'),'utf8');
-  assert.equal(csv.trim().split('\n').length,9);
+  assert.equal(csv.trim().split('\n').length,10);
   assert.match(csv,/चौथाई दिखाएँ/);
   assert.match(readFileSync(path.join(destination,'README.txt'),'utf8'),/NOT HUMAN APPROVAL/);
   assert.ok(existsSync(path.join(destination,'summary.json')));

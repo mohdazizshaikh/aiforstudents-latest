@@ -8,6 +8,7 @@ import {LAB_TOPICS,ALL_LAB_LESSONS} from '../assets/lab-engine.js';
 import {STUDIO_IDS,STUDIO_LESSONS} from '../assets/studio-engine.js';
 import {EXPERIMENT_IDS,EXPERIMENTS,WORKSHOP_MODES,WORKSHOP_CONTENT} from '../assets/experiment-engine.js';
 import {SCIENCE_IDS,SCIENCE_MODELS,auditSciencePairs} from '../assets/science-engine.js';
+import {ADVANCED_IDS,ADVANCED_MODELS,auditAdvancedPairs} from '../assets/advanced-lab-engine.js';
 import {CLASSROOM_IDS,CLASSROOM_LESSONS,CLASSROOM_ROLES} from '../assets/classroom-engine.js';
 import {DIGITAL_TOPICS,DIGITAL_TASKS,DIGITAL_AGES} from '../assets/digital-engine.js';
 
@@ -15,10 +16,10 @@ const has=x=>typeof x==='string'&&x.trim().length>0;
 export function auditBilingualLearning({
  studyTopics=LAB_TOPICS,studyLessons=ALL_LAB_LESSONS,
  studioLessons=STUDIO_LESSONS,experiments=EXPERIMENTS,workshop=WORKSHOP_CONTENT,
- science=SCIENCE_MODELS,classroom=CLASSROOM_LESSONS,roles=CLASSROOM_ROLES,
+ science=SCIENCE_MODELS,advanced=ADVANCED_MODELS,classroom=CLASSROOM_LESSONS,roles=CLASSROOM_ROLES,
  digitalTopics=DIGITAL_TOPICS,digitalTasks=DIGITAL_TASKS,gameAudit=auditContent()
 }={}){
- const errors=[],count={gameTasks:gameAudit.counts?.items??0,study:0,studio:0,experiments:0,maths:0,science:0,classroomSteps:0,digital:0};
+ const errors=[],count={gameTasks:gameAudit.counts?.items??0,study:0,studio:0,experiments:0,maths:0,science:0,advanced:0,classroomSteps:0,digital:0};
  const text=(value,where)=>{if(!has(value))errors.push(where+' missing text')};
  const pair=(value,where)=>{
   if(Array.isArray(value)&&value.length===2){text(value[0],where+'.en');text(value[1],where+'.hi')}
@@ -58,6 +59,8 @@ export function auditBilingualLearning({
  }
  for(const id of SCIENCE_IDS)count.science++;
  errors.push(...auditSciencePairs(science).map(x=>'Science '+x));
+ count.advanced=ADVANCED_IDS.length;
+ errors.push(...auditAdvancedPairs(advanced).map(x=>'Advanced '+x));
  for(const r of roles)pair(r,'Classroom group role');
  for(const id of CLASSROOM_IDS){
   const x=classroom[id];if(!x){errors.push('Missing classroom plan '+id);continue}
@@ -75,7 +78,7 @@ export function auditBilingualLearning({
    if((digitalTasks[topic.id]?.[age]||[]).length!==2)errors.push('Missing digital age tasks '+topic.id+'/'+age);
   }
  }
- if(count.study!==32||count.studio!==2||count.experiments!==2||count.maths!==3||count.science!==7||count.classroomSteps!==10||count.digital!==32)errors.push('Unexpected learning source breadth: '+JSON.stringify(count));
+ if(count.study!==32||count.studio!==2||count.experiments!==2||count.maths!==3||count.science!==7||count.advanced!==12||count.classroomSteps!==10||count.digital!==32)errors.push('Unexpected learning source breadth: '+JSON.stringify(count));
  return {valid:errors.length===0,errors,counts:count,
   structuralOnly:true,educationalReviewPassed:false,translationQualityVerified:false,publicReleaseApproved:false};
 }

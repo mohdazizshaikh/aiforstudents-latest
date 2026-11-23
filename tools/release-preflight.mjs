@@ -5,7 +5,7 @@ import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {gunzipSync} from 'node:zlib';
 const projectRoot=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
-export const REVIEW_FILES={game:'CONTENT_REVIEW_QUEUE.jsonl',study:'LAB_CONTENT_REVIEW_QUEUE.jsonl',studio:'STUDIO_CONTENT_REVIEW_QUEUE.jsonl',experiment:'EXPERIMENT_CONTENT_REVIEW_QUEUE.jsonl',classroom:'CLASSROOM_CONTENT_REVIEW_QUEUE.jsonl',digital:'DIGITAL_CONTENT_REVIEW_QUEUE.jsonl',maths:'MATHS_CONTENT_REVIEW_QUEUE.jsonl',science:'SCIENCE_CONTENT_REVIEW_QUEUE.jsonl'};
+export const REVIEW_FILES={game:'CONTENT_REVIEW_QUEUE.jsonl',study:'LAB_CONTENT_REVIEW_QUEUE.jsonl',studio:'STUDIO_CONTENT_REVIEW_QUEUE.jsonl',experiment:'EXPERIMENT_CONTENT_REVIEW_QUEUE.jsonl',classroom:'CLASSROOM_CONTENT_REVIEW_QUEUE.jsonl',digital:'DIGITAL_CONTENT_REVIEW_QUEUE.jsonl',maths:'MATHS_CONTENT_REVIEW_QUEUE.jsonl',science:'SCIENCE_CONTENT_REVIEW_QUEUE.jsonl',advanced:'ADVANCED_CONTENT_REVIEW_QUEUE.jsonl'};
 const scan=dir=>readdirSync(dir,{withFileTypes:true}).flatMap(x=>x.isDirectory()?scan(path.join(dir,x.name)):[path.join(dir,x.name)]);
 function isPending(item){
  if(item.approved_for_child_launch===false)return true;
