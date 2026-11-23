@@ -6,6 +6,7 @@ import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {STUDIO_LESSONS,STUDIO_VERSION} from '../assets/studio-engine.js';
 import {EXPERIMENTS,EXPERIMENT_VERSION,WORKSHOP_MODES,WORKSHOP_CONTENT,evaluateWorkshop} from '../assets/experiment-engine.js';
+import {SCIENCE_VERSION,SCIENCE_IDS,SCIENCE_MODELS,scienceEvaluate} from '../assets/science-engine.js';
 import {auditContentQueues,REVIEW_FILES} from './release-preflight.mjs';
 
 const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
@@ -75,6 +76,22 @@ export function resolvePilotContent(kind,item) {
    explanation_hindi:pair(task.explanation,'hi')
   };
  }
+ if(kind==='science'){
+  const mode=String(item.id||'').replace(/^science:/,'');
+  if(!SCIENCE_IDS.includes(mode)||item.contentVersion!==SCIENCE_VERSION)throw Error('Unknown Science concept or version: '+item.id);
+  const concept=SCIENCE_MODELS[mode],expected=scienceEvaluate(mode,concept.target);
+  return {
+   content_source:'assets/science-engine.js',
+   english_draft:pair(concept.prompt,'en'),hindi_draft:pair(concept.prompt,'hi'),
+   context_english:[pair(concept.title,'en'),pair(concept.concept,'en'),pair(concept.caveat,'en'),pair(concept.mission,'en'),pair(concept.play.question,'en')].join(' | '),
+   context_hindi:[pair(concept.title,'hi'),pair(concept.concept,'hi'),pair(concept.caveat,'hi'),pair(concept.mission,'hi'),pair(concept.play.question,'hi')].join(' | '),
+   choices_english:concept.play.options.map(x=>pair(x,'en')),
+   choices_hindi:concept.play.options.map(x=>pair(x,'hi')),
+   answer_or_guidance:'State-dependent target '+JSON.stringify(concept.target)+'; play answer index '+concept.play.answer+' (zero-based), see scienceEvaluate / scienceChoiceCheck',
+   hints_english:pair(concept.hint,'en'),hints_hindi:pair(concept.hint,'hi'),
+   explanation_english:expected.english,explanation_hindi:expected.hindi
+  };
+ }
  if(kind==='maths'){
   const mode=String(item.id||'').replace(/^workshop:/,'');
   if(!WORKSHOP_MODES.includes(mode)||item.contentVersion!==1)throw Error('Unknown Maths Workshop draft or version: '+item.id);
@@ -128,7 +145,7 @@ function reviewRow(kind,{item,id,source,line}) {
  const row={
   queue:kind,content_id:id,
   content_version:asText(val(item.content_version,item.contentVersion,item.version,'unspecified')),
-  priority:['studio','experiment','classroom','maths'].includes(kind)?'pilot-first':kind==='game'?'extended-library':'foundation',
+  priority:['studio','experiment','classroom','maths','science'].includes(kind)?'pilot-first':kind==='game'?'extended-library':'foundation',
   age_band:asText(val(item.age_band,item.ageBand,'not-mapped')),
   subject_or_topic:asText(val(item.category,item.subject,item.topic,item.lesson,'not-mapped')),
   source_file:source,line,content_source:pilot?.content_source??source,

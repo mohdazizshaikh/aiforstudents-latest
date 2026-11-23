@@ -1,5 +1,8 @@
 # Implementation & Dependency Backlog
 
+> **M31 EXECUTION UPDATE — 2026-11-24:** [B1 progress dashboard](B1_PROGRESS_DASHBOARD.md): **35/50 engineering/design tasks evidenced, 15 B1 items remain** (including four external expert/human dependencies); B2 **0/50**. Seven more unreviewed science models add to **3,292 outstanding content reviews**. Previous M29 0/100 and M30 25/50 notes below are historical checkpoints only. The **full school platform remains incomplete**.
+
+
 > **M30 B1 DELIVERY UPDATE — 2026-11-24:** Use [machine-verifiable tracker](MASTER_100_WORK_ITEMS.json) and [B1 progress snapshot](B1_PROGRESS_DASHBOARD.md), **25/50 B1 tasks done in engineering/design scope; B2 0/50**. The M29 0/100 text below is an **earlier historical starting baseline**, not current progress. A three-mode Maths Workshop prototype and three new review records exist; qualified content reviews **3,285 pending**, no actual school/Hostinger approvals.
 
 

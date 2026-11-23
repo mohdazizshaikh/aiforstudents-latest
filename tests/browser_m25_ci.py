@@ -13,7 +13,7 @@ import threading
 from playwright.sync_api import sync_playwright
 
 ROOT = Path(__file__).resolve().parents[1]
-OUTPUT = ROOT / 'test-results' / 'm30-browser'
+OUTPUT = ROOT / 'test-results' / 'm31-browser'
 OUTPUT.mkdir(parents=True, exist_ok=True)
 
 
@@ -34,7 +34,7 @@ def check_no_runtime_errors(page, errors):
 
 
 def run():
-    report = {'milestone': 'M30', 'execution': 'headless local Chromium with real ES modules',
+    report = {'milestone': 'M31', 'execution': 'headless local Chromium with real ES modules',
               'realHostingerVerified': False, 'realDeviceAccessibilityVerified': False,
               'educationalHumanApproval': False, 'publicReleaseApproved': False, 'checks': []}
     server = ThreadingHTTPServer(('127.0.0.1', 0), partial(QuietStaticHandler, directory=str(ROOT)))
@@ -117,6 +117,70 @@ def run():
                 check('Goal reached' in page.locator('#math-workshop-feedback').inner_text(),
                       'Data-table 4 minus 2 goal not recognized')
                 report['checks'].append('M30 geometry and two-row data table, no dragging or network data')
+
+                # M31: real Chromium five-stage reusable shell and seven science modes.
+                check(page.locator('#science-tabs button').count() == 7,
+                      'M31 seven Science Lab modes not available')
+                page.locator('#science-next').click()
+                check('TRY' in page.locator('#science-stage').inner_text(),
+                      'Science Lab Learn-to-Try transition failed')
+                page.locator('[data-science-action="inc:distance"]').focus()
+                page.keyboard.press('Enter')
+                check(page.locator('#science-output-distance').inner_text() == '30 m',
+                      'Keyboard Enter did not manipulate motion distance')
+                for _ in range(3):
+                    page.locator('[data-science-action="inc:distance"]').click()
+                for _ in range(5):
+                    page.locator('[data-science-action="inc:seconds"]').click()
+                check('6 m/s' in page.locator('.science-explanation').first.inner_text(),
+                      '60m/10s speed formula incorrect')
+                page.locator('#science-check').click()
+                check('matches the example' in page.locator('#science-feedback').inner_text(),
+                      'Motion target not verified by state')
+                page.locator('#science-next').click()
+                check('PLAY' in page.locator('#science-stage').inner_text(),
+                      'Science Lab Try-to-Play transition failed')
+                page.locator('[data-science-action="answer:0"]').click()
+                page.locator('#science-check').click()
+                check('matches the example' in page.locator('#science-feedback').inner_text(),
+                      'Science Lab play challenge incorrectly graded')
+                page.locator('#science-next').click()
+                check('UNDERSTAND' in page.locator('#science-stage').inner_text(),
+                      'Science Lab Play-to-Understand transition failed')
+                page.locator('#science-next').click()
+                check('GROW' in page.locator('#science-stage').inner_text(),
+                      'Science Lab Understand-to-Grow transition failed')
+                check('paper' in page.locator('#science-mission').inner_text().lower(),
+                      'No-screen original mission not visible')
+                report['checks'].append('M31 seven science models and reusable five-stage motion/quiz/mission with keyboard control')
+
+                page.locator('[data-science-action="mode:reflection"]').click()
+                page.locator('#science-next').click()
+                for _ in range(3):
+                    page.locator('[data-science-action="inc:incident"]').click()
+                for _ in range(5):
+                    page.locator('[data-science-action="inc:reflected"]').click()
+                page.locator('#science-check').click()
+                check('matches the example' in page.locator('#science-feedback').inner_text(),
+                      '35-degree reflection should be recognised')
+                page.locator('[data-science-action="mode:changes"]').click()
+                page.locator('#science-next').click()
+                page.locator('[data-science-action="select:example:melting"]').click()
+                page.locator('#science-check').click()
+                check('matches the example' in page.locator('#science-feedback').inner_text(),
+                      'Physical change sorting did not work')
+                page.locator('[data-science-action="mode:cells"]').click()
+                page.locator('#science-next').click()
+                page.locator('[data-science-action="select:cell:leaf"]').click()
+                check('chloroplasts' in page.locator('.science-explanation').first.inner_text(),
+                      'Cell label comparison did not expose text alternative')
+                page.locator('#lang').select_option('hi')
+                check('विज्ञान' in page.locator('#science-title').inner_text(),
+                      'Science Lab title did not switch to Hindi')
+                check('हरितलवक' in page.locator('.science-explanation').first.inner_text(),
+                      'Hindi cell structure description missing')
+                page.locator('#lang').select_option('en')
+                report['checks'].append('M31 reflection, safe chemistry sorter, cell text and Hindi/English equivalence')
 
                 page.locator('#remember').check()
                 check(page.evaluate('localStorage.length > 0'), 'Opt-in local history is not persistent')
@@ -230,10 +294,10 @@ def run():
                 phone.wait_for_function('navigator.serviceWorker.controller !== null')
                 cache = phone.evaluate("""async () => {
                   const keys = await caches.keys();
-                  return {keys, count: (await caches.open(keys.find(k => k.startsWith('aifs-discovery-m30'))))
-                    ? (await (await caches.open(keys.find(k => k.startsWith('aifs-discovery-m30')))).keys()).length : 0}
+                  return {keys, count: (await caches.open(keys.find(k => k.startsWith('aifs-discovery-m31'))))
+                    ? (await (await caches.open(keys.find(k => k.startsWith('aifs-discovery-m31')))).keys()).length : 0}
                 }""")
-                check(any(k.startswith('aifs-discovery-m30') for k in cache['keys']),
+                check(any(k.startswith('aifs-discovery-m31') for k in cache['keys']),
                       'M30 service-worker cache not created')
                 check(cache['count'] >= 40, 'Service-worker precache incomplete: ' + str(cache))
                 mobile.set_offline(True)
@@ -245,8 +309,10 @@ def run():
                       'Offline native learner modules not bootstrapped from cache')
                 check(phone.locator('#math-workshop-tabs button').count() == 3,
                       'Offline Maths Workshop failed to bootstrap')
+                check(phone.locator('#science-tabs button').count() == 7,
+                      'Offline Science Concept Lab not bootstrapped with seven models')
                 check_no_runtime_errors(phone, mobile_errors)
-                report['checks'].append('M30 SW installs 40+ assets and loads Studio guide + learner app offline')
+                report['checks'].append('M31 SW installs 40+ assets and loads Studio guide + learner app offline')
                 mobile.close()
             finally:
                 browser.close()
@@ -259,7 +325,7 @@ def run():
         server.server_close()
     report['result'] = 'PASS'
     (OUTPUT / 'report.json').write_text(json.dumps(report, indent=2, ensure_ascii=False) + '\n')
-    print('M30 LOCAL CHROMIUM CI SMOKE PASS:', json.dumps(report, ensure_ascii=False))
+    print('M31 LOCAL CHROMIUM CI SMOKE PASS:', json.dumps(report, ensure_ascii=False))
 
 
 if __name__ == '__main__':

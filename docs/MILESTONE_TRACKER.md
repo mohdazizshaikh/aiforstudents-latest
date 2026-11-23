@@ -1,5 +1,8 @@
 # Milestone and Release Tracker
 
+> **M31 SCOPED MILESTONE (2026-11-24):** New science concept teaching prototypes implemented, seven new bilingual subject drafts; current master plan B1 **35/50** verified source-and-test tasks, B2 **0/50**. **3,292** content records need independent Hindi/subject review; four B1 items blocked externally. [M31 QA](M31_SCIENCE_LABS.md) · [current B1 tracker](B1_PROGRESS_DASHBOARD.md). No fully verified Class 1–12 curriculum, actual Hostinger HTTPS, low-end physical accessibility, safeguarding or authorized school pilot.
+
+
 > **M30 CURRENT WORK CHECKPOINT (2026-11-24):** B1 **25/50 verified engineering/design tasks**, including three interactive bilingual maths mini-labs and draft curricular/safety model; B2 **0/50**. See [B1 evidence dashboard](B1_PROGRESS_DASHBOARD.md) and [M30 QA](M30_MATHS_WORKSHOP_QA.md). All **3,285** existing+new educational records pending; six safeguarding gates, actual Hostinger/physical devices/approved school pilot remain OPEN. Previous M29 0/100 notes are historical initial planning, not the latest snapshot.
 
 

@@ -1,10 +1,10 @@
 # M29 — 100-work-item master execution plan (2 × 50)
 
-**M30 implementation update, 2026-11-24:** **B1 25/50 engineering/design tasks verified; B2 0/50.** This includes five M29 governance-documentation items reused as verified foundations and new M30 Maths Workshop, curriculum/safety contracts and test instrumentation. **Overall product remains PARTIAL WORKING PROTOTYPE, NOT COMPLETE. Public child-facing launch BLOCKED.** Engineering DONE does not equal educational/field approval.
+**M31 implementation update, 2026-11-24:** **B1 35/50 engineering/design tasks verified; B2 0/50.** Ten additional B1 tasks now have source/test evidence: seven safe, draft Science Concept models, reusable five-stage lesson flow, cross-module Hindi/English completeness audit, and representative keyboard/nonvisual browser sampling. Previous five M29 governance foundations and M30 Maths work remain. **Overall product remains PARTIAL WORKING PROTOTYPE, NOT COMPLETE. Public child-facing launch BLOCKED.** Qualified education/translation/field approval is not established by tests.
 
 ## Fast batch execution rules
 
-- **B1 (50 tasks):** first five entries in each of ten workstreams. Lock scope, reusable foundations, representative safe labs and initial QA. **Current completion: 25/50**.
+- **B1 (50 tasks):** first five entries in each of ten workstreams. Lock scope, reusable foundations, representative safe labs and initial QA. **Current completion: 35/50**.
 - **B2 (50 tasks):** last five entries in each workstream. Broader Maths/Physics/Chemistry/Biology, governed AI/adaptive features, teacher depth, source and field reviews. **Current completion: 0/50**.
 - **Efficiency:** plan/triage each 50-task batch in one coordinated work cycle instead of requesting tiny steps. Run independent streams concurrently, use small coherent feature PRs rather than one unreviewable giant merge, run tests at each ~10–15-task checkpoint and consolidate progress into a single verified batch report.
 - **Non-negotiable:** a human review, real school trial, live Hostinger verification or legal approval remains **BLOCKED_EXTERNAL** unless a real authorized reviewer/operator supplies evidence. A successful Node/Chromium test or a prepared template is not that evidence.
@@ -56,8 +56,8 @@
 | ID | Batch | Task | Acceptance evidence | Status |
 |---|---|---|---|---|
 | FP-021 | B1 | Plan new Maths/Science/Teacher navigation | All routes discoverable at mobile widths | DONE_VERIFIED |
-| FP-022 | B1 | Build reusable five-step lesson shell | Learn/Try/Play/Understand/Grow with truthful retry | NOT_STARTED |
-| FP-023 | B1 | Unify Hindi/English content validation | Missing translations fail tests | NOT_STARTED |
+| FP-022 | B1 | Build reusable five-step lesson shell | Learn/Try/Play/Understand/Grow with truthful retry | DONE_VERIFIED |
+| FP-023 | B1 | Unify Hindi/English content validation | Missing translations fail tests | DONE_VERIFIED |
 | FP-024 | B1 | Define focus/labels/live feedback contract | Keyboard and screen-reader paths testable | DONE_VERIFIED |
 | FP-025 | B1 | Set low-end bandwidth/performance budgets | Asset and cold-start limits enforced in CI | DONE_VERIFIED |
 | FP-026 | B2 | Audit all new offline/PWA paths | No broken modules when disconnected after caching | NOT_STARTED |
@@ -91,9 +91,9 @@
 |---|---|---|---|---|
 | FP-041 | B1 | Map safe grade-wise Physics concepts | Distinguish conceptual model from real equipment | DONE_VERIFIED |
 | FP-042 | B1 | Validate existing series-switch simulation | Correct circuit truth table and mains safety caveat | DONE_VERIFIED |
-| FP-043 | B1 | Build forces/motion interactive model | Units, edge cases and accessible numerical text | NOT_STARTED |
-| FP-044 | B1 | Build light/reflection model | Angle relationships mathematically checked | NOT_STARTED |
-| FP-045 | B1 | Build energy transfer model | No unsupported energy/efficiency claims | NOT_STARTED |
+| FP-043 | B1 | Build forces/motion interactive model | Units, edge cases and accessible numerical text | DONE_VERIFIED |
+| FP-044 | B1 | Build light/reflection model | Angle relationships mathematically checked | DONE_VERIFIED |
+| FP-045 | B1 | Build energy transfer model | No unsupported energy/efficiency claims | DONE_VERIFIED |
 | FP-046 | B2 | Build heat/temperature model | Scientific distinction and safe non-hardware activities | NOT_STARTED |
 | FP-047 | B2 | Build sound/wave interactive model | Frequency/amplitude accessible without audio | NOT_STARTED |
 | FP-048 | B2 | Build magnetism qualitative model | Clear limitations and safe material instructions | NOT_STARTED |
@@ -107,10 +107,10 @@
 | ID | Batch | Task | Acceptance evidence | Status |
 |---|---|---|---|---|
 | FP-051 | B1 | Define safe chemistry/bio exclusions | No unsafe hands-on reactions or medical inference | DONE_VERIFIED |
-| FP-052 | B1 | Build states-of-matter particle model | Correct labelled transitions and simplification caveats | NOT_STARTED |
-| FP-053 | B1 | Build physical/chemical change sorter | Correct explanations with draft-review flags | NOT_STARTED |
-| FP-054 | B1 | Build cell structure interactive explorer | Text alternative and differentiated cell types | NOT_STARTED |
-| FP-055 | B1 | Build life-cycle/food-chain model | Scientifically correct ordered relationships | NOT_STARTED |
+| FP-052 | B1 | Build states-of-matter particle model | Correct labelled transitions and simplification caveats | DONE_VERIFIED |
+| FP-053 | B1 | Build physical/chemical change sorter | Correct explanations with draft-review flags | DONE_VERIFIED |
+| FP-054 | B1 | Build cell structure interactive explorer | Text alternative and differentiated cell types | DONE_VERIFIED |
+| FP-055 | B1 | Build life-cycle/food-chain model | Scientifically correct ordered relationships | DONE_VERIFIED |
 | FP-056 | B2 | Build periodic-table pattern explorer | Verified atomic number/group data sources | NOT_STARTED |
 | FP-057 | B2 | Build symbolic mass-conservation model | No dangerous recipes; balanced example tests | NOT_STARTED |
 | FP-058 | B2 | Build ecosystem interactions model | Food web and uncertainty clearly communicated | NOT_STARTED |
@@ -175,8 +175,8 @@
 | ID | Batch | Task | Acceptance evidence | Status |
 |---|---|---|---|---|
 | FP-091 | B1 | Publish Node/Chromium acceptance matrix | All core/offline/privacy paths trace to tests | DONE_VERIFIED |
-| FP-092 | B1 | Build subject-correctness regression fixtures | Expert-approved expected answers, equations, explanations | NOT_STARTED |
-| FP-093 | B1 | Automate keyboard and non-visual flow sampling | Representative Hindi/English and touch-free checks | NOT_STARTED |
+| FP-092 | B1 | Build subject-correctness regression fixtures | Expert-approved expected answers, equations, explanations | BLOCKED_EXTERNAL |
+| FP-093 | B1 | Automate keyboard and non-visual flow sampling | Representative Hindi/English and touch-free checks | DONE_VERIFIED |
 | FP-094 | B1 | Keep static staging ZIP privacy/integrity gates | Noindex, CSP, SHA-256 and source-path exclusions | DONE_VERIFIED |
 | FP-095 | B1 | Create truthful evidence status dashboard | No mock result counts as human or live hosting | DONE_VERIFIED |
 | FP-096 | B2 | Perform physical Android/AT/A4 testing | Real device evidence with logged failures | NOT_STARTED |
@@ -197,3 +197,7 @@ Pending evidence: **3,282 educational content records**, six human safety-operat
 ### M30 B1 execution checkpoint (2026-11-24)
 
 **25/50 engineering/design items verified** (source files + tests named in JSON evidence), including five M29 governance foundations, new 3-mode local Maths Workshop and 3 new pending draft content records; exact status from [`B1_PROGRESS_DASHBOARD.md`](B1_PROGRESS_DASHBOARD.md). **3 selected HUMAN_GATE items remain BLOCKED_EXTERNAL** (qualified bilingual review rubric, reviewed-content tutor contract and teacher lesson approval). Other B1/B2 items remain planned. Software/automated tests are not a substitute for actual subject/Hindi approval or physical Hostinger/school deployment.
+
+### M31 Science Concept Lab checkpoint (2026-11-24)
+
+B1 now **35/50 DONE_VERIFIED in strictly scoped engineering/design evidence**, including seven new conceptual Physics/Chemistry/Biology demos, one reusable five-stage lesson UI, cross-module Hindi/English presence validator and keyboard/nonvisual browser sampling. **Four B1 external/human tasks remain BLOCKED_EXTERNAL**, including expert-reviewed scientific answer fixtures. The new seven concepts bring the pending educational review inventory from 3,285 to **3,292**. See [B1 dashboard](B1_PROGRESS_DASHBOARD.md) and [M31 QA](M31_SCIENCE_LABS.md). Completion of Class 1–12 Science, validated AI tutor, teacher dashboard or child-facing launch is explicitly **NOT CLAIMED**.

@@ -5,12 +5,12 @@ import {auditWorkPlan,formatWorkPlanDashboard} from '../tools/workplan-status.mj
 const load=path=>readFileSync(new URL('../'+path,import.meta.url),'utf8');
 const manifest=JSON.parse(load('docs/MASTER_100_WORK_ITEMS.json'));
 
-test('M30 B1 dashboard derives 25 evidence-backed engineering/design tasks, not approvals',()=>{
+test('M30 B1 dashboard derives 35 evidence-backed engineering/design tasks, not approvals',()=>{
  const result=auditWorkPlan(manifest);
  assert.equal(result.valid,true,JSON.stringify(result.errors));
- assert.equal(result.byBatch.B1.verified,25);
+ assert.equal(result.byBatch.B1.verified,35);
  assert.equal(result.byBatch.B1.total,50);
- assert.equal(result.byBatch.B1.blockedExternal,3);
+ assert.equal(result.byBatch.B1.blockedExternal,4);
  assert.equal(result.byBatch.B2.verified,0);
  assert.equal(result.humanApprovalAuthenticated,false);
  assert.equal(result.publicReleaseApproved,false);
@@ -25,7 +25,7 @@ test('M30 B1 verified tasks have source and test evidence and valid completed de
   for(const dep of task.dependsOn)assert.equal(byId.get(dep).status,'DONE_VERIFIED');
  }
  assert.equal(manifest.items.length,100);
- assert.equal(manifest.currentPendingContentRecords,3285);
+ assert.equal(manifest.currentPendingContentRecords,3292);
  assert.equal(manifest.existingUnreviewedContentRecords,3282);
 });
 test('M30 workplan validator rejects fake signoff, absent evidence, wrong count or bad dependencies',()=>{
@@ -42,8 +42,8 @@ test('M30 workplan validator rejects fake signoff, absent evidence, wrong count 
 });
 test('M30 dashboard and status remain source-backed without learner info or live-host claims',()=>{
  const dashboard=load('docs/B1_PROGRESS_DASHBOARD.md');
- assert.match(dashboard,/25 \| 50 \| 25/);
- assert.match(dashboard,/3,285 pending subject\/Hindi reviews/);
+ assert.match(dashboard,/35 \| 50 \| 15/);
+ assert.match(dashboard,/3,292 pending subject\/Hindi reviews/);
  assert.match(dashboard,/NOT AUTHENTICATED/);
  assert.match(dashboard,/publicReleaseApproved: false/);
  assert.doesNotMatch(dashboard,/@gmail\.com|api[_-]?key|Bearer /);

@@ -1,5 +1,8 @@
 # Decision Register, Assumptions and Risk Tracker
 
+> **M31 SAFETY DECISION (2026-11-24):** Seven new interactive Science drafts are conceptual-only and explicitly disallow unsafe hands-on mains electricity, chemicals, bright light and wildlife sampling. Reusable five-stage teaching flow is not a validated curriculum. Pending human educational records are now **3,292**; B1 **35/50 engineering/design** tasks source/test-backed, four additional items blocked on genuine experts. Risk: counting conceptual models as complete practical labs or independent educator reviews. Mitigation: [M31 limitations](M31_SCIENCE_LABS.md) and launch gates kept closed.
+
+
 > **M30 STATUS RISK NOTE (2026-11-24):** B1 shows **25/50 source+test verified tasks**—five are reused M29 governance docs, while the rest are scoped software/provisional architecture tasks. This is **NOT 50% of the whole educational product**. Three new Maths tasks have **unreviewed** Hindi/subject prompts; pending inventory 3,285. Provisional grade mapping, no-paid-API tutoring plan and an offline teacher no-roster contract are designs only. Human gates, real devices, authorized Hostinger HTTPS and school trials remain blocked. [Evidence dashboard](B1_PROGRESS_DASHBOARD.md).
 
 

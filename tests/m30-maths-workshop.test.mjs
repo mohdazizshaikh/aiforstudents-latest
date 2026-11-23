@@ -52,13 +52,13 @@ test('M30 data table comparison is arithmetic, not a learner scoring or talent r
 });
 test('M30 Maths review queue is integrated with original 3,282-record human review pipeline',()=>{
  const audit=auditContentQueues();
- assert.equal(audit.total,3285);
- assert.equal(audit.pending,3285);
+ assert.equal(audit.total,3292);
+ assert.equal(audit.pending,3292);
  assert.equal(audit.counts.maths.total,3);
  assert.equal(audit.counts.maths.pending,3);
  const rows=buildReviewRows(),summary=buildSummary(undefined,rows);
- assert.equal(rows.length,3285);
- assert.equal(summary.pendingHumanReviewRecords,3285);
+ assert.equal(rows.length,3292);
+ assert.equal(summary.pendingHumanReviewRecords,3292);
  const maths=rows.filter(x=>x.queue==='maths');
  assert.equal(maths.length,3);
  for(const row of maths){
@@ -79,7 +79,7 @@ test('M30 workshop UI is accessible, no drag, no API, local-only and existing co
  assert.match(app,/workshopButton/);
  assert.match(app,/aifs-history-cleared/);
  assert.doesNotMatch(app,/navigator\.geolocation|openai\.com|api\.gemini|localStorage\.setItem/);
- assert.match(sw,/aifs-discovery-m30/);
+ assert.match(sw,/aifs-discovery-m31/);
  for(const a of [false,true])for(const b of [false,true]){
   assert.equal(bulbLit({a,b}),a&&b);
   assert.equal(evaluateExperiment('series-circuit','light',{a,b}).correct,a&&b);

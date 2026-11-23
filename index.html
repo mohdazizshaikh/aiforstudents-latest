@@ -13,7 +13,7 @@
 <a class="skip" href="#practice" data-i18n="skip">Skip to games</a>
 <header class="header"><div class="wrap bar">
   <a class="brand" href="./"><span class="mark" aria-hidden="true">a</span><span>AI <em>for</em> Students<small>Discover · Develop · Decide</small></span></a>
-  <nav aria-label="Primary navigation"><a href="#practice" data-i18n="navGames">Games</a><a href="#growth" data-i18n="navGrowth">My growth</a><a href="#daily" data-i18n="navDaily">Daily plan</a><a href="#smart-studio" id="studio-nav">Smart Studio</a><a href="#experiment-lab" id="experiment-nav">Virtual Lab</a><a href="#math-workshop" id="math-workshop-nav">Maths Workshop</a><a href="#classroom" id="classroom-nav">Classroom</a><a href="#digital-skills" id="digital-nav">Digital Skills</a><a href="#study-lab" id="nav-study">Study Lab</a><a href="#future-explorer">Future Explorer</a><a href="#team-play" data-i18n="navTeam">Grow Together</a><a href="#privacy" data-i18n="navPrivacy">Privacy</a></nav>
+  <nav aria-label="Primary navigation"><a href="#practice" data-i18n="navGames">Games</a><a href="#growth" data-i18n="navGrowth">My growth</a><a href="#daily" data-i18n="navDaily">Daily plan</a><a href="#smart-studio" id="studio-nav">Smart Studio</a><a href="#experiment-lab" id="experiment-nav">Virtual Lab</a><a href="#math-workshop" id="math-workshop-nav">Maths Workshop</a><a href="#science-lab" id="science-nav">Science Lab</a><a href="#classroom" id="classroom-nav">Classroom</a><a href="#digital-skills" id="digital-nav">Digital Skills</a><a href="#study-lab" id="nav-study">Study Lab</a><a href="#future-explorer">Future Explorer</a><a href="#team-play" data-i18n="navTeam">Grow Together</a><a href="#privacy" data-i18n="navPrivacy">Privacy</a></nav>
   <label class="language-label" for="lang"><span data-i18n="language">Language</span><select id="lang" aria-label="Language / भाषा"><option value="en">English</option><option value="hi">हिन्दी</option></select></label>
  </div></header>
 <main class="wrap">
@@ -84,6 +84,33 @@
   <p class="small muted">Draft mathematics activities need qualified educator/Hindi review. No grades, mastery or Class 1–12 coverage are claimed.</p>
  </div>
 </section>
+<section id="science-lab" class="section" aria-labelledby="science-title">
+ <div class="heading"><div><div class="eyebrow">M31 · 7 ORIGINAL DRAFT SCIENCE MODELS</div><h2 id="science-title">Science Concept Lab</h2>
+  <p id="science-intro">Physics, Chemistry and Biology concepts with buttons and Hindi/English text.</p></div></div>
+ <div class="panel science-panel">
+  <p class="small muted" id="science-notice">UNREVIEWED drafts: these are conceptual teaching prototypes, not real experiments.</p>
+  <div class="science-tabs" id="science-tabs" role="group" aria-label="Choose a Science Concept Lab"></div>
+  <div class="science-surface">
+   <p class="pill mint" id="science-stage" role="status">1/5 Learn</p>
+   <h3 id="science-heading">Steady motion</h3>
+   <p id="science-concept"></p>
+   <p class="small muted science-caveat" id="science-caveat"></p>
+   <h4 id="science-question" tabindex="-1">Explore the idea.</h4>
+   <p class="small muted" id="science-hint"></p>
+   <div class="science-controls" id="science-controls" role="group" aria-label="Keyboard accessible science controls" hidden></div>
+   <div id="science-quiz" hidden></div>
+   <p id="science-understand" class="science-explanation" hidden></p>
+   <p id="science-mission" class="science-explanation" hidden></p>
+   <div class="science-actions"><button id="science-check" type="button" class="btn" hidden>Check</button>
+    <button id="science-reset" type="button" class="btn outline" hidden>Reset</button></div>
+   <p id="science-feedback" role="status" aria-live="polite" tabindex="-1" class="feedback" hidden></p>
+   <div class="science-actions"><button type="button" id="science-prev" class="btn outline" disabled>Previous stage</button>
+    <button type="button" id="science-next" class="btn">Next stage</button></div>
+   <p id="science-help" class="small muted">Learn → Try → Play → Understand → Grow, no saved learner results.</p>
+  </div>
+  <p class="small muted">Not NCERT chapter-mapped or certified. No real wiring, chemical mixing, burners, biological sampling or wildlife handling. All seven original drafts require independent subject/Hindi and child-safety review.</p>
+ </div>
+</section>
 <section id="study-lab" class="section" aria-labelledby="lab-heading">
   <div class="heading"><div><div class="eyebrow" id="lab-eyebrow">SKILL DEVELOPMENT LAB · STUDY SUPPORT</div><h2 id="lab-heading">Study Lab: learn, recall, check</h2><p id="lab-intro">Choose a subject and practise a short idea. Suggested revisions are optional, not reminders or exam-score predictions.</p></div></div>
   <div class="panel lab-panel"><p class="small muted" id="lab-disclaimer">32 original bilingual, age-scaffolded checks. Not aligned to a particular board, syllabus or competitive exam. Content review is pending.</p>
@@ -152,6 +179,7 @@
 <script type="module" src="assets/lab-app.js"></script>
 <script type="module" src="assets/studio-app.js"></script>
 <script type="module" src="assets/experiment-app.js"></script>
+<script type="module" src="assets/science-app.js"></script>
 <script type="module" src="assets/classroom-app.js"></script>
 <script type="module" src="assets/digital-app.js"></script>
 </body></html>
