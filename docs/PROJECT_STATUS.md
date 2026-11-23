@@ -1,6 +1,6 @@
 # Project Status Dashboard — AI for Students
 
-**As of 2026-11-23** | **Latest completed baseline: M19 staging hardening; M20 review operations in development** | **Public release: NOT APPROVED**
+**As of 2026-11-23** | **M19 staging baseline; M20 review operations merged; M21 content integrity in development** | **Public release: NOT APPROVED**
 
 ## Working today in the private prototype
 - 40 solo game modules in 8 categories; 3 same-device Grow Together modes.
@@ -49,3 +49,6 @@ AI & Digital Skills Lab now includes 32 bilingual original author-draft question
 
 ### M20 code continuation — 2026-11-23
 A read-only bilingual review worklist exporter and automated checks are being added on a development branch. It inventories six review queues (3,282 records), identifies source line and version and records **no human approvals**. It does not solve Hostinger staging, real-device evidence, curriculum/translation review or child safety approval. See [M20 review operations](M20_REVIEW_OPERATIONS.md). Public release stays **NOT APPROVED**.
+
+### M21 — reviewer source integrity, 2026-11-23
+Source-backed Studio/Experiment bilingual prompts, teaching hints and version-sensitive content hashes added to the M20 worklist. This improves ability for real reviewers to inspect draft educational material, **not** the documented approval count. See [M21 review integrity](M21_REVIEW_INTEGRITY.md). Hostinger and school/child approval work remains open.
