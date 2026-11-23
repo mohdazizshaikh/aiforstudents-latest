@@ -5,7 +5,7 @@ import {createHash} from 'node:crypto';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {STUDIO_LESSONS,STUDIO_VERSION} from '../assets/studio-engine.js';
-import {EXPERIMENTS,EXPERIMENT_VERSION} from '../assets/experiment-engine.js';
+import {EXPERIMENTS,EXPERIMENT_VERSION,WORKSHOP_MODES,WORKSHOP_CONTENT,evaluateWorkshop} from '../assets/experiment-engine.js';
 import {auditContentQueues,REVIEW_FILES} from './release-preflight.mjs';
 
 const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
@@ -75,6 +75,24 @@ export function resolvePilotContent(kind,item) {
    explanation_hindi:pair(task.explanation,'hi')
   };
  }
+ if(kind==='maths'){
+  const mode=String(item.id||'').replace(/^workshop:/,'');
+  if(!WORKSHOP_MODES.includes(mode)||item.contentVersion!==1)throw Error('Unknown Maths Workshop draft or version: '+item.id);
+  const concept=WORKSHOP_CONTENT[mode];
+  const example=mode==='number-line'?{position:-3}:mode==='rectangle'?{width:4,height:3}:{a:4,b:2};
+  const evaluated=evaluateWorkshop(mode,example);
+  return {
+   content_source:'assets/experiment-engine.js',
+   english_draft:pair(concept.prompt,'en'),hindi_draft:pair(concept.prompt,'hi'),
+   context_english:pair(concept.title,'en'),context_hindi:pair(concept.title,'hi'),
+   choices_english:[],choices_hindi:[],
+   answer_or_guidance:'Target-state numeric check: '+JSON.stringify(example)+
+    '. Independent reference tests required; see evaluateWorkshop.',
+   hints_english:pair(concept.hint,'en'),hints_hindi:pair(concept.hint,'hi'),
+   explanation_english:pair(evaluated.explanation,'en'),
+   explanation_hindi:pair(evaluated.explanation,'hi')
+  };
+ }
  if(kind==='experiment'){
   const experiment=EXPERIMENTS[item.experimentId];
   const task=experiment?.tasks.find(s=>s.id===item.taskId);
@@ -110,7 +128,7 @@ function reviewRow(kind,{item,id,source,line}) {
  const row={
   queue:kind,content_id:id,
   content_version:asText(val(item.content_version,item.contentVersion,item.version,'unspecified')),
-  priority:['studio','experiment','classroom'].includes(kind)?'pilot-first':kind==='game'?'extended-library':'foundation',
+  priority:['studio','experiment','classroom','maths'].includes(kind)?'pilot-first':kind==='game'?'extended-library':'foundation',
   age_band:asText(val(item.age_band,item.ageBand,'not-mapped')),
   subject_or_topic:asText(val(item.category,item.subject,item.topic,item.lesson,'not-mapped')),
   source_file:source,line,content_source:pilot?.content_source??source,
