@@ -283,5 +283,16 @@
     "No misleading unsupervised home experiments; any adult-supervised physical work needs approved school guidance",
     "Mark all models as simplified and require qualified Hindi/subject/safety review"
   ],
-  "intendedUse": "Reviewer/engineering planning inputs only; never published as authenticated syllabus."
+  "intendedUse": "Reviewer/engineering planning inputs only; never published as authenticated syllabus.",
+  "rightsRecordTemplate": {
+    "assetId": "example-not-published",
+    "sourceUrl": null,
+    "creatorOrInstitution": null,
+    "licenseId": null,
+    "permissionEvidenceRef": null,
+    "attributionText": null,
+    "permittedUse": "UNASSESSED",
+    "humanCopyrightReview": "PENDING",
+    "mayRedistribute": false
+  }
 }

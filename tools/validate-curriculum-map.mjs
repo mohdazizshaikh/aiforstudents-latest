@@ -12,6 +12,8 @@ export function validateCurriculumOptions(data){
   if(!p.id||!isHTTPS(p.homepage))problems.push('Unrecognized official provider URL');
   if(p.exactEditionVerified!==false||p.redistributionPermission!=='NOT_ASSESSED'||p.use!=='EXTERNAL_LINK_ONLY')problems.push('Provider must remain link-only, source edition and rights unverified');
  }
+ const rights=data.rightsRecordTemplate;
+ if(!rights||rights.mayRedistribute!==false||rights.permittedUse!=='UNASSESSED'||rights.humanCopyrightReview!=='PENDING'||!('permissionEvidenceRef' in rights)||!('attributionText' in rights)||!('licenseId' in rights))problems.push('Missing conservative per-asset copyright attribution and permission model');
  const template=data.lessonRecordTemplate;
  if(!template||!Number.isInteger(template.grade)||template.grade<1||template.grade>12||!('ageBand' in template)||template.ageBand!==null||
   template.board!=='UNMAPPED'||template.releaseEligible!==false||

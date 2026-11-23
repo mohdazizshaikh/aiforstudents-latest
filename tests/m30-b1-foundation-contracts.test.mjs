@@ -19,6 +19,13 @@ test('M30 curriculum checker fails closed on false board mapping and unlicensed 
  const notLicensed=structuredClone(source);notLicensed.providerOptions[0].redistributionPermission='FREE';
  assert.equal(validateCurriculumOptions(notLicensed).valid,false);
 });
+test('M30 copyright design keeps each third-party asset unredistributable without permission evidence',()=>{
+ const p=source.rightsRecordTemplate;
+ assert.equal(p.mayRedistribute,false);
+ assert.equal(p.permittedUse,'UNASSESSED');
+ assert.equal(p.permissionEvidenceRef,null);
+ assert.equal(p.humanCopyrightReview,'PENDING');
+});
 test('M30 metadata separates school grade and age band without claiming verified textbook chapters',()=>{
  const m=source.lessonRecordTemplate;
  assert.equal(m.grade,1);assert.equal(m.ageBand,null);assert.equal(m.board,'UNMAPPED');

@@ -78,7 +78,15 @@ def run():
                 # M30: real native-ESM Maths Workshop with keyboard/button alternatives.
                 check(page.locator('#math-workshop-tabs button').count() == 3,
                       'Maths Workshop three original activity tabs missing')
-                for _ in range(3):
+                page.locator('[data-workshop-action="line:inc"]').focus()
+                page.keyboard.press('Enter')
+                check(page.locator('#math-workshop-number').inner_text() == '1',
+                      'Keyboard-only Enter did not move Maths marker')
+                check(page.evaluate("document.activeElement?.dataset.workshopAction") == 'line:inc',
+                      'Keyboard focus lost after Maths control rerender')
+                check(page.locator('#math-workshop-feedback').get_attribute('aria-live') == 'polite',
+                      'Screen-reader feedback region is not announced politely')
+                for _ in range(4):
                     page.locator('[data-workshop-action="line:dec"]').click()
                 check(page.locator('#math-workshop-number').inner_text() == '-3',
                       'Maths number line position incorrect')
@@ -203,7 +211,13 @@ def run():
                 check(overflow['actual'] <= overflow['viewport'] + 4,
                       'Unexpected horizontal overflow at 390px: ' + str(overflow))
                 check_no_runtime_errors(phone, mobile_errors)
-                report['checks'].append('390px viewport renders without document-level horizontal overflow')
+                navigation = phone.evaluate("""() => {
+                  const n=performance.getEntriesByType('navigation')[0];
+                  return n ? Math.round(n.domContentLoadedEventEnd) : null;
+                }""")
+                check(navigation is not None and navigation <= 12000,
+                      'CI localhost DOMContentLoaded exceeds 12-second engineering budget: ' + str(navigation))
+                report['checks'].append('390px viewport and localhost cold-load within 12-second engineering budget')
 
                 ready = phone.evaluate("""async () => {
                   const registration = await navigator.serviceWorker.ready;
