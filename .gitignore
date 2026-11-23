@@ -9,3 +9,6 @@ playwright-report/
 test-results/
 CONTENT_REVIEW_QUEUE.jsonl
 preview-*.png
+
+# Generated local-only M20 human-review packet (not a signoff)
+review-packet/
