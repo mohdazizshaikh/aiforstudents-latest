@@ -13,7 +13,7 @@
 <a class="skip" href="#practice" data-i18n="skip">Skip to games</a>
 <header class="header"><div class="wrap bar">
   <a class="brand" href="./"><span class="mark" aria-hidden="true">a</span><span>AI <em>for</em> Students<small>Discover · Develop · Decide</small></span></a>
-  <nav aria-label="Primary navigation"><a href="#practice" data-i18n="navGames">Games</a><a href="#growth" data-i18n="navGrowth">My growth</a><a href="#daily" data-i18n="navDaily">Daily plan</a><a href="#smart-studio" id="studio-nav">Smart Studio</a><a href="#experiment-lab" id="experiment-nav">Virtual Lab</a><a href="#math-workshop" id="math-workshop-nav">Maths Workshop</a><a href="#science-lab" id="science-nav">Science Lab</a><a href="#classroom" id="classroom-nav">Classroom</a><a href="#digital-skills" id="digital-nav">Digital Skills</a><a href="#study-lab" id="nav-study">Study Lab</a><a href="#future-explorer">Future Explorer</a><a href="#team-play" data-i18n="navTeam">Grow Together</a><a href="#privacy" data-i18n="navPrivacy">Privacy</a></nav>
+  <nav aria-label="Primary navigation"><a href="#practice" data-i18n="navGames">Games</a><a href="#growth" data-i18n="navGrowth">My growth</a><a href="#daily" data-i18n="navDaily">Daily plan</a><a href="#smart-studio" id="studio-nav">Smart Studio</a><a href="#experiment-lab" id="experiment-nav">Virtual Lab</a><a href="#math-workshop" id="math-workshop-nav">Maths Workshop</a><a href="#science-lab" id="science-nav">Science Lab</a><a href="#local-learning-guide" id="local-guide-nav">Practice Guide</a><a href="#classroom" id="classroom-nav">Classroom</a><a href="#digital-skills" id="digital-nav">Digital Skills</a><a href="#study-lab" id="nav-study">Study Lab</a><a href="#future-explorer">Future Explorer</a><a href="#team-play" data-i18n="navTeam">Grow Together</a><a href="#privacy" data-i18n="navPrivacy">Privacy</a></nav>
   <label class="language-label" for="lang"><span data-i18n="language">Language</span><select id="lang" aria-label="Language / भाषा"><option value="en">English</option><option value="hi">हिन्दी</option></select></label>
  </div></header>
 <main class="wrap">
@@ -142,11 +142,58 @@
   <p><a href="ai-digital-skills/">AI &amp; Digital Skills guide, privacy and limitations / डिजिटल कौशल जानकारी</a></p>
  </div>
 </section>
+<section class="section" id="local-learning-guide" aria-labelledby="local-guide-title">
+ <div class="heading"><div><div class="eyebrow">M32 · OPTIONAL, NO AI INFERENCE</div>
+ <h2 id="local-guide-title">Local Practice Guide — draft, not an AI tutor</h2>
+ <p id="local-guide-intro">Choose a practice subject, level and language yourself. No sign-up or stored recommendation.</p></div></div>
+ <div class="panel local-guide-panel">
+  <p class="small muted" id="local-guide-review">Unreviewed draft hints. This is not a live chatbot or verified personal tutor.</p>
+  <div class="local-guide-selectors">
+   <label><span id="local-guide-subject-label">Subject</span><select id="local-guide-subject"></select></label>
+   <label><span id="local-guide-difficulty-label">Practice level</span><select id="local-guide-difficulty"></select></label>
+   <label><span id="local-guide-language-label">Language override</span><select id="local-guide-language"><option value="en">English</option><option value="hi">हिन्दी</option></select></label>
+  </div>
+  <div class="local-guide-actions"><button id="local-guide-suggest" class="btn" type="button">Suggest optional practice</button>
+   <button id="local-guide-decline" class="btn outline" type="button">Decline / clear</button></div>
+  <div id="local-guide-recommendation" class="local-guide-result" hidden><p id="local-guide-reason" tabindex="-1" role="status"></p><a id="local-guide-target" href="#math-workshop">Open practice</a></div>
+  <div class="local-guide-hints">
+   <label for="local-guide-topic" id="local-guide-topic-label">Choose fixed topic for a source-backed draft hint</label>
+   <select id="local-guide-topic"></select>
+   <div class="local-guide-actions"><button id="local-guide-hint" class="btn outline" type="button">Show draft hint</button>
+    <button id="local-guide-sensitive" class="btn outline" type="button">I need a trusted adult</button></div>
+   <p id="local-guide-draft-hint" class="local-guide-result" tabindex="-1" role="status" aria-live="polite" hidden></p>
+  </div>
+  <div class="local-guide-reviews">
+   <p id="local-guide-review-label">Optional next review date (not saved)</p>
+   <div class="local-guide-actions"><button id="local-guide-review-1" class="btn outline" type="button">Tomorrow</button><button id="local-guide-review-3" class="btn outline" type="button">3 days</button><button id="local-guide-review-7" class="btn outline" type="button">7 days</button><button id="local-guide-review-clear" class="btn outline" type="button">Clear date</button></div>
+   <p id="local-guide-day" role="status" tabindex="-1">No date selected.</p>
+  </div>
+  <div class="local-guide-fraction">
+   <h3 id="local-guide-fraction-title">Five-stage Fraction Lab from original Studio draft</h3>
+   <p id="local-guide-fraction-stage" class="pill mint">Learn (1/5)</p>
+   <h4 id="local-guide-fraction-question" tabindex="-1">Fractions</h4>
+   <p id="local-guide-fraction-text"></p>
+   <div id="local-guide-fraction-adjust" role="group" aria-label="Use buttons to shade fraction parts" hidden>
+    <button id="local-guide-fraction-dec" type="button" class="btn outline">−</button>
+    <output id="local-guide-fraction-count" aria-label="Shaded equal parts">0/4</output>
+    <button id="local-guide-fraction-inc" type="button" class="btn outline">+</button>
+   </div>
+   <button id="local-guide-fraction-check" class="btn" type="button" hidden>Check 2/4 = 1/2</button>
+   <p id="local-guide-fraction-feedback" role="status" tabindex="-1" aria-live="polite" hidden></p>
+   <div class="local-guide-actions"><button id="local-guide-fraction-prev" type="button" class="btn outline">Previous stage</button>
+    <button id="local-guide-fraction-next" type="button" class="btn">Next stage</button></div>
+  </div>
+  <p class="small muted">All suggestions are optional; no ability prediction, streaks or grades. New text and existing original fractions guidance require qualified educator/Hindi review.</p>
+ </div>
+</section>
 <section id="classroom" class="section" aria-labelledby="classroom-title">
  <div class="heading"><div><div class="eyebrow">M17 · TEACHER-LED PILOT</div><h2 id="classroom-title">Smart Classroom & Teacher Kit</h2><p id="classroom-intro">One-screen group learning, no class login.</p></div></div>
  <div class="panel classroom-panel"><p id="classroom-notice" class="small muted">Unreviewed original teacher lesson drafts. Teacher oversight required.</p>
   <div id="classroom-lessons" role="group" aria-label="Choose a teacher-led lesson" class="classroom-tabs"></div>
-  <div class="classroom-toolbar"><button type="button" class="btn outline compact" id="classroom-projector" aria-pressed="false">Projector-friendly view</button><p class="small muted" id="classroom-summary"></p></div>
+  <p class="small muted">Classroom pilot: teacher-controlled, anonymous group roles. No real roster or school assignment system.</p>
+ <div class="classroom-toolbar"><label for="classroom-jump" id="classroom-jump-label">Jump to lesson step</label><select id="classroom-jump" aria-label="Jump to any lesson step"></select>
+ <a href="teacher-kit/cards/" id="classroom-cards-link">Printable learner-only discussion cards</a>
+ <button type="button" class="btn outline compact" id="classroom-projector" aria-pressed="false">Projector-friendly view</button><p class="small muted" id="classroom-summary"></p></div>
   <div class="classroom-screen" aria-label="Teacher group activity"><span class="pill mint" id="classroom-step-count" aria-live="polite">Step 1 of 5</span>
    <h3 id="classroom-step-heading" tabindex="-1">Prepare together</h3><p class="muted" id="classroom-subtitle"></p>
    <div class="classroom-workflow">
@@ -180,6 +227,7 @@
 <script type="module" src="assets/studio-app.js"></script>
 <script type="module" src="assets/experiment-app.js"></script>
 <script type="module" src="assets/science-app.js"></script>
+<script type="module" src="assets/practice-app.js"></script>
 <script type="module" src="assets/classroom-app.js"></script>
 <script type="module" src="assets/digital-app.js"></script>
 </body></html>
