@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {spawnSync} from 'node:child_process';
 import {createHash} from 'node:crypto';
-import {FULL_TARGETS,staticIntegrityManifest,verifyLive} from '../tools/check-live-staging.mjs';
+import {FULL_TARGETS,FORBIDDEN_PUBLIC_PATHS,staticIntegrityManifest,verifyLive} from '../tools/check-live-staging.mjs';
 
 const base=new URL('../',import.meta.url);
 const fileFor=target=>new URL(target==='/'?'index.html':target.endsWith('/')?target.slice(1)+'index.html':target.slice(1),base);
@@ -16,12 +16,14 @@ const baseHeaders=target=>({
  'x-frame-options':'DENY','referrer-policy':'strict-origin-when-cross-origin',
  'permissions-policy':'camera=(), microphone=(), geolocation=()'
 });
-function sourceFetcher({tamper='',omit='',badPolicy=false,authStore=null}={}){
+function sourceFetcher({tamper='',omit='',expose='',badPolicy=false,authStore=null}={}){
  return async (url,options)=>{
   const pathname=new URL(url).pathname;
   if(authStore)authStore.push(options.headers?.Authorization||'');
   const headers=baseHeaders(pathname);
   if(pathname===omit)return new Response('Not Found',{status:404,headers});
+  if(FORBIDDEN_PUBLIC_PATHS.includes(pathname))return new Response(pathname===expose?'PRIVATE RESPONSE NOT FOR LOGGING':'Not Found',
+    {status:pathname===expose?200:404,headers});
   if(badPolicy)headers['content-security-policy']="default-src 'self'; script-src 'self' 'unsafe-inline'";
   const source=readFileSync(fileFor(pathname));
   const body=pathname===tamper?Buffer.concat([source,Buffer.from('\n<!-- unreviewed stale change -->')]):source;
@@ -51,7 +53,9 @@ test('M27 authentic static bytes + strict staging headers pass exact full-manife
  assert.equal(result.scope,'full');
  assert.equal(result.integrity,true);
  assert.equal(result.passed,true,JSON.stringify(result.results.filter(x=>x.problems.length)).slice(0,1600));
- assert.equal(count,FULL_TARGETS.length);
+ assert.equal(count,FULL_TARGETS.length+FORBIDDEN_PUBLIC_PATHS.length);
+ assert.equal(result.exposureChecked,FORBIDDEN_PUBLIC_PATHS.length);
+ assert.ok(result.exposureChecks.every(x=>x.problems.length===0));
  assert.equal(result.approval,'NOT A PUBLIC LAUNCH APPROVAL');
 });
 test('M27 catches a tampered or stale stylesheet even when HTTPS headers and HTTP status are valid',async()=>{
@@ -86,7 +90,8 @@ test('M27 optional staging auth header is sent for operator but not recorded in 
  const report=await verifyLive('https://restricted-staging.example',
  sourceFetcher({authStore}),secret,['/assets/app.js'],true);
  assert.equal(report.passed,true);
- assert.deepEqual(authStore,[secret]);
+ assert.equal(authStore.length,1+FORBIDDEN_PUBLIC_PATHS.length);
+ assert.ok(authStore.every(x=>x===secret));
  assert.ok(!JSON.stringify(report).includes(secret));
 });
 test('M27 CLI refuses incomplete --integrity without --full, with no network request',()=>{
@@ -94,4 +99,20 @@ test('M27 CLI refuses incomplete --integrity without --full, with no network req
  const run=spawnSync(process.execPath,[script,'https://restricted-staging.example','--integrity'],{encoding:'utf8',timeout:7000});
  assert.equal(run.status,2);
  assert.match(run.stderr,/--full \[--integrity\]/);
+});
+
+test('M27 strict checker fails closed if site accidentally serves a private source or evidence file',async()=>{
+ const r=await verifyLive('https://restricted-staging.example',
+  sourceFetcher({expose:'/RELEASE_MANIFEST.json'}),'',['/'],true);
+ assert.equal(r.passed,false);
+ assert.equal(r.exposureChecked,FORBIDDEN_PUBLIC_PATHS.length);
+ const exposed=r.exposureChecks.find(x=>x.path==='/RELEASE_MANIFEST.json');
+ assert.equal(exposed.status,200);
+ assert.match(exposed.problems.join(' '),/may be exposed/);
+ assert.ok(!JSON.stringify(r).includes('PRIVATE RESPONSE'),'Private response body must never be logged');
+});
+test('M27 covers robots.txt as well as all PWA assets and 23 guide routes',()=>{
+ assert.ok(FULL_TARGETS.includes('/robots.txt'));
+ const robots=staticIntegrityManifest().find(x=>x.path==='/robots.txt');
+ assert.ok(robots?.bytes>0);
 });
