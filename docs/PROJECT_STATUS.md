@@ -1,6 +1,6 @@
 # Project Status Dashboard — AI for Students
 
-**As of 2026-11-23** | **M20–M27 merged; M28 cross-tab privacy engineering with Chromium QA; external launch gates pending** | **Public release: NOT APPROVED**
+**As of 2026-11-23** | **M20–M28 engineering merged, automated CI verified; real hosting and human release gates pending** | **Public release: NOT APPROVED**
 
 ## Working today in the private prototype
 - 40 solo game modules in 8 categories; 3 same-device Grow Together modes.
@@ -79,3 +79,8 @@ A read-only full-manifest SHA-256 verifier now checks whether served private sta
 
 ### M28 — shared-device privacy clear (2026-11-23)
 A same-origin, no-data BroadcastChannel signal now clears known practice state across already-open browser tabs after local clear. A storage-key event provides fallback for opted-in persisted history. Real Chromium checks cover non-opt-in session tabs and persisted opt-in tabs, while the service-worker asset cache and restricted staging ZIP are versioned M28. This is **not evidence of physical Android or legal child-safety approval**, and cannot clear other devices/browser profiles. See [M28 QA](M28_SHARED_DEVICE_PRIVACY.md).
+
+### Final M27–M28 merged main verification — 2026-11-23
+- [M27 PR #13](https://github.com/mohdazizshaikh/aiforstudents-latest/pull/13) merged at `396f341f7bf6b5c6cfdec2e280714995c823a93f`; [main CI 45210334189](https://github.com/mohdazizshaikh/aiforstudents-latest/actions/runs/45210334189) passed.
+- [M28 PR #14](https://github.com/mohdazizshaikh/aiforstudents-latest/pull/14) merged at `a7db81e884382173e173ec581d1cddf3d1f303d9`; [main CI 45212846388](https://github.com/mohdazizshaikh/aiforstudents-latest/actions/runs/45212846388) passed both **145 Node tests** and nine real local Chromium scenarios. Private noindex M28 Hostinger ZIP and browser report are attached as seven-day CI artifacts.
+- All **3,282 content review records** and six safeguarding human operation gates remain pending, as do real access-restricted Hostinger HTTPS, physical Android/assistive technology, curriculum mapping and ethical school pilot. Child-facing public launch remains **NOT APPROVED**.

@@ -52,3 +52,6 @@ The last command must deliberately **fail**; a passing engineering build is not 
 [Real-device/accessibility Issue #5](https://github.com/mohdazizshaikh/aiforstudents-latest/issues/5) · [Safeguarding Issue #4](https://github.com/mohdazizshaikh/aiforstudents-latest/issues/4) · [Operator checklist](../STAGING_OPERATOR_CHECKLIST.md).
 
 **Public child-facing launch remains NOT APPROVED.**
+
+## GitHub engineering verification — 2026-11-23
+[M28 PR #14](https://github.com/mohdazizshaikh/aiforstudents-latest/pull/14) merged into main at `a7db81e884382173e173ec581d1cddf3d1f303d9`. [Merged main CI](https://github.com/mohdazizshaikh/aiforstudents-latest/actions/runs/45212846388) completed **successfully** for both jobs: 145/145 Node tests and nine Chromium localhost scenarios, including two cross-tab privacy cases. The M28 noindex Hostinger ZIP and M28 local-browser report artifacts are attached with seven-day retention (through November 30, 2026). These artifacts are **not a deployed site or legal/child-safety approval**.

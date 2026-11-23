@@ -47,3 +47,6 @@ M27 strict mode also checks seven URLs that **must not be served from the static
 
 ### M28 staged asset revision note (2026-11-23)
 The **current learner application cache is M28**, with downloadable staging package `aiforstudents_hostinger_staging_m28.zip`. The original M27 historical text mentions the M24-named archive that was current when M27 shipped. Always run the M27 full hash checker from **the exact source commit used to create the actually deployed ZIP**. No real Hostinger deployment is implied by a new archive name.
+
+### GitHub verification (2026-11-23)
+[M27 PR #13](https://github.com/mohdazizshaikh/aiforstudents-latest/pull/13) merged at `396f341f7bf6b5c6cfdec2e280714995c823a93f`. [Merged main CI](https://github.com/mohdazizshaikh/aiforstudents-latest/actions/runs/45210334189) succeeded. This verifies checker/mock/packaging implementation only; **not actual hosted byte parity**.

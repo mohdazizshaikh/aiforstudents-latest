@@ -159,3 +159,6 @@ See [M26 runbook](M26_CHILD_SAFETY_OPERATIONS.md); public child-oriented release
 | M28-04 | P0 | M28 SW cache and Hostinger/source ZIP names, browser suite evidence | **CI VERSIONED** | Real restricted Hostinger site upgrade/rollback |
 
 See [M28 QA](M28_SHARED_DEVICE_PRIVACY.md). Public launch blocked until independent human gates.
+
+### Latest verified engineering release (2026-11-23)
+M27 source integrity/forbidden-path checks and M28 cross-tab privacy safeguards were **merged** to GitHub main via [PR #13](https://github.com/mohdazizshaikh/aiforstudents-latest/pull/13) and [PR #14](https://github.com/mohdazizshaikh/aiforstudents-latest/pull/14). The [M28 merged-main CI](https://github.com/mohdazizshaikh/aiforstudents-latest/actions/runs/45212846388) passed both jobs (145 Node tests, nine local Chromium checks). These do **not** close GATE-01/02/03/04/05/06; all five original open GitHub issues #2–#6 still require real-world proof and qualified people.

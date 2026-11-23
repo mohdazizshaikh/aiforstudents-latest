@@ -134,3 +134,8 @@ See [M23 review evidence](M23_REVIEW_EVIDENCE.md). No signed reviews exist merel
 | Child privacy/public launch authorization | **STILL BLOCKED** | Independent legal/safeguarding owner, 3,282 content reviews, physical AT/ethics |
 
 [M28 details](M28_SHARED_DEVICE_PRIVACY.md). Full public child launch not approved.
+
+### M27/M28 merged engineering CI evidence (2026-11-23)
+- M27 SHA `396f341f7bf6b5c6cfdec2e280714995c823a93f`: [PR #13](https://github.com/mohdazizshaikh/aiforstudents-latest/pull/13), [main CI successful](https://github.com/mohdazizshaikh/aiforstudents-latest/actions/runs/45210334189).
+- M28 SHA `a7db81e884382173e173ec581d1cddf3d1f303d9`: [PR #14](https://github.com/mohdazizshaikh/aiforstudents-latest/pull/14), [main CI successful](https://github.com/mohdazizshaikh/aiforstudents-latest/actions/runs/45212846388), including 145 Node tests and nine local Chromium checks. CI archives include M28 noindex Hostinger staging ZIP (not deployed) and privacy-safe browser report, with seven-day retention.
+- **Still open:** actual Hostinger restricted site, backups/rollback, human review of 3,282 items, appointed safeguarding/legal/privacy owners, real Android/AT/print QA, exact curriculum mapping and authorized teacher pilot. Public indexing/child release remains **BLOCKED**.
