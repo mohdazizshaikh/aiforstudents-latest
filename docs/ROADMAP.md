@@ -69,3 +69,6 @@ Four deterministic AI/digital-literacy strands and 32 original bilingual age-sca
 
 ### M23 review-evidence workflow (2026-11-23)
 **Engineering continuation:** a local-only template and structural validator for subject/Hindi decisions tied to M21's exact source content fingerprints. It prioritizes the 18 Studio/Experiment/Classroom record worklist while preserving a 3,282-record full scope option. **No educational or safeguarding approval is implied**; only authorized qualified reviewers can complete the actual human work. See [M23 guide](M23_REVIEW_EVIDENCE.md). Actual restricted Hostinger/Android school evidence remains a blocking dependency.
+
+### M24 accessible static navigation (2026-11-23)
+**Engineering iteration:** Source HTML skip navigation, worksheet main landmarks and a deterministic 23-page structural audit. The cache and source/staging packaging now explicitly version M24; local reviewer evidence is excluded from release ZIPs. **Actual real-device accessibility, educational review, safeguarding and Hostinger HTTPS remain independent P0 gates**. See [M24 QA](../M24_QA_STATUS.md).
