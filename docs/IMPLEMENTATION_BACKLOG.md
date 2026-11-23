@@ -1,6 +1,6 @@
 # Implementation & Dependency Backlog
 
-**Snapshot:** 2026-11-23. **This is a tracking document, not a claim that future features were coded.**  
+**Snapshot:** 2026-11-23, including M20 operations development. **This is a tracking document, not a claim that future features were coded.**  
 Priority: P0 = required to avoid unsafe/misleading release; P1 = next core feature; P2 = later capability. Role ownership stays **TBD** until assigned.
 
 | ID | Priority | Milestone | Task / smallest verifiable output | Dependency | Status | Owner |
@@ -10,7 +10,7 @@ Priority: P0 = required to avoid unsafe/misleading release; P1 = next core featu
 | GATE-03 | P0 | Content | Qualified bilingual educational review workflow + decision log for each published item | Available qualified reviewers | TODO | Content TBD |
 | GATE-04 | P0 | Safety | Child-privacy legal and safeguarding review, shared-device data risks, incident escalation | Responsible human owners | BLOCKED / approval needed | Safety TBD |
 | GATE-05 | P0 | Accessibility | Keyboard, TalkBack/VoiceOver, text zoom and low-end Android verification | Test devices/testers | TODO | A11y TBD |
-| GATE-06 | P0 | Content | Review 54 age-repeating challenge positions and 3,232 current unreviewed game + Lab items | GATE-03 | TODO | Content TBD |
+| GATE-06 | P0 | Content | Review 54 age-repeating challenge positions and 3,232 current unreviewed game + Study Lab items (plus 50 M15–M18 records) | GATE-03 | TODO | Content TBD |
 | M15-01 | P1 | M15 | Confirm Class 6–8 pilot topic-source mapping for fractions and circuits (provisional) | GATE-03 | TODO | Educator TBD |
 | M15-02 | P1 | M15 | Define reusable original bilingual lesson + explanation + source/license data schema | M15-01 | TODO | Product/Eng TBD |
 | M15-03 | P1 | M15 | Build first Learn → Try → Play → Understand → Grow lesson path | M15-02 | CODED: fractions concept pilot; human QA pending | Eng TBD |
@@ -64,3 +64,13 @@ Priority: P0 = required to avoid unsafe/misleading release; P1 = next core featu
 | M19-05 | P0 | Safe zipped static packaging | **CODED + ZIP INTEGRITY VERIFIED** | Actual staging upload, backup/rollback and network QA |
 
 **No public child-facing release approved.** Never mark an automated preflight as qualified educational or legal review.
+
+### M20 — Operational follow-through after M19 (2026-11-23)
+| ID | Priority | Action | Code / evidence status | Still blocking |
+|---|---|---|---|---|
+| M20-01 | P0 | Deterministic bilingual review packet from 6 JSONL queues including archived game data | **Code and Node tests written on M20 branch; CI not yet confirmed** | Actual educator/Hindi review |
+| M20-02 | P0 | Identify prioritized small concept/classroom private pilot and record reviewers | **Procedure written** in [M20](M20_REVIEW_OPERATIONS.md) | Named qualified humans, verified textbook versions |
+| M20-03 | P0 | Export UTF-8 CSV with formula-cell protection and source references, without modifying approvals | **Code written; independent run/CI pending** | Reviewer evidence log and verified decisions |
+| M20-04 | P0 | Restricted Hostinger HTTPS + real low-end Android/screen reader + A4/teacher pilot | **NOT PERFORMED** | Authorized operator, real devices and safeguards |
+
+No new learning material is approved, and none of these engineering tasks authorizes child-facing public release.

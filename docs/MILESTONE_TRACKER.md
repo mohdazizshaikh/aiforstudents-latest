@@ -1,6 +1,6 @@
 # Milestone and Release Tracker
 
-**Snapshot:** 2026-11-23 | Source of truth for current status: repository code/tests plus [M14_QA_STATUS.md](../M14_QA_STATUS.md) and [RELEASE_GATES.md](../RELEASE_GATES.md).
+**Snapshot:** 2026-11-23 | Current tracked baseline M19; M20 code under review | Source of truth for current status: repository code/tests plus [M14_QA_STATUS.md](../M14_QA_STATUS.md) and [RELEASE_GATES.md](../RELEASE_GATES.md).
 
 ### Status vocabulary
 - **Implemented (prototype):** code exists and has reported automated tests.
@@ -56,7 +56,16 @@ When work starts or finishes, record: **date**, milestone/task ID, status, linke
 ### M19 — Release Readiness engineering gate, 2026-11-23
 | Milestone | Implementation status | Evidence | Independent blocker |
 |---|---|---|---|
-| M19 — Staging CSP + content gate tooling | **Code implemented; package prepared** | 101 Node tests, 23 pages/22 JS, two worksheet print smoke, verified staging ZIP | **No real Hostinger install, response headers, Android AT testing, educator/Hindi review or child-safety signoff** |
+| M19 — Staging CSP + content gate tooling | **Code implemented; package prepared** | 102 Node tests, 23 pages/22 JS, two worksheet print smoke, verified staging ZIP | **No real Hostinger install, response headers, Android AT testing, educator/Hindi review or child-safety signoff** |
 | M19 — Public release gate | **BLOCKED, correctly** | `release-preflight.mjs --public` fails by design; 3,282 pending review records | Real content reviewer/incident owner and site evidence required |
 
 - **2026-11-23:** CI preflight and operator instructions added. Packaging a ZIP is not the same as deploying it to a site.
+
+### M20 — Content review operations (2026-11-23)
+| Milestone | Status | Engineering evidence | Human/operational dependency |
+|---|---|---|---|
+| M20 review packet generator | **Development branch: implementation + tests added, CI pending verification** | Six-source read-only CSV/JSON export; stable IDs, Hindi drafts, formula-safe fields; [design](M20_REVIEW_OPERATIONS.md) | Qualified subject/Hindi reviewers and documented actual decisions |
+| GATE-03 | **Process tooling added; approval gate OPEN** | Reviewer worklist is not a signed review log | 3,282 records lack verified human approval |
+| GATE-01/02/04/05 | **OPEN / BLOCKED** | M19 runbooks and local preflight | Actual Hostinger, Android AT, privacy and safeguarding evidence |
+
+- **2026-11-23:** M20 branch began after comparing live GitHub M19 state to planning docs. No claim of school pilot, live deployment, human approval or public release.

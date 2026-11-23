@@ -106,3 +106,6 @@ python3 tools/package-release.py     # builds and CRC-checks separate Hostinger/
 ```
 
 See [M19 QA](M19_QA_STATUS.md) and [Staging operator checklist](STAGING_OPERATOR_CHECKLIST.md). **Do not confuse ZIP or local preflight success with actual Hostinger server, accessibility, Hindi/educator, legal or child-safety approval**. All **3,282 review records** still require documented qualified human decisions. Public child launch remains **NOT APPROVED**.
+## M20 — Bilingual content-review worklist (2026-11-23)
+
+This repository now includes a **read-only review-packet exporter**: run `npm run review-packet` to generate UTF-8 CSV and a summary in ignored local directory `review-packet/`. It enumerates all **3,282 unreviewed records** across six existing queues with source locations and draft English/Hindi fields where present, without storing children's data or approving any item. Formula-like CSV text is escaped. The generated files are review *worklists*, not a verified educator decision log. See [M20 review operations](docs/M20_REVIEW_OPERATIONS.md) and [milestone tracker](docs/MILESTONE_TRACKER.md). Public deployment, human educational/Hindi review, actual Hostinger restricted staging and child safety/accessibility approval remain **PENDING**.

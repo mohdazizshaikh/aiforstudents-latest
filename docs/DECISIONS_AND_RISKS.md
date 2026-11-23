@@ -7,7 +7,7 @@
 |---|---|---|---|
 | D-01 | Free student core, minimal incremental cash budget | Broad access without subscriptions or paid AI dependency | Product direction |
 | D-02 | Static-first Hostinger Business shared-hosting architecture | Low server cost and reliable simple deployment | Implemented architectural choice |
-| D-03 | Smart Learning Studio = **Learn → Try → Play → Understand → Grow** | Move beyond isolated quizzes to purposeful learning | **Proposed M15 design; no implementation** |
+| D-03 | Smart Learning Studio = **Learn → Try → Play → Understand → Grow** | Move beyond isolated quizzes to purposeful learning | **M15 concept pilots implemented; review pending** |
 | D-04 | China smart-classroom practice is inspiration, not device-for-device imitation | Shared-device Indian classrooms may lack personal laptops | Adopted design principle |
 | D-05 | Start with **two** provisional Class 6–8 lesson concepts, not a full syllabus | Review quality before breadth | M15 plan, grade mapping pending |
 | D-06 | External official resources linked; no automatic copying/rehosting | Copyright, provider privacy and maintainability | Link-first editorial policy |
@@ -55,3 +55,8 @@ The offline AI literacy module is deterministic, avoids open-ended chatbot respo
 - Eight old game guides and two worksheets have been refactored to avoid inline CSS/JavaScript; reduce XSS exposure without claiming a penetration test.
 - Staging automated preflight passes but intentionally refuses public approval while **3,282 content/review records** are pending. Live-host header probes and operator backup/rollback are not yet complete.
 - Do not collect account credentials or send authorization secrets into GitHub/source/docs. Optional staging auth header for a **manual** local verifier must remain unlogged.
+
+### M20 review workflow decision (2026-11-23)
+- **D-13:** Keep an offline, read-only exported *worklist* separate from any accountable human subject/Hindi signoff. Exporting or editing a CSV does not create launch approval.
+- **R-12:** Unqualified automatic approval or stale educational content could mislead children. Mitigate through item/version traceability, independent reviewer evidence, safe private pilot scope and public gate remaining blocked.
+- **Still TBD:** human curriculum/Hindi/safeguarding owners, real site/operator and tested devices.

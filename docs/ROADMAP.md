@@ -1,6 +1,6 @@
 # AI for Students — Product Roadmap
 
-**Planning date:** 2026-11-23. **Version:** roadmap-v1. Proposed future milestones are **plans**, not deployed features or deadlines.
+**Planning date:** 2026-11-23. **Version:** roadmap-v2 (M20 operations update). Proposed future milestones are **plans**, not deployed features or deadlines.
 
 ## Strategy: Discover → Develop → Decide
 - **Discover (prototype exists):** game-based exploration and evidence-based Proud Today moments.
@@ -62,4 +62,7 @@ Two original teacher-led five-stage lesson plans, generic role rotation, answer 
 Four deterministic AI/digital-literacy strands and 32 original bilingual age-scaffolded practice checks have been coded with local-history integration. Node QA **93/93** and isolated Chromium 32-check playthrough passed. These are **unreviewed draft lessons**; no generative AI, remote data collection or official curriculum mapping. Public child release, actual assistive technology and Hostinger deployment remain blocked. [M18 notes](M18_IMPLEMENTATION_NOTES.md).
 
 ### M19 — Private staging release hardening (2026-11-23)
-**ENGINEERING IMPLEMENTED, HOSTINGER NOT DEPLOYED.** Strict self-only Apache CSP/X-Robots-Tag configuration, external print CSS/JS for two original worksheets, inline-free game guides, a deterministic offline release preflight and a read-only HTTPS live-check script. **101/101 Node tests and isolated combined M18/worksheet browser smoke passed.** A **public** release preflight deliberately fails while 3,282 human content records and actual child safety/accessibility/hosting evidence are missing. See [M19 QA](../M19_QA_STATUS.md) and [runbook](../STAGING_OPERATOR_CHECKLIST.md).
+**ENGINEERING IMPLEMENTED, HOSTINGER NOT DEPLOYED.** Strict self-only Apache CSP/X-Robots-Tag configuration, external print CSS/JS for two original worksheets, inline-free game guides, a deterministic offline release preflight and a read-only HTTPS live-check script. **102/102 Node tests reported in M19 QA and isolated combined M18/worksheet browser smoke passed.** A **public** release preflight deliberately fails while 3,282 human content records and actual child safety/accessibility/hosting evidence are missing. See [M19 QA](../M19_QA_STATUS.md) and [runbook](../STAGING_OPERATOR_CHECKLIST.md).
+
+### M20 — Review operations, not content approval (2026-11-23)
+**Next engineering increment:** A deterministic six-queue bilingual reviewer packet and tests to make the 3,282 outstanding human review records actionable. Prioritize a small, supervised, ethical educator pilot and verify actual official grade/edition references before expanding. **No automatic approval, no new child accounts, no live AI, no deployed site.** CI, human reviews and real staging evidence remain separate tasks. [M20 process](M20_REVIEW_OPERATIONS.md). Historical milestone appendices above reflect progress at their respective dates.

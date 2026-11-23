@@ -1,6 +1,6 @@
 # Project Status Dashboard — AI for Students
 
-**As of 2026-11-23** | **Latest coded milestone: M19 staging hardening** | **Public release: NOT APPROVED**
+**As of 2026-11-23** | **Latest completed baseline: M19 staging hardening; M20 review operations in development** | **Public release: NOT APPROVED**
 
 ## Working today in the private prototype
 - 40 solo game modules in 8 categories; 3 same-device Grow Together modes.
@@ -8,7 +8,7 @@
 - My Growth, Proud Today and Daily Growth.
 - Future Explorer: 12 interest-led pathway cards with offline missions.
 - Study Lab: 4 tracks, 8 themes, 32 short bilingual practice checks.
-- M16 automated Node QA **77/77** and GitHub CI passing on the code commit; isolated browser smoke is not live HTTPS testing.
+- M19 reported **102/102 Node tests** on its staging baseline; isolated browser smoke is not live HTTPS testing. M20 CI evidence must be checked separately.
 
 ## Milestones: first pilots versus future plans
 | Stage | Next development increment | Status |
@@ -46,3 +46,6 @@ AI & Digital Skills Lab now includes 32 bilingual original author-draft question
 
 ### M19 release safety work (2026-11-23)
 `/tools/release-preflight.mjs` reports **staging engineering ready**, not **public release approved**. Strict CSP and redundant noindex are configured; both classroom print sheets now use local styles/scripts. Node QA **101/101**; isolated combined browser smoke passed. **3,282 content/review records lack documented expert approval** (3,272 learner tasks, 10 classroom facilitation steps). A read-only HTTPS verifier and Hostinger operator checklist exist, **but no real Hostinger HTTPS deployment/check has happened**. Child privacy/legal, accessibility and school testing remain blocking.
+
+### M20 code continuation — 2026-11-23
+A read-only bilingual review worklist exporter and automated checks are being added on a development branch. It inventories six review queues (3,282 records), identifies source line and version and records **no human approvals**. It does not solve Hostinger staging, real-device evidence, curriculum/translation review or child safety approval. See [M20 review operations](M20_REVIEW_OPERATIONS.md). Public release stays **NOT APPROVED**.
