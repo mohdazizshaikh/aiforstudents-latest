@@ -39,7 +39,7 @@ test('M19 live-host checker rejects insecure/malformed origins',()=>{
 });
 test('M19 live-host checker audits all endpoints and validates expected headers',async()=>{
  const headers=new Headers({'content-type':'text/html; charset=utf-8','x-robots-tag':'noindex, nofollow','x-content-type-options':'nosniff','content-security-policy':"default-src 'self'; script-src 'self'",'referrer-policy':'strict-origin-when-cross-origin'});
- const fetcher=async url=>{let h=new Headers(headers);if(url.endsWith('.js'))h.set('content-type','text/javascript');if(url.endsWith('.css'))h.set('content-type','text/css');return {status:200,headers:h,text:async()=>url.endsWith('service-worker.js')?'aifs-discovery-m24':'<meta name="robots" content="noindex,nofollow">'};};
+ const fetcher=async url=>{let h=new Headers(headers);if(url.endsWith('.js'))h.set('content-type','text/javascript');if(url.endsWith('.css'))h.set('content-type','text/css');return {status:200,headers:h,text:async()=>url.endsWith('service-worker.js')?'aifs-discovery-m28':'<meta name="robots" content="noindex,nofollow">'};};
  const r=await verifyLive('https://example.org',fetcher);assert.equal(r.checked,TARGETS.length);assert.equal(r.passed,true);
 });
 test('M19 live-host checker detects unsafe or stale staging server replies',async()=>{

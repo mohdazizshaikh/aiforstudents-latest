@@ -181,10 +181,10 @@ def run():
                 phone.wait_for_function('navigator.serviceWorker.controller !== null')
                 cache = phone.evaluate("""async () => {
                   const keys = await caches.keys();
-                  return {keys, count: (await caches.open(keys.find(k => k.startsWith('aifs-discovery-m24'))))
-                    ? (await (await caches.open(keys.find(k => k.startsWith('aifs-discovery-m24')))).keys()).length : 0}
+                  return {keys, count: (await caches.open(keys.find(k => k.startsWith('aifs-discovery-m28'))))
+                    ? (await (await caches.open(keys.find(k => k.startsWith('aifs-discovery-m28')))).keys()).length : 0}
                 }""")
-                check(any(k.startswith('aifs-discovery-m24') for k in cache['keys']),
+                check(any(k.startswith('aifs-discovery-m28') for k in cache['keys']),
                       'M24 service-worker cache not created')
                 check(cache['count'] >= 40, 'Service-worker precache incomplete: ' + str(cache))
                 mobile.set_offline(True)
@@ -195,7 +195,7 @@ def run():
                 check(phone.locator('#game-grid button').count() == 5,
                       'Offline native learner modules not bootstrapped from cache')
                 check_no_runtime_errors(phone, mobile_errors)
-                report['checks'].append('M24 SW installs 40+ assets and loads Studio guide + learner app offline')
+                report['checks'].append('M28 SW installs 40+ assets and loads Studio guide + learner app offline')
                 mobile.close()
             finally:
                 browser.close()

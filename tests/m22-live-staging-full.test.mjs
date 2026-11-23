@@ -26,7 +26,7 @@ test('M22 full audit validates static HTML, CSS, SVG, manifest and service worke
  const fetcher=async(url,options)=>{
   calls.push({url,options});
   const target=new URL(url).pathname;
-  const body=target==='/service-worker.js'?'aifs-discovery-m24':
+  const body=target==='/service-worker.js'?'aifs-discovery-m28':
    target.endsWith('/')?'<meta name="robots" content="noindex,nofollow">':'static';
   return {status:200,headers:headersFor(target),text:async()=>body};
  };
