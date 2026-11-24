@@ -60,6 +60,8 @@ jobs:
         run: npm run tutor:audit-corpus
       - name: Exhaustive fictional mastery rule grid (NOT empirical validation)
         run: npm run mastery:audit-grid
+      - name: Verify restricted staging checker with synthetic HTTP fixtures (NO live host)
+        run: node --test tests/m87-restricted-staging-audit.test.mjs
       - name: Assert public preflight remains blocked
         run: |
           if node tools/release-preflight.mjs --public > /dev/null; then
