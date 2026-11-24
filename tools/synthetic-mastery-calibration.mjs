@@ -16,9 +16,13 @@ const abstain=reason=>({valid:true,candidate:'UNKNOWN',reason,...flags});
 export function syntheticCandidate(events){
  if(contract.enabled!==false||contract.validated!==false||contract.highStakesUse!==false)throw Error('Disabled contract changed; review required');
  if(!Array.isArray(events)||events.length>40)return {...abstain('INVALID_SYNTHETIC_INPUT'),valid:false};
- const unique=new Map();
+ // Validate the entire input before interpreting repeat conflicts; malformed trailing
+ // records cannot be masked by an earlier valid conflict.
  for(const e of events){
   if(!exact(e,['taskId','session','correct'])||!pool.some(t=>t.id===e.taskId)||!['mock-s1','mock-s2'].includes(e.session)||typeof e.correct!=='boolean')return {...abstain('INVALID_SYNTHETIC_INPUT'),valid:false};
+ }
+ const unique=new Map();
+ for(const e of events){
   const old=unique.get(e.taskId);
   if(old&&(old.session!==e.session||old.correct!==e.correct))return abstain('REPEAT_TASK_NOT_INDEPENDENT');
   unique.set(e.taskId,e);
