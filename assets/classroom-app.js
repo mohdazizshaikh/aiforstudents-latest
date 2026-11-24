@@ -66,7 +66,7 @@ for(const type of ['add','remove','up','down','clear']){
 agendaPanel.append(agendaHeading,agendaNotice,agendaLabel,agendaChoice,agendaActions,agendaStatus,agendaList);labPanel.after(agendaPanel);
 function renderAgenda(preferred=agendaChoice.value){
  agendaHeading.textContent=both('Teacher demonstration agenda','शिक्षक प्रदर्शन योजना');
- agendaNotice.textContent=both('Plan up to eight original draft models in this tab. Opening a model uses the same tab and clears this agenda on reload. No learner information or saved plan.','इस टैब में आठ मूल मसौदा मॉडल तक क्रम में रखें। मॉडल इसी टैब में खुलता है और पुनः लोड होने पर योजना मिटती है। कोई विद्यार्थी जानकारी या सहेजी योजना नहीं।');
+ agendaNotice.textContent=both('Plan up to eight original draft models in this tab. Normal model opening keeps this agenda in the current tab. Reloading or opening a new tab does not carry the agenda. No learner information or saved plan.','इस टैब में आठ मूल मसौदा मॉडल तक क्रम में रखें। सामान्य मॉडल खोलने पर इसी टैब में योजना रहती है। पुनः लोड या नए टैब में योजना नहीं जाती। कोई विद्यार्थी जानकारी या सहेजी योजना नहीं।');
  agendaLabel.textContent=both('Agenda item to move or remove','स्थान बदलने या हटाने का योजना मॉडल');
  const rows=teacherAgendaRows(S.agenda,lang());
  agendaChoice.replaceChildren();const blank=make('option','',both('Choose agenda item','योजना मॉडल चुनें'));blank.value='';agendaChoice.append(blank);
@@ -74,7 +74,8 @@ function renderAgenda(preferred=agendaChoice.value){
  for(const r of rows){
   const o=make('option','',r.title);o.value=r.id;agendaChoice.append(o);
   const li=make('li','');const title=make('strong','',r.title);const detail=make('p','small',r.caveat);
-  const link=make('a','',both('Open this offline model (clears agenda)','यह ऑफ़लाइन मॉडल खोलें (योजना मिटेगी)'));link.href=r.href;
+  const link=make('a','',both('Open this offline model','यह ऑफ़लाइन मॉडल खोलें'));link.href=r.href;
+  link.addEventListener('click',event=>{if(event.defaultPrevented||event.button!==0||event.ctrlKey||event.metaKey||event.shiftKey||event.altKey)return;event.preventDefault();window.dispatchEvent(new CustomEvent('aifs-teacher-demo',{detail:r.id}));});
   li.append(title,detail,link);agendaList.append(li);
  }
  agendaChoice.value=S.agenda.includes(preferred)?preferred:'';

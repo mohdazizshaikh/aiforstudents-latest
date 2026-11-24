@@ -26,3 +26,8 @@ test('M48 rejects injected ids and extra fields, retains only transient state',(
  assert.throws(()=>teacherAgendaRows([],'xx'));
  const app=readFileSync(new URL('../assets/classroom-app.js',import.meta.url),'utf8');assert.match(app,/S.agenda=\[\]/);assert.doesNotMatch(app,/localStorage|sessionStorage|fetch\(|XMLHttpRequest/);
 });
+
+test('M48 normal agenda launch uses only a fixed model ID and existing transient lab reset',()=>{
+ const app=readFileSync(new URL('../assets/classroom-app.js',import.meta.url),'utf8'),lab=readFileSync(new URL('../assets/advanced-lab-app.js',import.meta.url),'utf8');
+ assert.match(app,/new CustomEvent\('aifs-teacher-demo',\{detail:r.id\}\)/);assert.match(lab,/if\(!ADVANCED_IDS.includes\(event.detail\)\)return;id=event.detail;reset\(\)/);
+});
