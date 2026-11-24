@@ -6,7 +6,7 @@ test('M36 four added conceptual models exhaust bounded input states',()=>{
  for(let mass=1;mass<=5;mass++)for(let accel=0;accel<=5;accel++)assert.equal(calculateAdvanced('force-motion',{mass,accel}).forceN,mass*accel);
  for(let molecules=1;molecules<=6;molecules++)assert.deepEqual(calculateAdvanced('atom-count',{molecules}),{molecules,hydrogen:2*molecules,oxygen:molecules,totalAtoms:3*molecules});
  for(let length=10;length<=50;length+=10)for(let magnification=50;magnification<=200;magnification+=50)assert.equal(calculateAdvanced('cell-scale',{length,magnification}).diagramMm,length*magnification/1000);
- assert.equal(ADVANCED_IDS.length,32);
+ assert.equal(ADVANCED_IDS.length,40);
 });
 test('M36 new example checks are draft, bilingual and reject out-of-bounds states',()=>{
  for(const [id,state] of [['quadratic',{x:-3}],['force-motion',{mass:3,accel:2}],['atom-count',{molecules:3}],['cell-scale',{length:20,magnification:100}]]){

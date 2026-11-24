@@ -13,14 +13,14 @@ const exampleRow=Object.freeze({
  content_sha256:'a'.repeat(64),priority:'pilot-first'
 });
 const review=(ref)=>({decision:'pass',reviewerRef:ref,reviewDate:'2026-11-23',rationale:'Checked against source and learner explanation.'});
-test('M23 pilots start with exactly 60 review records; no human approvals',()=>{
+test('M23 pilots start with exactly 68 review records; no human approvals',()=>{
  const rows=buildReviewRows();
- assert.equal(rows.length,3324);
+ assert.equal(rows.length,3332);
  const data=makeReviewTemplate(rows);
  assert.equal(data.schema,EVIDENCE_SCHEMA);
  assert.equal(data.scope,'pilot-first');
- assert.equal(data.records.length,60);
- assert.deepEqual(Object.fromEntries(['studio','experiment','classroom','maths','science','advanced'].map(k=>[k,data.records.filter(x=>x.queue===k).length])),{studio:4,experiment:4,classroom:10,maths:3,science:7,advanced:32});
+ assert.equal(data.records.length,68);
+ assert.deepEqual(Object.fromEntries(['studio','experiment','classroom','maths','science','advanced'].map(k=>[k,data.records.filter(x=>x.queue===k).length])),{studio:4,experiment:4,classroom:10,maths:3,science:7,advanced:40});
  const result=validateReviewEvidence(data,rows);
  assert.equal(result.schemaValid,true);
  assert.equal(result.recordsReadyForIndependentHumanAudit,0);
@@ -28,11 +28,11 @@ test('M23 pilots start with exactly 60 review records; no human approvals',()=>{
  assert.equal(result.humanApprovalAuthenticated,false);
  assert.ok(data.records.every(x=>x.subjectReview.decision==='pending'&&x.hindiReview.decision==='pending'));
 });
-test('M23 all-scope worklist can represent complete 3,324-record inventory',()=>{
+test('M23 all-scope worklist can represent complete 3,332-record inventory',()=>{
  const rows=buildReviewRows();
  const data=makeReviewTemplate(rows,'all');
- assert.equal(data.records.length,3324);
- assert.equal(validateReviewEvidence(data,rows).expectedRecords,3324);
+ assert.equal(data.records.length,3332);
+ assert.equal(validateReviewEvidence(data,rows).expectedRecords,3332);
 });
 test('M23 stale fingerprints, stale versions, missing items and duplicates fail closed',()=>{
  const original=makeReviewTemplate([exampleRow]);
