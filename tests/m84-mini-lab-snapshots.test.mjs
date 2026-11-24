@@ -26,3 +26,10 @@ test('M84 five foundational models have bounded localized source-derived snapsho
  assert.throws(()=>captureMiniSnapshot('studio/fractions',[],{count:5}));assert.throws(()=>captureMiniSnapshot('studio/circuit-path',[],{closed:'true'}));
  assert.throws(()=>miniSnapshotRows('maths/number-line',[{position:11}]));assert.throws(()=>miniSnapshotRows('unknown',[]));assert.throws(()=>miniSnapshotRows('studio/fractions',[],'xx'));
 });
+
+test('M84 workshop explicitly activates shared panel while Studio limits it to Try',async()=>{
+ const {readFileSync}=await import('node:fs');
+ const source=name=>readFileSync(new URL('../assets/'+name,import.meta.url),'utf8');
+ assert.match(source('experiment-app.js'),/workshopSnapshots\.render\(true\)/);
+ assert.match(source('studio-app.js'),/studioSnapshots\.render\(state\.stage==='try'\)/);
+});

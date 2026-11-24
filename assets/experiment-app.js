@@ -120,7 +120,7 @@ function renderWorkshop(){
   const thead=el('thead');thead.append(head);table.append(caption,thead,body);control.append(table);
   control.append(el('p','workshop-readable',workshopLang(`A minus B = ${v.a-v.b} items.`,`A घटा B = ${v.a-v.b} वस्तुएँ।`)));
  }
- workshopSnapshots.render();
+ workshopSnapshots.render(true);
  $('math-workshop-check').textContent=workshopLang('Check my setup','मेरी स्थिति जाँचें');
  $('math-workshop-reset').textContent=workshopLang('Reset this activity','यह गतिविधि फिर शुरू करें');
  const feedback=$('math-workshop-feedback');
