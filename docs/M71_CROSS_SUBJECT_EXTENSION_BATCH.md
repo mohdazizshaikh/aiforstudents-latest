@@ -16,3 +16,7 @@ Stacked on M70 13aa4b03bbb0ba09a96cdc17228f6c6ee683081c; Node/static passed, bro
 ## Verified baseline update
 
 M70 passed full CI 45478120772 and merged PR #60 at d451b553fa292259a5d0b60f1a842e59cac8454e. M71 requires its own exact-head CI before merge.
+
+## Verified outcome
+
+Exact-head CI 45478780744 passed both jobs. PR #61 merged at bc98edeaa5d237a2f283ce208eadd91e028eeedb. Independent educational review remains pending.

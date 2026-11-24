@@ -3,9 +3,9 @@ import assert from 'node:assert/strict';
 import {buildReviewRows} from '../tools/build-review-packet.mjs';
 import {makeReviewSnapshot,compareReviewSnapshots,validateReviewSnapshot,supplementalReviewWorklist} from '../tools/review-change-workbench.mjs';
 const rows=buildReviewRows(),supplements=supplementalReviewWorklist(rows),snapshot=makeReviewSnapshot(rows,supplements);
-test('M68 complete canonical review inventory plus twenty-two separate supplemental behavior indicators',()=>{
- assert.equal(rows.length,3340);assert.equal(snapshot.entries.length,3362);
- assert.equal(supplements.activityCount,22);assert.equal(supplements.bilingualCombinations,7230);
+test('M68 complete canonical review inventory plus thirty separate supplemental behavior indicators',()=>{
+ assert.equal(rows.length,3340);assert.equal(snapshot.entries.length,3370);
+ assert.equal(supplements.activityCount,30);assert.equal(supplements.bilingualCombinations,10108);
  for(const a of supplements.activities){
   assert.match(a.behaviorSha256,/^[a-f0-9]{64}$/);
   assert.equal(a.canonicalContentSha256,rows.find(r=>r.queue==='advanced'&&r.content_id===a.reviewId).content_sha256);
@@ -14,7 +14,7 @@ test('M68 complete canonical review inventory plus twenty-two separate supplemen
  }
  assert.equal(supplements.humanApprovalGranted,false);
  assert.deepEqual(makeReviewSnapshot(rows,supplementalReviewWorklist(rows)),snapshot);
- assert.deepEqual(compareReviewSnapshots(snapshot,snapshot).counts,{added:0,removed:0,changed:0,unchanged:3362});
+ assert.deepEqual(compareReviewSnapshots(snapshot,snapshot).counts,{added:0,removed:0,changed:0,unchanged:3370});
 });
 test('M68 deterministic change detection without inferring human approval',()=>{
  const before={schema:snapshot.schema,entries:[{queue:'advanced',id:'a',sha256:'a'.repeat(64)},{queue:'advanced',id:'b',sha256:'b'.repeat(64)},{queue:'advanced',id:'d',sha256:'d'.repeat(64)}]};
