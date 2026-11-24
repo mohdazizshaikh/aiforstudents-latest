@@ -372,6 +372,22 @@ def run():
                 teacher.close()
                 report['checks'].append('M34 teacher queue reorder, start, clear and peer reset')
 
+                # M35: simulate the persisted pageshow hook (not a physical BFCache certification).
+                restored = desktop.new_page()
+                restored.goto(origin + '/', wait_until='load')
+                restored.locator('#digital-choices button').first.click()
+                check(restored.evaluate("window.AIFS_DIGITAL_BRIDGE.getHistory().digitalAttempts.length") == 1,
+                      'Restore fixture has no transient history')
+                check(restored.evaluate("sessionStorage.length > 0"), 'Restore fixture has no session key')
+                with restored.expect_navigation(wait_until='load'):
+                    restored.evaluate("window.dispatchEvent(new PageTransitionEvent('pageshow', {persisted: true}))")
+                check(restored.evaluate("window.AIFS_DIGITAL_BRIDGE.getHistory().digitalAttempts.length") == 0,
+                      'Restored transient history was revived')
+                check(restored.evaluate("sessionStorage.length === 0"), 'Restore kept stale session storage')
+                check(not restored.locator('#remember').is_checked(), 'Restore enabled opt-in')
+                restored.close()
+                report['checks'].append('M35 synthetic persisted pageshow resets transient history and reloads current preference')
+
                 # Keyboard: M24's focusable skip destination tested through real browser navigation.
                 keyboard_page = desktop.new_page()
                 keyboard_page.goto(origin + '/', wait_until='load')

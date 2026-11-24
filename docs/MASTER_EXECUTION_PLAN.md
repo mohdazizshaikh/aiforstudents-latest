@@ -1,17 +1,19 @@
 # M29 — 100-work-item master execution plan (2 × 50)
 
+**M34 verified / M35 candidate — 2026-11-24: B1 46/50, B2 22/50.** Five bounded design contracts verified by exact-head M34 CI; FP-086/088 code tested but FP-085 dependency not fulfilled. FP-089 template awaiting review. FP-008 trace and FP-068 retrieval remain incomplete; full product and public release blocked.
+
 **M33 checkpoint, 2026-11-24: B1 46/50 scoped engineering/design tasks; B2 17/50 scoped engineering/design tasks.** Twelve additional unreviewed Maths/Science conceptual models, offline coverage for all 24 static routes and explicit shared-device reset fixes. FP-036 awaits educator review; all 3,304 educational records require qualified human decisions. **FULL PRODUCT NOT COMPLETE; PUBLIC CHILD LAUNCH BLOCKED.** Previous M32 46/50 and 2/50 values are historical. Engineering tests are not educational, legal, accessibility-device or live-host approvals.
 
 ## Fast batch execution rules
 
 - **B1 (50 tasks):** first five entries in each of ten workstreams. Lock scope, reusable foundations, representative safe labs and initial QA. **Current completion: 46/50**.
-- **B2 (50 tasks):** last five entries in each workstream. Broader Maths/Physics/Chemistry/Biology, governed AI/adaptive features, teacher depth, source and field reviews. **Current completion: 17/50**.
+- **B2 (50 tasks):** last five entries in each workstream. Broader Maths/Physics/Chemistry/Biology, governed AI/adaptive features, teacher depth, source and field reviews. **Current completion: 22/50**.
 - **Efficiency:** plan/triage each 50-task batch in one coordinated work cycle instead of requesting tiny steps. Run independent streams concurrently, use small coherent feature PRs rather than one unreviewable giant merge, run tests at each ~10–15-task checkpoint and consolidate progress into a single verified batch report.
 - **Non-negotiable:** a human review, real school trial, live Hostinger verification or legal approval remains **BLOCKED_EXTERNAL** unless a real authorized reviewer/operator supplies evidence. A successful Node/Chromium test or a prepared template is not that evidence.
 - **Completion status:** NOT_STARTED → IN_PROGRESS → CODE_COMPLETE_TESTED → REVIEW_PENDING → DONE_VERIFIED; BLOCKED_EXTERNAL when dependencies cannot be fulfilled. Code output needs commit, tests, screenshot/QA where appropriate; real-world gates require actual human/field proof.
 - **100 tasks are a delivery register, not an assertion that two batches will finish every Class 1–12 chapter and every state board.** Full chapter/edition-by-chapter coverage requires later enumerated content records and review, not invented percentages.
 
-**GitHub execution tickets:** [Batch B1 — 46 of 50 engineering tasks evidenced](https://github.com/mohdazizshaikh/aiforstudents-latest/issues/16) · [Batch B2 — 17 of 50 scoped engineering tasks evidenced](https://github.com/mohdazizshaikh/aiforstudents-latest/issues/17). These are two coordination issues, not 100 separate noisy issues; task detail and evidence stay in this tracked register.
+**GitHub execution tickets:** [Batch B1 — 46 of 50 engineering tasks evidenced](https://github.com/mohdazizshaikh/aiforstudents-latest/issues/16) · [Batch B2 — 22 of 50 scoped engineering tasks evidenced](https://github.com/mohdazizshaikh/aiforstudents-latest/issues/17). These are two coordination issues, not 100 separate noisy issues; task detail and evidence stay in this tracked register.
 
 ## Work breakdown — 10 streams × 10 items
 
@@ -128,8 +130,8 @@
 | FP-063 | B1 | Build deterministic local hint prototype | Correct source-backed explanations and safe fallback | DONE_VERIFIED |
 | FP-064 | B1 | Add attribution and uncertainty display | Unknown answer not fabricated | DONE_VERIFIED |
 | FP-065 | B1 | Define refusal/sensitive disclosure policy | Unsafe prompts lead to age-appropriate adult guidance | DONE_VERIFIED |
-| FP-066 | B2 | Document optional generative tutor risk design | Feature OFF until real safeguards and cost approval | IN_PROGRESS |
-| FP-067 | B2 | Model privacy, latency and AI inference budget | No undisclosed paid dependency | IN_PROGRESS |
+| FP-066 | B2 | Document optional generative tutor risk design | Feature OFF until real safeguards and cost approval | DONE_VERIFIED |
+| FP-067 | B2 | Model privacy, latency and AI inference budget | No undisclosed paid dependency | DONE_VERIFIED |
 | FP-068 | B2 | Prototype approved-source retrieval flow | No unauthorized copyrighted content or unsourced replies | BLOCKED_EXTERNAL |
 | FP-069 | B2 | Conduct adversarial bias/hallucination review | Independent human evaluation and red-team defects | BLOCKED_EXTERNAL |
 | FP-070 | B2 | Approve or reject AI tutor public use | Real safety/legal/education gate; no auto-enable | BLOCKED_EXTERNAL |
@@ -145,9 +147,9 @@
 | FP-073 | B1 | Design optional spaced-practice schedule | No pressure streak or penalty | DONE_VERIFIED |
 | FP-074 | B1 | Create explainable next-task suggestions | Learner can see reason and decline | DONE_VERIFIED |
 | FP-075 | B1 | Add explicit difficulty and language override | No inferred fixed aptitude label | DONE_VERIFIED |
-| FP-076 | B2 | Write adaptive mastery calibration protocol | Evidence thresholds documented; not yet validated | IN_PROGRESS |
-| FP-077 | B2 | Specify anonymous aggregate classroom view | No individual minor scores or rosters | IN_PROGRESS |
-| FP-078 | B2 | Define safe shared-device session boundaries | Cannot identify children solely through a browser | IN_PROGRESS |
+| FP-076 | B2 | Write adaptive mastery calibration protocol | Evidence thresholds documented; not yet validated | DONE_VERIFIED |
+| FP-077 | B2 | Specify anonymous aggregate classroom view | No individual minor scores or rosters | DONE_VERIFIED |
+| FP-078 | B2 | Define safe shared-device session boundaries | Cannot identify children solely through a browser | DONE_VERIFIED |
 | FP-079 | B2 | Audit opt-in data retention and deletion | Local/session, background tabs and print paths tested | IN_PROGRESS |
 | FP-080 | B2 | Run ethical learning-outcome validation | Consented study and independent evidence required | BLOCKED_EXTERNAL |
 
@@ -162,10 +164,10 @@
 | FP-083 | B1 | Improve anonymous collaborative role rotation | Same-device group activity without child names | DONE_VERIFIED |
 | FP-084 | B1 | Build reusable teacher answer/worksheet cards | Printable answers hidden from learner sheets | DONE_VERIFIED |
 | FP-085 | B1 | Review existing fraction/circuit teacher plans | 2 baseline prototypes remain unapproved until reviewed | BLOCKED_EXTERNAL |
-| FP-086 | B2 | Build local teacher lesson organizer | Select/queue/reset without cloud accounts | IN_PROGRESS |
+| FP-086 | B2 | Build local teacher lesson organizer | Select/queue/reset without cloud accounts | CODE_COMPLETE_TESTED |
 | FP-087 | B2 | Create licensed offline assignment packs | No tracking links or identifiable learner export | IN_PROGRESS |
-| FP-088 | B2 | Implement no-internet projector handoff | Teacher plan works in a disconnected classroom | IN_PROGRESS |
-| FP-089 | B2 | Prepare ethical observer feedback template | Minimal permitted evidence and child-safe protocol | IN_PROGRESS |
+| FP-088 | B2 | Implement no-internet projector handoff | Teacher plan works in a disconnected classroom | CODE_COMPLETE_TESTED |
+| FP-089 | B2 | Prepare ethical observer feedback template | Minimal permitted evidence and child-safe protocol | REVIEW_PENDING |
 | FP-090 | B2 | Complete authorized supervised classroom pilot | School/guardian permissions and real observation | BLOCKED_EXTERNAL |
 
 ### 10. Quality/release and human gates — VERIFY

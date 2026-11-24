@@ -1,0 +1,1054 @@
+{
+  "schema": "aifs-evidence-snapshot-v1",
+  "commit": "a45882614016e8b994462ee993c2640778f459e4",
+  "ciRun": "https://github.com/mohdazizshaikh/aiforstudents-latest/actions/runs/45350106713",
+  "scope": "Exact tested source snapshot; not human approval or proof of every individual historical acceptance claim.",
+  "publicReleaseApproved": false,
+  "entries": [
+    {
+      "id": "FP-001",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "docs/FULL_PRODUCT_SCOPE_AND_DONE.md",
+          "blob": "c30fc82ccba05048969f0ccd9f5ba6173a0b2d25"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m29-master-plan.test.mjs",
+          "blob": "95dc267500d714759791c465d18666032910ffd3"
+        }
+      ]
+    },
+    {
+      "id": "FP-002",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "docs/FULL_PRODUCT_SCOPE_AND_DONE.md",
+          "blob": "c30fc82ccba05048969f0ccd9f5ba6173a0b2d25"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m29-master-plan.test.mjs",
+          "blob": "95dc267500d714759791c465d18666032910ffd3"
+        }
+      ]
+    },
+    {
+      "id": "FP-003",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "docs/FULL_PRODUCT_SCOPE_AND_DONE.md",
+          "blob": "c30fc82ccba05048969f0ccd9f5ba6173a0b2d25"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m29-master-plan.test.mjs",
+          "blob": "95dc267500d714759791c465d18666032910ffd3"
+        }
+      ]
+    },
+    {
+      "id": "FP-004",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "docs/MASTER_EXECUTION_PLAN.md",
+          "blob": "5f84b121a23d2650fdfca9e8c6115286f98d3515"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m29-master-plan.test.mjs",
+          "blob": "95dc267500d714759791c465d18666032910ffd3"
+        }
+      ]
+    },
+    {
+      "id": "FP-005",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "tools/workplan-status.mjs",
+          "blob": "f19ccdb1a14923eb930c04b2d7f830c245d685b2"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m30-b1-workplan.test.mjs",
+          "blob": "c96f1659c2e850d8b05547680d67923b3c286042"
+        }
+      ]
+    },
+    {
+      "id": "FP-006",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "tools/plan-evidence-check.mjs",
+          "blob": "60f3450eecf665849a92441351404b151d26638e"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m32-b2-governance.test.mjs",
+          "blob": "ed0876cc0507110f00cd01bcae6cbe3a677233a8"
+        }
+      ]
+    },
+    {
+      "id": "FP-009",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "docs/B2_SCOPE_CHANGE_PROTOCOL.md",
+          "blob": "f3741c9b06d6cd3b9043a03e69dd56f35e13203c"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m32-b2-governance.test.mjs",
+          "blob": "ed0876cc0507110f00cd01bcae6cbe3a677233a8"
+        }
+      ]
+    },
+    {
+      "id": "FP-011",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "docs/B1_CURRICULUM_SOURCE_OPTIONS.json",
+          "blob": "eed9205e58afc248da8bb1c38eeb624d92a4291f"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m30-b1-foundation-contracts.test.mjs",
+          "blob": "56e1b30cc3b2ea457443c3eefc19d0359a7e1f36"
+        }
+      ]
+    },
+    {
+      "id": "FP-012",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "tools/validate-curriculum-map.mjs",
+          "blob": "a8cfdba72edc49add659b072778bed318a0201ef"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m30-b1-foundation-contracts.test.mjs",
+          "blob": "56e1b30cc3b2ea457443c3eefc19d0359a7e1f36"
+        }
+      ]
+    },
+    {
+      "id": "FP-014",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "docs/B1_CURRICULUM_SOURCE_OPTIONS.json",
+          "blob": "eed9205e58afc248da8bb1c38eeb624d92a4291f"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m30-b1-foundation-contracts.test.mjs",
+          "blob": "56e1b30cc3b2ea457443c3eefc19d0359a7e1f36"
+        }
+      ]
+    },
+    {
+      "id": "FP-015",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "docs/B1_CURRICULUM_SOURCE_OPTIONS.json",
+          "blob": "eed9205e58afc248da8bb1c38eeb624d92a4291f"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m30-b1-foundation-contracts.test.mjs",
+          "blob": "56e1b30cc3b2ea457443c3eefc19d0359a7e1f36"
+        }
+      ]
+    },
+    {
+      "id": "FP-021",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "index.html",
+          "blob": "494a3769b71f28313ecac44b29ef06744c247028"
+        },
+        {
+          "kind": "test",
+          "path": "tests/browser_m25_ci.py",
+          "blob": "32b66bc381f02823c18acaa806f2f85de7bae389"
+        }
+      ]
+    },
+    {
+      "id": "FP-022",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/science-app.js",
+          "blob": "4e3e5bf13d3c122c7faa5d051e65fdd0415997d5"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m31-science-concepts.test.mjs",
+          "blob": "63df087d3fb795ab21fe3f583336b5336687edb4"
+        }
+      ]
+    },
+    {
+      "id": "FP-023",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "tools/audit-bilingual-learning.mjs",
+          "blob": "5be72df74d0a6bb25deda7b8ff7419bd2c894a94"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m31-bilingual-audit.test.mjs",
+          "blob": "8656a57b78b92bdc8ec4abf72e2705c766945a29"
+        }
+      ]
+    },
+    {
+      "id": "FP-024",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/experiment-app.js",
+          "blob": "f02e4508582951b20af31db7799210081d611c0b"
+        },
+        {
+          "kind": "test",
+          "path": "tests/browser_m25_ci.py",
+          "blob": "32b66bc381f02823c18acaa806f2f85de7bae389"
+        }
+      ]
+    },
+    {
+      "id": "FP-025",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "docs/B1_FOUNDATION_CONTRACTS.md",
+          "blob": "d77f559604b74298359727533f282adf76283e6a"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m30-b1-foundation-contracts.test.mjs",
+          "blob": "56e1b30cc3b2ea457443c3eefc19d0359a7e1f36"
+        }
+      ]
+    },
+    {
+      "id": "FP-026",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "tools/audit-offline-dependencies.mjs",
+          "blob": "c66b6bc42a29d528293c912951c57451009565c6"
+        },
+        {
+          "kind": "test",
+          "path": "tests/browser_m25_ci.py",
+          "blob": "32b66bc381f02823c18acaa806f2f85de7bae389"
+        }
+      ]
+    },
+    {
+      "id": "FP-027",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/app.js",
+          "blob": "3bce0b5ae8c92deb10e1ee632164bf415e30a713"
+        },
+        {
+          "kind": "test",
+          "path": "tests/browser_m25_ci.py",
+          "blob": "32b66bc381f02823c18acaa806f2f85de7bae389"
+        }
+      ]
+    },
+    {
+      "id": "FP-028",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/advanced-lab-app.js",
+          "blob": "088eee8c713d8d44f041894c07fa651e613fd499"
+        },
+        {
+          "kind": "test",
+          "path": "tests/browser_m25_ci.py",
+          "blob": "32b66bc381f02823c18acaa806f2f85de7bae389"
+        }
+      ]
+    },
+    {
+      "id": "FP-029",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/worksheet-print.css",
+          "blob": "f8e0adf8fa330ead70e98cd0b53fcdf631e94131"
+        },
+        {
+          "kind": "test",
+          "path": "tests/browser_m25_ci.py",
+          "blob": "32b66bc381f02823c18acaa806f2f85de7bae389"
+        }
+      ]
+    },
+    {
+      "id": "FP-031",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "docs/B1_CURRICULUM_SOURCE_OPTIONS.json",
+          "blob": "eed9205e58afc248da8bb1c38eeb624d92a4291f"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m30-b1-foundation-contracts.test.mjs",
+          "blob": "56e1b30cc3b2ea457443c3eefc19d0359a7e1f36"
+        }
+      ]
+    },
+    {
+      "id": "FP-032",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/practice-engine.js",
+          "blob": "deac6f1cb2177d622ae24a92b78f5b024ede4fa9"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m32-practice-guide.test.mjs",
+          "blob": "81360be1c9471c8d037d3578798e0f4418bf217d"
+        }
+      ]
+    },
+    {
+      "id": "FP-033",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/experiment-engine.js",
+          "blob": "52602d0f8a6912e945cd463e89f7fb08df00e814"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m30-maths-workshop.test.mjs",
+          "blob": "ab03c29938773d5b3d6c39bdc303f526f7a85a25"
+        }
+      ]
+    },
+    {
+      "id": "FP-034",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/experiment-engine.js",
+          "blob": "52602d0f8a6912e945cd463e89f7fb08df00e814"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m30-maths-workshop.test.mjs",
+          "blob": "ab03c29938773d5b3d6c39bdc303f526f7a85a25"
+        }
+      ]
+    },
+    {
+      "id": "FP-035",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/experiment-engine.js",
+          "blob": "52602d0f8a6912e945cd463e89f7fb08df00e814"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m30-maths-workshop.test.mjs",
+          "blob": "ab03c29938773d5b3d6c39bdc303f526f7a85a25"
+        }
+      ]
+    },
+    {
+      "id": "FP-037",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/advanced-lab-engine.js",
+          "blob": "c6e349d154768fae29415668bc60ca511122bc43"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m33-expanded-labs.test.mjs",
+          "blob": "adf3e7c95789d65a89e62ef2b214fda25f146219"
+        }
+      ]
+    },
+    {
+      "id": "FP-038",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/advanced-lab-engine.js",
+          "blob": "c6e349d154768fae29415668bc60ca511122bc43"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m33-expanded-labs.test.mjs",
+          "blob": "adf3e7c95789d65a89e62ef2b214fda25f146219"
+        }
+      ]
+    },
+    {
+      "id": "FP-039",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/advanced-lab-engine.js",
+          "blob": "c6e349d154768fae29415668bc60ca511122bc43"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m33-expanded-labs.test.mjs",
+          "blob": "adf3e7c95789d65a89e62ef2b214fda25f146219"
+        }
+      ]
+    },
+    {
+      "id": "FP-041",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "docs/B1_CURRICULUM_SOURCE_OPTIONS.json",
+          "blob": "eed9205e58afc248da8bb1c38eeb624d92a4291f"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m30-b1-foundation-contracts.test.mjs",
+          "blob": "56e1b30cc3b2ea457443c3eefc19d0359a7e1f36"
+        }
+      ]
+    },
+    {
+      "id": "FP-042",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/experiment-engine.js",
+          "blob": "52602d0f8a6912e945cd463e89f7fb08df00e814"
+        },
+        {
+          "kind": "test",
+          "path": "tests/experiment.test.mjs",
+          "blob": "6597489f2786df8cdec159e2e180f65575015983"
+        }
+      ]
+    },
+    {
+      "id": "FP-043",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/science-engine.js",
+          "blob": "07b6beab72bb252f860173c72f52ddd8845cfe4f"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m31-science-concepts.test.mjs",
+          "blob": "63df087d3fb795ab21fe3f583336b5336687edb4"
+        }
+      ]
+    },
+    {
+      "id": "FP-044",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/science-engine.js",
+          "blob": "07b6beab72bb252f860173c72f52ddd8845cfe4f"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m31-science-concepts.test.mjs",
+          "blob": "63df087d3fb795ab21fe3f583336b5336687edb4"
+        }
+      ]
+    },
+    {
+      "id": "FP-045",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/science-engine.js",
+          "blob": "07b6beab72bb252f860173c72f52ddd8845cfe4f"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m31-science-concepts.test.mjs",
+          "blob": "63df087d3fb795ab21fe3f583336b5336687edb4"
+        }
+      ]
+    },
+    {
+      "id": "FP-046",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/advanced-lab-engine.js",
+          "blob": "c6e349d154768fae29415668bc60ca511122bc43"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m33-expanded-labs.test.mjs",
+          "blob": "adf3e7c95789d65a89e62ef2b214fda25f146219"
+        }
+      ]
+    },
+    {
+      "id": "FP-047",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/advanced-lab-engine.js",
+          "blob": "c6e349d154768fae29415668bc60ca511122bc43"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m33-expanded-labs.test.mjs",
+          "blob": "adf3e7c95789d65a89e62ef2b214fda25f146219"
+        }
+      ]
+    },
+    {
+      "id": "FP-048",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/advanced-lab-engine.js",
+          "blob": "c6e349d154768fae29415668bc60ca511122bc43"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m33-expanded-labs.test.mjs",
+          "blob": "adf3e7c95789d65a89e62ef2b214fda25f146219"
+        }
+      ]
+    },
+    {
+      "id": "FP-049",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/advanced-lab-engine.js",
+          "blob": "c6e349d154768fae29415668bc60ca511122bc43"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m33-expanded-labs.test.mjs",
+          "blob": "adf3e7c95789d65a89e62ef2b214fda25f146219"
+        }
+      ]
+    },
+    {
+      "id": "FP-051",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "docs/B1_FOUNDATION_CONTRACTS.md",
+          "blob": "d77f559604b74298359727533f282adf76283e6a"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m30-b1-foundation-contracts.test.mjs",
+          "blob": "56e1b30cc3b2ea457443c3eefc19d0359a7e1f36"
+        }
+      ]
+    },
+    {
+      "id": "FP-052",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/science-engine.js",
+          "blob": "07b6beab72bb252f860173c72f52ddd8845cfe4f"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m31-science-concepts.test.mjs",
+          "blob": "63df087d3fb795ab21fe3f583336b5336687edb4"
+        }
+      ]
+    },
+    {
+      "id": "FP-053",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/science-engine.js",
+          "blob": "07b6beab72bb252f860173c72f52ddd8845cfe4f"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m31-science-concepts.test.mjs",
+          "blob": "63df087d3fb795ab21fe3f583336b5336687edb4"
+        }
+      ]
+    },
+    {
+      "id": "FP-054",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/science-engine.js",
+          "blob": "07b6beab72bb252f860173c72f52ddd8845cfe4f"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m31-science-concepts.test.mjs",
+          "blob": "63df087d3fb795ab21fe3f583336b5336687edb4"
+        }
+      ]
+    },
+    {
+      "id": "FP-055",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/science-engine.js",
+          "blob": "07b6beab72bb252f860173c72f52ddd8845cfe4f"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m31-science-concepts.test.mjs",
+          "blob": "63df087d3fb795ab21fe3f583336b5336687edb4"
+        }
+      ]
+    },
+    {
+      "id": "FP-056",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/advanced-lab-engine.js",
+          "blob": "c6e349d154768fae29415668bc60ca511122bc43"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m33-expanded-labs.test.mjs",
+          "blob": "adf3e7c95789d65a89e62ef2b214fda25f146219"
+        }
+      ]
+    },
+    {
+      "id": "FP-057",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/advanced-lab-engine.js",
+          "blob": "c6e349d154768fae29415668bc60ca511122bc43"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m33-expanded-labs.test.mjs",
+          "blob": "adf3e7c95789d65a89e62ef2b214fda25f146219"
+        }
+      ]
+    },
+    {
+      "id": "FP-058",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/advanced-lab-engine.js",
+          "blob": "c6e349d154768fae29415668bc60ca511122bc43"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m33-expanded-labs.test.mjs",
+          "blob": "adf3e7c95789d65a89e62ef2b214fda25f146219"
+        }
+      ]
+    },
+    {
+      "id": "FP-059",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/advanced-lab-engine.js",
+          "blob": "c6e349d154768fae29415668bc60ca511122bc43"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m33-expanded-labs.test.mjs",
+          "blob": "adf3e7c95789d65a89e62ef2b214fda25f146219"
+        }
+      ]
+    },
+    {
+      "id": "FP-061",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "docs/B1_FOUNDATION_CONTRACTS.md",
+          "blob": "d77f559604b74298359727533f282adf76283e6a"
+        },
+        {
+          "kind": "test",
+          "path": "tests/site.test.mjs",
+          "blob": "305fc1f4fff84be6c9b901a3a5f6a1a46ba1c63d"
+        }
+      ]
+    },
+    {
+      "id": "FP-063",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/practice-engine.js",
+          "blob": "deac6f1cb2177d622ae24a92b78f5b024ede4fa9"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m32-practice-guide.test.mjs",
+          "blob": "81360be1c9471c8d037d3578798e0f4418bf217d"
+        }
+      ]
+    },
+    {
+      "id": "FP-064",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/practice-engine.js",
+          "blob": "deac6f1cb2177d622ae24a92b78f5b024ede4fa9"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m32-practice-guide.test.mjs",
+          "blob": "81360be1c9471c8d037d3578798e0f4418bf217d"
+        }
+      ]
+    },
+    {
+      "id": "FP-065",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/practice-engine.js",
+          "blob": "deac6f1cb2177d622ae24a92b78f5b024ede4fa9"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m32-practice-guide.test.mjs",
+          "blob": "81360be1c9471c8d037d3578798e0f4418bf217d"
+        }
+      ]
+    },
+    {
+      "id": "FP-066",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "docs/M34_B2_DESIGN_AND_ACCEPTANCE.md",
+          "blob": "b96b8217b6aae8727db57aaa8cadba4c402da3c7"
+        },
+        {
+          "kind": "source",
+          "path": "docs/M34_B2_DESIGN_CONTRACT.json",
+          "blob": "0f5ee5de865584705162dee98df6260859c1533d"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m34-b2-design.test.mjs",
+          "blob": "c547d1ec04db93b32f013d9dce79622a447b277d"
+        }
+      ]
+    },
+    {
+      "id": "FP-067",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "docs/M34_B2_DESIGN_AND_ACCEPTANCE.md",
+          "blob": "b96b8217b6aae8727db57aaa8cadba4c402da3c7"
+        },
+        {
+          "kind": "source",
+          "path": "docs/M34_B2_DESIGN_CONTRACT.json",
+          "blob": "0f5ee5de865584705162dee98df6260859c1533d"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m34-b2-design.test.mjs",
+          "blob": "c547d1ec04db93b32f013d9dce79622a447b277d"
+        }
+      ]
+    },
+    {
+      "id": "FP-071",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "docs/B1_FOUNDATION_CONTRACTS.md",
+          "blob": "d77f559604b74298359727533f282adf76283e6a"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m28-shared-device-privacy.test.mjs",
+          "blob": "2669d866acb3310480d5a9011e91be07d85c209a"
+        }
+      ]
+    },
+    {
+      "id": "FP-072",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/practice-engine.js",
+          "blob": "deac6f1cb2177d622ae24a92b78f5b024ede4fa9"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m32-practice-guide.test.mjs",
+          "blob": "81360be1c9471c8d037d3578798e0f4418bf217d"
+        }
+      ]
+    },
+    {
+      "id": "FP-073",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/practice-engine.js",
+          "blob": "deac6f1cb2177d622ae24a92b78f5b024ede4fa9"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m32-practice-guide.test.mjs",
+          "blob": "81360be1c9471c8d037d3578798e0f4418bf217d"
+        }
+      ]
+    },
+    {
+      "id": "FP-074",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/practice-engine.js",
+          "blob": "deac6f1cb2177d622ae24a92b78f5b024ede4fa9"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m32-practice-guide.test.mjs",
+          "blob": "81360be1c9471c8d037d3578798e0f4418bf217d"
+        }
+      ]
+    },
+    {
+      "id": "FP-075",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/practice-app.js",
+          "blob": "629515fdbd3648b82bde2efad0bed4267872d706"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m32-practice-guide.test.mjs",
+          "blob": "81360be1c9471c8d037d3578798e0f4418bf217d"
+        }
+      ]
+    },
+    {
+      "id": "FP-076",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "docs/M34_B2_DESIGN_AND_ACCEPTANCE.md",
+          "blob": "b96b8217b6aae8727db57aaa8cadba4c402da3c7"
+        },
+        {
+          "kind": "source",
+          "path": "docs/M34_B2_DESIGN_CONTRACT.json",
+          "blob": "0f5ee5de865584705162dee98df6260859c1533d"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m34-b2-design.test.mjs",
+          "blob": "c547d1ec04db93b32f013d9dce79622a447b277d"
+        }
+      ]
+    },
+    {
+      "id": "FP-077",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "docs/M34_B2_DESIGN_AND_ACCEPTANCE.md",
+          "blob": "b96b8217b6aae8727db57aaa8cadba4c402da3c7"
+        },
+        {
+          "kind": "source",
+          "path": "docs/M34_B2_DESIGN_CONTRACT.json",
+          "blob": "0f5ee5de865584705162dee98df6260859c1533d"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m34-b2-design.test.mjs",
+          "blob": "c547d1ec04db93b32f013d9dce79622a447b277d"
+        }
+      ]
+    },
+    {
+      "id": "FP-078",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "docs/M34_B2_DESIGN_AND_ACCEPTANCE.md",
+          "blob": "b96b8217b6aae8727db57aaa8cadba4c402da3c7"
+        },
+        {
+          "kind": "source",
+          "path": "docs/M34_B2_DESIGN_CONTRACT.json",
+          "blob": "0f5ee5de865584705162dee98df6260859c1533d"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m34-b2-design.test.mjs",
+          "blob": "c547d1ec04db93b32f013d9dce79622a447b277d"
+        }
+      ]
+    },
+    {
+      "id": "FP-081",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "docs/B1_FOUNDATION_CONTRACTS.md",
+          "blob": "d77f559604b74298359727533f282adf76283e6a"
+        },
+        {
+          "kind": "test",
+          "path": "tests/classroom.test.mjs",
+          "blob": "427c1021b7287ff1498e773d64d8d329cb2dfea2"
+        }
+      ]
+    },
+    {
+      "id": "FP-082",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/classroom-app.js",
+          "blob": "49d2eb16c274283630ba5b02f1f61a69c366538b"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m32-teacher-cards.test.mjs",
+          "blob": "6c85cf99fa1cdebddbc23f7be3424ca8a30caa17"
+        }
+      ]
+    },
+    {
+      "id": "FP-083",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/teacher-cards-engine.js",
+          "blob": "205bc02e0f1ad3a94fb3b4a3e17d30b1367f7b55"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m32-teacher-cards.test.mjs",
+          "blob": "6c85cf99fa1cdebddbc23f7be3424ca8a30caa17"
+        }
+      ]
+    },
+    {
+      "id": "FP-084",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/teacher-cards-engine.js",
+          "blob": "205bc02e0f1ad3a94fb3b4a3e17d30b1367f7b55"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m32-teacher-cards.test.mjs",
+          "blob": "6c85cf99fa1cdebddbc23f7be3424ca8a30caa17"
+        }
+      ]
+    },
+    {
+      "id": "FP-091",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "docs/B1_FOUNDATION_CONTRACTS.md",
+          "blob": "d77f559604b74298359727533f282adf76283e6a"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m30-b1-foundation-contracts.test.mjs",
+          "blob": "56e1b30cc3b2ea457443c3eefc19d0359a7e1f36"
+        }
+      ]
+    },
+    {
+      "id": "FP-093",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/science-app.js",
+          "blob": "4e3e5bf13d3c122c7faa5d051e65fdd0415997d5"
+        },
+        {
+          "kind": "test",
+          "path": "tests/browser_m25_ci.py",
+          "blob": "32b66bc381f02823c18acaa806f2f85de7bae389"
+        }
+      ]
+    },
+    {
+      "id": "FP-094",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "tools/check-package-privacy.py",
+          "blob": "2b186ce09a97347ac0085688af44f55c614aa10a"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m27-staging-integrity.test.mjs",
+          "blob": "e2fd1c4b9f8e404e52f04079f007769590c90cf1"
+        }
+      ]
+    },
+    {
+      "id": "FP-095",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "tools/workplan-status.mjs",
+          "blob": "f19ccdb1a14923eb930c04b2d7f830c245d685b2"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m30-b1-workplan.test.mjs",
+          "blob": "c96f1659c2e850d8b05547680d67923b3c286042"
+        }
+      ]
+    }
+  ]
+}
