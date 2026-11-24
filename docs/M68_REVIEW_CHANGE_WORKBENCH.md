@@ -20,3 +20,7 @@ M68 exact-head CI pending. No new content, validated curriculum, human signoff, 
 ## Baseline verification update
 
 M67 passed full CI 45462660318 and merged PR #57 at 688405f95a3677bc62e63113ff9c70c3138a7e84. M68 requires its own exact-head CI before merge.
+
+## Verified outcome
+
+Exact-head CI 45463290767 passed both jobs. PR #58 merged at 9f06eea4352d1600127c69d2ea439ec4db7a3070. Review tools are engineering verified, not independent educational approval.

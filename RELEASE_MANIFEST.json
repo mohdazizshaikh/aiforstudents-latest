@@ -1,5 +1,5 @@
 {
-  "release": "M67 verified prototype / M68 review workbench candidate — PRIVATE ONLY",
+  "release": "M68 verified prototype / M69 supplemental comparison candidate — PRIVATE ONLY",
   "release_date": "2026-11-24",
   "hosting_zip": "aiforstudents_hostinger_staging_m33.zip",
   "source_zip": "aiforstudents_m33_source_tests.zip",
@@ -22,7 +22,7 @@
   "study_question_records": 32,
   "study_items_expert_approved": 0,
   "isolated_browser_study_checks": 32,
-  "currentMilestone": "M67_VERIFIED_M68_CANDIDATE",
+  "currentMilestone": "M68_VERIFIED_M69_CANDIDATE",
   "status": "private-staging-prototype-unreviewed",
   "date": "2026-11-24",
   "studioLessons": 2,
@@ -66,7 +66,7 @@
   "sensitiveSourcePathExposureCheckAvailable": true,
   "sensitiveSourcePathExposureVerifiedOnLiveHost": false,
   "releaseZipSourceHashParityVerifiedInCI": true,
-  "swCacheVersion": "aifs-discovery-m33-2026-11-24-m67-r1",
+  "swCacheVersion": "aifs-discovery-m33-2026-11-24-m69-r1",
   "crossTabPrivacyResetImplemented": true,
   "crossTabPrivacyRealDeviceVerified": false,
   "existingUnreviewedContentRecords": 3282,
@@ -114,9 +114,9 @@
   "printableLabActivityApprovals": 0,
   "printableLabActivityStoresStudentData": false,
   "verifiedCheckpoint": {
-    "milestone": "M67",
-    "mergeSha": "688405f95a3677bc62e63113ff9c70c3138a7e84",
-    "ciRun": 45462660318
+    "milestone": "M68",
+    "mergeSha": "9f06eea4352d1600127c69d2ea439ec4db7a3070",
+    "ciRun": 45463290767
   },
   "legacyPackagingBaseline": "M33 artifact filenames and historical baseline counters retained; not latest test counts or live deployment evidence",
   "interactiveDraftModels": 60,
@@ -222,10 +222,15 @@
   "customLabPackHumanReviewed": false,
   "customLabPackRightsAuthenticated": false,
   "teacherSupplementWorksheetEngineeringVerified": true,
-  "reviewChangeWorkbenchCandidate": true,
+  "reviewChangeWorkbenchCandidate": false,
   "reviewChangeCanonicalRecords": 3340,
   "reviewChangeSupplementBehaviorIndicators": 6,
   "reviewChangeSupplementBilingualCombinations": 3734,
   "reviewChangeHumanApprovalGranted": false,
-  "customLabPackEngineeringVerified": true
+  "customLabPackEngineeringVerified": true,
+  "supplementComparisonCandidate": true,
+  "supplementComparisonActivities": 6,
+  "supplementComparisonPersists": false,
+  "supplementComparisonMasteryValidated": false,
+  "reviewChangeWorkbenchEngineeringVerified": true
 }

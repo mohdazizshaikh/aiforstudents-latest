@@ -182,6 +182,13 @@
     <div id="ratio-extension-controls" class="science-controls"></div>
     <table class="advanced-results"><thead><tr><th scope="col" id="ratio-extension-quantity">Quantity</th><th scope="col" id="ratio-extension-value">Value</th></tr></thead><tbody id="ratio-extension-values"></tbody></table>
     <p id="ratio-extension-caveat"></p><button id="ratio-extension-reset" class="btn outline compact" type="button">Reset supplemental activity</button>
+    <section aria-labelledby="extension-compare-heading" class="local-guide-result">
+     <h5 id="extension-compare-heading">Compare supplemental model states</h5><p class="small muted" id="extension-compare-notice"></p>
+     <div class="science-actions"><button type="button" id="extension-compare-mark" class="btn outline compact">Mark starting state</button><button type="button" id="extension-compare-restore" class="btn outline compact" disabled>Restore starting state</button><button type="button" id="extension-compare-clear" class="btn outline compact" disabled>Clear comparison</button></div>
+     <div id="extension-compare-panel" hidden><p id="extension-compare-status" role="status" aria-live="polite" tabindex="-1"></p><ul id="extension-compare-changes"></ul>
+      <table class="advanced-results"><thead><tr><th scope="col" id="extension-compare-label">Calculated quantity</th><th scope="col" id="extension-compare-before">Starting value</th><th scope="col" id="extension-compare-after">Current value</th></tr></thead><tbody id="extension-compare-rows"></tbody></table>
+     </div>
+    </section>
    </section>
    <section class="local-guide-result" aria-labelledby="advanced-variable-heading">
     <h4 id="advanced-variable-heading">Explore one changed control</h4>

@@ -1,5 +1,5 @@
 /** M33: original draft-only conceptual labs, all activity state is transient. */
-import {ADVANCED_IDS,modelAdvanced,evaluateAdvanced,advancedResultRows,advancedExampleFeedback,advancedVariableComparison,ADVANCED_SUBJECT_FILTERS,advancedSubjectOptions,ADVANCED_GUIDED_STAGES,advancedGuidedStage,advancedExtensionIds,advancedExtension,evaluateAdvancedExtension,findAdvancedConcepts} from './advanced-lab-engine.js';
+import {ADVANCED_IDS,modelAdvanced,evaluateAdvanced,advancedResultRows,advancedExampleFeedback,advancedVariableComparison,ADVANCED_SUBJECT_FILTERS,advancedSubjectOptions,ADVANCED_GUIDED_STAGES,advancedGuidedStage,advancedExtensionIds,advancedExtension,evaluateAdvancedExtension,findAdvancedConcepts,compareAdvancedExtension} from './advanced-lab-engine.js';
 const $=id=>document.getElementById(id);
 const node=(tag,text)=>{const e=document.createElement(tag);if(text!==undefined)e.textContent=text;return e};
 const lang=()=>$('lang').value==='hi'?'hi':'en';
@@ -8,7 +8,7 @@ const t=pair=>pair[lang()==='hi'?1:0];
 const selected=new URLSearchParams(location.search).get('advanced');
 let id=ADVANCED_IDS.includes(selected)?selected:ADVANCED_IDS[0],state={...modelAdvanced(id).initial},feedback=null,comparisonOpen=false,variableBaseline=null,subjectFilter='all',guidedIndex=null;
 let extensionMode=advancedExtensionIds(id)[0]||null,extensionState=extensionMode?{...advancedExtension(id,extensionMode).initial}:{};
-let finderQuery='',finderChoice='';
+let finderQuery='',finderChoice='',extensionBaseline=null;
 const button=(text,action,label,disabled=false,pressed=null)=>{
  const b=node('button',text);b.type='button';b.className='btn outline compact';b.dataset.advancedAction=action;
  b.disabled=disabled;if(label)b.setAttribute('aria-label',label);
@@ -207,11 +207,11 @@ function renderGuidedStage(){
  $('advanced-guided-hint').textContent=r.sourceHint||'';$('advanced-guided-hint').hidden=r.sourceHint===null;
  prev.disabled=r.index===0;next.disabled=r.index===r.total-1;
 }
-function resetExtension(){extensionMode=advancedExtensionIds(id)[0]||null;extensionState=extensionMode?{...advancedExtension(id,extensionMode).initial}:{}}
+function resetExtension(){extensionBaseline=null;extensionMode=advancedExtensionIds(id)[0]||null;extensionState=extensionMode?{...advancedExtension(id,extensionMode).initial}:{}}
 function renderExtension(){
  const host=$('advanced-ratio-extension'),controls=$('ratio-extension-controls'),values=$('ratio-extension-values');
  host.hidden=!advancedExtensionIds(id).length;controls.replaceChildren();values.replaceChildren();
- if(host.hidden)return;
+ if(host.hidden){renderExtensionComparison();return;}
  $('ratio-extension-heading').textContent=id==='ratio-algebra'?p('More ratio and algebra exploration','अनुपात और बीजगणित की अधिक खोज'):p('More concept exploration','अवधारणा की अधिक खोज');
  $('ratio-extension-mode-label').textContent=p('Choose a supplemental draft activity','अतिरिक्त मसौदा गतिविधि चुनें');
  const mode=$('ratio-extension-mode');mode.replaceChildren();
@@ -230,6 +230,27 @@ function renderExtension(){
   }group.append(row);controls.append(group)
  }
  for(const item of r.rows){const row=node('tr'),head=node('th',item.label);head.scope='row';row.append(head,node('td',item.value));values.append(row)}
+ renderExtensionComparison();
+}
+function renderExtensionComparison(){
+ const panel=$('extension-compare-panel'),rows=$('extension-compare-rows'),changes=$('extension-compare-changes');
+ rows.replaceChildren();changes.replaceChildren();panel.hidden=!extensionBaseline||!extensionMode;
+ $('extension-compare-status').textContent='';
+ $('extension-compare-heading').textContent=p('Compare supplemental model states','अतिरिक्त मॉडल स्थितियों की तुलना');
+ $('extension-compare-notice').textContent=p('Optional, temporary comparison. No score or learning history is saved.','वैकल्पिक अस्थायी तुलना। कोई अंक या सीखने का इतिहास सहेजा नहीं जाता।');
+ $('extension-compare-mark').textContent=p('Mark starting state','आरंभिक स्थिति चुनें');
+ $('extension-compare-restore').textContent=p('Restore starting state','आरंभिक स्थिति लौटाएँ');
+ $('extension-compare-clear').textContent=p('Clear comparison','तुलना मिटाएँ');
+ $('extension-compare-restore').disabled=panel.hidden;$('extension-compare-clear').disabled=panel.hidden;
+ $('extension-compare-label').textContent=p('Calculated quantity','गणना की गई राशि');
+ $('extension-compare-before').textContent=p('Starting value','आरंभिक मान');
+ $('extension-compare-after').textContent=p('Current value','वर्तमान मान');
+ if(panel.hidden)return;
+ const result=compareAdvancedExtension(id,extensionMode,extensionBaseline,extensionState,lang());
+ $('extension-compare-status').textContent=result.guidance;
+ $('extension-compare-restore').disabled=result.status==='UNCHANGED';
+ for(const change of result.changes)changes.append(node('li',change.label+': '+change.before+' → '+change.after));
+ for(const item of result.rows){const row=node('tr'),head=node('th',item.label);head.scope='row';row.append(head,node('td',item.before),node('td',item.after));rows.append(row)}
 }
 function renderFinder(){
  const query=$('advanced-finder-query'),results=$('advanced-finder-results'),open=$('advanced-finder-open');
@@ -311,9 +332,12 @@ $('advanced-controls').addEventListener('click',e=>{
 });
 function reset(){resetExtension();if(subjectFilter!=='all'&&modelAdvanced(id).subject!==subjectFilter)subjectFilter='all';state={...modelAdvanced(id).initial};feedback=null;comparisonOpen=false;variableBaseline=null;guidedIndex=null;render()}
 $('ratio-extension-mode').addEventListener('change',e=>{
- if(!advancedExtensionIds(id).includes(e.target.value))return;extensionMode=e.target.value;extensionState={...advancedExtension(id,extensionMode).initial};renderExtension();$('ratio-extension-mode').focus();
+ if(!advancedExtensionIds(id).includes(e.target.value))return;extensionMode=e.target.value;extensionBaseline=null;extensionState={...advancedExtension(id,extensionMode).initial};renderExtension();$('ratio-extension-mode').focus();
 });
-$('ratio-extension-reset').addEventListener('click',()=>{if(!extensionMode)return;extensionState={...advancedExtension(id,extensionMode).initial};renderExtension();$('ratio-extension-reset').focus()});
+$('ratio-extension-reset').addEventListener('click',()=>{if(!extensionMode)return;extensionBaseline=null;extensionState={...advancedExtension(id,extensionMode).initial};renderExtension();$('ratio-extension-reset').focus()});
+$('extension-compare-mark').addEventListener('click',()=>{if(!extensionMode)return;extensionBaseline={...extensionState};renderExtensionComparison();$('extension-compare-status').focus()});
+$('extension-compare-restore').addEventListener('click',()=>{if(!extensionMode||!extensionBaseline)return;extensionState={...extensionBaseline};renderExtension();$('extension-compare-status').focus()});
+$('extension-compare-clear').addEventListener('click',()=>{extensionBaseline=null;renderExtensionComparison();$('extension-compare-mark').focus()});
 $('ratio-extension-controls').addEventListener('click',e=>{
  const b=e.target.closest('button[data-extension-action]');if(!b||!extensionMode)return;
  const [op,key]=b.dataset.extensionAction.split(':'),f=advancedExtension(id,extensionMode).fields.find(x=>x.id===key);
