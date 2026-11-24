@@ -12,3 +12,7 @@ Stacked on M71 b514d7ad31310562be74b40f96161016d6da5b5c; Node/static passed, bro
 - biology: Symbolic oxygen balance of two net processes (72 bilingual cases).
 
 2878 new bilingual combinations; 10108 total supplemental evaluations. 30 supplements, 78 advanced printable choices / 156 bilingual variants. Integrated comparison, worksheet, pack builder and review workbench. 3,370 fingerprint entries (3,340 canonical plus 30 indicators). Eight existing review definitions changed; no new canonical records. No real experiments, learner tracking, AI or mastery claims. Exact-head CI pending. FP register remains 70/100 scoped tasks; public release blocked.
+
+## Verified baseline update
+
+M71 passed full CI 45478780744 and merged PR #61 at bc98edeaa5d237a2f283ce208eadd91e028eeedb. M72 requires its own exact-head CI before merge.
