@@ -1,3 +1,6 @@
+import {SCIENCE_IDS,SCIENCE_MODELS} from './science-engine.js';
+import {WORKSHOP_MODES,WORKSHOP_CONTENT} from './experiment-engine.js';
+import {STUDIO_IDS,STUDIO_LESSONS} from './studio-engine.js';
 import {ADVANCED_IDS,ADVANCED_MODELS,advancedExtensionIds,advancedExtension} from './advanced-lab-engine.js';
 /** M32 private classroom paper cards: source-derived, anonymous, not approved lessons. */
 import {CLASSROOM_IDS,CLASSROOM_LESSONS,CLASSROOM_ROLES,classroomStep,classroomText} from './classroom-engine.js';
@@ -103,10 +106,42 @@ export function printableSupplementActivity(id,mode,lang='en'){
  return {...base,mode,title:m.title[i],prompt:m.prompt[i],caveat:m.caveat[i]};
 }
 
+/** M75 basic model worksheets use only existing source prompts and cautions, not answer keys. */
+export const BASIC_PRINT_IDS=Object.freeze([...SCIENCE_IDS.map(id=>'science/'+id),...WORKSHOP_MODES.map(id=>'maths/'+id),...STUDIO_IDS.map(id=>'studio/'+id)]);
+function basicPrintDefinition(id){
+ if(!BASIC_PRINT_IDS.includes(id))throw Error('Unknown basic worksheet');
+ const [kind,key]=id.split('/');
+ if(kind==='science'){const m=SCIENCE_MODELS[key];return {subject:m.subject.toLowerCase(),title:m.title,prompt:m.prompt,caveat:m.caveat,sourceFile:'assets/science-engine.js'};}
+ if(kind==='maths'){const m=WORKSHOP_CONTENT[key];return {subject:'maths',title:m.title,prompt:m.prompt,caveat:['Whole-number computer practice only; not a complete curriculum or assessment.','केवल पूर्णांक कंप्यूटर अभ्यास; पूरा पाठ्यक्रम या आकलन नहीं।'],sourceFile:'assets/experiment-engine.js'};}
+ const m=STUDIO_LESSONS[key];
+ return {subject:key==='fractions'?'maths':'physics',title:m.title,prompt:m.stages.find(s=>s.id==='try').question,caveat:key==='fractions'?['Equal-size whole and equal pieces in a symbolic diagram only.','केवल प्रतीकात्मक चित्र में समान आकार के पूरे और बराबर हिस्से।']:['Computer diagram only. Do not connect real batteries, wires or sockets.','केवल कंप्यूटर चित्र। वास्तविक बैटरी, तार या सॉकेट न जोड़ें।'],sourceFile:'assets/studio-engine.js'};
+}
+export function teacherPrintableOptions(subject,lang='en'){
+ const advanced=teacherLabOptions(subject,lang),i=lang==='hi'?1:0;
+ return [...advanced,...BASIC_PRINT_IDS.map(id=>({id,...basicPrintDefinition(id)})).filter(m=>m.subject===subject).map(m=>({id:m.id,subject:m.subject,title:m.title[i],caveat:m.caveat[i],humanReviewed:false,gradeVerified:false,publicReleaseApproved:false}))];
+}
+export function teacherPrintableSupplementOptions(id,lang='en'){
+ if(!['en','hi'].includes(lang))throw Error('Unknown language');
+ return BASIC_PRINT_IDS.includes(id)?[]:teacherSupplementOptions(id,lang);
+}
+export function printableBasicLabActivity(id,lang='en'){
+ if(!['en','hi'].includes(lang))throw Error('Unknown language');
+ const m=basicPrintDefinition(id),i=lang==='hi'?1:0,p=(en,hi)=>lang==='hi'?hi:en;
+ return {id,subject:m.subject,language:lang,title:m.title[i],prompt:m.prompt[i],caveat:m.caveat[i],steps:[
+ p('Predict what the computer model will show. Write your reasoning on paper.','अनुमान लगाएँ कि कंप्यूटर मॉडल क्या दिखाएगा। अपना कारण कागज़ पर लिखें।'),
+ p('With a teacher, inspect the computer-only model and compare its result with your prediction.','शिक्षक के साथ केवल कंप्यूटर मॉडल देखें और परिणाम को अपने अनुमान से मिलाएँ।'),
+ p('Explain one thing you noticed. If the model is unavailable, discuss your prediction only.','एक बात समझाएँ जो आपने देखी। मॉडल उपलब्ध न हो तो केवल अनुमान पर चर्चा करें।')
+ ],sourceFile:m.sourceFile,rightsStatus:'ORIGINAL_DRAFT_PERMISSION_NOT_AUTHENTICATED',humanReviewed:false,publicReleaseApproved:false,localOnly:true,hasStudentNames:false};
+}
+export function printableAnyLabActivity(id,mode='main',lang='en'){
+ if(BASIC_PRINT_IDS.includes(id)){if(mode!=='main')throw Error('Unknown basic activity mode');return printableBasicLabActivity(id,lang);}
+ return mode==='main'?printableLabActivity(id,lang):printableSupplementActivity(id,mode,lang);
+}
+
 /** M67 transient assignment pack: known source keys only, no free text or learner records. */
 export const LAB_PACK_LIMIT=6;
 export function labPackKeys(){
- return ADVANCED_IDS.flatMap(id=>[id+':main',...advancedExtensionIds(id).map(mode=>id+':'+mode)]);
+ return [...ADVANCED_IDS.flatMap(id=>[id+':main',...advancedExtensionIds(id).map(mode=>id+':'+mode)]),...BASIC_PRINT_IDS.map(id=>id+':main')];
 }
 function validateLabPack(keys){
  const allowed=labPackKeys();
@@ -130,7 +165,7 @@ export function printableLabPack(keys,lang='en'){
  if(!['en','hi'].includes(lang))throw Error('Unknown lab pack language');
  const items=keys.map((key,i)=>{
   const [id,mode]=key.split(':');
-  const a=mode==='main'?printableLabActivity(id,lang):printableSupplementActivity(id,mode,lang);
+  const a=printableAnyLabActivity(id,mode,lang);
   return {...a,key,position:i+1};
  });
  return {language:lang,items,localOnly:true,hasStudentNames:false,humanReviewed:false,publicReleaseApproved:false,rightsStatus:'ORIGINAL_DRAFT_PERMISSION_NOT_AUTHENTICATED'};

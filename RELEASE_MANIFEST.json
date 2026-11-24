@@ -1,5 +1,5 @@
 {
-  "release": "M73 verified prototype / M74 corrected candidate — PRIVATE ONLY",
+  "release": "M73 verified prototype / corrected M74–M75 candidates — PRIVATE ONLY",
   "release_date": "2026-11-24",
   "hosting_zip": "aiforstudents_hostinger_staging_m33.zip",
   "source_zip": "aiforstudents_m33_source_tests.zip",
@@ -22,7 +22,7 @@
   "study_question_records": 32,
   "study_items_expert_approved": 0,
   "isolated_browser_study_checks": 32,
-  "currentMilestone": "M73_VERIFIED_M74_CORRECTED_CANDIDATE",
+  "currentMilestone": "M73_VERIFIED_M74_M75_CANDIDATES",
   "status": "private-staging-prototype-unreviewed",
   "date": "2026-11-24",
   "studioLessons": 2,
@@ -66,7 +66,7 @@
   "sensitiveSourcePathExposureCheckAvailable": true,
   "sensitiveSourcePathExposureVerifiedOnLiveHost": false,
   "releaseZipSourceHashParityVerifiedInCI": true,
-  "swCacheVersion": "aifs-discovery-m33-2026-11-24-m74-r2",
+  "swCacheVersion": "aifs-discovery-m33-2026-11-24-m75-r1",
   "crossTabPrivacyResetImplemented": true,
   "crossTabPrivacyRealDeviceVerified": false,
   "existingUnreviewedContentRecords": 3282,
@@ -215,7 +215,7 @@
   "teacherSupplementWorksheetStoresStudentData": false,
   "teacherSupplementWorksheetAnswerKeys": false,
   "customLabPackCandidate": false,
-  "customLabPackSourceActivities": 97,
+  "customLabPackSourceActivities": 109,
   "customLabPackMaxActivities": 6,
   "customLabPackStoresStudentData": false,
   "customLabPackPersists": false,
@@ -313,5 +313,12 @@
   "m72SupplementEngineeringVerified": true,
   "m73SupplementEngineeringVerified": true,
   "m74InitialCiFailedModuleBudget": true,
-  "m74ModuleBudgetCorrectionCandidate": true
+  "m74ModuleBudgetCorrectionCandidate": true,
+  "m75BasicWorksheetCandidate": true,
+  "m75BasicWorksheetModels": 12,
+  "m75BasicWorksheetBilingualVariants": 24,
+  "m75PrintableAllLabActivities": 109,
+  "m75PrintableAllLabVariants": 218,
+  "m75HumanReviewed": false,
+  "m75WorksheetStoresStudentData": false
 }

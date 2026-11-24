@@ -959,6 +959,40 @@ def run():
                 phone.locator('#card-view').select_option('lab-pack')
                 check(phone.locator('#lab-pack-pages .lab-pack-page').count() == 0, 'Pack retained after leaving mode')
                 report['checks'].append('M67 offline custom assignment pack ordering, language, print isolation and clear')
+                phone.locator('#card-view').select_option('lab')
+                for subject, model in [
+                    ('maths','maths/number-line'), ('maths','maths/rectangle'), ('maths','maths/data-table'),
+                    ('maths','studio/fractions'), ('physics','studio/circuit-path'),
+                    ('physics','science/motion'), ('physics','science/reflection'), ('physics','science/energy'),
+                    ('chemistry','science/matter'), ('chemistry','science/changes'),
+                    ('biology','science/cells'), ('biology','science/food-chain'),
+                ]:
+                    phone.locator('#lab-print-subject').select_option(subject)
+                    phone.locator('#lab-print-model').select_option(model)
+                    check(phone.locator('#lab-print-activity').input_value() == 'main', 'M75 retained old activity')
+                    check(phone.locator('#lab-print-activity').is_disabled(), 'M75 invalid supplement selector')
+                    check(phone.locator('#lab-activity-steps section').count() == 3, 'M75 paper steps missing')
+                    en_title=phone.locator('#lab-activity-heading').inner_text()
+                    phone.locator('#card-language').select_option('hi')
+                    check(phone.locator('#lab-activity-heading').inner_text() != en_title, 'M75 Hindi title missing')
+                    check(phone.locator('#lab-print-model').input_value() == model, 'M75 language lost model')
+                    phone.emulate_media(media='print')
+                    check(phone.locator('#lab-activity').is_visible(), 'M75 worksheet not printable')
+                    check(phone.locator('#teacher-guidance').is_hidden(), 'M75 teacher guidance leaked')
+                    phone.emulate_media(media='screen')
+                    phone.locator('#card-language').select_option('en')
+                phone.locator('#card-view').select_option('lab-pack')
+                phone.locator('#lab-print-subject').select_option('maths')
+                phone.locator('#lab-print-model').select_option('maths/rectangle')
+                phone.locator('#lab-pack-add').click()
+                phone.locator('#lab-print-subject').select_option('biology')
+                phone.locator('#lab-print-model').select_option('cell-doubling')
+                phone.locator('#lab-print-activity').select_option('rounds')
+                phone.locator('#lab-pack-add').click()
+                check(phone.locator('#lab-pack-pages .lab-pack-page').count() == 2, 'M75 mixed pack missing')
+                check(phone.locator('#lab-pack-pages .lab-pack-page').first.get_attribute('data-activity-key') == 'maths/rectangle:main', 'M75 basic key missing')
+                phone.locator('#lab-pack-clear').click()
+                report['checks'].append('M75 twelve basic bilingual worksheets and mixed offline assignment packs')
                 phone.locator('#card-view').select_option('single')
                 check(phone.locator('#lab-activity').is_hidden(), 'Lab print remains in single mode')
                 report['checks'].append('M50 offline bilingual lab activity sheets, three paper steps, print privacy and mode restore')
