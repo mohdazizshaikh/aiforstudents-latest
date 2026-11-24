@@ -1,5 +1,5 @@
 import {CLASSROOM_IDS,CLASSROOM_LESSONS,CLASSROOM_ROLES,classroomText,classroomStep,classroomSummary,lessonQueue} from './classroom-engine.js';
-import {rotateAnonymousRole,TEACHER_LAB_SUBJECTS,teacherLabOptions,teacherLabPlan,teacherDemoAgenda,teacherAgendaRows,DEMO_AGENDA_LIMIT,printableDemoAgenda} from './teacher-cards-engine.js';
+import {rotateAnonymousRole,TEACHER_LAB_SUBJECTS,teacherPrintableOptions,teacherAnyLabPlan,teacherDemoAgenda,teacherAgendaRows,DEMO_AGENDA_LIMIT,printableDemoAgenda} from './teacher-cards-engine.js';
 /** M17 classroom mode: transient UI state only. No student names, answers, accounts or analytics. */
 const $=id=>document.getElementById(id);
 const S={lesson:'fractions',step:0,role:0,revealed:false,projector:false,queue:[],labSubject:'maths',labId:null,agenda:[]};
@@ -117,12 +117,12 @@ function renderLabLauncher(){
  subjectLabel.textContent=both('Lab subject','प्रयोग विषय');labLabel.textContent=both('Draft concept','मसौदा अवधारणा');
  const names={maths:['Mathematics','गणित'],physics:['Physics','भौतिकी'],chemistry:['Chemistry','रसायन'],biology:['Biology','जीवविज्ञान']};
  subjectSelect.replaceChildren();for(const s of TEACHER_LAB_SUBJECTS){const o=make('option','',both(...names[s]));o.value=s;subjectSelect.append(o)}subjectSelect.value=S.labSubject;
- const options=teacherLabOptions(S.labSubject,lang());labSelect.replaceChildren();
+ const options=teacherPrintableOptions(S.labSubject,lang());labSelect.replaceChildren();
  const blank=make('option','',both('Select a draft','मसौदा चुनें'));blank.value='';labSelect.append(blank);
  for(const item of options){const o=make('option','',item.title);o.value=item.id;labSelect.append(o)}
  labSelect.value=S.labId||'';
  labLink.textContent=both('Open selected offline lab','चुना ऑफ़लाइन प्रयोग खोलें');labClear.textContent=both('Clear lab selection','प्रयोग चयन मिटाएँ');
- const chosen=S.labId?teacherLabPlan(S.labSubject,S.labId,lang()):null;
+ const chosen=S.labId?teacherAnyLabPlan(S.labSubject,S.labId,lang()):null;
  labLink.hidden=!chosen;
  if(chosen){labLink.href=chosen.href;labCaveat.textContent=chosen.caveat}else{labLink.removeAttribute('href');labCaveat.textContent=both('No lab selected. All models require review.','कोई प्रयोग नहीं चुना। सभी मॉडलों की समीक्षा बाकी है।')}
  renderAgenda();

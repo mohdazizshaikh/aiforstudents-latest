@@ -8,7 +8,8 @@ import {
 const $=id=>document.getElementById(id);
 const node=(tag,cls,text)=>{const x=document.createElement(tag);if(cls)x.className=cls;if(text!==undefined)x.textContent=text;return x};
 const fresh=(id='motion')=>({id,stage:0,values:{...scienceModel(id).initial},answer:null,feedback:null});
-let S=fresh();
+const demoScience=new URLSearchParams(location.search).get('demo');
+let S=fresh(SCIENCE_IDS.includes(demoScience?.slice(8))&&demoScience.startsWith('science/')?demoScience.slice(8):'motion');
 const lang=()=>$('lang')?.value==='hi'?'hi':'en';
 const t=x=>scienceText(x,lang());
 const p=(en,hi)=>lang()==='hi'?hi:en;
@@ -146,5 +147,9 @@ $('science-reset').addEventListener('click',()=>{
 $('science-prev').addEventListener('click',()=>gotoStage(S.stage-1));
 $('science-next').addEventListener('click',()=>gotoStage(S.stage+1));
 $('lang').addEventListener('change',render);
+window.addEventListener('aifs-teacher-demo',event=>{
+ const id=typeof event.detail==='string'&&event.detail.startsWith('science/')?event.detail.slice(8):null;
+ if(!SCIENCE_IDS.includes(id))return;S=fresh(id);render();$('science-question').focus();
+});
 window.addEventListener('aifs-history-cleared',()=>{S=fresh();render()});
 render();

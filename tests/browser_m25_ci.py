@@ -1061,6 +1061,32 @@ def run():
                 phone.evaluate("window.dispatchEvent(new Event('aifs-history-cleared'))")
                 check(phone.locator('#classroom-agenda-list li').count() == 0, 'Shared-device reset retained agenda')
                 report['checks'].append('M48 offline demonstration agenda cross-subject add, reorder, remove, clear, duplicate and privacy reset')
+                for subject, model, focus, anchor in [
+                    ('maths','maths/rectangle','math-workshop-question','math-workshop'),
+                    ('physics','studio/circuit-path','studio-lesson-title','smart-studio'),
+                    ('biology','science/cells','science-question','science-lab'),
+                ]:
+                    phone.locator('#classroom-lab-subject').select_option(subject)
+                    phone.locator('#classroom-lab-choice').select_option(model)
+                    check(phone.locator('#classroom-lab-open').get_attribute('href') == '?demo='+model.replace('/','%2F')+'#'+anchor, 'M76 fixed deep link '+model)
+                    phone.locator('#classroom-agenda-add').click()
+                    phone.locator('#classroom-agenda-list li a').last.click()
+                    check(phone.locator('#'+focus).evaluate('e => e === document.activeElement'), 'M76 focus '+model)
+                check(phone.locator('#classroom-agenda-list li').count() == 3, 'M76 mixed basic agenda')
+                phone.locator('#classroom-lab-subject').select_option('maths')
+                phone.locator('#classroom-lab-choice').select_option('ratio-algebra')
+                phone.locator('#classroom-agenda-add').click()
+                check(phone.locator('#classroom-agenda-list li').count() == 4, 'M76 mixed advanced agenda')
+                phone.locator('#classroom-agenda-paper-open').click()
+                check(phone.locator('#agenda-paper-list li').count() == 4, 'M76 mixed printable agenda')
+                phone.locator('#agenda-paper-close').click()
+                phone.evaluate("window.dispatchEvent(new Event('aifs-history-cleared'))")
+                check(phone.locator('#classroom-agenda-list li').count() == 0, 'M76 privacy reset')
+                phone.goto(origin + '/?demo=maths%2Frectangle#math-workshop', wait_until='load')
+                check(phone.locator('#math-workshop button[data-workshop-action="mode:rectangle"]').get_attribute('aria-pressed') == 'true', 'M76 maths deep link')
+                phone.goto(origin + '/?demo=science%2Fcells#science-lab', wait_until='load')
+                check(phone.locator('#science-lab button[data-science-action="mode:cells"]').get_attribute('aria-pressed') == 'true', 'M76 science deep link')
+                report['checks'].append('M76 mixed basic and advanced offline demonstration agenda, fixed links, focus and privacy')
                 phone.goto(origin + '/?lang=hi', wait_until='load')
                 check(phone.locator('#lang').input_value() == 'hi', 'Offline query-driven language navigation broke')
                 check(phone.locator('#advanced-topic option').count() == 48, 'Offline query page module not available')
