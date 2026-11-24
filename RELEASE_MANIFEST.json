@@ -1,5 +1,5 @@
 {
-  "release": "M69 verified prototype / M70–M71 candidates — PRIVATE ONLY",
+  "release": "M70 verified prototype / M71 cross-subject activity candidate — PRIVATE ONLY",
   "release_date": "2026-11-24",
   "hosting_zip": "aiforstudents_hostinger_staging_m33.zip",
   "source_zip": "aiforstudents_m33_source_tests.zip",
@@ -22,7 +22,7 @@
   "study_question_records": 32,
   "study_items_expert_approved": 0,
   "isolated_browser_study_checks": 32,
-  "currentMilestone": "M69_VERIFIED_M70_M71_CANDIDATES",
+  "currentMilestone": "M70_VERIFIED_M71_CANDIDATE",
   "status": "private-staging-prototype-unreviewed",
   "date": "2026-11-24",
   "studioLessons": 2,
@@ -114,9 +114,9 @@
   "printableLabActivityApprovals": 0,
   "printableLabActivityStoresStudentData": false,
   "verifiedCheckpoint": {
-    "milestone": "M69",
-    "mergeSha": "0885c7c1f296e276463dacd6af3dea758a22e174",
-    "ciRun": 45463891487
+    "milestone": "M70",
+    "mergeSha": "d451b553fa292259a5d0b60f1a842e59cac8454e",
+    "ciRun": 45478120772
   },
   "legacyPackagingBaseline": "M33 artifact filenames and historical baseline counters retained; not latest test counts or live deployment evidence",
   "interactiveDraftModels": 60,
@@ -246,7 +246,7 @@
     "advanced:cell-scale",
     "advanced:dna-complement"
   ],
-  "m70SupplementCandidate": true,
+  "m70SupplementCandidate": false,
   "m70HumanReviewed": false,
   "m71NewSupplementalActivities": 8,
   "m71BilingualInputCombinations": 1812,
@@ -261,5 +261,6 @@
     "advanced:habitat-match"
   ],
   "m71SupplementCandidate": true,
-  "m71HumanReviewed": false
+  "m71HumanReviewed": false,
+  "m70SupplementEngineeringVerified": true
 }
