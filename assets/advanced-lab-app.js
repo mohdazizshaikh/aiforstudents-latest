@@ -7,7 +7,8 @@ const p=(en,hi)=>lang()==='hi'?hi:en;
 const t=pair=>pair[lang()==='hi'?1:0];
 const selected=new URLSearchParams(location.search).get('advanced');
 let id=ADVANCED_IDS.includes(selected)?selected:ADVANCED_IDS[0],state={...modelAdvanced(id).initial},feedback=null,comparisonOpen=false,variableBaseline=null,subjectFilter='all',guidedIndex=null;
-let extensionMode=advancedExtensionIds(id)[0]||null,extensionState=extensionMode?{...advancedExtension(id,extensionMode).initial}:{};
+const selectedExtension=new URLSearchParams(location.search).get('extension');
+let extensionMode=(ADVANCED_IDS.includes(selected)&&advancedExtensionIds(id).includes(selectedExtension)?selectedExtension:advancedExtensionIds(id)[0])||null,extensionState=extensionMode?{...advancedExtension(id,extensionMode).initial}:{};
 let finderQuery='',finderChoice='',extensionBaseline=null;
 const button=(text,action,label,disabled=false,pressed=null)=>{
  const b=node('button',text);b.type='button';b.className='btn outline compact';b.dataset.advancedAction=action;

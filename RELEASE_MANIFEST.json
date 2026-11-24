@@ -1,5 +1,5 @@
 {
-  "release": "M76 verified prototype / M77 review and teacher discovery candidate — PRIVATE ONLY",
+  "release": "M76 verified prototype / M77–M78 candidates — PRIVATE ONLY",
   "release_date": "2026-11-24",
   "hosting_zip": "aiforstudents_hostinger_staging_m33.zip",
   "source_zip": "aiforstudents_m33_source_tests.zip",
@@ -22,7 +22,7 @@
   "study_question_records": 32,
   "study_items_expert_approved": 0,
   "isolated_browser_study_checks": 32,
-  "currentMilestone": "M76_VERIFIED_M77_CANDIDATE",
+  "currentMilestone": "M76_VERIFIED_M77_M78_CANDIDATES",
   "status": "private-staging-prototype-unreviewed",
   "date": "2026-11-24",
   "studioLessons": 2,
@@ -66,7 +66,7 @@
   "sensitiveSourcePathExposureCheckAvailable": true,
   "sensitiveSourcePathExposureVerifiedOnLiveHost": false,
   "releaseZipSourceHashParityVerifiedInCI": true,
-  "swCacheVersion": "aifs-discovery-m33-2026-11-24-m77-r1",
+  "swCacheVersion": "aifs-discovery-m33-2026-11-24-m78-r1",
   "crossTabPrivacyResetImplemented": true,
   "crossTabPrivacyRealDeviceVerified": false,
   "existingUnreviewedContentRecords": 3282,
@@ -336,5 +336,12 @@
   "m77PendingMappingReviewChecks": 180,
   "m77TeacherActivityDiscoveryChoices": 109,
   "m77VerifiedChapters": 0,
-  "m77HumanReviewed": false
+  "m77HumanReviewed": false,
+  "m78PathwayCandidate": true,
+  "m78SourceBoundActivities": 109,
+  "m78BilingualSourceVariants": 218,
+  "m78LearnerSelectedActions": 3,
+  "m78MasteryPrediction": false,
+  "m78RemoteChat": false,
+  "m78HumanReviewed": false
 }
