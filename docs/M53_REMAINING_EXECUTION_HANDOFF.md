@@ -105,3 +105,5 @@ M84 verified merged. M88 adds bilingual teacher resource search over 109 activit
 M85–M87 verified and merged. M89 candidate prepares 109 individual teacher rights work items / 327 pending decisions. FP-087 remains in progress; no authenticated permission.
 
 M90 candidate adds direct fixed demonstration links for 109 teacher resources. FP-087 remains in progress pending rights/educational approval; no release authorization.
+
+M88–M90 verified merged. M91 candidate adds 49 supplemental snapshots plus individual deletion across 109 models. No new human-gate decisions.

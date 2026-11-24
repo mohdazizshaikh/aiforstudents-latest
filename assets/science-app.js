@@ -5,7 +5,7 @@ import {
  SCIENCE_IDS,SCIENCE_STAGES,SCIENCE_MODELS,scienceModel,scienceText,
  scienceEvaluate,scienceChoiceCheck,scienceExplain
 } from './science-engine.js';
-import {SCIENCE_SNAPSHOT_LIMIT,captureScienceSnapshot,restoreScienceSnapshot,scienceSnapshotRows} from './science-snapshots.js';
+import {SCIENCE_SNAPSHOT_LIMIT,captureScienceSnapshot,restoreScienceSnapshot,scienceSnapshotRows,removeScienceSnapshot} from './science-snapshots.js';
 const $=id=>document.getElementById(id);
 const node=(tag,cls,text)=>{const x=document.createElement(tag);if(cls)x.className=cls;if(text!==undefined)x.textContent=text;return x};
 const fresh=(id='motion')=>({id,stage:0,values:{...scienceModel(id).initial},answer:null,feedback:null,snapshots:[]});
@@ -64,6 +64,7 @@ function renderSnapshots(active){
  $('science-snapshot-add').textContent=p('Capture current state','वर्तमान स्थिति चुनें');
  $('science-snapshot-clear').textContent=p('Clear snapshots','स्थितियाँ मिटाएँ');
  $('science-snapshot-restore').textContent=p('Restore selected state','चुनी स्थिति लौटाएँ');
+ $('science-snapshot-remove').textContent=p('Remove selected state','चुनी स्थिति हटाएँ');
  $('science-snapshot-select-label').textContent=p('State to restore','लौटाने की स्थिति');
  $('science-snapshot-status').textContent=rows.length+' / '+SCIENCE_SNAPSHOT_LIMIT+' '+p('temporary states','अस्थायी स्थितियाँ');
  host.replaceChildren();select.replaceChildren();
@@ -75,7 +76,7 @@ function renderSnapshots(active){
  }
  if(rows.some(r=>String(r.index)===previous))select.value=previous;
  select.disabled=!active||!rows.length;
- $('science-snapshot-clear').disabled=!active||!rows.length;$('science-snapshot-restore').disabled=!active||!rows.length;
+ $('science-snapshot-clear').disabled=!active||!rows.length;$('science-snapshot-restore').disabled=!active||!rows.length;$('science-snapshot-remove').disabled=!active||!rows.length;
  $('science-snapshot-add').disabled=!active||rows.length===SCIENCE_SNAPSHOT_LIMIT||S.snapshots.some(s=>Object.keys(s).every(k=>s[k]===S.values[k]));
 }
 function quiz(){
@@ -169,6 +170,7 @@ $('science-reset').addEventListener('click',()=>{
  render();$('science-question').focus();
 });
 $('science-snapshot-add').addEventListener('click',()=>{if(SCIENCE_STAGES[S.stage]!=='try')return;S.snapshots=captureScienceSnapshot(S.id,S.snapshots,S.values);renderSnapshots(true);$('science-snapshot-status').focus()});
+$('science-snapshot-remove').addEventListener('click',()=>{if(SCIENCE_STAGES[S.stage]!=='try'||!S.snapshots.length)return;S.snapshots=removeScienceSnapshot(S.id,S.snapshots,Number($('science-snapshot-select').value));renderSnapshots(true);$('science-snapshot-status').focus()});
 $('science-snapshot-clear').addEventListener('click',()=>{if(SCIENCE_STAGES[S.stage]!=='try')return;S.snapshots=[];renderSnapshots(true);$('science-snapshot-add').focus()});
 $('science-snapshot-restore').addEventListener('click',()=>{if(SCIENCE_STAGES[S.stage]!=='try'||!S.snapshots.length)return;S.values=restoreScienceSnapshot(S.id,S.snapshots,Number($('science-snapshot-select').value));S.feedback=null;S.answer=null;render();$('science-question').focus()});
 $('science-prev').addEventListener('click',()=>gotoStage(S.stage-1));

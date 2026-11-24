@@ -1,6 +1,8 @@
 /** M33: original draft-only conceptual labs, all activity state is transient. */
 import {ADVANCED_IDS,modelAdvanced,evaluateAdvanced,advancedResultRows,advancedExampleFeedback,advancedVariableComparison,ADVANCED_SUBJECT_FILTERS,advancedSubjectOptions,ADVANCED_GUIDED_STAGES,advancedGuidedStage,advancedExtensionIds,advancedExtension,evaluateAdvancedExtension,findAdvancedConcepts,compareAdvancedExtension} from './advanced-lab-engine.js';
-import {SNAPSHOT_LIMIT,snapshotState,restoreSnapshot,snapshotRows} from './advanced-snapshots.js';
+import {SNAPSHOT_LIMIT,snapshotState,restoreSnapshot,snapshotRows,removeSnapshot} from './advanced-snapshots.js';
+import {createMiniSnapshotPanel} from './mini-snapshot-panel.js';
+import {EXTENSION_SNAPSHOT_LIMIT,captureExtensionSnapshot,restoreExtensionSnapshot,removeExtensionSnapshot,extensionSnapshotRows} from './extension-snapshots.js';
 const $=id=>document.getElementById(id);
 const node=(tag,text)=>{const e=document.createElement(tag);if(text!==undefined)e.textContent=text;return e};
 const lang=()=>$('lang').value==='hi'?'hi':'en';
@@ -11,6 +13,7 @@ let id=ADVANCED_IDS.includes(selected)?selected:ADVANCED_IDS[0],state={...modelA
 let extensionMode=ADVANCED_IDS.includes(selected)&&launchParams.getAll('advanced').length===1&&launchParams.getAll('extension').length===1&&advancedExtensionIds(id).includes(requestedExtension)?requestedExtension:advancedExtensionIds(id)[0]||null,extensionState=extensionMode?{...advancedExtension(id,extensionMode).initial}:{};
 let finderQuery='',finderChoice='',extensionBaseline=null;
 let snapshots=[];
+const extensionSnapshots=createMiniSnapshotPanel('extension',()=>id+':'+extensionMode,()=>extensionState,lang,s=>{extensionState=s;renderExtension()},'ratio-extension-mode',{limit:EXTENSION_SNAPSHOT_LIMIT,rows:extensionSnapshotRows,capture:captureExtensionSnapshot,restore:restoreExtensionSnapshot,remove:removeExtensionSnapshot});
 const button=(text,action,label,disabled=false,pressed=null)=>{
  const b=node('button',text);b.type='button';b.className='btn outline compact';b.dataset.advancedAction=action;
  b.disabled=disabled;if(label)b.setAttribute('aria-label',label);
@@ -201,6 +204,7 @@ function renderSnapshots(){
  $('advanced-snapshot-add').textContent=p('Capture current state','वर्तमान स्थिति चुनें');
  $('advanced-snapshot-clear').textContent=p('Clear snapshots','स्थितियाँ मिटाएँ');
  $('advanced-snapshot-restore').textContent=p('Restore selected state','चुनी स्थिति लौटाएँ');
+ $('advanced-snapshot-remove').textContent=p('Remove selected state','चुनी स्थिति हटाएँ');
  $('advanced-snapshot-select-label').textContent=p('State to restore','लौटाने की स्थिति');
  $('advanced-snapshot-status').textContent=rows.length+' / '+SNAPSHOT_LIMIT+' '+p('temporary states','अस्थायी स्थितियाँ');
  host.replaceChildren();select.replaceChildren();
@@ -213,7 +217,7 @@ function renderSnapshots(){
  }
  if(rows.some(r=>String(r.index)===previous))select.value=previous;
  const empty=!rows.length;
- select.disabled=empty;$('advanced-snapshot-restore').disabled=empty;$('advanced-snapshot-clear').disabled=empty;
+ select.disabled=empty;$('advanced-snapshot-restore').disabled=empty;$('advanced-snapshot-remove').disabled=empty;$('advanced-snapshot-clear').disabled=empty;
  $('advanced-snapshot-add').disabled=rows.length===SNAPSHOT_LIMIT||snapshots.some(s=>Object.keys(s).every(k=>s[k]===state[k]));
 }
 function renderGuidedStage(){
@@ -231,11 +235,11 @@ function renderGuidedStage(){
  $('advanced-guided-hint').textContent=r.sourceHint||'';$('advanced-guided-hint').hidden=r.sourceHint===null;
  prev.disabled=r.index===0;next.disabled=r.index===r.total-1;
 }
-function resetExtension(){extensionBaseline=null;extensionMode=advancedExtensionIds(id)[0]||null;extensionState=extensionMode?{...advancedExtension(id,extensionMode).initial}:{}}
+function resetExtension(){extensionSnapshots.clear();extensionBaseline=null;extensionMode=advancedExtensionIds(id)[0]||null;extensionState=extensionMode?{...advancedExtension(id,extensionMode).initial}:{}}
 function renderExtension(){
  const host=$('advanced-ratio-extension'),controls=$('ratio-extension-controls'),values=$('ratio-extension-values');
  host.hidden=!advancedExtensionIds(id).length;controls.replaceChildren();values.replaceChildren();
- if(host.hidden){renderExtensionComparison();return;}
+ if(host.hidden){extensionSnapshots.render(false);renderExtensionComparison();return;}
  $('ratio-extension-heading').textContent=id==='ratio-algebra'?p('More ratio and algebra exploration','अनुपात और बीजगणित की अधिक खोज'):p('More concept exploration','अवधारणा की अधिक खोज');
  $('ratio-extension-mode-label').textContent=p('Choose a supplemental draft activity','अतिरिक्त मसौदा गतिविधि चुनें');
  const mode=$('ratio-extension-mode');mode.replaceChildren();
@@ -254,7 +258,7 @@ function renderExtension(){
   }group.append(row);controls.append(group)
  }
  for(const item of r.rows){const row=node('tr'),head=node('th',item.label);head.scope='row';row.append(head,node('td',item.value));values.append(row)}
- renderExtensionComparison();
+ extensionSnapshots.render(true);renderExtensionComparison();
 }
 function renderExtensionComparison(){
  const panel=$('extension-compare-panel'),rows=$('extension-compare-rows'),changes=$('extension-compare-changes');
@@ -356,9 +360,9 @@ $('advanced-controls').addEventListener('click',e=>{
 });
 function reset(){snapshots=[];resetExtension();if(subjectFilter!=='all'&&modelAdvanced(id).subject!==subjectFilter)subjectFilter='all';state={...modelAdvanced(id).initial};feedback=null;comparisonOpen=false;variableBaseline=null;guidedIndex=null;render()}
 $('ratio-extension-mode').addEventListener('change',e=>{
- if(!advancedExtensionIds(id).includes(e.target.value))return;extensionMode=e.target.value;extensionBaseline=null;extensionState={...advancedExtension(id,extensionMode).initial};renderExtension();$('ratio-extension-mode').focus();
+ if(!advancedExtensionIds(id).includes(e.target.value))return;extensionSnapshots.clear();extensionMode=e.target.value;extensionBaseline=null;extensionState={...advancedExtension(id,extensionMode).initial};renderExtension();$('ratio-extension-mode').focus();
 });
-$('ratio-extension-reset').addEventListener('click',()=>{if(!extensionMode)return;extensionBaseline=null;extensionState={...advancedExtension(id,extensionMode).initial};renderExtension();$('ratio-extension-reset').focus()});
+$('ratio-extension-reset').addEventListener('click',()=>{if(!extensionMode)return;extensionSnapshots.clear();extensionBaseline=null;extensionState={...advancedExtension(id,extensionMode).initial};renderExtension();$('ratio-extension-reset').focus()});
 $('extension-compare-mark').addEventListener('click',()=>{if(!extensionMode)return;extensionBaseline={...extensionState};renderExtensionComparison();$('extension-compare-status').focus()});
 $('extension-compare-restore').addEventListener('click',()=>{if(!extensionMode||!extensionBaseline)return;extensionState={...extensionBaseline};renderExtension();$('extension-compare-status').focus()});
 $('extension-compare-clear').addEventListener('click',()=>{extensionBaseline=null;renderExtensionComparison();$('extension-compare-mark').focus()});
@@ -401,6 +405,7 @@ for(const [name,delta] of [['prev',-1],['next',1]])$('advanced-guided-'+name).ad
 $('advanced-variable-mark').addEventListener('click',()=>{variableBaseline={...state};renderVariableComparison();$('advanced-variable-status').focus()});
 $('advanced-variable-clear').addEventListener('click',()=>{variableBaseline=null;renderVariableComparison();$('advanced-variable-mark').focus()});
 $('advanced-snapshot-add').addEventListener('click',()=>{snapshots=snapshotState(id,snapshots,state);renderSnapshots();$('advanced-snapshot-status').focus()});
+$('advanced-snapshot-remove').addEventListener('click',()=>{if(!snapshots.length)return;snapshots=removeSnapshot(id,snapshots,Number($('advanced-snapshot-select').value));renderSnapshots();$('advanced-snapshot-status').focus()});
 $('advanced-snapshot-clear').addEventListener('click',()=>{snapshots=[];renderSnapshots();$('advanced-snapshot-add').focus()});
 $('advanced-snapshot-restore').addEventListener('click',()=>{if(!snapshots.length)return;state=restoreSnapshot(id,snapshots,Number($('advanced-snapshot-select').value));feedback=null;comparisonOpen=false;render();$('advanced-heading').focus()});
 $('lang').addEventListener('change',render);
