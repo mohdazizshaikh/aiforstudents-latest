@@ -26,6 +26,24 @@ function visualize(metrics){
   line(10,cy,310,cy,'#304f47',2);line(cx,10,cx,170,'#304f47',2);txt(300,cy-5,'x');txt(cx+5,14,'y');
   if(id==='coordinate'){line(cx-5*sc,cy+9*sc,cx+5*sc,cy-11*sc,'#26785d',2);dot(cx+metrics.x*sc,cy-metrics.y*sc,'#9b5620');txt(14,14,'y = 2x + 1')}
   else{dot(cx+state.x*sc,cy-state.y*sc,'#296cba');dot(cx+metrics.transformedX*sc,cy-metrics.transformedY*sc,'#9b5620');txt(14,14,'P → P′')}
+ }else if(id==='quadratic'){
+  const cx=160,cy=153,sx=23,sy=5;
+  line(18,cy,302,cy,'#304f47',2);line(cx,12,cx,165,'#304f47',2);
+  const pts=[];for(let x=-5;x<=5;x+=0.1)pts.push((cx+x*sx)+','+(cy-x*x*sy));
+  shape('polyline',{points:pts.join(' '),fill:'none',stroke:'#26785d','stroke-width':2});
+  dot(cx+metrics.x*sx,cy-metrics.y*sy,'#9b5620');dot(cx+metrics.oppositeX*sx,cy-metrics.oppositeSquare*sy,'#296cba');txt(18,18,'y = x²');txt(300,cy-5,'x');
+ }else if(id==='force-motion'){
+  shape('rect',{x:24,y:62,width:55+state.mass*12,height:50,rx:5,fill:'#b8dfc8',stroke:'#26785d'});
+  txt(35,92,state.mass+' kg');
+  if(metrics.forceN>0){const end=152+metrics.forceN*5;line(152,87,end,87,'#9b5620',3);shape('polygon',{points:end+',87 '+(end-10)+',81 '+(end-10)+',93',fill:'#9b5620'})}
+  txt(152,62,metrics.forceN+' N');txt(24,145,p('Ideal net force','आदर्श परिणामी बल'));
+ }else if(id==='atom-count'){
+  for(let i=0;i<state.molecules;i++){const x=35+(i%3)*105,y=42+Math.floor(i/3)*80;shape('circle',{cx:x+24,cy:y,r:15,fill:'#af4d52'});shape('circle',{cx:x+8,cy:y+20,r:10,fill:'#b6d5ef'});shape('circle',{cx:x+40,cy:y+20,r:10,fill:'#b6d5ef'});txt(x+20,y+4,'O');txt(x+4,y+24,'H');txt(x+36,y+24,'H')}
+ }else if(id==='cell-scale'){
+  const w=metrics.diagramMm/10*240;
+  shape('rect',{x:30,y:45,width:w,height:70,rx:12,fill:'#d8eee3',stroke:'#477d66','stroke-width':2});
+  line(30,130,30+w,130,'#304f47',2);txt(30,150,metrics.diagramMm+' mm');
+  txt(30,24,p('Drawing scale','चित्र पैमाना'));
  }else if(id==='sound'){
   line(10,90,310,90,'#304f47');const pts=[];
   for(let x=10;x<=310;x+=2)pts.push(x+','+(90-12*state.amplitude*Math.sin((x-10)/300*2*Math.PI*10/state.period)));
@@ -68,7 +86,7 @@ function visualize(metrics){
 function render(){
  const m=modelAdvanced(id),result=evaluateAdvanced(id,state,lang());
  $('advanced-nav').textContent=p('Explore Labs','प्रयोग खोजें');
- $('advanced-title').textContent=p('Explore Maths & Science Labs — 12 draft models','गणित और विज्ञान प्रयोग — 12 मसौदा मॉडल');
+ $('advanced-title').textContent=p('Explore Maths & Science Labs — 16 draft models','गणित और विज्ञान प्रयोग — 16 मसौदा मॉडल');
  $('advanced-intro').textContent=p('Offline computer-only concepts: Maths, Physics, Chemistry and Biology.','ऑफ़लाइन कंप्यूटर आधारित गणित, भौतिकी, रसायन और जीवविज्ञान अवधारणाएँ।');
  $('advanced-notice').textContent=p('UNREVIEWED original teaching drafts. Independent subject, Hindi and safety review pending. No grade mapping or real experiments.','असमीक्षित मूल शिक्षण मसौदे। विषय, हिंदी और सुरक्षा समीक्षा बाकी है। कक्षा मिलान या असली प्रयोग नहीं।');
  $('advanced-topic-label').textContent=p('Choose a concept','अवधारणा चुनें');

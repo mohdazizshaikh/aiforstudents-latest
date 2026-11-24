@@ -363,20 +363,22 @@
         },
         {
           "subject": "chemistry",
-          "en": "Elements and compounds",
-          "hi": "तत्व और यौगिक",
+          "en": "Elements, compounds and symbolic atom counts",
+          "hi": "तत्व, यौगिक और प्रतीकात्मक परमाणु गिनती",
           "modelIds": [
-            "advanced:periodic"
+            "advanced:periodic",
+            "advanced:atom-count"
           ],
           "coverage": "RELATED_DRAFT_ONLY",
           "reviewStatus": "PENDING"
         },
         {
           "subject": "biology",
-          "en": "Cell structure",
-          "hi": "कोशिका की संरचना",
+          "en": "Cell structure and diagram scale",
+          "hi": "कोशिका संरचना और चित्र पैमाना",
           "modelIds": [
-            "science:cells"
+            "science:cells",
+            "advanced:cell-scale"
           ],
           "coverage": "RELATED_DRAFT_ONLY",
           "reviewStatus": "PENDING"
@@ -403,11 +405,12 @@
         },
         {
           "subject": "physics",
-          "en": "Motion and reflection",
-          "hi": "गति और परावर्तन",
+          "en": "Motion, net force and reflection",
+          "hi": "गति, परिणामी बल और परावर्तन",
           "modelIds": [
             "science:motion",
-            "science:reflection"
+            "science:reflection",
+            "advanced:force-motion"
           ],
           "coverage": "RELATED_DRAFT_ONLY",
           "reviewStatus": "PENDING"
@@ -445,10 +448,11 @@
       "topics": [
         {
           "subject": "maths",
-          "en": "Linear graphs; quadratic and trigonometric gaps",
-          "hi": "रैखिक आलेख; द्विघात और त्रिकोणमिति बाकी",
+          "en": "Linear and square graphs; trigonometric gaps",
+          "hi": "रैखिक और वर्ग आलेख; त्रिकोणमिति बाकी",
           "modelIds": [
-            "advanced:coordinate"
+            "advanced:coordinate",
+            "advanced:quadratic"
           ],
           "coverage": "RELATED_DRAFT_ONLY",
           "reviewStatus": "PENDING"
