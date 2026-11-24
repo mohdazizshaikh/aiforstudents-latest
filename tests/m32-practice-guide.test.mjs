@@ -9,8 +9,8 @@ import {studioCheck,STUDIO_LESSONS} from '../assets/studio-engine.js';
 const read=path=>readFileSync(new URL('../'+path,import.meta.url),'utf8');
 
 test('M32 offline hint selector uses only original source-backed drafts, no unauthorised AI/chat review claims',()=>{
- assert.equal(GUIDED_TOPIC_IDS.length,28);
- assert.equal(new Set(GUIDED_TOPIC_IDS).size,28);
+ assert.equal(GUIDED_TOPIC_IDS.length,36);
+ assert.equal(new Set(GUIDED_TOPIC_IDS).size,36);
  for(const id of GUIDED_TOPIC_IDS){
   const model=practiceTopic(id,'hi');
   assert.equal(model.id,id);assert.ok(model.title.length>4);
