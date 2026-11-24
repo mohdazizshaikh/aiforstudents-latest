@@ -200,6 +200,15 @@
      <table id="advanced-variable-table" class="advanced-results" hidden><thead><tr><th scope="col" id="advanced-variable-quantity">Calculated quantity</th><th scope="col" id="advanced-variable-before">Starting value</th><th scope="col" id="advanced-variable-after">Current value</th></tr></thead><tbody id="advanced-variable-values"></tbody></table>
     </div>
    </section>
+   <section class="local-guide-result" aria-labelledby="advanced-snapshot-heading">
+    <h4 id="advanced-snapshot-heading">Temporary calculation snapshots</h4>
+    <p id="advanced-snapshot-notice" class="small muted"></p>
+    <div class="science-actions"><button type="button" class="btn outline compact" id="advanced-snapshot-add">Capture current state</button><button type="button" class="btn outline compact" id="advanced-snapshot-clear" disabled>Clear snapshots</button></div>
+    <p id="advanced-snapshot-status" tabindex="-1" role="status" aria-live="polite"></p>
+    <label for="advanced-snapshot-select" id="advanced-snapshot-select-label">State to restore</label><select id="advanced-snapshot-select" disabled></select>
+    <button type="button" class="btn outline compact" id="advanced-snapshot-restore" disabled>Restore selected state</button>
+    <div id="advanced-snapshot-rows"></div>
+   </section>
    <div class="science-actions"><button id="advanced-check" type="button" class="btn">Check example</button><button id="advanced-reset" type="button" class="btn outline">Reset model</button></div>
    <p id="advanced-feedback" class="feedback" role="status" aria-live="polite" tabindex="-1" hidden></p>
    <button id="advanced-compare-toggle" type="button" class="btn outline compact" aria-expanded="false" aria-controls="advanced-compare-panel" hidden>Show optional control comparison</button>
