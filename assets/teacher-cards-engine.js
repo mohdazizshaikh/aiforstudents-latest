@@ -43,3 +43,30 @@ export function teacherLabPlan(subject,id,lang='en'){
  if(!model)throw Error('Unknown or mismatched teacher lab');
  return {...model,localOnly:true,storesStudentData:false,projectorReadyClaim:false};
 }
+
+/** M48 transient teacher demonstration agenda: fixed source IDs, no pupil data or free text. */
+export const DEMO_AGENDA_LIMIT=8;
+const validDemo=id=>typeof id==='string'&&ADVANCED_IDS.includes(id);
+export function teacherDemoAgenda(agenda,action){
+ if(!Array.isArray(agenda)||agenda.length>DEMO_AGENDA_LIMIT||new Set(agenda).size!==agenda.length||agenda.some(id=>!validDemo(id)))throw Error('Invalid demonstration agenda');
+ if(!action||typeof action!=='object'||Array.isArray(action))throw Error('Invalid demonstration action');
+ const type=action.type,keys=Object.keys(action),needsId=['add','remove','up','down'].includes(type);
+ if(needsId?keys.length!==2||!Object.hasOwn(action,'id')||!validDemo(action.id):keys.length!==1||type!=='clear')throw Error('Unknown demonstration action');
+ const next=[...agenda];if(type==='clear')return [];
+ const i=next.indexOf(action.id);
+ switch(type){
+  case 'add':if(i<0&&next.length<DEMO_AGENDA_LIMIT)next.push(action.id);break;
+  case 'remove':if(i>=0)next.splice(i,1);break;
+  case 'up':if(i>0)[next[i-1],next[i]]=[next[i],next[i-1]];break;
+  case 'down':if(i>=0&&i<next.length-1)[next[i],next[i+1]]=[next[i+1],next[i]];break;
+ }
+ return next;
+}
+export function teacherAgendaRows(agenda,lang='en'){
+ if(!['en','hi'].includes(lang))throw Error('Unknown agenda language');
+ teacherDemoAgenda(agenda,{type:'clear'}); // validate, without mutating caller
+ return agenda.map((id,index)=>{
+  const m=ADVANCED_MODELS[id],i=lang==='hi'?1:0;
+  return {...teacherLabPlan(m.subject,id,lang),position:index+1,prompt:m.prompt[i],hint:m.hint[i],source:'assets/advanced-lab-engine.js'};
+ });
+}
