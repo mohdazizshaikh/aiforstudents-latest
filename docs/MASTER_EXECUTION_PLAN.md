@@ -221,3 +221,7 @@ Fifteen newly source/test-backed B2 engineering task scopes: 11 deterministic la
 ### M34 candidate checkpoint — draft PR #23 (2026-11-24)
 
 B1 **46/50**, B2 **17/50** remain verified. Ten B2 items moved to IN_PROGRESS (FP-066/067/076–079/086–089); six design contracts and bounded teacher organizer code are present. FP-079/087/088 have partial audit/worksheet/projector coverage, not full acceptance. FP-086–089 depend on external FP-085. Initial Chromium mobile overflow failed; fixes and new browser regression cases committed. Exact-head CI and full evidence reconciliation pending. No changes to 3,304 review records or public-release gate. [M34 design and QA](M34_B2_DESIGN_AND_ACCEPTANCE.md) · [Draft PR #23](https://github.com/mohdazizshaikh/aiforstudents-latest/pull/23).
+
+### M36 discovery candidate
+
+[Draft Class 1–12 topic discovery](M36_CURRICULUM_DISCOVERY.md) adds 48 illustrative topic lenses and links to the 24 existing interactive models; FP-016–020 remain BLOCKED_EXTERNAL, with zero board chapter/edition verification. M35 verified 70 scoped engineering/design tasks; M36 exact-head CI pending.
