@@ -1,10 +1,59 @@
+import {pathwayChoices,pathwaySource,pathwayNext,PATHWAY_ACTIONS} from './practice-pathways.js';
 /** M32: no input logs, no remote requests, no user accounts, and no AI model. */
 import {GUIDED_TOPIC_IDS,PRACTICE_SUBJECTS,PRACTICE_DIFFICULTIES,practiceTopic,guidedHint,recommendPractice,optionalReviewDay,fractionStage,FRACTION_FIVE_STAGES,nextPracticeChoice,NEXT_PRACTICE_CHOICES} from './practice-engine.js';
 const $=x=>document.getElementById(x);
 const n=(tag,cls,text)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(text!==undefined)e.textContent=text;return e};
 const state={subject:'maths',difficulty:'gentle',language:'en',hintId:'studio:fractions',response:null,recommendation:null,scheduled:null,fracStage:0,shaded:0,showSensitive:false,nextChoice:null};
 const t=(en,hi)=>state.language==='hi'?hi:en;
-function render(){
+const pathway={subject:'maths',kind:'all',key:'',reveal:false,sensitive:false,next:null};
+const pathPanel=n('section','local-guide-result');pathPanel.id='practice-pathway';pathPanel.setAttribute('aria-labelledby','pathway-heading');
+const pathHeading=n('h3','');pathHeading.id='pathway-heading';pathPanel.append(pathHeading);
+const pathNotice=n('p','');pathNotice.id='pathway-notice';pathPanel.append(pathNotice);
+const pathControls=n('div','local-guide-selectors');pathPanel.append(pathControls);
+for(const id of ['subject','kind','activity']){
+ const label=n('label',''),span=n('span',''),select=n('select','');span.id='pathway-'+id+'-label';select.id='pathway-'+id;label.append(span,select);pathControls.append(label);
+}
+const pathActions=n('div','local-guide-actions');pathPanel.append(pathActions);
+for(const id of ['hint','adult','repeat','explain','different','clear']){
+ const b=n('button','btn outline');b.id='pathway-'+id;b.type='button';pathActions.append(b);
+}
+const pathResult=n('div','local-guide-result');pathResult.id='pathway-result';pathResult.hidden=true;pathResult.tabIndex=-1;pathResult.setAttribute('role','status');pathPanel.append(pathResult);
+const pathNext=n('div','local-guide-result');pathNext.id='pathway-next';pathNext.hidden=true;pathNext.tabIndex=-1;pathNext.setAttribute('role','status');pathPanel.append(pathNext);
+const pathLink=n('a','');pathLink.id='pathway-open';pathLink.hidden=true;pathPanel.append(pathLink);
+$('local-guide-next-heading').parentElement.before(pathPanel);
+function clearPathOutput(){pathway.reveal=false;pathway.sensitive=false;pathway.next=null}
+function renderPathway(){
+ const l=state.language,i=l==='hi'?1:0,labels={
+ maths:['Mathematics','गणित'],physics:['Physics','भौतिकी'],chemistry:['Chemistry','रसायन'],biology:['Biology','जीवविज्ञान'],
+ all:['All activities','सभी गतिविधियाँ'],basic:['Basic models','बुनियादी मॉडल'],advanced:['Advanced main models','उन्नत मुख्य मॉडल'],supplement:['Supplemental activities','अतिरिक्त गतिविधियाँ']
+ };
+ $('pathway-heading').textContent=t('Source-grounded practice pathways','स्रोत आधारित अभ्यास मार्ग');
+ $('pathway-notice').textContent=t('Choose a draft activity and next step yourself. No AI generation, grade mapping, stored choices or mastery inference.','मसौदा गतिविधि और अगला चरण स्वयं चुनें। AI उत्तर, कक्षा मिलान, सहेजे विकल्प या दक्षता अनुमान नहीं।');
+ for(const [id,en,hi] of [['subject','Subject','विषय'],['kind','Activity type','गतिविधि प्रकार'],['activity','Draft activity','मसौदा गतिविधि']])$('pathway-'+id+'-label').textContent=t(en,hi);
+ const options=(id,items,selected)=>{const el=$('pathway-'+id);el.replaceChildren(...items.map(([v,label])=>{const o=n('option','',label);o.value=v;return o}));if(items.some(x=>x[0]===selected))el.value=selected;return el.value};
+ options('subject',['maths','physics','chemistry','biology'].map(k=>[k,labels[k][i]]),pathway.subject);
+ options('kind',['all','basic','advanced','supplement'].map(k=>[k,labels[k][i]]),pathway.kind);
+ const choices=pathwayChoices(pathway.subject,pathway.kind,l);
+ pathway.key=options('activity',choices.map(x=>[x.key,x.title]),pathway.key);
+ for(const [id,en,hi] of [['hint','Show source draft','स्रोत मसौदा देखें'],['adult','Ask a trusted adult','भरोसेमंद बड़े से मदद लें'],['repeat','Repeat','फिर करें'],['explain','Explain on paper','कागज़ पर समझाएँ'],['different','Another draft','दूसरा मसौदा'],['clear','Clear pathway','अभ्यास मार्ग मिटाएँ']])$('pathway-'+id).textContent=t(en,hi);
+ for(const id of ['hint','repeat','explain','different'])$('pathway-'+id).disabled=!pathway.key;
+ pathResult.hidden=!pathway.reveal&&!pathway.sensitive;pathResult.replaceChildren();pathNext.hidden=!pathway.next;pathNext.replaceChildren();pathLink.hidden=true;pathLink.removeAttribute('href');
+ if(pathway.sensitive){const safe=pathwaySource({key:'',lang:l,risk:'sensitive'});pathResult.textContent=safe.text;return}
+ if(pathway.reveal){
+  const x=pathwaySource({key:pathway.key,lang:l,risk:'none'});
+  pathResult.append(n('h4','',x.title),n('p','',x.prompt),n('p','',x.hint),n('p','',x.caveat),n('p','small',t('Unreviewed source: ','असमीक्षित स्रोत: ')+x.source+' · '+x.contentId+' · '+x.mode));
+  pathLink.href=x.href;pathLink.hidden=false;
+ }
+ if(pathway.next){const x=pathwayNext({key:pathway.key,action:pathway.next,kind:pathway.kind,lang:l});pathNext.textContent=x.title+' — '+x.reason;pathLink.href=x.href;pathLink.hidden=false}
+ pathLink.textContent=t('Open selected draft activity','चुनी मसौदा गतिविधि खोलें');
+}
+for(const id of ['subject','kind','activity'])$('pathway-'+id).addEventListener('change',e=>{if(id==='activity')pathway.key=e.target.value;else{pathway[id]=e.target.value;pathway.key=''}clearPathOutput();renderPathway()});
+$('pathway-hint').addEventListener('click',()=>{clearPathOutput();pathway.reveal=true;renderPathway();pathResult.focus()});
+$('pathway-adult').addEventListener('click',()=>{clearPathOutput();pathway.sensitive=true;renderPathway();pathResult.focus()});
+for(const action of PATHWAY_ACTIONS)$('pathway-'+action).addEventListener('click',()=>{clearPathOutput();pathway.next=action;renderPathway();pathNext.focus()});
+function resetPathway(){pathway.subject='maths';pathway.kind='all';pathway.key='';clearPathOutput()}
+$('pathway-clear').addEventListener('click',()=>{resetPathway();renderPathway();$('pathway-subject').focus()});
+function render(){renderPathway();
  $('local-guide-nav').textContent=t('Practice Guide','अभ्यास मार्गदर्शक');
  $('local-guide-title').textContent=t('Local Practice Guide — draft, not an AI tutor','स्थानीय अभ्यास मार्गदर्शक — मसौदा, AI शिक्षक नहीं');
  $('local-guide-intro').textContent=t('Choose a topic, level and language yourself. No login, AI inference, automatic aptitude label, personal details or stored recommendations.','विषय, अभ्यास स्तर और भाषा स्वयं चुनें। कोई लॉगिन, AI अनुमान, स्थायी क्षमता का लेबल, निजी जानकारी या सहेजे सुझाव नहीं।');
@@ -76,7 +125,7 @@ function render(){
  $('local-guide-fraction-prev').textContent=t('Previous stage','पिछला चरण');
  $('local-guide-fraction-next').textContent=t('Next stage (no score required)','अगला चरण (अंक आवश्यक नहीं)');
 }
-function resetGuide(){state.hintId='studio:fractions';state.subject='maths';state.difficulty='gentle';state.nextChoice=null;state.response=null;state.recommendation=null;state.scheduled=null;state.fracStage=0;state.shaded=0;delete state.fracFeedback;render()}
+function resetGuide(){resetPathway();state.hintId='studio:fractions';state.subject='maths';state.difficulty='gentle';state.nextChoice=null;state.response=null;state.recommendation=null;state.scheduled=null;state.fracStage=0;state.shaded=0;delete state.fracFeedback;render()}
 $('local-guide-subject').addEventListener('change',e=>{state.subject=e.target.value;state.recommendation=null;render()});
 $('local-guide-difficulty').addEventListener('change',e=>{state.difficulty=e.target.value;state.recommendation=null;render()});
 $('local-guide-language').addEventListener('change',e=>{state.language=e.target.value;state.response=null;state.recommendation=null;render()});
