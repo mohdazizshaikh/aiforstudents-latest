@@ -1,8 +1,8 @@
 import {CLASSROOM_IDS,CLASSROOM_LESSONS,CLASSROOM_ROLES,classroomText,classroomStep,classroomSummary,lessonQueue} from './classroom-engine.js';
-import {rotateAnonymousRole,TEACHER_LAB_SUBJECTS,teacherLabOptions,teacherLabPlan} from './teacher-cards-engine.js';
+import {rotateAnonymousRole,TEACHER_LAB_SUBJECTS,teacherLabOptions,teacherLabPlan,teacherDemoAgenda,teacherAgendaRows,DEMO_AGENDA_LIMIT} from './teacher-cards-engine.js';
 /** M17 classroom mode: transient UI state only. No student names, answers, accounts or analytics. */
 const $=id=>document.getElementById(id);
-const S={lesson:'fractions',step:0,role:0,revealed:false,projector:false,queue:[],labSubject:'maths',labId:null};
+const S={lesson:'fractions',step:0,role:0,revealed:false,projector:false,queue:[],labSubject:'maths',labId:null,agenda:[]};
 const lang=()=> $('lang')?.value==='hi'?'hi':'en';
 const txt=p=>classroomText(p,lang());
 const both=(en,hi)=>lang()==='hi'?hi:en;
@@ -26,7 +26,7 @@ function queueAction(type){
   render();$('classroom-step-heading').focus();return;
  }
  if(type==='clear'){
-  S.queue=lessonQueue(S.queue,{type:'clear'});S.step=0;S.role=0;S.revealed=false;S.projector=false;S.labSubject='maths';S.labId=null;S.lesson=CLASSROOM_IDS[0];
+  S.queue=lessonQueue(S.queue,{type:'clear'});S.step=0;S.role=0;S.revealed=false;S.projector=false;S.labSubject='maths';S.labId=null;S.agenda=[];S.lesson=CLASSROOM_IDS[0];
  }else S.queue=lessonQueue(S.queue,{type,id});
  render();queueChoice.focus();
 }
@@ -46,6 +46,49 @@ const labLink=make('a','btn outline compact');labLink.id='classroom-lab-open';
 const labClear=make('button','btn outline compact');labClear.id='classroom-lab-clear';labClear.type='button';
 const labActions=make('div','classroom-queue-actions');labActions.append(labLink,labClear);
 labPanel.append(labHeading,labNotice,subjectLabel,subjectSelect,labLabel,labSelect,labCaveat,labActions);organizer.after(labPanel);
+const agendaPanel=make('section','notice classroom-organizer');agendaPanel.id='classroom-demo-agenda';agendaPanel.setAttribute('aria-labelledby','classroom-agenda-heading');
+const agendaHeading=make('h3','');agendaHeading.id='classroom-agenda-heading';
+const agendaNotice=make('p',''),agendaLabel=make('label',''),agendaChoice=make('select',''),agendaStatus=make('p','');
+agendaChoice.id='classroom-agenda-choice';agendaLabel.htmlFor=agendaChoice.id;
+agendaStatus.id='classroom-agenda-status';agendaStatus.setAttribute('role','status');
+const agendaList=make('ol','');agendaList.id='classroom-agenda-list';
+const agendaActions=make('div','classroom-queue-actions'),agendaButtons={};
+for(const type of ['add','remove','up','down','clear']){
+ const b=make('button','btn outline compact');b.type='button';b.id='classroom-agenda-'+type;
+ b.addEventListener('click',()=>{
+  const selected=type==='add'?S.labId:agendaChoice.value;
+  if(type!=='clear'&&!selected)return;
+  S.agenda=teacherDemoAgenda(S.agenda,type==='clear'?{type}:{type,id:selected});
+  renderAgenda(type==='add'?selected:agendaChoice.value);agendaChoice.focus();
+ });
+ agendaActions.append(b);agendaButtons[type]=b;
+}
+agendaPanel.append(agendaHeading,agendaNotice,agendaLabel,agendaChoice,agendaActions,agendaStatus,agendaList);labPanel.after(agendaPanel);
+function renderAgenda(preferred=agendaChoice.value){
+ agendaHeading.textContent=both('Teacher demonstration agenda','शिक्षक प्रदर्शन योजना');
+ agendaNotice.textContent=both('Plan up to eight original draft models in this tab. Normal model opening keeps this agenda in the current tab. Reloading or opening a new tab does not carry the agenda. No learner information or saved plan.','इस टैब में आठ मूल मसौदा मॉडल तक क्रम में रखें। सामान्य मॉडल खोलने पर इसी टैब में योजना रहती है। पुनः लोड या नए टैब में योजना नहीं जाती। कोई विद्यार्थी जानकारी या सहेजी योजना नहीं।');
+ agendaLabel.textContent=both('Agenda item to move or remove','स्थान बदलने या हटाने का योजना मॉडल');
+ const rows=teacherAgendaRows(S.agenda,lang());
+ agendaChoice.replaceChildren();const blank=make('option','',both('Choose agenda item','योजना मॉडल चुनें'));blank.value='';agendaChoice.append(blank);
+ agendaList.replaceChildren();
+ for(const r of rows){
+  const o=make('option','',r.title);o.value=r.id;agendaChoice.append(o);
+  const li=make('li','');const title=make('strong','',r.title);const detail=make('p','small',r.caveat);
+  const link=make('a','',both('Open this offline model','यह ऑफ़लाइन मॉडल खोलें'));link.href=r.href;
+  link.addEventListener('click',event=>{if(event.defaultPrevented||event.button!==0||event.ctrlKey||event.metaKey||event.shiftKey||event.altKey)return;event.preventDefault();window.dispatchEvent(new CustomEvent('aifs-teacher-demo',{detail:r.id}));});
+  li.append(title,detail,link);agendaList.append(li);
+ }
+ agendaChoice.value=S.agenda.includes(preferred)?preferred:'';
+ const labels={add:['Add selected lab','चुना प्रयोग जोड़ें'],remove:['Remove agenda item','योजना मॉडल हटाएँ'],up:['Move earlier','पहले करें'],down:['Move later','बाद में करें'],clear:['Clear demonstration agenda','प्रदर्शन योजना मिटाएँ']};
+ for(const [type,b] of Object.entries(agendaButtons))b.textContent=both(...labels[type]);
+ const i=S.agenda.indexOf(agendaChoice.value);
+ agendaButtons.add.disabled=!S.labId||S.agenda.includes(S.labId)||S.agenda.length>=DEMO_AGENDA_LIMIT;
+ agendaButtons.remove.disabled=i<0;agendaButtons.up.disabled=i<=0;agendaButtons.down.disabled=i<0||i===S.agenda.length-1;
+ agendaButtons.clear.disabled=!S.agenda.length;
+ agendaStatus.textContent=both('Planned drafts: ','नियोजित मसौदे: ')+S.agenda.length+' / '+DEMO_AGENDA_LIMIT;
+}
+agendaChoice.addEventListener('change',()=>renderAgenda());
+
 function renderLabLauncher(){
  labHeading.textContent=both('Teacher lab launcher — original drafts','शिक्षक प्रयोग चयन — मूल मसौदे');
  labNotice.textContent=both('Choose a subject and draft model for a supervised demonstration. No approved grade mapping, real experiment or student record.','देखरेख में प्रदर्शन के लिए विषय और मसौदा मॉडल चुनें। कोई स्वीकृत कक्षा मिलान, वास्तविक प्रयोग या विद्यार्थी रिकॉर्ड नहीं।');
@@ -60,6 +103,7 @@ function renderLabLauncher(){
  const chosen=S.labId?teacherLabPlan(S.labSubject,S.labId,lang()):null;
  labLink.hidden=!chosen;
  if(chosen){labLink.href=chosen.href;labCaveat.textContent=chosen.caveat}else{labLink.removeAttribute('href');labCaveat.textContent=both('No lab selected. All models require review.','कोई प्रयोग नहीं चुना। सभी मॉडलों की समीक्षा बाकी है।')}
+ renderAgenda();
 }
 subjectSelect.addEventListener('change',()=>{S.labSubject=subjectSelect.value;S.labId=null;renderLabLauncher();subjectSelect.focus()});
 labSelect.addEventListener('change',()=>{S.labId=labSelect.value||null;renderLabLauncher();labSelect.focus()});
@@ -113,7 +157,7 @@ function render(){renderQueue();renderLabLauncher();const lesson=CLASSROOM_LESSO
  $('classroom-projector').textContent=S.projector?both('Exit projector view','प्रोजेक्टर दृश्य बंद करें'):both('Projector-friendly view','प्रोजेक्टर के लिए दृश्य');$('classroom-projector').setAttribute('aria-pressed',String(S.projector));
  $('classroom-worksheet').href=lesson.worksheet;$('classroom-worksheet').textContent=both('Original printable worksheet (external page on this site)','मूल प्रिंट करने योग्य कार्यपत्र (इसी साइट पर)');
  $('classroom-experiment').href=lesson.resource;$('classroom-experiment').textContent=both('Open existing M16 Virtual Lab','पहले से उपलब्ध M16 प्रयोगशाला खोलें');
- $('classroom-privacy').textContent=both('This mode keeps only the current lesson, planned lesson queue, step and generic group role in memory. No child names, answers, scores or classroom reports are stored or sent.','यह मोड केवल वर्तमान पाठ, पाठों का क्रम, चरण और सामान्य समूह भूमिका अस्थायी रूप से रखता है। बच्चों के नाम, उत्तर, अंक या रिपोर्ट सेव या भेजी नहीं जाती।');
+ $('classroom-privacy').textContent=both('This mode keeps only the current lesson, lesson queue, demonstration agenda, step and generic group role in memory. No child names, answers, scores or classroom reports are stored or sent.','यह मोड केवल वर्तमान पाठ, पाठों का क्रम, प्रदर्शन योजना, चरण और सामान्य समूह भूमिका अस्थायी रूप से रखता है। बच्चों के नाम, उत्तर, अंक या रिपोर्ट सेव या भेजी नहीं जाती।');
  document.body.classList.toggle('classroom-projector',S.projector);
 }
 function stepTo(delta){const dest=S.step+delta;if(dest<0||dest>=CLASSROOM_LESSONS[S.lesson].steps.length)return;S.step=dest;S.revealed=false;S.role=rotateAnonymousRole(S.role,delta===1?1:0);render();$('classroom-step-heading').focus()}
@@ -128,5 +172,5 @@ $('classroom-switch-role').addEventListener('click',()=>{S.role=rotateAnonymousR
 $('classroom-reveal').addEventListener('click',()=>{S.revealed=!S.revealed;render();$('classroom-reveal').focus()});
 $('classroom-projector').addEventListener('click',()=>{S.projector=!S.projector;render();$('classroom-projector').focus()});
 $('lang').addEventListener('change',render);
-window.addEventListener('aifs-history-cleared',()=>{S.queue=[];S.lesson=CLASSROOM_IDS[0];S.step=0;S.role=0;S.revealed=false;S.projector=false;S.labSubject='maths';S.labId=null;render()});
+window.addEventListener('aifs-history-cleared',()=>{S.queue=[];S.lesson=CLASSROOM_IDS[0];S.step=0;S.role=0;S.revealed=false;S.projector=false;S.labSubject='maths';S.labId=null;S.agenda=[];render()});
 render();

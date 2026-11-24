@@ -236,5 +236,6 @@ $('advanced-check').addEventListener('click',()=>{feedback=evaluateAdvanced(id,s
 $('advanced-compare-toggle').addEventListener('click',()=>{if(feedback===null)return;comparisonOpen=!comparisonOpen;render();$('advanced-compare-toggle').focus()});
 $('advanced-reset').addEventListener('click',()=>{reset();$('advanced-heading').focus()});
 $('lang').addEventListener('change',render);
+window.addEventListener('aifs-teacher-demo',event=>{if(!ADVANCED_IDS.includes(event.detail))return;id=event.detail;reset();$('advanced-heading').focus();});
 window.addEventListener('aifs-history-cleared',()=>{id=ADVANCED_IDS[0];reset()});
 render();
