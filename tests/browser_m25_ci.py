@@ -711,6 +711,27 @@ def run():
                     phone.locator('#extension-compare-restore').click()
                     check(phone.locator('#ratio-extension-values tr').first.locator('td').inner_text() == expected, 'M72 restore '+model)
                 report['checks'].append('M72 eight new offline activities and comparison')
+                for model, mode, control, expected, after in [
+                    ('right-triangle-ratio', 'similar-triangles', 'a', '10', '15'),
+                    ('integral-area', 'interval-area', 'w', '3', '4'),
+                    ('capacitor-charge', 'charge-compare', 'a', '4', '6'),
+                    ('magnetic-flux', 'surface-compare', 'b', '4', '6'),
+                    ('material-state', 'state-account', 's', '5', '6'),
+                    ('dynamic-balance', 'net-over-steps', 'f', '6', '9'),
+                    ('gas-exchange', 'symbolic-transfer', 'a', '4', '5'),
+                    ('plant-parts', 'leaf-diagram', 'a', '7', '9'),
+                ]:
+                    phone.locator('#advanced-topic').select_option(model)
+                    phone.locator('#ratio-extension-mode').select_option(mode)
+                    check(phone.locator('#ratio-extension-values tr').first.locator('td').inner_text() == expected, 'M73 initial result '+model)
+                    phone.locator('#extension-compare-mark').click()
+                    phone.locator('#ratio-extension-controls button[data-extension-action="inc:'+control+'"]').focus()
+                    phone.keyboard.press('Enter')
+                    check(phone.locator('#ratio-extension-values tr').first.locator('td').inner_text() == after, 'M73 changed result '+model)
+                    check(phone.locator('#extension-compare-changes li').count() == 1, 'M73 changed control '+model)
+                    phone.locator('#extension-compare-restore').click()
+                    check(phone.locator('#ratio-extension-values tr').first.locator('td').inner_text() == expected, 'M73 restore '+model)
+                report['checks'].append('M73 eight new offline activities and comparison')
                 phone.locator('#advanced-topic').select_option('heredity')
                 check('4' in phone.locator('#advanced-values').inner_text(), 'Offline model result missing')
                 check(phone.locator('#local-guide-topic option').count() == 60, 'Offline practice guide missing')
@@ -841,6 +862,14 @@ def run():
                     ('chemistry', 'alkane-count', 'formula-compare'),
                     ('biology', 'heredity', 'grid-counts'),
                     ('biology', 'plant-process', 'oxygen-account'),
+                    ('maths', 'right-triangle-ratio', 'similar-triangles'),
+                    ('maths', 'integral-area', 'interval-area'),
+                    ('physics', 'capacitor-charge', 'charge-compare'),
+                    ('physics', 'magnetic-flux', 'surface-compare'),
+                    ('chemistry', 'material-state', 'state-account'),
+                    ('chemistry', 'dynamic-balance', 'net-over-steps'),
+                    ('biology', 'gas-exchange', 'symbolic-transfer'),
+                    ('biology', 'plant-parts', 'leaf-diagram'),
                 ]:
                     phone.locator('#lab-print-subject').select_option(subject)
                     phone.locator('#lab-print-model').select_option(model)
@@ -858,7 +887,7 @@ def run():
                     check(phone.locator('#teacher-guidance').is_hidden(), 'Supplement print leaked teacher guidance')
                     phone.emulate_media(media='screen')
                     phone.locator('#card-language').select_option('hi')
-                phone.locator('#lab-print-model').select_option('plant-parts')
+                phone.locator('#lab-print-model').select_option('living-examples')
                 check(phone.locator('#lab-print-activity').is_hidden(), 'Supplement selector visible for unrelated model')
                 check(phone.locator('#lab-print-activity').input_value() == 'main', 'Old supplement retained across models')
                 report['checks'].append('M66 all six bilingual supplemental offline worksheets and print isolation')
