@@ -8,3 +8,5 @@ Commands:
 - node tools/reviewer-rubric.mjs --check rubric-pilot.json
 
 Local ignored review-evidence/ only; no overwrite. Every record is bound to the canonical content version and hash. Distinct subject/language opaque references, valid dates, evidence reference and rationale required. Revision/reject cannot count as audit-ready; only accessibility may have a documented not-applicable decision. Do not store names, school/child data, private signed URLs or confidential source files here; keep underlying evidence in an authorized secure workflow. The rubric is not independently calibrated, reviewer references are not authentication, no decision writes to source queues, no educational or launch approval. Exact-head CI pending. No new DONE_VERIFIED items.
+
+M46 candidate inventory: 68 pilot-first records (408 criteria), 3,332 full records (19,992 criteria). Previous counts are historical. No new human reviews or rubric approval.

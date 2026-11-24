@@ -4,9 +4,9 @@ import {buildReviewRows} from '../tools/build-review-packet.mjs';
 import {RUBRIC,makeRubricWorklist,validateRubricWorklist} from '../tools/reviewer-rubric.mjs';
 const rows=buildReviewRows(),base=makeRubricWorklist(rows),check=x=>validateRubricWorklist(x,rows);
 test('M45 six draft review criteria on every pilot and full-inventory record, all pending',()=>{
- assert.equal(RUBRIC.length,6);assert.equal(base.records.length,60);
- const r=check(base);assert.equal(r.valid,true,r.errors.join('; '));assert.equal(r.criteriaChecked,360);assert.equal(r.readyForIndependentAudit,0);
- const all=makeRubricWorklist(rows,'all');assert.equal(all.records.length,3324);assert.equal(validateRubricWorklist(all,rows).criteriaChecked,19944);
+ assert.equal(RUBRIC.length,6);assert.equal(base.records.length,68);
+ const r=check(base);assert.equal(r.valid,true,r.errors.join('; '));assert.equal(r.criteriaChecked,408);assert.equal(r.readyForIndependentAudit,0);
+ const all=makeRubricWorklist(rows,'all');assert.equal(all.records.length,3332);assert.equal(validateRubricWorklist(all,rows).criteriaChecked,19992);
  assert.equal(r.rubricApproved,false);assert.equal(r.humanApprovalAuthenticated,false);assert.equal(r.publicReleaseApproved,false);
 });
 test('M45 structurally filled synthetic evidence can only become audit-ready, never approved',()=>{

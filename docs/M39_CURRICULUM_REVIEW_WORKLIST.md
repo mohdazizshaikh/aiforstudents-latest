@@ -15,3 +15,5 @@ The CLI only accepts a simple JSON filename under ignored review-evidence/, writ
 M40 integrated baseline 67eac4145b01517e870e2a526f9e6b0d01859393; M40 exact-head CI 45355061767 and 45355043302 passed. M39 original tests passed (45354212960), then worklist inventory and tests were reconciled against the new 36-model baseline. Combined-head CI required. No chapter approval.
 
 M39 merged in 2574f2b47989cc47639f6bd3cd9e8f311d3a743c after CI 45376279051 passed. M41 extends the catalog to 44 interactive models and 46 canonical review records. Combined candidate requires exact-head CI. Historical M40 baseline remains valid as a checkpoint, not the current inventory.
+
+M46 candidate expands to 52 models and 54 canonical linked review records across all 48 nonempty illustrative slots; 3,332 pending educational records. This is not comprehensive chapter coverage. Historical counts above describe the previous checkpoints.
