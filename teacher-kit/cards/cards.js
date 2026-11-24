@@ -1,5 +1,5 @@
 import {CLASSROOM_IDS,CLASSROOM_LESSONS,classroomText} from '../../assets/classroom-engine.js';
-import {printableClassroomCard,printableAssignmentPack,printableAnyLabActivity,teacherPrintableOptions,TEACHER_LAB_SUBJECTS,teacherPrintableSupplementOptions,TEACHER_ACTIVITY_KINDS,searchTeacherResources,TEACHER_QUERY_LIMIT,teacherActivityLaunch,LAB_PACK_LIMIT,editLabPack,printableLabPack} from '../../assets/teacher-cards-engine.js';
+import {printableClassroomCard,printableAssignmentPack,printableAnyLabActivity,teacherPrintableOptions,TEACHER_LAB_SUBJECTS,teacherPrintableSupplementOptions,TEACHER_ACTIVITY_KINDS,searchTeacherResources,TEACHER_QUERY_LIMIT,teacherActivityLaunch,resolveMainWorksheet,LAB_PACK_LIMIT,editLabPack,printableLabPack} from '../../assets/teacher-cards-engine.js';
 const $=id=>document.getElementById(id);
 const lang=()=>$('card-language').value;
 let labPack=[];
@@ -182,4 +182,15 @@ for(const id of ['card-language','card-lesson','card-step','card-view'])$(id).ad
  if(id==='card-lesson')$('card-step').value='0';
  render();$(activeHeading()).focus();
 });
-render();
+// Resolve the URL once. It contains only an allowlisted model ID and language, never a response.
+const initialWorksheet=resolveMainWorksheet(location.search);
+if(initialWorksheet){
+ $('card-language').value=initialWorksheet.language;
+ $('card-view').value='lab';
+ render();
+ $('lab-print-subject').value=initialWorksheet.subject;
+ renderLab(lang());
+ $('lab-print-model').value=initialWorksheet.id;
+ $('lab-print-activity').value='main';
+ renderLab(lang());
+}else render();

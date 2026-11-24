@@ -1,3 +1,4 @@
+import {renderMainWorksheetLink} from './teacher-cards-engine.js';
 /** M31 standalone Science Lab controls: no student data, no network, no roster, no AI inference.
  * Native HTML buttons + named textual states; draft teaching content unreviewed.
  */
@@ -95,6 +96,7 @@ function render(){
  $('science-notice').textContent=p('UNREVIEWED drafts. Subject/Hindi teacher review and verified textbook mapping are pending.','असमीक्षित प्रारूप। विषय व हिंदी शिक्षकों की समीक्षा तथा सत्यापित पाठ्यपुस्तक मिलान बाकी है।');
  const tabs=$('science-tabs');tabs.replaceChildren();
  for(const id of SCIENCE_IDS)tabs.append(actionButton('mode:'+id,t(SCIENCE_MODELS[id].title),S.id===id));
+ renderMainWorksheetLink($('science-worksheet-link'),'science/'+S.id,lang());
  $('science-heading').textContent=t(model.title);
  $('science-stage').textContent=p(`Stage ${S.stage+1}/5: ${name.toUpperCase()}`,`चरण ${S.stage+1}/5: ${({learn:'सीखें',try:'आज़माएँ',play:'खेलें',understand:'समझें',grow:'आगे बढ़ें'})[name]}`);
  $('science-concept').textContent=t(model.concept);

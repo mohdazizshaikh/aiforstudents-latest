@@ -1,3 +1,4 @@
+import {renderMainWorksheetLink} from './teacher-cards-engine.js';
 import {createMiniSnapshotPanel} from './mini-snapshot-panel.js';
 /** M16 interactive virtual experiments. All input stays in current browser. */
 import {EXPERIMENTS,EXPERIMENT_IDS,EXPERIMENT_VERSION,experimentTask,experimentText,relation,bulbLit,evaluateExperiment,experimentSummary,WORKSHOP_MODES,WORKSHOP_CONTENT,evaluateWorkshop} from './experiment-engine.js';
@@ -85,6 +86,7 @@ function renderWorkshop(){
  $('math-workshop-intro').textContent=workshopLang('Practice with buttons or keyboard, without dragging or student accounts. Draft, not an approved Class 1–12 syllabus.','बिना खींचे बटन या कीबोर्ड से अभ्यास करें। खाता नहीं चाहिए। यह मसौदा है, मान्यता प्राप्त कक्षा 1–12 पाठ्यक्रम नहीं।');
  const tabs=$('math-workshop-tabs');tabs.replaceChildren();
  for(const name of WORKSHOP_MODES)tabs.append(workshopButton('mode:'+name,workshopPair(WORKSHOP_CONTENT[name].title),W.mode===name));
+ renderMainWorksheetLink($('workshop-worksheet-link'),'maths/'+W.mode,$('lang').value==='hi'?'hi':'en');
  $('math-workshop-question').textContent=workshopPair(meta.prompt);
  $('math-workshop-hint').textContent=workshopPair(meta.hint);
  const control=$('math-workshop-controls');control.replaceChildren();

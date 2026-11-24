@@ -1,3 +1,4 @@
+import {renderMainWorksheetLink} from './teacher-cards-engine.js';
 /** M33: original draft-only conceptual labs, all activity state is transient. */
 import {ADVANCED_IDS,modelAdvanced,evaluateAdvanced,advancedResultRows,advancedExampleFeedback,advancedVariableComparison,ADVANCED_SUBJECT_FILTERS,advancedSubjectOptions,ADVANCED_GUIDED_STAGES,advancedGuidedStage,advancedExtensionIds,advancedExtension,evaluateAdvancedExtension,findAdvancedConcepts,compareAdvancedExtension} from './advanced-lab-engine.js';
 import {SNAPSHOT_LIMIT,snapshotState,restoreSnapshot,snapshotRows,removeSnapshot} from './advanced-snapshots.js';
@@ -308,6 +309,7 @@ function render(){
  const options=advancedSubjectOptions(subjectFilter,lang()),select=$('advanced-topic');select.replaceChildren();
  for(const item of options){const o=node('option',item.title);o.value=item.id;select.append(o)}select.value=id;
  $('advanced-filter-count').textContent=p(options.length+' original draft concepts; no verified grade placement.',options.length+' मूल मसौदा अवधारणाएँ; कोई सत्यापित कक्षा मिलान नहीं।');
+ renderMainWorksheetLink($('advanced-worksheet-link'),id,lang());
  $('advanced-heading').textContent=t(m.title);$('advanced-prompt').textContent=t(m.prompt);$('advanced-hint').textContent=t(m.hint);$('advanced-caveat').textContent=t(m.caveat);
  $('advanced-result-caption').textContent=p('Calculated model values (not observations)','गणना किए गए मॉडल मान (वास्तविक अवलोकन नहीं)');
  $('advanced-field-label').textContent=p('Quantity','राशि');$('advanced-value-label').textContent=p('Value','मान');
