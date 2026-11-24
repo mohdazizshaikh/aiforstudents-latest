@@ -13,3 +13,7 @@ Tests validate fixed model inventory, bilingual labels, subject consistency, all
 ## Remaining gates
 
 Full Class 1–12 content authoring, subject/Hindi review, school pilot, real deployment, legal/child safety, approved-source retrieval and validated mastery remain incomplete. No public release approval.
+
+## M36 first CI correction
+
+Push CI 45352316632: Node/static job passed, Chromium failed navigating to the precached `/virtual-experiment-lab/#curriculum-discovery` URL offline. Service worker navigation cache key now strips the fragment as well as query, preserving the original browser navigation URL; only exact allowlisted static paths are returned. Cache suffix incremented to m36-r2. Existing offline fragment browser regression stays intact; corrected head still needs CI.

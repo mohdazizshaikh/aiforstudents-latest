@@ -19,3 +19,7 @@ test('M36 existing cached guide embeds exact generated static disclosure markup 
  assert.ok(home.includes('virtual-experiment-lab/#curriculum-discovery'));assert.ok(sw.includes('./virtual-experiment-lab/'));
  assert.doesNotMatch(renderDiscovery(d),/<script|<input|https?:/);
 });
+
+test('M36 offline navigation key excludes query and fragment before exact static allowlist check',()=>{
+ const sw=read('service-worker.js');assert.match(sw,/if\(nav\)\{bare\.search='';bare\.hash='';\}/);assert.match(sw,/if\(!allowed\.has\(key\)\)return/);
+});
