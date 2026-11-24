@@ -1,5 +1,5 @@
 {
-  "release": "M53 verified prototype / M54 review batch candidate — PRIVATE ONLY",
+  "release": "M54 verified prototype / M55 variable exploration candidate — PRIVATE ONLY",
   "release_date": "2026-11-24",
   "hosting_zip": "aiforstudents_hostinger_staging_m33.zip",
   "source_zip": "aiforstudents_m33_source_tests.zip",
@@ -22,7 +22,7 @@
   "study_question_records": 32,
   "study_items_expert_approved": 0,
   "isolated_browser_study_checks": 32,
-  "currentMilestone": "M53_VERIFIED_M54_REVIEW_BATCH_CANDIDATE",
+  "currentMilestone": "M54_VERIFIED_M55_VARIABLE_EXPLORATION_CANDIDATE",
   "status": "private-staging-prototype-unreviewed",
   "date": "2026-11-24",
   "studioLessons": 2,
@@ -114,9 +114,9 @@
   "printableLabActivityApprovals": 0,
   "printableLabActivityStoresStudentData": false,
   "verifiedCheckpoint": {
-    "milestone": "M53",
-    "mergeSha": "5325521774e89de2f84e141367488ece657060d5",
-    "ciRun": 45447537186
+    "milestone": "M54",
+    "mergeSha": "e7624d80e1fef13bb6cca29c7c8684cc5a7a81da",
+    "ciRun": 45449812650
   },
   "legacyPackagingBaseline": "M33 artifact filenames and historical baseline counters retained; not latest test counts or live deployment evidence",
   "interactiveDraftModels": 60,
@@ -125,7 +125,7 @@
   "cbsePendingMappingReviewChecks": 110,
   "adultOnlyRehearsalChecklist": true,
   "realChildPilotAuthorized": false,
-  "reviewBatchCandidate": true,
+  "reviewBatchCandidate": false,
   "reviewBatchCount": 34,
   "reviewBatchPilotRecords": 76,
   "reviewBatchPendingCriteria": 20040,
@@ -133,5 +133,7 @@
   "variableExplorationDraft": true,
   "variableExplorationModels": 48,
   "variableExplorationPersists": false,
-  "variableExplorationMasteryValidated": false
+  "variableExplorationMasteryValidated": false,
+  "reviewBatchEngineeringVerified": true,
+  "variableExplorationCandidate": true
 }

@@ -8,3 +8,5 @@ Commands:
 - node tools/review-batches.mjs --check pilot-review
 
 Each new local ignored review-evidence/ directory contains a source-derived bilingual CSV and blank M45 rubric JSON; refuses existing directories. Reviewers use opaque references, no personal data or private source uploads. Structural completeness is audit-ready only, not authenticated reviewer approval. No canonical queue writes, no child data, no publication. FP-098 and educational/rights gates remain blocked. 70/100 scoped items unchanged. Exact-head CI pending.
+
+Verified checkpoint: exact-head CI 45449812650 passed, merged PR #43 at e7624d80e1fef13bb6cca29c7c8684cc5a7a81da. Initial draft assumed numeric content versions; canonical review packet actually normalizes versions to strings, corrected before passing CI. No human reviews completed.
