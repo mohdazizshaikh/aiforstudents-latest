@@ -446,6 +446,11 @@ def run():
                 check(phone.locator('#teacher-guidance').evaluate('(e) => getComputedStyle(e).display') == 'none',
                       'Offline print card shows teacher guidance')
                 phone.emulate_media(media='screen')
+                phone.goto(origin + '/?lang=hi', wait_until='load')
+                check(phone.locator('#lang').input_value() == 'hi', 'Offline query-driven language navigation broke')
+                check(phone.locator('#advanced-topic option').count() == 12, 'Offline query page module not available')
+                phone.goto(origin + '/teacher-kit/cards/index.html', wait_until='load')
+                check(phone.locator('#card-answer').inner_text() != '', 'Offline index.html route alias broke')
                 for route in ["/games/creative-studio/","/games/fix-the-machine/","/games/number-market/","/games/pattern-quest/","/games/perspective-explorer/","/games/shape-builder/","/games/story-detective/","/games/strategy-island/"]:
                     phone.goto(origin + route, wait_until='load')
                     check(phone.locator('h1').inner_text() != '', 'Offline guide missing: ' + route)

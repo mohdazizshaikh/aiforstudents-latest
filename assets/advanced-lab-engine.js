@@ -82,11 +82,11 @@ export const ADVANCED_MODELS={
  },
  'mass-balance':{
   subject:'chemistry',title:P('Symbolic conservation of mass','द्रव्यमान संरक्षण का प्रतीकात्मक मॉडल'),
-  prompt:P('In a closed ideal model, set symbolic reactant masses to 4 g and 5 g. Total = 9 g.','बंद आदर्श मॉडल में अभिकारकों का प्रतीकात्मक द्रव्यमान 4 g और 5 g रखें। कुल = 9 g।'),
-  hint:P('Set A = 4 g and B = 5 g. Add them; no reaction is performed.','A = 4 g और B = 5 g रखें। जोड़ें; कोई प्रतिक्रिया नहीं कराई जाती।'),
+  prompt:P('In a closed ideal model, make input masses 4 g and 5 g; choose product masses 6 g and 3 g. Both totals must match.','बंद आदर्श मॉडल में अभिकारक 4 g और 5 g तथा उत्पाद 6 g और 3 g चुनें। दोनों कुल बराबर होने चाहिए।'),
+  hint:P('Compare total inputs and proposed total outputs. Unequal totals do not satisfy this closed-system model. No reaction is performed.','कुल अभिकारक और प्रस्तावित कुल उत्पाद मिलाएँ। अलग कुल बंद प्रणाली के मॉडल में सही नहीं हैं। कोई वास्तविक प्रतिक्रिया नहीं है।'),
   caveat:P('Closed-system symbolic accounting only; not a recipe, real mixing, combustion or proof of an actual reaction.','यह केवल बंद-प्रणाली प्रतीकात्मक जोड़ है; असली मिश्रण, दहन या रासायनिक क्रिया का निर्देश नहीं।'),
-  fields:[N('a','Mass A','द्रव्यमान A',1,10,1,'g'),N('b','Mass B','द्रव्यमान B',1,10,1,'g')],
-  initial:{a:2,b:3},target:{a:4,b:5}
+  fields:[N('a','Input A','अभिकारक A',1,10,1,'g'),N('b','Input B','अभिकारक B',1,10,1,'g'),N('c','Proposed product C','प्रस्तावित उत्पाद C',1,10,1,'g'),N('d','Proposed product D','प्रस्तावित उत्पाद D',1,10,1,'g')],
+  initial:{a:2,b:3,c:2,d:4},target:{a:4,b:5,c:6,d:3}
  },
  ecosystem:{
   subject:'biology',title:P('Different ecosystem interactions','पारितंत्र में अलग-अलग संबंध'),
@@ -151,8 +151,8 @@ export function calculateAdvanced(id,state){
    const [symbol,period,group]=ELEMENTS[state.atomic-1];
    return {atomicNumber:state.atomic,symbol,period,group};
   }
-  case 'mass-balance':return {massA:state.a,massB:state.b,totalG:state.a+state.b,productTotalG:state.a+state.b};
-  case 'ecosystem':return {interaction:{'flower-bee':'pollination example','frog-insect':'predation example','fungus-leaf':'decomposition example'}[state.pair]};
+  case 'mass-balance':return {massA:state.a,massB:state.b,totalG:state.a+state.b,productC:state.c,productD:state.d,productTotalG:state.c+state.d,balanced:state.a+state.b===state.c+state.d};
+  case 'ecosystem':return {interaction:{'flower-bee':'pollination example','frog-insect':'predation example','fungus-leaf':'decomposition example'}[state.pair],foodWeb:'Illustrative food web'};
   case 'heredity':{
    const genes=x=>x.split('');
    const ratios={AA:0,Aa:0,aa:0};
@@ -170,9 +170,9 @@ const LABELS={
  periodMs:P('Period (ms)','आवर्तकाल (ms)'),frequencyHz:P('Frequency (Hz)','आवृत्ति (Hz)'),relativeAmplitude:P('Relative amplitude','सापेक्ष आयाम'),
  interaction:P('Interaction','संबंध'),speedA:P('Speed A (m/s)','चाल A (m/s)'),speedB:P('Speed B (m/s)','चाल B (m/s)'),equalSpeed:P('Equal speeds','समान चाल'),
  atomicNumber:P('Atomic number','परमाणु क्रमांक'),symbol:P('Symbol','प्रतीक'),period:P('Period','आवर्त'),group:P('Group','समूह'),
- massA:P('Mass A (g)','द्रव्यमान A (g)'),massB:P('Mass B (g)','द्रव्यमान B (g)'),totalG:P('Reactant total (g)','अभिकारक कुल (g)'),productTotalG:P('Product total (g)','उत्पाद कुल (g)'),genotypeGrid:P('Hypothetical genotype counts','काल्पनिक जीनोटाइप संख्या'),outcomes:P('Grid cells','तालिका खाने')
+ massA:P('Input A (g)','अभिकारक A (g)'),massB:P('Input B (g)','अभिकारक B (g)'),totalG:P('Reactant total (g)','अभिकारक कुल (g)'),productTotalG:P('Product total (g)','उत्पाद कुल (g)'),productC:P('Proposed product C (g)','प्रस्तावित उत्पाद C (g)'),productD:P('Proposed product D (g)','प्रस्तावित उत्पाद D (g)'),balanced:P('Mass totals match','द्रव्यमान के कुल बराबर'),foodWeb:P('Example food → consumer paths','उदाहरण भोजन → उपभोक्ता मार्ग'),genotypeGrid:P('Hypothetical genotype counts','काल्पनिक जीनोटाइप संख्या'),outcomes:P('Grid cells','तालिका खाने')
 };
-const VALUE_LABELS={attract:P('Attract','आकर्षण'),repel:P('Repel','प्रतिकर्षण'),'pollination example':P('Pollination example','परागण उदाहरण'),'predation example':P('Predation example','परभक्षण उदाहरण'),'decomposition example':P('Decomposition example','अपघटन उदाहरण')};
+const VALUE_LABELS={'Illustrative food web':P('Grass → grasshopper → frog; grass → mouse → snake; frog → snake. Real webs vary.','घास → टिड्डा → मेंढक; घास → चूहा → साँप; मेंढक → साँप। वास्तविक खाद्य-जाल अलग होते हैं।'),attract:P('Attract','आकर्षण'),repel:P('Repel','प्रतिकर्षण'),'pollination example':P('Pollination example','परागण उदाहरण'),'predation example':P('Predation example','परभक्षण उदाहरण'),'decomposition example':P('Decomposition example','अपघटन उदाहरण')};
 export function advancedResultRows(metrics,lang='en'){
  return Object.entries(metrics).map(([k,v])=>({label:text(LABELS[k]||P(k,k),lang),value:v===null?text(P('Undefined: empty bag','अपरिभाषित: खाली थैली'),lang):typeof v==='boolean'?text(v?P('Yes','हाँ'):P('No','नहीं'),lang):typeof v==='object'?Object.entries(v).map(([a,b])=>a+': '+b).join(', '):typeof v==='number'?String(Number(v.toFixed(4))):text(VALUE_LABELS[v]||P(v,v),lang)}));
 }

@@ -13,8 +13,8 @@
 | Magnetism | ideal attraction/repulsion; no real equipment |
 | Measurement | two synthetic distance/time readings, explicit m/s and exact cross-multiplication |
 | Periodic explorer | first 20 elements only, atomic number, symbol, group, period |
-| Mass accounting | symbolic closed-system input/output total, no real reaction or recipe |
-| Ecosystem | pollination, predation and decomposition examples, limitations of simplified relationships |
+| Mass accounting | four proposed symbolic input/output masses, exact balance/mismatch tests, no real reaction or recipe |
+| Ecosystem | pollination, predation, decomposition and a small illustrative food web; arrows from food to consumer, ecological uncertainty |
 | Inheritance | hypothetical abstract single-gene Punnett grid, never actual human traits or diagnosis |
 
 Periodic data checked against the **IUPAC Periodic Table of the Elements, 4 May 2022**: https://iupac.org/wp-content/uploads/2022/07/IUPAC_Periodic_Table-04May22_CRA.pdf (page 1). Only independently transcribed factual symbols, atomic numbers, periods and groups are used, not a copied table graphic or lesson. No claim IUPAC approves this educational implementation.
@@ -26,3 +26,5 @@ Dedicated transient storage-only reset signal supplements BroadcastChannel. Remo
 
 ## Release state
 No public child-facing deployment, generative AI tutor, validated mastery, complete board chapter map, real teacher administration or school pilot. Four B1 external expert tasks still blocked. Track per-item acceptance and distinguish REVIEW_PENDING from DONE_VERIFIED. Subject/Hindi review, six accountable child safety/legal gates, actual HTTPS staging/rollback, physical accessibility and school approvals remain pending.
+
+Offline cache now covers all 24 HTML routes and script/style imports. Query-driven navigation and canonical directory/index aliases are explicitly tested; only allowlisted static content is read from the cache. New output diagrams have equivalent numeric/text tables. Print media uses black text and white backgrounds; physical printer and assistive device evidence still pending.

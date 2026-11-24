@@ -4,3 +4,5 @@ select{border:1px solid #6f9f90;border-radius:9px;padding:9px;background:white;c
 #learner-card{max-width:850px}#teacher-guidance{border-left:4px solid #145d4d;padding:13px;background:#e6f4eb}
 #card-heading{font-size:1.4rem}button:focus-visible,select:focus-visible{outline:3px solid #ac7b2d;outline-offset:3px}
 @media print{.no-print,.teacher-notes,#teacher-guidance{display:none!important}#learner-card{border:1px solid #222;color:#111;break-inside:avoid}body{font-size:14pt}#learner-card .writing{height:80px}#card-heading{color:black}}
+
+@media print{#learner-card,#learner-card h2,#learner-card h3,#learner-card p{background:#fff!important;color:#000!important}#teacher-guidance{display:none!important}}

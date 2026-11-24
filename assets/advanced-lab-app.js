@@ -13,7 +13,7 @@ const button=(text,action,label,disabled=false,pressed=null)=>{
 };
 function visualize(metrics){
  const host=$('advanced-visual');host.replaceChildren();
- if(!['symmetry','coordinate','sound','probability','ratio-algebra','heredity'].includes(id))return;
+ 
  const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');
  svg.setAttribute('viewBox','0 0 320 180');svg.setAttribute('aria-hidden','true');
  const shape=(tag,attrs)=>{const e=document.createElementNS(svg.namespaceURI,tag);for(const [k,v] of Object.entries(attrs))e.setAttribute(k,String(v));svg.append(e);return e};
@@ -34,8 +34,34 @@ function visualize(metrics){
   for(let g=0;g<state.groups;g++)for(let j=0;j<state.each;j++)shape('circle',{cx:24+g*29,cy:14+j*15,r:5,fill:'#26785d'});
  }else if(id==='heredity'){
   for(let r=0;r<2;r++)for(let c=0;c<2;c++){shape('rect',{x:30+c*130,y:15+r*75,width:130,height:75,fill:'#e5f2ec',stroke:'#73968a'});txt(77+c*130,55+r*75,[state.one[r],state.two[c]].sort().join(''))}
- }else{
+ }else if(id==='probability'){
   const total=metrics.total;if(total){shape('rect',{x:20,y:40,width:280*state.red/total,height:32,fill:'#a63d42'});shape('rect',{x:20+280*state.red/total,y:40,width:280*state.blue/total,height:32,fill:'#346b9e'});txt(20,30,p('Model bag','मॉडल थैली'));if(metrics.sampleSize){shape('rect',{x:20,y:110,width:280*metrics.sampleProportion,height:32,fill:'#a63d42'});shape('rect',{x:20+280*metrics.sampleProportion,y:110,width:280*(1-metrics.sampleProportion),height:32,fill:'#346b9e'});txt(20,100,p('Simulated sample','कल्पित नमूना'))}}
+ }else if(id==='periodic'){
+  const groups=[1,2,13,14,15,16,17,18];
+  const symbols='H He Li Be B C N O F Ne Na Mg Al Si P S Cl Ar K Ca'.split(' ');
+  const positions=[[1,0],[1,7],[2,0],[2,1],[2,2],[2,3],[2,4],[2,5],[2,6],[2,7],[3,0],[3,1],[3,2],[3,3],[3,4],[3,5],[3,6],[3,7],[4,0],[4,1]];
+  groups.forEach((g,i)=>txt(24+i*35,16,String(g)));
+  positions.forEach(([r,c],i)=>{
+   const x=14+c*36,y=22+(r-1)*36;
+   shape('rect',{x,y,width:33,height:33,fill:i+1===state.atomic?'#b8dfc8':'#f3f8f6',stroke:i+1===state.atomic?'#165c44':'#91aca0','stroke-width':i+1===state.atomic?2:1});
+   txt(x+3,y+11,String(i+1));txt(x+7,y+25,symbols[i])
+  });
+ }else if(id==='measurement'||id==='mass-balance'||id==='temperature'){
+  let a,b,la,lb;
+  if(id==='measurement'){a=metrics.speedA;b=metrics.speedB;la=p('Speed A (m/s)','चाल A (m/s)');lb=p('Speed B (m/s)','चाल B (m/s)')}
+  else if(id==='mass-balance'){a=metrics.totalG;b=metrics.productTotalG;la=p('Inputs (g)','अभिकारक (g)');lb=p('Proposed outputs (g)','प्रस्तावित उत्पाद (g)')}
+  else{a=metrics.idealDeltaC;b=0;la=p('Ideal temperature change (°C)','आदर्श तापमान परिवर्तन (°C)');lb=p('Baseline change (°C)','आधार परिवर्तन (°C)')}
+  const max=Math.max(a,b,1);
+  [[a,la,40],[b,lb,110]].forEach(([v,l,y])=>{txt(15,y-8,l);shape('rect',{x:15,y,width:260*v/max,height:24,fill:'#39826b'});txt(18,y+39,String(Number(v.toFixed(3))))})
+ }else if(id==='magnetism'){
+  const block=(x,pol)=>{shape('rect',{x,y:60,width:70,height:50,rx:5,fill:pol==='N'?'#b04b48':'#426eac'});const t=shape('text',{x:x+29,y:91,fill:'#fff','font-size':16});t.textContent=pol};
+  block(32,state.a);block(218,state.b);txt(110,140,metrics.interaction==='attract'?p('Attraction','आकर्षण'):p('Repulsion','प्रतिकर्षण'));
+  const direction=metrics.interaction==='attract';txt(114,88,direction?'→':'←');txt(185,88,direction?'←':'→')
+ }else if(id==='ecosystem'){
+  const pts=[[30,20],[145,20],[260,20],[145,120],[260,120]],labels=[p('Grass','घास'),p('Grasshopper','टिड्डा'),p('Frog','मेंढक'),p('Mouse','चूहा'),p('Snake','साँप')];
+  const edge=(a,b)=>{const [x1,y1]=pts[a],[x2,y2]=pts[b],dx=x2-x1,dy=y2-y1,len=Math.hypot(dx,dy),ex=x2-dx*22/len,ey=y2-dy*22/len;line(x1+dx*22/len,y1+dy*22/len,ex,ey,'#477d66',2);shape('polygon',{points:ex+','+ey+' '+(ex-dx*9/len+dy*4/len)+','+(ey-dy*9/len-dx*4/len)+' '+(ex-dx*9/len-dy*4/len)+','+(ey-dy*9/len+dx*4/len),fill:'#477d66'})};
+  [[0,1],[1,2],[0,3],[3,4],[2,4]].forEach(([a,b])=>edge(a,b));
+  pts.forEach(([x,y],i)=>{shape('circle',{cx:x,cy:y,r:18,fill:'#d8eee3',stroke:'#4c806c'});txt(Math.max(2,x-22),y+34,labels[i])})
  }
  host.append(svg)
 }

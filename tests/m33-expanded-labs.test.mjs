@@ -59,8 +59,8 @@ test('M33 chemistry: IUPAC 2022 first-20 symbol/group/period reference and symbo
   const r=calculateAdvanced('periodic',{atomic});
   assert.deepEqual(r,{atomicNumber:atomic,symbol:symbols[atomic-1],group:groups[atomic-1],period:atomic<=2?1:atomic<=10?2:atomic<=18?3:4});
  }
- for(let a=1;a<=10;a++)for(let b=1;b<=10;b++){
-  const r=calculateAdvanced('mass-balance',{a,b});assert.equal(r.totalG,a+b);assert.equal(r.productTotalG,a+b)
+ for(let a=1;a<=10;a++)for(let b=1;b<=10;b++)for(let c=1;c<=10;c++)for(let d=1;d<=10;d++){
+  const r=calculateAdvanced('mass-balance',{a,b,c,d});assert.equal(r.totalG,a+b);assert.equal(r.productTotalG,c+d);assert.equal(r.balanced,a+b===c+d)
  }
  assert.match(read('docs/M33_EXPANDED_LABS_QA.md'),/IUPAC_Periodic_Table-04May22_CRA.pdf/);
 });
@@ -73,6 +73,7 @@ test('M33 Biology: simplified interactions and abstract Mendelian grid, never pe
  assert.deepEqual(calculateAdvanced('heredity',{one:'Aa',two:'Aa'}).genotypeGrid,{AA:1,Aa:2,aa:1});
  assert.deepEqual(calculateAdvanced('heredity',{one:'AA',two:'aa'}).genotypeGrid,{AA:0,Aa:4,aa:0});
  assert.match(ADVANCED_MODELS.heredity.caveat[0],/not human genetic diagnosis/);
+ assert.match(evaluateAdvanced('ecosystem',{pair:'flower-bee'},'en').explanation,/Grass → grasshopper → frog/);
 });
 test('M33 review packet includes twelve newly pending versioned draft records and complete controls',()=>{
  const q=auditContentQueues();assert.equal(q.total,3304);assert.equal(q.pending,3304);assert.equal(q.counts.advanced.pending,12);
