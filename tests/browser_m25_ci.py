@@ -183,7 +183,7 @@ def run():
                 report['checks'].append('M31 reflection, safe chemistry sorter, cell text and Hindi/English equivalence')
 
                 # M32: no chatbot or private learner data; only fixed source-backed drafts.
-                check(page.locator('#local-guide-topic option').count() == 52,
+                check(page.locator('#local-guide-topic option').count() == 60,
                       'M32 local hint selector expected twelve fixed draft source topics')
                 page.locator('#local-guide-topic').select_option('science:motion')
                 page.locator('#local-guide-hint').click()
@@ -253,9 +253,9 @@ def run():
                 cards.close()
                 report['checks'].append('M32 standalone A4 learner card excludes teacher answers during print')
                 # M33: exercise all new bounded lab modes, graph and independent controls.
-                check(page.locator('#advanced-topic option').count() == 40, 'Expanded lab modes missing')
+                check(page.locator('#advanced-topic option').count() == 48, 'Expanded lab modes missing')
                 for key in ['ratio-algebra','symmetry','coordinate','probability','temperature','sound',
-                            'magnetism','measurement','periodic','mass-balance','ecosystem','heredity','quadratic','force-motion','atom-count','cell-scale','counting','place-value','length-compare','shadow-ray','material-state','material-objects','plant-parts','living-examples','arithmetic-sequence','square-slope','constant-acceleration','thin-lens','ion-charge','mass-fraction','cell-doubling','plant-process','triangle-area','right-triangle-ratio','position-change','path-distance','material-property','dynamic-balance','habitat-match','food-web-links']:
+                            'magnetism','measurement','periodic','mass-balance','ecosystem','heredity','quadratic','force-motion','atom-count','cell-scale','counting','place-value','length-compare','shadow-ray','material-state','material-objects','plant-parts','living-examples','arithmetic-sequence','square-slope','constant-acceleration','thin-lens','ion-charge','mass-fraction','cell-doubling','plant-process','triangle-area','right-triangle-ratio','position-change','path-distance','material-property','dynamic-balance','habitat-match','food-web-links','integral-area','vector-components','magnetic-flux','capacitor-charge','alkane-count','bond-pair-count','dna-complement','gas-exchange']:
                     page.locator('#advanced-topic').select_option(key)
                     check(page.locator('#advanced-values tr').count() > 0, 'No numeric table: ' + key)
                     check(page.locator('#advanced-controls button').count() > 0, 'No accessible controls: ' + key)
@@ -470,7 +470,7 @@ def run():
                       'Offline Maths Workshop failed to bootstrap')
                 check(phone.locator('#science-tabs button').count() == 7,
                       'Offline Science Concept Lab not bootstrapped with seven models')
-                check(phone.locator('#advanced-topic option').count() == 40, 'Offline expanded labs not loaded')
+                check(phone.locator('#advanced-topic option').count() == 48, 'Offline expanded labs not loaded')
                 phone.locator('#advanced-topic').select_option('counting')
                 check(phone.locator('#advanced-compare-toggle').is_hidden(), 'Comparison should be opt-in after check')
                 phone.locator('#advanced-check').click()
@@ -496,7 +496,7 @@ def run():
                 report['checks'].append('M44 offline opt-in example comparison, free exploration, keyboard and reset')
                 phone.locator('#advanced-topic').select_option('heredity')
                 check('4' in phone.locator('#advanced-values').inner_text(), 'Offline model result missing')
-                check(phone.locator('#local-guide-topic option').count() == 52, 'Offline practice guide missing')
+                check(phone.locator('#local-guide-topic option').count() == 60, 'Offline practice guide missing')
                 phone.locator('#local-guide-topic').select_option('advanced:quadratic')
                 phone.locator('#local-guide-hint').click()
                 check('advanced-lab-engine.js' in phone.locator('#local-guide-draft-hint').inner_text(), 'Advanced source hint missing')
@@ -543,13 +543,13 @@ def run():
                 summary.focus()
                 phone.keyboard.press('Enter')
                 check(phone.locator('#draft-grade-12').evaluate('e => e.open'), 'Native keyboard disclosure failed')
-                check('organic chemistry gaps' in phone.locator('#draft-grade-12').inner_text(), 'Remaining curriculum gaps hidden')
+                check('equilibrium constants gaps' in phone.locator('#draft-grade-12').inner_text(), 'Remaining curriculum gaps hidden')
                 check(phone.evaluate('document.documentElement.scrollWidth <= innerWidth + 4'), 'Draft guide horizontal overflow')
                 with phone.expect_navigation(wait_until='load'):
                     phone.locator('#draft-grade-12 a').first.click()
                 phone.locator('#advanced-topic option').first.wait_for(state='attached')
                 check(phone.url.endswith('/#advanced-labs'), 'Related draft did not navigate to intended section')
-                check(phone.locator('#advanced-topic option').count() == 40, 'Offline related draft link failed')
+                check(phone.locator('#advanced-topic option').count() == 48, 'Offline related draft link failed')
                 report['checks'].append('M36 offline 12-grade draft discovery, keyboard disclosure, remaining topic limitations and related model navigation')
                 phone.goto(origin + '/teacher-kit/cards/', wait_until='load')
                 check(phone.locator('#card-answer').inner_text() != '', 'Offline teacher card dependency not cached')
@@ -598,7 +598,7 @@ def run():
                 report['checks'].append('M42 offline subject-filtered teacher lab launcher, limitations, reset, deep link and transient selection')
                 phone.goto(origin + '/?lang=hi', wait_until='load')
                 check(phone.locator('#lang').input_value() == 'hi', 'Offline query-driven language navigation broke')
-                check(phone.locator('#advanced-topic option').count() == 40, 'Offline query page module not available')
+                check(phone.locator('#advanced-topic option').count() == 48, 'Offline query page module not available')
                 # Actual offline keyboard operation across each currently shipped lab family/mode.
                 def keyboard_control(selector):
                     btn = phone.locator(selector + ' button:enabled').first
@@ -623,7 +623,7 @@ def run():
                     phone.locator('#science-next').click()
                     keyboard_control('#science-controls')
                 for key in ['ratio-algebra','symmetry','coordinate','probability','temperature','sound',
-                            'magnetism','measurement','periodic','mass-balance','ecosystem','heredity','quadratic','force-motion','atom-count','cell-scale','counting','place-value','length-compare','shadow-ray','material-state','material-objects','plant-parts','living-examples','arithmetic-sequence','square-slope','constant-acceleration','thin-lens','ion-charge','mass-fraction','cell-doubling','plant-process','triangle-area','right-triangle-ratio','position-change','path-distance','material-property','dynamic-balance','habitat-match','food-web-links']:
+                            'magnetism','measurement','periodic','mass-balance','ecosystem','heredity','quadratic','force-motion','atom-count','cell-scale','counting','place-value','length-compare','shadow-ray','material-state','material-objects','plant-parts','living-examples','arithmetic-sequence','square-slope','constant-acceleration','thin-lens','ion-charge','mass-fraction','cell-doubling','plant-process','triangle-area','right-triangle-ratio','position-change','path-distance','material-property','dynamic-balance','habitat-match','food-web-links','integral-area','vector-components','magnetic-flux','capacitor-charge','alkane-count','bond-pair-count','dna-complement','gas-exchange']:
                     phone.locator('#advanced-topic').select_option(key)
                     keyboard_control('#advanced-controls')
                     check(phone.locator('#advanced-values tr').count() > 0, 'Missing numeric alternative: ' + key)
