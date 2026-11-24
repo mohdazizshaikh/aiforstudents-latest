@@ -1,12 +1,12 @@
 /** M33: original draft-only conceptual labs, all activity state is transient. */
-import {ADVANCED_IDS,modelAdvanced,evaluateAdvanced,advancedResultRows} from './advanced-lab-engine.js';
+import {ADVANCED_IDS,modelAdvanced,evaluateAdvanced,advancedResultRows,advancedExampleFeedback} from './advanced-lab-engine.js';
 const $=id=>document.getElementById(id);
 const node=(tag,text)=>{const e=document.createElement(tag);if(text!==undefined)e.textContent=text;return e};
 const lang=()=>$('lang').value==='hi'?'hi':'en';
 const p=(en,hi)=>lang()==='hi'?hi:en;
 const t=pair=>pair[lang()==='hi'?1:0];
 const selected=new URLSearchParams(location.search).get('advanced');
-let id=ADVANCED_IDS.includes(selected)?selected:ADVANCED_IDS[0],state={...modelAdvanced(id).initial},feedback=null;
+let id=ADVANCED_IDS.includes(selected)?selected:ADVANCED_IDS[0],state={...modelAdvanced(id).initial},feedback=null,comparisonOpen=false;
 const button=(text,action,label,disabled=false,pressed=null)=>{
  const b=node('button',text);b.type='button';b.className='btn outline compact';b.dataset.advancedAction=action;
  b.disabled=disabled;if(label)b.setAttribute('aria-label',label);
@@ -168,6 +168,24 @@ function render(){
  $('advanced-check').textContent=p('Check example','उदाहरण जाँचें');$('advanced-reset').textContent=p('Reset model','मॉडल फिर शुरू करें');
  $('advanced-feedback').hidden=feedback===null;
  if(feedback!==null)$('advanced-feedback').textContent=(feedback?p('Matches the example. ','उदाहरण से मेल खाता है। '):p('Compare the chosen values with the hint. ','चुने मान संकेत से मिलाएँ। '))+result.explanation
+ const compareButton=$('advanced-compare-toggle'),panel=$('advanced-compare-panel');
+ compareButton.hidden=feedback===null;
+ compareButton.textContent=comparisonOpen?p('Hide example comparison','उदाहरण तुलना छिपाएँ'):p('Show optional control comparison','वैकल्पिक नियंत्रण तुलना दिखाएँ');
+ compareButton.setAttribute('aria-expanded',String(feedback!==null&&comparisonOpen));
+ panel.hidden=feedback===null||!comparisonOpen;
+ $('advanced-compare-heading').textContent=p('Compare with this example (not a score)','इस उदाहरण से तुलना (अंक नहीं)');
+ $('advanced-compare-notice').textContent=p('Other allowed control values are valid explorations. This checks one authored example, not learning ability or mastery.','दूसरे अनुमत नियंत्रण मान भी सही खोज विकल्प हैं। यह केवल एक लिखित उदाहरण की जाँच है, सीखने की क्षमता या दक्षता की नहीं।');
+ const list=$('advanced-compare-fields');list.replaceChildren();
+ $('advanced-compare-next').textContent='';
+ if(feedback!==null&&comparisonOpen){
+  const comparison=advancedExampleFeedback(id,state,lang());
+  for(const f of comparison.fields){
+   const status=f.kind==='explore'?p('Free exploration; not part of example check','स्वतंत्र खोज; उदाहरण जाँच का भाग नहीं'):f.kind==='matches'?p('Matches example','उदाहरण से मेल'):p('Compare with example','उदाहरण से मिलाएँ');
+   list.append(node('li',f.label+': '+p('Current ','वर्तमान ')+f.current+(f.example===null?'':p(' · Example ',' · उदाहरण ')+f.example)+' · '+status));
+  }
+  const focusField=comparison.fields.find(f=>f.id===comparison.next.fieldId);
+  $('advanced-compare-next').textContent=(focusField?focusField.label+' — ':'')+comparison.next.reason;
+ }
 }
 $('advanced-controls').addEventListener('click',e=>{
  const b=e.target.closest('button[data-advanced-action]');if(!b)return;
@@ -176,12 +194,13 @@ $('advanced-controls').addEventListener('click',e=>{
  if(op==='set'&&f.options?.some(x=>x.value===rest.join(':')))state[k]=rest.join(':');
  else if(!f.options&&['inc','dec'].includes(op))state[k]=Math.max(f.min,Math.min(f.max,state[k]+(op==='inc'?f.step:-f.step)));
  else return;
- feedback=null;render();
+ feedback=null;comparisonOpen=false;render();
  const buttons=[...$('advanced-controls').querySelectorAll('button')];(buttons.find(x=>x.dataset.advancedAction===action&&!x.disabled)||buttons.find(x=>x.dataset.advancedAction.endsWith(':'+k)&&!x.disabled))?.focus()
 });
-function reset(){state={...modelAdvanced(id).initial};feedback=null;render()}
+function reset(){state={...modelAdvanced(id).initial};feedback=null;comparisonOpen=false;render()}
 $('advanced-topic').addEventListener('change',e=>{id=e.target.value;reset();$('advanced-heading').focus()});
-$('advanced-check').addEventListener('click',()=>{feedback=evaluateAdvanced(id,state,lang()).correct;render();$('advanced-feedback').focus()});
+$('advanced-check').addEventListener('click',()=>{feedback=evaluateAdvanced(id,state,lang()).correct;comparisonOpen=false;render();$('advanced-feedback').focus()});
+$('advanced-compare-toggle').addEventListener('click',()=>{if(feedback===null)return;comparisonOpen=!comparisonOpen;render();$('advanced-compare-toggle').focus()});
 $('advanced-reset').addEventListener('click',()=>{reset();$('advanced-heading').focus()});
 $('lang').addEventListener('change',render);
 window.addEventListener('aifs-history-cleared',()=>{id=ADVANCED_IDS[0];reset()});
