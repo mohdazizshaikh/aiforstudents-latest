@@ -2174,12 +2174,12 @@
     }
   ],
   "updatedOn": "2026-11-24",
-  "currentEngineeringMilestone": "M55_VERIFIED_M56_INTEGRATED_CANDIDATE",
+  "currentEngineeringMilestone": "M55_VERIFIED_M56_M57_CANDIDATES",
   "additionalNewMathsDrafts": 3,
   "currentPendingContentRecords": 3340,
   "batch1VerifiedEngineeringAndDesignTasks": 46,
   "batch2VerifiedEngineeringAndDesignTasks": 24,
-  "statusCaveat": "70/100 scoped tasks. M55 verified merged; M56 independent CI passed, combined candidate pending. 3340 pending reviews, zero verified chapters, six safeguarding gates. No public launch.",
+  "statusCaveat": "70/100 scoped tasks. M55 merged; M56 integrated CI pending; M57 stacked candidate. 3340 pending reviews, six human safeguarding gates, zero verified chapters. AI tutor remains disabled; no independent red-team or provider approval. NCERT middle-stage PDF retrieval blocked.",
   "newScienceDraftReviewRecords": 7,
   "newAdvancedDraftReviewRecords": 48,
   "m34CandidateWork": {
@@ -2391,5 +2391,17 @@
     "verifiedChapters": 0,
     "newDoneVerifiedTasks": 0,
     "independentCi": 45452310648
+  },
+  "m57CandidateWork": {
+    "status": "IN_PROGRESS",
+    "deterministicBoundaryCases": 224,
+    "canonicalPilotDenials": 152,
+    "malformedRequestDenials": 30,
+    "syntheticResponseRejections": 40,
+    "syntheticPositiveControls": 2,
+    "independentRedTeamCompleted": false,
+    "providerTested": false,
+    "generativeTutorEnabled": false,
+    "newDoneVerifiedTasks": 0
   }
 }
