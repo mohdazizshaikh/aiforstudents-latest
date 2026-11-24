@@ -1,5 +1,7 @@
 # M78 — Board-specific curriculum review execution batches (candidate)
 
+Initial exact-head Node CI 45485706585 failed the historical baseline prominence assertion in M29 (not the new M78 functional tests). Restored explicit M33/M29 historical baseline wording; fresh exact-head CI required.
+
 Base: merged M77 `71abd08b0351ee0ef2d8815b48b690a694c8c0e9`. M77 PR-branch CI reported success; merged-main CI was still running at inspection. M78 adds local-only execution batches for the existing 32 source-linked proposals and all 180 pending checks without splitting individual mapping records.
 
 | Batch | Board | Mappings | Pending checks |
