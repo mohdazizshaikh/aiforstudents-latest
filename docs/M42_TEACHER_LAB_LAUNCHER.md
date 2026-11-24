@@ -1,0 +1,5 @@
+# M42 teacher lab launcher — bounded draft implementation
+
+Based on M39/M40 main 2574f2b47989cc47639f6bd3cd9e8f311d3a743c. Adds an in-memory subject-filtered launcher for all 24 existing advanced models, with bilingual source caveats, allowlisted offline deep links, clear action, shared-device reset and no student records. The existing two classroom lessons, assignment packs, queue and projector are preserved. This is not a full teacher administration dashboard, not approved grade placement, and not physical projector certification. No new instructional records or new tracked completion claims. 3,316 pending reviews unchanged on this branch. M41 adds additional models independently; inventory and cache identifiers require reconciliation if it merges first. Exact-head CI pending.
+
+M41 has merged at aaa0bb27770d5accbd0268a5ef4980f44c36c7ef after exact-head CI 45376889795. Launcher now uses all 32 advanced draft models (44 total interactive models). Combined browser and cache changes retained; 3,324 review records pending. Combined-head CI required.
