@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {ADVANCED_IDS,advancedExtension,advancedExtensionIds} from '../assets/advanced-lab-engine.js';
 import {teacherSupplementOptions,printableSupplementActivity} from '../assets/teacher-cards-engine.js';
-test('M66/M70 fourteen bilingual source-derived worksheets, no hint, answers or learner fields',()=>{
+test('M66/M70 twenty-two bilingual source-derived worksheets, no hint, answers or learner fields',()=>{
  let count=0;
  for(const id of ADVANCED_IDS)for(const lang of ['en','hi']){
   const i=lang==='hi'?1:0;
@@ -18,7 +18,7 @@ test('M66/M70 fourteen bilingual source-derived worksheets, no hint, answers or 
    count++;
   }
  }
- assert.equal(count,28);
+ assert.equal(count,44);
 });
 test('M66 rejects mismatched or unknown model/activity and unsupported language',()=>{
  assert.throws(()=>teacherSupplementOptions('invalid'));
