@@ -1,5 +1,7 @@
 # M87 — Restricted staging access and integrity audit (candidate)
 
+**Verified:** both CI runs 45490854927 and 45490835824 passed; PR #77 merged at 80c1da58d933be9f635eb381b740e123d96b2096. No external approval.
+
 M84–M86 Node/static jobs passed; local Chromium jobs pending at branch creation. M87 complements M27 by checking anonymous access before authenticated integrity. Only an explicitly authorized staging origin; no live endpoint is contacted by CI. No deployment or server changes.
 
 On a trusted operator machine, from the exact checkout used to build the deployed private ZIP, set STAGING_AUTH_HEADER securely in the local environment, then run:

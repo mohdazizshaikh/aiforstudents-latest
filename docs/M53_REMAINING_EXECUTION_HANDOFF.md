@@ -101,3 +101,5 @@ M86 candidate adds exhaustive fictional mastery grid and malformed-input validat
 M87 candidate adds anonymous restriction and authenticated parity verification for authorized staging. FP-097 remains externally blocked; no live Hostinger origin or credentials used.
 
 M84 verified merged. M88 adds bilingual teacher resource search over 109 activities; FP-087 remains in progress pending rights and educational approval.
+
+M85–M87 verified and merged. M89 candidate prepares 109 individual teacher rights work items / 327 pending decisions. FP-087 remains in progress; no authenticated permission.

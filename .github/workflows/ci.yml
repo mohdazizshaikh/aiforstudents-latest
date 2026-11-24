@@ -62,6 +62,11 @@ jobs:
         run: npm run mastery:audit-grid
       - name: Verify restricted staging checker with synthetic HTTP fixtures (NO live host)
         run: node --test tests/m87-restricted-staging-audit.test.mjs
+      - name: Generate and validate private teacher rights handoff (no approvals)
+        run: |
+          npm run teacher:rights -- --template m89-ci-rights.json
+          npm run teacher:rights -- --check m89-ci-rights.json
+          rm review-evidence/m89-ci-rights.json
       - name: Assert public preflight remains blocked
         run: |
           if node tools/release-preflight.mjs --public > /dev/null; then
