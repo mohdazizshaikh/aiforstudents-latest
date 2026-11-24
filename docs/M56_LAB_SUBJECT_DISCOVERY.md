@@ -5,3 +5,5 @@ M54 verified baseline e7624d80e1fef13bb6cca29c7c8684cc5a7a81da; M55 remains a pa
 ## NCERT middle-stage source access blocker
 
 Checked 2026-11-24: official NCERT textbook listings for Ganita Prakash and Curiosity exist for Classes VI–VIII (see M56_NCERT_SOURCE_ACCESS.md). Direct prelim PDF requests timed out or returned HTTP 502. No PDF text, edition, chapter or outcome mapping was authenticated; do not use these listings to infer approval. FP-017 remains blocked. No new educational review records or verified task IDs. 60 models overall, 3340 pending reviews, 70/100 scoped items. Exact-head CI pending.
+
+M56 independent CI 45452310648 passed; M55 merged at 0a00571f6f6a9a847782030914e4c26d72745e1b after CI 45451915463. Combined candidate preserves both features and adds cross-subject baseline reset regression; exact integrated head pending.

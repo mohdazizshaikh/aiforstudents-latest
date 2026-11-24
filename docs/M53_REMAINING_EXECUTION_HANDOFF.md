@@ -1,6 +1,6 @@
 # M53 — Remaining execution handoff
 
-Verified baseline M52 93021a4dcd061cf496bf6bfc02ae200a85952c09. The canonical tracker has 70 verified engineering/design items and 30 incomplete items. These are scoped work items, not a percentage of the full product. No qualified reviewer or operator is authenticated; no public launch. M53 exact-head CI 45447537186 passed and merged PR #42. M54 bounded review-batch candidate now pending CI.
+Verified baseline M52 93021a4dcd061cf496bf6bfc02ae200a85952c09. The canonical tracker has 70 verified engineering/design items and 30 incomplete items. These are scoped work items, not a percentage of the full product. No qualified reviewer or operator is authenticated; no public launch. M53 exact-head CI 45447537186 passed and merged PR #42. M54 review batching subsequently passed CI 45449812650 and merged PR #43. M55 variable comparison candidate requires CI.
 
 ## governance
 
@@ -75,11 +75,9 @@ FP-100 | Independent school/launch go-no-go decision | BLOCKED_EXTERNAL | Public
 ## Operational dependency order
 
 1. Accountable owners, independent subject/Hindi/rights reviewers, and safeguarding lead/deputy confirm responsibility outside this public repository. No fabricated names or decisions.
-2. Review the 76 pilot-first records and 22 source-linked CBSE proposals before any wider content review. M54 candidate divides the full inventory into 34 nonoverlapping batches, first pilot-001 (76), then 33 standard batches (98–99 each). Use M45 and M52 local worklists, M39 source/edition worklist, M26 safety handoff. The 76 are a subset of 3,340, not additional records.
+2. Review the 76 pilot-first records and 22 source-linked CBSE proposals before any wider content review. M54 verified implementation divides the full inventory into 34 nonoverlapping batches, first pilot-001 (76), then 33 standard batches (98–99 each). Use M45 and M52 local worklists, M39 source/edition worklist, M26 safety handoff. The 76 are a subset of 3,340, not additional records.
 3. Independently authorize exact school pilot content and permissions; run adult-only rehearsal first. Real Android, assistive tech, projector and physical A4 checks require equipment. Real child observations require authorization and ethical oversight.
 4. Authorized restricted HTTPS staging, source byte parity, access control, backup/rollback and retention audit. No production publication or live Hostinger access has been verified.
 5. Generative tutor and adaptive mastery require independent approval, validated sources, provider agreement and learning-outcome testing; no automatic enabling. Complete independent go/no-go only after actual evidence.
 
 Engineering beyond this scoped tracker still includes comprehensive curriculum and labs, full teacher administration, real AI tutor and validated mastery. Do not infer full product completion from the tracker.
-
-M56: NCERT middle-stage source retrieval blocked (timeouts/502); no new chapter mapping. [Source log](M56_NCERT_SOURCE_ACCESS.md). Subject-filtered learner lab navigation candidate, M55 corrected CI pending. Review/authorization gates unchanged.

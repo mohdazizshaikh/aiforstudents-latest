@@ -158,6 +158,16 @@
    <div id="advanced-visual" class="advanced-visual"></div>
    <table class="advanced-results"><caption id="advanced-result-caption">Calculated model values</caption><thead><tr><th scope="col" id="advanced-field-label">Quantity</th><th scope="col" id="advanced-value-label">Value</th></tr></thead><tbody id="advanced-values"></tbody></table>
    <p id="advanced-caveat" class="science-caveat"></p>
+   <section class="local-guide-result" aria-labelledby="advanced-variable-heading">
+    <h4 id="advanced-variable-heading">Explore one changed control</h4>
+    <p id="advanced-variable-notice" class="small muted"></p>
+    <div class="science-actions"><button type="button" id="advanced-variable-mark" class="btn outline compact">Mark current starting state</button><button type="button" id="advanced-variable-clear" class="btn outline compact" disabled>Clear starting state</button></div>
+    <div id="advanced-variable-panel" hidden>
+     <p id="advanced-variable-status" tabindex="-1" role="status" aria-live="polite"></p>
+     <ul id="advanced-variable-changes"></ul>
+     <table id="advanced-variable-table" class="advanced-results" hidden><thead><tr><th scope="col" id="advanced-variable-quantity">Calculated quantity</th><th scope="col" id="advanced-variable-before">Starting value</th><th scope="col" id="advanced-variable-after">Current value</th></tr></thead><tbody id="advanced-variable-values"></tbody></table>
+    </div>
+   </section>
    <div class="science-actions"><button id="advanced-check" type="button" class="btn">Check example</button><button id="advanced-reset" type="button" class="btn outline">Reset model</button></div>
    <p id="advanced-feedback" class="feedback" role="status" aria-live="polite" tabindex="-1" hidden></p>
    <button id="advanced-compare-toggle" type="button" class="btn outline compact" aria-expanded="false" aria-controls="advanced-compare-panel" hidden>Show optional control comparison</button>
