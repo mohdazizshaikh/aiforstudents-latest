@@ -66,7 +66,7 @@
   "sensitiveSourcePathExposureCheckAvailable": true,
   "sensitiveSourcePathExposureVerifiedOnLiveHost": false,
   "releaseZipSourceHashParityVerifiedInCI": true,
-  "swCacheVersion": "aifs-discovery-m33-2026-11-24-m62-r1",
+  "swCacheVersion": "aifs-discovery-m33-2026-11-24-m63-r1",
   "crossTabPrivacyResetImplemented": true,
   "crossTabPrivacyRealDeviceVerified": false,
   "existingUnreviewedContentRecords": 3282,
@@ -174,5 +174,8 @@
   "maharashtraCrosswalkEngineeringVerified": true,
   "multiBoardReviewCandidate": true,
   "multiBoardReviewCells": 180,
-  "multiBoardReviewHumanApprovalAuthenticated": false
+  "multiBoardReviewHumanApprovalAuthenticated": false,
+  "ratioAlgebraExtensionsCandidate": true,
+  "ratioAlgebraSupplementalActivities": 2,
+  "ratioAlgebraExtensionsHumanReviewed": false
 }

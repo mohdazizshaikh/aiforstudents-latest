@@ -14,7 +14,18 @@ export const ADVANCED_MODELS={
   hint:P('Set groups to 3 and counters per group to 4.','समूह 3 और हर समूह के काउंटर 4 करें।'),
   caveat:P('Simplified multiplication/ratio practice; not a full algebra curriculum or real measurement.','यह सरल गुणा और अनुपात अभ्यास है, पूरा बीजगणित पाठ्यक्रम या वास्तविक मापन नहीं।'),
   fields:[N('groups','Groups','समूह',1,10),N('each','Counters per group','प्रति समूह काउंटर',1,10)],
-  initial:{groups:1,each:2},target:{groups:3,each:4}
+  initial:{groups:1,each:2},target:{groups:3,each:4},
+  // Supplemental examples are part of this existing draft's serialized review fingerprint.
+  extensions:{
+   ratio:{title:P('Equivalent ratios','समतुल्य अनुपात'),prompt:P('Scale both parts of a ratio by the same positive integer. Compare the two ratios.','अनुपात के दोनों पदों को उसी धनात्मक पूर्णांक से गुणा करें। दोनों अनुपात मिलाएँ।'),
+    hint:P('Multiplying both terms by the same nonzero factor preserves their ratio.','दोनों पदों को उसी अशून्य गुणक से गुणा करने पर अनुपात समान रहता है।'),
+    caveat:P('Positive whole-number examples only, not a complete proportion syllabus.','केवल धनात्मक पूर्णांक उदाहरण; पूरा समानुपात पाठ्यक्रम नहीं।'),
+    fields:[N('a','First part','पहला पद',1,6),N('b','Second part','दूसरा पद',1,6),N('k','Scale factor','गुणक',1,5)],initial:{a:2,b:3,k:2}},
+   equation:{title:P('Check a linear equation','रैखिक समीकरण जाँचें'),prompt:P('Choose a, b and a candidate x. Compare ax + b with the fixed right side 12.','a, b और संभावित x चुनें। ax + b को निश्चित दाएँ पक्ष 12 से मिलाएँ।'),
+    hint:P('An equation is satisfied when both sides have the same value. Changing a or b changes the equation.','दोनों पक्षों का मान समान होने पर समीकरण संतुष्ट होता है। a या b बदलने पर समीकरण बदलता है।'),
+    caveat:P('Bounded integer substitution only; some equations have no solution in this control range. No mastery score.','केवल सीमित पूर्णांक प्रतिस्थापन; कुछ समीकरणों का हल इस सीमा में नहीं है। कोई दक्षता अंक नहीं।'),
+    fields:[N('a','Coefficient a','गुणांक a',1,5),N('b','Constant b','स्थिरांक b',0,6),N('x','Candidate x','संभावित x',0,12)],initial:{a:2,b:4,x:1}}
+  }
  },
  symmetry:{
   subject:'maths',title:P('Reflect a point in the vertical axis','ऊर्ध्वाधर अक्ष पर बिंदु का प्रतिबिंब'),
@@ -362,4 +373,23 @@ export function advancedGuidedStage(id,stage,lang='en'){
  return {id,stage,index,total:ADVANCED_GUIDED_STAGES.length,label:text(stageLabels[stage],lang),instruction:text(instructions[stage],lang),
   sourcePrompt:text(m.prompt,lang),sourceHint:stage==='explain'?text(m.hint,lang):null,caveat:text(m.caveat,lang),
   source:'assets/advanced-lab-engine.js',optional:true,storesResponses:false,masteryPrediction:false,publicReleaseApproved:false};
+}
+
+/** M63 supplemental ratio and equation activities, part of the ratio-algebra review record. */
+export const RATIO_EXTENSION_IDS=Object.freeze(['ratio','equation']);
+export function ratioExtension(mode){
+ if(!RATIO_EXTENSION_IDS.includes(mode))throw Error('Unknown supplemental activity');
+ return ADVANCED_MODELS['ratio-algebra'].extensions[mode];
+}
+export function evaluateRatioExtension(mode,state,lang='en'){
+ if(!['en','hi'].includes(lang))throw Error('Unknown language');
+ const m=ratioExtension(mode);
+ if(!state||typeof state!=='object'||Array.isArray(state)||Object.keys(state).length!==m.fields.length||
+ m.fields.some(f=>!Object.hasOwn(state,f.id)||!Number.isInteger(state[f.id])||state[f.id]<f.min||state[f.id]>f.max))throw Error('Invalid extension state');
+ const {a,b}=state;
+ const rows=mode==='ratio'?
+  [[P('Original ratio','मूल अनुपात'),a+':'+b],[P('Scaled ratio','गुणित अनुपात'),(a*state.k)+':'+(b*state.k)],[P('Equivalent','समतुल्य'),text(P('Yes','हाँ'),lang)]]:
+  [[P('Left side ax + b','बायाँ पक्ष ax + b'),a*state.x+b],[P('Right side','दायाँ पक्ष'),12],[P('Equation satisfied','समीकरण संतुष्ट'),text(a*state.x+b===12?P('Yes','हाँ'):P('No','नहीं'),lang)]];
+ return {mode,title:text(m.title,lang),prompt:text(m.prompt,lang),hint:text(m.hint,lang),caveat:text(m.caveat,lang),
+ rows:rows.map(([label,value])=>({label:text(label,lang),value:String(value)})),source:'assets/advanced-lab-engine.js',reviewId:'advanced:ratio-algebra',humanReviewed:false,publicReleaseApproved:false,masteryPrediction:false,persists:false};
 }
