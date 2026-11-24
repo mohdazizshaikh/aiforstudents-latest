@@ -66,7 +66,7 @@
   "sensitiveSourcePathExposureCheckAvailable": true,
   "sensitiveSourcePathExposureVerifiedOnLiveHost": false,
   "releaseZipSourceHashParityVerifiedInCI": true,
-  "swCacheVersion": "aifs-discovery-m33-2026-11-24-m48-r2",
+  "swCacheVersion": "aifs-discovery-m33-2026-11-24-m50-r1",
   "crossTabPrivacyResetImplemented": true,
   "crossTabPrivacyRealDeviceVerified": false,
   "existingUnreviewedContentRecords": 3282,
@@ -109,5 +109,8 @@
   "exampleComparisonMasteryValidated": false,
   "teacherDemoAgendaDraft": true,
   "teacherDemoAgendaLimit": 8,
-  "teacherDemoAgendaPersists": false
+  "teacherDemoAgendaPersists": false,
+  "printableLabActivityDrafts": 48,
+  "printableLabActivityApprovals": 0,
+  "printableLabActivityStoresStudentData": false
 }

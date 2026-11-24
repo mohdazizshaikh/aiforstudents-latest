@@ -18,3 +18,6 @@ select{border:1px solid #6f9f90;border-radius:9px;padding:9px;background:white;c
  #assignment-pages .writing{height:24mm}
  #assignment-pack h2,#assignment-pack h3,#assignment-pack h4,#assignment-pack p{color:#000!important;background:#fff!important}
 }
+
+#lab-activity{max-width:850px;overflow-wrap:anywhere}
+@media print{#lab-activity{max-width:none;color:#000;background:#fff}#lab-activity .assignment-page{break-inside:avoid;border:1px solid #555;margin:5mm 0;padding:4mm}#lab-activity .writing{height:17mm}#lab-activity h2,#lab-activity h3,#lab-activity p{color:#000!important;background:#fff!important}}

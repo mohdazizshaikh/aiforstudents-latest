@@ -70,3 +70,17 @@ export function teacherAgendaRows(agenda,lang='en'){
   return {...teacherLabPlan(m.subject,id,lang),position:index+1,prompt:m.prompt[i],hint:m.hint[i],source:'assets/advanced-lab-engine.js'};
  });
 }
+
+/** M50 printable source-derived lab activity: no hints, target values, answers or learner fields.
+ * The authored prompt may specify a control example, not a calculated solution. */
+export function printableLabActivity(id,lang='en'){
+ if(!validDemo(id)||!['en','hi'].includes(lang))throw Error('Unknown printable lab activity');
+ const m=ADVANCED_MODELS[id],i=lang==='hi'?1:0;
+ const p=(en,hi)=>lang==='hi'?hi:en;
+ return {id,subject:m.subject,language:lang,title:m.title[i],prompt:m.prompt[i],caveat:m.caveat[i],
+  steps:[
+   p('Predict the result before using the model. Write your reasoning on paper.','मॉडल चलाने से पहले परिणाम का अनुमान लगाएँ। अपना कारण कागज़ पर लिखें।'),
+   p('With a teacher, inspect the computer-only model and compare the displayed values with your prediction.','शिक्षक के साथ केवल कंप्यूटर मॉडल देखें और दिखाए गए मान अपने अनुमान से मिलाएँ।'),
+   p('Explain one difference or similarity. If the model is unavailable, discuss your prediction only.','एक अंतर या समानता समझाएँ। मॉडल उपलब्ध न हो तो केवल अनुमान पर चर्चा करें।')
+  ],sourceFile:'assets/advanced-lab-engine.js',rightsStatus:'ORIGINAL_DRAFT_PERMISSION_NOT_AUTHENTICATED',humanReviewed:false,publicReleaseApproved:false,localOnly:true,hasStudentNames:false};
+}
