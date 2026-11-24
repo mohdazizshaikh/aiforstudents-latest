@@ -181,6 +181,928 @@ export const ADVANCED_MODELS={
  "dna-complement":{subject:"biology",title:P("Complementary DNA base symbols","पूरक डीएनए क्षार प्रतीक"),prompt:P("Select the DNA base C. Identify its complementary base.","डीएनए क्षार C चुनें। उसका पूरक क्षार पहचानें।"),hint:P("In standard DNA base pairing, A pairs with T and C pairs with G.","मानक डीएनए क्षार युग्मन में A के साथ T और C के साथ G जुड़ता है।"),caveat:P("One symbolic base pair only; no gene sequence, genetic profiling, health inference or laboratory method.","केवल एक प्रतीकात्मक क्षार युग्म; जीन अनुक्रम, आनुवंशिक प्रोफाइलिंग, स्वास्थ्य अनुमान या प्रयोगशाला विधि नहीं।"),fields:[O("base","DNA base symbol","डीएनए क्षार प्रतीक",[["A","A","A"],["T","T","T"],["C","C","C"],["G","G","G"]])],initial:{"base":"A"},target:{"base":"C"}},
  "gas-exchange":{subject:"biology",title:P("Direction of gas exchange in an ideal lung diagram","आदर्श फेफड़े के चित्र में गैस विनिमय की दिशा"),prompt:P("Choose oxygen to view its usual net transfer direction in the simplified lung diagram.","सरल फेफड़े के चित्र में सामान्य कुल स्थानांतरण दिशा देखने के लिए ऑक्सीजन चुनें।"),hint:P("In normal lung gas exchange, oxygen moves from alveolar air to blood; carbon dioxide moves from blood to alveolar air.","सामान्य फेफड़े के गैस विनिमय में ऑक्सीजन वायुकोष की हवा से रक्त में और कार्बन डाइऑक्साइड रक्त से वायुकोष की हवा में जाती है।"),caveat:P("Idealised direction-only diagram, not a health assessment, treatment or breathing exercise.","केवल आदर्श दिशा चित्र; स्वास्थ्य आकलन, उपचार या साँस का अभ्यास नहीं।"),fields:[O("gas","Gas","गैस",[["co2","Carbon dioxide","कार्बन डाइऑक्साइड"],["o2","Oxygen","ऑक्सीजन"]])],initial:{"gas":"co2"},target:{"gas":"o2"}}
 };
+// M64 supplemental drafts are embedded in the canonical model record for review hashing.
+const MULTISUBJECT_EXTENSIONS={
+ "triangle-area": {
+  "parallelogram": {
+   "title": [
+    "Parallelogram area",
+    "समांतर चतुर्भुज का क्षेत्रफल"
+   ],
+   "prompt": [
+    "Choose a base and perpendicular height.",
+    "आधार और लंबवत ऊँचाई चुनें।"
+   ],
+   "hint": [
+    "Area = base × perpendicular height.",
+    "क्षेत्रफल = आधार × लंबवत ऊँचाई।"
+   ],
+   "caveat": [
+    "Ideal geometry with perpendicular heights, not a physical measurement.",
+    "लंबवत ऊँचाई वाला आदर्श ज्यामितीय मॉडल, वास्तविक मापन नहीं।"
+   ],
+   "fields": [
+    {
+     "id": "b",
+     "label": [
+      "Base",
+      "आधार"
+     ],
+     "min": 1,
+     "max": 8,
+     "step": 1,
+     "unit": ""
+    },
+    {
+     "id": "h",
+     "label": [
+      "Perpendicular height",
+      "लंबवत ऊँचाई"
+     ],
+     "min": 1,
+     "max": 6,
+     "step": 1,
+     "unit": ""
+    }
+   ],
+   "initial": {
+    "b": 4,
+    "h": 3
+   },
+   "outputs": [
+    {
+     "label": [
+      "Area (square units)",
+      "क्षेत्रफल (वर्ग इकाई)"
+     ],
+     "formula": [
+      "mul",
+      "b",
+      "h"
+     ]
+    }
+   ]
+  },
+  "trapezium": {
+   "title": [
+    "Trapezium area",
+    "समलंब चतुर्भुज का क्षेत्रफल"
+   ],
+   "prompt": [
+    "Choose parallel side lengths and perpendicular height.",
+    "समांतर भुजाओं की लंबाई और लंबवत ऊँचाई चुनें।"
+   ],
+   "hint": [
+    "Area = half the sum of parallel sides × height.",
+    "क्षेत्रफल = समांतर भुजाओं के योग का आधा × ऊँचाई।"
+   ],
+   "caveat": [
+    "Ideal geometry with perpendicular heights, not a physical measurement.",
+    "लंबवत ऊँचाई वाला आदर्श ज्यामितीय मॉडल, वास्तविक मापन नहीं।"
+   ],
+   "fields": [
+    {
+     "id": "a",
+     "label": [
+      "Parallel side A",
+      "समांतर भुजा A"
+     ],
+     "min": 1,
+     "max": 8,
+     "step": 1,
+     "unit": ""
+    },
+    {
+     "id": "b",
+     "label": [
+      "Parallel side B",
+      "समांतर भुजा B"
+     ],
+     "min": 1,
+     "max": 8,
+     "step": 1,
+     "unit": ""
+    },
+    {
+     "id": "h",
+     "label": [
+      "Perpendicular height",
+      "लंबवत ऊँचाई"
+     ],
+     "min": 1,
+     "max": 6,
+     "step": 1,
+     "unit": ""
+    }
+   ],
+   "initial": {
+    "a": 3,
+    "b": 5,
+    "h": 2
+   },
+   "outputs": [
+    {
+     "label": [
+      "Area (square units)",
+      "क्षेत्रफल (वर्ग इकाई)"
+     ],
+     "formula": [
+      "div",
+      [
+       "mul",
+       [
+        "add",
+        "a",
+        "b"
+       ],
+       "h"
+      ],
+      2
+     ]
+    }
+   ]
+  }
+ },
+ "force-motion": {
+  "momentum": {
+   "title": [
+    "Momentum magnitude",
+    "संवेग का परिमाण"
+   ],
+   "prompt": [
+    "Choose mass in kg and speed in m/s.",
+    "द्रव्यमान kg में और चाल m/s में चुनें।"
+   ],
+   "hint": [
+    "Momentum magnitude = mass × speed.",
+    "संवेग का परिमाण = द्रव्यमान × चाल।"
+   ],
+   "caveat": [
+    "One-dimensional ideal calculation only; no real equipment or experiment.",
+    "केवल एक-विमीय आदर्श गणना; वास्तविक उपकरण या प्रयोग नहीं।"
+   ],
+   "fields": [
+    {
+     "id": "m",
+     "label": [
+      "Mass (kg)",
+      "द्रव्यमान (kg)"
+     ],
+     "min": 1,
+     "max": 5,
+     "step": 1,
+     "unit": ""
+    },
+    {
+     "id": "v",
+     "label": [
+      "Speed (m/s)",
+      "चाल (m/s)"
+     ],
+     "min": 0,
+     "max": 8,
+     "step": 1,
+     "unit": ""
+    }
+   ],
+   "initial": {
+    "m": 2,
+    "v": 3
+   },
+   "outputs": [
+    {
+     "label": [
+      "Momentum magnitude (kg·m/s)",
+      "संवेग परिमाण (kg·m/s)"
+     ],
+     "formula": [
+      "mul",
+      "m",
+      "v"
+     ]
+    }
+   ]
+  },
+  "opposing-forces": {
+   "title": [
+    "Opposing forces",
+    "विपरीत दिशाओं के बल"
+   ],
+   "prompt": [
+    "Choose two opposite forces; right is positive.",
+    "दो विपरीत बल चुनें; दाईं दिशा धनात्मक है।"
+   ],
+   "hint": [
+    "Signed net force = rightward force minus leftward force.",
+    "चिह्न सहित परिणामी बल = दाईं ओर का बल − बाईं ओर का बल।"
+   ],
+   "caveat": [
+    "One-dimensional ideal calculation only; no real equipment or experiment.",
+    "केवल एक-विमीय आदर्श गणना; वास्तविक उपकरण या प्रयोग नहीं।"
+   ],
+   "fields": [
+    {
+     "id": "r",
+     "label": [
+      "Rightward force (N)",
+      "दाईं ओर बल (N)"
+     ],
+     "min": 0,
+     "max": 10,
+     "step": 1,
+     "unit": ""
+    },
+    {
+     "id": "l",
+     "label": [
+      "Leftward force (N)",
+      "बाईं ओर बल (N)"
+     ],
+     "min": 0,
+     "max": 10,
+     "step": 1,
+     "unit": ""
+    }
+   ],
+   "initial": {
+    "r": 6,
+    "l": 4
+   },
+   "outputs": [
+    {
+     "label": [
+      "Signed net force (N)",
+      "चिह्न सहित परिणामी बल (N)"
+     ],
+     "formula": [
+      "sub",
+      "r",
+      "l"
+     ]
+    }
+   ]
+  }
+ },
+ "atom-count": {
+  "co2": {
+   "title": [
+    "Carbon dioxide formula count",
+    "कार्बन डाइऑक्साइड सूत्र गिनती"
+   ],
+   "prompt": [
+    "Choose the number of symbolic CO₂ molecules.",
+    "प्रतीकात्मक CO₂ अणुओं की संख्या चुनें।"
+   ],
+   "hint": [
+    "Each CO₂ has one carbon and two oxygen atoms.",
+    "हर CO₂ में एक कार्बन और दो ऑक्सीजन परमाणु हैं।"
+   ],
+   "caveat": [
+    "Formula-symbol counting only. No substances, mixing or reaction.",
+    "केवल सूत्र-प्रतीकों की गिनती। कोई वास्तविक पदार्थ, मिश्रण या अभिक्रिया नहीं।"
+   ],
+   "fields": [
+    {
+     "id": "n",
+     "label": [
+      "Symbolic molecules",
+      "प्रतीकात्मक अणु"
+     ],
+     "min": 1,
+     "max": 8,
+     "step": 1,
+     "unit": ""
+    }
+   ],
+   "initial": {
+    "n": 2
+   },
+   "outputs": [
+    {
+     "label": [
+      "Carbon atoms",
+      "कार्बन परमाणु"
+     ],
+     "formula": "n"
+    },
+    {
+     "label": [
+      "Oxygen atoms",
+      "ऑक्सीजन परमाणु"
+     ],
+     "formula": [
+      "mul",
+      "n",
+      2
+     ]
+    },
+    {
+     "label": [
+      "Total atoms",
+      "कुल परमाणु"
+     ],
+     "formula": [
+      "mul",
+      "n",
+      3
+     ]
+    }
+   ]
+  },
+  "nh3": {
+   "title": [
+    "Ammonia formula count",
+    "अमोनिया सूत्र गिनती"
+   ],
+   "prompt": [
+    "Choose the number of symbolic NH₃ molecules.",
+    "प्रतीकात्मक NH₃ अणुओं की संख्या चुनें।"
+   ],
+   "hint": [
+    "Each NH₃ has one nitrogen and three hydrogen atoms.",
+    "हर NH₃ में एक नाइट्रोजन और तीन हाइड्रोजन परमाणु हैं।"
+   ],
+   "caveat": [
+    "Formula-symbol counting only. No substances, mixing or reaction.",
+    "केवल सूत्र-प्रतीकों की गिनती। कोई वास्तविक पदार्थ, मिश्रण या अभिक्रिया नहीं।"
+   ],
+   "fields": [
+    {
+     "id": "n",
+     "label": [
+      "Symbolic molecules",
+      "प्रतीकात्मक अणु"
+     ],
+     "min": 1,
+     "max": 8,
+     "step": 1,
+     "unit": ""
+    }
+   ],
+   "initial": {
+    "n": 2
+   },
+   "outputs": [
+    {
+     "label": [
+      "Nitrogen atoms",
+      "नाइट्रोजन परमाणु"
+     ],
+     "formula": "n"
+    },
+    {
+     "label": [
+      "Hydrogen atoms",
+      "हाइड्रोजन परमाणु"
+     ],
+     "formula": [
+      "mul",
+      "n",
+      3
+     ]
+    },
+    {
+     "label": [
+      "Total atoms",
+      "कुल परमाणु"
+     ],
+     "formula": [
+      "mul",
+      "n",
+      4
+     ]
+    }
+   ]
+  }
+ },
+ "mass-fraction": {
+  "complement-percent": {
+   "title": [
+    "Complementary mass percentages",
+    "पूरक द्रव्यमान प्रतिशत"
+   ],
+   "prompt": [
+    "Choose two positive abstract component masses.",
+    "दो धनात्मक काल्पनिक घटक द्रव्यमान चुनें।"
+   ],
+   "hint": [
+    "Both percentages sum to 100%; divide each mass by the same total.",
+    "दोनों प्रतिशतों का योग 100% है; प्रत्येक द्रव्यमान को उसी कुल से भाग दें।"
+   ],
+   "caveat": [
+    "Abstract mass accounting only; no chemical recipe or real mixing.",
+    "केवल काल्पनिक द्रव्यमान गणना; कोई रासायनिक विधि या वास्तविक मिश्रण नहीं।"
+   ],
+   "fields": [
+    {
+     "id": "a",
+     "label": [
+      "Component A (units)",
+      "घटक A (इकाई)"
+     ],
+     "min": 1,
+     "max": 9,
+     "step": 1,
+     "unit": ""
+    },
+    {
+     "id": "b",
+     "label": [
+      "Component B (units)",
+      "घटक B (इकाई)"
+     ],
+     "min": 1,
+     "max": 9,
+     "step": 1,
+     "unit": ""
+    }
+   ],
+   "initial": {
+    "a": 2,
+    "b": 3
+   },
+   "outputs": [
+    {
+     "label": [
+      "A (%)",
+      "A (%)"
+     ],
+     "formula": [
+      "div",
+      [
+       "mul",
+       100,
+       "a"
+      ],
+      [
+       "add",
+       "a",
+       "b"
+      ]
+     ]
+    },
+    {
+     "label": [
+      "B (%)",
+      "B (%)"
+     ],
+     "formula": [
+      "div",
+      [
+       "mul",
+       100,
+       "b"
+      ],
+      [
+       "add",
+       "a",
+       "b"
+      ]
+     ]
+    },
+    {
+     "label": [
+      "Combined percentage (%)",
+      "कुल प्रतिशत (%)"
+     ],
+     "formula": 100
+    }
+   ]
+  },
+  "three-components": {
+   "title": [
+    "Three-component mass accounting",
+    "तीन घटकों का द्रव्यमान लेखा"
+   ],
+   "prompt": [
+    "Choose three abstract component masses and compare the share of A.",
+    "तीन काल्पनिक घटक द्रव्यमान चुनें और A का अंश देखें।"
+   ],
+   "hint": [
+    "Total = A + B + C; A percentage = 100 × A / total.",
+    "कुल = A + B + C; A का प्रतिशत = 100 × A / कुल।"
+   ],
+   "caveat": [
+    "Abstract mass accounting only; no chemical recipe or real mixing.",
+    "केवल काल्पनिक द्रव्यमान गणना; कोई रासायनिक विधि या वास्तविक मिश्रण नहीं।"
+   ],
+   "fields": [
+    {
+     "id": "a",
+     "label": [
+      "Component A (units)",
+      "घटक A (इकाई)"
+     ],
+     "min": 1,
+     "max": 5,
+     "step": 1,
+     "unit": ""
+    },
+    {
+     "id": "b",
+     "label": [
+      "Component B (units)",
+      "घटक B (इकाई)"
+     ],
+     "min": 1,
+     "max": 5,
+     "step": 1,
+     "unit": ""
+    },
+    {
+     "id": "c",
+     "label": [
+      "Component C (units)",
+      "घटक C (इकाई)"
+     ],
+     "min": 1,
+     "max": 5,
+     "step": 1,
+     "unit": ""
+    }
+   ],
+   "initial": {
+    "a": 2,
+    "b": 3,
+    "c": 5
+   },
+   "outputs": [
+    {
+     "label": [
+      "Total mass units",
+      "कुल द्रव्यमान इकाई"
+     ],
+     "formula": [
+      "add",
+      [
+       "add",
+       "a",
+       "b"
+      ],
+      "c"
+     ]
+    },
+    {
+     "label": [
+      "A (%)",
+      "A (%)"
+     ],
+     "formula": [
+      "div",
+      [
+       "mul",
+       100,
+       "a"
+      ],
+      [
+       "add",
+       [
+        "add",
+        "a",
+        "b"
+       ],
+       "c"
+      ]
+     ]
+    }
+   ]
+  }
+ },
+ "cell-scale": {
+  "reverse-scale": {
+   "title": [
+    "Find a drawing's magnification",
+    "चित्र का आवर्धन ज्ञात करें"
+   ],
+   "prompt": [
+    "Choose imaginary cell length in µm and drawing length in mm.",
+    "काल्पनिक कोशिका लंबाई µm में और चित्र लंबाई mm में चुनें।"
+   ],
+   "hint": [
+    "Convert drawing mm to µm, then divide by the imaginary cell length.",
+    "चित्र के mm को µm में बदलें, फिर काल्पनिक कोशिका लंबाई से भाग दें।"
+   ],
+   "caveat": [
+    "Imaginary diagram arithmetic only, not microscopy or actual cell measurements.",
+    "केवल काल्पनिक चित्र की गणना, सूक्ष्मदर्शी या वास्तविक कोशिका मापन नहीं।"
+   ],
+   "fields": [
+    {
+     "id": "l",
+     "label": [
+      "Imaginary length (µm)",
+      "काल्पनिक लंबाई (µm)"
+     ],
+     "min": 10,
+     "max": 20,
+     "step": 1,
+     "unit": ""
+    },
+    {
+     "id": "d",
+     "label": [
+      "Drawing length (mm)",
+      "चित्र लंबाई (mm)"
+     ],
+     "min": 1,
+     "max": 8,
+     "step": 1,
+     "unit": ""
+    }
+   ],
+   "initial": {
+    "l": 20,
+    "d": 4
+   },
+   "outputs": [
+    {
+     "label": [
+      "Magnification (×)",
+      "आवर्धन (×)"
+     ],
+     "formula": [
+      "div",
+      [
+       "mul",
+       "d",
+       1000
+      ],
+      "l"
+     ]
+    }
+   ]
+  },
+  "compare-drawings": {
+   "title": [
+    "Compare two imaginary cell drawings",
+    "दो काल्पनिक कोशिका चित्रों की तुलना"
+   ],
+   "prompt": [
+    "Choose one hypothetical cell length and two scale factors.",
+    "एक काल्पनिक कोशिका लंबाई और दो पैमाना गुणक चुनें।"
+   ],
+   "hint": [
+    "Each drawing length in mm = cell length in µm × scale / 1000.",
+    "प्रत्येक चित्र की लंबाई mm = कोशिका लंबाई µm × गुणक / 1000।"
+   ],
+   "caveat": [
+    "Imaginary diagram arithmetic only, not microscopy or actual cell measurements.",
+    "केवल काल्पनिक चित्र की गणना, सूक्ष्मदर्शी या वास्तविक कोशिका मापन नहीं।"
+   ],
+   "fields": [
+    {
+     "id": "l",
+     "label": [
+      "Imaginary length (µm)",
+      "काल्पनिक लंबाई (µm)"
+     ],
+     "min": 10,
+     "max": 20,
+     "step": 1,
+     "unit": ""
+    },
+    {
+     "id": "a",
+     "label": [
+      "Scale A (×)",
+      "पैमाना A (×)"
+     ],
+     "min": 1,
+     "max": 10,
+     "step": 1,
+     "unit": ""
+    },
+    {
+     "id": "b",
+     "label": [
+      "Scale B (×)",
+      "पैमाना B (×)"
+     ],
+     "min": 1,
+     "max": 10,
+     "step": 1,
+     "unit": ""
+    }
+   ],
+   "initial": {
+    "l": 10,
+    "a": 2,
+    "b": 5
+   },
+   "outputs": [
+    {
+     "label": [
+      "Drawing A (mm)",
+      "चित्र A (mm)"
+     ],
+     "formula": [
+      "div",
+      [
+       "mul",
+       "l",
+       "a"
+      ],
+      1000
+     ]
+    },
+    {
+     "label": [
+      "Drawing B (mm)",
+      "चित्र B (mm)"
+     ],
+     "formula": [
+      "div",
+      [
+       "mul",
+       "l",
+       "b"
+      ],
+      1000
+     ]
+    }
+   ]
+  }
+ },
+ "cell-doubling": {
+  "net-increase": {
+   "title": [
+    "Net increase in symbolic cell count",
+    "प्रतीकात्मक कोशिका संख्या में कुल वृद्धि"
+   ],
+   "prompt": [
+    "Choose initial cell count and ideal doubling rounds.",
+    "आरंभिक कोशिका संख्या और आदर्श दुगुने चरण चुनें।"
+   ],
+   "hint": [
+    "Final = initial × 2 raised to rounds; increase = final − initial.",
+    "अंतिम = आरंभिक × 2 की चरण संख्या घात; वृद्धि = अंतिम − आरंभिक।"
+   ],
+   "caveat": [
+    "Ideal symbolic doubling with no losses; not real biological growth or culturing.",
+    "बिना हानि आदर्श प्रतीकात्मक दुगुना होना; वास्तविक जैविक वृद्धि या संवर्धन नहीं।"
+   ],
+   "fields": [
+    {
+     "id": "n",
+     "label": [
+      "Starting cells",
+      "आरंभिक कोशिकाएँ"
+     ],
+     "min": 1,
+     "max": 5,
+     "step": 1,
+     "unit": ""
+    },
+    {
+     "id": "r",
+     "label": [
+      "Rounds",
+      "चरण"
+     ],
+     "min": 0,
+     "max": 5,
+     "step": 1,
+     "unit": ""
+    }
+   ],
+   "initial": {
+    "n": 2,
+    "r": 3
+   },
+   "outputs": [
+    {
+     "label": [
+      "Final count",
+      "अंतिम संख्या"
+     ],
+     "formula": [
+      "mul",
+      "n",
+      [
+       "pow",
+       2,
+       "r"
+      ]
+     ]
+    },
+    {
+     "label": [
+      "Net increase",
+      "कुल वृद्धि"
+     ],
+     "formula": [
+      "sub",
+      [
+       "mul",
+       "n",
+       [
+        "pow",
+        2,
+        "r"
+       ]
+      ],
+      "n"
+     ]
+    }
+   ]
+  },
+  "two-intervals": {
+   "title": [
+    "Two intervals of ideal doubling",
+    "आदर्श दुगुने होने के दो अंतराल"
+   ],
+   "prompt": [
+    "Choose starting count and rounds in each interval.",
+    "आरंभिक संख्या और प्रत्येक अंतराल के चरण चुनें।"
+   ],
+   "hint": [
+    "Add the rounds; the second interval starts from the first interval's final count.",
+    "चरण जोड़ें; दूसरा अंतराल पहले की अंतिम संख्या से शुरू होता है।"
+   ],
+   "caveat": [
+    "Ideal symbolic doubling with no losses; not real biological growth or culturing.",
+    "बिना हानि आदर्श प्रतीकात्मक दुगुना होना; वास्तविक जैविक वृद्धि या संवर्धन नहीं।"
+   ],
+   "fields": [
+    {
+     "id": "n",
+     "label": [
+      "Starting cells",
+      "आरंभिक कोशिकाएँ"
+     ],
+     "min": 1,
+     "max": 4,
+     "step": 1,
+     "unit": ""
+    },
+    {
+     "id": "a",
+     "label": [
+      "First interval rounds",
+      "पहले अंतराल के चरण"
+     ],
+     "min": 0,
+     "max": 3,
+     "step": 1,
+     "unit": ""
+    },
+    {
+     "id": "b",
+     "label": [
+      "Second interval rounds",
+      "दूसरे अंतराल के चरण"
+     ],
+     "min": 0,
+     "max": 3,
+     "step": 1,
+     "unit": ""
+    }
+   ],
+   "initial": {
+    "n": 2,
+    "a": 1,
+    "b": 2
+   },
+   "outputs": [
+    {
+     "label": [
+      "After interval A",
+      "अंतराल A के बाद"
+     ],
+     "formula": [
+      "mul",
+      "n",
+      [
+       "pow",
+       2,
+       "a"
+      ]
+     ]
+    },
+    {
+     "label": [
+      "After interval B",
+      "अंतराल B के बाद"
+     ],
+     "formula": [
+      "mul",
+      "n",
+      [
+       "pow",
+       2,
+       [
+        "add",
+        "a",
+        "b"
+       ]
+      ]
+     ]
+    }
+   ]
+  }
+ }
+};
+for(const [parent,extensions] of Object.entries(MULTISUBJECT_EXTENSIONS))ADVANCED_MODELS[parent].extensions=extensions;
 const ELEMENTS=[
  ['H',1,1],['He',1,18],['Li',2,1],['Be',2,2],['B',2,13],['C',2,14],
  ['N',2,15],['O',2,16],['F',2,17],['Ne',2,18],['Na',3,1],['Mg',3,2],
@@ -392,4 +1314,30 @@ export function evaluateRatioExtension(mode,state,lang='en'){
   [[P('Left side ax + b','बायाँ पक्ष ax + b'),a*state.x+b],[P('Right side','दायाँ पक्ष'),12],[P('Equation satisfied','समीकरण संतुष्ट'),text(a*state.x+b===12?P('Yes','हाँ'):P('No','नहीं'),lang)]];
  return {mode,title:text(m.title,lang),prompt:text(m.prompt,lang),hint:text(m.hint,lang),caveat:text(m.caveat,lang),
  rows:rows.map(([label,value])=>({label:text(label,lang),value:String(value)})),source:'assets/advanced-lab-engine.js',reviewId:'advanced:ratio-algebra',humanReviewed:false,publicReleaseApproved:false,masteryPrediction:false,persists:false};
+}
+
+/** M64 reuses the M63 UI; fixed arithmetic trees are data, never executable source or user formulas. */
+export function supplementalModes(id){return Object.keys(modelAdvanced(id).extensions||{})}
+export function supplementalActivity(id,mode){
+ if(!supplementalModes(id).includes(mode))throw Error('Unknown supplemental activity');
+ return modelAdvanced(id).extensions[mode];
+}
+function extensionFormula(tree,state){
+ if(typeof tree==='number'&&Number.isFinite(tree))return tree;
+ if(typeof tree==='string'&&Object.hasOwn(state,tree))return state[tree];
+ if(!Array.isArray(tree)||tree.length!==3)throw Error('Invalid fixed formula');
+ const [op,x,y]=tree,a=extensionFormula(x,state),b=extensionFormula(y,state);
+ const result=op==='add'?a+b:op==='sub'?a-b:op==='mul'?a*b:op==='div'?a/b:op==='pow'?a**b:NaN;
+ if(!Number.isFinite(result))throw Error('Invalid fixed formula result');
+ return result;
+}
+export function evaluateSupplementalActivity(id,mode,state,lang='en'){
+ if(id==='ratio-algebra')return evaluateRatioExtension(mode,state,lang);
+ if(!['en','hi'].includes(lang))throw Error('Unknown language');
+ const m=supplementalActivity(id,mode);
+ if(!state||typeof state!=='object'||Array.isArray(state)||Object.keys(state).length!==m.fields.length||
+ m.fields.some(f=>!Object.hasOwn(state,f.id)||!Number.isInteger(state[f.id])||state[f.id]<f.min||state[f.id]>f.max))throw Error('Invalid extension state');
+ return {mode,title:text(m.title,lang),prompt:text(m.prompt,lang),hint:text(m.hint,lang),caveat:text(m.caveat,lang),
+ rows:m.outputs.map(o=>({label:text(o.label,lang),value:String(Number(extensionFormula(o.formula,state).toFixed(4)))})),
+ source:'assets/advanced-lab-engine.js',reviewId:'advanced:'+id,humanReviewed:false,publicReleaseApproved:false,masteryPrediction:false,persists:false};
 }
