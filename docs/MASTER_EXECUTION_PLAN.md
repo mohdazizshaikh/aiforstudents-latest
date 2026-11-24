@@ -257,3 +257,7 @@ M47–M52 merged after exact-head CI. Current inventory: 60 draft interactive mo
 ### M53 verified / M54 review-batch candidate
 
 M53 PR #42 exact-head CI 45447537186 passed and merged. M54 partitions the complete 3,340-record review inventory into 34 bounded local worklists with a 76-record pilot-first batch and 33 standard batches of 98–99 records. Six proposed criteria per record, 20,040 pending cells; zero authenticated approvals. See [M54 batch review](M54_REVIEW_BATCHES.md). All 30 incomplete scoped tracker tasks retain their status; this does not replace the broader product backlog. Exact-head M54 CI pending.
+
+### M56 learner discovery and NCERT source access
+
+M54 verified merged. M55 functional/browser tests passed, corrected documentation assertion awaiting CI. M56 adds subject filter for 48 advanced models; no grade mapping inferred. NCERT VI–VIII listings located but six prelim PDF requests failed; [source log](M56_NCERT_SOURCE_ACCESS.md). FP-017 stays blocked. No new verified task IDs. Exact-head M56 CI and combined M55/M56 integration required.

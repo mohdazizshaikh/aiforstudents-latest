@@ -81,3 +81,5 @@ FP-100 | Independent school/launch go-no-go decision | BLOCKED_EXTERNAL | Public
 5. Generative tutor and adaptive mastery require independent approval, validated sources, provider agreement and learning-outcome testing; no automatic enabling. Complete independent go/no-go only after actual evidence.
 
 Engineering beyond this scoped tracker still includes comprehensive curriculum and labs, full teacher administration, real AI tutor and validated mastery. Do not infer full product completion from the tracker.
+
+M56: NCERT middle-stage source retrieval blocked (timeouts/502); no new chapter mapping. [Source log](M56_NCERT_SOURCE_ACCESS.md). Subject-filtered learner lab navigation candidate, M55 corrected CI pending. Review/authorization gates unchanged.
