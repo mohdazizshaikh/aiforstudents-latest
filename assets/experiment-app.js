@@ -1,3 +1,4 @@
+import {createMiniSnapshotPanel} from './mini-snapshot-panel.js';
 /** M16 interactive virtual experiments. All input stays in current browser. */
 import {EXPERIMENTS,EXPERIMENT_IDS,EXPERIMENT_VERSION,experimentTask,experimentText,relation,bulbLit,evaluateExperiment,experimentSummary,WORKSHOP_MODES,WORKSHOP_CONTENT,evaluateWorkshop} from './experiment-engine.js';
 const $=id=>document.getElementById(id), el=(tag,cls,txt)=>{const n=document.createElement(tag);n.className=cls;if(txt!==undefined)n.textContent=txt;return n};
@@ -64,6 +65,7 @@ let W=WORKSHOP_DEFAULTS();
 if(demoMaths?.startsWith('maths/')&&WORKSHOP_MODES.includes(demoMaths.slice(6)))W.mode=demoMaths.slice(6);
 const workshopLang=(en,hi)=>$('lang')?.value==='hi'?hi:en;
 const workshopPair=(p)=>p[$('lang')?.value==='hi'?1:0];
+const workshopSnapshots=createMiniSnapshotPanel('workshop',()=> 'maths/'+W.mode,()=>Object.fromEntries((W.mode==='number-line'?['position']:W.mode==='rectangle'?['width','height']:['a','b']).map(k=>[k,W.values[k]])),()=> $('lang').value==='hi'?'hi':'en',s=>{Object.assign(W.values,s);W.checked=false;renderWorkshop()},'math-workshop-question');
 function workshopButton(action,label,pressed=false,disabled=false){
  const b=el('button','btn outline compact',label);
  b.type='button';b.dataset.workshopAction=action;b.disabled=disabled;
@@ -118,6 +120,7 @@ function renderWorkshop(){
   const thead=el('thead');thead.append(head);table.append(caption,thead,body);control.append(table);
   control.append(el('p','workshop-readable',workshopLang(`A minus B = ${v.a-v.b} items.`,`A घटा B = ${v.a-v.b} वस्तुएँ।`)));
  }
+ workshopSnapshots.render();
  $('math-workshop-check').textContent=workshopLang('Check my setup','मेरी स्थिति जाँचें');
  $('math-workshop-reset').textContent=workshopLang('Reset this activity','यह गतिविधि फिर शुरू करें');
  const feedback=$('math-workshop-feedback');
@@ -131,7 +134,7 @@ $('math-workshop').addEventListener('click',event=>{
  const b=event.target.closest('button[data-workshop-action]');if(!b)return;
  const action=b.dataset.workshopAction;
  if(action.startsWith('mode:')){
-  W={...WORKSHOP_DEFAULTS(),mode:action.slice(5)};
+  workshopSnapshots.clear();W={...WORKSHOP_DEFAULTS(),mode:action.slice(5)};
   renderWorkshop();$('math-workshop-question').focus();
   return;
  }
@@ -145,11 +148,11 @@ $('math-workshop').addEventListener('click',event=>{
  if(peer&&!peer.disabled)peer.focus();
 });
 $('math-workshop-check').addEventListener('click',()=>{W.checked=true;renderWorkshop();$('math-workshop-feedback').focus()});
-$('math-workshop-reset').addEventListener('click',()=>{W={...WORKSHOP_DEFAULTS(),mode:W.mode};renderWorkshop();$('math-workshop-question').focus()});
+$('math-workshop-reset').addEventListener('click',()=>{workshopSnapshots.clear();W={...WORKSHOP_DEFAULTS(),mode:W.mode};renderWorkshop();$('math-workshop-question').focus()});
 $('lang').addEventListener('change',renderWorkshop);
 window.addEventListener('aifs-teacher-demo',event=>{
  const id=typeof event.detail==='string'&&event.detail.startsWith('maths/')?event.detail.slice(6):null;
- if(!WORKSHOP_MODES.includes(id))return;W={...WORKSHOP_DEFAULTS(),mode:id};renderWorkshop();$('math-workshop-question').focus();
+ if(!WORKSHOP_MODES.includes(id))return;workshopSnapshots.clear();W={...WORKSHOP_DEFAULTS(),mode:id};renderWorkshop();$('math-workshop-question').focus();
 });
-window.addEventListener('aifs-history-cleared',()=>{W=WORKSHOP_DEFAULTS();renderWorkshop()});
+window.addEventListener('aifs-history-cleared',()=>{workshopSnapshots.clear();W=WORKSHOP_DEFAULTS();renderWorkshop()});
 renderWorkshop();
