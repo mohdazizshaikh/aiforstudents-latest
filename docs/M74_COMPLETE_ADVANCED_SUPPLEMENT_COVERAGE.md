@@ -19,3 +19,7 @@ Stacked on M73 63a214efd2e59d074af5aeaaf07b6a4e8278ab9c; M72 and M73 Node/static
 ## Verified baseline update
 
 M72 passed full CI 45479603387 and merged PR #62 at c7aa6bbfaaa92f4d5384788f5c930043cc01a0af. M73 browser check was pending at this update. M74 requires its own exact-head CI before merge.
+
+## M74 correction
+
+Initial CI 45480691094 failed the existing M30 160 KiB JS module budget. M73 is verified and merged at 28b69ebf6cbcc9ceb7c5c3c9bfafc4925f52199e. Extracted the eleven M74 definitions to `assets/advanced-lab-supplements-m74.js`, imported at the original property positions, and added explicit precache coverage. No budget relaxation, formula change or approval claim. New exact-head CI required.
