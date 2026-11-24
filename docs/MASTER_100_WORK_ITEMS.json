@@ -2174,12 +2174,12 @@
     }
   ],
   "updatedOn": "2026-11-24",
-  "currentEngineeringMilestone": "M53_VERIFIED_M54_CANDIDATE",
+  "currentEngineeringMilestone": "M54_VERIFIED_M55_CANDIDATE",
   "additionalNewMathsDrafts": 3,
   "currentPendingContentRecords": 3340,
   "batch1VerifiedEngineeringAndDesignTasks": 46,
   "batch2VerifiedEngineeringAndDesignTasks": 24,
-  "statusCaveat": "70/100 scoped engineering/design tasks only (B1 46/50, B2 24/50). M53 verified and merged, M54 candidate. 3340 pending reviews, six safeguarding gates, zero verified curriculum chapters. FP-068 source registry remains empty; FP-085 teacher approval remains blocked. No public launch or full-product approval.",
+  "statusCaveat": "70/100 scoped engineering/design only (B1 46/50, B2 24/50). M54 verified and merged; M55 candidate. 3340 pending reviews in 34 batches, six safeguarding gates, zero verified chapters. FP-068 registry empty; FP-085 teacher approval blocked. No public launch or full-product approval.",
   "newScienceDraftReviewRecords": 7,
   "newAdvancedDraftReviewRecords": 48,
   "m34CandidateWork": {
@@ -2356,7 +2356,7 @@
     "ciRun": 45447537186
   },
   "m54CandidateWork": {
-    "status": "IN_PROGRESS",
+    "status": "CI_VERIFIED_MERGED",
     "reviewBatchCount": 34,
     "pilotBatches": 1,
     "pilotRecords": 76,
@@ -2367,6 +2367,16 @@
     "totalRecords": 3340,
     "criteriaCount": 20040,
     "humanApprovalAuthenticated": false,
+    "newDoneVerifiedTasks": 0,
+    "mergeSha": "e7624d80e1fef13bb6cca29c7c8684cc5a7a81da",
+    "ciRun": 45449812650
+  },
+  "m55CandidateWork": {
+    "status": "IN_PROGRESS",
+    "oneControlExplorationModels": 48,
+    "transientBaseline": true,
+    "masteryPrediction": false,
+    "publicReleaseApproved": false,
     "newDoneVerifiedTasks": 0
   }
 }

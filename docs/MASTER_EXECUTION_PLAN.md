@@ -257,3 +257,7 @@ M47–M52 merged after exact-head CI. Current inventory: 60 draft interactive mo
 ### M53 verified / M54 review-batch candidate
 
 M53 PR #42 exact-head CI 45447537186 passed and merged. M54 partitions the complete 3,340-record review inventory into 34 bounded local worklists with a 76-record pilot-first batch and 33 standard batches of 98–99 records. Six proposed criteria per record, 20,040 pending cells; zero authenticated approvals. See [M54 batch review](M54_REVIEW_BATCHES.md). All 30 incomplete scoped tracker tasks retain their status; this does not replace the broader product backlog. Exact-head M54 CI pending.
+
+### M54 verified / M55 variable exploration candidate
+
+M54 passed exact-head CI 45449812650 and merged PR #43. All 34 review batches validated structurally; no human decisions. M55 adds optional bilingual before/after result comparison for a single changed control across all 48 advanced draft models. No real-world causal claim, learner score, saved baseline or validated mastery. [M55 exploration](M55_VARIABLE_EXPLORATION.md). 70/100 scoped tasks and 3,340 pending reviews unchanged. Exact-head CI pending.

@@ -317,3 +317,20 @@ export function advancedExampleFeedback(id,state,lang='en'){
  {fieldId:null,reason:text(P('The specified example matches. Try changing one control and explaining the result.','दिया गया उदाहरण मेल खाता है। एक नियंत्रण बदलकर परिणाम समझाएँ।'),lang)};
  return {id,exampleMatches:result.correct,fields,next,source:result.source,draftStatus:result.draftStatus,declinable:true,persists:false,usesHistory:false,masteryPrediction:false,publicReleaseApproved:false};
 }
+
+/** M55 one-control exploration: two transient states of the same model, not learner assessment.
+ * A single changed control establishes a within-model comparison, not real-world causation. */
+export function advancedVariableComparison(id,before,after,lang='en'){
+ if(!['en','hi'].includes(lang))throw Error('Unknown language');
+ const m=modelAdvanced(id),a=calculateAdvanced(id,before),b=calculateAdvanced(id,after);
+ const changed=m.fields.filter(f=>before[f.id]!==after[f.id]);
+ const mode=changed.length===0?'UNCHANGED':changed.length===1?'ONE_CONTROL':'MULTIPLE_CONTROLS';
+ const format=(f,v)=>f.options?text(f.options.find(o=>o.value===v).label,lang):String(v)+(f.unit?' '+f.unit:'');
+ const changedControls=changed.map(f=>({id:f.id,label:text(f.label,lang),before:format(f,before[f.id]),after:format(f,after[f.id])}));
+ const aRows=advancedResultRows(a,lang),bRows=advancedResultRows(b,lang);
+ // Rows are formatted model outputs. Do not parse rounded/localized values or invent deltas.
+ const comparisons=mode==='ONE_CONTROL'&&aRows.length===bRows.length&&aRows.every((r,i)=>r.label===bRows[i].label)
+  ?aRows.map((r,i)=>({label:r.label,before:r.value,after:bRows[i].value,changed:r.value!==bRows[i].value})):[];
+ const guidance=text(mode==='UNCHANGED'?P('Change just one control to compare its displayed model results.','दिखाए गए मॉडल परिणामों की तुलना के लिए केवल एक नियंत्रण बदलें।'):mode==='MULTIPLE_CONTROLS'?P('More than one control changed. Restore all but one, or mark a new starting state.','एक से अधिक नियंत्रण बदले। एक को छोड़कर बाकी लौटाएँ, या नई आरंभिक स्थिति चुनें।'):P('Compare the displayed values in this simplified model. An unchanged displayed value may hide rounding; this is not a real-world causal experiment.','इस सरल मॉडल में दिखाए गए मान मिलाएँ। अपरिवर्तित दिखता मान गोलाई के कारण हो सकता है; यह वास्तविक कारणात्मक प्रयोग नहीं है।'),lang);
+ return {id,mode,changedControls,comparisons,guidance,source:'assets/advanced-lab-engine.js',persists:false,usesLearnerHistory:false,masteryPrediction:false,publicReleaseApproved:false};
+}
