@@ -102,3 +102,36 @@ export function printableSupplementActivity(id,mode,lang='en'){
  const base=printableLabActivity(id,lang),m=advancedExtension(id,mode),i=lang==='hi'?1:0;
  return {...base,mode,title:m.title[i],prompt:m.prompt[i],caveat:m.caveat[i]};
 }
+
+/** M67 transient assignment pack: known source keys only, no free text or learner records. */
+export const LAB_PACK_LIMIT=6;
+export function labPackKeys(){
+ return ADVANCED_IDS.flatMap(id=>[id+':main',...advancedExtensionIds(id).map(mode=>id+':'+mode)]);
+}
+function validateLabPack(keys){
+ const allowed=labPackKeys();
+ if(!Array.isArray(keys)||keys.length>LAB_PACK_LIMIT||new Set(keys).size!==keys.length||keys.some(key=>!allowed.includes(key)))throw Error('Invalid lab pack');
+}
+export function editLabPack(keys,action){
+ validateLabPack(keys);
+ if(!action||typeof action!=='object'||Array.isArray(action))throw Error('Invalid lab pack action');
+ const type=action.type,needsKey=['add','remove','up','down'].includes(type);
+ if(needsKey?Object.keys(action).length!==2||!Object.hasOwn(action,'key')||!labPackKeys().includes(action.key):Object.keys(action).length!==1||type!=='clear')throw Error('Unknown lab pack action');
+ const next=[...keys];if(type==='clear')return [];
+ const i=next.indexOf(action.key);
+ if(type==='add'&&i<0&&next.length<LAB_PACK_LIMIT)next.push(action.key);
+ if(type==='remove'&&i>=0)next.splice(i,1);
+ if(type==='up'&&i>0)[next[i-1],next[i]]=[next[i],next[i-1]];
+ if(type==='down'&&i>=0&&i<next.length-1)[next[i],next[i+1]]=[next[i+1],next[i]];
+ return next;
+}
+export function printableLabPack(keys,lang='en'){
+ validateLabPack(keys);
+ if(!['en','hi'].includes(lang))throw Error('Unknown lab pack language');
+ const items=keys.map((key,i)=>{
+  const [id,mode]=key.split(':');
+  const a=mode==='main'?printableLabActivity(id,lang):printableSupplementActivity(id,mode,lang);
+  return {...a,key,position:i+1};
+ });
+ return {language:lang,items,localOnly:true,hasStudentNames:false,humanReviewed:false,publicReleaseApproved:false,rightsStatus:'ORIGINAL_DRAFT_PERMISSION_NOT_AUTHENTICATED'};
+}

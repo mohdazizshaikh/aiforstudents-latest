@@ -1,5 +1,5 @@
 {
-  "release": "M65 verified prototype / M66 teacher supplemental worksheet candidate — PRIVATE ONLY",
+  "release": "M65 verified prototype / M66–M67 teacher pack candidates — PRIVATE ONLY",
   "release_date": "2026-11-24",
   "hosting_zip": "aiforstudents_hostinger_staging_m33.zip",
   "source_zip": "aiforstudents_m33_source_tests.zip",
@@ -22,7 +22,7 @@
   "study_question_records": 32,
   "study_items_expert_approved": 0,
   "isolated_browser_study_checks": 32,
-  "currentMilestone": "M65_VERIFIED_M66_CANDIDATE",
+  "currentMilestone": "M65_VERIFIED_M66_M67_CANDIDATES",
   "status": "private-staging-prototype-unreviewed",
   "date": "2026-11-24",
   "studioLessons": 2,
@@ -66,7 +66,7 @@
   "sensitiveSourcePathExposureCheckAvailable": true,
   "sensitiveSourcePathExposureVerifiedOnLiveHost": false,
   "releaseZipSourceHashParityVerifiedInCI": true,
-  "swCacheVersion": "aifs-discovery-m33-2026-11-24-m66-r1",
+  "swCacheVersion": "aifs-discovery-m33-2026-11-24-m67-r1",
   "crossTabPrivacyResetImplemented": true,
   "crossTabPrivacyRealDeviceVerified": false,
   "existingUnreviewedContentRecords": 3282,
@@ -213,5 +213,12 @@
   "teacherSupplementWorksheetHumanReviewed": false,
   "teacherSupplementWorksheetRightsAuthenticated": false,
   "teacherSupplementWorksheetStoresStudentData": false,
-  "teacherSupplementWorksheetAnswerKeys": false
+  "teacherSupplementWorksheetAnswerKeys": false,
+  "customLabPackCandidate": true,
+  "customLabPackSourceActivities": 54,
+  "customLabPackMaxActivities": 6,
+  "customLabPackStoresStudentData": false,
+  "customLabPackPersists": false,
+  "customLabPackHumanReviewed": false,
+  "customLabPackRightsAuthenticated": false
 }
