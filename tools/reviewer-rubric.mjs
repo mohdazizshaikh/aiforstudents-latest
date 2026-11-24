@@ -51,7 +51,7 @@ export function validateRubricWorklist(data,rows=buildReviewRows()){
     if([v.reviewerRef,v.reviewDate,v.evidenceRef,v.rationale].some(s=>s!==''))err('Pending must remain blank '+k);
     ready=false;continue;
    }
-   if(!opaque.test(v.reviewerRef)||!opaque.test(v.evidenceRef)||!dateValid(v.reviewDate)||typeof v.rationale!=='string'||v.rationale.trim().length<12||v.rationale.length>1000)err('Invalid evidence '+k+' '+v.id);
+   if(typeof v.reviewerRef!=='string'||typeof v.evidenceRef!=='string'||!opaque.test(v.reviewerRef)||!opaque.test(v.evidenceRef)||!dateValid(v.reviewDate)||typeof v.rationale!=='string'||v.rationale.trim().length<12||v.rationale.length>1000)err('Invalid evidence '+k+' '+v.id);
    if(v.decision==='not-applicable'&&['accuracy','language','age','safety','rights'].includes(v.id))err('Required criterion cannot be waived '+k);
    if(v.decision==='revise'||v.decision==='reject'){ready=false;revision=true}
    if(v.id==='accuracy'||v.id==='language')reviewers.set(v.id,String(v.reviewerRef).toLowerCase());
