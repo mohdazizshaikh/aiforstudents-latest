@@ -25,3 +25,9 @@ export function scienceSnapshotRows(id,states,lang='en'){
  const m=scienceModel(id);
  return collection(id,states).map((s,index)=>({index,controls:m.fields.map(f=>({label:scienceText(f.label,lang),value:f.options?scienceText(f.options.find(o=>o.value===s[f.id]).label,lang):String(s[f.id])+(f.unit?' '+f.unit:'')})),explanation:scienceExplain(id,s,lang),persists:false,masteryPrediction:false,publicReleaseApproved:false}));
 }
+
+/** M91 discard exactly one validated state without mutating the original. */
+export function removeScienceSnapshot(id,states,index){
+ restoreScienceSnapshot(id,states,index);
+ return collection(id,states).filter((_,i)=>i!==index);
+}

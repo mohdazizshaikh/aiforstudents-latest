@@ -32,3 +32,9 @@ export function snapshotRows(id,states,lang='en'){
  return validate(id,states).map((state,index)=>({index,controls:m.fields.map(f=>({label:f.label[i],value:f.options?f.options.find(o=>o.value===state[f.id]).label[i]:String(state[f.id])+(f.unit?' '+f.unit:'')})),
  results:advancedResultRows(calculateAdvanced(id,state),lang),persists:false,masteryPrediction:false,publicReleaseApproved:false}));
 }
+
+/** M91 discard exactly one validated state without mutating the original. */
+export function removeSnapshot(id,states,index){
+ restoreSnapshot(id,states,index);
+ return validate(id,states).filter((_,i)=>i!==index);
+}

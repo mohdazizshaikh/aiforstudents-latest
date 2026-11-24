@@ -1,5 +1,7 @@
 # M88 — Bilingual teacher resource search (candidate)
 
+**Verified:** both CI runs 45493802012 and 45493788517 passed; PR #78 merged at c994ec45d0cfae4e9c9499ff1fac934006b73222. No external approval.
+
 **Correction:** Both initial M88 runs failed Node due to the M50 blanket input assertion; Chromium passed on push. Updated historical contract to permit exactly one bounded teacher title search input in the no-print controls; no learner response inputs or persistence permitted. Fresh CI pending.
 
 M84 corrected Node/static and Chromium passed (runs 45490025623 and 45490042038), PR #74 merged at 22e4070bf420a0ab3e7a89c5670159f67fc2da82. M85–M87 Node/static passed, browser pending at branch creation.

@@ -50,3 +50,9 @@ export function miniSnapshotRows(id,states,lang='en'){
   return {index,controls,explanation,persists:false,recordsAttempt:false,masteryPrediction:false,publicReleaseApproved:false};
  });
 }
+
+/** M91 discard exactly one validated state without mutating the original. */
+export function removeMiniSnapshot(id,states,index){
+ restoreMiniSnapshot(id,states,index);
+ return validate(id,states).filter((_,i)=>i!==index);
+}

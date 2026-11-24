@@ -1,5 +1,7 @@
 # M89 — Individual teacher resource rights handoff (candidate)
 
+**Verified:** both CI runs 45493925987 and 45493903756 passed; PR #79 merged at dc4832f76bb8c7f7b993704f9abd3a8bd3264e7e. No external approval.
+
 M85–M87 verified and merged; main 80c1da58d933be9f635eb381b740e123d96b2096. M88 initial Chromium passed, Node legacy input assertion corrected b0d2afd, fresh CI pending.
 
 Large batch: 109 separately addressable teacher resource rights-review work items, generated directly from 60 main and 49 supplemental fixed source activities. Each has exact English and Hindi printable content fingerprints and a combined identity hash, source file, subject and kind. Each has three required blank rights decisions (authorship, redistribution, attribution). 327 pending criteria; no fabricated rights decisions, no extra canonical learning records. 109 named per-resource tests plus three aggregate/negative tests. This is engineering preparation, not 109 human approvals or 109 completed master-plan tasks.
