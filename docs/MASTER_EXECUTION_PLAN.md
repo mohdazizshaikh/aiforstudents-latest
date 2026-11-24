@@ -233,3 +233,7 @@ Four new original bilingual computer-only models: square function, ideal net for
 ### M37 offline assignment pack candidate
 
 FP-087: two original-source five-step bilingual learner print packs in existing cached cards route, no names, answer keys or tracking. Code and tests pending exact-head CI; licensing and qualified teacher approval FP-085 remain external. Reuses 10 existing reviewed-pending classroom step records; no new instructional record count. See [M37 assignment packs](M37_ASSIGNMENT_PACKS.md).
+
+### M40 foundational interactive candidate
+
+Eight new original bilingual computer-only conceptual models, two per subject lens, bring the candidate to 36 interactive models, 36 fixed draft hints and 3,316 pending content reviews. Seven former draft discovery gaps now have related models (not curriculum verification). M37 and M38 have passed exact-head CI and merged. M40 awaits exact-head CI; 70/100 scoped engineering/design tasks unchanged, external approvals remain blocked. [M40 models](M40_FOUNDATION_MODELS.md).

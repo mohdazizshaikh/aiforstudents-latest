@@ -14,7 +14,7 @@ test('M19 human review gate blocks all public release until genuinely signed off
  const r=releaseAudit(undefined,'public');assert.equal(r.ready,false);assert.ok(r.failures.some(x=>x.includes('human signoff')));assert.ok(r.failures.some(x=>x.includes('child-safety/legal')));
 });
 test('M19 review inventory is counted without inventing approvals',()=>{
- const x=auditContentQueues();assert.equal(x.total,3308);assert.equal(x.pending,3308);assert.deepEqual(Object.fromEntries(Object.entries(x.counts).map(([k,v])=>[k,v.total])),{game:3200,study:32,studio:4,experiment:4,classroom:10,digital:32,maths:3,science:7,advanced:16});
+ const x=auditContentQueues();assert.equal(x.total,3316);assert.equal(x.pending,3316);assert.deepEqual(Object.fromEntries(Object.entries(x.counts).map(([k,v])=>[k,v.total])),{game:3200,study:32,studio:4,experiment:4,classroom:10,digital:32,maths:3,science:7,advanced:24});
 });
 test('M19 GitHub checkout archived game review queue is counted without pretending approvals',()=>{
  const tmp=fs.mkdtempSync(path.join(os.tmpdir(),'aifs-m19-'));try{
@@ -23,7 +23,7 @@ test('M19 GitHub checkout archived game review queue is counted without pretendi
   const game=fs.existsSync(rawPath)?fs.readFileSync(rawPath):gunzipSync(fs.readFileSync(archivePath));
   fs.writeFileSync(path.join(tmp,'docs','CONTENT_REVIEW_QUEUE.jsonl.gz'),gzipSync(game));
   for(const f of ['LAB_CONTENT_REVIEW_QUEUE.jsonl','STUDIO_CONTENT_REVIEW_QUEUE.jsonl','EXPERIMENT_CONTENT_REVIEW_QUEUE.jsonl','CLASSROOM_CONTENT_REVIEW_QUEUE.jsonl','DIGITAL_CONTENT_REVIEW_QUEUE.jsonl','MATHS_CONTENT_REVIEW_QUEUE.jsonl','SCIENCE_CONTENT_REVIEW_QUEUE.jsonl','ADVANCED_CONTENT_REVIEW_QUEUE.jsonl'])fs.copyFileSync(new URL(f,root),path.join(tmp,f));
-  const r=auditContentQueues(tmp);assert.deepEqual(r.problems,[]);assert.equal(r.total,3308);assert.equal(r.pending,3308);
+  const r=auditContentQueues(tmp);assert.deepEqual(r.problems,[]);assert.equal(r.total,3316);assert.equal(r.pending,3316);
  }finally{fs.rmSync(tmp,{recursive:true,force:true})}
 });
 test('M19 all pages and static assets compatible with self-only CSP',()=>{
