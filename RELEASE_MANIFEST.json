@@ -1,5 +1,5 @@
 {
-  "release": "M71 verified prototype / M72–M74 candidates — PRIVATE ONLY",
+  "release": "M72 verified prototype / M73–M74 candidates — PRIVATE ONLY",
   "release_date": "2026-11-24",
   "hosting_zip": "aiforstudents_hostinger_staging_m33.zip",
   "source_zip": "aiforstudents_m33_source_tests.zip",
@@ -22,7 +22,7 @@
   "study_question_records": 32,
   "study_items_expert_approved": 0,
   "isolated_browser_study_checks": 32,
-  "currentMilestone": "M71_VERIFIED_M72_M73_M74_CANDIDATES",
+  "currentMilestone": "M72_VERIFIED_M73_M74_CANDIDATES",
   "status": "private-staging-prototype-unreviewed",
   "date": "2026-11-24",
   "studioLessons": 2,
@@ -114,9 +114,9 @@
   "printableLabActivityApprovals": 0,
   "printableLabActivityStoresStudentData": false,
   "verifiedCheckpoint": {
-    "milestone": "M71",
-    "mergeSha": "bc98edeaa5d237a2f283ce208eadd91e028eeedb",
-    "ciRun": 45478780744
+    "milestone": "M72",
+    "mergeSha": "c7aa6bbfaaa92f4d5384788f5c930043cc01a0af",
+    "ciRun": 45479603387
   },
   "legacyPackagingBaseline": "M33 artifact filenames and historical baseline counters retained; not latest test counts or live deployment evidence",
   "interactiveDraftModels": 60,
@@ -275,7 +275,7 @@
     "advanced:heredity",
     "advanced:plant-process"
   ],
-  "m72SupplementCandidate": true,
+  "m72SupplementCandidate": false,
   "m72HumanReviewed": false,
   "m71SupplementEngineeringVerified": true,
   "m73NewSupplementalActivities": 8,
@@ -309,5 +309,6 @@
     "advanced:living-examples"
   ],
   "m74SupplementCandidate": true,
-  "m74HumanReviewed": false
+  "m74HumanReviewed": false,
+  "m72SupplementEngineeringVerified": true
 }
