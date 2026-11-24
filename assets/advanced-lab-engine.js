@@ -317,3 +317,10 @@ export function advancedExampleFeedback(id,state,lang='en'){
  {fieldId:null,reason:text(P('The specified example matches. Try changing one control and explaining the result.','दिया गया उदाहरण मेल खाता है। एक नियंत्रण बदलकर परिणाम समझाएँ।'),lang)};
  return {id,exampleMatches:result.correct,fields,next,source:result.source,draftStatus:result.draftStatus,declinable:true,persists:false,usesHistory:false,masteryPrediction:false,publicReleaseApproved:false};
 }
+
+/** M56: local subject discovery; no age/grade or learning-ability inference. */
+export const ADVANCED_SUBJECT_FILTERS=Object.freeze(['all','maths','physics','chemistry','biology']);
+export function advancedSubjectOptions(subject='all',lang='en'){
+ if(!ADVANCED_SUBJECT_FILTERS.includes(subject)||!['en','hi'].includes(lang))throw Error('Unknown subject or language');
+ return ADVANCED_IDS.filter(id=>subject==='all'||ADVANCED_MODELS[id].subject===subject).map(id=>({id,subject:ADVANCED_MODELS[id].subject,title:text(ADVANCED_MODELS[id].title,lang),gradeVerified:false,humanReviewed:false}));
+}
