@@ -1,5 +1,6 @@
 /** M33: original draft-only conceptual labs, all activity state is transient. */
 import {ADVANCED_IDS,modelAdvanced,evaluateAdvanced,advancedResultRows,advancedExampleFeedback,advancedVariableComparison,ADVANCED_SUBJECT_FILTERS,advancedSubjectOptions,ADVANCED_GUIDED_STAGES,advancedGuidedStage,advancedExtensionIds,advancedExtension,evaluateAdvancedExtension,findAdvancedConcepts,compareAdvancedExtension} from './advanced-lab-engine.js';
+import {SNAPSHOT_LIMIT,snapshotState,restoreSnapshot,snapshotRows} from './advanced-snapshots.js';
 const $=id=>document.getElementById(id);
 const node=(tag,text)=>{const e=document.createElement(tag);if(text!==undefined)e.textContent=text;return e};
 const lang=()=>$('lang').value==='hi'?'hi':'en';
@@ -9,6 +10,7 @@ const selected=new URLSearchParams(location.search).get('advanced');
 let id=ADVANCED_IDS.includes(selected)?selected:ADVANCED_IDS[0],state={...modelAdvanced(id).initial},feedback=null,comparisonOpen=false,variableBaseline=null,subjectFilter='all',guidedIndex=null;
 let extensionMode=advancedExtensionIds(id)[0]||null,extensionState=extensionMode?{...advancedExtension(id,extensionMode).initial}:{};
 let finderQuery='',finderChoice='',extensionBaseline=null;
+let snapshots=[];
 const button=(text,action,label,disabled=false,pressed=null)=>{
  const b=node('button',text);b.type='button';b.className='btn outline compact';b.dataset.advancedAction=action;
  b.disabled=disabled;if(label)b.setAttribute('aria-label',label);
@@ -192,6 +194,28 @@ function renderVariableComparison(){
  $('advanced-variable-table').hidden=r.comparisons.length===0;
  for(const item of r.comparisons){const row=node('tr'),head=node('th',item.label);head.scope='row';row.append(head,node('td',item.before),node('td',item.after));values.append(row)}
 }
+function renderSnapshots(){
+ const rows=snapshotRows(id,snapshots,lang()),host=$('advanced-snapshot-rows'),select=$('advanced-snapshot-select'),previous=select.value;
+ $('advanced-snapshot-heading').textContent=p('Temporary calculation snapshots','अस्थायी गणना स्थितियाँ');
+ $('advanced-snapshot-notice').textContent=p('Keep up to three distinct model states in this tab. Compare calculated values, not real observations or learning scores. Reset or change model to discard them.','इस टैब में अधिकतम तीन अलग मॉडल स्थितियाँ रखें। गणना किए गए मान मिलाएँ, वास्तविक अवलोकन या सीखने के अंक नहीं। मॉडल बदलने या रीसेट करने पर ये मिट जाएँगी।');
+ $('advanced-snapshot-add').textContent=p('Capture current state','वर्तमान स्थिति चुनें');
+ $('advanced-snapshot-clear').textContent=p('Clear snapshots','स्थितियाँ मिटाएँ');
+ $('advanced-snapshot-restore').textContent=p('Restore selected state','चुनी स्थिति लौटाएँ');
+ $('advanced-snapshot-select-label').textContent=p('State to restore','लौटाने की स्थिति');
+ $('advanced-snapshot-status').textContent=rows.length+' / '+SNAPSHOT_LIMIT+' '+p('temporary states','अस्थायी स्थितियाँ');
+ host.replaceChildren();select.replaceChildren();
+ for(const r of rows){
+  const label=p('State ','स्थिति ')+(r.index+1),o=node('option',label);o.value=String(r.index);select.append(o);
+  const group=node('section'),h=node('h5',label),controls=node('ul'),values=node('ul');
+  for(const f of r.controls)controls.append(node('li',f.label+': '+f.value));
+  for(const f of r.results)values.append(node('li',f.label+': '+f.value));
+  group.append(h,node('p',p('Controls','नियंत्रण')),controls,node('p',p('Calculated values','गणना किए गए मान')),values);host.append(group);
+ }
+ if(rows.some(r=>String(r.index)===previous))select.value=previous;
+ const empty=!rows.length;
+ select.disabled=empty;$('advanced-snapshot-restore').disabled=empty;$('advanced-snapshot-clear').disabled=empty;
+ $('advanced-snapshot-add').disabled=rows.length===SNAPSHOT_LIMIT||snapshots.some(s=>Object.keys(s).every(k=>s[k]===state[k]));
+}
 function renderGuidedStage(){
  const toggle=$('advanced-guided-toggle'),panel=$('advanced-guided-panel');
  $('advanced-guided-heading').textContent=p('Optional guided exploration','वैकल्पिक निर्देशित खोज');
@@ -297,7 +321,7 @@ function render(){
  }
  const values=$('advanced-values');values.replaceChildren();
  for(const item of advancedResultRows(result.metrics,lang())){const row=node('tr'),head=node('th',item.label);head.scope='row';row.append(head,node('td',item.value));values.append(row)}
- visualize(result.metrics);renderVariableComparison();renderGuidedStage();renderExtension();renderFinder();
+ visualize(result.metrics);renderVariableComparison();renderGuidedStage();renderExtension();renderFinder();renderSnapshots();
  $('advanced-check').textContent=p('Check example','उदाहरण जाँचें');$('advanced-reset').textContent=p('Reset model','मॉडल फिर शुरू करें');
  $('advanced-feedback').hidden=feedback===null;
  if(feedback!==null)$('advanced-feedback').textContent=(feedback?p('Matches the example. ','उदाहरण से मेल खाता है। '):p('Compare the chosen values with the hint. ','चुने मान संकेत से मिलाएँ। '))+result.explanation
@@ -330,7 +354,7 @@ $('advanced-controls').addEventListener('click',e=>{
  feedback=null;comparisonOpen=false;render();
  const buttons=[...$('advanced-controls').querySelectorAll('button')];(buttons.find(x=>x.dataset.advancedAction===action&&!x.disabled)||buttons.find(x=>x.dataset.advancedAction.endsWith(':'+k)&&!x.disabled))?.focus()
 });
-function reset(){resetExtension();if(subjectFilter!=='all'&&modelAdvanced(id).subject!==subjectFilter)subjectFilter='all';state={...modelAdvanced(id).initial};feedback=null;comparisonOpen=false;variableBaseline=null;guidedIndex=null;render()}
+function reset(){snapshots=[];resetExtension();if(subjectFilter!=='all'&&modelAdvanced(id).subject!==subjectFilter)subjectFilter='all';state={...modelAdvanced(id).initial};feedback=null;comparisonOpen=false;variableBaseline=null;guidedIndex=null;render()}
 $('ratio-extension-mode').addEventListener('change',e=>{
  if(!advancedExtensionIds(id).includes(e.target.value))return;extensionMode=e.target.value;extensionBaseline=null;extensionState={...advancedExtension(id,extensionMode).initial};renderExtension();$('ratio-extension-mode').focus();
 });
@@ -376,6 +400,9 @@ for(const [name,delta] of [['prev',-1],['next',1]])$('advanced-guided-'+name).ad
 });
 $('advanced-variable-mark').addEventListener('click',()=>{variableBaseline={...state};renderVariableComparison();$('advanced-variable-status').focus()});
 $('advanced-variable-clear').addEventListener('click',()=>{variableBaseline=null;renderVariableComparison();$('advanced-variable-mark').focus()});
+$('advanced-snapshot-add').addEventListener('click',()=>{snapshots=snapshotState(id,snapshots,state);renderSnapshots();$('advanced-snapshot-status').focus()});
+$('advanced-snapshot-clear').addEventListener('click',()=>{snapshots=[];renderSnapshots();$('advanced-snapshot-add').focus()});
+$('advanced-snapshot-restore').addEventListener('click',()=>{if(!snapshots.length)return;state=restoreSnapshot(id,snapshots,Number($('advanced-snapshot-select').value));feedback=null;comparisonOpen=false;render();$('advanced-heading').focus()});
 $('lang').addEventListener('change',render);
 window.addEventListener('aifs-teacher-demo',event=>{if(!ADVANCED_IDS.includes(event.detail))return;id=event.detail;reset();$('advanced-heading').focus();});
 window.addEventListener('aifs-history-cleared',()=>{subjectFilter='all';finderQuery='';finderChoice='';id=ADVANCED_IDS[0];reset()});
