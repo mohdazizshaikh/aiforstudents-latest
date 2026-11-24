@@ -7,7 +7,7 @@ const read=p=>JSON.parse(readFileSync(new URL('../'+p,import.meta.url),'utf8'));
 const tracker=read('docs/MASTER_100_WORK_ITEMS.json'),snapshot=read('docs/M35_EVIDENCE_SNAPSHOT.json');
 test('M35 exact-head evidence snapshot references every verified engineering task, never human approval',()=>{
  const r=validateEvidenceSnapshot(tracker,snapshot);
- assert.equal(r.valid,true,r.errors.join('; '));assert.equal(r.verifiedTaskReferences,68);
+ assert.equal(r.valid,true,r.errors.join('; '));assert.equal(r.verifiedTaskReferences,70);
  assert.equal(r.gitObjectsChecked,false);assert.equal(r.humanApprovalAuthenticated,false);assert.equal(r.publicReleaseApproved,false);
 });
 test('M35 snapshot rejects missing, duplicate, unexpected and malformed evidence',()=>{

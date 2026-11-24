@@ -1,8 +1,8 @@
 {
   "schema": "aifs-evidence-snapshot-v1",
-  "commit": "a45882614016e8b994462ee993c2640778f459e4",
-  "ciRun": "https://github.com/mohdazizshaikh/aiforstudents-latest/actions/runs/45350106713",
-  "scope": "Exact tested source snapshot; not human approval or proof of every individual historical acceptance claim.",
+  "commit": "ced1a802eb49827ad97c705dd93eec13929b29d0",
+  "ciRun": "https://github.com/mohdazizshaikh/aiforstudents-latest/actions/runs/45351860435",
+  "scope": "Exact tested M35 source snapshot; not human approval or proof of every individual historical acceptance claim.",
   "publicReleaseApproved": false,
   "entries": [
     {
@@ -16,7 +16,7 @@
         {
           "kind": "test",
           "path": "tests/m29-master-plan.test.mjs",
-          "blob": "95dc267500d714759791c465d18666032910ffd3"
+          "blob": "746e55db339718a3517b1134cc8e17e5b62441dc"
         }
       ]
     },
@@ -31,7 +31,7 @@
         {
           "kind": "test",
           "path": "tests/m29-master-plan.test.mjs",
-          "blob": "95dc267500d714759791c465d18666032910ffd3"
+          "blob": "746e55db339718a3517b1134cc8e17e5b62441dc"
         }
       ]
     },
@@ -46,7 +46,7 @@
         {
           "kind": "test",
           "path": "tests/m29-master-plan.test.mjs",
-          "blob": "95dc267500d714759791c465d18666032910ffd3"
+          "blob": "746e55db339718a3517b1134cc8e17e5b62441dc"
         }
       ]
     },
@@ -56,12 +56,12 @@
         {
           "kind": "source",
           "path": "docs/MASTER_EXECUTION_PLAN.md",
-          "blob": "5f84b121a23d2650fdfca9e8c6115286f98d3515"
+          "blob": "3d293fe38d8b00191b6a3e31f0b79481cac23e4b"
         },
         {
           "kind": "test",
           "path": "tests/m29-master-plan.test.mjs",
-          "blob": "95dc267500d714759791c465d18666032910ffd3"
+          "blob": "746e55db339718a3517b1134cc8e17e5b62441dc"
         }
       ]
     },
@@ -71,12 +71,12 @@
         {
           "kind": "source",
           "path": "tools/workplan-status.mjs",
-          "blob": "f19ccdb1a14923eb930c04b2d7f830c245d685b2"
+          "blob": "81330763fe00f7e7647ef89048ada04dfd70d827"
         },
         {
           "kind": "test",
           "path": "tests/m30-b1-workplan.test.mjs",
-          "blob": "c96f1659c2e850d8b05547680d67923b3c286042"
+          "blob": "0b65671739a6a52688d4ca719a44b4fde46e6b97"
         }
       ]
     },
@@ -92,6 +92,31 @@
           "kind": "test",
           "path": "tests/m32-b2-governance.test.mjs",
           "blob": "ed0876cc0507110f00cd01bcae6cbe3a677233a8"
+        }
+      ]
+    },
+    {
+      "id": "FP-008",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "tools/verify-evidence-snapshot.mjs",
+          "blob": "aec3013a6cdb5b03be9a8ec9cb4ff0a4b646ee19"
+        },
+        {
+          "kind": "source",
+          "path": "docs/M35_TRACE_AND_RETRIEVAL.md",
+          "blob": "321ba025c66cedd5846448e92276c5a35dcdedd5"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m35-evidence-retrieval.test.mjs",
+          "blob": "25720eb755f55ad1d225c88487440521f6e562f4"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m35-retention.test.mjs",
+          "blob": "11ef75fd4ae343b5e07ef33ac227b6265ecff38d"
         }
       ]
     },
@@ -181,7 +206,7 @@
         {
           "kind": "test",
           "path": "tests/browser_m25_ci.py",
-          "blob": "32b66bc381f02823c18acaa806f2f85de7bae389"
+          "blob": "d14dbf1af158fefb8b710a2e8b101c7280fcd92b"
         }
       ]
     },
@@ -226,7 +251,7 @@
         {
           "kind": "test",
           "path": "tests/browser_m25_ci.py",
-          "blob": "32b66bc381f02823c18acaa806f2f85de7bae389"
+          "blob": "d14dbf1af158fefb8b710a2e8b101c7280fcd92b"
         }
       ]
     },
@@ -256,7 +281,7 @@
         {
           "kind": "test",
           "path": "tests/browser_m25_ci.py",
-          "blob": "32b66bc381f02823c18acaa806f2f85de7bae389"
+          "blob": "d14dbf1af158fefb8b710a2e8b101c7280fcd92b"
         }
       ]
     },
@@ -266,12 +291,12 @@
         {
           "kind": "source",
           "path": "assets/app.js",
-          "blob": "3bce0b5ae8c92deb10e1ee632164bf415e30a713"
+          "blob": "7fdcc2af7c4322f4cdeb2ceff2d5ab99407eaae6"
         },
         {
           "kind": "test",
           "path": "tests/browser_m25_ci.py",
-          "blob": "32b66bc381f02823c18acaa806f2f85de7bae389"
+          "blob": "d14dbf1af158fefb8b710a2e8b101c7280fcd92b"
         }
       ]
     },
@@ -286,7 +311,7 @@
         {
           "kind": "test",
           "path": "tests/browser_m25_ci.py",
-          "blob": "32b66bc381f02823c18acaa806f2f85de7bae389"
+          "blob": "d14dbf1af158fefb8b710a2e8b101c7280fcd92b"
         }
       ]
     },
@@ -301,7 +326,7 @@
         {
           "kind": "test",
           "path": "tests/browser_m25_ci.py",
-          "blob": "32b66bc381f02823c18acaa806f2f85de7bae389"
+          "blob": "d14dbf1af158fefb8b710a2e8b101c7280fcd92b"
         }
       ]
     },
@@ -931,6 +956,36 @@
       ]
     },
     {
+      "id": "FP-079",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/app.js",
+          "blob": "7fdcc2af7c4322f4cdeb2ceff2d5ab99407eaae6"
+        },
+        {
+          "kind": "source",
+          "path": "docs/M35_TRACE_AND_RETRIEVAL.md",
+          "blob": "321ba025c66cedd5846448e92276c5a35dcdedd5"
+        },
+        {
+          "kind": "test",
+          "path": "tests/browser_m25_ci.py",
+          "blob": "d14dbf1af158fefb8b710a2e8b101c7280fcd92b"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m35-retention.test.mjs",
+          "blob": "11ef75fd4ae343b5e07ef33ac227b6265ecff38d"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m28-shared-device-privacy.test.mjs",
+          "blob": "2669d866acb3310480d5a9011e91be07d85c209a"
+        }
+      ]
+    },
+    {
       "id": "FP-081",
       "evidence": [
         {
@@ -1016,7 +1071,7 @@
         {
           "kind": "test",
           "path": "tests/browser_m25_ci.py",
-          "blob": "32b66bc381f02823c18acaa806f2f85de7bae389"
+          "blob": "d14dbf1af158fefb8b710a2e8b101c7280fcd92b"
         }
       ]
     },
@@ -1041,12 +1096,12 @@
         {
           "kind": "source",
           "path": "tools/workplan-status.mjs",
-          "blob": "f19ccdb1a14923eb930c04b2d7f830c245d685b2"
+          "blob": "81330763fe00f7e7647ef89048ada04dfd70d827"
         },
         {
           "kind": "test",
           "path": "tests/m30-b1-workplan.test.mjs",
-          "blob": "c96f1659c2e850d8b05547680d67923b3c286042"
+          "blob": "0b65671739a6a52688d4ca719a44b4fde46e6b97"
         }
       ]
     }
