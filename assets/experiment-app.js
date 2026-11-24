@@ -59,7 +59,9 @@ resetTask();render();
  * The experimental three mini-labs deliberately do NOT record learner scores.
  */
 const WORKSHOP_DEFAULTS=()=>({mode:'number-line',values:{position:0,width:2,height:2,a:1,b:1},checked:false});
+const demoMaths=new URLSearchParams(location.search).get('demo');
 let W=WORKSHOP_DEFAULTS();
+if(demoMaths?.startsWith('maths/')&&WORKSHOP_MODES.includes(demoMaths.slice(6)))W.mode=demoMaths.slice(6);
 const workshopLang=(en,hi)=>$('lang')?.value==='hi'?hi:en;
 const workshopPair=(p)=>p[$('lang')?.value==='hi'?1:0];
 function workshopButton(action,label,pressed=false,disabled=false){
@@ -145,5 +147,9 @@ $('math-workshop').addEventListener('click',event=>{
 $('math-workshop-check').addEventListener('click',()=>{W.checked=true;renderWorkshop();$('math-workshop-feedback').focus()});
 $('math-workshop-reset').addEventListener('click',()=>{W={...WORKSHOP_DEFAULTS(),mode:W.mode};renderWorkshop();$('math-workshop-question').focus()});
 $('lang').addEventListener('change',renderWorkshop);
+window.addEventListener('aifs-teacher-demo',event=>{
+ const id=typeof event.detail==='string'&&event.detail.startsWith('maths/')?event.detail.slice(6):null;
+ if(!WORKSHOP_MODES.includes(id))return;W={...WORKSHOP_DEFAULTS(),mode:id};renderWorkshop();$('math-workshop-question').focus();
+});
 window.addEventListener('aifs-history-cleared',()=>{W=WORKSHOP_DEFAULTS();renderWorkshop()});
 renderWorkshop();

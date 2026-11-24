@@ -1,6 +1,7 @@
 import {STUDIO_IDS,STUDIO_LESSONS,studioExercise,studioCheck,studioLang,studioSummary,STUDIO_VERSION} from './studio-engine.js';
 const $=id=>document.getElementById(id),node=(tag,cls,text)=>{const e=document.createElement(tag);e.className=cls;if(text!==undefined)e.textContent=text;return e};
-const state={journey:'fractions',stage:'learn',count:0,closed:false,feedback:null,lang:'en',ageBand:'11-14'};
+const demoStudio=new URLSearchParams(location.search).get('demo');
+const state={journey:demoStudio?.startsWith('studio/')&&STUDIO_IDS.includes(demoStudio.slice(7))?demoStudio.slice(7):'fractions',stage:'learn',count:0,closed:false,feedback:null,lang:'en',ageBand:'11-14'};
 const pair=(en,hi)=>state.lang==='hi'?hi:en;const language=x=>studioLang(x,state.lang);
 const history=()=>window.AIFS_STUDIO_BRIDGE?.getHistory?.()||{};
 const localized=()=>{state.lang=$('lang')?.value==='hi'?'hi':'en';state.ageBand=$('age-select')?.value||'11-14';};
@@ -27,4 +28,7 @@ function check(response){const exercise=studioExercise(state.journey,state.stage
 }
 $('studio-retry').addEventListener('click',()=>{state.feedback=null;render();$('studio-controls button')?.focus()});$('studio-start').addEventListener('click',()=>advance('try'));$('studio-check').addEventListener('click',()=>check(state.journey==='fractions'?state.count:state.closed));$('studio-forward').addEventListener('click',()=>advance(state.stage==='try'?'play':'understand'));
 $('studio-understand-next').addEventListener('click',()=>advance('grow'));$('studio-again').addEventListener('click',()=>{state.count=0;state.closed=false;advance('learn')});
-$('lang')?.addEventListener('change',render);$('age-select')?.addEventListener('change',render);window.addEventListener('aifs-history-cleared',()=>{state.feedback=null;state.stage='learn';render()});window.addEventListener('aifs-studio-history-changed',render);render();
+$('lang')?.addEventListener('change',render);$('age-select')?.addEventListener('change',render);window.addEventListener('aifs-history-cleared',()=>{state.feedback=null;state.stage='learn';render()});window.addEventListener('aifs-teacher-demo',event=>{
+ const id=typeof event.detail==='string'&&event.detail.startsWith('studio/')?event.detail.slice(7):null;
+ if(!STUDIO_IDS.includes(id))return;state.journey=id;state.stage='learn';state.count=0;state.closed=false;state.feedback=null;render();$('studio-lesson-title').focus();
+});window.addEventListener('aifs-studio-history-changed',render);render();

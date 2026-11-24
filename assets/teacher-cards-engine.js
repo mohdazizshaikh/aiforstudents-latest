@@ -50,11 +50,12 @@ export function teacherLabPlan(subject,id,lang='en'){
 /** M48 transient teacher demonstration agenda: fixed source IDs, no pupil data or free text. */
 export const DEMO_AGENDA_LIMIT=8;
 const validDemo=id=>typeof id==='string'&&ADVANCED_IDS.includes(id);
+const validAgenda=id=>validDemo(id)||BASIC_PRINT_IDS.includes(id);
 export function teacherDemoAgenda(agenda,action){
- if(!Array.isArray(agenda)||agenda.length>DEMO_AGENDA_LIMIT||new Set(agenda).size!==agenda.length||agenda.some(id=>!validDemo(id)))throw Error('Invalid demonstration agenda');
+ if(!Array.isArray(agenda)||agenda.length>DEMO_AGENDA_LIMIT||new Set(agenda).size!==agenda.length||agenda.some(id=>!validAgenda(id)))throw Error('Invalid demonstration agenda');
  if(!action||typeof action!=='object'||Array.isArray(action))throw Error('Invalid demonstration action');
  const type=action.type,keys=Object.keys(action),needsId=['add','remove','up','down'].includes(type);
- if(needsId?keys.length!==2||!Object.hasOwn(action,'id')||!validDemo(action.id):keys.length!==1||type!=='clear')throw Error('Unknown demonstration action');
+ if(needsId?keys.length!==2||!Object.hasOwn(action,'id')||!validAgenda(action.id):keys.length!==1||type!=='clear')throw Error('Unknown demonstration action');
  const next=[...agenda];if(type==='clear')return [];
  const i=next.indexOf(action.id);
  switch(type){
@@ -69,6 +70,10 @@ export function teacherAgendaRows(agenda,lang='en'){
  if(!['en','hi'].includes(lang))throw Error('Unknown agenda language');
  teacherDemoAgenda(agenda,{type:'clear'}); // validate, without mutating caller
  return agenda.map((id,index)=>{
+  if(BASIC_PRINT_IDS.includes(id)){
+   const m=basicPrintDefinition(id),i=lang==='hi'?1:0;
+   return {...teacherAnyLabPlan(m.subject,id,lang),position:index+1,prompt:m.prompt[i],hint:basicDemoHint(id)[i],source:m.sourceFile};
+  }
   const m=ADVANCED_MODELS[id],i=lang==='hi'?1:0;
   return {...teacherLabPlan(m.subject,id,lang),position:index+1,prompt:m.prompt[i],hint:m.hint[i],source:'assets/advanced-lab-engine.js'};
  });
@@ -120,6 +125,20 @@ export function teacherPrintableOptions(subject,lang='en'){
  const advanced=teacherLabOptions(subject,lang),i=lang==='hi'?1:0;
  return [...advanced,...BASIC_PRINT_IDS.map(id=>({id,...basicPrintDefinition(id)})).filter(m=>m.subject===subject).map(m=>({id:m.id,subject:m.subject,title:m.title[i],caveat:m.caveat[i],humanReviewed:false,gradeVerified:false,publicReleaseApproved:false}))];
 }
+/** M76 fixed internal deep links for all 60 main draft models. No external or user-entered URLs. */
+function basicDemoHint(id){
+ const [kind,key]=id.split('/');
+ return kind==='science'?SCIENCE_MODELS[key].hint:kind==='maths'?WORKSHOP_CONTENT[key].hint:STUDIO_LESSONS[key].stages.find(s=>s.id==='try').hint;
+}
+export function teacherAnyLabPlan(subject,id,lang='en'){
+ if(!BASIC_PRINT_IDS.includes(id))return teacherLabPlan(subject,id,lang);
+ const m=basicPrintDefinition(id);
+ if(m.subject!==subject||!['en','hi'].includes(lang))throw Error('Unknown or mismatched teacher lab');
+ const [kind,key]=id.split('/'),i=lang==='hi'?1:0;
+ const anchor={science:'science-lab',maths:'math-workshop',studio:'smart-studio'}[kind];
+ return {id,subject,title:m.title[i],caveat:m.caveat[i],href:'?demo='+encodeURIComponent(id)+'#'+anchor,humanReviewed:false,gradeVerified:false,publicReleaseApproved:false,localOnly:true,storesStudentData:false,projectorReadyClaim:false};
+}
+
 export function teacherPrintableSupplementOptions(id,lang='en'){
  if(!['en','hi'].includes(lang))throw Error('Unknown language');
  return BASIC_PRINT_IDS.includes(id)?[]:teacherSupplementOptions(id,lang);
