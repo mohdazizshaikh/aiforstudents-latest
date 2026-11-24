@@ -1,0 +1,119 @@
+{
+  "schema": "aifs-m61-maharashtra-candidates-v1",
+  "board": "Maharashtra",
+  "grade": 6,
+  "medium": "English",
+  "checkedOn": "2026-11-24",
+  "currentSessionApplicabilityVerified": false,
+  "rightsPermissionAuthenticated": false,
+  "humanApprovalAuthenticated": false,
+  "publicReleaseApproved": false,
+  "sources": {
+    "maths": {
+      "url": "https://books.ebalbharati.in/pdfs/603020004.pdf",
+      "title": "Mathematics Standard Six",
+      "firstEdition": 2016,
+      "reprint": 2022,
+      "inspection": "PDF_TEXT_AND_SCREENSHOT"
+    },
+    "science": {
+      "url": "https://books.ebalbharati.in/pdfs/603020012.pdf",
+      "title": "General Science Standard Six",
+      "firstEdition": 2016,
+      "reprint": 2022,
+      "inspection": "PDF_TEXT_ONLY_SCREENSHOT_SIZE_LIMIT"
+    }
+  },
+  "proposals": [
+    {
+      "sourceId": "maths",
+      "modelId": "advanced:ratio-algebra",
+      "subject": "maths",
+      "anchorType": "outcome",
+      "anchor": "06.71.06",
+      "limitation": "Only equal groups and part-to-total ratio; not general ratio problems.",
+      "status": "PROPOSED_UNVERIFIED"
+    },
+    {
+      "sourceId": "maths",
+      "modelId": "advanced:symmetry",
+      "subject": "maths",
+      "anchorType": "outcome",
+      "anchor": "06.71.11",
+      "limitation": "One coordinate reflection example; not full shape symmetry or construction.",
+      "status": "PROPOSED_UNVERIFIED"
+    },
+    {
+      "sourceId": "science",
+      "modelId": "advanced:material-property",
+      "subject": "chemistry",
+      "anchorType": "outcome",
+      "anchor": "06.72.03",
+      "limitation": "Two ideal transparency examples, not all material classifications.",
+      "status": "PROPOSED_UNVERIFIED"
+    },
+    {
+      "sourceId": "science",
+      "modelId": "advanced:habitat-match",
+      "subject": "biology",
+      "anchorType": "outcome",
+      "anchor": "06.72.05",
+      "limitation": "Two habitat associations; does not establish adaptation mechanisms.",
+      "status": "PROPOSED_UNVERIFIED"
+    },
+    {
+      "sourceId": "science",
+      "modelId": "advanced:shadow-ray",
+      "subject": "physics",
+      "anchorType": "outcome",
+      "anchor": "06.72.06",
+      "limitation": "Ideal blocked or unblocked ray; not full optics or shadow geometry.",
+      "status": "PROPOSED_UNVERIFIED"
+    },
+    {
+      "sourceId": "science",
+      "modelId": "advanced:material-state",
+      "subject": "chemistry",
+      "anchorType": "chapter-start",
+      "anchor": "5:32",
+      "limitation": "Only ice and liquid water labels; no complete states or properties lesson.",
+      "status": "PROPOSED_UNVERIFIED"
+    },
+    {
+      "sourceId": "science",
+      "modelId": "advanced:living-examples",
+      "subject": "biology",
+      "anchorType": "chapter-start",
+      "anchor": "2:9",
+      "limitation": "Only a plant and a nonliving example; no comprehensive living-world classification.",
+      "status": "PROPOSED_UNVERIFIED"
+    },
+    {
+      "sourceId": "science",
+      "modelId": "advanced:path-distance",
+      "subject": "physics",
+      "anchorType": "chapter-start",
+      "anchor": "9:65",
+      "limitation": "Prerequisite path length example, not classification of all motion types.",
+      "status": "PROPOSED_UNVERIFIED"
+    },
+    {
+      "sourceId": "science",
+      "modelId": "advanced:sound",
+      "subject": "physics",
+      "anchorType": "chapter-start",
+      "anchor": "13:91",
+      "limitation": "Ideal period-frequency model; not full acoustics or a physical sound test.",
+      "status": "PROPOSED_UNVERIFIED"
+    },
+    {
+      "sourceId": "science",
+      "modelId": "advanced:magnetism",
+      "subject": "physics",
+      "anchorType": "chapter-start",
+      "anchor": "15:105",
+      "limitation": "Ideal pole attraction/repulsion; not compass direction or a real magnet experiment.",
+      "status": "PROPOSED_UNVERIFIED"
+    }
+  ]
+}
