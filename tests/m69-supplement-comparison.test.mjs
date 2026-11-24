@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {ADVANCED_IDS,advancedExtensionIds,advancedExtension,evaluateAdvancedExtension,compareAdvancedExtension} from '../assets/advanced-lab-engine.js';
-test('M69 six supplemental comparisons in both languages, unchanged, one and multiple controls',()=>{
+test('M69/M70 fourteen supplemental comparisons in both languages, unchanged, one and multiple controls',()=>{
  let count=0;
  for(const id of ADVANCED_IDS)for(const mode of advancedExtensionIds(id))for(const lang of ['en','hi']){
   const m=advancedExtension(id,mode),before={...m.initial},one={...before},many={...before};
@@ -18,7 +18,7 @@ test('M69 six supplemental comparisons in both languages, unchanged, one and mul
   assert.deepEqual(before,m.initial);
   assert.throws(()=>compareAdvancedExtension(id,mode,before,{...before,student:'x'},lang));
  }
- assert.equal(count,36);
+ assert.equal(count,84);
 });
 test('M69 comparison rejects unknown model, mode, invalid state and unsupported language',()=>{
  assert.throws(()=>compareAdvancedExtension('counting','ratio',{},{}));
