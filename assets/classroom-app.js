@@ -1,13 +1,58 @@
-import {CLASSROOM_IDS,CLASSROOM_LESSONS,CLASSROOM_ROLES,classroomText,classroomStep,classroomSummary} from './classroom-engine.js';
+import {CLASSROOM_IDS,CLASSROOM_LESSONS,CLASSROOM_ROLES,classroomText,classroomStep,classroomSummary,lessonQueue} from './classroom-engine.js';
 import {rotateAnonymousRole} from './teacher-cards-engine.js';
 /** M17 classroom mode: transient UI state only. No student names, answers, accounts or analytics. */
 const $=id=>document.getElementById(id);
-const S={lesson:'fractions',step:0,role:0,revealed:false,projector:false};
+const S={lesson:'fractions',step:0,role:0,revealed:false,projector:false,queue:[]};
 const lang=()=> $('lang')?.value==='hi'?'hi':'en';
 const txt=p=>classroomText(p,lang());
 const both=(en,hi)=>lang()==='hi'?hi:en;
 const make=(tag,cls,text)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(text!==undefined)e.textContent=text;return e};
-function render(){const lesson=CLASSROOM_LESSONS[S.lesson],step=classroomStep(S.lesson,S.step),sum=classroomSummary(S.lesson);
+// Existing route, no storage or remote service. Fixed controls retain focus on language/lesson changes.
+const organizer=make('section','notice');
+organizer.setAttribute('aria-labelledby','classroom-queue-title');
+const queueTitle=make('h3','');queueTitle.id='classroom-queue-title';
+const queueNote=make('p','');
+const queueLabel=make('label','');queueLabel.htmlFor='classroom-queue-choice';
+const queueChoice=make('select','');queueChoice.id='classroom-queue-choice';
+const queueStatus=make('p','');queueStatus.setAttribute('role','status');queueStatus.setAttribute('aria-live','polite');
+const queueButtons=make('div','');
+const queueControls={};
+function queueAction(type){
+ const id=queueChoice.value;
+ if(type==='start'){
+  if(!S.queue.length)return;
+  S.lesson=S.queue[0];S.queue=lessonQueue(S.queue,{type:'start'});
+  S.step=0;S.role=0;S.revealed=false;
+  render();$('classroom-step-heading').focus();return;
+ }
+ if(type==='clear'){
+  S.queue=lessonQueue(S.queue,{type:'clear'});S.step=0;S.role=0;S.revealed=false;S.projector=false;S.lesson=CLASSROOM_IDS[0];
+ }else S.queue=lessonQueue(S.queue,{type,id});
+ render();queueChoice.focus();
+}
+for(const type of ['add','remove','up','down','start','clear']){
+ const b=make('button','btn outline compact');b.type='button';b.id='classroom-queue-'+type;
+ b.addEventListener('click',()=>queueAction(type));queueControls[type]=b;queueButtons.append(b);
+}
+organizer.append(queueTitle,queueNote,queueLabel,queueChoice,queueButtons,queueStatus);
+$('classroom-lessons').after(organizer);
+function renderQueue(){
+ queueTitle.textContent=both('Local lesson organizer','स्थानीय पाठ आयोजक');
+ queueNote.textContent=both('Queue the two original draft lessons for this open tab. No names, records or saved plan.','इस खुले टैब में दो मूल प्रारूप पाठ क्रम से चुनें। कोई नाम, रिकॉर्ड या सहेजी गई योजना नहीं।');
+ queueLabel.textContent=both('Choose a lesson to organize','क्रम में रखने के लिए पाठ चुनें');
+ const selected=queueChoice.value;
+ queueChoice.replaceChildren();
+ for(const id of CLASSROOM_IDS){const o=make('option','',txt(CLASSROOM_LESSONS[id].title));o.value=id;queueChoice.append(o)}
+ if(CLASSROOM_IDS.includes(selected))queueChoice.value=selected;
+ const labels={add:['Add to plan','योजना में जोड़ें'],remove:['Remove from plan','योजना से हटाएँ'],up:['Move earlier','पहले करें'],down:['Move later','बाद में करें'],start:['Start next planned lesson','अगला नियोजित पाठ शुरू करें'],clear:['Clear plan and reset classroom','योजना मिटाएँ और कक्षा रीसेट करें']};
+ for(const type of Object.keys(queueControls))queueControls[type].textContent=both(...labels[type]);
+ queueStatus.textContent=S.queue.length?both('Plan: ','योजना: ')+S.queue.map((id,i)=>(i+1)+'. '+txt(CLASSROOM_LESSONS[id].title)).join(' · '):both('Plan is empty.','योजना खाली है।');
+ const i=S.queue.indexOf(queueChoice.value);
+ queueControls.add.disabled=i>=0;queueControls.remove.disabled=i<0;queueControls.up.disabled=i<=0;
+ queueControls.down.disabled=i<0||i===S.queue.length-1;queueControls.start.disabled=!S.queue.length;
+}
+queueChoice.addEventListener('change',renderQueue);
+function render(){renderQueue();const lesson=CLASSROOM_LESSONS[S.lesson],step=classroomStep(S.lesson,S.step),sum=classroomSummary(S.lesson);
  $('classroom-nav').textContent=both('Classroom','कक्षा');$('classroom-title').textContent=both('Smart Classroom & Teacher Kit','स्मार्ट कक्षा और शिक्षक किट');
  $('classroom-intro').textContent=both('Use one screen to discuss, predict, explore and explain. No student login or class roster.','एक स्क्रीन पर चर्चा, अनुमान, अभ्यास और समझ। कोई विद्यार्थी लॉगिन या कक्षा सूची नहीं।');
  $('classroom-notice').textContent=both('Original, unreviewed prototype lesson plans. Teacher supervision required. No student answers are collected.','मूल प्रारूप पाठ-योजनाएँ, अभी विशेषज्ञ समीक्षा बाकी है। शिक्षक की देखरेख ज़रूरी है। विद्यार्थियों के उत्तर दर्ज नहीं होते।');
@@ -39,7 +84,7 @@ function render(){const lesson=CLASSROOM_LESSONS[S.lesson],step=classroomStep(S.
  $('classroom-projector').textContent=S.projector?both('Exit projector view','प्रोजेक्टर दृश्य बंद करें'):both('Projector-friendly view','प्रोजेक्टर के लिए दृश्य');$('classroom-projector').setAttribute('aria-pressed',String(S.projector));
  $('classroom-worksheet').href=lesson.worksheet;$('classroom-worksheet').textContent=both('Original printable worksheet (external page on this site)','मूल प्रिंट करने योग्य कार्यपत्र (इसी साइट पर)');
  $('classroom-experiment').href=lesson.resource;$('classroom-experiment').textContent=both('Open existing M16 Virtual Lab','पहले से उपलब्ध M16 प्रयोगशाला खोलें');
- $('classroom-privacy').textContent=both('This mode keeps only the current lesson, step and generic group role in memory. No child names, answers, scores or classroom reports are stored or sent.','यह मोड केवल वर्तमान पाठ, चरण और सामान्य समूह भूमिका अस्थायी रूप से रखता है। बच्चों के नाम, उत्तर, अंक या रिपोर्ट सेव या भेजी नहीं जाती।');
+ $('classroom-privacy').textContent=both('This mode keeps only the current lesson, planned lesson queue, step and generic group role in memory. No child names, answers, scores or classroom reports are stored or sent.','यह मोड केवल वर्तमान पाठ, पाठों का क्रम, चरण और सामान्य समूह भूमिका अस्थायी रूप से रखता है। बच्चों के नाम, उत्तर, अंक या रिपोर्ट सेव या भेजी नहीं जाती।');
  document.body.classList.toggle('classroom-projector',S.projector);
 }
 function stepTo(delta){const dest=S.step+delta;if(dest<0||dest>=CLASSROOM_LESSONS[S.lesson].steps.length)return;S.step=dest;S.revealed=false;S.role=rotateAnonymousRole(S.role,delta===1?1:0);render();$('classroom-step-heading').focus()}
@@ -54,5 +99,5 @@ $('classroom-switch-role').addEventListener('click',()=>{S.role=rotateAnonymousR
 $('classroom-reveal').addEventListener('click',()=>{S.revealed=!S.revealed;render();$('classroom-reveal').focus()});
 $('classroom-projector').addEventListener('click',()=>{S.projector=!S.projector;render();$('classroom-projector').focus()});
 $('lang').addEventListener('change',render);
-window.addEventListener('aifs-history-cleared',()=>{S.step=0;S.role=0;S.revealed=false;render()});
+window.addEventListener('aifs-history-cleared',()=>{S.queue=[];S.lesson=CLASSROOM_IDS[0];S.step=0;S.role=0;S.revealed=false;S.projector=false;render()});
 render();

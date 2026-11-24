@@ -28,3 +28,21 @@ export const CLASSROOM_LESSONS=Object.freeze({
 export function classroomText(pair,lang='en'){return pair?.[lang==='hi'?'hi':'en']||''}
 export function classroomStep(id,index){const lesson=CLASSROOM_LESSONS[id];if(!lesson||!Number.isInteger(index)||index<0||index>=lesson.steps.length)throw new RangeError('Unknown classroom lesson or step');return lesson.steps[index]}
 export function classroomSummary(id){const l=CLASSROOM_LESSONS[id];if(!l)throw new RangeError('Unknown classroom lesson');return {steps:l.steps.length,minutes:l.steps.reduce((s,x)=>s+x.duration,0),recordedStudentData:false,version:CLASSROOM_VERSION}}
+/** M34 bounded teacher queue: pure reducer, fixed lesson IDs, transient memory only. */
+export function lessonQueue(queue=[],action={type:'clear'}){
+ if(!Array.isArray(queue)||queue.length>CLASSROOM_IDS.length||new Set(queue).size!==queue.length||queue.some(id=>!CLASSROOM_IDS.includes(id)))throw new RangeError('Invalid lesson queue');
+ const next=[...queue];
+ if(!action||typeof action!=='object')throw new TypeError('Invalid queue action');
+ if(action.type==='clear')return [];
+ if(action.type==='start')return next.slice(1);
+ if(!CLASSROOM_IDS.includes(action.id))throw new RangeError('Unknown lesson');
+ const i=next.indexOf(action.id);
+ switch(action.type){
+  case 'add':if(i<0)next.push(action.id);break;
+  case 'remove':if(i>=0)next.splice(i,1);break;
+  case 'up':if(i>0)[next[i-1],next[i]]=[next[i],next[i-1]];break;
+  case 'down':if(i>=0&&i<next.length-1)[next[i],next[i+1]]=[next[i+1],next[i]];break;
+  default:throw new RangeError('Unknown queue action');
+ }
+ return next;
+}
