@@ -69,7 +69,7 @@ test('M32 local guidance interface has accessible fixed selectors, no text chat,
  assert.match(html,/role="status"/);
  assert.match(app,/aifs-history-cleared/);
  assert.doesNotMatch(app,/fetch\(|localStorage|sessionStorage|openai\.com|token|navigator\.geolocation|XMLHttpRequest/);
- assert.match(sw,/aifs-discovery-m33/);
+ assert.match(sw,/aifs-discovery-m34/);
  assert.ok(sw.includes('./assets/practice-engine.js')&&sw.includes('./assets/practice-app.js'));
  assert.ok(!html.includes('type="text"')||!html.includes('id="chat-input"'));
 });
