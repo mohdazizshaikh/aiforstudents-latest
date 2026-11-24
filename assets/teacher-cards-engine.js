@@ -221,3 +221,18 @@ export function searchTeacherResources(subject,kind='all',lang='en',query=''){
   return terms.every(t=>corpus.includes(t));
  });
 }
+
+/** M90: source-bound demonstration routes, never arbitrary URLs or learner data. */
+export function teacherActivityLaunch(key,lang='en'){
+ if(typeof key!=='string'||!labPackKeys().includes(key)||!['en','hi'].includes(lang))throw Error('Unknown activity launch');
+ const [id,mode]=key.split(':'),a=printableAnyLabActivity(id,mode,lang);
+ const href=mode==='main'?teacherAnyLabPlan(a.subject,id,lang).href:
+  '?advanced='+encodeURIComponent(id)+'&extension='+encodeURIComponent(mode)+'#advanced-ratio-extension';
+ return {key,id,mode,subject:a.subject,title:a.title,href,localOnly:true,storesStudentData:false,humanReviewed:false,gradeVerified:false,publicReleaseApproved:false};
+}
+/** Resolve only known supplemental identifiers for the specified advanced model. */
+export function teacherPackLaunches(keys,lang='en'){
+ validateLabPack(keys);
+ if(!['en','hi'].includes(lang))throw Error('Unknown language');
+ return keys.map(key=>teacherActivityLaunch(key,lang));
+}

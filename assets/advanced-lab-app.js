@@ -6,9 +6,9 @@ const node=(tag,text)=>{const e=document.createElement(tag);if(text!==undefined)
 const lang=()=>$('lang').value==='hi'?'hi':'en';
 const p=(en,hi)=>lang()==='hi'?hi:en;
 const t=pair=>pair[lang()==='hi'?1:0];
-const selected=new URLSearchParams(location.search).get('advanced');
+const launchParams=new URLSearchParams(location.search),selected=launchParams.get('advanced'),requestedExtension=launchParams.get('extension');
 let id=ADVANCED_IDS.includes(selected)?selected:ADVANCED_IDS[0],state={...modelAdvanced(id).initial},feedback=null,comparisonOpen=false,variableBaseline=null,subjectFilter='all',guidedIndex=null;
-let extensionMode=advancedExtensionIds(id)[0]||null,extensionState=extensionMode?{...advancedExtension(id,extensionMode).initial}:{};
+let extensionMode=ADVANCED_IDS.includes(selected)&&launchParams.getAll('advanced').length===1&&launchParams.getAll('extension').length===1&&advancedExtensionIds(id).includes(requestedExtension)?requestedExtension:advancedExtensionIds(id)[0]||null,extensionState=extensionMode?{...advancedExtension(id,extensionMode).initial}:{};
 let finderQuery='',finderChoice='',extensionBaseline=null;
 let snapshots=[];
 const button=(text,action,label,disabled=false,pressed=null)=>{
