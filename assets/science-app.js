@@ -5,9 +5,10 @@ import {
  SCIENCE_IDS,SCIENCE_STAGES,SCIENCE_MODELS,scienceModel,scienceText,
  scienceEvaluate,scienceChoiceCheck,scienceExplain
 } from './science-engine.js';
+import {SCIENCE_SNAPSHOT_LIMIT,captureScienceSnapshot,restoreScienceSnapshot,scienceSnapshotRows} from './science-snapshots.js';
 const $=id=>document.getElementById(id);
 const node=(tag,cls,text)=>{const x=document.createElement(tag);if(cls)x.className=cls;if(text!==undefined)x.textContent=text;return x};
-const fresh=(id='motion')=>({id,stage:0,values:{...scienceModel(id).initial},answer:null,feedback:null});
+const fresh=(id='motion')=>({id,stage:0,values:{...scienceModel(id).initial},answer:null,feedback:null,snapshots:[]});
 const demoScience=new URLSearchParams(location.search).get('demo');
 let S=fresh(SCIENCE_IDS.includes(demoScience?.slice(8))&&demoScience.startsWith('science/')?demoScience.slice(8):'motion');
 const lang=()=>$('lang')?.value==='hi'?'hi':'en';
@@ -55,6 +56,28 @@ function controls(){
  }
  area.append(node('p','science-explanation',scienceExplain(S.id,S.values,lang())));
 }
+function renderSnapshots(active){
+ const panel=$('science-snapshot-panel');panel.hidden=!active;
+ const rows=scienceSnapshotRows(S.id,S.snapshots,lang()),host=$('science-snapshot-rows'),select=$('science-snapshot-select'),previous=select.value;
+ $('science-snapshot-heading').textContent=p('Temporary model snapshots','अस्थायी मॉडल स्थितियाँ');
+ $('science-snapshot-notice').textContent=p('Keep up to three different computer model states. Compare explanations, not marks or real experiments. Nothing is saved after leaving this page.','अधिकतम तीन अलग कंप्यूटर मॉडल स्थितियाँ रखें। व्याख्याएँ मिलाएँ, अंक या वास्तविक प्रयोग नहीं। पृष्ठ छोड़ने के बाद कुछ सहेजा नहीं जाता।');
+ $('science-snapshot-add').textContent=p('Capture current state','वर्तमान स्थिति चुनें');
+ $('science-snapshot-clear').textContent=p('Clear snapshots','स्थितियाँ मिटाएँ');
+ $('science-snapshot-restore').textContent=p('Restore selected state','चुनी स्थिति लौटाएँ');
+ $('science-snapshot-select-label').textContent=p('State to restore','लौटाने की स्थिति');
+ $('science-snapshot-status').textContent=rows.length+' / '+SCIENCE_SNAPSHOT_LIMIT+' '+p('temporary states','अस्थायी स्थितियाँ');
+ host.replaceChildren();select.replaceChildren();
+ for(const r of rows){
+  const label=p('State ','स्थिति ')+(r.index+1),o=node('option','',label);o.value=String(r.index);select.append(o);
+  const group=node('section',''),list=node('ul','');
+  for(const f of r.controls)list.append(node('li','',f.label+': '+f.value));
+  group.append(node('h5','',label),list,node('p','',r.explanation));host.append(group);
+ }
+ if(rows.some(r=>String(r.index)===previous))select.value=previous;
+ select.disabled=!active||!rows.length;
+ $('science-snapshot-clear').disabled=!active||!rows.length;$('science-snapshot-restore').disabled=!active||!rows.length;
+ $('science-snapshot-add').disabled=!active||rows.length===SCIENCE_SNAPSHOT_LIMIT||S.snapshots.some(s=>Object.keys(s).every(k=>s[k]===S.values[k]));
+}
 function quiz(){
  const area=$('science-quiz');area.replaceChildren();
  const play=scienceModel(S.id).play;
@@ -94,6 +117,7 @@ function render(){
  $('science-understand').textContent=name==='understand'?
   p('Target example: ','लक्ष्य का उदाहरण: ')+scienceExplain(S.id,model.target,lang()):'';
  if(tryStage)controls();
+ renderSnapshots(tryStage);
  if(playStage)quiz();
  const feedback=$('science-feedback');feedback.hidden=!S.feedback;
  if(S.feedback){
@@ -141,9 +165,12 @@ $('science-check').addEventListener('click',()=>{
  render();$('science-feedback').focus();
 });
 $('science-reset').addEventListener('click',()=>{
- S.values={...scienceModel(S.id).initial};S.answer=null;S.feedback=null;
+ S.values={...scienceModel(S.id).initial};S.answer=null;S.feedback=null;S.snapshots=[];
  render();$('science-question').focus();
 });
+$('science-snapshot-add').addEventListener('click',()=>{if(SCIENCE_STAGES[S.stage]!=='try')return;S.snapshots=captureScienceSnapshot(S.id,S.snapshots,S.values);renderSnapshots(true);$('science-snapshot-status').focus()});
+$('science-snapshot-clear').addEventListener('click',()=>{if(SCIENCE_STAGES[S.stage]!=='try')return;S.snapshots=[];renderSnapshots(true);$('science-snapshot-add').focus()});
+$('science-snapshot-restore').addEventListener('click',()=>{if(SCIENCE_STAGES[S.stage]!=='try'||!S.snapshots.length)return;S.values=restoreScienceSnapshot(S.id,S.snapshots,Number($('science-snapshot-select').value));S.feedback=null;S.answer=null;render();$('science-question').focus()});
 $('science-prev').addEventListener('click',()=>gotoStage(S.stage-1));
 $('science-next').addEventListener('click',()=>gotoStage(S.stage+1));
 $('lang').addEventListener('change',render);
