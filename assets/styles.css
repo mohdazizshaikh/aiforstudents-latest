@@ -130,3 +130,13 @@ h1,h2,h3,p{margin-top:0}h1,h2,h3{line-height:1.16;letter-spacing:-.04em}h1{font-
 .curriculum-grade summary{cursor:pointer;font-weight:750;min-height:44px;padding:8px 0}
 .curriculum-grade summary:focus-visible{outline:3px solid #ad7525;outline-offset:3px}
 .curriculum-grade ul{padding-left:22px;margin:8px 0}.curriculum-grade li{margin:8px 0}
+
+/* M62 explicit teacher plan preview; only this source-derived sequence is printed when open. */
+.agenda-paper{max-width:850px;margin:24px auto;padding:20px;border:1px solid #bdd5ce;border-radius:12px;overflow-wrap:anywhere;background:#fff;color:#19343b}
+.agenda-paper[hidden]{display:none!important}.agenda-paper li{margin:12px 0}.agenda-paper-actions{display:flex;gap:10px;flex-wrap:wrap}
+@media print{
+ body.agenda-paper-open > :not(#classroom-agenda-paper){display:none!important}
+ body.agenda-paper-open #classroom-agenda-paper:not([hidden]){display:block!important;max-width:none;margin:0;padding:0;border:0;background:white;color:black}
+ body.agenda-paper-open #classroom-agenda-paper li{break-inside:avoid}
+ body.agenda-paper-open .agenda-paper-actions{display:none!important}
+}

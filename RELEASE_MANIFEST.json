@@ -66,7 +66,7 @@
   "sensitiveSourcePathExposureCheckAvailable": true,
   "sensitiveSourcePathExposureVerifiedOnLiveHost": false,
   "releaseZipSourceHashParityVerifiedInCI": true,
-  "swCacheVersion": "aifs-discovery-m33-2026-11-24-m58-r1",
+  "swCacheVersion": "aifs-discovery-m33-2026-11-24-m62-r1",
   "crossTabPrivacyResetImplemented": true,
   "crossTabPrivacyRealDeviceVerified": false,
   "existingUnreviewedContentRecords": 3282,
@@ -167,5 +167,8 @@
   "maharashtraCrosswalkCandidate": true,
   "maharashtraGrade6Proposals": 10,
   "totalBoardMappingProposals": 32,
-  "maharashtraCurrentSessionVerified": false
+  "maharashtraCurrentSessionVerified": false,
+  "teacherPrintableDemoAgendaCandidate": true,
+  "teacherPrintableDemoAgendaLimit": 8,
+  "teacherPrintableDemoAgendaPersists": false
 }
