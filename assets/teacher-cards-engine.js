@@ -189,3 +189,14 @@ export function printableLabPack(keys,lang='en'){
  });
  return {language:lang,items,localOnly:true,hasStudentNames:false,humanReviewed:false,publicReleaseApproved:false,rightsStatus:'ORIGINAL_DRAFT_PERMISSION_NOT_AUTHENTICATED'};
 }
+
+/** M77 local activity discovery across all fixed source keys. No free text, learner records or inferred grade. */
+export const TEACHER_ACTIVITY_KINDS=Object.freeze(['all','basic','advanced','supplement']);
+export function teacherActivityChoices(subject,kind='all',lang='en'){
+ if(!TEACHER_LAB_SUBJECTS.includes(subject)||!TEACHER_ACTIVITY_KINDS.includes(kind)||!['en','hi'].includes(lang))throw Error('Unknown activity discovery filter');
+ return labPackKeys().map(key=>{
+  const [id,mode]=key.split(':'),type=BASIC_PRINT_IDS.includes(id)?'basic':mode==='main'?'advanced':'supplement';
+  const a=printableAnyLabActivity(id,mode,lang);
+  return {key,id,mode,subject:a.subject,kind:type,title:a.title,humanReviewed:false,gradeVerified:false,publicReleaseApproved:false};
+ }).filter(a=>a.subject===subject&&(kind==='all'||a.kind===kind));
+}

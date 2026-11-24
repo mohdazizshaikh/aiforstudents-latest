@@ -3,3 +3,7 @@
 Stacked on M75 de1510cbc1e84801839e549cf1975fc5c14202cb. Corrected M74 and M75 Node/static passed, browser verification pending at branch creation.
 
 Extends classroom launcher from 48 advanced models to all 60 main draft models, including 12 basic science, maths workshop and studio choices. Eight-item transient agenda accepts mixed model IDs, supports add/remove/reorder/clear and prints the existing learner-safe sequence without hints or answer keys. Basic deep links use allowlisted namespaced IDs and static anchors; in-tab launch resets the selected model and focuses its question/title without running a learner check. New-tab deep links do not carry the agenda. Existing advanced API and print behavior retained. No saved lesson plans, learner records, grades, external links or live teacher dashboard. Tests cover all 60 bilingual choices, fixed links, invalid IDs, mixed agenda, print, focus and privacy reset. No new canonical records or independent approval. Exact-head CI pending; master register unchanged 70/100. Public release blocked.
+
+## Verified outcome
+
+M76 exact-head CI 45482541488 passed both jobs; PR #66 merged at 6d5114aaef32824fe3e63902ac0a2a4311702317. Engineering verification only; independent education/rights approval pending.
