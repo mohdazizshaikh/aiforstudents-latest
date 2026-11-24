@@ -1,8 +1,8 @@
 import {CLASSROOM_IDS,CLASSROOM_LESSONS,CLASSROOM_ROLES,classroomText,classroomStep,classroomSummary,lessonQueue} from './classroom-engine.js';
-import {rotateAnonymousRole} from './teacher-cards-engine.js';
+import {rotateAnonymousRole,TEACHER_LAB_SUBJECTS,teacherLabOptions,teacherLabPlan} from './teacher-cards-engine.js';
 /** M17 classroom mode: transient UI state only. No student names, answers, accounts or analytics. */
 const $=id=>document.getElementById(id);
-const S={lesson:'fractions',step:0,role:0,revealed:false,projector:false,queue:[]};
+const S={lesson:'fractions',step:0,role:0,revealed:false,projector:false,queue:[],labSubject:'maths',labId:null};
 const lang=()=> $('lang')?.value==='hi'?'hi':'en';
 const txt=p=>classroomText(p,lang());
 const both=(en,hi)=>lang()==='hi'?hi:en;
@@ -26,7 +26,7 @@ function queueAction(type){
   render();$('classroom-step-heading').focus();return;
  }
  if(type==='clear'){
-  S.queue=lessonQueue(S.queue,{type:'clear'});S.step=0;S.role=0;S.revealed=false;S.projector=false;S.lesson=CLASSROOM_IDS[0];
+  S.queue=lessonQueue(S.queue,{type:'clear'});S.step=0;S.role=0;S.revealed=false;S.projector=false;S.labSubject='maths';S.labId=null;S.lesson=CLASSROOM_IDS[0];
  }else S.queue=lessonQueue(S.queue,{type,id});
  render();queueChoice.focus();
 }
@@ -36,6 +36,35 @@ for(const type of ['add','remove','up','down','start','clear']){
 }
 organizer.append(queueTitle,queueNote,queueLabel,queueChoice,queueButtons,queueStatus);
 $('classroom-lessons').after(organizer);
+const labPanel=make('section','notice classroom-organizer');labPanel.id='classroom-lab-launcher';labPanel.setAttribute('aria-labelledby','classroom-lab-heading');
+const labHeading=make('h3','');labHeading.id='classroom-lab-heading';
+const labNotice=make('p',''),subjectLabel=make('label',''),subjectSelect=make('select',''),labLabel=make('label',''),labSelect=make('select','');
+subjectSelect.id='classroom-lab-subject';subjectLabel.htmlFor=subjectSelect.id;
+labSelect.id='classroom-lab-choice';labLabel.htmlFor=labSelect.id;
+const labCaveat=make('p','');labCaveat.id='classroom-lab-caveat';labCaveat.setAttribute('role','status');
+const labLink=make('a','btn outline compact');labLink.id='classroom-lab-open';
+const labClear=make('button','btn outline compact');labClear.id='classroom-lab-clear';labClear.type='button';
+const labActions=make('div','classroom-queue-actions');labActions.append(labLink,labClear);
+labPanel.append(labHeading,labNotice,subjectLabel,subjectSelect,labLabel,labSelect,labCaveat,labActions);organizer.after(labPanel);
+function renderLabLauncher(){
+ labHeading.textContent=both('Teacher lab launcher — original drafts','शिक्षक प्रयोग चयन — मूल मसौदे');
+ labNotice.textContent=both('Choose a subject and draft model for a supervised demonstration. No approved grade mapping, real experiment or student record.','देखरेख में प्रदर्शन के लिए विषय और मसौदा मॉडल चुनें। कोई स्वीकृत कक्षा मिलान, वास्तविक प्रयोग या विद्यार्थी रिकॉर्ड नहीं।');
+ subjectLabel.textContent=both('Lab subject','प्रयोग विषय');labLabel.textContent=both('Draft concept','मसौदा अवधारणा');
+ const names={maths:['Mathematics','गणित'],physics:['Physics','भौतिकी'],chemistry:['Chemistry','रसायन'],biology:['Biology','जीवविज्ञान']};
+ subjectSelect.replaceChildren();for(const s of TEACHER_LAB_SUBJECTS){const o=make('option','',both(...names[s]));o.value=s;subjectSelect.append(o)}subjectSelect.value=S.labSubject;
+ const options=teacherLabOptions(S.labSubject,lang());labSelect.replaceChildren();
+ const blank=make('option','',both('Select a draft','मसौदा चुनें'));blank.value='';labSelect.append(blank);
+ for(const item of options){const o=make('option','',item.title);o.value=item.id;labSelect.append(o)}
+ labSelect.value=S.labId||'';
+ labLink.textContent=both('Open selected offline lab','चुना ऑफ़लाइन प्रयोग खोलें');labClear.textContent=both('Clear lab selection','प्रयोग चयन मिटाएँ');
+ const chosen=S.labId?teacherLabPlan(S.labSubject,S.labId,lang()):null;
+ labLink.hidden=!chosen;
+ if(chosen){labLink.href=chosen.href;labCaveat.textContent=chosen.caveat}else{labLink.removeAttribute('href');labCaveat.textContent=both('No lab selected. All models require review.','कोई प्रयोग नहीं चुना। सभी मॉडलों की समीक्षा बाकी है।')}
+}
+subjectSelect.addEventListener('change',()=>{S.labSubject=subjectSelect.value;S.labId=null;renderLabLauncher();subjectSelect.focus()});
+labSelect.addEventListener('change',()=>{S.labId=labSelect.value||null;renderLabLauncher();labSelect.focus()});
+labClear.addEventListener('click',()=>{S.labSubject='maths';S.labId=null;renderLabLauncher();subjectSelect.focus()});
+
 function renderQueue(){
  queueTitle.textContent=both('Local lesson organizer','स्थानीय पाठ आयोजक');
  queueNote.textContent=both('Queue the two original draft lessons for this open tab. No names, records or saved plan.','इस खुले टैब में दो मूल प्रारूप पाठ क्रम से चुनें। कोई नाम, रिकॉर्ड या सहेजी गई योजना नहीं।');
@@ -52,7 +81,7 @@ function renderQueue(){
  queueControls.down.disabled=i<0||i===S.queue.length-1;queueControls.start.disabled=!S.queue.length;
 }
 queueChoice.addEventListener('change',renderQueue);
-function render(){renderQueue();const lesson=CLASSROOM_LESSONS[S.lesson],step=classroomStep(S.lesson,S.step),sum=classroomSummary(S.lesson);
+function render(){renderQueue();renderLabLauncher();const lesson=CLASSROOM_LESSONS[S.lesson],step=classroomStep(S.lesson,S.step),sum=classroomSummary(S.lesson);
  $('classroom-nav').textContent=both('Classroom','कक्षा');$('classroom-title').textContent=both('Smart Classroom & Teacher Kit','स्मार्ट कक्षा और शिक्षक किट');
  $('classroom-intro').textContent=both('Use one screen to discuss, predict, explore and explain. No student login or class roster.','एक स्क्रीन पर चर्चा, अनुमान, अभ्यास और समझ। कोई विद्यार्थी लॉगिन या कक्षा सूची नहीं।');
  $('classroom-notice').textContent=both('Original, unreviewed prototype lesson plans. Teacher supervision required. No student answers are collected.','मूल प्रारूप पाठ-योजनाएँ, अभी विशेषज्ञ समीक्षा बाकी है। शिक्षक की देखरेख ज़रूरी है। विद्यार्थियों के उत्तर दर्ज नहीं होते।');
@@ -66,7 +95,7 @@ function render(){renderQueue();const lesson=CLASSROOM_LESSONS[S.lesson],step=cl
  }
  jump.value=String(S.step);
  $('classroom-jump-label').textContent=both('Jump to lesson step','पाठ के चरण पर जाएँ');
- $('classroom-cards-link').textContent=both('Print learner-only discussion card','विद्यार्थी के लिए चर्चा कार्ड छापें');
+ $('classroom-cards-link').textContent=both('Print learner card or full assignment pack','विद्यार्थी के लिए चर्चा कार्ड या पूरा पैक छापें');
  if(rememberedFocus)jump.focus();
  $('classroom-summary').textContent=both(`${sum.steps} teacher-led steps · about ${sum.minutes} minutes (design estimate), not a measured lesson duration.`,`शिक्षक के साथ ${sum.steps} चरण · लगभग ${sum.minutes} मिनट (केवल अनुमानित समय)।`);
  $('classroom-step-count').textContent=both(`Step ${S.step+1} of ${sum.steps}`,`चरण ${S.step+1} / ${sum.steps}`);
@@ -99,5 +128,5 @@ $('classroom-switch-role').addEventListener('click',()=>{S.role=rotateAnonymousR
 $('classroom-reveal').addEventListener('click',()=>{S.revealed=!S.revealed;render();$('classroom-reveal').focus()});
 $('classroom-projector').addEventListener('click',()=>{S.projector=!S.projector;render();$('classroom-projector').focus()});
 $('lang').addEventListener('change',render);
-window.addEventListener('aifs-history-cleared',()=>{S.queue=[];S.lesson=CLASSROOM_IDS[0];S.step=0;S.role=0;S.revealed=false;S.projector=false;render()});
+window.addEventListener('aifs-history-cleared',()=>{S.queue=[];S.lesson=CLASSROOM_IDS[0];S.step=0;S.role=0;S.revealed=false;S.projector=false;S.labSubject='maths';S.labId=null;render()});
 render();
