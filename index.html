@@ -154,6 +154,14 @@
   <select id="advanced-topic"></select>
   <div class="science-surface advanced-surface">
    <h3 id="advanced-heading" tabindex="-1"></h3><p id="advanced-prompt"></p>
+   <section class="local-guide-result" aria-labelledby="advanced-guided-heading">
+    <h4 id="advanced-guided-heading">Optional guided exploration</h4><p id="advanced-guided-notice" class="small muted"></p>
+    <button type="button" id="advanced-guided-toggle" class="btn outline compact" aria-expanded="false" aria-controls="advanced-guided-panel">Start guided exploration</button>
+    <div id="advanced-guided-panel" hidden>
+     <h5 id="advanced-guided-stage" tabindex="-1"></h5><p id="advanced-guided-instruction"></p><p id="advanced-guided-hint" hidden></p>
+     <div class="science-actions"><button type="button" class="btn outline compact" id="advanced-guided-prev">Previous stage</button><button type="button" class="btn outline compact" id="advanced-guided-next">Next stage (optional)</button></div>
+    </div>
+   </section>
    <p id="advanced-hint" class="small muted"></p><div id="advanced-controls" class="science-controls" role="group" aria-label="Concept model controls"></div>
    <div id="advanced-visual" class="advanced-visual"></div>
    <table class="advanced-results"><caption id="advanced-result-caption">Calculated model values</caption><thead><tr><th scope="col" id="advanced-field-label">Quantity</th><th scope="col" id="advanced-value-label">Value</th></tr></thead><tbody id="advanced-values"></tbody></table>

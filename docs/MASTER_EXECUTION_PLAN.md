@@ -265,3 +265,7 @@ M54 passed exact-head CI 45449812650 and merged PR #43. All 34 review batches va
 ### M55 verified / M56 integration / M57 tutor boundary audit
 
 M55 merged; M56 independent CI passed and combined regression candidate pushed. NCERT VI–VIII prelim PDFs could not be retrieved; FP-017 remains blocked. M57 adds 224 deterministic disabled-tutor contract cases, including 152 current bilingual pilot-source denials, 30 malformed requests, 40 synthetic response mutations and two synthetic positive controls. [Audit scope](M57_TUTOR_ADVERSARIAL_AUDIT.md). Actual provider, independent bias/hallucination evaluation, semantic correctness and launch authorization remain external; FP-068/069/070 unchanged. 70/100 scoped items; no new content approval. Exact-head integrated CI required.
+
+### M57 verified / M58 guided exploration candidate
+
+M56 combined CI 45453496959 and M57 CI 45453774394 passed and merged. M58 extends all 48 advanced labs with optional five-stage learner-directed exploration, 480 bilingual model/stage combinations, no response storage or mastery scoring. [M58 guide](M58_GUIDED_LAB_STAGES.md). 70/100 scoped items unchanged; 3,340 independent educational reviews and six safeguarding gates remain pending. Exact-head CI required.

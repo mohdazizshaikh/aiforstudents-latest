@@ -83,3 +83,5 @@ FP-100 | Independent school/launch go-no-go decision | BLOCKED_EXTERNAL | Public
 Engineering beyond this scoped tracker still includes comprehensive curriculum and labs, full teacher administration, real AI tutor and validated mastery. Do not infer full product completion from the tracker.
 
 M55 merged; M56 combined candidate CI pending. M57 deterministic negative-test runner advances FP-069 engineering preparation only, not independent human red-team evidence. NCERT VI–VIII source access failures documented in M56_NCERT_SOURCE_ACCESS.md. All 30 incomplete tasks remain open; actual tutor not enabled.
+
+M56 and M57 now verified and merged. M58 guided stage candidate advances learner-facing smart lab pedagogy, not independently validated mastery or full curriculum. All external acceptance dependencies remain unchanged.
