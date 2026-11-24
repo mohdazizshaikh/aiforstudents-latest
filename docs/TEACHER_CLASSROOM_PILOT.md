@@ -1,5 +1,7 @@
 # M17 Teacher-Led Smart Classroom Pilot — Proposed Plan
 
+> **M52 checkpoint:** 48 advanced printable activity variants, 48-model teacher launcher and transient eight-model agenda are merged. M53 proposes an adult-only rehearsal checklist. No real school/child trial, approval, teacher recruitment or learning-outcome evidence.
+
 > **M32 TEACHER PILOT SCOPE — 2026-11-24:** Teacher UI now has keyboard-friendly step jump, anonymous generic role rotation, projector controls and original local A4 learner discussion cards that hide teacher-only notes in print. This is **NOT** a school-approved teacher dashboard, assignment management or pupil roster. Existing 2 lesson plans remain human-review PENDING. Real school, guardian, projector, printer and learning outcome testing still absent. [M32 QA](M32_PRACTICE_TEACHER_QA.md).
 
 
