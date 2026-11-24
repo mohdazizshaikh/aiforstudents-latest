@@ -4,9 +4,10 @@
 import {SCIENCE_IDS,SCIENCE_MODELS,SCIENCE_STAGES} from './science-engine.js';
 import {STUDIO_LESSONS} from './studio-engine.js';
 import {WORKSHOP_MODES,WORKSHOP_CONTENT,evaluateWorkshop} from './experiment-engine.js';
+import {ADVANCED_IDS,ADVANCED_MODELS} from './advanced-lab-engine.js';
 const P=(en,hi)=>Object.freeze([en,hi]);
 const title=(lang,p)=>p[lang==='hi'?1:0];
-export const GUIDED_TOPIC_IDS=Object.freeze([...SCIENCE_IDS.map(x=>'science:'+x),...WORKSHOP_MODES.map(x=>'maths:'+x),'studio:fractions','studio:circuit-path']);
+export const GUIDED_TOPIC_IDS=Object.freeze([...SCIENCE_IDS.map(x=>'science:'+x),...WORKSHOP_MODES.map(x=>'maths:'+x),'studio:fractions','studio:circuit-path',...ADVANCED_IDS.map(x=>'advanced:'+x)]);
 export const PRACTICE_DIFFICULTIES=Object.freeze(['gentle','standard','explore']);
 export const PRACTICE_SUBJECTS=Object.freeze(['maths','physics','chemistry','biology','digital-safety']);
 export const REFERENCE_STATUS='UNREVIEWED_ORIGINAL_DRAFT';
@@ -20,10 +21,11 @@ const fallback=P('No local source-backed hint is available for that choice. Plea
 export function practiceTopic(id,lang='en'){
  if(!GUIDED_TOPIC_IDS.includes(id))return null;
  let content;
- if(id.startsWith('science:'))content=SCIENCE_MODELS[id.slice(8)];
+ if(id.startsWith('advanced:'))content=ADVANCED_MODELS[id.slice(9)];
+ else if(id.startsWith('science:'))content=SCIENCE_MODELS[id.slice(8)];
  else if(id.startsWith('maths:'))content=WORKSHOP_CONTENT[id.slice(6)];
  else content=STUDIO_LESSONS[id.slice(7)];
- return {id,title:title(lang,content.title),subject:id.startsWith('science:')?content.subject.toLowerCase():id.startsWith('maths:')||id.endsWith('fractions')?'maths':'physics'};
+ return {id,title:title(lang,content.title),subject:(id.startsWith('science:')||id.startsWith('advanced:'))?content.subject.toLowerCase():id.startsWith('maths:')||id.endsWith('fractions')?'maths':'physics'};
 }
 /** No free text prompt: only a fixed selector against this repository's already-authored drafts.
  * Parent/adult escalation is a fixed safe-state branch and does not invite disclosure.
@@ -37,7 +39,8 @@ export function guidedHint(id,lang='en',risk='none'){
  if(!GUIDED_TOPIC_IDS.includes(id))
   return {kind:'unknown',text:title(lang,fallback),source:null,reviewStatus:REFERENCE_STATUS,allowRemoteChat:false};
  let entry,field,path;
- if(id.startsWith('science:')){entry=SCIENCE_MODELS[id.slice(8)];field=entry.hint;path='assets/science-engine.js'}
+ if(id.startsWith('advanced:')){entry=ADVANCED_MODELS[id.slice(9)];field=entry.hint;path='assets/advanced-lab-engine.js'}
+ else if(id.startsWith('science:')){entry=SCIENCE_MODELS[id.slice(8)];field=entry.hint;path='assets/science-engine.js'}
  else if(id.startsWith('maths:')){entry=WORKSHOP_CONTENT[id.slice(6)];field=entry.hint;path='assets/experiment-engine.js'}
  else{entry=STUDIO_LESSONS[id.slice(7)];field=entry.stages[0].hint;path='assets/studio-engine.js'}
  return {kind:'draft-hint',text:title(lang,field),attribution:title(lang,unreviewed),source:path,contentId:id,reviewStatus:REFERENCE_STATUS,allowRemoteChat:false};
@@ -83,4 +86,24 @@ export function fractionStage(stage,shaded=0,lang='en'){
  return {...source,stage,shaded,correct:exact,question:stage==='try'?t(lesson.stages[0].question):stage==='play'?t(lesson.stages[1].question):t(lesson.title),
   text:stage==='learn'?t(lesson.concept):stage==='grow'?t(lesson.mission):stage==='understand'?t(lesson.stages[0].explanation):t(lesson.stages[0].hint),
   explanation:t(lesson.stages[0].explanation),completionIsMastery:false,sourceAttribution:t(unreviewed)};
+}
+
+/** M38 explicit self-selected action, not an inference from answers or learner history. */
+export const NEXT_PRACTICE_CHOICES=Object.freeze(['repeat','explain','different']);
+const choiceNotes={
+ repeat:P('Try the same model again with different values. No score required.','उसी मॉडल में अलग मान रखकर फिर आज़माएँ। अंक आवश्यक नहीं।'),
+ explain:P('Use the source hint and explain your reasoning on paper or to a teacher.','स्रोत संकेत से अपना कारण कागज़ पर या शिक्षक को समझाएँ।'),
+ different:P('Try the next related draft concept in the same subject. This is not a difficulty or mastery estimate.','उसी विषय में अगली संबंधित मसौदा अवधारणा आज़माएँ। यह कठिनाई या दक्षता का अनुमान नहीं।')
+};
+export function nextPracticeChoice(request){
+ if(!request||typeof request!=='object'||Array.isArray(request)||Object.keys(request).length!==3||
+ !['id','choice','lang'].every(k=>Object.hasOwn(request,k)))throw Error('Invalid practice choice');
+ const {id,choice,lang}=request;
+ if(!GUIDED_TOPIC_IDS.includes(id)||!NEXT_PRACTICE_CHOICES.includes(choice)||!['en','hi'].includes(lang))throw Error('Invalid practice choice');
+ const topic=practiceTopic(id,lang),related=GUIDED_TOPIC_IDS.filter(k=>practiceTopic(k,lang).subject===topic.subject);
+ const nextId=choice==='different'?related[(related.indexOf(id)+1)%related.length]:id;
+ const next=practiceTopic(nextId,lang);
+ const href=nextId.startsWith('advanced:')?'?advanced='+encodeURIComponent(nextId.slice(9))+'#advanced-labs':nextId.startsWith('science:')?'#science-lab':nextId.startsWith('maths:')?'#math-workshop':'#smart-studio';
+ return {choice,topicId:nextId,title:next.title,reason:title(lang,choiceNotes[choice]),href,
+ reviewStatus:REFERENCE_STATUS,declinable:true,persists:false,isMasteryPrediction:false,usesHistory:false};
 }
