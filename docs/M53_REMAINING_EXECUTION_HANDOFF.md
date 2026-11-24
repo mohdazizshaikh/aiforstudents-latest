@@ -97,3 +97,5 @@ M61 verified merged. M62 board-specific mapping review candidate has 180 pending
 M62 verified merged. M63 adds two supplemental ratio/algebra activities under the existing reviewed-record identity; prior affected worklists require regeneration/re-review. FP-036 remains REVIEW_PENDING, no additional approved tasks or chapters.
 
 M86 candidate adds exhaustive fictional mastery grid and malformed-input validation ordering; FP-080 remains externally blocked. No empirical study or activation.
+
+M87 candidate adds anonymous restriction and authenticated parity verification for authorized staging. FP-097 remains externally blocked; no live Hostinger origin or credentials used.

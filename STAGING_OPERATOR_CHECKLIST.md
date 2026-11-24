@@ -1,5 +1,7 @@
 # Hostinger Business — Private Staging Operator Checklist
 
+> **M87 CANDIDATE — 2026-11-25:** M33/M29 historical baselines retained. M84–M86 Node/static passed, browser jobs pending at branch creation. M87 adds authorized private staging audit: anonymous denial of all static and source-only paths before any credential transmission; authenticated full byte parity and additional private path denial; no bodies read for denial probes, no secrets in reports. Mock tests only, no live Hostinger access or deployment. Exact-head CI pending. 60 main drafts, 49 supplements, 218 printable variants, 3,340 pending educational reviews, 180 mapping checks, zero verified chapters, six safeguarding gates, 70/100 scoped tasks unchanged. FULL PRODUCT NOT COMPLETE; PUBLIC LAUNCH NOT APPROVED. [M87 procedure](docs/M87_RESTRICTED_STAGING_AUDIT.md).
+
 > **M59 VERIFIED / M60 CANDIDATE — 2026-11-24:** M58 guided stages and M59 physical-validation worksheet passed CI and merged (PRs #47–48). M60 fixed synthetic adaptive-calibration harness tests the disabled M34 hypothesis; no real learner evidence or enabled mastery. 60 draft labs (48 advanced), 22 CBSE proposals, 34 review batches / 3,340 pending records, six safeguarding gates; 12 physical scenarios remain untested. 70/100 scoped engineering/design tasks. FULL PRODUCT NOT COMPLETE; PUBLIC LAUNCH NOT APPROVED. M33/M29 historical baselines retained.
 
 
