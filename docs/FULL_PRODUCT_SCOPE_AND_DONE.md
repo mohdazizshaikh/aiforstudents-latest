@@ -1,5 +1,8 @@
 # M29 — Full-product scope and completion criteria
 
+> **M63 VERIFIED / M64 MULTI-SUBJECT CANDIDATE — 2026-11-24:** M63 CI 45458529448 passed and merged PR #52. M64 batches twelve new supplemental activities across six Maths/Physics/Chemistry/Biology model families, 4,204 bilingual exhaustive input-state tests authored; 14 supplemental activities total including M63. Six changed review fingerprints require regeneration/re-review. 60 top-level draft labs (48 advanced), 32 curriculum proposals / 180 pending mapping checks, 3,340 pending educational records, six safeguarding gates. 70/100 scoped tasks. FULL PRODUCT NOT COMPLETE; PUBLIC LAUNCH NOT APPROVED. M33/M29 historical baselines retained. M64 exact-head CI pending.
+
+
 > **M62 VERIFIED / M63 CANDIDATE — 2026-11-24:** M62 CI 45457642411 passed and merged PR #51 (32 board mapping proposals / 180 review checks; eight-model printable teacher agenda). M63 adds two bilingual supplemental ratio and linear-equation activities to existing ratio-algebra draft, 1,270 input combinations in regression tests; candidate CI pending. Existing ratio-algebra review fingerprint changes; regenerate/re-review affected worksheets. 60 top-level draft labs (48 advanced), 3,340 pending reviews, zero verified chapters, six safeguarding gates. 70/100 scoped tasks. FULL PRODUCT NOT COMPLETE; PUBLIC LAUNCH NOT APPROVED. M33/M29 historical baselines retained.
 
 

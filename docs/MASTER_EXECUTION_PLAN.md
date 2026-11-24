@@ -289,3 +289,7 @@ M61 CI 45456846207 passed and merged PR #50. M62 combines 22 CBSE + 10 Maharasht
 ### M62 verified / M63 ratio and linear-equation activities candidate
 
 M62 CI 45457642411 passed and merged PR #51. M63 adds equivalent-ratio scaling and bounded ax+b=12 substitution to the existing ratio-algebra review record; 1,270 bilingual input combinations in exhaustive tests. [M63 implementation](M63_RATIO_EQUATION_PRACTICE.md). The changed record fingerprint invalidates earlier worksheets referencing it, requiring regeneration and independent review. FP-036 remains REVIEW_PENDING; no change to 70/100 scoped items or 3,340 pending canonical records. Exact-head CI required.
+
+### M63 verified / M64 batched multi-subject activities candidate
+
+M63 passed exact-head CI 45458529448 and merged PR #52. M64 combines 12 new supplemental activities across six existing records into one implementation/test batch. 4,204 bilingual input states in exhaustive authored regression tests. 14 supplemental activities total, 60 top-level draft models unchanged. [M64 batch](M64_MULTISUBJECT_ACTIVITY_BATCH.md). Six affected record fingerprints must be refreshed in curriculum and review worksheets; human review remains pending. No task status elevated; 70/100 scoped tasks unchanged. CI required.

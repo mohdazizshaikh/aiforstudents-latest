@@ -1,5 +1,5 @@
 {
-  "release": "M62 verified prototype / M63 ratio-equation candidate — PRIVATE ONLY",
+  "release": "M63 verified prototype / M64 multi-subject batch candidate — PRIVATE ONLY",
   "release_date": "2026-11-24",
   "hosting_zip": "aiforstudents_hostinger_staging_m33.zip",
   "source_zip": "aiforstudents_m33_source_tests.zip",
@@ -22,7 +22,7 @@
   "study_question_records": 32,
   "study_items_expert_approved": 0,
   "isolated_browser_study_checks": 32,
-  "currentMilestone": "M62_VERIFIED_M63_CANDIDATE",
+  "currentMilestone": "M63_VERIFIED_M64_CANDIDATE",
   "status": "private-staging-prototype-unreviewed",
   "date": "2026-11-24",
   "studioLessons": 2,
@@ -66,7 +66,7 @@
   "sensitiveSourcePathExposureCheckAvailable": true,
   "sensitiveSourcePathExposureVerifiedOnLiveHost": false,
   "releaseZipSourceHashParityVerifiedInCI": true,
-  "swCacheVersion": "aifs-discovery-m33-2026-11-24-m63-r1",
+  "swCacheVersion": "aifs-discovery-m33-2026-11-24-m64-r1",
   "crossTabPrivacyResetImplemented": true,
   "crossTabPrivacyRealDeviceVerified": false,
   "existingUnreviewedContentRecords": 3282,
@@ -114,9 +114,9 @@
   "printableLabActivityApprovals": 0,
   "printableLabActivityStoresStudentData": false,
   "verifiedCheckpoint": {
-    "milestone": "M62",
-    "mergeSha": "0620740a118d7a1befd95015f185059bc69d0060",
-    "ciRun": 45457642411
+    "milestone": "M63",
+    "mergeSha": "05646a87e5ca2c76c1f614126921dd3b4d68ce18",
+    "ciRun": 45458529448
   },
   "legacyPackagingBaseline": "M33 artifact filenames and historical baseline counters retained; not latest test counts or live deployment evidence",
   "interactiveDraftModels": 60,
@@ -175,11 +175,26 @@
   "multiBoardReviewCandidate": false,
   "multiBoardReviewCells": 180,
   "multiBoardReviewHumanApprovalAuthenticated": false,
-  "ratioAlgebraExtensionsCandidate": true,
+  "ratioAlgebraExtensionsCandidate": false,
   "ratioAlgebraSupplementalActivities": 2,
   "ratioAlgebraExtensionsHumanReviewed": false,
   "multiBoardReviewEngineeringVerified": true,
   "teacherPrintableDemoAgendaEngineeringVerified": true,
   "ratioAlgebraExtensionInputCombinations": 1270,
-  "ratioAlgebraReviewFingerprintChanged": true
+  "ratioAlgebraReviewFingerprintChanged": true,
+  "multiSubjectSupplementalCandidate": true,
+  "multiSubjectSupplementalNewActivities": 12,
+  "multiSubjectSupplementalTotalActivities": 14,
+  "multiSubjectSupplementalChangedReviewRecords": 6,
+  "ratioAlgebraExtensionsEngineeringVerified": true,
+  "multiSubjectSupplementalInputCombinations": 4204,
+  "multiSubjectSupplementalChangedRecordIds": [
+    "advanced:triangle-area",
+    "advanced:force-motion",
+    "advanced:atom-count",
+    "advanced:mass-fraction",
+    "advanced:cell-scale",
+    "advanced:cell-doubling"
+  ],
+  "multiSubjectSupplementalHumanReviewed": false
 }
