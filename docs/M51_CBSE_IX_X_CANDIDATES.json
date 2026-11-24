@@ -1,0 +1,137 @@
+{
+  "schema": "aifs-cbse-secondary-candidates-v1",
+  "academicSession": "2026-27",
+  "checkedOn": "2026-11-24",
+  "indexUrl": "https://cbseacademic.nic.in/curriculum_2027.html",
+  "sourceType": "OFFICIAL_SYLLABUS_LINK_ONLY",
+  "humanApprovalAuthenticated": false,
+  "textbookEditionVerified": false,
+  "publicReleaseApproved": false,
+  "sources": {
+    "9-maths": {
+      "grade": 9,
+      "course": "mathematics",
+      "url": "https://cbseacademic.nic.in/web_material/CurriculumMain27/SecPart1/Maths_SecP1IX_2026-27.pdf",
+      "pages": 13
+    },
+    "9-science": {
+      "grade": 9,
+      "course": "science",
+      "url": "https://cbseacademic.nic.in/web_material/CurriculumMain27/SecPart1/ScienceSt_SecP1_2026-27.pdf",
+      "pages": 20
+    },
+    "10-maths": {
+      "grade": 10,
+      "course": "mathematics",
+      "url": "https://cbseacademic.nic.in/web_material/CurriculumMain27/SecPart1/Maths_SecP1X_2026-27.pdf",
+      "pages": 10
+    },
+    "10-science": {
+      "grade": 10,
+      "course": "science",
+      "url": "https://cbseacademic.nic.in/web_material/CurriculumMain27/SecPart1/Science_SecP1_2026-27.pdf",
+      "pages": 9
+    }
+  },
+  "proposals": [
+    {
+      "sourceId": "9-maths",
+      "modelId": "advanced:coordinate",
+      "subject": "maths",
+      "pdfPage": 5,
+      "syllabusRef": "II: linear relationships",
+      "limitation": "Graph one fixed linear function, not arbitrary equation solving.",
+      "status": "PROPOSED_UNVERIFIED"
+    },
+    {
+      "sourceId": "9-maths",
+      "modelId": "advanced:arithmetic-sequence",
+      "subject": "maths",
+      "pdfPage": 5,
+      "syllabusRef": "II: sequences and progressions",
+      "limitation": "Nth term only; no complete progressions course.",
+      "status": "PROPOSED_UNVERIFIED"
+    },
+    {
+      "sourceId": "9-science",
+      "modelId": "advanced:force-motion",
+      "subject": "physics",
+      "pdfPage": 15,
+      "syllabusRef": "III: force and motion; C-2.1",
+      "limitation": "Ideal net force arithmetic only, not all three laws.",
+      "status": "PROPOSED_UNVERIFIED"
+    },
+    {
+      "sourceId": "9-science",
+      "modelId": "advanced:cell-doubling",
+      "subject": "biology",
+      "pdfPage": 4,
+      "syllabusRef": "I: cell; C-3.3",
+      "limitation": "Counting ideal doubling is a prerequisite example, not mitosis/meiosis explanation.",
+      "status": "PROPOSED_UNVERIFIED"
+    },
+    {
+      "sourceId": "10-maths",
+      "modelId": "advanced:arithmetic-sequence",
+      "subject": "maths",
+      "pdfPage": 4,
+      "syllabusRef": "II.4: arithmetic progressions",
+      "limitation": "Nth term only, not derivation or sums.",
+      "status": "PROPOSED_UNVERIFIED"
+    },
+    {
+      "sourceId": "10-maths",
+      "modelId": "advanced:quadratic",
+      "subject": "maths",
+      "pdfPage": 4,
+      "syllabusRef": "II.3: quadratic equations",
+      "limitation": "Graph of x squared is a prerequisite, not a quadratic-equation solver.",
+      "status": "PROPOSED_UNVERIFIED"
+    },
+    {
+      "sourceId": "10-science",
+      "modelId": "advanced:alkane-count",
+      "subject": "chemistry",
+      "pdfPage": 5,
+      "syllabusRef": "I: carbon compounds",
+      "limitation": "Only formula counting for acyclic saturated examples.",
+      "status": "PROPOSED_UNVERIFIED"
+    },
+    {
+      "sourceId": "10-science",
+      "modelId": "advanced:bond-pair-count",
+      "subject": "chemistry",
+      "pdfPage": 5,
+      "syllabusRef": "I: carbon compounds",
+      "limitation": "Symbolic shared-pair count, not general covalent bonding.",
+      "status": "PROPOSED_UNVERIFIED"
+    },
+    {
+      "sourceId": "10-science",
+      "modelId": "advanced:plant-process",
+      "subject": "biology",
+      "pdfPage": 5,
+      "syllabusRef": "II: life processes",
+      "limitation": "Simplified plant net processes, not all nutrition or respiration.",
+      "status": "PROPOSED_UNVERIFIED"
+    },
+    {
+      "sourceId": "10-science",
+      "modelId": "advanced:heredity",
+      "subject": "biology",
+      "pdfPage": 5,
+      "syllabusRef": "II: heredity",
+      "limitation": "Ideal single-gene model, not human genetic prediction.",
+      "status": "PROPOSED_UNVERIFIED"
+    },
+    {
+      "sourceId": "10-science",
+      "modelId": "advanced:thin-lens",
+      "subject": "physics",
+      "pdfPage": 5,
+      "syllabusRef": "III: natural phenomena",
+      "limitation": "One converging lens with object beyond focal length; not full optics.",
+      "status": "PROPOSED_UNVERIFIED"
+    }
+  ]
+}

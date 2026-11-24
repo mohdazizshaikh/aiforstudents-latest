@@ -573,7 +573,7 @@ def run():
                     check(phone.locator('#assignment-pack').is_visible(), 'Offline pack is hidden in print')
                     check(not phone.locator('#teacher-guidance').is_visible(), 'Teacher guidance leaked into pack print')
                     check(not phone.locator('#learner-card').is_visible(), 'Single-card output duplicated pack')
-                    check(not phone.locator('.controls').is_visible(), 'Pack controls leaked into print')
+                    check(phone.locator('.controls:visible').count() == 0, 'Pack controls leaked into print')
                     phone.emulate_media(media='screen')
                     phone.locator('#card-view').select_option('single')
                     check(phone.locator('#learner-card').is_visible(), 'Single-card mode not restored')

@@ -1,3 +1,5 @@
 # M50 — Printable lab activity sheets
 
 M48 and M49 merged at 7009ca30f9ddba5cf8b6dc73d75537710a9b7ace after CI 45390247667 and 45390499081. Candidate extends existing offline learner print builder with all 48 advanced draft models, English/Hindi subject and model selection, existing authored prompt and caveat, three generic paper tasks (predict, compare, explain), no answers or hints in the payload. If a computer is unavailable, discuss the prediction only. No student names, inputs, storage or submission. Native browser print/Save PDF; physical A4 print validation still pending. Original content rights and independent educational review not authenticated; FP-087 remains incomplete. No new source teaching records: 3,340 pending, 70/100 engineering/design tasks. Exact-head CI required.
+
+Initial Node job passed; Chromium run 45442819587 failed because the old single-element print control locator matched both control groups. Corrected to check zero visible control groups, preserving privacy assertion. Merged M51 baseline included; combined exact-head CI required.
