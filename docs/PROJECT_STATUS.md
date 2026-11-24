@@ -1,5 +1,8 @@
 # Project Status Dashboard — AI for Students
 
+> **M41 CANDIDATE — 2026-11-24:** M40 eight foundational models passed CI and merged. M41 adds eight secondary draft models: candidate 44 interactive models, 44 source-backed draft hints and 3,324 pending educational reviews. CI pending; 70/100 scoped engineering/design items unchanged. No verified syllabus mapping, teacher approval or public release.
+
+
 > **M40 CANDIDATE — 2026-11-24:** M37 offline assignment packs and M38 practice choices are tested and merged. M40 adds eight original unreviewed concept models; candidate inventory 36 interactive models, 36 source-backed draft hints, 3,316 pending educational reviews. CI pending; 70/100 scoped engineering/design items unchanged. No actual syllabus mapping, expert approval or public release.
 
 

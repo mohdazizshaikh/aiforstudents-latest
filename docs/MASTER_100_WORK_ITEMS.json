@@ -2176,12 +2176,12 @@
   "updatedOn": "2026-11-24",
   "currentEngineeringMilestone": "M35_VERIFIED_M36_CURRICULUM_CANDIDATES",
   "additionalNewMathsDrafts": 3,
-  "currentPendingContentRecords": 3316,
+  "currentPendingContentRecords": 3324,
   "batch1VerifiedEngineeringAndDesignTasks": 46,
   "batch2VerifiedEngineeringAndDesignTasks": 24,
-  "statusCaveat": "B1 46/50, B2 24/50 scoped engineering/design only. M35 exact-head CI including Git history and synthetic restored-page retention passed; no physical BFCache or external approval. FP-068 source registry remains empty, FP-085 teacher dependency blocked, 3316 reviews pending.",
+  "statusCaveat": "B1 46/50, B2 24/50 scoped engineering/design only. M35 exact-head CI including Git history and synthetic restored-page retention passed; no physical BFCache or external approval. FP-068 source registry remains empty, FP-085 teacher dependency blocked, 3324 reviews pending.",
   "newScienceDraftReviewRecords": 7,
-  "newAdvancedDraftReviewRecords": 24,
+  "newAdvancedDraftReviewRecords": 32,
   "m34CandidateWork": {
     "branch": "m34-teacher-organizer-safety-design",
     "designAndImplementationHead": "08001d7a61a66e9b4049f2bcbdff33626199a301",
@@ -2256,12 +2256,24 @@
   },
   "newM40DraftReviewRecords": 8,
   "m40CandidateWork": {
-    "status": "IN_PROGRESS",
+    "status": "CI_VERIFIED_MERGED",
     "newInteractiveModels": 8,
     "totalInteractiveModels": 36,
     "guidedDraftHints": 36,
     "reviewRecordsAdded": 8,
     "currentPendingContentRecords": 3316,
+    "publicReleaseApproved": false,
+    "mergeSha": "67eac4145b01517e870e2a526f9e6b0d01859393",
+    "ciRun": 45355061767
+  },
+  "newM41DraftReviewRecords": 8,
+  "m41CandidateWork": {
+    "status": "IN_PROGRESS",
+    "newInteractiveModels": 8,
+    "totalInteractiveModels": 44,
+    "guidedDraftHints": 44,
+    "reviewRecordsAdded": 8,
+    "currentPendingContentRecords": 3324,
     "publicReleaseApproved": false
   }
 }
