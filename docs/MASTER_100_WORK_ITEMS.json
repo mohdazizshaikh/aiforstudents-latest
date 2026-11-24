@@ -2174,12 +2174,12 @@
     }
   ],
   "updatedOn": "2026-11-24",
-  "currentEngineeringMilestone": "M57_VERIFIED_M58_CANDIDATE",
+  "currentEngineeringMilestone": "M57_VERIFIED_M58_M59_CANDIDATES",
   "additionalNewMathsDrafts": 3,
   "currentPendingContentRecords": 3340,
   "batch1VerifiedEngineeringAndDesignTasks": 46,
   "batch2VerifiedEngineeringAndDesignTasks": 24,
-  "statusCaveat": "70/100 scoped tasks. M55–M57 verified and merged; M58 guided exploration candidate. 3340 pending reviews, six human safeguarding gates, zero verified chapters. No real AI tutor, independent evaluation, validated mastery or public launch.",
+  "statusCaveat": "70/100 scoped tasks. M55–M57 merged, M58 corrected CI pending, M59 physical worksheet candidate. 3340 pending reviews, six safeguarding gates, zero verified chapters; no physical equipment evidence, actual tutor, school pilot or public launch.",
   "newScienceDraftReviewRecords": 7,
   "newAdvancedDraftReviewRecords": 48,
   "m34CandidateWork": {
@@ -2409,12 +2409,27 @@
     "ciRun": 45453774394
   },
   "m58CandidateWork": {
-    "status": "IN_PROGRESS",
+    "status": "CORRECTED_CI_PENDING",
     "guidedModels": 48,
     "stagesPerModel": 5,
     "bilingualCombinations": 480,
     "persists": false,
     "masteryPrediction": false,
+    "newDoneVerifiedTasks": 0,
+    "head": "51804d983b98f2ec635da20d0788f465f7cc8b30",
+    "initialCi": 45454257470,
+    "initialBrowserPassed": true,
+    "legacyResetAssertionCorrected": true
+  },
+  "m59CandidateWork": {
+    "status": "IN_PROGRESS",
+    "physicalScenarios": 12,
+    "physicalScenariosAuthenticated": 0,
+    "physicalEvidenceAuthenticated": false,
+    "taskIds": [
+      "FP-030",
+      "FP-096"
+    ],
     "newDoneVerifiedTasks": 0
   }
 }

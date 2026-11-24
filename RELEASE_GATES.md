@@ -1,5 +1,8 @@
 # Release gates — M28 private prototype and M29 full-product plan
 
+> **M57 VERIFIED / M58 CORRECTED / M59 CANDIDATE — 2026-11-24:** M55–M57 verified and merged. M58 guided stages initial Chromium passed, legacy reset assertion corrected; exact-head CI pending. M59 physical validation worksheet: 12 scenarios, no actual device evidence. 60 draft labs (48 advanced), 22 CBSE proposals, 34 review batches / 3,340 pending records, six safeguarding gates. 70/100 scoped tasks. FULL PRODUCT NOT COMPLETE; PUBLIC LAUNCH NOT APPROVED. M33/M29 historical baselines retained.
+
+
 > **M57 VERIFIED CHECKPOINT / M58 CANDIDATE — 2026-11-24:** M55–M57 passed CI and merged (PRs #44–46). M58 optional five-stage guided exploration for all 48 advanced draft labs (480 bilingual model/stage combinations), no saved responses or mastery claims; CI pending. 60 interactive draft labs, 48 printable activities, 22 CBSE proposals, 34 review batches / 3,340 pending records, six safeguarding gates. 224 disabled-tutor boundary cases verified; no actual AI inference. 70/100 scoped tasks. FULL PRODUCT NOT COMPLETE; PUBLIC LAUNCH NOT APPROVED. M33/M29 historical baselines retained.
 
 

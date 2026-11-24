@@ -269,3 +269,7 @@ M55 merged; M56 independent CI passed and combined regression candidate pushed. 
 ### M57 verified / M58 guided exploration candidate
 
 M56 combined CI 45453496959 and M57 CI 45453774394 passed and merged. M58 extends all 48 advanced labs with optional five-stage learner-directed exploration, 480 bilingual model/stage combinations, no response storage or mastery scoring. [M58 guide](M58_GUIDED_LAB_STAGES.md). 70/100 scoped items unchanged; 3,340 independent educational reviews and six safeguarding gates remain pending. Exact-head CI required.
+
+### M58 corrected / M59 physical validation candidate
+
+M58 initial Chromium passed; legacy M55 reset assertion corrected without removing privacy requirements. M59 provides 12 commit-bound physical validation worksheet scenarios across Android, assistive technology, offline, shared-device privacy, projector and A4. [M59 handoff](M59_PHYSICAL_VALIDATION_HANDOFF.md). Zero actual device results; FP-030 and FP-096 stay blocked. All 30 incomplete scoped tasks retain status. Exact-head integrated CI required.

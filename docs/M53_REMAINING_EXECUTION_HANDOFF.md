@@ -85,3 +85,5 @@ Engineering beyond this scoped tracker still includes comprehensive curriculum a
 M55 merged; M56 combined candidate CI pending. M57 deterministic negative-test runner advances FP-069 engineering preparation only, not independent human red-team evidence. NCERT VI–VIII source access failures documented in M56_NCERT_SOURCE_ACCESS.md. All 30 incomplete tasks remain open; actual tutor not enabled.
 
 M56 and M57 now verified and merged. M58 guided stage candidate advances learner-facing smart lab pedagogy, not independently validated mastery or full curriculum. All external acceptance dependencies remain unchanged.
+
+M59 candidate provides a local physical-validation worksheet for 12 real-device scenarios. No actual equipment, device operator or accessibility approval authenticated. FP-030/096 remain blocked; M58 corrected CI pending. See M59_PHYSICAL_VALIDATION_HANDOFF.md.
