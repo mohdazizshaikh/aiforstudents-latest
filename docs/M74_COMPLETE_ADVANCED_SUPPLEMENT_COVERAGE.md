@@ -23,3 +23,7 @@ M72 passed full CI 45479603387 and merged PR #62 at c7aa6bbfaaa92f4d5384788f5c93
 ## M74 correction
 
 Initial CI 45480691094 failed the existing M30 160 KiB JS module budget. M73 is verified and merged at 28b69ebf6cbcc9ceb7c5c3c9bfafc4925f52199e. Extracted the eleven M74 definitions to `assets/advanced-lab-supplements-m74.js`, imported at the original property positions, and added explicit precache coverage. No budget relaxation, formula change or approval claim. New exact-head CI required.
+
+## Verified outcome
+
+M74 exact-head CI 45481657860 passed both jobs; PR #64 merged at 89e1a97487ddfb28ea2546e0a7253fbecd81b9a4. Engineering verification only; independent education/rights approval pending.
