@@ -5,3 +5,7 @@ Stacked on M66 88ee82e98b4d1f574248703251656a5e9ce86491; Node/static job passed,
 ## Baseline verification update
 
 M66 passed both CI jobs 45462053139 and merged PR #56 at 1ceeb22b5e19243013dde0f44da3313aca812c03. M67 requires its own exact-head CI before merge.
+
+## Verified outcome
+
+Exact-head CI 45462660318 passed both jobs. PR #57 merged at 688405f95a3677bc62e63113ff9c70c3138a7e84. Independent rights, educational approval and physical classroom/print validation remain pending.

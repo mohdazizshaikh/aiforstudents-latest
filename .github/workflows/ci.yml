@@ -20,6 +20,11 @@ jobs:
         run: node --test tests/*.test.mjs
       - name: Build bilingual human-review worklist (not approval)
         run: npm run review-packet
+      - name: Generate local-only supplemental review worklist and change baseline (NOT approval)
+        run: |
+          npm run review:snapshot
+          npm run review:supplements
+          npm run review:compare -- review-packet/change-snapshot.json
       - name: Validate pending M23 review-evidence template (NOT human approval)
         run: |
           npm run review-evidence:template

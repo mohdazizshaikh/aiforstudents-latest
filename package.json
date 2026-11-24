@@ -18,6 +18,9 @@
     "curriculum:check": "node tools/validate-curriculum-map.mjs",
     "audit:bilingual": "node tools/audit-bilingual-learning.mjs",
     "plan:trace": "node tools/plan-evidence-check.mjs",
-    "audit:offline": "node tools/audit-offline-dependencies.mjs"
+    "audit:offline": "node tools/audit-offline-dependencies.mjs",
+    "review:snapshot": "node tools/review-change-workbench.mjs --snapshot review-packet/change-snapshot.json",
+    "review:supplements": "node tools/review-change-workbench.mjs --supplements review-packet/supplemental-review.json",
+    "review:compare": "node tools/review-change-workbench.mjs --compare"
   }
 }
