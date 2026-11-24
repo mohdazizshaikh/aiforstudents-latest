@@ -435,3 +435,14 @@ export function evaluateAdvancedExtension(id,mode,state,lang='en'){
  }
  return {mode,title:text(m.title,lang),prompt:text(m.prompt,lang),hint:text(m.hint,lang),caveat:text(m.caveat,lang),rows:rows.map(([label,value])=>({label:text(label,lang),value:String(value)})),source:'assets/advanced-lab-engine.js',reviewId:'advanced:'+id,humanReviewed:false,publicReleaseApproved:false,masteryPrediction:false,persists:false};
 }
+
+/** M69 temporary supplemental comparison. Display differences, not causality or mastery. */
+export function compareAdvancedExtension(id,mode,before,after,lang='en'){
+ const a=evaluateAdvancedExtension(id,mode,before,lang),b=evaluateAdvancedExtension(id,mode,after,lang),m=advancedExtension(id,mode);
+ const changes=m.fields.filter(f=>before[f.id]!==after[f.id]).map(f=>({id:f.id,label:text(f.label,lang),before:String(before[f.id]),after:String(after[f.id])}));
+ if(a.rows.length!==b.rows.length||a.rows.some((r,i)=>r.label!==b.rows[i].label))throw Error('Incompatible supplemental result rows');
+ const status=changes.length===0?'UNCHANGED':changes.length===1?'ONE_CONTROL':'MULTIPLE_CONTROLS';
+ return {id,mode,status,changes,rows:a.rows.map((r,i)=>({label:r.label,before:r.value,after:b.rows[i].value,changed:r.value!==b.rows[i].value})),
+  guidance:text(status==='UNCHANGED'?P('Change one control and compare the displayed values.','एक नियंत्रण बदलें और दिखाए गए मान मिलाएँ।'):status==='ONE_CONTROL'?P('One control changed. Compare the model outputs; this is not proof of a real-world cause.','एक नियंत्रण बदला। मॉडल के परिणाम मिलाएँ; यह वास्तविक कारण का प्रमाण नहीं है।'):P('Several controls changed. Restore the starting state or mark a new one to explore one control at a time.','कई नियंत्रण बदले। एक बार में एक नियंत्रण खोजने के लिए आरंभिक स्थिति लौटाएँ या नई चुनें।'),lang),
+  persists:false,usesLearnerHistory:false,masteryPrediction:false,humanReviewed:false,publicReleaseApproved:false};
+}

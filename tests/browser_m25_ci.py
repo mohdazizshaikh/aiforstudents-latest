@@ -624,6 +624,30 @@ def run():
                 phone.evaluate("window.dispatchEvent(new Event('aifs-history-cleared'))")
                 check(phone.locator('#ratio-extension-mode').input_value() == 'ratio', 'Privacy clear retained cross-subject activity')
                 report['checks'].append('M65 offline four-subject supplements, keyboard, model switch and privacy reset')
+                for model, mode, control in [
+                    ('ratio-algebra','ratio','k'), ('ratio-algebra','equation','x'),
+                    ('coordinate','linear','x'), ('force-motion','net','right'),
+                    ('mass-balance','missing','c'), ('cell-doubling','rounds','a'),
+                ]:
+                    phone.locator('#advanced-topic').select_option(model)
+                    phone.locator('#ratio-extension-mode').select_option(mode)
+                    check(phone.locator('#extension-compare-panel').is_hidden(), 'Comparison leaked across activities')
+                    phone.locator('#extension-compare-mark').click()
+                    check(phone.locator('#extension-compare-panel').is_visible(), 'Comparison missing')
+                    check(phone.locator('#extension-compare-restore').is_disabled(), 'Unchanged restore enabled')
+                    phone.locator('#ratio-extension-controls button[data-extension-action="inc:'+control+'"]').focus()
+                    phone.keyboard.press('Enter')
+                    check(phone.locator('#extension-compare-changes li').count() == 1, 'Changed control missing')
+                    check(phone.locator('#extension-compare-restore').is_enabled(), 'Restore disabled after change')
+                    phone.locator('#extension-compare-restore').click()
+                    check(phone.locator('#extension-compare-changes li').count() == 0, 'Restore did not restore baseline')
+                    phone.locator('#extension-compare-clear').click()
+                    check(phone.locator('#extension-compare-panel').is_hidden(), 'Clear retained comparison')
+                phone.locator('#extension-compare-mark').click()
+                phone.evaluate("window.dispatchEvent(new Event('aifs-history-cleared'))")
+                check(phone.locator('#extension-compare-panel').is_hidden(), 'Shared-device reset retained comparison')
+                check(phone.locator('#extension-compare-rows tr').count() == 0, 'Shared-device reset retained rows')
+                report['checks'].append('M69 six supplemental temporary comparisons, keyboard, restore, clear and privacy reset')
                 phone.locator('#advanced-topic').select_option('heredity')
                 check('4' in phone.locator('#advanced-values').inner_text(), 'Offline model result missing')
                 check(phone.locator('#local-guide-topic option').count() == 60, 'Offline practice guide missing')
