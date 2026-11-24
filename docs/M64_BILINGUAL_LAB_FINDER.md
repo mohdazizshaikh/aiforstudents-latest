@@ -11,3 +11,7 @@ Master register remains B1 46/50 + B2 24/50; 3,340 pending human content reviews
 ## Corrected candidate
 
 Initial CI 45460383399 Node job failed two document regressions: historical M33 marker beyond 1,200 characters and a manually edited generated dashboard. Restored prominent M33/M29 markers across all six project status surfaces and updated the dashboard generator itself with deterministic status counts, all 26 B2 pending items sorted by priority/ID, and unmet dependencies. Added a matching regression and retained all evidence gates. Finder now clears query after explicit opening and supports Enter for exactly one match (not during IME composition); no selection is opened automatically. Added offline browser assertions. Exact corrected-head CI remains pending.
+
+## Verified outcome
+
+Corrected exact-head CI [45460668549](https://github.com/mohdazizshaikh/aiforstudents-latest/actions/runs/45460668549) passed both jobs. [PR #54](https://github.com/mohdazizshaikh/aiforstudents-latest/pull/54) merged at 744a6a2a322b43ee0c38b1c9ca2c81d0fe2a1a32. No external approvals granted.
