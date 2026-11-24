@@ -7,6 +7,7 @@ import {fileURLToPath} from 'node:url';
 import {STUDIO_LESSONS,STUDIO_VERSION} from '../assets/studio-engine.js';
 import {EXPERIMENTS,EXPERIMENT_VERSION,WORKSHOP_MODES,WORKSHOP_CONTENT,evaluateWorkshop} from '../assets/experiment-engine.js';
 import {SCIENCE_VERSION,SCIENCE_IDS,SCIENCE_MODELS,scienceEvaluate} from '../assets/science-engine.js';
+import {ADVANCED_IDS,ADVANCED_VERSION,modelAdvanced,evaluateAdvanced} from '../assets/advanced-lab-engine.js';
 import {auditContentQueues,REVIEW_FILES} from './release-preflight.mjs';
 
 const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
@@ -75,6 +76,17 @@ export function resolvePilotContent(kind,item) {
    explanation_english:pair(task.explanation,'en'),
    explanation_hindi:pair(task.explanation,'hi')
   };
+ }
+ if(kind==='advanced'){
+  const id=String(item.id||'').replace(/^advanced:/,'');
+  if(!ADVANCED_IDS.includes(id)||item.contentVersion!==ADVANCED_VERSION)throw Error('Unknown advanced concept or version: '+item.id);
+  const m=modelAdvanced(id);
+  const describe=lang=>[pair(m.title,lang),pair(m.caveat,lang),...m.fields.map(f=>pair(f.label,lang)+': '+(f.options?f.options.map(o=>pair(o.label,lang)).join(', '):[f.min,f.max,f.step,f.unit].join(' ')))].join(' | ');
+  return {content_source:'assets/advanced-lab-engine.js',english_draft:pair(m.prompt,'en'),hindi_draft:pair(m.prompt,'hi'),
+   context_english:describe('en'),context_hindi:describe('hi'),choices_english:[],choices_hindi:[],
+   answer_or_guidance:'Model state and control definitions: '+JSON.stringify(m)+'; state-dependent numeric check, not expert approval',
+   hints_english:pair(m.hint,'en'),hints_hindi:pair(m.hint,'hi'),
+   explanation_english:evaluateAdvanced(id,m.target,'en').explanation,explanation_hindi:evaluateAdvanced(id,m.target,'hi').explanation};
  }
  if(kind==='science'){
   const mode=String(item.id||'').replace(/^science:/,'');
@@ -145,7 +157,7 @@ function reviewRow(kind,{item,id,source,line}) {
  const row={
   queue:kind,content_id:id,
   content_version:asText(val(item.content_version,item.contentVersion,item.version,'unspecified')),
-  priority:['studio','experiment','classroom','maths','science'].includes(kind)?'pilot-first':kind==='game'?'extended-library':'foundation',
+  priority:['studio','experiment','classroom','maths','science','advanced'].includes(kind)?'pilot-first':kind==='game'?'extended-library':'foundation',
   age_band:asText(val(item.age_band,item.ageBand,'not-mapped')),
   subject_or_topic:asText(val(item.category,item.subject,item.topic,item.lesson,'not-mapped')),
   source_file:source,line,content_source:pilot?.content_source??source,

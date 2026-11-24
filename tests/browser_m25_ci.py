@@ -13,7 +13,7 @@ import threading
 from playwright.sync_api import sync_playwright
 
 ROOT = Path(__file__).resolve().parents[1]
-OUTPUT = ROOT / 'test-results' / 'm32-browser'
+OUTPUT = ROOT / 'test-results' / 'm33-browser'
 OUTPUT.mkdir(parents=True, exist_ok=True)
 
 
@@ -34,7 +34,7 @@ def check_no_runtime_errors(page, errors):
 
 
 def run():
-    report = {'milestone': 'M32', 'execution': 'headless local Chromium with real ES modules',
+    report = {'milestone': 'M33', 'execution': 'headless local Chromium with real ES modules',
               'realHostingerVerified': False, 'realDeviceAccessibilityVerified': False,
               'educationalHumanApproval': False, 'publicReleaseApproved': False, 'checks': []}
     server = ThreadingHTTPServer(('127.0.0.1', 0), partial(QuietStaticHandler, directory=str(ROOT)))
@@ -252,6 +252,30 @@ def run():
                 check_no_runtime_errors(cards, cards_errors)
                 cards.close()
                 report['checks'].append('M32 standalone A4 learner card excludes teacher answers during print')
+                # M33: exercise all new bounded lab modes, graph and independent controls.
+                check(page.locator('#advanced-topic option').count() == 12, 'Expanded lab modes missing')
+                for key in ['ratio-algebra','symmetry','coordinate','probability','temperature','sound',
+                            'magnetism','measurement','periodic','mass-balance','ecosystem','heredity']:
+                    page.locator('#advanced-topic').select_option(key)
+                    check(page.locator('#advanced-values tr').count() > 0, 'No numeric table: ' + key)
+                    check(page.locator('#advanced-controls button').count() > 0, 'No accessible controls: ' + key)
+                page.locator('#advanced-topic').select_option('coordinate')
+                page.locator('[data-advanced-action="inc:x"]').focus()
+                page.keyboard.press('Enter')
+                page.locator('[data-advanced-action="inc:x"]').click()
+                check(page.locator('#advanced-output-x').inner_text() == '2', 'Keyboard graph x incorrect')
+                check(page.locator('#advanced-values tr').last.inner_text().endswith('5'), 'Graph y incorrect')
+                check(page.locator('#advanced-visual svg').count() == 1, 'Graph visual absent')
+                page.locator('#advanced-check').click()
+                check('Matches the example' in page.locator('#advanced-feedback').inner_text(), 'Graph check incorrect')
+                page.locator('#advanced-topic').select_option('sound')
+                page.locator('[data-advanced-action="inc:amplitude"]').click()
+                check('3' in page.locator('#advanced-values tr').last.inner_text(), 'Independent amplitude absent')
+                page.locator('#lang').select_option('hi')
+                check('आवृत्ति' in page.locator('#advanced-values').inner_text(), 'Hindi result labels missing')
+                page.locator('#lang').select_option('en')
+                report['checks'].append('M33 all 12 draft lab modes, keyboard graph, silent waves and Hindi numeric tables')
+
                 page.locator('#remember').check()
                 check(page.evaluate('localStorage.length > 0'), 'Opt-in local history is not persistent')
                 page.locator('#digital-choices button').first.click()
@@ -298,6 +322,33 @@ def run():
                 follower.close()
                 another.close()
                 report['checks'].append('M28 opt-in persisted history and peer-tab clear with no synced learner payload')
+
+                # No BroadcastChannel: explicit storage fallback must work, preference changes must not clear peers.
+                fallback = browser.new_context(service_workers='block')
+                fallback.add_init_script("Object.defineProperty(window, 'BroadcastChannel', {value: undefined, configurable: true})")
+                a, b = fallback.new_page(), fallback.new_page()
+                a.goto(origin + '/', wait_until='load')
+                b.goto(origin + '/', wait_until='load')
+                b.locator('#digital-choices button').first.click()
+                a.locator('#remember').check()
+                a.locator('#remember').uncheck()
+                # A separate synthetic barrier verifies storage event delivery deterministically.
+                b.evaluate("""() => {
+                  window.__testStorageBarrier = false;
+                  addEventListener('storage', e => {
+                    if(e.key==='aifs-test-barrier' && e.newValue==='1') window.__testStorageBarrier = true;
+                  });
+                }""")
+                a.evaluate("localStorage.setItem('aifs-test-barrier','1'); localStorage.removeItem('aifs-test-barrier')")
+                b.wait_for_function('window.__testStorageBarrier === true')
+                check(b.evaluate('window.AIFS_DIGITAL_BRIDGE.getHistory().digitalAttempts.length') == 1,
+                      'Disabling remember erased another tab session')
+                a.locator('#clear-progress').click()
+                b.wait_for_function('window.AIFS_DIGITAL_BRIDGE.getHistory().digitalAttempts.length === 0')
+                check(b.evaluate('sessionStorage.length === 0'), 'Fallback did not clear peer session storage')
+                check(a.evaluate("localStorage.getItem('aifs-privacy-clear-signal-v1') === null"), 'Control signal retained')
+                fallback.close()
+                report['checks'].append('M33 storage-only fallback preserves other tab on remember toggle and clears on explicit request')
 
                 # Keyboard: M24's focusable skip destination tested through real browser navigation.
                 keyboard_page = desktop.new_page()
@@ -364,10 +415,10 @@ def run():
                 phone.wait_for_function('navigator.serviceWorker.controller !== null')
                 cache = phone.evaluate("""async () => {
                   const keys = await caches.keys();
-                  return {keys, count: (await caches.open(keys.find(k => k.startsWith('aifs-discovery-m32'))))
-                    ? (await (await caches.open(keys.find(k => k.startsWith('aifs-discovery-m32')))).keys()).length : 0}
+                  return {keys, count: (await caches.open(keys.find(k => k.startsWith('aifs-discovery-m33'))))
+                    ? (await (await caches.open(keys.find(k => k.startsWith('aifs-discovery-m33')))).keys()).length : 0}
                 }""")
-                check(any(k.startswith('aifs-discovery-m32') for k in cache['keys']),
+                check(any(k.startswith('aifs-discovery-m33') for k in cache['keys']),
                       'M30 service-worker cache not created')
                 check(cache['count'] >= 40, 'Service-worker precache incomplete: ' + str(cache))
                 mobile.set_offline(True)
@@ -381,7 +432,71 @@ def run():
                       'Offline Maths Workshop failed to bootstrap')
                 check(phone.locator('#science-tabs button').count() == 7,
                       'Offline Science Concept Lab not bootstrapped with seven models')
+                check(phone.locator('#advanced-topic option').count() == 12, 'Offline expanded labs not loaded')
+                phone.locator('#advanced-topic').select_option('heredity')
+                check('4' in phone.locator('#advanced-values').inner_text(), 'Offline model result missing')
+                check(phone.locator('#local-guide-topic option').count() == 12, 'Offline practice guide missing')
+                phone.locator('#local-guide-hint').click()
+                check(phone.locator('#local-guide-draft-hint').is_visible(), 'Offline hint missing')
+                phone.goto(origin + '/teacher-kit/cards/', wait_until='load')
+                check(phone.locator('#card-answer').inner_text() != '', 'Offline teacher card dependency not cached')
+                phone.locator('#card-language').select_option('hi')
+                check('चर्चा' in phone.locator('#card-question-label').inner_text(), 'Offline teacher cards Hindi missing')
+                phone.emulate_media(media='print')
+                check(phone.locator('#teacher-guidance').evaluate('(e) => getComputedStyle(e).display') == 'none',
+                      'Offline print card shows teacher guidance')
+                check(phone.locator('#learner-card').evaluate('(e) => getComputedStyle(e).backgroundColor') == 'rgb(255, 255, 255)',
+                      'Low-ink learner card is not white')
+                phone.emulate_media(media='screen')
+                phone.goto(origin + '/?lang=hi', wait_until='load')
+                check(phone.locator('#lang').input_value() == 'hi', 'Offline query-driven language navigation broke')
+                check(phone.locator('#advanced-topic option').count() == 12, 'Offline query page module not available')
+                # Actual offline keyboard operation across each currently shipped lab family/mode.
+                def keyboard_control(selector):
+                    btn = phone.locator(selector + ' button:enabled').first
+                    check(btn.count() == 1 and btn.is_visible(), 'Missing button alternative: ' + selector)
+                    check(bool(btn.get_attribute('aria-label') or btn.inner_text().strip()),
+                          'Unnamed keyboard control: ' + selector)
+                    btn.focus()
+                    phone.keyboard.press('Enter')
+
+                for i in range(2):
+                    phone.locator('#studio-lessons button').nth(i).click()
+                    phone.locator('#studio-start').click()
+                    keyboard_control('#studio-controls')
+                for i in range(2):
+                    phone.locator('#experiment-tabs button').nth(i).click()
+                    keyboard_control('#experiment-controls')
+                for i in range(3):
+                    phone.locator('#math-workshop-tabs button').nth(i).click()
+                    keyboard_control('#math-workshop-controls')
+                for i in range(7):
+                    phone.locator('#science-tabs button').nth(i).click()
+                    phone.locator('#science-next').click()
+                    keyboard_control('#science-controls')
+                for key in ['ratio-algebra','symmetry','coordinate','probability','temperature','sound',
+                            'magnetism','measurement','periodic','mass-balance','ecosystem','heredity']:
+                    phone.locator('#advanced-topic').select_option(key)
+                    keyboard_control('#advanced-controls')
+                    check(phone.locator('#advanced-values tr').count() > 0, 'Missing numeric alternative: ' + key)
+                for i in range(4):
+                    phone.locator('#lab-topics button').nth(i).click()
+                    keyboard_control('#lab-options')
+                phone.locator('#local-guide-fraction-next').click()
+                phone.locator('#local-guide-fraction-inc').focus()
+                phone.keyboard.press('Enter')
+                check(phone.locator('#local-guide-fraction-count').inner_text() == '1/4', 'Fraction keyboard alternative broke')
+                phone.locator('#clear-progress').click()
                 check_no_runtime_errors(phone, mobile_errors)
+                report['checks'].append('M33 offline keyboard alternatives across every shipped current lab family and model')
+
+                phone.goto(origin + '/teacher-kit/cards/index.html', wait_until='load')
+                check(phone.locator('#card-answer').inner_text() != '', 'Offline index.html route alias broke')
+                for route in ["/games/creative-studio/","/games/fix-the-machine/","/games/number-market/","/games/pattern-quest/","/games/perspective-explorer/","/games/shape-builder/","/games/story-detective/","/games/strategy-island/","/accessibility/","/ai-digital-skills/","/for-parents/","/future-explorer/","/grow-together/","/hi/","/methodology/","/privacy/","/study-lab/","/teacher-kit/","/teacher-kit/worksheets/circuits/","/teacher-kit/worksheets/fractions/","/virtual-experiment-lab/"]:
+                    phone.goto(origin + route, wait_until='load')
+                    check(phone.locator('h1').inner_text() != '', 'Offline guide missing: ' + route)
+                check_no_runtime_errors(phone, mobile_errors)
+                report['checks'].append('M33 offline expanded labs, local hint and complete teacher card dependency graph')
                 report['checks'].append('M31 SW installs 40+ assets and loads Studio guide + learner app offline')
                 mobile.close()
             finally:
@@ -395,7 +510,7 @@ def run():
         server.server_close()
     report['result'] = 'PASS'
     (OUTPUT / 'report.json').write_text(json.dumps(report, indent=2, ensure_ascii=False) + '\n')
-    print('M32 LOCAL CHROMIUM CI SMOKE PASS:', json.dumps(report, ensure_ascii=False))
+    print('M33 LOCAL CHROMIUM CI SMOKE PASS:', json.dumps(report, ensure_ascii=False))
 
 
 if __name__ == '__main__':

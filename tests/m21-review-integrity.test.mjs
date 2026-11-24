@@ -46,11 +46,12 @@ test('M21 content digest changes for actual question edits, but never implies a 
    'CLASSROOM_CONTENT_REVIEW_QUEUE.jsonl':[{id:'class1',question:{en:'Question',hi:'सवाल'},educationalReview:'PENDING'}],
    'DIGITAL_CONTENT_REVIEW_QUEUE.jsonl':[{id:'digital1',question:{en:'Safe?',hi:'सुरक्षित?'},educationReview:'pending'}],
    'MATHS_CONTENT_REVIEW_QUEUE.jsonl':[{id:'workshop:number-line',contentVersion:1,englishHumanReview:'pending',hindiHumanReview:'pending'}],
-   'SCIENCE_CONTENT_REVIEW_QUEUE.jsonl':[{id:'science:motion',contentVersion:1,englishHumanReview:'pending',hindiHumanReview:'pending'}]
+   'SCIENCE_CONTENT_REVIEW_QUEUE.jsonl':[{id:'science:motion',contentVersion:1,englishHumanReview:'pending',hindiHumanReview:'pending'}],
+   'ADVANCED_CONTENT_REVIEW_QUEUE.jsonl':[{id:'advanced:coordinate',contentVersion:1,englishHumanReview:'pending',hindiHumanReview:'pending'}]
   };
   const save=()=>{for(const [name,items] of Object.entries(base))writeFileSync(path.join(root,name),items.map(JSON.stringify).join('\n')+'\n')};
   save();const first=buildReviewRows(root);
-  assert.equal(first.length,8);
+  assert.equal(first.length,9);
   const original=first.find(x=>x.content_id==='g1').content_sha256;
   base['CONTENT_REVIEW_QUEUE.jsonl'][0].review_status='PENDING';
   save();const statusChanged=buildReviewRows(root);

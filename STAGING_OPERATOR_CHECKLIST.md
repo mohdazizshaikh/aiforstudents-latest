@@ -1,5 +1,8 @@
 # Hostinger Business — Private Staging Operator Checklist
 
+> **M33 CURRENT CHECKPOINT — 2026-11-24:** B1 **46/50** scoped engineering/design tasks, four actual external expert gates remain blocked. B2 **17/50** bounded engineering task outputs subject to exact-head CI. Twelve new original **UNREVIEWED** conceptual models (4 Maths, 4 Physics, 2 Chemistry, 2 Biology) use local keyboard controls, visual/text alternatives and safe non-hardware examples. All **24 static HTML routes** and their local JS/style dependencies are covered by offline audit. Explicit shared-device reset is distinct from remembering preference; low-ink learner card print hides teacher guidance. **3,304 educational records await qualified subject/Hindi review**, including ratio/algebra educator acceptance. This is NOT full Class 1–12 curriculum, a real generative tutor, validated mastery, teacher administration, a live restricted Hostinger deployment, physical accessibility or an authorized school pilot. Public child launch remains **NOT APPROVED**. [M33 evidence](docs/M33_EXPANDED_LABS_QA.md) · [Current tracker](docs/B1_PROGRESS_DASHBOARD.md).
+
+
 > **M32 STAGING BUILD (2026-11-24):** Matching source/ZIP names are `aiforstudents_hostinger_staging_m32.zip`, `aiforstudents_m32_source_tests.zip`, and worker `aifs-discovery-m32-2026-11-24`. New printable learner-only cards use **external CSS** for strict CSP and contain no accounts/rosters. An archive and CI success are **not** real Hostinger restricted HTTPS, password protection, source-byte integrity, real print testing or public launch approval. Operator must still perform all actual gates. [M32 QA](docs/M32_PRACTICE_TEACHER_QA.md).
 
 

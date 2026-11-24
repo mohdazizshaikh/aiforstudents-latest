@@ -1,17 +1,17 @@
 # M29 — 100-work-item master execution plan (2 × 50)
 
-**M32 implementation update, 2026-11-24:** **B1 46/50 bounded engineering/design tasks source/test verified; B2 2/50 governance tasks verified.** Eleven more B1 engineering tasks include the source-backed draft-only hint guide, optional practice planner, fraction five-step shell, teacher navigation/role rotation and print-only learner cards. **Not an AI tutor, educational review, mastery system or public release.** Ten additional B1 tasks now have source/test evidence: seven safe, draft Science Concept models, reusable five-stage lesson flow, cross-module Hindi/English completeness audit, and representative keyboard/nonvisual browser sampling. Previous five M29 governance foundations and M30 Maths work remain. **Overall product remains PARTIAL WORKING PROTOTYPE, NOT COMPLETE. Public child-facing launch BLOCKED.** Qualified education/translation/field approval is not established by tests.
+**M33 checkpoint, 2026-11-24: B1 46/50 scoped engineering/design tasks; B2 17/50 scoped engineering/design tasks.** Twelve additional unreviewed Maths/Science conceptual models, offline coverage for all 24 static routes and explicit shared-device reset fixes. FP-036 awaits educator review; all 3,304 educational records require qualified human decisions. **FULL PRODUCT NOT COMPLETE; PUBLIC CHILD LAUNCH BLOCKED.** Previous M32 46/50 and 2/50 values are historical. Engineering tests are not educational, legal, accessibility-device or live-host approvals.
 
 ## Fast batch execution rules
 
 - **B1 (50 tasks):** first five entries in each of ten workstreams. Lock scope, reusable foundations, representative safe labs and initial QA. **Current completion: 46/50**.
-- **B2 (50 tasks):** last five entries in each workstream. Broader Maths/Physics/Chemistry/Biology, governed AI/adaptive features, teacher depth, source and field reviews. **Current completion: 2/50**.
+- **B2 (50 tasks):** last five entries in each workstream. Broader Maths/Physics/Chemistry/Biology, governed AI/adaptive features, teacher depth, source and field reviews. **Current completion: 17/50**.
 - **Efficiency:** plan/triage each 50-task batch in one coordinated work cycle instead of requesting tiny steps. Run independent streams concurrently, use small coherent feature PRs rather than one unreviewable giant merge, run tests at each ~10–15-task checkpoint and consolidate progress into a single verified batch report.
 - **Non-negotiable:** a human review, real school trial, live Hostinger verification or legal approval remains **BLOCKED_EXTERNAL** unless a real authorized reviewer/operator supplies evidence. A successful Node/Chromium test or a prepared template is not that evidence.
 - **Completion status:** NOT_STARTED → IN_PROGRESS → CODE_COMPLETE_TESTED → REVIEW_PENDING → DONE_VERIFIED; BLOCKED_EXTERNAL when dependencies cannot be fulfilled. Code output needs commit, tests, screenshot/QA where appropriate; real-world gates require actual human/field proof.
 - **100 tasks are a delivery register, not an assertion that two batches will finish every Class 1–12 chapter and every state board.** Full chapter/edition-by-chapter coverage requires later enumerated content records and review, not invented percentages.
 
-**GitHub execution tickets:** [Batch B1 — 46 of 50 engineering tasks evidenced](https://github.com/mohdazizshaikh/aiforstudents-latest/issues/16) · [Batch B2 — 2 of 50 governance tasks evidenced](https://github.com/mohdazizshaikh/aiforstudents-latest/issues/17). These are two coordination issues, not 100 separate noisy issues; task detail and evidence stay in this tracked register.
+**GitHub execution tickets:** [Batch B1 — 46 of 50 engineering tasks evidenced](https://github.com/mohdazizshaikh/aiforstudents-latest/issues/16) · [Batch B2 — 17 of 50 scoped engineering tasks evidenced](https://github.com/mohdazizshaikh/aiforstudents-latest/issues/17). These are two coordination issues, not 100 separate noisy issues; task detail and evidence stay in this tracked register.
 
 ## Work breakdown — 10 streams × 10 items
 
@@ -30,7 +30,7 @@
 | FP-007 | B2 | Create role/owner ledger | Real accountable owners confirmed privately; TBD is not approval | BLOCKED_EXTERNAL |
 | FP-008 | B2 | Create source/test/evidence traceability | Each completed item links commit and relevant proof | IN_PROGRESS |
 | FP-009 | B2 | Create controlled scope-change protocol | No silent product-complete or release language | DONE_VERIFIED |
-| FP-010 | B2 | Conduct independent batch completion review | Human signoff separate from engineering checklist | NOT_STARTED |
+| FP-010 | B2 | Conduct independent batch completion review | Human signoff separate from engineering checklist | BLOCKED_EXTERNAL |
 
 ### 2. Curriculum and licensing — CUR
 
@@ -43,11 +43,11 @@
 | FP-013 | B1 | Define educational and Hindi review rubric | Accuracy, language, safety, age and accessibility criteria | BLOCKED_EXTERNAL |
 | FP-014 | B1 | Design third-party copyright/provenance registry | Every reused asset has permission and attribution evidence | DONE_VERIFIED |
 | FP-015 | B1 | Draft provisional Grade 1–2 concept map | Topic coverage clearly labelled draft until verified | DONE_VERIFIED |
-| FP-016 | B2 | Verify Grade 3–5 chapter map | Source editions and reviewer evidence recorded | NOT_STARTED |
-| FP-017 | B2 | Verify Grade 6–8 chapter map | Chapter/outcome references checked by educator | NOT_STARTED |
-| FP-018 | B2 | Verify Grade 9–10 chapter map | Board and edition-specific source references checked | NOT_STARTED |
-| FP-019 | B2 | Verify Grade 11–12 chapter map | Stream, chapter, prerequisite and reviewer recorded | NOT_STARTED |
-| FP-020 | B2 | Authorize selected curriculum pilot slice | Only exact approved chapters labelled reviewed | NOT_STARTED |
+| FP-016 | B2 | Verify Grade 3–5 chapter map | Source editions and reviewer evidence recorded | BLOCKED_EXTERNAL |
+| FP-017 | B2 | Verify Grade 6–8 chapter map | Chapter/outcome references checked by educator | BLOCKED_EXTERNAL |
+| FP-018 | B2 | Verify Grade 9–10 chapter map | Board and edition-specific source references checked | BLOCKED_EXTERNAL |
+| FP-019 | B2 | Verify Grade 11–12 chapter map | Stream, chapter, prerequisite and reviewer recorded | BLOCKED_EXTERNAL |
+| FP-020 | B2 | Authorize selected curriculum pilot slice | Only exact approved chapters labelled reviewed | BLOCKED_EXTERNAL |
 
 ### 3. Student app/offline/accessibility — UX
 
@@ -60,11 +60,11 @@
 | FP-023 | B1 | Unify Hindi/English content validation | Missing translations fail tests | DONE_VERIFIED |
 | FP-024 | B1 | Define focus/labels/live feedback contract | Keyboard and screen-reader paths testable | DONE_VERIFIED |
 | FP-025 | B1 | Set low-end bandwidth/performance budgets | Asset and cold-start limits enforced in CI | DONE_VERIFIED |
-| FP-026 | B2 | Audit all new offline/PWA paths | No broken modules when disconnected after caching | NOT_STARTED |
-| FP-027 | B2 | Audit multi-tab shared-device reset | No stale opt-in/session history in supported browser tests | NOT_STARTED |
-| FP-028 | B2 | Add non-drag alternative to every lab | Buttons/keyboard/numeric text equivalent | NOT_STARTED |
-| FP-029 | B2 | Create accessible print/low-ink export | A4 layout hides teacher-only notes and private data | NOT_STARTED |
-| FP-030 | B2 | Run physical accessibility usability checks | Actual Android, TalkBack/VoiceOver, zoom evidence | NOT_STARTED |
+| FP-026 | B2 | Audit all new offline/PWA paths | No broken modules when disconnected after caching | DONE_VERIFIED |
+| FP-027 | B2 | Audit multi-tab shared-device reset | No stale opt-in/session history in supported browser tests | DONE_VERIFIED |
+| FP-028 | B2 | Add non-drag alternative to every lab | Buttons/keyboard/numeric text equivalent | DONE_VERIFIED |
+| FP-029 | B2 | Create accessible print/low-ink export | A4 layout hides teacher-only notes and private data | DONE_VERIFIED |
+| FP-030 | B2 | Run physical accessibility usability checks | Actual Android, TalkBack/VoiceOver, zoom evidence | BLOCKED_EXTERNAL |
 
 ### 4. Interactive Maths Lab — MATH
 
@@ -77,11 +77,11 @@
 | FP-033 | B1 | Build place-value and number-line manipulator | Deterministic arithmetic and audio-free text state | DONE_VERIFIED |
 | FP-034 | B1 | Build geometry/measurement manipulator | Units, area/perimeter and keyboard controls tested | DONE_VERIFIED |
 | FP-035 | B1 | Build accessible charts/data interpretation lab | Equivalent data table and verified answers | DONE_VERIFIED |
-| FP-036 | B2 | Build ratios and algebra lab | Correct step explanations with educator review | NOT_STARTED |
-| FP-037 | B2 | Build symmetry and transformation lab | Rotation/reflection/translation deterministic cases | NOT_STARTED |
-| FP-038 | B2 | Build coordinate/graph lab | Axis signs and functions numerically verified | NOT_STARTED |
-| FP-039 | B2 | Build probability/statistics experiment lab | Transparent seeds, sample sizes and caveats | NOT_STARTED |
-| FP-040 | B2 | Obtain independent Maths/Hindi pilot approval | Reviewed exact lessons; no fake complete syllabus | NOT_STARTED |
+| FP-036 | B2 | Build ratios and algebra lab | Correct step explanations with educator review | REVIEW_PENDING |
+| FP-037 | B2 | Build symmetry and transformation lab | Rotation/reflection/translation deterministic cases | DONE_VERIFIED |
+| FP-038 | B2 | Build coordinate/graph lab | Axis signs and functions numerically verified | DONE_VERIFIED |
+| FP-039 | B2 | Build probability/statistics experiment lab | Transparent seeds, sample sizes and caveats | DONE_VERIFIED |
+| FP-040 | B2 | Obtain independent Maths/Hindi pilot approval | Reviewed exact lessons; no fake complete syllabus | BLOCKED_EXTERNAL |
 
 ### 5. Physics/general science lab — PHYS
 
@@ -94,11 +94,11 @@
 | FP-043 | B1 | Build forces/motion interactive model | Units, edge cases and accessible numerical text | DONE_VERIFIED |
 | FP-044 | B1 | Build light/reflection model | Angle relationships mathematically checked | DONE_VERIFIED |
 | FP-045 | B1 | Build energy transfer model | No unsupported energy/efficiency claims | DONE_VERIFIED |
-| FP-046 | B2 | Build heat/temperature model | Scientific distinction and safe non-hardware activities | NOT_STARTED |
-| FP-047 | B2 | Build sound/wave interactive model | Frequency/amplitude accessible without audio | NOT_STARTED |
-| FP-048 | B2 | Build magnetism qualitative model | Clear limitations and safe material instructions | NOT_STARTED |
-| FP-049 | B2 | Build measurement/data-table practice | Local-only measurements and unit checks | NOT_STARTED |
-| FP-050 | B2 | Obtain subject and classroom safety review | Qualified educators approve exact examples | NOT_STARTED |
+| FP-046 | B2 | Build heat/temperature model | Scientific distinction and safe non-hardware activities | DONE_VERIFIED |
+| FP-047 | B2 | Build sound/wave interactive model | Frequency/amplitude accessible without audio | DONE_VERIFIED |
+| FP-048 | B2 | Build magnetism qualitative model | Clear limitations and safe material instructions | DONE_VERIFIED |
+| FP-049 | B2 | Build measurement/data-table practice | Local-only measurements and unit checks | DONE_VERIFIED |
+| FP-050 | B2 | Obtain subject and classroom safety review | Qualified educators approve exact examples | BLOCKED_EXTERNAL |
 
 ### 6. Chemistry/Biology/environment lab — BIOCHEM
 
@@ -111,11 +111,11 @@
 | FP-053 | B1 | Build physical/chemical change sorter | Correct explanations with draft-review flags | DONE_VERIFIED |
 | FP-054 | B1 | Build cell structure interactive explorer | Text alternative and differentiated cell types | DONE_VERIFIED |
 | FP-055 | B1 | Build life-cycle/food-chain model | Scientifically correct ordered relationships | DONE_VERIFIED |
-| FP-056 | B2 | Build periodic-table pattern explorer | Verified atomic number/group data sources | NOT_STARTED |
-| FP-057 | B2 | Build symbolic mass-conservation model | No dangerous recipes; balanced example tests | NOT_STARTED |
-| FP-058 | B2 | Build ecosystem interactions model | Food web and uncertainty clearly communicated | NOT_STARTED |
-| FP-059 | B2 | Build heredity/variation explainer | No genetic essentialism or health profiling | NOT_STARTED |
-| FP-060 | B2 | Obtain independent science/Hindi safety approval | Reviewed exact lessons before student publication | NOT_STARTED |
+| FP-056 | B2 | Build periodic-table pattern explorer | Verified atomic number/group data sources | DONE_VERIFIED |
+| FP-057 | B2 | Build symbolic mass-conservation model | No dangerous recipes; balanced example tests | DONE_VERIFIED |
+| FP-058 | B2 | Build ecosystem interactions model | Food web and uncertainty clearly communicated | DONE_VERIFIED |
+| FP-059 | B2 | Build heredity/variation explainer | No genetic essentialism or health profiling | DONE_VERIFIED |
+| FP-060 | B2 | Obtain independent science/Hindi safety approval | Reviewed exact lessons before student publication | BLOCKED_EXTERNAL |
 
 ### 7. AI tutor and safety — TUTOR
 
@@ -130,9 +130,9 @@
 | FP-065 | B1 | Define refusal/sensitive disclosure policy | Unsafe prompts lead to age-appropriate adult guidance | DONE_VERIFIED |
 | FP-066 | B2 | Document optional generative tutor risk design | Feature OFF until real safeguards and cost approval | NOT_STARTED |
 | FP-067 | B2 | Model privacy, latency and AI inference budget | No undisclosed paid dependency | NOT_STARTED |
-| FP-068 | B2 | Prototype approved-source retrieval flow | No unauthorized copyrighted content or unsourced replies | NOT_STARTED |
-| FP-069 | B2 | Conduct adversarial bias/hallucination review | Independent human evaluation and red-team defects | NOT_STARTED |
-| FP-070 | B2 | Approve or reject AI tutor public use | Real safety/legal/education gate; no auto-enable | NOT_STARTED |
+| FP-068 | B2 | Prototype approved-source retrieval flow | No unauthorized copyrighted content or unsourced replies | BLOCKED_EXTERNAL |
+| FP-069 | B2 | Conduct adversarial bias/hallucination review | Independent human evaluation and red-team defects | BLOCKED_EXTERNAL |
+| FP-070 | B2 | Approve or reject AI tutor public use | Real safety/legal/education gate; no auto-enable | BLOCKED_EXTERNAL |
 
 ### 8. Adaptive practice and progress — ADAPT
 
@@ -149,7 +149,7 @@
 | FP-077 | B2 | Specify anonymous aggregate classroom view | No individual minor scores or rosters | NOT_STARTED |
 | FP-078 | B2 | Define safe shared-device session boundaries | Cannot identify children solely through a browser | NOT_STARTED |
 | FP-079 | B2 | Audit opt-in data retention and deletion | Local/session, background tabs and print paths tested | NOT_STARTED |
-| FP-080 | B2 | Run ethical learning-outcome validation | Consented study and independent evidence required | NOT_STARTED |
+| FP-080 | B2 | Run ethical learning-outcome validation | Consented study and independent evidence required | BLOCKED_EXTERNAL |
 
 ### 9. Teacher planning and classrooms — TEACH
 
@@ -166,7 +166,7 @@
 | FP-087 | B2 | Create licensed offline assignment packs | No tracking links or identifiable learner export | NOT_STARTED |
 | FP-088 | B2 | Implement no-internet projector handoff | Teacher plan works in a disconnected classroom | NOT_STARTED |
 | FP-089 | B2 | Prepare ethical observer feedback template | Minimal permitted evidence and child-safe protocol | NOT_STARTED |
-| FP-090 | B2 | Complete authorized supervised classroom pilot | School/guardian permissions and real observation | NOT_STARTED |
+| FP-090 | B2 | Complete authorized supervised classroom pilot | School/guardian permissions and real observation | BLOCKED_EXTERNAL |
 
 ### 10. Quality/release and human gates — VERIFY
 
@@ -179,11 +179,11 @@
 | FP-093 | B1 | Automate keyboard and non-visual flow sampling | Representative Hindi/English and touch-free checks | DONE_VERIFIED |
 | FP-094 | B1 | Keep static staging ZIP privacy/integrity gates | Noindex, CSP, SHA-256 and source-path exclusions | DONE_VERIFIED |
 | FP-095 | B1 | Create truthful evidence status dashboard | No mock result counts as human or live hosting | DONE_VERIFIED |
-| FP-096 | B2 | Perform physical Android/AT/A4 testing | Real device evidence with logged failures | NOT_STARTED |
-| FP-097 | B2 | Deploy real restricted HTTPS Hostinger staging | Authorized HTTPS/access/backup/rollback verification | NOT_STARTED |
-| FP-098 | B2 | Complete 3,282 existing content record reviews | Real qualified subject/Hindi decisions recorded | NOT_STARTED |
-| FP-099 | B2 | Complete six human safeguarding operational gates | Owners, privacy/legal, incident drill and permissions | NOT_STARTED |
-| FP-100 | B2 | Independent school/launch go-no-go decision | Public remains noindex until all external gates satisfied | NOT_STARTED |
+| FP-096 | B2 | Perform physical Android/AT/A4 testing | Real device evidence with logged failures | BLOCKED_EXTERNAL |
+| FP-097 | B2 | Deploy real restricted HTTPS Hostinger staging | Authorized HTTPS/access/backup/rollback verification | BLOCKED_EXTERNAL |
+| FP-098 | B2 | Complete 3,282 existing content record reviews | Real qualified subject/Hindi decisions recorded | BLOCKED_EXTERNAL |
+| FP-099 | B2 | Complete six human safeguarding operational gates | Owners, privacy/legal, incident drill and permissions | BLOCKED_EXTERNAL |
+| FP-100 | B2 | Independent school/launch go-no-go decision | Public remains noindex until all external gates satisfied | BLOCKED_EXTERNAL |
 
 
 ## Current actual baseline (not counted toward 100 new tasks)
@@ -209,3 +209,7 @@ B1 now **35/50 DONE_VERIFIED in strictly scoped engineering/design evidence**, i
 ### M32 B2 governance increment (2026-11-24)
 
 **2/50 B2 engineering governance items verified:** CI consistency checks (FP-006) and a documented change protocol (FP-009). FP-007 is **BLOCKED_EXTERNAL** until actual accountable role assignments; a placeholder ledger is NOT sufficient. FP-008 remains **IN_PROGRESS** until every verified item has a concrete commit-to-source/test provenance link. Governance templates and code are never substitute human approvals.
+
+### M33 expanded labs and offline checkpoint (2026-11-24)
+
+Fifteen newly source/test-backed B2 engineering task scopes: 11 deterministic lab functions (FP-036 ratio/algebra is separate REVIEW_PENDING), explicit offline/keyboard/print and multi-tab privacy verification. Current B2 **17/50**, four B1 real-human gates remain blocked; B2 external gates marked BLOCKED_EXTERNAL until real evidence. **3,304 pending educational reviews.** [M33 QA](M33_EXPANDED_LABS_QA.md) documents original limitations, IUPAC source reference and prototype-only boundaries.

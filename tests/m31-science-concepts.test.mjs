@@ -91,16 +91,16 @@ test('M31 science B1 app is bilingual, button/keyboard-only, no session persiste
  for(const needle of ['id="science-lab"','id="science-feedback"','id="science-next"','id="science-prev"','id="science-quiz"','href="#science-lab"','assets/science-app.js'])assert.ok(html.includes(needle),needle);
  for(const n of ['aifs-history-cleared','aria-label','aria-live','SCIENCE_STAGES','scienceEvaluate'])assert.ok(app.includes(n)||html.includes(n),n);
  assert.doesNotMatch(app,/localStorage|sessionStorage|fetch\(|XMLHttpRequest|navigator\.geolocation|crypto\.randomUUID/);
- assert.match(sw,/aifs-discovery-m32/);
+ assert.match(sw,/aifs-discovery-m33/);
  assert.ok(sw.includes('./assets/science-engine.js'));
  assert.ok(sw.includes('./assets/science-app.js'));
  assert.match(html,/UNREVIEWED drafts/);
 });
 test('M31 seven new SHA-256 bound pending review records never self-approve child release',()=>{
- const audit=auditContentQueues();assert.equal(audit.total,3292);assert.equal(audit.pending,3292);
+ const audit=auditContentQueues();assert.equal(audit.total,3304);assert.equal(audit.pending,3304);
  assert.equal(audit.counts.science.total,7);assert.equal(audit.counts.science.pending,7);
  const rows=buildReviewRows(),summary=buildSummary(undefined,rows);
- assert.equal(rows.length,3292);assert.equal(summary.pendingHumanReviewRecords,3292);
+ assert.equal(rows.length,3304);assert.equal(summary.pendingHumanReviewRecords,3304);
  const science=rows.filter(x=>x.queue==='science');
  assert.equal(science.length,7);
  for(const row of science){

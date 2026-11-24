@@ -230,7 +230,7 @@
       "dependsOn": [
         "FP-005"
       ],
-      "status": "NOT_STARTED",
+      "status": "BLOCKED_EXTERNAL",
       "evidence": []
     },
     {
@@ -354,7 +354,7 @@
       "dependsOn": [
         "FP-015"
       ],
-      "status": "NOT_STARTED",
+      "status": "BLOCKED_EXTERNAL",
       "evidence": []
     },
     {
@@ -369,7 +369,7 @@
       "dependsOn": [
         "FP-015"
       ],
-      "status": "NOT_STARTED",
+      "status": "BLOCKED_EXTERNAL",
       "evidence": []
     },
     {
@@ -384,7 +384,7 @@
       "dependsOn": [
         "FP-015"
       ],
-      "status": "NOT_STARTED",
+      "status": "BLOCKED_EXTERNAL",
       "evidence": []
     },
     {
@@ -399,7 +399,7 @@
       "dependsOn": [
         "FP-015"
       ],
-      "status": "NOT_STARTED",
+      "status": "BLOCKED_EXTERNAL",
       "evidence": []
     },
     {
@@ -414,7 +414,7 @@
       "dependsOn": [
         "FP-015"
       ],
-      "status": "NOT_STARTED",
+      "status": "BLOCKED_EXTERNAL",
       "evidence": []
     },
     {
@@ -547,8 +547,17 @@
       "dependsOn": [
         "FP-025"
       ],
-      "status": "NOT_STARTED",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "tools/audit-offline-dependencies.mjs"
+        },
+        {
+          "kind": "test",
+          "path": "tests/browser_m25_ci.py"
+        }
+      ]
     },
     {
       "id": "FP-027",
@@ -562,8 +571,17 @@
       "dependsOn": [
         "FP-025"
       ],
-      "status": "NOT_STARTED",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/app.js"
+        },
+        {
+          "kind": "test",
+          "path": "tests/browser_m25_ci.py"
+        }
+      ]
     },
     {
       "id": "FP-028",
@@ -577,8 +595,17 @@
       "dependsOn": [
         "FP-025"
       ],
-      "status": "NOT_STARTED",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/advanced-lab-app.js"
+        },
+        {
+          "kind": "test",
+          "path": "tests/browser_m25_ci.py"
+        }
+      ]
     },
     {
       "id": "FP-029",
@@ -592,8 +619,17 @@
       "dependsOn": [
         "FP-025"
       ],
-      "status": "NOT_STARTED",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/worksheet-print.css"
+        },
+        {
+          "kind": "test",
+          "path": "tests/browser_m25_ci.py"
+        }
+      ]
     },
     {
       "id": "FP-030",
@@ -607,7 +643,7 @@
       "dependsOn": [
         "FP-025"
       ],
-      "status": "NOT_STARTED",
+      "status": "BLOCKED_EXTERNAL",
       "evidence": []
     },
     {
@@ -740,7 +776,7 @@
       "dependsOn": [
         "FP-035"
       ],
-      "status": "NOT_STARTED",
+      "status": "REVIEW_PENDING",
       "evidence": []
     },
     {
@@ -755,8 +791,17 @@
       "dependsOn": [
         "FP-035"
       ],
-      "status": "NOT_STARTED",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/advanced-lab-engine.js"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m33-expanded-labs.test.mjs"
+        }
+      ]
     },
     {
       "id": "FP-038",
@@ -770,8 +815,17 @@
       "dependsOn": [
         "FP-035"
       ],
-      "status": "NOT_STARTED",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/advanced-lab-engine.js"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m33-expanded-labs.test.mjs"
+        }
+      ]
     },
     {
       "id": "FP-039",
@@ -785,8 +839,17 @@
       "dependsOn": [
         "FP-035"
       ],
-      "status": "NOT_STARTED",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/advanced-lab-engine.js"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m33-expanded-labs.test.mjs"
+        }
+      ]
     },
     {
       "id": "FP-040",
@@ -800,7 +863,7 @@
       "dependsOn": [
         "FP-035"
       ],
-      "status": "NOT_STARTED",
+      "status": "BLOCKED_EXTERNAL",
       "evidence": []
     },
     {
@@ -933,8 +996,17 @@
       "dependsOn": [
         "FP-045"
       ],
-      "status": "NOT_STARTED",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/advanced-lab-engine.js"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m33-expanded-labs.test.mjs"
+        }
+      ]
     },
     {
       "id": "FP-047",
@@ -948,8 +1020,17 @@
       "dependsOn": [
         "FP-045"
       ],
-      "status": "NOT_STARTED",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/advanced-lab-engine.js"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m33-expanded-labs.test.mjs"
+        }
+      ]
     },
     {
       "id": "FP-048",
@@ -963,8 +1044,17 @@
       "dependsOn": [
         "FP-045"
       ],
-      "status": "NOT_STARTED",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/advanced-lab-engine.js"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m33-expanded-labs.test.mjs"
+        }
+      ]
     },
     {
       "id": "FP-049",
@@ -978,8 +1068,17 @@
       "dependsOn": [
         "FP-045"
       ],
-      "status": "NOT_STARTED",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/advanced-lab-engine.js"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m33-expanded-labs.test.mjs"
+        }
+      ]
     },
     {
       "id": "FP-050",
@@ -993,7 +1092,7 @@
       "dependsOn": [
         "FP-045"
       ],
-      "status": "NOT_STARTED",
+      "status": "BLOCKED_EXTERNAL",
       "evidence": []
     },
     {
@@ -1126,8 +1225,17 @@
       "dependsOn": [
         "FP-055"
       ],
-      "status": "NOT_STARTED",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/advanced-lab-engine.js"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m33-expanded-labs.test.mjs"
+        }
+      ]
     },
     {
       "id": "FP-057",
@@ -1141,8 +1249,17 @@
       "dependsOn": [
         "FP-055"
       ],
-      "status": "NOT_STARTED",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/advanced-lab-engine.js"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m33-expanded-labs.test.mjs"
+        }
+      ]
     },
     {
       "id": "FP-058",
@@ -1156,8 +1273,17 @@
       "dependsOn": [
         "FP-055"
       ],
-      "status": "NOT_STARTED",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/advanced-lab-engine.js"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m33-expanded-labs.test.mjs"
+        }
+      ]
     },
     {
       "id": "FP-059",
@@ -1171,8 +1297,17 @@
       "dependsOn": [
         "FP-055"
       ],
-      "status": "NOT_STARTED",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/advanced-lab-engine.js"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m33-expanded-labs.test.mjs"
+        }
+      ]
     },
     {
       "id": "FP-060",
@@ -1186,7 +1321,7 @@
       "dependsOn": [
         "FP-055"
       ],
-      "status": "NOT_STARTED",
+      "status": "BLOCKED_EXTERNAL",
       "evidence": []
     },
     {
@@ -1340,7 +1475,7 @@
       "dependsOn": [
         "FP-065"
       ],
-      "status": "NOT_STARTED",
+      "status": "BLOCKED_EXTERNAL",
       "evidence": []
     },
     {
@@ -1355,7 +1490,7 @@
       "dependsOn": [
         "FP-065"
       ],
-      "status": "NOT_STARTED",
+      "status": "BLOCKED_EXTERNAL",
       "evidence": []
     },
     {
@@ -1370,7 +1505,7 @@
       "dependsOn": [
         "FP-065"
       ],
-      "status": "NOT_STARTED",
+      "status": "BLOCKED_EXTERNAL",
       "evidence": []
     },
     {
@@ -1563,7 +1698,7 @@
       "dependsOn": [
         "FP-075"
       ],
-      "status": "NOT_STARTED",
+      "status": "BLOCKED_EXTERNAL",
       "evidence": []
     },
     {
@@ -1747,7 +1882,7 @@
       "dependsOn": [
         "FP-085"
       ],
-      "status": "NOT_STARTED",
+      "status": "BLOCKED_EXTERNAL",
       "evidence": []
     },
     {
@@ -1871,7 +2006,7 @@
       "dependsOn": [
         "FP-095"
       ],
-      "status": "NOT_STARTED",
+      "status": "BLOCKED_EXTERNAL",
       "evidence": []
     },
     {
@@ -1886,7 +2021,7 @@
       "dependsOn": [
         "FP-095"
       ],
-      "status": "NOT_STARTED",
+      "status": "BLOCKED_EXTERNAL",
       "evidence": []
     },
     {
@@ -1901,7 +2036,7 @@
       "dependsOn": [
         "FP-095"
       ],
-      "status": "NOT_STARTED",
+      "status": "BLOCKED_EXTERNAL",
       "evidence": []
     },
     {
@@ -1916,7 +2051,7 @@
       "dependsOn": [
         "FP-095"
       ],
-      "status": "NOT_STARTED",
+      "status": "BLOCKED_EXTERNAL",
       "evidence": []
     },
     {
@@ -1931,16 +2066,17 @@
       "dependsOn": [
         "FP-095"
       ],
-      "status": "NOT_STARTED",
+      "status": "BLOCKED_EXTERNAL",
       "evidence": []
     }
   ],
   "updatedOn": "2026-11-24",
-  "currentEngineeringMilestone": "M32_B1_PRACTICE_TEACHER_B2_GOVERNANCE",
+  "currentEngineeringMilestone": "M33_B2_EXPANDED_LABS_OFFLINE_PRIVACY",
   "additionalNewMathsDrafts": 3,
-  "currentPendingContentRecords": 3292,
+  "currentPendingContentRecords": 3304,
   "batch1VerifiedEngineeringAndDesignTasks": 46,
-  "batch2VerifiedEngineeringAndDesignTasks": 2,
-  "statusCaveat": "B1 46/50 engineering/design source/test only, four B1 expert approvals blocked. B2 2/50 governance/CI tasks verified; FP-007 owner assignments BLOCKED_EXTERNAL, FP-008 commit-to-evidence tracing IN_PROGRESS. No fictional human approval, real hosting or public release.",
-  "newScienceDraftReviewRecords": 7
+  "batch2VerifiedEngineeringAndDesignTasks": 17,
+  "statusCaveat": "B1 46/50 engineering only; B2 17/50 bounded engineering/design tasks, subject/Hindi and all real-world approvals not authenticated. FP-036 ratio/algebra code is draft REVIEW_PENDING, not independently reviewed. Twelve more conceptual models do not mean complete Class 1–12 labs, generative AI, mastery or school deployment.",
+  "newScienceDraftReviewRecords": 7,
+  "newAdvancedDraftReviewRecords": 12
 }

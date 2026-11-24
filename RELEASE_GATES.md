@@ -1,5 +1,8 @@
 # Release gates — M28 private prototype and M29 full-product plan
 
+> **M33 CURRENT CHECKPOINT — 2026-11-24:** B1 **46/50** scoped engineering/design tasks, four actual external expert gates remain blocked. B2 **17/50** bounded engineering task outputs subject to exact-head CI. Twelve new original **UNREVIEWED** conceptual models (4 Maths, 4 Physics, 2 Chemistry, 2 Biology) use local keyboard controls, visual/text alternatives and safe non-hardware examples. All **24 static HTML routes** and their local JS/style dependencies are covered by offline audit. Explicit shared-device reset is distinct from remembering preference; low-ink learner card print hides teacher guidance. **3,304 educational records await qualified subject/Hindi review**, including ratio/algebra educator acceptance. This is NOT full Class 1–12 curriculum, a real generative tutor, validated mastery, teacher administration, a live restricted Hostinger deployment, physical accessibility or an authorized school pilot. Public child launch remains **NOT APPROVED**. [M33 evidence](docs/M33_EXPANDED_LABS_QA.md) · [Current tracker](docs/B1_PROGRESS_DASHBOARD.md).
+
+
 > **M32 RELEASE VERDICT — 2026-11-24: NOT APPROVED FOR PUBLIC CHILD ACCESS.** B1 **46/50** source/test items, **4 BLOCKED_EXTERNAL**; B2 **2/50** governance tasks, **48 pending**. Unreviewed original source-backed hints must not be advertised as teacher-reviewed AI tutoring. Printable student cards hide teacher answer via CSS but real printer/A4/AT approval absent. **3,292 educational records**, six actual child safety/legal gates, authorized restricted Hostinger HTTPS, real low-end devices, qualified reviewers and school ethics pilot still pending. [M32 QA](docs/M32_PRACTICE_TEACHER_QA.md).
 
 

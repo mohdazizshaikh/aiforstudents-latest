@@ -40,6 +40,8 @@ jobs:
         run: |
           npm run plan:check
           npm run plan:trace
+      - name: Audit all static offline dependencies and guide routes
+        run: npm run audit:offline
       - name: Verify static release
         run: node tools/verify-static-release.mjs
       - name: Structural content audit
@@ -52,12 +54,12 @@ jobs:
       - name: Ensure no private reviewer evidence or secrets in archives
         run: python3 tools/check-package-privacy.py
       - name: Prepare verified staging ZIP inside workflow workspace
-        run: cp ../aiforstudents_hostinger_staging_m32.zip ./aiforstudents_hostinger_staging_m32.zip
+        run: cp ../aiforstudents_hostinger_staging_m33.zip ./aiforstudents_hostinger_staging_m33.zip
       - name: Attach verified private-staging-only Hostinger ZIP (never auto-deploy)
         uses: actions/upload-artifact@v4
         with:
-          name: m32-hostinger-private-staging-noindex
-          path: aiforstudents_hostinger_staging_m32.zip
+          name: m33-hostinger-private-staging-noindex
+          path: aiforstudents_hostinger_staging_m33.zip
           if-no-files-found: error
           retention-days: 7
 
@@ -83,7 +85,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: m32-local-browser-regression
-          path: test-results/m32-browser/report.json
+          name: m33-local-browser-regression
+          path: test-results/m33-browser/report.json
           if-no-files-found: warn
           retention-days: 7

@@ -155,16 +155,21 @@ function clearAllHistory(notifyPeers=true){
  $('strategy-note').hidden=true;$('storage-warning').hidden=true;
  show('lobby');refresh();
  $('privacy-status').textContent=tr('Local history cleared.','स्थानीय इतिहास मिटा दिया गया।');
- if(notifyPeers){try{privacyClearChannel?.postMessage({type:'clear-history'})}catch{}}
+ if(notifyPeers){
+  try{privacyClearChannel?.postMessage({type:'clear-history'})}catch{}
+  // Separate control-only signal: removing the history key (e.g. disabling remember)
+  // is NOT an explicit request to erase another tab's session.
+  try{const s=safeStorage('localStorage');s?.setItem('aifs-privacy-clear-signal-v1','clear');s?.removeItem('aifs-privacy-clear-signal-v1')}catch{}
+ }
 }
 $('clear-progress').addEventListener('click',()=>clearAllHistory(true));
 privacyClearChannel?.addEventListener('message',event=>{
  if(event.data?.type==='clear-history')clearAllHistory(false);
 });
-// If an older browser lacks BroadcastChannel, persisted opt-in clears still notify same-origin tabs.
+// Explicit control-only fallback also reaches session-only tabs without BroadcastChannel.
 window.addEventListener('storage',event=>{
  if(event.storageArea===safeStorage('localStorage')&&
-    (event.key===KEY||event.key===null)&&event.newValue===null)clearAllHistory(false);
+    event.key==='aifs-privacy-clear-signal-v1'&&event.newValue==='clear')clearAllHistory(false);
 });
 $('save-reflection').addEventListener('click',()=>{const val=$('reflection-choice').value;if(!val){$('reflection-status').textContent=tr('Choose a statement first.','पहले विकल्प चुनें।');return}ST.history=saveReflection(ST.history,localDay(),val);store();renderDashboard()});
 window.AIFS_DIGITAL_BRIDGE={

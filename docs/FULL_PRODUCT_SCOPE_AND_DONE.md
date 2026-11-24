@@ -1,5 +1,8 @@
 # M29 — Full-product scope and completion criteria
 
+> **M33 CURRENT CHECKPOINT — 2026-11-24:** B1 **46/50** scoped engineering/design tasks, four actual external expert gates remain blocked. B2 **17/50** bounded engineering task outputs subject to exact-head CI. Twelve new original **UNREVIEWED** conceptual models (4 Maths, 4 Physics, 2 Chemistry, 2 Biology) use local keyboard controls, visual/text alternatives and safe non-hardware examples. All **24 static HTML routes** and their local JS/style dependencies are covered by offline audit. Explicit shared-device reset is distinct from remembering preference; low-ink learner card print hides teacher guidance. **3,304 educational records await qualified subject/Hindi review**, including ratio/algebra educator acceptance. This is NOT full Class 1–12 curriculum, a real generative tutor, validated mastery, teacher administration, a live restricted Hostinger deployment, physical accessibility or an authorized school pilot. Public child launch remains **NOT APPROVED**. [M33 evidence](M33_EXPANDED_LABS_QA.md) · [Current tracker](B1_PROGRESS_DASHBOARD.md).
+
+
 > **M32 FULL-PRODUCT STATUS — 2026-11-24:** New optional source-labelled offline guidance, 2/4 fractions five-stage shell and anonymous teacher print/navigation tools. **NOT** a real generative AI tutor, approved source-retrieval pipeline, learner mastery engine or grade 1–12 dashboard. B1 **46/50** engineering/design tasks source/test evidenced, four external expert gates remain; B2 **2/50** governance tasks evidenced. Qualified educational reviews **3,292 pending**, six safeguarding operational gates, actual private Hostinger/physical devices and school pilot unresolved. No public child release approved. [M32 QA](M32_PRACTICE_TEACHER_QA.md).
 
 

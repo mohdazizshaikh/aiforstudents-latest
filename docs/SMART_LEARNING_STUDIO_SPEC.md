@@ -1,5 +1,8 @@
 # Smart Learning Studio — M15–M18 Product Specification (PROPOSED)
 
+> **M33 CURRENT CHECKPOINT — 2026-11-24:** B1 **46/50** scoped engineering/design tasks, four actual external expert gates remain blocked. B2 **17/50** bounded engineering task outputs subject to exact-head CI. Twelve new original **UNREVIEWED** conceptual models (4 Maths, 4 Physics, 2 Chemistry, 2 Biology) use local keyboard controls, visual/text alternatives and safe non-hardware examples. All **24 static HTML routes** and their local JS/style dependencies are covered by offline audit. Explicit shared-device reset is distinct from remembering preference; low-ink learner card print hides teacher guidance. **3,304 educational records await qualified subject/Hindi review**, including ratio/algebra educator acceptance. This is NOT full Class 1–12 curriculum, a real generative tutor, validated mastery, teacher administration, a live restricted Hostinger deployment, physical accessibility or an authorized school pilot. Public child launch remains **NOT APPROVED**. [M33 evidence](M33_EXPANDED_LABS_QA.md) · [Current tracker](B1_PROGRESS_DASHBOARD.md).
+
+
 > **M31 DEVELOPMENT NOTE — 2026-11-24:** Beyond the original two M15 Studio journeys and two M16 Virtual Lab examples, a separate M31 section now has **seven draft conceptual science models** and a reusable five-step interaction. This does **not** make the Class 1–12 Smart Lab, generic AI tutor, adaptive learning, full teacher dashboard or board-aligned curriculum complete. [M31 description](M31_SCIENCE_LABS.md) and [full-scope DoD](FULL_PRODUCT_SCOPE_AND_DONE.md).
 
 
