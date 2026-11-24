@@ -669,6 +669,27 @@ def run():
                     phone.locator('#extension-compare-restore').click()
                     check(phone.locator('#ratio-extension-values tr').first.locator('td').inner_text() == expected, 'M70 restore '+model)
                 report['checks'].append('M70 eight new supplemental activities, offline keyboard and comparison')
+                for model, mode, control, expected, after in [
+                    ('place-value', 'regroup', 'o', '32', '33'),
+                    ('triangle-area', 'area-compare', 'h1', '4', '6'),
+                    ('length-compare', 'unit-conversion', 'cm', '20', '30'),
+                    ('path-distance', 'three-legs', 'a', '6', '7'),
+                    ('mass-fraction', 'three-components', 'a', '6', '7'),
+                    ('bond-pair-count', 'bond-symbols', 's', '4', '5'),
+                    ('food-web-links', 'energy-account', 'energy', '40', '50'),
+                    ('habitat-match', 'survey-count', 'p', '5', '6'),
+                ]:
+                    phone.locator('#advanced-topic').select_option(model)
+                    phone.locator('#ratio-extension-mode').select_option(mode)
+                    check(phone.locator('#ratio-extension-values tr').first.locator('td').inner_text() == expected, 'M71 initial result '+model)
+                    phone.locator('#extension-compare-mark').click()
+                    phone.locator('#ratio-extension-controls button[data-extension-action="inc:'+control+'"]').focus()
+                    phone.keyboard.press('Enter')
+                    check(phone.locator('#ratio-extension-values tr').first.locator('td').inner_text() == after, 'M71 changed result '+model)
+                    check(phone.locator('#extension-compare-changes li').count() == 1, 'M71 changed control '+model)
+                    phone.locator('#extension-compare-restore').click()
+                    check(phone.locator('#ratio-extension-values tr').first.locator('td').inner_text() == expected, 'M71 restore '+model)
+                report['checks'].append('M71 eight new offline activities and comparison')
                 phone.locator('#advanced-topic').select_option('heredity')
                 check('4' in phone.locator('#advanced-values').inner_text(), 'Offline model result missing')
                 check(phone.locator('#local-guide-topic option').count() == 60, 'Offline practice guide missing')
@@ -783,6 +804,14 @@ def run():
                     ('chemistry','ion-charge','mass-number'),
                     ('biology','cell-scale','reverse-scale'),
                     ('biology','dna-complement','pair-count'),
+                    ('maths', 'place-value', 'regroup'),
+                    ('maths', 'triangle-area', 'area-compare'),
+                    ('physics', 'length-compare', 'unit-conversion'),
+                    ('physics', 'path-distance', 'three-legs'),
+                    ('chemistry', 'mass-fraction', 'three-components'),
+                    ('chemistry', 'bond-pair-count', 'bond-symbols'),
+                    ('biology', 'food-web-links', 'energy-account'),
+                    ('biology', 'habitat-match', 'survey-count'),
                 ]:
                     phone.locator('#lab-print-subject').select_option(subject)
                     phone.locator('#lab-print-model').select_option(model)
