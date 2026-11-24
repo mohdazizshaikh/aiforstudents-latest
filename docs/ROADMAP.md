@@ -1,5 +1,8 @@
 # AI for Students — Product Roadmap
 
+> **M60 VERIFIED / M61 CANDIDATE — 2026-11-24:** M60 synthetic mastery calibration passed CI and merged PR #49; actual mastery disabled. M61 adds ten Maharashtra Standard VI source-linked proposals (2016 editions, 2022 reprints; current-session applicability unverified), alongside 22 CBSE proposals. NCERT direct PDF retry timed out. 60 draft labs (48 advanced), 34 review batches / 3,340 pending records, six safeguarding gates and 12 pending physical scenarios. 70/100 scoped tasks. FULL PRODUCT NOT COMPLETE; PUBLIC LAUNCH NOT APPROVED. M33/M29 historical baselines retained.
+
+
 > **M59 VERIFIED / M60 CANDIDATE — 2026-11-24:** M58 guided stages and M59 physical-validation worksheet passed CI and merged (PRs #47–48). M60 fixed synthetic adaptive-calibration harness tests the disabled M34 hypothesis; no real learner evidence or enabled mastery. 60 draft labs (48 advanced), 22 CBSE proposals, 34 review batches / 3,340 pending records, six safeguarding gates; 12 physical scenarios remain untested. 70/100 scoped engineering/design tasks. FULL PRODUCT NOT COMPLETE; PUBLIC LAUNCH NOT APPROVED. M33/M29 historical baselines retained.
 
 

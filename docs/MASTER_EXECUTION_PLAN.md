@@ -277,3 +277,7 @@ M58 initial Chromium passed; legacy M55 reset assertion corrected without removi
 ### M59 verified / M60 synthetic mastery calibration candidate
 
 M58 and M59 passed exact-head CI and merged. M60 exercises the disabled M34 mastery hypothesis using eight fixed fictional fixtures (four classified, four abstentions) and checks per-context 80% threshold, distinct tasks and session coverage. [M60 calibration](M60_SYNTHETIC_MASTERY_CALIBRATION.md). This is not a real learning-outcome study; FP-080 remains blocked. 70/100 scoped tasks; all external gates unchanged. M60 exact-head CI pending.
+
+### M60 verified / M61 Maharashtra source crosswalk candidate
+
+M60 passed exact-head CI 45455901159 and merged PR #49. M61 proposes ten Maharashtra VI links to official English-medium Balbharati Mathematics/General Science (2016 edition, 2022 reprint); applicability to the current session, rights and educator review pending. Science PDF text available; screenshot blocked by size. NCERT chapter PDF retries timed out. [M61 source crosswalk](M61_MAHARASHTRA_SOURCE_CROSSWALK.md). 32 total unverified mapping proposals; zero verified chapters; 70/100 scoped tasks unchanged. Exact-head CI required.
