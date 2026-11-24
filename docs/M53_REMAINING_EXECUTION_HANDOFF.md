@@ -91,3 +91,5 @@ M59 candidate provides a local physical-validation worksheet for 12 real-device 
 M58 and M59 verified and merged. M60 fixed synthetic mastery calibration candidate advances FP-080 engineering preparation only. No real reviewed task pool, study evidence, validated threshold or activated learner profiling. The 12 physical validation scenarios still require actual devices and authorized operators.
 
 M60 verified merged. M61 adds candidate Maharashtra source links, not current-session or independent board mapping verification. FP-017 stays blocked; NCERT PDF retries unsuccessful and 2026–27 applicability of Balbharati historical editions unverified. Source and rights review required.
+
+M61 verified merged. M62 board-specific mapping review candidate has 180 pending checks across 32 proposals; current-session and medium-language verification remain required. Printable demonstration sequence candidate advances teacher planning, not full teacher administration or physical print certification. No task status elevated without evidence.

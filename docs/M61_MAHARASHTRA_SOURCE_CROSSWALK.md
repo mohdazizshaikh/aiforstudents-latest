@@ -7,3 +7,5 @@ M60 verified baseline 81c8468a22ce4ad93fedef5d8c8b6ae9e97e9512; CI 45455901159 p
 - Official catalog: https://books.ebalbharati.in/
 
 Ten original-model candidate links (2 mathematics, 8 science), each with a limited relationship and a canonical current content fingerprint. Chapter-start anchors use printed chapter number:printed page, not PDF page offsets. No copied exercises, diagrams or textbook pages. Both source copyrights restrict reproduction; permission not authenticated. No board-wide or current-session mapping claims. Independent educator, medium/language, source applicability and rights review required. NCERT direct chapter URLs fegp105.pdf, fegp109.pdf, fecu104.pdf, fecu105.pdf timed out on repeat attempt; FP-017 remains blocked. 22 CBSE + 10 Maharashtra = 32 unverified proposals; no new review records, 3,340 pending, zero verified chapters, 70/100 scoped items. Exact-head CI pending.
+
+Verified CI 45456846207 passed and merged PR #50 at 142653a3e208499cec1894bed94652d89a15a57a. Structural engineering only, current-session applicability and educator/rights approval remain pending.

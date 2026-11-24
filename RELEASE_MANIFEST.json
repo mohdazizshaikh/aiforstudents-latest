@@ -1,5 +1,5 @@
 {
-  "release": "M60 verified prototype / M61 Maharashtra crosswalk candidate — PRIVATE ONLY",
+  "release": "M61 verified prototype / M62 review and teacher print candidate — PRIVATE ONLY",
   "release_date": "2026-11-24",
   "hosting_zip": "aiforstudents_hostinger_staging_m33.zip",
   "source_zip": "aiforstudents_m33_source_tests.zip",
@@ -22,7 +22,7 @@
   "study_question_records": 32,
   "study_items_expert_approved": 0,
   "isolated_browser_study_checks": 32,
-  "currentMilestone": "M60_VERIFIED_M61_CANDIDATE",
+  "currentMilestone": "M61_VERIFIED_M62_CANDIDATE",
   "status": "private-staging-prototype-unreviewed",
   "date": "2026-11-24",
   "studioLessons": 2,
@@ -114,9 +114,9 @@
   "printableLabActivityApprovals": 0,
   "printableLabActivityStoresStudentData": false,
   "verifiedCheckpoint": {
-    "milestone": "M60",
-    "mergeSha": "81c8468a22ce4ad93fedef5d8c8b6ae9e97e9512",
-    "ciRun": 45455901159
+    "milestone": "M61",
+    "mergeSha": "142653a3e208499cec1894bed94652d89a15a57a",
+    "ciRun": 45456846207
   },
   "legacyPackagingBaseline": "M33 artifact filenames and historical baseline counters retained; not latest test counts or live deployment evidence",
   "interactiveDraftModels": 60,
@@ -164,11 +164,15 @@
   "syntheticMasteryCalibrationFixtures": 8,
   "masteryEnabled": false,
   "syntheticMasteryCalibrationEngineeringVerified": true,
-  "maharashtraCrosswalkCandidate": true,
+  "maharashtraCrosswalkCandidate": false,
   "maharashtraGrade6Proposals": 10,
   "totalBoardMappingProposals": 32,
   "maharashtraCurrentSessionVerified": false,
   "teacherPrintableDemoAgendaCandidate": true,
   "teacherPrintableDemoAgendaLimit": 8,
-  "teacherPrintableDemoAgendaPersists": false
+  "teacherPrintableDemoAgendaPersists": false,
+  "maharashtraCrosswalkEngineeringVerified": true,
+  "multiBoardReviewCandidate": true,
+  "multiBoardReviewCells": 180,
+  "multiBoardReviewHumanApprovalAuthenticated": false
 }
