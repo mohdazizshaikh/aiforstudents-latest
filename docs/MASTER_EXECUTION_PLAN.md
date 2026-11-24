@@ -281,3 +281,7 @@ M58 and M59 passed exact-head CI and merged. M60 exercises the disabled M34 mast
 ### M60 verified / M61 Maharashtra source crosswalk candidate
 
 M60 passed exact-head CI 45455901159 and merged PR #49. M61 proposes ten Maharashtra VI links to official English-medium Balbharati Mathematics/General Science (2016 edition, 2022 reprint); applicability to the current session, rights and educator review pending. Science PDF text available; screenshot blocked by size. NCERT chapter PDF retries timed out. [M61 source crosswalk](M61_MAHARASHTRA_SOURCE_CROSSWALK.md). 32 total unverified mapping proposals; zero verified chapters; 70/100 scoped tasks unchanged. Exact-head CI required.
+
+### M61 verified / M62 multi-board review and teacher print candidates
+
+M61 CI 45456846207 passed and merged PR #50. M62 combines 22 CBSE + 10 Maharashtra proposals in a 180-cell board-specific independent review worksheet (no automatic migration of prior decisions); Maharashtra current-session applicability and medium-language fit are additional mandatory checks. M62 also adds the optional learner-safe printable teacher demonstration sequence (up to eight models). [Review worklist](M62_MULTIBOARD_REVIEW.md) · [Print sequence](M62_PRINTABLE_DEMO_AGENDA.md). No approvals or physical A4 evidence; 70/100 scoped tasks and external gates unchanged. Exact-head CI pending.

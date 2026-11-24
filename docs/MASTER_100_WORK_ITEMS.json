@@ -2174,12 +2174,12 @@
     }
   ],
   "updatedOn": "2026-11-24",
-  "currentEngineeringMilestone": "M60_VERIFIED_M61_CANDIDATE",
+  "currentEngineeringMilestone": "M61_VERIFIED_M62_CANDIDATE",
   "additionalNewMathsDrafts": 3,
   "currentPendingContentRecords": 3340,
   "batch1VerifiedEngineeringAndDesignTasks": 46,
   "batch2VerifiedEngineeringAndDesignTasks": 24,
-  "statusCaveat": "70/100 scoped tasks. M60 verified merged; M61 ten Maharashtra candidate mappings (historical editions, no current applicability confirmation). 3340 pending reviews, six safeguarding gates, zero verified chapters. No actual tutor, validated mastery, physical device evidence or public launch.",
+  "statusCaveat": "70/100 scoped tasks. M61 verified merged; M62 multi-board review and teacher print sequence candidates. 32 unverified proposals, 180 proposed review cells, 3340 pending educational reviews, six safeguarding gates and zero verified chapters. No full teacher administration, actual AI tutor, validated mastery, real devices, pilot or public launch.",
   "newScienceDraftReviewRecords": 7,
   "newAdvancedDraftReviewRecords": 48,
   "m34CandidateWork": {
@@ -2452,7 +2452,7 @@
     "ciRun": 45455901159
   },
   "m61CandidateWork": {
-    "status": "IN_PROGRESS",
+    "status": "CI_VERIFIED_MERGED",
     "maharashtraGrade6Proposals": 10,
     "cbseProposals": 22,
     "totalProposals": 32,
@@ -2461,6 +2461,20 @@
     "currentSessionApplicabilityVerified": false,
     "scienceScreenshotRetrieved": false,
     "verifiedChapters": 0,
+    "newDoneVerifiedTasks": 0,
+    "mergeSha": "142653a3e208499cec1894bed94652d89a15a57a",
+    "ciRun": 45456846207
+  },
+  "m62CandidateWork": {
+    "status": "IN_PROGRESS",
+    "mappingProposals": 32,
+    "mappingReviewCells": 180,
+    "cbseReviewCells": 110,
+    "maharashtraReviewCells": 70,
+    "teacherPrintableAgendaLimit": 8,
+    "teacherPrintableAgendaPersists": false,
+    "verifiedChapters": 0,
+    "humanApprovalAuthenticated": false,
     "newDoneVerifiedTasks": 0
   }
 }

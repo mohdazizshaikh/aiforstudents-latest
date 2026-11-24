@@ -1,5 +1,8 @@
 # Milestone and Release Tracker
 
+> **M61 VERIFIED / M62 CANDIDATE — 2026-11-24:** M61 Maharashtra crosswalk passed CI 45456846207 and merged PR #50. M62 consolidates 32 source-linked proposals into 180 board-specific pending review checks, plus an optional printable eight-model teacher demonstration sequence. No approved chapters, verified current-session Maharashtra applicability, real teacher administration or actual physical print evidence. 60 draft labs (48 advanced), 34 review batches / 3,340 pending educational records, six safeguarding gates. 70/100 scoped tasks. FULL PRODUCT NOT COMPLETE; PUBLIC LAUNCH NOT APPROVED. M33/M29 historical baselines retained.
+
+
 > **M60 VERIFIED / M61 CANDIDATE — 2026-11-24:** M60 synthetic mastery calibration passed CI and merged PR #49; actual mastery disabled. M61 adds ten Maharashtra Standard VI source-linked proposals (2016 editions, 2022 reprints; current-session applicability unverified), alongside 22 CBSE proposals. NCERT direct PDF retry timed out. 60 draft labs (48 advanced), 34 review batches / 3,340 pending records, six safeguarding gates and 12 pending physical scenarios. 70/100 scoped tasks. FULL PRODUCT NOT COMPLETE; PUBLIC LAUNCH NOT APPROVED. M33/M29 historical baselines retained.
 
 

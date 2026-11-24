@@ -84,3 +84,9 @@ export function printableLabActivity(id,lang='en'){
    p('Explain one difference or similarity. If the model is unavailable, discuss your prediction only.','एक अंतर या समानता समझाएँ। मॉडल उपलब्ध न हो तो केवल अनुमान पर चर्चा करें।')
   ],sourceFile:'assets/advanced-lab-engine.js',rightsStatus:'ORIGINAL_DRAFT_PERMISSION_NOT_AUTHENTICATED',humanReviewed:false,publicReleaseApproved:false,localOnly:true,hasStudentNames:false};
 }
+
+/** M62 printable demonstration sequence, source-derived and deliberately omits teacher hints/answers. */
+export function printableDemoAgenda(agenda,lang='en'){
+ const rows=teacherAgendaRows(agenda,lang);
+ return {language:lang,items:rows.map(({position,id,title,prompt,caveat})=>({position,id,title,prompt,caveat})),humanReviewed:false,publicReleaseApproved:false,localOnly:true,hasStudentNames:false};
+}

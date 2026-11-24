@@ -1,5 +1,5 @@
 import {CLASSROOM_IDS,CLASSROOM_LESSONS,CLASSROOM_ROLES,classroomText,classroomStep,classroomSummary,lessonQueue} from './classroom-engine.js';
-import {rotateAnonymousRole,TEACHER_LAB_SUBJECTS,teacherLabOptions,teacherLabPlan,teacherDemoAgenda,teacherAgendaRows,DEMO_AGENDA_LIMIT} from './teacher-cards-engine.js';
+import {rotateAnonymousRole,TEACHER_LAB_SUBJECTS,teacherLabOptions,teacherLabPlan,teacherDemoAgenda,teacherAgendaRows,DEMO_AGENDA_LIMIT,printableDemoAgenda} from './teacher-cards-engine.js';
 /** M17 classroom mode: transient UI state only. No student names, answers, accounts or analytics. */
 const $=id=>document.getElementById(id);
 const S={lesson:'fractions',step:0,role:0,revealed:false,projector:false,queue:[],labSubject:'maths',labId:null,agenda:[]};
@@ -63,8 +63,30 @@ for(const type of ['add','remove','up','down','clear']){
  });
  agendaActions.append(b);agendaButtons[type]=b;
 }
+const paperOpen=make('button','btn outline compact');paperOpen.id='classroom-agenda-paper-open';paperOpen.type='button';
+const paper=make('section','agenda-paper');paper.id='classroom-agenda-paper';paper.hidden=true;paper.setAttribute('aria-labelledby','agenda-paper-title');
+const paperTitle=make('h2','');paperTitle.id='agenda-paper-title';paperTitle.tabIndex=-1;
+const paperNotice=make('p',''),paperList=make('ol','');paperList.id='agenda-paper-list';
+const paperActions=make('div','agenda-paper-actions'),paperPrint=make('button','btn'),paperClose=make('button','btn outline');
+paperPrint.id='agenda-paper-print';paperClose.id='agenda-paper-close';paperPrint.type='button';paperClose.type='button';
+paperActions.append(paperPrint,paperClose);paper.append(paperTitle,paperNotice,paperList,paperActions);document.body.append(paper);
+function closePaper(){paper.hidden=true;paperList.replaceChildren();document.body.classList.remove('agenda-paper-open')}
+function openPaper(){
+ if(!S.agenda.length)return;
+ const plan=printableDemoAgenda(S.agenda,lang());
+ paperTitle.textContent=both('Demonstration sequence — unreviewed drafts','प्रदर्शन क्रम — असमीक्षित मसौदे');
+ paperNotice.textContent=both('Computer-only activities. Independent educational and permission review pending. No student names. Printed copies cannot be remotely deleted.','केवल कंप्यूटर गतिविधियाँ। स्वतंत्र शैक्षिक और अनुमति समीक्षा बाकी है। विद्यार्थी नाम नहीं। प्रिंट दूर से मिटाए नहीं जा सकते।');
+ paperPrint.textContent=both('Print this plan','यह योजना छापें');paperClose.textContent=both('Close preview','पूर्वावलोकन बंद करें');
+ paperList.replaceChildren();for(const r of plan.items){const li=make('li','');li.append(make('h3','',r.title),make('p','',r.prompt),make('p','',r.caveat));paperList.append(li)}
+ paper.hidden=false;document.body.classList.add('agenda-paper-open');paperTitle.focus();
+}
+paperOpen.addEventListener('click',openPaper);
+paperClose.addEventListener('click',()=>{closePaper();paperOpen.focus()});
+paperPrint.addEventListener('click',()=>{if(!paper.hidden&&S.agenda.length)window.print()});
+agendaActions.append(paperOpen);
 agendaPanel.append(agendaHeading,agendaNotice,agendaLabel,agendaChoice,agendaActions,agendaStatus,agendaList);labPanel.after(agendaPanel);
 function renderAgenda(preferred=agendaChoice.value){
+ closePaper();paperOpen.textContent=both('Preview printable demonstration plan','छपने वाली प्रदर्शन योजना देखें');paperOpen.disabled=!S.agenda.length;
  agendaHeading.textContent=both('Teacher demonstration agenda','शिक्षक प्रदर्शन योजना');
  agendaNotice.textContent=both('Plan up to eight original draft models in this tab. Normal model opening keeps this agenda in the current tab. Reloading or opening a new tab does not carry the agenda. No learner information or saved plan.','इस टैब में आठ मूल मसौदा मॉडल तक क्रम में रखें। सामान्य मॉडल खोलने पर इसी टैब में योजना रहती है। पुनः लोड या नए टैब में योजना नहीं जाती। कोई विद्यार्थी जानकारी या सहेजी योजना नहीं।');
  agendaLabel.textContent=both('Agenda item to move or remove','स्थान बदलने या हटाने का योजना मॉडल');
