@@ -1,0 +1,7 @@
+# M49 — CBSE 2026–27 senior-secondary source crosswalk
+
+Research checked 24 November 2026 against the [official CBSE academic-year curriculum index](https://cbseacademic.nic.in/curriculum_2027.html) and its Mathematics (041), Physics (042), Chemistry (043), and Biology (044) PDFs. See M49_CBSE_2026_27_CANDIDATES.json for the 11 limited, independently inspectable model-to-syllabus proposals, one-based PDF page and unit/chapter anchors. Only links and short original topic summaries; no copied teaching passages.
+
+The 48 broad M36–M47 discovery lenses are illustrative, not board-specific. CBSE lists hydrocarbon and equilibrium topics under Class XI Chemistry and vector algebra under Class XII Mathematics. These three models therefore have distinct board-specific candidates rather than claiming the earlier discovery labels are exact placement. Magnetic flux is a prerequisite to induction; no claim that the static model covers the full chapter.
+
+Maintainer-only binder resolves current content fingerprints from the canonical review packet. Structural validation tests model IDs, subjects, source allowlist, duplicates, and approval flags; it does not independently validate the live PDF content or authenticate a reviewer. Every proposal remains PROPOSED_UNVERIFIED. Textbook edition, official learning outcomes, rights and expert review still required; no NCERT textbook chapter mapping or state-board mapping claimed. FP-019 and FP-020 remain blocked. 3,340 pending review records, 70/100 scoped items unchanged. Exact-head CI pending.

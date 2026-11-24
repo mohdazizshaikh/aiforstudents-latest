@@ -1,0 +1,142 @@
+{
+  "schema": "aifs-cbse-syllabus-candidates-v1",
+  "board": "CBSE",
+  "academicSession": "2026-27",
+  "checkedOn": "2026-11-24",
+  "indexUrl": "https://cbseacademic.nic.in/curriculum_2027.html",
+  "sourceType": "OFFICIAL_SYLLABUS_LINK_ONLY",
+  "textbookEditionVerified": false,
+  "rightsPermissionAuthenticated": false,
+  "humanApprovalAuthenticated": false,
+  "publicReleaseApproved": false,
+  "sources": {
+    "maths": {
+      "code": "041",
+      "url": "https://cbseacademic.nic.in/web_material/CurriculumMain27/SecPart2/Maths_SecP2_2026-27.pdf"
+    },
+    "physics": {
+      "code": "042",
+      "url": "https://cbseacademic.nic.in/web_material/CurriculumMain27/SecPart2/Physics_SecP2_2026-27.pdf"
+    },
+    "chemistry": {
+      "code": "043",
+      "url": "https://cbseacademic.nic.in/web_material/CurriculumMain27/SecPart2/Chemistry_SecP2_2026-27.pdf"
+    },
+    "biology": {
+      "code": "044",
+      "url": "https://cbseacademic.nic.in/web_material/CurriculumMain27/SecPart2/Biology_SecP2_2026-27.pdf"
+    }
+  },
+  "proposals": [
+    {
+      "modelId": "advanced:integral-area",
+      "subject": "maths",
+      "grade": 12,
+      "pdfPage": 8,
+      "syllabusRef": "III.4",
+      "topic": "Area under a line",
+      "limitation": "Only nonnegative linear example.",
+      "status": "PROPOSED_UNVERIFIED"
+    },
+    {
+      "modelId": "advanced:vector-components",
+      "subject": "maths",
+      "grade": 12,
+      "pdfPage": 9,
+      "syllabusRef": "IV.1",
+      "topic": "Vector components and magnitude",
+      "limitation": "Two-dimensional example; earlier Class XI illustrative lens is not a board placement.",
+      "status": "PROPOSED_UNVERIFIED"
+    },
+    {
+      "modelId": "advanced:square-slope",
+      "subject": "maths",
+      "grade": 12,
+      "pdfPage": 8,
+      "syllabusRef": "III.1–2",
+      "topic": "Differentiation and rate of change",
+      "limitation": "Single square-function example.",
+      "status": "PROPOSED_UNVERIFIED"
+    },
+    {
+      "modelId": "advanced:capacitor-charge",
+      "subject": "physics",
+      "grade": 12,
+      "pdfPage": 13,
+      "syllabusRef": "I.2",
+      "topic": "Capacitance and charge",
+      "limitation": "Ideal symbolic arithmetic, no physical setup.",
+      "status": "PROPOSED_UNVERIFIED"
+    },
+    {
+      "modelId": "advanced:magnetic-flux",
+      "subject": "physics",
+      "grade": 12,
+      "pdfPage": 14,
+      "syllabusRef": "IV.6",
+      "topic": "Prerequisite to electromagnetic induction",
+      "limitation": "Static flux only; the syllabus names induction, not this isolated activity.",
+      "status": "PROPOSED_UNVERIFIED"
+    },
+    {
+      "modelId": "advanced:bond-pair-count",
+      "subject": "chemistry",
+      "grade": 11,
+      "pdfPage": 2,
+      "syllabusRef": "4",
+      "topic": "Lewis bond representation",
+      "limitation": "Shared-pair counting only.",
+      "status": "PROPOSED_UNVERIFIED"
+    },
+    {
+      "modelId": "advanced:dynamic-balance",
+      "subject": "chemistry",
+      "grade": 11,
+      "pdfPage": 3,
+      "syllabusRef": "6",
+      "topic": "Dynamic equilibrium",
+      "limitation": "Symbolic rates only; earlier Class XII lens is not a board placement.",
+      "status": "PROPOSED_UNVERIFIED"
+    },
+    {
+      "modelId": "advanced:alkane-count",
+      "subject": "chemistry",
+      "grade": 11,
+      "pdfPage": 3,
+      "syllabusRef": "9",
+      "topic": "Alkane formula pattern",
+      "limitation": "Counting atoms only; earlier Class XII lens is not a board placement.",
+      "status": "PROPOSED_UNVERIFIED"
+    },
+    {
+      "modelId": "advanced:gas-exchange",
+      "subject": "biology",
+      "grade": 11,
+      "pdfPage": 5,
+      "syllabusRef": "V.14",
+      "topic": "Gas transfer directions",
+      "limitation": "Ideal diagram only; not clinical or diagnostic.",
+      "status": "PROPOSED_UNVERIFIED"
+    },
+    {
+      "modelId": "advanced:dna-complement",
+      "subject": "biology",
+      "grade": 12,
+      "pdfPage": 10,
+      "syllabusRef": "VII.5",
+      "topic": "DNA base pairing",
+      "limitation": "Single symbolic pair, not a sequence or genetics assessment.",
+      "status": "PROPOSED_UNVERIFIED"
+    },
+    {
+      "modelId": "advanced:heredity",
+      "subject": "biology",
+      "grade": 12,
+      "pdfPage": 10,
+      "syllabusRef": "VII.4",
+      "topic": "Basic Mendelian inheritance",
+      "limitation": "Idealised single-gene grid only.",
+      "status": "PROPOSED_UNVERIFIED"
+    }
+  ]
+}
