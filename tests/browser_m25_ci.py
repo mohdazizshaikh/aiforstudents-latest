@@ -648,6 +648,27 @@ def run():
                 check(phone.locator('#extension-compare-panel').is_hidden(), 'Shared-device reset retained comparison')
                 check(phone.locator('#extension-compare-rows tr').count() == 0, 'Shared-device reset retained rows')
                 report['checks'].append('M69 six supplemental temporary comparisons, keyboard, restore, clear and privacy reset')
+                for model, mode, control, expected, after in [
+                    ('quadratic','shift','x','1','4'),
+                    ('arithmetic-sequence','sum','n','4','5'),
+                    ('constant-acceleration','initial-speed','t','4','5'),
+                    ('sound','period-compare','a','500','333.333'),
+                    ('atom-count','two-formulas','w','4','6'),
+                    ('ion-charge','mass-number','p','3','4'),
+                    ('cell-scale','reverse-scale','h','200','300'),
+                    ('dna-complement','pair-count','at','3','4'),
+                ]:
+                    phone.locator('#advanced-topic').select_option(model)
+                    phone.locator('#ratio-extension-mode').select_option(mode)
+                    check(phone.locator('#ratio-extension-values tr').first.locator('td').inner_text() == expected, 'M70 initial result '+model)
+                    phone.locator('#extension-compare-mark').click()
+                    phone.locator('#ratio-extension-controls button[data-extension-action="inc:'+control+'"]').focus()
+                    phone.keyboard.press('Enter')
+                    check(phone.locator('#ratio-extension-values tr').first.locator('td').inner_text() == after, 'M70 changed result '+model)
+                    check(phone.locator('#extension-compare-changes li').count() == 1, 'M70 comparison '+model)
+                    phone.locator('#extension-compare-restore').click()
+                    check(phone.locator('#ratio-extension-values tr').first.locator('td').inner_text() == expected, 'M70 restore '+model)
+                report['checks'].append('M70 eight new supplemental activities, offline keyboard and comparison')
                 phone.locator('#advanced-topic').select_option('heredity')
                 check('4' in phone.locator('#advanced-values').inner_text(), 'Offline model result missing')
                 check(phone.locator('#local-guide-topic option').count() == 60, 'Offline practice guide missing')
@@ -754,6 +775,14 @@ def run():
                     ('physics','force-motion','net'),
                     ('chemistry','mass-balance','missing'),
                     ('biology','cell-doubling','rounds'),
+                    ('maths','quadratic','shift'),
+                    ('maths','arithmetic-sequence','sum'),
+                    ('physics','constant-acceleration','initial-speed'),
+                    ('physics','sound','period-compare'),
+                    ('chemistry','atom-count','two-formulas'),
+                    ('chemistry','ion-charge','mass-number'),
+                    ('biology','cell-scale','reverse-scale'),
+                    ('biology','dna-complement','pair-count'),
                 ]:
                     phone.locator('#lab-print-subject').select_option(subject)
                     phone.locator('#lab-print-model').select_option(model)
@@ -771,7 +800,7 @@ def run():
                     check(phone.locator('#teacher-guidance').is_hidden(), 'Supplement print leaked teacher guidance')
                     phone.emulate_media(media='screen')
                     phone.locator('#card-language').select_option('hi')
-                phone.locator('#lab-print-model').select_option('dna-complement')
+                phone.locator('#lab-print-model').select_option('plant-parts')
                 check(phone.locator('#lab-print-activity').is_hidden(), 'Supplement selector visible for unrelated model')
                 check(phone.locator('#lab-print-activity').input_value() == 'main', 'Old supplement retained across models')
                 report['checks'].append('M66 all six bilingual supplemental offline worksheets and print isolation')

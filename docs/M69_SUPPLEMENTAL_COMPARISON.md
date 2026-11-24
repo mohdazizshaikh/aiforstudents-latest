@@ -9,3 +9,7 @@ Regression definitions: six activities × two languages × three comparison stat
 ## Baseline verification update
 
 M68 passed full CI 45463290767 and merged PR #58 at 9f06eea4352d1600127c69d2ea439ec4db7a3070. M69 requires its own exact-head CI before merge.
+
+## Verified outcome
+
+Exact-head CI 45463891487 passed both jobs; PR #59 merged at 0885c7c1f296e276463dacd6af3dea758a22e174. No educational signoff implied.

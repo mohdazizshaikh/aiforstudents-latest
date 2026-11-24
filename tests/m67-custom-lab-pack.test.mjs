@@ -1,8 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {labPackKeys,LAB_PACK_LIMIT,editLabPack,printableLabPack} from '../assets/teacher-cards-engine.js';
-test('M67 all 54 known activities in both languages, source-derived learner-only payload',()=>{
- const keys=labPackKeys();assert.equal(keys.length,54);assert.equal(new Set(keys).size,54);
+test('M67/M70 all 62 known activities in both languages, source-derived learner-only payload',()=>{
+ const keys=labPackKeys();assert.equal(keys.length,62);assert.equal(new Set(keys).size,62);
  for(const key of keys)for(const lang of ['en','hi']){
   const p=printableLabPack([key],lang),a=p.items[0];
   assert.equal(a.key,key);assert.equal(a.position,1);assert.equal(a.steps.length,3);
