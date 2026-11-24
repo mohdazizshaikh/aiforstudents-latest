@@ -505,7 +505,10 @@ def run():
                 check(phone.locator('#draft-grade-12').evaluate('e => e.open'), 'Native keyboard disclosure failed')
                 check('Gap' in phone.locator('#draft-grade-12').inner_text(), 'Curriculum gaps hidden')
                 check(phone.evaluate('document.documentElement.scrollWidth <= innerWidth + 4'), 'Draft guide horizontal overflow')
-                phone.locator('#draft-grade-12 a').first.click()
+                with phone.expect_navigation(wait_until='load'):
+                    phone.locator('#draft-grade-12 a').first.click()
+                phone.locator('#advanced-topic option').first.wait_for(state='attached')
+                check(phone.url.endswith('/#advanced-labs'), 'Related draft did not navigate to intended section')
                 check(phone.locator('#advanced-topic option').count() == 16, 'Offline related draft link failed')
                 report['checks'].append('M36 offline 12-grade draft discovery, keyboard disclosure, gap visibility and related model navigation')
                 phone.goto(origin + '/teacher-kit/cards/', wait_until='load')

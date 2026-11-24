@@ -21,3 +21,5 @@ Push CI 45352316632: Node/static job passed, Chromium failed navigating to the p
 ## Four additional interactive models — M36 expanded candidate
 
 New: square function y=x² and opposite inputs, ideal one-dimensional F=ma, symbolic H₂O atom counts, hypothetical cell diagram magnification in millimetres. Reuse existing keyboard controls, bilingual numeric tables and SVGs; no real measurements or procedures. Review queue: four new unreviewed version-1 entries, current total 3,308. Discovery catalog now references all 28 existing model IDs; still zero verified chapters. No new HTML route, storage, external content or AI service. New and expanded browser/Node tests pending exact-head CI.
+
+Second browser run 45352760275 successfully opened the fragment guide offline and reached the subsequent related-link assertion. The browser regression now waits for the new document's load and module options before checking the intended fragment and all 16 options. This is a synchronization correction, not a removed assertion. Exact final-head CI still required.
