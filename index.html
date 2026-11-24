@@ -209,6 +209,11 @@
  <div class="panel classroom-panel"><p id="classroom-notice" class="small muted">Unreviewed original teacher lesson drafts. Teacher oversight required.</p>
   <div id="classroom-lessons" role="group" aria-label="Choose a teacher-led lesson" class="classroom-tabs"></div>
   <p class="small muted">Classroom pilot: teacher-controlled, anonymous group roles. No real roster or school assignment system.</p>
+ <div id="classroom-organizer" class="classroom-organizer" aria-labelledby="classroom-organizer-title">
+  <h3 id="classroom-organizer-title">Local draft lesson organizer</h3><p class="small muted" id="classroom-organizer-note">Unreviewed lessons only; no pupil records.</p>
+  <div class="classroom-queue-actions"><button type="button" class="btn outline" id="classroom-queue-add">Add selected draft lesson</button><button type="button" class="btn outline" id="classroom-queue-clear">Clear lesson queue</button></div>
+  <p id="classroom-queue-status" role="status" aria-live="polite" tabindex="-1"></p><ol id="classroom-queue-list"></ol>
+ </div>
  <div class="classroom-toolbar"><label for="classroom-jump" id="classroom-jump-label">Jump to lesson step</label><select id="classroom-jump" aria-label="Jump to any lesson step"></select>
  <a href="teacher-kit/cards/" id="classroom-cards-link">Printable learner-only discussion cards</a>
  <button type="button" class="btn outline compact" id="classroom-projector" aria-pressed="false">Projector-friendly view</button><p class="small muted" id="classroom-summary"></p></div>

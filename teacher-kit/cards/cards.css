@@ -6,3 +6,5 @@ select{border:1px solid #6f9f90;border-radius:9px;padding:9px;background:white;c
 @media print{.no-print,.teacher-notes,#teacher-guidance{display:none!important}#learner-card{border:1px solid #222;color:#111;break-inside:avoid}body{font-size:14pt}#learner-card .writing{height:80px}#card-heading{color:black}}
 
 @media print{#learner-card,#learner-card h2,#learner-card h3,#learner-card p{background:#fff!important;color:#000!important}#teacher-guidance{display:none!important}}
+
+#learner-pack[hidden],#learner-card[hidden]{display:none!important}.pack-card{border-bottom:1px solid #999;padding:12px 0;break-inside:avoid}.pack-card .writing{height:45px}@media print{#learner-pack{background:#fff!important;color:#000!important;border:0;padding:0}.pack-card{break-inside:avoid}.pack-card h3,.pack-card p{background:#fff!important;color:#000!important}.pack-card .writing{height:35px}}
