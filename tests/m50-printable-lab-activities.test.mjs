@@ -17,6 +17,12 @@ test('M50 existing print route adds a bounded mode with no typed learner answers
  const read=p=>readFileSync(new URL('../'+p,import.meta.url),'utf8');
  const js=read('teacher-kit/cards/cards.js'),html=read('teacher-kit/cards/index.html'),css=read('teacher-kit/cards/cards.css');
  assert.match(html,/option value="lab"/);assert.match(html,/id="lab-activity" hidden/);
- assert.doesNotMatch(html,/<textarea|<input/);assert.doesNotMatch(js,/localStorage|sessionStorage|fetch\(|XMLHttpRequest|innerHTML/);
+ assert.doesNotMatch(html,/<textarea|contenteditable\s*=/i);
+ const inputs=html.match(/<input\b[^>]*>/gi)||[];
+ assert.equal(inputs.length,1,'Only teacher concept search is permitted');
+ assert.match(inputs[0],/id="lab-resource-query"/);assert.match(inputs[0],/type="search"/);
+ assert.match(inputs[0],/maxlength="80"/);assert.match(inputs[0],/autocomplete="off"/);
+ assert.doesNotMatch(inputs[0],/\bname\s*=/i);
+ assert.match(html,/<div id="lab-print-controls" class="controls no-print" hidden>/);assert.doesNotMatch(js,/localStorage|sessionStorage|fetch\(|XMLHttpRequest|innerHTML/);
  assert.match(css,/#lab-activity .assignment-page\{break-inside:avoid/);
 });
