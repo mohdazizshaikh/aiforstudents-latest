@@ -1445,8 +1445,17 @@
       "dependsOn": [
         "FP-065"
       ],
-      "status": "NOT_STARTED",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "docs/B2_AI_TUTOR_RISK_BUDGET.md"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m34-governance-teacher.test.mjs"
+        }
+      ]
     },
     {
       "id": "FP-067",
@@ -1460,8 +1469,17 @@
       "dependsOn": [
         "FP-065"
       ],
-      "status": "NOT_STARTED",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "tools/inference-envelope.mjs"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m34-governance-teacher.test.mjs"
+        }
+      ]
     },
     {
       "id": "FP-068",
@@ -1638,8 +1656,17 @@
       "dependsOn": [
         "FP-075"
       ],
-      "status": "NOT_STARTED",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "docs/B2_ADAPTIVE_SESSION_CONTRACT.md"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m34-governance-teacher.test.mjs"
+        }
+      ]
     },
     {
       "id": "FP-077",
@@ -1653,8 +1680,17 @@
       "dependsOn": [
         "FP-075"
       ],
-      "status": "NOT_STARTED",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "docs/B2_ADAPTIVE_SESSION_CONTRACT.md"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m34-governance-teacher.test.mjs"
+        }
+      ]
     },
     {
       "id": "FP-078",
@@ -1668,8 +1704,17 @@
       "dependsOn": [
         "FP-075"
       ],
-      "status": "NOT_STARTED",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "docs/B2_ADAPTIVE_SESSION_CONTRACT.md"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m34-governance-teacher.test.mjs"
+        }
+      ]
     },
     {
       "id": "FP-079",
@@ -1683,8 +1728,17 @@
       "dependsOn": [
         "FP-075"
       ],
-      "status": "NOT_STARTED",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/app.js"
+        },
+        {
+          "kind": "test",
+          "path": "tests/browser_m25_ci.py"
+        }
+      ]
     },
     {
       "id": "FP-080",
@@ -1822,7 +1876,7 @@
       "dependsOn": [
         "FP-085"
       ],
-      "status": "NOT_STARTED",
+      "status": "REVIEW_PENDING",
       "evidence": []
     },
     {
@@ -1837,7 +1891,7 @@
       "dependsOn": [
         "FP-085"
       ],
-      "status": "NOT_STARTED",
+      "status": "REVIEW_PENDING",
       "evidence": []
     },
     {
@@ -1852,7 +1906,7 @@
       "dependsOn": [
         "FP-085"
       ],
-      "status": "NOT_STARTED",
+      "status": "REVIEW_PENDING",
       "evidence": []
     },
     {
@@ -1867,7 +1921,7 @@
       "dependsOn": [
         "FP-085"
       ],
-      "status": "NOT_STARTED",
+      "status": "REVIEW_PENDING",
       "evidence": []
     },
     {
@@ -2071,12 +2125,12 @@
     }
   ],
   "updatedOn": "2026-11-24",
-  "currentEngineeringMilestone": "M33_B2_EXPANDED_LABS_OFFLINE_PRIVACY",
+  "currentEngineeringMilestone": "M34",
   "additionalNewMathsDrafts": 3,
   "currentPendingContentRecords": 3304,
   "batch1VerifiedEngineeringAndDesignTasks": 46,
-  "batch2VerifiedEngineeringAndDesignTasks": 17,
-  "statusCaveat": "B1 46/50 engineering only; B2 17/50 bounded engineering/design tasks, subject/Hindi and all real-world approvals not authenticated. FP-036 ratio/algebra code is draft REVIEW_PENDING, not independently reviewed. Twelve more conceptual models do not mean complete Class 1–12 labs, generative AI, mastery or school deployment.",
+  "batch2VerifiedEngineeringAndDesignTasks": 23,
+  "statusCaveat": "Engineering/design evidence only; all 3,304 educational records and six safeguarding gates remain pending. M34 AI inference stays OFF, no validated mastery, teacher draft organizer and worksheet packs remain review-dependent; no real hosting/device/school/public launch verification.",
   "newScienceDraftReviewRecords": 7,
   "newAdvancedDraftReviewRecords": 12
 }

@@ -13,7 +13,7 @@ import threading
 from playwright.sync_api import sync_playwright
 
 ROOT = Path(__file__).resolve().parents[1]
-OUTPUT = ROOT / 'test-results' / 'm33-browser'
+OUTPUT = ROOT / 'test-results' / 'm34-browser'
 OUTPUT.mkdir(parents=True, exist_ok=True)
 
 
@@ -34,7 +34,7 @@ def check_no_runtime_errors(page, errors):
 
 
 def run():
-    report = {'milestone': 'M33', 'execution': 'headless local Chromium with real ES modules',
+    report = {'milestone': 'M34', 'execution': 'headless local Chromium with real ES modules',
               'realHostingerVerified': False, 'realDeviceAccessibilityVerified': False,
               'educationalHumanApproval': False, 'publicReleaseApproved': False, 'checks': []}
     server = ThreadingHTTPServer(('127.0.0.1', 0), partial(QuietStaticHandler, directory=str(ROOT)))
@@ -252,6 +252,19 @@ def run():
                 check_no_runtime_errors(cards, cards_errors)
                 cards.close()
                 report['checks'].append('M32 standalone A4 learner card excludes teacher answers during print')
+                # M34: draft lesson flow, never pupil results.
+                page.locator('#classroom-lessons button').first.click()
+                page.locator('#classroom-queue-add').click()
+                page.locator('#classroom-lessons button').nth(1).click()
+                page.locator('#classroom-queue-add').click()
+                check(page.locator('#classroom-queue-list li').count() == 2, 'M34 queue add failed')
+                page.locator('[data-queue-action="up:circuits"]').click()
+                check('Two Switches' in page.locator('#classroom-queue-list li').first.inner_text(), 'M34 queue reorder failed')
+                page.locator('[data-queue-action="open:fractions"]').click()
+                check('Prepare together' in page.locator('#classroom-step-heading').inner_text(), 'M34 queue open failed')
+                page.locator('#classroom-queue-clear').click()
+                check(page.locator('#classroom-queue-list li').count() == 0, 'M34 queue clear failed')
+                report['checks'].append('M34 transient teacher lesson organizer')
                 # M33: exercise all new bounded lab modes, graph and independent controls.
                 check(page.locator('#advanced-topic option').count() == 12, 'Expanded lab modes missing')
                 for key in ['ratio-algebra','symmetry','coordinate','probability','temperature','sound',
@@ -350,6 +363,27 @@ def run():
                 fallback.close()
                 report['checks'].append('M33 storage-only fallback preserves other tab on remember toggle and clears on explicit request')
 
+                # M34: stale remembered peer must not restore persistent history after opt-out.
+                revoke = browser.new_context(service_workers='block')
+                revoke.add_init_script("Object.defineProperty(window, 'BroadcastChannel', {value: undefined, configurable: true})")
+                leader = revoke.new_page()
+                leader.goto(origin + '/', wait_until='load')
+                leader.locator('#remember').check()
+                peer = revoke.new_page()
+                peer.goto(origin + '/', wait_until='load')
+                check(peer.locator('#remember').is_checked(), 'M34 initial opt-in absent')
+                peer.locator('#digital-choices button').first.click()
+                leader.locator('#remember').uncheck()
+                peer.wait_for_function("!document.getElementById('remember').checked")
+                check(peer.evaluate('window.AIFS_DIGITAL_BRIDGE.getHistory().digitalAttempts.length') == 1, 'M34 lost current practice')
+                peer.locator('#digital-topics button').nth(1).click()
+                peer.locator('#digital-choices button').first.click()
+                check(peer.evaluate("localStorage.getItem('aifs-discovery-v1') === null"), 'M34 persistent history restored after opt-out')
+                leader.locator('#clear-progress').click()
+                peer.wait_for_function("window.AIFS_DIGITAL_BRIDGE.getHistory().digitalAttempts.length === 0")
+                check(peer.evaluate('sessionStorage.length === 0'), 'M34 clear left peer data')
+                revoke.close()
+                report['checks'].append('M34 peer opt-out and explicit clear')
                 # Keyboard: M24's focusable skip destination tested through real browser navigation.
                 keyboard_page = desktop.new_page()
                 keyboard_page.goto(origin + '/', wait_until='load')
@@ -415,10 +449,10 @@ def run():
                 phone.wait_for_function('navigator.serviceWorker.controller !== null')
                 cache = phone.evaluate("""async () => {
                   const keys = await caches.keys();
-                  return {keys, count: (await caches.open(keys.find(k => k.startsWith('aifs-discovery-m33'))))
-                    ? (await (await caches.open(keys.find(k => k.startsWith('aifs-discovery-m33')))).keys()).length : 0}
+                  return {keys, count: (await caches.open(keys.find(k => k.startsWith('aifs-discovery-m34'))))
+                    ? (await (await caches.open(keys.find(k => k.startsWith('aifs-discovery-m34')))).keys()).length : 0}
                 }""")
-                check(any(k.startswith('aifs-discovery-m33') for k in cache['keys']),
+                check(any(k.startswith('aifs-discovery-m34') for k in cache['keys']),
                       'M30 service-worker cache not created')
                 check(cache['count'] >= 40, 'Service-worker precache incomplete: ' + str(cache))
                 mobile.set_offline(True)
@@ -492,6 +526,17 @@ def run():
 
                 phone.goto(origin + '/teacher-kit/cards/index.html', wait_until='load')
                 check(phone.locator('#card-answer').inner_text() != '', 'Offline index.html route alias broke')
+                phone.locator('#card-pack-mode').check()
+                check(phone.locator('#learner-pack .pack-card').count() == 5, 'M34 offline draft pack incomplete')
+                phone.emulate_media(media='print')
+                check(phone.locator('#teacher-guidance').evaluate('(e) => getComputedStyle(e).display') == 'none', 'M34 teacher answer print leak')
+                phone.emulate_media(media='screen')
+                phone.goto(origin + '/', wait_until='load')
+                phone.locator('#classroom-queue-add').click()
+                check(phone.locator('#classroom-queue-list li').count() == 1, 'M34 offline organizer failed')
+                phone.locator('#clear-progress').click()
+                check(phone.locator('#classroom-queue-list li').count() == 0, 'M34 reset left queue')
+                report['checks'].append('M34 offline draft pack and shared-device reset')
                 for route in ["/games/creative-studio/","/games/fix-the-machine/","/games/number-market/","/games/pattern-quest/","/games/perspective-explorer/","/games/shape-builder/","/games/story-detective/","/games/strategy-island/","/accessibility/","/ai-digital-skills/","/for-parents/","/future-explorer/","/grow-together/","/hi/","/methodology/","/privacy/","/study-lab/","/teacher-kit/","/teacher-kit/worksheets/circuits/","/teacher-kit/worksheets/fractions/","/virtual-experiment-lab/"]:
                     phone.goto(origin + route, wait_until='load')
                     check(phone.locator('h1').inner_text() != '', 'Offline guide missing: ' + route)
@@ -510,7 +555,7 @@ def run():
         server.server_close()
     report['result'] = 'PASS'
     (OUTPUT / 'report.json').write_text(json.dumps(report, indent=2, ensure_ascii=False) + '\n')
-    print('M33 LOCAL CHROMIUM CI SMOKE PASS:', json.dumps(report, ensure_ascii=False))
+    print('M34 LOCAL CHROMIUM CI SMOKE PASS:', json.dumps(report, ensure_ascii=False))
 
 
 if __name__ == '__main__':

@@ -22,11 +22,16 @@ function safeStorage(name){try{return window[name]}catch{return null}}
 function read(s,k){try{return JSON.parse(s?.getItem(k)||'null')}catch{return null}}
 function write(s,k,v){try{s?.setItem(k,JSON.stringify(v));return !!s}catch{return false}}
 function remove(s,k){try{s?.removeItem(k)}catch{}}
-function store(){const s=safeStorage(ST.remember?'localStorage':'sessionStorage'),k=ST.remember?KEY:SESSION_KEY;
+function store(explicitEnable=false){
+ const persistent=safeStorage('localStorage');
+ // A sleeping/peer tab must never re-create persistent history after browser opt-out.
+ // Only an explicit remember click or valid legacy migration may establish opt-in.
+ if(ST.remember&&!explicitEnable&&read(persistent,KEY)?.optIn!==true){ST.remember=false;$('remember').checked=false}
+ const s=safeStorage(ST.remember?'localStorage':'sessionStorage'),k=ST.remember?KEY:SESSION_KEY;
  if(!write(s,k,ST.remember?{optIn:true,history:ST.history}:ST.history)){$('storage-warning').hidden=false;$('storage-warning').textContent=tr('Storage unavailable: progress may be lost.','स्टोरेज उपलब्ध नहीं: प्रगति मिट सकती है।')}}
 function load(){const l=safeStorage('localStorage'),s=safeStorage('sessionStorage');const old=read(l,OLD_KEY),veryOld=read(l,V1_KEY),saved=read(l,KEY);
  ST.remember=Boolean(saved?.optIn||(!saved&& (old?.optIn||veryOld?.optIn)));
- if(ST.remember){ST.history=mergeHistory(veryOld?.history,old?.history,saved?.history);store();remove(l,OLD_KEY);remove(l,V1_KEY)}
+ if(ST.remember){ST.history=mergeHistory(veryOld?.history,old?.history,saved?.history);store(true);remove(l,OLD_KEY);remove(l,V1_KEY)}
  else ST.history=mergeHistory(read(s,V1_SESSION),read(s,OLD_SESSION),read(s,SESSION_KEY));
  $('remember').checked=ST.remember;
 }
@@ -137,7 +142,7 @@ $('next').addEventListener('click',()=>{if(!ST.answered)return;ST.index++;if(ST.
 $('leave').addEventListener('click',()=>{ST.playing=false;window.AIFS_ACTIVITY.solo=false;window.dispatchEvent(new Event('aifs-solo-state-changed'));ST.items=[];ST.responses=[];show('lobby');refresh()});
 $('back-home').addEventListener('click',()=>show('lobby'));
 $('remember').addEventListener('change',e=>{ST.remember=Boolean(e.target.checked);const l=safeStorage('localStorage'),s=safeStorage('sessionStorage');
- if(ST.remember){ST.history=mergeHistory(ST.history,read(s,SESSION_KEY));store();remove(s,SESSION_KEY)}else{remove(l,KEY);store()}
+ if(ST.remember){ST.history=mergeHistory(ST.history,read(s,SESSION_KEY));store(true);remove(s,SESSION_KEY)}else{remove(l,KEY);store()}
  $('privacy-status').textContent=ST.remember?tr('Remembered only on this device.','सिर्फ़ इसी डिवाइस पर सेव।'):tr('Kept only in this tab until closed.','टैब बंद होने तक ही रहेगा।');});
 // M28: a minimal same-browser signal, never student responses or identifiers.
 let privacyClearChannel=null;
@@ -168,8 +173,12 @@ privacyClearChannel?.addEventListener('message',event=>{
 });
 // Explicit control-only fallback also reaches session-only tabs without BroadcastChannel.
 window.addEventListener('storage',event=>{
- if(event.storageArea===safeStorage('localStorage')&&
-    event.key==='aifs-privacy-clear-signal-v1'&&event.newValue==='clear')clearAllHistory(false);
+ if(event.storageArea!==safeStorage('localStorage'))return;
+ if(event.key==='aifs-privacy-clear-signal-v1'&&event.newValue==='clear'){clearAllHistory(false);return}
+ // Disabling persistent saving elsewhere does not erase this tab's current practice.
+ if(event.key===KEY&&event.newValue===null&&ST.remember){ST.remember=false;$('remember').checked=false;store();
+  $('privacy-status').textContent=tr('Remembering was turned off in another tab. Practice stays in this tab.','दूसरे टैब में याद रखना बंद हुआ। अभ्यास इसी टैब में रहता है।')}
+
 });
 $('save-reflection').addEventListener('click',()=>{const val=$('reflection-choice').value;if(!val){$('reflection-status').textContent=tr('Choose a statement first.','पहले विकल्प चुनें।');return}ST.history=saveReflection(ST.history,localDay(),val);store();renderDashboard()});
 window.AIFS_DIGITAL_BRIDGE={

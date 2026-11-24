@@ -11,7 +11,7 @@ test('M30 B1 dashboard derives 46 evidence-backed engineering/design tasks, not 
  assert.equal(result.byBatch.B1.verified,46);
  assert.equal(result.byBatch.B1.total,50);
  assert.equal(result.byBatch.B1.blockedExternal,4);
- assert.equal(result.byBatch.B2.verified,17);
+ assert.equal(result.byBatch.B2.verified,23);
  assert.equal(result.humanApprovalAuthenticated,false);
  assert.equal(result.publicReleaseApproved,false);
  assert.equal(formatWorkPlanDashboard(manifest),load('docs/B1_PROGRESS_DASHBOARD.md'));

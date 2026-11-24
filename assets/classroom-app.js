@@ -1,12 +1,38 @@
 import {CLASSROOM_IDS,CLASSROOM_LESSONS,CLASSROOM_ROLES,classroomText,classroomStep,classroomSummary} from './classroom-engine.js';
-import {rotateAnonymousRole} from './teacher-cards-engine.js';
+import {rotateAnonymousRole,updateLessonQueue,teacherFlow} from './teacher-cards-engine.js';
 /** M17 classroom mode: transient UI state only. No student names, answers, accounts or analytics. */
 const $=id=>document.getElementById(id);
-const S={lesson:'fractions',step:0,role:0,revealed:false,projector:false};
+const S={lesson:'fractions',step:0,role:0,revealed:false,projector:false,queue:[]};
 const lang=()=> $('lang')?.value==='hi'?'hi':'en';
 const txt=p=>classroomText(p,lang());
 const both=(en,hi)=>lang()==='hi'?hi:en;
 const make=(tag,cls,text)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(text!==undefined)e.textContent=text;return e};
+function renderOrganizer(){
+ const status=teacherFlow(S.queue,S.lesson,S.step),list=$('classroom-queue-list');
+ $('classroom-organizer-title').textContent=both('Local draft lesson organizer','स्थानीय मसौदा पाठ आयोजक');
+ $('classroom-organizer-note').textContent=both('Queue original unreviewed lesson IDs only. No pupil list, attendance, group response metrics or individual outcomes.','केवल मूल असमीक्षित पाठ क्रम में रखें। कोई विद्यार्थी सूची, उपस्थिति, समूह उत्तर या व्यक्तिगत परिणाम नहीं।');
+ $('classroom-queue-add').textContent=both('Add selected draft lesson','चुना मसौदा पाठ जोड़ें');
+ $('classroom-queue-clear').textContent=both('Clear lesson queue','पाठ क्रम मिटाएँ');
+ $('classroom-queue-add').disabled=S.queue.includes(S.lesson);$('classroom-queue-clear').disabled=!S.queue.length;
+ $('classroom-queue-status').textContent=both(status.queued+' lessons queued; step '+status.currentStep+'/'+status.steps+'. Lesson flow only, not attendance or outcomes.',status.queued+' पाठ क्रम में; चरण '+status.currentStep+'/'+status.steps+'। केवल पाठ का क्रम, उपस्थिति या परिणाम नहीं।');
+ list.replaceChildren();
+ for(let i=0;i<S.queue.length;i++){
+  const id=S.queue[i],li=make('li','classroom-queue-item');
+  li.append(make('strong','',(i+1)+'. '+txt(CLASSROOM_LESSONS[id].title)));
+  const actions=make('div','classroom-queue-actions');
+  for(const [action,en,hi,disabled] of [['open','Open','खोलें',false],['up','Move up','ऊपर',i===0],['down','Move down','नीचे',i===S.queue.length-1],['remove','Remove','हटाएँ',false]]){
+   const b=make('button','btn outline compact',both(en,hi));b.type='button';b.disabled=disabled;
+   b.dataset.queueAction=action+':'+id;b.setAttribute('aria-label',both(en,hi)+': '+txt(CLASSROOM_LESSONS[id].title));
+   b.addEventListener('click',()=>{
+    if(action==='open'){S.lesson=id;S.step=0;S.role=0;S.revealed=false;render();$('classroom-step-heading').focus();return}
+    S.queue=updateLessonQueue(S.queue,action,id);render();
+    const equivalent=[...$('classroom-queue-list').querySelectorAll('button')].find(x=>x.dataset.queueAction===action+':'+id&&!x.disabled);
+    (equivalent||$('classroom-queue-add')).focus();
+   });actions.append(b)
+  }
+  li.append(actions);list.append(li)
+ }
+}
 function render(){const lesson=CLASSROOM_LESSONS[S.lesson],step=classroomStep(S.lesson,S.step),sum=classroomSummary(S.lesson);
  $('classroom-nav').textContent=both('Classroom','कक्षा');$('classroom-title').textContent=both('Smart Classroom & Teacher Kit','स्मार्ट कक्षा और शिक्षक किट');
  $('classroom-intro').textContent=both('Use one screen to discuss, predict, explore and explain. No student login or class roster.','एक स्क्रीन पर चर्चा, अनुमान, अभ्यास और समझ। कोई विद्यार्थी लॉगिन या कक्षा सूची नहीं।');
@@ -41,6 +67,7 @@ function render(){const lesson=CLASSROOM_LESSONS[S.lesson],step=classroomStep(S.
  $('classroom-experiment').href=lesson.resource;$('classroom-experiment').textContent=both('Open existing M16 Virtual Lab','पहले से उपलब्ध M16 प्रयोगशाला खोलें');
  $('classroom-privacy').textContent=both('This mode keeps only the current lesson, step and generic group role in memory. No child names, answers, scores or classroom reports are stored or sent.','यह मोड केवल वर्तमान पाठ, चरण और सामान्य समूह भूमिका अस्थायी रूप से रखता है। बच्चों के नाम, उत्तर, अंक या रिपोर्ट सेव या भेजी नहीं जाती।');
  document.body.classList.toggle('classroom-projector',S.projector);
+ renderOrganizer();
 }
 function stepTo(delta){const dest=S.step+delta;if(dest<0||dest>=CLASSROOM_LESSONS[S.lesson].steps.length)return;S.step=dest;S.revealed=false;S.role=rotateAnonymousRole(S.role,delta===1?1:0);render();$('classroom-step-heading').focus()}
 $('classroom-jump').addEventListener('change',event=>{
@@ -53,6 +80,8 @@ $('classroom-previous').addEventListener('click',()=>stepTo(-1));$('classroom-ne
 $('classroom-switch-role').addEventListener('click',()=>{S.role=rotateAnonymousRole(S.role);render();$('classroom-switch-role').focus()});
 $('classroom-reveal').addEventListener('click',()=>{S.revealed=!S.revealed;render();$('classroom-reveal').focus()});
 $('classroom-projector').addEventListener('click',()=>{S.projector=!S.projector;render();$('classroom-projector').focus()});
+$('classroom-queue-add').addEventListener('click',()=>{S.queue=updateLessonQueue(S.queue,'add',S.lesson);render();$('classroom-queue-status').focus()});
+$('classroom-queue-clear').addEventListener('click',()=>{S.queue=updateLessonQueue(S.queue,'clear');S.revealed=false;render();$('classroom-queue-add').focus()});
 $('lang').addEventListener('change',render);
-window.addEventListener('aifs-history-cleared',()=>{S.step=0;S.role=0;S.revealed=false;render()});
+window.addEventListener('aifs-history-cleared',()=>{S.lesson='fractions';S.step=0;S.role=0;S.revealed=false;S.projector=false;S.queue=[];render()});
 render();

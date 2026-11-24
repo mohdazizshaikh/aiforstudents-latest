@@ -91,7 +91,7 @@ test('M31 science B1 app is bilingual, button/keyboard-only, no session persiste
  for(const needle of ['id="science-lab"','id="science-feedback"','id="science-next"','id="science-prev"','id="science-quiz"','href="#science-lab"','assets/science-app.js'])assert.ok(html.includes(needle),needle);
  for(const n of ['aifs-history-cleared','aria-label','aria-live','SCIENCE_STAGES','scienceEvaluate'])assert.ok(app.includes(n)||html.includes(n),n);
  assert.doesNotMatch(app,/localStorage|sessionStorage|fetch\(|XMLHttpRequest|navigator\.geolocation|crypto\.randomUUID/);
- assert.match(sw,/aifs-discovery-m33/);
+ assert.match(sw,/aifs-discovery-m34/);
  assert.ok(sw.includes('./assets/science-engine.js'));
  assert.ok(sw.includes('./assets/science-app.js'));
  assert.match(html,/UNREVIEWED drafts/);

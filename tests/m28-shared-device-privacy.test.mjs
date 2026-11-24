@@ -25,11 +25,13 @@ test('M28 clearing peer tab history removes both local and session stores and cl
  assert.match(func,/if\(notifyPeers\)/);
  const fallback=source.slice(source.indexOf("window.addEventListener('storage'"));
  assert.match(fallback,/event\.key==='aifs-privacy-clear-signal-v1'&&event\.newValue==='clear'/);
- assert.doesNotMatch(fallback.slice(0,400),/event\.key===KEY/);
+ const optout=fallback.slice(fallback.indexOf('if(event.key===KEY&&event.newValue===null&&ST.remember)'),fallback.indexOf("$('save-reflection').addEventListener"));
+assert.doesNotMatch(optout,/clearAllHistory\(/);
+assert.match(optout,/ST\.remember=false/);
 });
 test('M28 peer-tab privacy still runs with M30 worker cache version and retains local-only static asset list',()=>{
  const sw=read('service-worker.js');
- assert.match(sw,/aifs-discovery-m33-2026-11-24/);
+ assert.match(sw,/aifs-discovery-m34-2026-11-24/);
  assert.match(sw,/keys\.filter\(k=>/);
  assert.match(sw,/self\.location\.origin/);
  assert.doesNotMatch(sw,/fetch\([^)]*analytics|tracker|remote/);
