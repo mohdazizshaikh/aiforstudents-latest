@@ -1445,8 +1445,21 @@
       "dependsOn": [
         "FP-065"
       ],
-      "status": "IN_PROGRESS",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "docs/M34_B2_DESIGN_AND_ACCEPTANCE.md"
+        },
+        {
+          "kind": "source",
+          "path": "docs/M34_B2_DESIGN_CONTRACT.json"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m34-b2-design.test.mjs"
+        }
+      ]
     },
     {
       "id": "FP-067",
@@ -1460,8 +1473,21 @@
       "dependsOn": [
         "FP-065"
       ],
-      "status": "IN_PROGRESS",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "docs/M34_B2_DESIGN_AND_ACCEPTANCE.md"
+        },
+        {
+          "kind": "source",
+          "path": "docs/M34_B2_DESIGN_CONTRACT.json"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m34-b2-design.test.mjs"
+        }
+      ]
     },
     {
       "id": "FP-068",
@@ -1638,8 +1664,21 @@
       "dependsOn": [
         "FP-075"
       ],
-      "status": "IN_PROGRESS",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "docs/M34_B2_DESIGN_AND_ACCEPTANCE.md"
+        },
+        {
+          "kind": "source",
+          "path": "docs/M34_B2_DESIGN_CONTRACT.json"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m34-b2-design.test.mjs"
+        }
+      ]
     },
     {
       "id": "FP-077",
@@ -1653,8 +1692,21 @@
       "dependsOn": [
         "FP-075"
       ],
-      "status": "IN_PROGRESS",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "docs/M34_B2_DESIGN_AND_ACCEPTANCE.md"
+        },
+        {
+          "kind": "source",
+          "path": "docs/M34_B2_DESIGN_CONTRACT.json"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m34-b2-design.test.mjs"
+        }
+      ]
     },
     {
       "id": "FP-078",
@@ -1668,8 +1720,21 @@
       "dependsOn": [
         "FP-075"
       ],
-      "status": "IN_PROGRESS",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "docs/M34_B2_DESIGN_AND_ACCEPTANCE.md"
+        },
+        {
+          "kind": "source",
+          "path": "docs/M34_B2_DESIGN_CONTRACT.json"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m34-b2-design.test.mjs"
+        }
+      ]
     },
     {
       "id": "FP-079",
@@ -1822,7 +1887,7 @@
       "dependsOn": [
         "FP-085"
       ],
-      "status": "IN_PROGRESS",
+      "status": "CODE_COMPLETE_TESTED",
       "evidence": []
     },
     {
@@ -1852,7 +1917,7 @@
       "dependsOn": [
         "FP-085"
       ],
-      "status": "IN_PROGRESS",
+      "status": "CODE_COMPLETE_TESTED",
       "evidence": []
     },
     {
@@ -1867,7 +1932,7 @@
       "dependsOn": [
         "FP-085"
       ],
-      "status": "IN_PROGRESS",
+      "status": "REVIEW_PENDING",
       "evidence": []
     },
     {
@@ -2071,12 +2136,12 @@
     }
   ],
   "updatedOn": "2026-11-24",
-  "currentEngineeringMilestone": "M33_B2_EXPANDED_LABS_OFFLINE_PRIVACY",
+  "currentEngineeringMilestone": "M34_VERIFIED_M35_CANDIDATES",
   "additionalNewMathsDrafts": 3,
   "currentPendingContentRecords": 3304,
   "batch1VerifiedEngineeringAndDesignTasks": 46,
-  "batch2VerifiedEngineeringAndDesignTasks": 17,
-  "statusCaveat": "B1 46/50 engineering only; B2 17/50 bounded engineering/design tasks, subject/Hindi and all real-world approvals not authenticated. FP-036 ratio/algebra code is draft REVIEW_PENDING, not independently reviewed. Twelve more conceptual models do not mean complete Class 1–12 labs, generative AI, mastery or school deployment.",
+  "batch2VerifiedEngineeringAndDesignTasks": 22,
+  "statusCaveat": "B1 46/50, B2 22/50 engineering/design only; M34 exact-head CI passed. Teacher organizer and offline projector code tested; FP-085 qualified review remains blocked. No public, school, subject, legal or real-device approval.",
   "newScienceDraftReviewRecords": 7,
   "newAdvancedDraftReviewRecords": 12,
   "m34CandidateWork": {
@@ -2094,10 +2159,22 @@
       "FP-088",
       "FP-089"
     ],
-    "status": "IN_PROGRESS",
-    "verifiedCountsUnchanged": true,
+    "status": "MERGED_PARTIAL_ACCEPTANCE",
+    "verifiedCountsUnchanged": false,
     "teacherDependency": "FP-085",
     "initialBrowserFailure": "390px viewport, 708px document width",
-    "exactHeadCiPending": true
+    "exactHeadCiPending": false,
+    "verifiedHead": "a45882614016e8b994462ee993c2640778f459e4",
+    "mergedMainSha": "cfff6b2b2a36d55667581cfa4798ccca622235c4",
+    "ciRunId": "45350106713"
+  },
+  "m35CandidateWork": {
+    "status": "IN_PROGRESS",
+    "taskIds": [
+      "FP-008",
+      "FP-068"
+    ],
+    "approvedSources": 0,
+    "publicReleaseApproved": false
   }
 }
