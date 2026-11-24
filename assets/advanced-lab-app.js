@@ -1,12 +1,12 @@
 /** M33: original draft-only conceptual labs, all activity state is transient. */
-import {ADVANCED_IDS,modelAdvanced,evaluateAdvanced,advancedResultRows,advancedExampleFeedback} from './advanced-lab-engine.js';
+import {ADVANCED_IDS,modelAdvanced,evaluateAdvanced,advancedResultRows,advancedExampleFeedback,advancedVariableComparison} from './advanced-lab-engine.js';
 const $=id=>document.getElementById(id);
 const node=(tag,text)=>{const e=document.createElement(tag);if(text!==undefined)e.textContent=text;return e};
 const lang=()=>$('lang').value==='hi'?'hi':'en';
 const p=(en,hi)=>lang()==='hi'?hi:en;
 const t=pair=>pair[lang()==='hi'?1:0];
 const selected=new URLSearchParams(location.search).get('advanced');
-let id=ADVANCED_IDS.includes(selected)?selected:ADVANCED_IDS[0],state={...modelAdvanced(id).initial},feedback=null,comparisonOpen=false;
+let id=ADVANCED_IDS.includes(selected)?selected:ADVANCED_IDS[0],state={...modelAdvanced(id).initial},feedback=null,comparisonOpen=false,variableBaseline=null;
 const button=(text,action,label,disabled=false,pressed=null)=>{
  const b=node('button',text);b.type='button';b.className='btn outline compact';b.dataset.advancedAction=action;
  b.disabled=disabled;if(label)b.setAttribute('aria-label',label);
@@ -171,6 +171,25 @@ function visualize(metrics){
  }
  host.append(svg)
 }
+function renderVariableComparison(){
+ const mark=$('advanced-variable-mark'),clear=$('advanced-variable-clear'),panel=$('advanced-variable-panel');
+ $('advanced-variable-heading').textContent=p('Explore one changed control','एक बदले नियंत्रण को खोजें');
+ $('advanced-variable-notice').textContent=p('Optional: mark this model state, then change one control. Only the current tab remembers the starting state. No learner score or real experiment.','वैकल्पिक: इस मॉडल स्थिति को चुनें, फिर एक नियंत्रण बदलें। आरंभिक स्थिति केवल इस टैब में रहती है। कोई विद्यार्थी अंक या वास्तविक प्रयोग नहीं।');
+ mark.textContent=variableBaseline?p('Mark a new starting state','नई आरंभिक स्थिति चुनें'):p('Mark current starting state','वर्तमान आरंभिक स्थिति चुनें');
+ clear.textContent=p('Clear starting state','आरंभिक स्थिति मिटाएँ');clear.disabled=variableBaseline===null;
+ panel.hidden=variableBaseline===null;
+ const controls=$('advanced-variable-changes'),values=$('advanced-variable-values');controls.replaceChildren();values.replaceChildren();
+ $('advanced-variable-table').hidden=true;$('advanced-variable-status').textContent='';
+ $('advanced-variable-quantity').textContent=p('Calculated quantity','गणना की गई राशि');
+ $('advanced-variable-before').textContent=p('Starting value','आरंभिक मान');
+ $('advanced-variable-after').textContent=p('Current value','वर्तमान मान');
+ if(!variableBaseline)return;
+ const r=advancedVariableComparison(id,variableBaseline,state,lang());
+ $('advanced-variable-status').textContent=r.guidance;
+ for(const f of r.changedControls)controls.append(node('li',f.label+': '+f.before+' → '+f.after));
+ $('advanced-variable-table').hidden=r.comparisons.length===0;
+ for(const item of r.comparisons){const row=node('tr'),head=node('th',item.label);head.scope='row';row.append(head,node('td',item.before),node('td',item.after));values.append(row)}
+}
 function render(){
  const m=modelAdvanced(id),result=evaluateAdvanced(id,state,lang());
  $('advanced-nav').textContent=p('Explore Labs','प्रयोग खोजें');
@@ -197,7 +216,7 @@ function render(){
  }
  const values=$('advanced-values');values.replaceChildren();
  for(const item of advancedResultRows(result.metrics,lang())){const row=node('tr'),head=node('th',item.label);head.scope='row';row.append(head,node('td',item.value));values.append(row)}
- visualize(result.metrics);
+ visualize(result.metrics);renderVariableComparison();
  $('advanced-check').textContent=p('Check example','उदाहरण जाँचें');$('advanced-reset').textContent=p('Reset model','मॉडल फिर शुरू करें');
  $('advanced-feedback').hidden=feedback===null;
  if(feedback!==null)$('advanced-feedback').textContent=(feedback?p('Matches the example. ','उदाहरण से मेल खाता है। '):p('Compare the chosen values with the hint. ','चुने मान संकेत से मिलाएँ। '))+result.explanation
@@ -230,11 +249,13 @@ $('advanced-controls').addEventListener('click',e=>{
  feedback=null;comparisonOpen=false;render();
  const buttons=[...$('advanced-controls').querySelectorAll('button')];(buttons.find(x=>x.dataset.advancedAction===action&&!x.disabled)||buttons.find(x=>x.dataset.advancedAction.endsWith(':'+k)&&!x.disabled))?.focus()
 });
-function reset(){state={...modelAdvanced(id).initial};feedback=null;comparisonOpen=false;render()}
+function reset(){state={...modelAdvanced(id).initial};feedback=null;comparisonOpen=false;variableBaseline=null;render()}
 $('advanced-topic').addEventListener('change',e=>{id=e.target.value;reset();$('advanced-heading').focus()});
 $('advanced-check').addEventListener('click',()=>{feedback=evaluateAdvanced(id,state,lang()).correct;comparisonOpen=false;render();$('advanced-feedback').focus()});
 $('advanced-compare-toggle').addEventListener('click',()=>{if(feedback===null)return;comparisonOpen=!comparisonOpen;render();$('advanced-compare-toggle').focus()});
 $('advanced-reset').addEventListener('click',()=>{reset();$('advanced-heading').focus()});
+$('advanced-variable-mark').addEventListener('click',()=>{variableBaseline={...state};renderVariableComparison();$('advanced-variable-status').focus()});
+$('advanced-variable-clear').addEventListener('click',()=>{variableBaseline=null;renderVariableComparison();$('advanced-variable-mark').focus()});
 $('lang').addEventListener('change',render);
 window.addEventListener('aifs-teacher-demo',event=>{if(!ADVANCED_IDS.includes(event.detail))return;id=event.detail;reset();$('advanced-heading').focus();});
 window.addEventListener('aifs-history-cleared',()=>{id=ADVANCED_IDS[0];reset()});

@@ -66,7 +66,7 @@
   "sensitiveSourcePathExposureCheckAvailable": true,
   "sensitiveSourcePathExposureVerifiedOnLiveHost": false,
   "releaseZipSourceHashParityVerifiedInCI": true,
-  "swCacheVersion": "aifs-discovery-m33-2026-11-24-m50-r1",
+  "swCacheVersion": "aifs-discovery-m33-2026-11-24-m55-r1",
   "crossTabPrivacyResetImplemented": true,
   "crossTabPrivacyRealDeviceVerified": false,
   "existingUnreviewedContentRecords": 3282,
@@ -129,5 +129,9 @@
   "reviewBatchCount": 34,
   "reviewBatchPilotRecords": 76,
   "reviewBatchPendingCriteria": 20040,
-  "reviewBatchHumanApprovalAuthenticated": false
+  "reviewBatchHumanApprovalAuthenticated": false,
+  "variableExplorationDraft": true,
+  "variableExplorationModels": 48,
+  "variableExplorationPersists": false,
+  "variableExplorationMasteryValidated": false
 }
