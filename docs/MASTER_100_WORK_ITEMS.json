@@ -2243,5 +2243,15 @@
     "reviewRecordsAdded": 4,
     "currentPendingContentRecords": 3308
   },
-  "newM36DraftReviewRecords": 4
+  "newM36DraftReviewRecords": 4,
+  "m37CandidateWork": {
+    "status": "IN_PROGRESS",
+    "taskIds": [
+      "FP-087"
+    ],
+    "assignmentPackDrafts": 2,
+    "sourceDerivedSteps": 10,
+    "rightsApprovalAuthenticated": false,
+    "publicReleaseApproved": false
+  }
 }

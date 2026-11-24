@@ -229,3 +229,7 @@ B1 **46/50**, B2 **17/50** remain verified. Ten B2 items moved to IN_PROGRESS (F
 ### M36 expanded interactive candidate
 
 Four new original bilingual computer-only models: square function, ideal net force, symbolic atom count and hypothetical cell diagram scale. Inventory now 28 interactive lab models (16 advanced); 3,308 educational records require human review. Actual chapter mapping and all external approvals remain blocked. 70/100 scoped work items unchanged; new code pending exact-head CI.
+
+### M37 offline assignment pack candidate
+
+FP-087: two original-source five-step bilingual learner print packs in existing cached cards route, no names, answer keys or tracking. Code and tests pending exact-head CI; licensing and qualified teacher approval FP-085 remain external. Reuses 10 existing reviewed-pending classroom step records; no new instructional record count. See [M37 assignment packs](M37_ASSIGNMENT_PACKS.md).
