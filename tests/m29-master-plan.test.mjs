@@ -55,7 +55,7 @@ test('M29 no planned work or historical code pilot is promoted to human/public a
 test('M29 root and status docs display truthful planned product state prominently',()=>{
  for(const name of ['README.md','docs/PROJECT_STATUS.md','docs/ROADMAP.md','docs/IMPLEMENTATION_BACKLOG.md','docs/MILESTONE_TRACKER.md','RELEASE_GATES.md']){
   const doc=file(name);
-  assert.match(doc.slice(0,1200),/M32/,name+' latest status not prominent');
+  assert.match(doc.slice(0,1200),/M33/,name+' latest status not prominent');
   assert.match(doc,/M29/,name+' historical baseline missing');
   assert.match(doc,/MASTER_EXECUTION_PLAN\.md/,name+' master plan link missing');
  }
