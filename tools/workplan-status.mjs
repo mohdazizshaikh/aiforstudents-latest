@@ -41,7 +41,7 @@ export function formatWorkPlanDashboard(p){
  const audit=auditWorkPlan(p);if(!audit.valid)throw Error(audit.errors.join('; '));
  const ids=p.items.filter(x=>x.status==='DONE_VERIFIED').map(x=>x.id);
  const pending=p.items.filter(x=>x.batch==='B1'&&x.status!=='DONE_VERIFIED');
- return `# B1 — Engineering Workstream Progress Dashboard (M32)
+ return `# B1 — Engineering Workstream Progress Dashboard (M33)
 
 **Computed from the machine-readable 100-task tracker.** This is engineering evidence ONLY. Human educational, legal, safety, actual Hostinger and school approvals are **NOT AUTHENTICATED**.
 
@@ -60,13 +60,13 @@ ${pending.map(x=>`${x.id} (${x.status})`).join(', ')||'None'}
 
 ## Unchanged hard launch stops
 
-- Original 3,282 unreviewed educational records plus 3 M30 Maths drafts plus 7 M31 Science drafts = **3,292 pending subject/Hindi reviews**, with no qualified approvals recorded.
+- Original 3,282 unreviewed educational records + 3 M30 Maths + 7 M31 Science + 12 M33 expanded models = **3,304 pending subject/Hindi reviews**, with no qualified approvals recorded.
 - All six actual safeguarding/legal operation human gates remain pending.
 - Actual restricted Hostinger HTTPS deployment, rollback, real low-end Android/assistive-technology and properly permitted classroom trial remain pending.
 - Prototype scope is NOT a comprehensive Class 1–12 mathematics/science curriculum, full teacher dashboard or real generative AI tutor.
 - publicReleaseApproved: false; noindex must remain in place.
 
-[Full scope](FULL_PRODUCT_SCOPE_AND_DONE.md) · [Task register](MASTER_100_WORK_ITEMS.json) · [M32 engineering QA](M32_PRACTICE_TEACHER_QA.md).
+[Full scope](FULL_PRODUCT_SCOPE_AND_DONE.md) · [Task register](MASTER_100_WORK_ITEMS.json) · [M33 engineering QA](M33_EXPANDED_LABS_QA.md).
 `;
 }
 if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)){

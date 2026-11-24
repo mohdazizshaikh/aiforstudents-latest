@@ -445,13 +445,54 @@ def run():
                 phone.emulate_media(media='print')
                 check(phone.locator('#teacher-guidance').evaluate('(e) => getComputedStyle(e).display') == 'none',
                       'Offline print card shows teacher guidance')
+                check(phone.locator('#learner-card').evaluate('(e) => getComputedStyle(e).backgroundColor') == 'rgb(255, 255, 255)',
+                      'Low-ink learner card is not white')
                 phone.emulate_media(media='screen')
                 phone.goto(origin + '/?lang=hi', wait_until='load')
                 check(phone.locator('#lang').input_value() == 'hi', 'Offline query-driven language navigation broke')
                 check(phone.locator('#advanced-topic option').count() == 12, 'Offline query page module not available')
+                # Actual offline keyboard operation across each currently shipped lab family/mode.
+                def keyboard_control(selector):
+                    btn = phone.locator(selector + ' button:enabled').first
+                    check(btn.count() == 1 and btn.is_visible(), 'Missing button alternative: ' + selector)
+                    check(bool(btn.get_attribute('aria-label') or btn.inner_text().strip()),
+                          'Unnamed keyboard control: ' + selector)
+                    btn.focus()
+                    phone.keyboard.press('Enter')
+
+                for i in range(2):
+                    phone.locator('#studio-lessons button').nth(i).click()
+                    phone.locator('#studio-start').click()
+                    keyboard_control('#studio-controls')
+                for i in range(2):
+                    phone.locator('#experiment-tabs button').nth(i).click()
+                    keyboard_control('#experiment-controls')
+                for i in range(3):
+                    phone.locator('#math-workshop-tabs button').nth(i).click()
+                    keyboard_control('#math-workshop-controls')
+                for i in range(7):
+                    phone.locator('#science-tabs button').nth(i).click()
+                    phone.locator('#science-next').click()
+                    keyboard_control('#science-controls')
+                for key in ['ratio-algebra','symmetry','coordinate','probability','temperature','sound',
+                            'magnetism','measurement','periodic','mass-balance','ecosystem','heredity']:
+                    phone.locator('#advanced-topic').select_option(key)
+                    keyboard_control('#advanced-controls')
+                    check(phone.locator('#advanced-values tr').count() > 0, 'Missing numeric alternative: ' + key)
+                for i in range(4):
+                    phone.locator('#lab-topics button').nth(i).click()
+                    keyboard_control('#lab-options')
+                phone.locator('#local-guide-fraction-next').click()
+                phone.locator('#local-guide-fraction-inc').focus()
+                phone.keyboard.press('Enter')
+                check(phone.locator('#local-guide-fraction-count').inner_text() == '1/4', 'Fraction keyboard alternative broke')
+                phone.locator('#clear-progress').click()
+                check_no_runtime_errors(phone, mobile_errors)
+                report['checks'].append('M33 offline keyboard alternatives across every shipped current lab family and model')
+
                 phone.goto(origin + '/teacher-kit/cards/index.html', wait_until='load')
                 check(phone.locator('#card-answer').inner_text() != '', 'Offline index.html route alias broke')
-                for route in ["/games/creative-studio/","/games/fix-the-machine/","/games/number-market/","/games/pattern-quest/","/games/perspective-explorer/","/games/shape-builder/","/games/story-detective/","/games/strategy-island/"]:
+                for route in ["/games/creative-studio/","/games/fix-the-machine/","/games/number-market/","/games/pattern-quest/","/games/perspective-explorer/","/games/shape-builder/","/games/story-detective/","/games/strategy-island/","/accessibility/","/ai-digital-skills/","/for-parents/","/future-explorer/","/grow-together/","/hi/","/methodology/","/privacy/","/study-lab/","/teacher-kit/","/teacher-kit/worksheets/circuits/","/teacher-kit/worksheets/fractions/","/virtual-experiment-lab/"]:
                     phone.goto(origin + route, wait_until='load')
                     check(phone.locator('h1').inner_text() != '', 'Offline guide missing: ' + route)
                 check_no_runtime_errors(phone, mobile_errors)
