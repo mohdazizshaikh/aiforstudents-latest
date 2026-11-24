@@ -1445,7 +1445,7 @@
       "dependsOn": [
         "FP-065"
       ],
-      "status": "NOT_STARTED",
+      "status": "IN_PROGRESS",
       "evidence": []
     },
     {
@@ -1460,7 +1460,7 @@
       "dependsOn": [
         "FP-065"
       ],
-      "status": "NOT_STARTED",
+      "status": "IN_PROGRESS",
       "evidence": []
     },
     {
@@ -1638,7 +1638,7 @@
       "dependsOn": [
         "FP-075"
       ],
-      "status": "NOT_STARTED",
+      "status": "IN_PROGRESS",
       "evidence": []
     },
     {
@@ -1653,7 +1653,7 @@
       "dependsOn": [
         "FP-075"
       ],
-      "status": "NOT_STARTED",
+      "status": "IN_PROGRESS",
       "evidence": []
     },
     {
@@ -1668,7 +1668,7 @@
       "dependsOn": [
         "FP-075"
       ],
-      "status": "NOT_STARTED",
+      "status": "IN_PROGRESS",
       "evidence": []
     },
     {
@@ -1683,7 +1683,7 @@
       "dependsOn": [
         "FP-075"
       ],
-      "status": "NOT_STARTED",
+      "status": "IN_PROGRESS",
       "evidence": []
     },
     {
@@ -1822,7 +1822,7 @@
       "dependsOn": [
         "FP-085"
       ],
-      "status": "NOT_STARTED",
+      "status": "IN_PROGRESS",
       "evidence": []
     },
     {
@@ -1837,7 +1837,7 @@
       "dependsOn": [
         "FP-085"
       ],
-      "status": "NOT_STARTED",
+      "status": "IN_PROGRESS",
       "evidence": []
     },
     {
@@ -1852,7 +1852,7 @@
       "dependsOn": [
         "FP-085"
       ],
-      "status": "NOT_STARTED",
+      "status": "IN_PROGRESS",
       "evidence": []
     },
     {
@@ -1867,7 +1867,7 @@
       "dependsOn": [
         "FP-085"
       ],
-      "status": "NOT_STARTED",
+      "status": "IN_PROGRESS",
       "evidence": []
     },
     {
@@ -2078,5 +2078,26 @@
   "batch2VerifiedEngineeringAndDesignTasks": 17,
   "statusCaveat": "B1 46/50 engineering only; B2 17/50 bounded engineering/design tasks, subject/Hindi and all real-world approvals not authenticated. FP-036 ratio/algebra code is draft REVIEW_PENDING, not independently reviewed. Twelve more conceptual models do not mean complete Class 1–12 labs, generative AI, mastery or school deployment.",
   "newScienceDraftReviewRecords": 7,
-  "newAdvancedDraftReviewRecords": 12
+  "newAdvancedDraftReviewRecords": 12,
+  "m34CandidateWork": {
+    "branch": "m34-teacher-organizer-safety-design",
+    "designAndImplementationHead": "08001d7a61a66e9b4049f2bcbdff33626199a301",
+    "taskIds": [
+      "FP-066",
+      "FP-067",
+      "FP-076",
+      "FP-077",
+      "FP-078",
+      "FP-079",
+      "FP-086",
+      "FP-087",
+      "FP-088",
+      "FP-089"
+    ],
+    "status": "IN_PROGRESS",
+    "verifiedCountsUnchanged": true,
+    "teacherDependency": "FP-085",
+    "initialBrowserFailure": "390px viewport, 708px document width",
+    "exactHeadCiPending": true
+  }
 }

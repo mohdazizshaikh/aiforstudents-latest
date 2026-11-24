@@ -128,8 +128,8 @@
 | FP-063 | B1 | Build deterministic local hint prototype | Correct source-backed explanations and safe fallback | DONE_VERIFIED |
 | FP-064 | B1 | Add attribution and uncertainty display | Unknown answer not fabricated | DONE_VERIFIED |
 | FP-065 | B1 | Define refusal/sensitive disclosure policy | Unsafe prompts lead to age-appropriate adult guidance | DONE_VERIFIED |
-| FP-066 | B2 | Document optional generative tutor risk design | Feature OFF until real safeguards and cost approval | NOT_STARTED |
-| FP-067 | B2 | Model privacy, latency and AI inference budget | No undisclosed paid dependency | NOT_STARTED |
+| FP-066 | B2 | Document optional generative tutor risk design | Feature OFF until real safeguards and cost approval | IN_PROGRESS |
+| FP-067 | B2 | Model privacy, latency and AI inference budget | No undisclosed paid dependency | IN_PROGRESS |
 | FP-068 | B2 | Prototype approved-source retrieval flow | No unauthorized copyrighted content or unsourced replies | BLOCKED_EXTERNAL |
 | FP-069 | B2 | Conduct adversarial bias/hallucination review | Independent human evaluation and red-team defects | BLOCKED_EXTERNAL |
 | FP-070 | B2 | Approve or reject AI tutor public use | Real safety/legal/education gate; no auto-enable | BLOCKED_EXTERNAL |
@@ -145,10 +145,10 @@
 | FP-073 | B1 | Design optional spaced-practice schedule | No pressure streak or penalty | DONE_VERIFIED |
 | FP-074 | B1 | Create explainable next-task suggestions | Learner can see reason and decline | DONE_VERIFIED |
 | FP-075 | B1 | Add explicit difficulty and language override | No inferred fixed aptitude label | DONE_VERIFIED |
-| FP-076 | B2 | Write adaptive mastery calibration protocol | Evidence thresholds documented; not yet validated | NOT_STARTED |
-| FP-077 | B2 | Specify anonymous aggregate classroom view | No individual minor scores or rosters | NOT_STARTED |
-| FP-078 | B2 | Define safe shared-device session boundaries | Cannot identify children solely through a browser | NOT_STARTED |
-| FP-079 | B2 | Audit opt-in data retention and deletion | Local/session, background tabs and print paths tested | NOT_STARTED |
+| FP-076 | B2 | Write adaptive mastery calibration protocol | Evidence thresholds documented; not yet validated | IN_PROGRESS |
+| FP-077 | B2 | Specify anonymous aggregate classroom view | No individual minor scores or rosters | IN_PROGRESS |
+| FP-078 | B2 | Define safe shared-device session boundaries | Cannot identify children solely through a browser | IN_PROGRESS |
+| FP-079 | B2 | Audit opt-in data retention and deletion | Local/session, background tabs and print paths tested | IN_PROGRESS |
 | FP-080 | B2 | Run ethical learning-outcome validation | Consented study and independent evidence required | BLOCKED_EXTERNAL |
 
 ### 9. Teacher planning and classrooms — TEACH
@@ -162,10 +162,10 @@
 | FP-083 | B1 | Improve anonymous collaborative role rotation | Same-device group activity without child names | DONE_VERIFIED |
 | FP-084 | B1 | Build reusable teacher answer/worksheet cards | Printable answers hidden from learner sheets | DONE_VERIFIED |
 | FP-085 | B1 | Review existing fraction/circuit teacher plans | 2 baseline prototypes remain unapproved until reviewed | BLOCKED_EXTERNAL |
-| FP-086 | B2 | Build local teacher lesson organizer | Select/queue/reset without cloud accounts | NOT_STARTED |
-| FP-087 | B2 | Create licensed offline assignment packs | No tracking links or identifiable learner export | NOT_STARTED |
-| FP-088 | B2 | Implement no-internet projector handoff | Teacher plan works in a disconnected classroom | NOT_STARTED |
-| FP-089 | B2 | Prepare ethical observer feedback template | Minimal permitted evidence and child-safe protocol | NOT_STARTED |
+| FP-086 | B2 | Build local teacher lesson organizer | Select/queue/reset without cloud accounts | IN_PROGRESS |
+| FP-087 | B2 | Create licensed offline assignment packs | No tracking links or identifiable learner export | IN_PROGRESS |
+| FP-088 | B2 | Implement no-internet projector handoff | Teacher plan works in a disconnected classroom | IN_PROGRESS |
+| FP-089 | B2 | Prepare ethical observer feedback template | Minimal permitted evidence and child-safe protocol | IN_PROGRESS |
 | FP-090 | B2 | Complete authorized supervised classroom pilot | School/guardian permissions and real observation | BLOCKED_EXTERNAL |
 
 ### 10. Quality/release and human gates — VERIFY
@@ -213,3 +213,7 @@ B1 now **35/50 DONE_VERIFIED in strictly scoped engineering/design evidence**, i
 ### M33 expanded labs and offline checkpoint (2026-11-24)
 
 Fifteen newly source/test-backed B2 engineering task scopes: 11 deterministic lab functions (FP-036 ratio/algebra is separate REVIEW_PENDING), explicit offline/keyboard/print and multi-tab privacy verification. Current B2 **17/50**, four B1 real-human gates remain blocked; B2 external gates marked BLOCKED_EXTERNAL until real evidence. **3,304 pending educational reviews.** [M33 QA](M33_EXPANDED_LABS_QA.md) documents original limitations, IUPAC source reference and prototype-only boundaries.
+
+### M34 candidate checkpoint — draft PR #23 (2026-11-24)
+
+B1 **46/50**, B2 **17/50** remain verified. Ten B2 items moved to IN_PROGRESS (FP-066/067/076–079/086–089); six design contracts and bounded teacher organizer code are present. FP-079/087/088 have partial audit/worksheet/projector coverage, not full acceptance. FP-086–089 depend on external FP-085. Initial Chromium mobile overflow failed; fixes and new browser regression cases committed. Exact-head CI and full evidence reconciliation pending. No changes to 3,304 review records or public-release gate. [M34 design and QA](M34_B2_DESIGN_AND_ACCEPTANCE.md) · [Draft PR #23](https://github.com/mohdazizshaikh/aiforstudents-latest/pull/23).
