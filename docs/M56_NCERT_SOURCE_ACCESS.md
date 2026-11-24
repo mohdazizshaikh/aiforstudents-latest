@@ -12,3 +12,5 @@ Attempted 2026-11-24. Official NCERT listings located; prelim PDF retrieval fail
 | VIII | [Curiosity](https://ncert.nic.in/textbook.php?hecu1=4-13) | timeout |
 
 No source content copied, no chapter proposals added and no rights or educator approval. Distinct from the 22 CBSE IX–XII proposals. FP-017 still blocked; source access recovery, exact edition and chapter references, and independent reviewer evidence required.
+
+M61 repeat attempts on four direct chapter PDF URLs timed out. See M61_MAHARASHTRA_SOURCE_CROSSWALK.md for separate official Maharashtra historical source candidates; these do not resolve NCERT access or authenticate current-session mapping.

@@ -89,3 +89,5 @@ M56 and M57 now verified and merged. M58 guided stage candidate advances learner
 M59 candidate provides a local physical-validation worksheet for 12 real-device scenarios. No actual equipment, device operator or accessibility approval authenticated. FP-030/096 remain blocked; M58 corrected CI pending. See M59_PHYSICAL_VALIDATION_HANDOFF.md.
 
 M58 and M59 verified and merged. M60 fixed synthetic mastery calibration candidate advances FP-080 engineering preparation only. No real reviewed task pool, study evidence, validated threshold or activated learner profiling. The 12 physical validation scenarios still require actual devices and authorized operators.
+
+M60 verified merged. M61 adds candidate Maharashtra source links, not current-session or independent board mapping verification. FP-017 stays blocked; NCERT PDF retries unsuccessful and 2026–27 applicability of Balbharati historical editions unverified. Source and rights review required.
