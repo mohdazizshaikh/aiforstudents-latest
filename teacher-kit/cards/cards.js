@@ -1,9 +1,10 @@
 import {CLASSROOM_IDS,CLASSROOM_LESSONS,classroomText} from '../../assets/classroom-engine.js';
-import {printableClassroomCard,printableAssignmentPack,printableAnyLabActivity,teacherPrintableOptions,TEACHER_LAB_SUBJECTS,teacherPrintableSupplementOptions,TEACHER_ACTIVITY_KINDS,teacherActivityChoices,LAB_PACK_LIMIT,editLabPack,printableLabPack} from '../../assets/teacher-cards-engine.js';
+import {printableClassroomCard,printableAssignmentPack,printableAnyLabActivity,teacherPrintableOptions,TEACHER_LAB_SUBJECTS,teacherPrintableSupplementOptions,TEACHER_ACTIVITY_KINDS,teacherResourceChoices,LAB_PACK_LIMIT,editLabPack,printableLabPack} from '../../assets/teacher-cards-engine.js';
 const $=id=>document.getElementById(id);
 const lang=()=>$('card-language').value;
 let labPack=[];
 let resourceKind='all';
+let resourceScope='current';
 const isLabPack=()=>$('card-view').value==='lab-pack';
 const isLab=()=>$('card-view').value==='lab'||isLabPack();
 const activeHeading=()=>isLabPack()?'lab-pack-heading':isLab()?'lab-activity-heading':$('card-view').value==='pack'?'assignment-heading':'card-heading';
@@ -54,7 +55,7 @@ function renderLab(l){
  $('lab-pack-controls').hidden=!pack;$('lab-pack-output').hidden=!pack;
  if(!pack){labPack=[];$('lab-pack-pages').replaceChildren();$('lab-pack-choice').replaceChildren();$('card-print').disabled=false;}
  const host=$('lab-activity-steps');host.replaceChildren();
- if(!active){$('lab-print-activity').value='main';resourceKind='all';$('lab-resource-result').replaceChildren();$('lab-resource-kind').value='all';return;}
+ if(!active){$('lab-print-activity').value='main';resourceKind='all';resourceScope='current';$('lab-resource-result').replaceChildren();$('lab-resource-kind').value='all';$('lab-resource-scope').value='current';$('lab-resource-add').hidden=true;$('lab-resource-add').disabled=true;return;}
  const p=(en,hi)=>l==='hi'?hi:en;
  const subject=$('lab-print-subject'),model=$('lab-print-model'),previous=model.value;
  const chosen=subject.value||'maths';subject.replaceChildren();
@@ -86,26 +87,42 @@ function renderLab(l){
   const space=el('div','');space.className='writing';space.setAttribute('aria-label',p('Paper response space','कागज़ पर उत्तर की जगह'));section.append(space);host.append(section);
  }
 }
+function matchingResources(){return teacherResourceChoices(resourceScope==='all'?'all':$('lab-print-subject').value,resourceKind,lang())}
+function syncResourceAdd(){const button=$('lab-resource-add'),key=$('lab-resource-result').value;button.hidden=!isLabPack();button.disabled=!isLabPack()||!key||labPack.includes(key)||labPack.length>=LAB_PACK_LIMIT;}
 function renderResourceFinder(l){
  const p=(en,hi)=>l==='hi'?hi:en,kind=$('lab-resource-kind'),result=$('lab-resource-result'),previous=result.value;
  const make=(value,label)=>{const o=document.createElement('option');o.value=value;o.textContent=label;return o};
  const labels={all:['All activities','सभी गतिविधियाँ'],basic:['Basic main models','बुनियादी मुख्य मॉडल'],advanced:['Advanced main models','उन्नत मुख्य मॉडल'],supplement:['Supplemental activities','अतिरिक्त गतिविधियाँ']};
+ const subjectNames={maths:['Mathematics','गणित'],physics:['Physics','भौतिकी'],chemistry:['Chemistry','रसायन'],biology:['Biology','जीवविज्ञान']};
+ const scope=$('lab-resource-scope');
+ $('lab-resource-scope-label').textContent=p('Resource subject scope','संसाधन विषय का दायरा');
+ scope.replaceChildren(make('current',p('Current subject','वर्तमान विषय')),make('all',p('All subjects','सभी विषय')));scope.value=resourceScope;
+ $('lab-resource-add').textContent=p('Add matching activity to pack','मेल खाती गतिविधि पैक में जोड़ें');
  $('lab-resource-kind-label').textContent=p('Find resources by activity type','गतिविधि प्रकार से संसाधन खोजें');
  $('lab-resource-result-label').textContent=p('Matching draft activity','मेल खाती मसौदा गतिविधि');
  $('lab-resource-open').textContent=p('Select this worksheet','यह अभ्यास पत्र चुनें');
  kind.replaceChildren(...TEACHER_ACTIVITY_KINDS.map(k=>make(k,p(...labels[k]))));kind.value=resourceKind;
- const choices=teacherActivityChoices($('lab-print-subject').value,resourceKind,l);
- result.replaceChildren(...choices.map(x=>make(x.key,x.title)));
+ const choices=matchingResources();
+ result.replaceChildren(...choices.map(x=>make(x.key,resourceScope==='all'?p(...subjectNames[x.subject])+' · '+x.title:x.title)));
  if(choices.some(x=>x.key===previous))result.value=previous;
- result.disabled=!choices.length;$('lab-resource-open').disabled=!choices.length;
+ result.disabled=!choices.length;$('lab-resource-open').disabled=!choices.length;syncResourceAdd();
  $('lab-resource-status').textContent=choices.length+' '+p('matching original drafts; no verified grade mapping.','मेल खाते मूल मसौदे; सत्यापित कक्षा मिलान नहीं।');
 }
+$('lab-resource-scope').addEventListener('change',()=>{resourceScope=$('lab-resource-scope').value;renderResourceFinder(lang())});
+$('lab-resource-result').addEventListener('change',syncResourceAdd);
+$('lab-resource-add').addEventListener('click',()=>{
+ if(!isLabPack())return;
+ const x=matchingResources().find(r=>r.key===$('lab-resource-result').value);
+ if(!x)return;
+ labPack=editLabPack(labPack,{type:'add',key:x.key});renderLabPack(lang());
+});
 $('lab-resource-kind').addEventListener('change',()=>{resourceKind=$('lab-resource-kind').value;renderResourceFinder(lang())});
 $('lab-resource-open').addEventListener('click',()=>{
  if(!isLab())return;
  const key=$('lab-resource-result').value;
- const x=teacherActivityChoices($('lab-print-subject').value,resourceKind,lang()).find(r=>r.key===key);
+ const x=matchingResources().find(r=>r.key===key);
  if(!x)return;
+ if($('lab-print-subject').value!==x.subject){$('lab-print-subject').value=x.subject;$('lab-print-activity').value='main';renderLab(lang());}
  $('lab-print-model').value=x.id;$('lab-print-activity').value='main';renderLab(lang());
  $('lab-print-activity').value=x.mode;renderLab(lang());
  $(activeHeading()).focus();
@@ -122,7 +139,7 @@ function renderLabPack(l){
  choice.replaceChildren();for(const item of data.items){const option=el('option',item.position+'. '+item.title);option.value=item.key;choice.append(option)}
  if(labPack.includes(previous))choice.value=previous;
  const index=labPack.indexOf(choice.value);
- $('lab-pack-add').disabled=labPack.includes(current)||labPack.length>=LAB_PACK_LIMIT;
+ $('lab-pack-add').disabled=labPack.includes(current)||labPack.length>=LAB_PACK_LIMIT;syncResourceAdd();
  choice.disabled=!labPack.length;$('lab-pack-remove').disabled=index<0;$('lab-pack-up').disabled=index<=0;$('lab-pack-down').disabled=index<0||index===labPack.length-1;$('lab-pack-clear').disabled=!labPack.length;
  $('card-print').textContent=p('Print selected lab pack','चुना प्रयोग पैक छापें');$('card-print').disabled=!labPack.length;
  const pages=$('lab-pack-pages');pages.replaceChildren();
@@ -140,7 +157,7 @@ for(const type of ['add','remove','up','down','clear'])$('lab-pack-'+type).addEv
  if(type!=='clear'&&!key)return;
  labPack=editLabPack(labPack,type==='clear'?{type}:{type,key});renderLabPack(lang());
 });
-window.addEventListener('aifs-history-cleared',()=>{labPack=[];resourceKind='all';$('lab-resource-result').replaceChildren();if(isLab())renderLab(lang())});
+window.addEventListener('aifs-history-cleared',()=>{labPack=[];resourceKind='all';resourceScope='current';$('lab-resource-result').replaceChildren();if(isLab())renderLab(lang())});
 for(const id of ['lab-print-subject','lab-print-model','lab-print-activity'])$(id).addEventListener('change',()=>{
  if(id!=='lab-print-activity')$('lab-print-activity').value='main';
  renderLab(lang());

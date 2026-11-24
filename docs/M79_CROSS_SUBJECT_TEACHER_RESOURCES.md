@@ -1,0 +1,7 @@
+# M79 — Cross-subject teacher resource discovery and direct assignment planning (candidate)
+
+M79 initial Node CI 45486315344 failed the M29 historical baseline prominence assertion; corrected status wording, no test relaxation. New exact-head CI required.
+
+Dependent on M78 candidate `8ba499ba98d737b8fb55f6e3b7b2e7ef2def7742`; M78 exact-head CI was still running at branch creation. Extends the M77 teacher resource finder with current/all subject scope and bilingual subject labels. All 109 fixed draft activities (12 basic, 48 advanced, 49 supplemental) can be discovered with existing kind filters, opened in their correct subject/model/activity, or directly added to a six-item local learner assignment pack without changing the currently displayed worksheet. Duplicate and full-pack additions remain disabled; no free-text search, saved student data, external links, recommendations or grade claims. Controls hidden in learner print; mode exit and privacy clear reset the scope and pack. Both languages use the same fixed keys.
+
+Regression tests enumerate all 109 activities in two languages, check partition and invalid filters, and exercise every discovered resource in learner-only packs. Chromium checks cross-subject selection, direct mixed packs, duplicate disabling, language retention, print isolation, and reset. Exact-head CI pending; no physical classroom or accessibility certification. 70/100 scoped tasks unchanged; 3,340 pending educational reviews, 180 mapping checks, zero verified chapters, six human safeguarding gates. No public release approval.

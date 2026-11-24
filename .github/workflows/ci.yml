@@ -34,6 +34,11 @@ jobs:
             npm run curriculum:batches -- --template "$id" "$id.json"
             npm run curriculum:batches -- --check "$id.json"
           done
+      - name: Reconcile local curriculum review progress (NOT approval)
+        run: |
+          npm run curriculum:progress -- --summary
+          npm run curriculum:progress -- --summary cbse-001.json
+          npm run curriculum:progress -- --require-all cbse-001.json cbse-002.json maharashtra-001.json
       - name: Validate pending M23 review-evidence template (NOT human approval)
         run: |
           npm run review-evidence:template

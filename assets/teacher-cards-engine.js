@@ -200,3 +200,9 @@ export function teacherActivityChoices(subject,kind='all',lang='en'){
   return {key,id,mode,subject:a.subject,kind:type,title:a.title,humanReviewed:false,gradeVerified:false,publicReleaseApproved:false};
  }).filter(a=>a.subject===subject&&(kind==='all'||a.kind===kind));
 }
+
+/** M79 explicit cross-subject inventory, not grade or curriculum recommendations. */
+export function teacherResourceChoices(subject,kind='all',lang='en'){
+ if(subject==='all')return TEACHER_LAB_SUBJECTS.flatMap(s=>teacherActivityChoices(s,kind,lang));
+ return teacherActivityChoices(subject,kind,lang);
+}
