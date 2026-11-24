@@ -150,6 +150,15 @@
   <label for="advanced-subject-filter" id="advanced-subject-label">Filter concepts by subject</label>
   <select id="advanced-subject-filter"></select>
   <p id="advanced-filter-count" class="small muted" role="status"></p>
+  <section class="local-guide-result" aria-labelledby="advanced-finder-label">
+   <label for="advanced-finder-query" id="advanced-finder-label">Find a draft concept by title</label>
+   <p id="advanced-finder-help" class="small muted"></p>
+   <input id="advanced-finder-query" type="search" maxlength="80" autocomplete="off" spellcheck="false" aria-describedby="advanced-finder-help">
+   <p id="advanced-finder-status" class="small muted" role="status" aria-live="polite"></p>
+   <label for="advanced-finder-results" id="advanced-finder-results-label">Matching concepts</label>
+   <select id="advanced-finder-results" disabled></select>
+   <div class="science-actions"><button id="advanced-finder-open" class="btn outline compact" type="button" disabled>Open selected concept</button><button id="advanced-finder-clear" class="btn outline compact" type="button">Clear search</button></div>
+  </section>
   <label for="advanced-topic" id="advanced-topic-label">Choose a concept</label>
   <select id="advanced-topic"></select>
   <div class="science-surface advanced-surface">

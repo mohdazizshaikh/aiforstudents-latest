@@ -393,3 +393,19 @@ export function evaluateRatioExtension(mode,state,lang='en'){
  return {mode,title:text(m.title,lang),prompt:text(m.prompt,lang),hint:text(m.hint,lang),caveat:text(m.caveat,lang),
  rows:rows.map(([label,value])=>({label:text(label,lang),value:String(value)})),source:'assets/advanced-lab-engine.js',reviewId:'advanced:ratio-algebra',humanReviewed:false,publicReleaseApproved:false,masteryPrediction:false,persists:false};
 }
+
+/** M64 local, bounded discovery of existing draft titles and stable IDs.
+ * Search terms are never persisted, transmitted, scored, or interpreted as learner ability. */
+export function findAdvancedConcepts(query,subject='all',lang='en'){
+ if(typeof query!=='string'||query.length>80)throw Error('Invalid concept query');
+ const options=advancedSubjectOptions(subject,lang);
+ const normalize=s=>s.normalize('NFC').toLowerCase().trim().replace(/\s+/gu,' ');
+ const q=normalize(query);
+ if(!q)return [];
+ const tokens=q.split(' ');
+ return options.filter(item=>{
+  const model=ADVANCED_MODELS[item.id];
+  const haystack=normalize([item.id,item.id.replace(/-/g,' '),...model.title].join(' '));
+  return tokens.every(token=>haystack.includes(token));
+ });
+}

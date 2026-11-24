@@ -48,3 +48,19 @@ test('M30 dashboard and status remain source-backed without learner info or live
  assert.match(dashboard,/publicReleaseApproved: false/);
  assert.doesNotMatch(dashboard,/@gmail\.com|api[_-]?key|Bearer /);
 });
+
+test('M64 generated dashboard exposes every unfinished B2 item and outstanding dependency without granting approval',()=>{
+ const output=formatWorkPlanDashboard(manifest);
+ const open=manifest.items.filter(x=>x.batch==='B2'&&x.status!=='DONE_VERIFIED');
+ const rows=output.split('\n').filter(x=>/^\| FP-\d{3} \|/.test(x));
+ assert.equal(rows.length,26);
+ for(const task of open){
+  const row=rows.find(x=>x.startsWith('| '+task.id+' |'));
+  assert.ok(row,task.id);assert.ok(row.includes(task.status));
+  for(const dep of task.dependsOn.filter(id=>manifest.items.find(x=>x.id===id).status!=='DONE_VERIFIED'))assert.ok(row.includes(dep));
+ }
+ assert.match(output,/\| BLOCKED_EXTERNAL \| 25 \|/);
+ assert.match(output,/\| REVIEW_PENDING \| 2 \|/);
+ assert.match(output,/\| CODE_COMPLETE_TESTED \| 2 \|/);
+ assert.match(output,/\| IN_PROGRESS \| 1 \|/);
+});
