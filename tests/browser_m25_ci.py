@@ -603,6 +603,27 @@ def run():
                 check(phone.locator('#advanced-finder-query').input_value() == '', 'Privacy clear retained query')
                 check(phone.locator('#advanced-finder-open').is_disabled(), 'Privacy clear retained results')
                 report['checks'].append('M64 offline bilingual finder, subject, keyboard and privacy reset')
+                for model, mode, control, expected, after in [
+                    ('coordinate', 'linear', 'x', '1', '3'),
+                    ('force-motion', 'net', 'right', '2', '3'),
+                    ('mass-balance', 'missing', 'c', '7', '7'),
+                    ('cell-doubling', 'rounds', 'a', '4', '8'),
+                ]:
+                    phone.locator('#advanced-topic').select_option(model)
+                    check(phone.locator('#advanced-ratio-extension').is_visible(), 'Supplement missing: '+model)
+                    check(phone.locator('#ratio-extension-mode').input_value() == mode, 'Wrong activity: '+model)
+                    check(phone.locator('#ratio-extension-values tr').first.locator('td').inner_text() == expected, 'Initial supplemental result: '+model)
+                    phone.locator('#ratio-extension-controls button[data-extension-action="inc:'+control+'"]').focus()
+                    phone.keyboard.press('Enter')
+                    check(phone.locator('#ratio-extension-values tr').first.locator('td').inner_text() == after, 'Changed supplemental result: '+model)
+                    phone.locator('#ratio-extension-reset').click()
+                    check(phone.locator('#ratio-extension-values tr').first.locator('td').inner_text() == expected, 'Supplement reset: '+model)
+                phone.locator('#advanced-topic').select_option('counting')
+                check(phone.locator('#advanced-ratio-extension').is_hidden(), 'Supplement leaked to unrelated model')
+                phone.locator('#advanced-topic').select_option('cell-doubling')
+                phone.evaluate("window.dispatchEvent(new Event('aifs-history-cleared'))")
+                check(phone.locator('#ratio-extension-mode').input_value() == 'ratio', 'Privacy clear retained cross-subject activity')
+                report['checks'].append('M65 offline four-subject supplements, keyboard, model switch and privacy reset')
                 phone.locator('#advanced-topic').select_option('heredity')
                 check('4' in phone.locator('#advanced-values').inner_text(), 'Offline model result missing')
                 check(phone.locator('#local-guide-topic option').count() == 60, 'Offline practice guide missing')

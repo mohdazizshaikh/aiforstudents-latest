@@ -1,5 +1,5 @@
 {
-  "release": "M63 verified prototype / M64 lab finder candidate — PRIVATE ONLY",
+  "release": "M64 verified prototype / M65 cross-subject supplemental candidate — PRIVATE ONLY",
   "release_date": "2026-11-24",
   "hosting_zip": "aiforstudents_hostinger_staging_m33.zip",
   "source_zip": "aiforstudents_m33_source_tests.zip",
@@ -22,7 +22,7 @@
   "study_question_records": 32,
   "study_items_expert_approved": 0,
   "isolated_browser_study_checks": 32,
-  "currentMilestone": "M63_VERIFIED_M64_CANDIDATE",
+  "currentMilestone": "M64_VERIFIED_M65_CANDIDATE",
   "status": "private-staging-prototype-unreviewed",
   "date": "2026-11-24",
   "studioLessons": 2,
@@ -66,7 +66,7 @@
   "sensitiveSourcePathExposureCheckAvailable": true,
   "sensitiveSourcePathExposureVerifiedOnLiveHost": false,
   "releaseZipSourceHashParityVerifiedInCI": true,
-  "swCacheVersion": "aifs-discovery-m33-2026-11-24-m64-r2",
+  "swCacheVersion": "aifs-discovery-m33-2026-11-24-m65-r1",
   "crossTabPrivacyResetImplemented": true,
   "crossTabPrivacyRealDeviceVerified": false,
   "existingUnreviewedContentRecords": 3282,
@@ -114,9 +114,9 @@
   "printableLabActivityApprovals": 0,
   "printableLabActivityStoresStudentData": false,
   "verifiedCheckpoint": {
-    "milestone": "M63",
-    "mergeSha": "05646a87e5ca2c76c1f614126921dd3b4d68ce18",
-    "ciRun": 45458529448
+    "milestone": "M64",
+    "mergeSha": "744a6a2a322b43ee0c38b1c9ca2c81d0fe2a1a32",
+    "ciRun": 45460668549
   },
   "legacyPackagingBaseline": "M33 artifact filenames and historical baseline counters retained; not latest test counts or live deployment evidence",
   "interactiveDraftModels": 60,
@@ -183,14 +183,27 @@
   "ratioAlgebraExtensionInputCombinations": 1270,
   "ratioAlgebraReviewFingerprintChanged": true,
   "ratioAlgebraExtensionsEngineeringVerified": true,
-  "advancedConceptFinderCandidate": true,
+  "advancedConceptFinderCandidate": false,
   "advancedConceptFinderModels": 48,
   "advancedConceptFinderPersists": false,
   "advancedConceptFinderUsesLearnerHistory": false,
   "advancedConceptFinderHumanReviewed": false,
   "advancedConceptFinderSingleMatchEnter": true,
   "advancedConceptFinderClearsAfterOpen": true,
-  "generatedB2PriorityWorklistCandidate": true,
+  "generatedB2PriorityWorklistCandidate": false,
   "m64FirstCiRun": 45460383399,
-  "m64FirstCiDocumentationChecksFailed": true
+  "m64FirstCiDocumentationChecksFailed": true,
+  "crossSubjectExtensionsCandidate": true,
+  "crossSubjectSupplementalActivities": 4,
+  "totalSupplementalActivities": 6,
+  "crossSubjectExtensionsHumanReviewed": false,
+  "crossSubjectChangedReviewRecords": [
+    "advanced:coordinate",
+    "advanced:force-motion",
+    "advanced:mass-balance",
+    "advanced:cell-doubling"
+  ],
+  "crossSubjectExtensionsBilingualInputCombinations": 2464,
+  "advancedConceptFinderEngineeringVerified": true,
+  "generatedB2PriorityWorklistEngineeringVerified": true
 }
