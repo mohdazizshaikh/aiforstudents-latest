@@ -2174,12 +2174,12 @@
     }
   ],
   "updatedOn": "2026-11-24",
-  "currentEngineeringMilestone": "M52_VERIFIED_M53_CANDIDATE",
+  "currentEngineeringMilestone": "M53_VERIFIED_M54_CANDIDATE",
   "additionalNewMathsDrafts": 3,
   "currentPendingContentRecords": 3340,
   "batch1VerifiedEngineeringAndDesignTasks": 46,
   "batch2VerifiedEngineeringAndDesignTasks": 24,
-  "statusCaveat": "B1 46/50, B2 24/50 scoped engineering/design only. M35 exact-head CI including Git history and synthetic restored-page retention passed; no physical BFCache or external approval. FP-068 source registry remains empty, FP-085 teacher dependency blocked, 3340 reviews pending.",
+  "statusCaveat": "70/100 scoped engineering/design tasks only (B1 46/50, B2 24/50). M53 verified and merged, M54 candidate. 3340 pending reviews, six safeguarding gates, zero verified curriculum chapters. FP-068 source registry remains empty; FP-085 teacher approval remains blocked. No public launch or full-product approval.",
   "newScienceDraftReviewRecords": 7,
   "newAdvancedDraftReviewRecords": 48,
   "m34CandidateWork": {
@@ -2347,10 +2347,26 @@
     ]
   },
   "m53CandidateWork": {
-    "status": "IN_PROGRESS",
+    "status": "CI_VERIFIED_MERGED",
     "adultOnly": true,
     "realChildPilotAuthorized": false,
     "observerChecks": 7,
+    "newDoneVerifiedTasks": 0,
+    "mergeSha": "5325521774e89de2f84e141367488ece657060d5",
+    "ciRun": 45447537186
+  },
+  "m54CandidateWork": {
+    "status": "IN_PROGRESS",
+    "reviewBatchCount": 34,
+    "pilotBatches": 1,
+    "pilotRecords": 76,
+    "standardBatches": 33,
+    "standardRecords": 3264,
+    "standardBatchSizeMin": 98,
+    "standardBatchSizeMax": 99,
+    "totalRecords": 3340,
+    "criteriaCount": 20040,
+    "humanApprovalAuthenticated": false,
     "newDoneVerifiedTasks": 0
   }
 }

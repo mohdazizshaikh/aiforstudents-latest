@@ -13,7 +13,7 @@ const compare=(a,b)=>key(a)<key(b)?-1:key(a)>key(b)?1:0;
 const ref=r=>[r.queue,r.content_id,r.content_version,r.content_sha256];
 const exact=(x,keys)=>x!==null&&typeof x==='object'&&!Array.isArray(x)&&Object.keys(x).length===keys.length&&keys.every(k=>Object.hasOwn(x,k));
 export function planReviewBatches(rows=buildReviewRows()){
- if(!Array.isArray(rows)||!rows.length||new Set(rows.map(key)).size!==rows.length||rows.some(r=>typeof r.queue!=='string'||typeof r.content_id!=='string'||!Number.isInteger(r.content_version)||!(/^[a-f0-9]{64}$/.test(r.content_sha256))))throw Error('Invalid canonical review inventory');
+ if(!Array.isArray(rows)||!rows.length||new Set(rows.map(key)).size!==rows.length||rows.some(r=>typeof r.queue!=='string'||typeof r.content_id!=='string'||typeof r.content_version!=='string'||!r.content_version.trim()||!(/^[a-f0-9]{64}$/.test(r.content_sha256))))throw Error('Invalid canonical review inventory');
  const pilot=rows.filter(r=>r.priority==='pilot-first').sort(compare),remaining=rows.filter(r=>r.priority!=='pilot-first').sort(compare);
  const ordered=[...pilot,...remaining],snapshotSha256=sha(ordered.map(ref));
  const batches=[];

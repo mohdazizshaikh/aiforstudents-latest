@@ -253,3 +253,7 @@ M46 exact-head CI passed and merged. M47 adds eight original draft senior-second
 ### M52 verified checkpoint and M53 candidate
 
 M47–M52 merged after exact-head CI. Current inventory: 60 draft interactive models, 48 advanced printable activity variants, 22 CBSE candidate mappings and 110 pending mapping checks. 3,340 pending educational reviews, six safeguarding gates, zero verified chapter mappings. M53 adult-only rehearsal checklist candidate is not an authorized child trial. 70/100 scoped items unchanged. See [remaining execution handoff](M53_REMAINING_EXECUTION_HANDOFF.md).
+
+### M53 verified / M54 review-batch candidate
+
+M53 PR #42 exact-head CI 45447537186 passed and merged. M54 partitions the complete 3,340-record review inventory into 34 bounded local worklists with a 76-record pilot-first batch and 33 standard batches of 98–99 records. Six proposed criteria per record, 20,040 pending cells; zero authenticated approvals. See [M54 batch review](M54_REVIEW_BATCHES.md). All 30 incomplete scoped tracker tasks retain their status; this does not replace the broader product backlog. Exact-head M54 CI pending.
