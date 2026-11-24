@@ -99,3 +99,5 @@ M62 verified merged. M63 adds two supplemental ratio/algebra activities under th
 M86 candidate adds exhaustive fictional mastery grid and malformed-input validation ordering; FP-080 remains externally blocked. No empirical study or activation.
 
 M87 candidate adds anonymous restriction and authenticated parity verification for authorized staging. FP-097 remains externally blocked; no live Hostinger origin or credentials used.
+
+M84 verified merged. M88 adds bilingual teacher resource search over 109 activities; FP-087 remains in progress pending rights and educational approval.

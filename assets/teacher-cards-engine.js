@@ -206,3 +206,18 @@ export function teacherResourceChoices(subject,kind='all',lang='en'){
  if(subject==='all')return TEACHER_LAB_SUBJECTS.flatMap(s=>teacherActivityChoices(s,kind,lang));
  return teacherActivityChoices(subject,kind,lang);
 }
+
+/** M88 bilingual local title/key search. Never persist or echo query text in results. */
+export const TEACHER_QUERY_LIMIT=80;
+const resourceTokens=value=>value.normalize('NFKC').toLowerCase().trim().split(/\s+/u).filter(Boolean);
+export function searchTeacherResources(subject,kind='all',lang='en',query=''){
+ const choices=teacherResourceChoices(subject,kind,lang);
+ if(typeof query!=='string'||query.length>TEACHER_QUERY_LIMIT||/[\p{Cc}\p{Cf}]/u.test(query))throw Error('Invalid resource search query');
+ const terms=resourceTokens(query);
+ if(!terms.length)return choices;
+ const other=new Map(teacherResourceChoices(subject,kind,lang==='hi'?'en':'hi').map(x=>[x.key,x.title]));
+ return choices.filter(x=>{
+  const corpus=[x.title,other.get(x.key),x.key].join(' ').normalize('NFKC').toLowerCase();
+  return terms.every(t=>corpus.includes(t));
+ });
+}
