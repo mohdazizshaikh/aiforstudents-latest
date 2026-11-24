@@ -21,3 +21,14 @@ select{border:1px solid #6f9f90;border-radius:9px;padding:9px;background:white;c
 
 #lab-activity{max-width:850px;overflow-wrap:anywhere}
 @media print{#lab-activity{max-width:none;color:#000;background:#fff}#lab-activity .assignment-page{break-inside:avoid;border:1px solid #555;margin:5mm 0;padding:4mm}#lab-activity .writing{height:17mm}#lab-activity h2,#lab-activity h3,#lab-activity p{color:#000!important;background:#fff!important}}
+
+#lab-pack-output{max-width:850px;overflow-wrap:anywhere}
+.lab-pack-page{margin:16px 0;padding:12px;border:1px solid #6f9f90}
+@media print{
+ #lab-pack-output{max-width:none;background:#fff;color:#000}
+ #lab-pack-output h2,#lab-pack-output h3,#lab-pack-output p{background:#fff!important;color:#000!important}
+ .lab-pack-page{border:0;padding:0;margin:5mm 0;break-before:page}
+ .lab-pack-page:first-child{break-before:auto}
+ .lab-pack-page .assignment-page{break-inside:avoid}
+ .lab-pack-page .writing{height:17mm}
+}

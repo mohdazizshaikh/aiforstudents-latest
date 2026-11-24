@@ -1,5 +1,5 @@
 {
-  "release": "M65 verified prototype / M66 teacher supplemental worksheet candidate — PRIVATE ONLY",
+  "release": "M66 verified prototype / M67 custom assignment pack candidate — PRIVATE ONLY",
   "release_date": "2026-11-24",
   "hosting_zip": "aiforstudents_hostinger_staging_m33.zip",
   "source_zip": "aiforstudents_m33_source_tests.zip",
@@ -22,7 +22,7 @@
   "study_question_records": 32,
   "study_items_expert_approved": 0,
   "isolated_browser_study_checks": 32,
-  "currentMilestone": "M65_VERIFIED_M66_CANDIDATE",
+  "currentMilestone": "M66_VERIFIED_M67_CANDIDATE",
   "status": "private-staging-prototype-unreviewed",
   "date": "2026-11-24",
   "studioLessons": 2,
@@ -66,7 +66,7 @@
   "sensitiveSourcePathExposureCheckAvailable": true,
   "sensitiveSourcePathExposureVerifiedOnLiveHost": false,
   "releaseZipSourceHashParityVerifiedInCI": true,
-  "swCacheVersion": "aifs-discovery-m33-2026-11-24-m66-r1",
+  "swCacheVersion": "aifs-discovery-m33-2026-11-24-m67-r1",
   "crossTabPrivacyResetImplemented": true,
   "crossTabPrivacyRealDeviceVerified": false,
   "existingUnreviewedContentRecords": 3282,
@@ -114,9 +114,9 @@
   "printableLabActivityApprovals": 0,
   "printableLabActivityStoresStudentData": false,
   "verifiedCheckpoint": {
-    "milestone": "M65",
-    "mergeSha": "f1a14dc8a3235742fffb9e098f447c029525138d",
-    "ciRun": 45461190980
+    "milestone": "M66",
+    "mergeSha": "1ceeb22b5e19243013dde0f44da3313aca812c03",
+    "ciRun": 45462053139
   },
   "legacyPackagingBaseline": "M33 artifact filenames and historical baseline counters retained; not latest test counts or live deployment evidence",
   "interactiveDraftModels": 60,
@@ -207,11 +207,19 @@
   "advancedConceptFinderEngineeringVerified": true,
   "generatedB2PriorityWorklistEngineeringVerified": true,
   "crossSubjectExtensionsEngineeringVerified": true,
-  "teacherSupplementWorksheetCandidate": true,
+  "teacherSupplementWorksheetCandidate": false,
   "teacherSupplementWorksheetActivities": 6,
   "teacherSupplementWorksheetLanguages": 2,
   "teacherSupplementWorksheetHumanReviewed": false,
   "teacherSupplementWorksheetRightsAuthenticated": false,
   "teacherSupplementWorksheetStoresStudentData": false,
-  "teacherSupplementWorksheetAnswerKeys": false
+  "teacherSupplementWorksheetAnswerKeys": false,
+  "customLabPackCandidate": true,
+  "customLabPackSourceActivities": 54,
+  "customLabPackMaxActivities": 6,
+  "customLabPackStoresStudentData": false,
+  "customLabPackPersists": false,
+  "customLabPackHumanReviewed": false,
+  "customLabPackRightsAuthenticated": false,
+  "teacherSupplementWorksheetEngineeringVerified": true
 }

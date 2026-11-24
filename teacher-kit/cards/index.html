@@ -16,11 +16,17 @@
 <div class="controls no-print">
  <label for="card-language">Language / भाषा <select id="card-language"><option value="en">English</option><option value="hi">हिन्दी</option></select></label>
  <label for="card-lesson">Lesson / पाठ <select id="card-lesson"><option value="fractions">Fractions</option><option value="circuits">Circuits</option></select></label>
- <label for="card-view">Print mode / प्रिंट का प्रकार <select id="card-view"><option value="single">One discussion card / एक चर्चा कार्ड</option><option value="pack">Full five-step pack / पाँच चरणों का पैक</option><option value="lab">Computer-only lab activity / कंप्यूटर प्रयोग गतिविधि</option></select></label>
+ <label for="card-view">Print mode / प्रिंट का प्रकार <select id="card-view"><option value="single">One discussion card / एक चर्चा कार्ड</option><option value="pack">Full five-step pack / पाँच चरणों का पैक</option><option value="lab">Computer-only lab activity / कंप्यूटर प्रयोग गतिविधि</option><option value="lab-pack">Custom lab assignment pack / चुना प्रयोग अभ्यास पैक</option></select></label>
  <label for="card-step">Step / चरण <select id="card-step"></select></label>
  <button type="button" class="btn" id="card-print" data-print-worksheet>Print learner card / अभ्यास कार्ड छापें</button>
 </div>
 <div id="lab-print-controls" class="controls no-print" hidden><label for="lab-print-subject"><span id="lab-print-subject-label">Lab subject</span><select id="lab-print-subject"></select></label><label for="lab-print-model"><span id="lab-print-model-label">Draft model</span><select id="lab-print-model"></select></label><label id="lab-print-activity-control" for="lab-print-activity" hidden><span id="lab-print-activity-label">Choose a draft activity</span><select id="lab-print-activity" disabled></select></label></div>
+<div id="lab-pack-controls" class="controls no-print" hidden>
+ <button type="button" class="btn" id="lab-pack-add">Add selected lab activity</button>
+ <label for="lab-pack-choice"><span id="lab-pack-choice-label">Selected activity to move or remove</span><select id="lab-pack-choice"></select></label>
+ <button type="button" class="btn" id="lab-pack-remove">Remove</button><button type="button" class="btn" id="lab-pack-up">Move earlier</button><button type="button" class="btn" id="lab-pack-down">Move later</button><button type="button" class="btn" id="lab-pack-clear">Clear pack</button>
+ <p id="lab-pack-status" role="status" aria-live="polite"></p>
+</div>
 <main>
 <section id="learner-card" aria-labelledby="card-heading">
  <p id="card-warning">Unreviewed pilot / असमीक्षित मसौदा</p>
@@ -40,6 +46,9 @@
 <section id="lab-activity" hidden aria-labelledby="lab-activity-heading">
  <p id="lab-activity-warning"></p><h2 id="lab-activity-heading" tabindex="-1"></h2>
  <p id="lab-activity-prompt"></p><p id="lab-activity-caveat"></p><div id="lab-activity-steps"></div><p id="lab-activity-private"></p>
+</section>
+<section id="lab-pack-output" hidden aria-labelledby="lab-pack-heading">
+ <h2 id="lab-pack-heading" tabindex="-1">Custom learner lab assignment pack</h2><p id="lab-pack-notice"></p><div id="lab-pack-pages"></div>
 </section>
 <section class="teacher-notes" id="teacher-guidance" aria-labelledby="card-answer-heading">
  <h2 id="card-answer-heading">Teacher-only guidance — NEVER on printed learner sheet</h2>

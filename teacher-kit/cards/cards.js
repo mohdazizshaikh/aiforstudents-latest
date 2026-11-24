@@ -1,7 +1,11 @@
 import {CLASSROOM_IDS,CLASSROOM_LESSONS,classroomText} from '../../assets/classroom-engine.js';
-import {printableClassroomCard,printableAssignmentPack,printableLabActivity,teacherLabOptions,TEACHER_LAB_SUBJECTS,teacherSupplementOptions,printableSupplementActivity} from '../../assets/teacher-cards-engine.js';
+import {printableClassroomCard,printableAssignmentPack,printableLabActivity,teacherLabOptions,TEACHER_LAB_SUBJECTS,teacherSupplementOptions,printableSupplementActivity,LAB_PACK_LIMIT,editLabPack,printableLabPack} from '../../assets/teacher-cards-engine.js';
 const $=id=>document.getElementById(id);
 const lang=()=>$('card-language').value;
+let labPack=[];
+const isLabPack=()=>$('card-view').value==='lab-pack';
+const isLab=()=>$('card-view').value==='lab'||isLabPack();
+const activeHeading=()=>isLabPack()?'lab-pack-heading':isLab()?'lab-activity-heading':$('card-view').value==='pack'?'assignment-heading':'card-heading';
 function render(){
  const lesson=$('card-lesson').value,steps=CLASSROOM_LESSONS[lesson].steps,select=$('card-step');
  const index=Math.min(steps.length-1,Math.max(0,Number(select.value)||0)),l=lang();
@@ -21,12 +25,12 @@ function render(){
  $('card-no-data').textContent=l==='hi'?'कागज़ पर लिखें। यह पृष्ठ कोई उत्तर या जानकारी सेव नहीं करता।':'Write on paper. This page does not store or submit any answer.';
  document.documentElement.lang=l;
  $('card-skip').textContent=l==='hi'?'अभ्यास पत्र पर जाएँ':'Skip to the learner worksheet';
- $('card-skip').href='#'+($('card-view').value==='lab'?'lab-activity-heading':$('card-view').value==='pack'?'assignment-heading':'card-heading');
+ $('card-skip').href='#'+activeHeading();
  renderPack(lesson,l);
  renderLab(l);
 }
 function renderPack(lesson,l){
- const full=$('card-view').value==='pack',lab=$('card-view').value==='lab';
+ const full=$('card-view').value==='pack',lab=isLab();
  $('learner-card').hidden=full;$('teacher-guidance').hidden=full;$('assignment-pack').hidden=!full;
  $('card-step').disabled=full||lab;$('card-lesson').disabled=lab;
  if(lab){$('learner-card').hidden=true;$('teacher-guidance').hidden=true;$('assignment-pack').hidden=true;}
@@ -44,8 +48,10 @@ function renderPack(lesson,l){
  }
 }
 function renderLab(l){
- const active=$('card-view').value==='lab';
- $('lab-print-controls').hidden=!active;$('lab-activity').hidden=!active;
+ const active=isLab(),pack=isLabPack();
+ $('lab-print-controls').hidden=!active;$('lab-activity').hidden=!active||pack;
+ $('lab-pack-controls').hidden=!pack;$('lab-pack-output').hidden=!pack;
+ if(!pack){labPack=[];$('lab-pack-pages').replaceChildren();$('lab-pack-choice').replaceChildren();$('card-print').disabled=false;}
  const host=$('lab-activity-steps');host.replaceChildren();
  if(!active){$('lab-print-activity').value='main';return;}
  const p=(en,hi)=>l==='hi'?hi:en;
@@ -72,17 +78,49 @@ function renderLab(l){
  $('lab-activity-private').textContent=p('Write on paper; no names or online submission. Printouts cannot be remotely deleted.','कागज़ पर लिखें; नाम या ऑनलाइन जमा नहीं करें। प्रिंट दूर से मिटाया नहीं जा सकता।');
  $('lab-print-subject-label').textContent=p('Lab subject','प्रयोग विषय');$('lab-print-model-label').textContent=p('Draft model','मसौदा मॉडल');
  $('card-print').textContent=p('Print lab activity','प्रयोग गतिविधि छापें');
+ if(pack){renderLabPack(l);return;}
  for(const [i,step] of a.steps.entries()){
   const section=el('section','');section.className='assignment-page';section.append(el('h3',(i+1)+'. '+step));
   const space=el('div','');space.className='writing';space.setAttribute('aria-label',p('Paper response space','कागज़ पर उत्तर की जगह'));section.append(space);host.append(section);
  }
 }
+function renderLabPack(l){
+ const p=(en,hi)=>l==='hi'?hi:en,el=(tag,value)=>{const e=document.createElement(tag);e.textContent=value;return e};
+ const current=$('lab-print-model').value+':'+$('lab-print-activity').value;
+ const data=printableLabPack(labPack,l),choice=$('lab-pack-choice'),previous=choice.value;
+ $('lab-pack-heading').textContent=p('Custom learner lab assignment pack','चुना हुआ विद्यार्थी प्रयोग अभ्यास पैक');
+ $('lab-pack-notice').textContent=p('Original unreviewed draft. Rights and educational review pending. Write on paper without names or online submission. Printed copies cannot be remotely deleted.','मूल असमीक्षित मसौदा। अनुमति और शैक्षिक समीक्षा बाकी है। बिना नाम या ऑनलाइन जमा किए कागज़ पर लिखें। प्रिंट दूर से मिटाया नहीं जा सकता।');
+ $('lab-pack-status').textContent=labPack.length+' / '+LAB_PACK_LIMIT+' '+p('activities selected','गतिविधियाँ चुनी गईं');
+ $('lab-pack-choice-label').textContent=p('Selected activity to move or remove','स्थान बदलने या हटाने के लिए गतिविधि');
+ for(const [id,en,hi] of [['add','Add selected lab activity','चुनी प्रयोग गतिविधि जोड़ें'],['remove','Remove','हटाएँ'],['up','Move earlier','पहले करें'],['down','Move later','बाद में करें'],['clear','Clear pack','पैक मिटाएँ']])$('lab-pack-'+id).textContent=p(en,hi);
+ choice.replaceChildren();for(const item of data.items){const option=el('option',item.position+'. '+item.title);option.value=item.key;choice.append(option)}
+ if(labPack.includes(previous))choice.value=previous;
+ const index=labPack.indexOf(choice.value);
+ $('lab-pack-add').disabled=labPack.includes(current)||labPack.length>=LAB_PACK_LIMIT;
+ choice.disabled=!labPack.length;$('lab-pack-remove').disabled=index<0;$('lab-pack-up').disabled=index<=0;$('lab-pack-down').disabled=index<0||index===labPack.length-1;$('lab-pack-clear').disabled=!labPack.length;
+ $('card-print').textContent=p('Print selected lab pack','चुना प्रयोग पैक छापें');$('card-print').disabled=!labPack.length;
+ const pages=$('lab-pack-pages');pages.replaceChildren();
+ for(const item of data.items){
+  const section=el('section','');section.className='lab-pack-page';section.dataset.activityKey=item.key;
+  section.append(el('h3',item.position+'. '+item.title),el('p',item.prompt),el('p',item.caveat));
+  for(const step of item.steps){const group=el('div','');group.className='assignment-page';group.append(el('p',step));const space=el('div','');space.className='writing';space.setAttribute('aria-label',p('Paper response space','कागज़ पर उत्तर की जगह'));group.append(space);section.append(group)}
+  pages.append(section);
+ }
+}
+$('lab-pack-choice').addEventListener('change',()=>renderLabPack(lang()));
+for(const type of ['add','remove','up','down','clear'])$('lab-pack-'+type).addEventListener('click',()=>{
+ if(!isLabPack())return;
+ const key=type==='add'?$('lab-print-model').value+':'+$('lab-print-activity').value:$('lab-pack-choice').value;
+ if(type!=='clear'&&!key)return;
+ labPack=editLabPack(labPack,type==='clear'?{type}:{type,key});renderLabPack(lang());
+});
+window.addEventListener('aifs-history-cleared',()=>{labPack=[];if(isLabPack())renderLabPack(lang())});
 for(const id of ['lab-print-subject','lab-print-model','lab-print-activity'])$(id).addEventListener('change',()=>{
  if(id!=='lab-print-activity')$('lab-print-activity').value='main';
  renderLab(lang());
 });
 for(const id of ['card-language','card-lesson','card-step','card-view'])$(id).addEventListener('change',()=>{
  if(id==='card-lesson')$('card-step').value='0';
- render();$( $('card-view').value==='lab'?'lab-activity-heading':$('card-view').value==='pack'?'assignment-heading':'card-heading').focus();
+ render();$(activeHeading()).focus();
 });
 render();
