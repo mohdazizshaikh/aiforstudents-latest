@@ -1,5 +1,10 @@
 # Project Status Dashboard — AI for Students
 
+> **M36 EXPANDED CANDIDATE — 2026-11-24:** 28 interactive models (16 advanced), including four newly coded original draft simulations; 12 class discovery rows and 48 illustrative topic lenses, no verified chapter placement. 3,308 educational reviews pending; 70/100 scoped engineering/design tasks in candidate tracker. Exact-head CI pending; public launch remains blocked. M35/M33 historical baselines below.
+
+
+> **M35 VERIFIED / M36 CANDIDATE — 2026-11-24:** M35 PR #24 merged after exact-head Node and Chromium CI success. B1 46/50, B2 24/50 scoped engineering/design items (70/100); 3,304 content reviews and six safeguarding gates remain pending. Historical commit/blob traceability and bounded retention audit verified, not physical-device certification. Approved-source tutor remains disabled with empty registry. Curriculum discovery draft is not chapter/edition verification. M34/M33 historical baselines below.
+
 > **M34 VERIFIED / M35 CANDIDATE — 2026-11-24:** M34 PR #23 merged after exact-head CI passed. B1 46/50, B2 22/50 scoped engineering/design items (68/100); 3,304 content reviews and six safeguarding gates remain pending. Teacher lesson queue and offline projector are code-tested, but FP-085 human dependency prevents final acceptance. M35 historical trace snapshot and disabled retrieval prototype are candidates, not live AI or curriculum approval. M33 historical baseline below. [M35 evidence](M35_TRACE_AND_RETRIEVAL.md).
 
 > **M34 CANDIDATE (M33 remains the verified baseline):** 10 B2 tasks IN_PROGRESS, not newly verified. Draft PR #23 includes local bilingual teacher queue, responsive/print privacy corrections, optional AI/adaptive design contracts and offline browser coverage. Initial mobile overflow failure addressed in code; exact-head CI pending. B1 46/50, B2 17/50, 3,304 pending reviews and no public approval remain unchanged. [M34 candidate evidence](M34_B2_DESIGN_AND_ACCEPTANCE.md).

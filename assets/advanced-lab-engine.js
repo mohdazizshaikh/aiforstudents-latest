@@ -3,7 +3,7 @@
  * No real experiment instructions, no AI inference, no student data, no paid API.
  */
 export const ADVANCED_VERSION=1;
-export const ADVANCED_IDS=Object.freeze(['ratio-algebra','symmetry','coordinate','probability','temperature','sound','magnetism','measurement','periodic','mass-balance','ecosystem','heredity']);
+export const ADVANCED_IDS=Object.freeze(['ratio-algebra','symmetry','coordinate','probability','temperature','sound','magnetism','measurement','periodic','mass-balance','ecosystem','heredity','quadratic','force-motion','atom-count','cell-scale']);
 const P=(en,hi)=>Object.freeze([en,hi]);
 const N=(id,en,hi,min,max,step=1,unit='')=>({id,label:P(en,hi),min,max,step,unit});
 const O=(id,en,hi,options)=>({id,label:P(en,hi),options:options.map(([v,a,b])=>({value:v,label:P(a,b)}))});
@@ -107,6 +107,35 @@ export const ADVANCED_MODELS={
   fields:[O('one','Symbolic parent 1','प्रतीकात्मक अभिभावक 1',[['AA','AA','AA'],['Aa','Aa','Aa'],['aa','aa','aa']]),
           O('two','Symbolic parent 2','प्रतीकात्मक अभिभावक 2',[['AA','AA','AA'],['Aa','Aa','Aa'],['aa','aa','aa']])],
   initial:{one:'AA',two:'aa'},target:{one:'Aa',two:'Aa'}
+ },
+
+ quadratic:{
+  subject:'maths',title:P('Explore the square function','वर्ग फलन समझें'),
+  prompt:P('Set x to −3 and compare its square with the square of +3.','x को −3 रखें और उसके वर्ग की तुलना +3 के वर्ग से करें।'),
+  hint:P('The square of either −3 or +3 is 9. The graph of y = x² is symmetric.','−3 और +3 दोनों का वर्ग 9 है। y = x² का आलेख सममित है।'),
+  caveat:P('A single ideal square function, not a full quadratic equation or calculus lesson.','केवल एक आदर्श वर्ग फलन; पूरा द्विघात समीकरण या कलन पाठ नहीं।'),
+  fields:[N('x','Input x','इनपुट x',-5,5)],initial:{x:1},target:{x:-3}
+ },
+ 'force-motion':{
+  subject:'physics',title:P('Net force in an ideal motion model','आदर्श गति मॉडल में परिणामी बल'),
+  prompt:P('Set an ideal mass of 3 kg and acceleration of 2 m/s². Find the net force.','आदर्श द्रव्यमान 3 kg और त्वरण 2 m/s² रखें। परिणामी बल ज्ञात करें।'),
+  hint:P('For constant mass in this one-dimensional model, net force = mass × acceleration.','इस एक-विमीय मॉडल में स्थिर द्रव्यमान के लिए परिणामी बल = द्रव्यमान × त्वरण।'),
+  caveat:P('Ideal net-force calculation only. Not real vehicle, falling object or machinery guidance.','केवल आदर्श परिणामी बल की गणना। असली वाहन, गिरती वस्तु या मशीन का निर्देश नहीं।'),
+  fields:[N('mass','Mass','द्रव्यमान',1,5,1,'kg'),N('accel','Acceleration','त्वरण',0,5,1,'m/s²')],initial:{mass:1,accel:1},target:{mass:3,accel:2}
+ },
+ 'atom-count':{
+  subject:'chemistry',title:P('Count atoms in water symbols','जल के प्रतीक में परमाणु गिनें'),
+  prompt:P('Select 3 symbolic H₂O molecules and count hydrogen and oxygen atoms.','3 प्रतीकात्मक H₂O अणु चुनें और हाइड्रोजन तथा ऑक्सीजन के परमाणु गिनें।'),
+  hint:P('Each water molecule has two hydrogen atoms and one oxygen atom. Multiply both counts by the number of molecules.','हर जल अणु में दो हाइड्रोजन और एक ऑक्सीजन परमाणु हैं। दोनों संख्याओं को अणुओं की संख्या से गुणा करें।'),
+  caveat:P('Symbolic counting only; drawing size and shape are not molecular geometry. No mixing or reaction.','केवल प्रतीकात्मक गिनती; चित्र का आकार और आकृति असली अणु-ज्यामिति नहीं। कोई मिश्रण या प्रतिक्रिया नहीं।'),
+  fields:[N('molecules','Symbolic molecules','प्रतीकात्मक अणु',1,6)],initial:{molecules:1},target:{molecules:3}
+ },
+ 'cell-scale':{
+  subject:'biology',title:P('Scale an imaginary cell diagram','काल्पनिक कोशिका चित्र का पैमाना'),
+  prompt:P('Set the hypothetical cell length to 20 µm and drawing magnification to 100×. Find the diagram length in mm.','काल्पनिक कोशिका की लंबाई 20 µm और चित्र का आवर्धन 100× रखें। चित्र की लंबाई mm में ज्ञात करें।'),
+  hint:P('Diagram length = actual length × magnification. Divide micrometres by 1000 to convert to millimetres.','चित्र की लंबाई = वास्तविक लंबाई × आवर्धन। माइक्रोमीटर को मिलीमीटर में बदलने के लिए 1000 से भाग दें।'),
+  caveat:P('Hypothetical diagram scale, not microscope calibration, specimen collection or real cell measurement.','काल्पनिक चित्र का पैमाना; सूक्ष्मदर्शी का अंशांकन, नमूना संग्रह या वास्तविक कोशिका मापन नहीं।'),
+  fields:[N('length','Imaginary cell length','काल्पनिक कोशिका लंबाई',10,50,10,'µm'),N('magnification','Drawing magnification','चित्र आवर्धन',50,200,50,'×')],initial:{length:10,magnification:50},target:{length:20,magnification:100}
  }
 };
 const ELEMENTS=[
@@ -134,6 +163,10 @@ export function validateAdvancedState(id,state){
 export function calculateAdvanced(id,state){
  validateAdvancedState(id,state);
  switch(id){
+  case 'quadratic':return {x:state.x,y:state.x*state.x,oppositeX:-state.x,oppositeSquare:state.x*state.x};
+  case 'force-motion':return {mass:state.mass,acceleration:state.accel,forceN:state.mass*state.accel};
+  case 'atom-count':return {molecules:state.molecules,hydrogen:2*state.molecules,oxygen:state.molecules,totalAtoms:3*state.molecules};
+  case 'cell-scale':return {cellLengthUm:state.length,magnification:state.magnification,diagramMm:state.length*state.magnification/1000};
   case 'ratio-algebra':return {total:state.groups*state.each,groupRatio:state.groups+':'+(state.groups*state.each)+' = 1:'+state.each,expression:'x = '+state.groups+' × '+state.each};
   case 'symmetry':{const {x,y,transform}=state;const [transformedX,transformedY]=transform==='reflect'?[-x,y]:transform==='rotate'?[-y,x]:[x+2,y-1];return {transformedX,transformedY};}
   case 'coordinate':return {x:state.x,y:2*state.x+1};
@@ -162,6 +195,7 @@ export function calculateAdvanced(id,state){
  }
 }
 const LABELS={
+ oppositeX:P('Opposite input','विपरीत इनपुट'),oppositeSquare:P('Opposite input squared','विपरीत इनपुट का वर्ग'),acceleration:P('Acceleration (m/s²)','त्वरण (m/s²)'),forceN:P('Net force (N)','परिणामी बल (N)'),molecules:P('Molecules','अणु'),hydrogen:P('Hydrogen atoms','हाइड्रोजन परमाणु'),oxygen:P('Oxygen atoms','ऑक्सीजन परमाणु'),totalAtoms:P('Total atoms','कुल परमाणु'),cellLengthUm:P('Imaginary cell length (µm)','काल्पनिक कोशिका लंबाई (µm)'),magnification:P('Magnification (×)','आवर्धन (×)'),diagramMm:P('Diagram length (mm)','चित्र की लंबाई (mm)'),
  total:P('Total','कुल'),groupRatio:P('Groups : total counters','समूह : कुल काउंटर'),expression:P('Expression for the total','कुल के लिए व्यंजक'),transformedX:P('New x','नया x'),transformedY:P('New y','नया y'),
  x:P('x','x'),y:P('y','y'),red:P('Red','लाल'),blue:P('Blue','नीले'),
  probabilityRed:P('Theoretical red probability','लाल की सैद्धांतिक प्रायिकता'),

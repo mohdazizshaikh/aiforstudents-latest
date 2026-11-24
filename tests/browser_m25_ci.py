@@ -253,9 +253,9 @@ def run():
                 cards.close()
                 report['checks'].append('M32 standalone A4 learner card excludes teacher answers during print')
                 # M33: exercise all new bounded lab modes, graph and independent controls.
-                check(page.locator('#advanced-topic option').count() == 12, 'Expanded lab modes missing')
+                check(page.locator('#advanced-topic option').count() == 16, 'Expanded lab modes missing')
                 for key in ['ratio-algebra','symmetry','coordinate','probability','temperature','sound',
-                            'magnetism','measurement','periodic','mass-balance','ecosystem','heredity']:
+                            'magnetism','measurement','periodic','mass-balance','ecosystem','heredity','quadratic','force-motion','atom-count','cell-scale']:
                     page.locator('#advanced-topic').select_option(key)
                     check(page.locator('#advanced-values tr').count() > 0, 'No numeric table: ' + key)
                     check(page.locator('#advanced-controls button').count() > 0, 'No accessible controls: ' + key)
@@ -274,7 +274,7 @@ def run():
                 page.locator('#lang').select_option('hi')
                 check('आवृत्ति' in page.locator('#advanced-values').inner_text(), 'Hindi result labels missing')
                 page.locator('#lang').select_option('en')
-                report['checks'].append('M33 all 12 draft lab modes, keyboard graph, silent waves and Hindi numeric tables')
+                report['checks'].append('M36 all 16 draft lab modes, keyboard graph, silent waves and Hindi numeric tables')
 
                 page.locator('#remember').check()
                 check(page.evaluate('localStorage.length > 0'), 'Opt-in local history is not persistent')
@@ -470,7 +470,7 @@ def run():
                       'Offline Maths Workshop failed to bootstrap')
                 check(phone.locator('#science-tabs button').count() == 7,
                       'Offline Science Concept Lab not bootstrapped with seven models')
-                check(phone.locator('#advanced-topic option').count() == 12, 'Offline expanded labs not loaded')
+                check(phone.locator('#advanced-topic option').count() == 16, 'Offline expanded labs not loaded')
                 phone.locator('#advanced-topic').select_option('heredity')
                 check('4' in phone.locator('#advanced-values').inner_text(), 'Offline model result missing')
                 check(phone.locator('#local-guide-topic option').count() == 12, 'Offline practice guide missing')
@@ -497,6 +497,20 @@ def run():
                     check(not phone.locator('.teacher-notes').is_visible(), 'Offline assignment answer leaked')
                     phone.emulate_media(media='screen')
                 report['checks'].append('M34 offline queue/projector, bilingual mobile bounds and existing worksheet print privacy')
+                phone.goto(origin + '/virtual-experiment-lab/#curriculum-discovery', wait_until='load')
+                check(phone.locator('.curriculum-grade').count() == 12, 'Offline class discovery missing')
+                summary = phone.locator('#draft-grade-12 summary')
+                summary.focus()
+                phone.keyboard.press('Enter')
+                check(phone.locator('#draft-grade-12').evaluate('e => e.open'), 'Native keyboard disclosure failed')
+                check('Gap' in phone.locator('#draft-grade-12').inner_text(), 'Curriculum gaps hidden')
+                check(phone.evaluate('document.documentElement.scrollWidth <= innerWidth + 4'), 'Draft guide horizontal overflow')
+                with phone.expect_navigation(wait_until='load'):
+                    phone.locator('#draft-grade-12 a').first.click()
+                phone.locator('#advanced-topic option').first.wait_for(state='attached')
+                check(phone.url.endswith('/#advanced-labs'), 'Related draft did not navigate to intended section')
+                check(phone.locator('#advanced-topic option').count() == 16, 'Offline related draft link failed')
+                report['checks'].append('M36 offline 12-grade draft discovery, keyboard disclosure, gap visibility and related model navigation')
                 phone.goto(origin + '/teacher-kit/cards/', wait_until='load')
                 check(phone.locator('#card-answer').inner_text() != '', 'Offline teacher card dependency not cached')
                 phone.locator('#card-language').select_option('hi')
@@ -509,7 +523,7 @@ def run():
                 phone.emulate_media(media='screen')
                 phone.goto(origin + '/?lang=hi', wait_until='load')
                 check(phone.locator('#lang').input_value() == 'hi', 'Offline query-driven language navigation broke')
-                check(phone.locator('#advanced-topic option').count() == 12, 'Offline query page module not available')
+                check(phone.locator('#advanced-topic option').count() == 16, 'Offline query page module not available')
                 # Actual offline keyboard operation across each currently shipped lab family/mode.
                 def keyboard_control(selector):
                     btn = phone.locator(selector + ' button:enabled').first
@@ -534,7 +548,7 @@ def run():
                     phone.locator('#science-next').click()
                     keyboard_control('#science-controls')
                 for key in ['ratio-algebra','symmetry','coordinate','probability','temperature','sound',
-                            'magnetism','measurement','periodic','mass-balance','ecosystem','heredity']:
+                            'magnetism','measurement','periodic','mass-balance','ecosystem','heredity','quadratic','force-motion','atom-count','cell-scale']:
                     phone.locator('#advanced-topic').select_option(key)
                     keyboard_control('#advanced-controls')
                     check(phone.locator('#advanced-values tr').count() > 0, 'Missing numeric alternative: ' + key)

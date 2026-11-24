@@ -191,8 +191,25 @@
       "dependsOn": [
         "FP-005"
       ],
-      "status": "IN_PROGRESS",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "tools/verify-evidence-snapshot.mjs"
+        },
+        {
+          "kind": "source",
+          "path": "docs/M35_TRACE_AND_RETRIEVAL.md"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m35-evidence-retrieval.test.mjs"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m35-retention.test.mjs"
+        }
+      ]
     },
     {
       "id": "FP-009",
@@ -1748,8 +1765,29 @@
       "dependsOn": [
         "FP-075"
       ],
-      "status": "IN_PROGRESS",
-      "evidence": []
+      "status": "DONE_VERIFIED",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "assets/app.js"
+        },
+        {
+          "kind": "source",
+          "path": "docs/M35_TRACE_AND_RETRIEVAL.md"
+        },
+        {
+          "kind": "test",
+          "path": "tests/browser_m25_ci.py"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m35-retention.test.mjs"
+        },
+        {
+          "kind": "test",
+          "path": "tests/m28-shared-device-privacy.test.mjs"
+        }
+      ]
     },
     {
       "id": "FP-080",
@@ -2136,14 +2174,14 @@
     }
   ],
   "updatedOn": "2026-11-24",
-  "currentEngineeringMilestone": "M34_VERIFIED_M35_CANDIDATES",
+  "currentEngineeringMilestone": "M35_VERIFIED_M36_CURRICULUM_CANDIDATES",
   "additionalNewMathsDrafts": 3,
-  "currentPendingContentRecords": 3304,
+  "currentPendingContentRecords": 3308,
   "batch1VerifiedEngineeringAndDesignTasks": 46,
-  "batch2VerifiedEngineeringAndDesignTasks": 22,
-  "statusCaveat": "B1 46/50, B2 22/50 engineering/design only; M34 exact-head CI passed. Teacher organizer and offline projector code tested; FP-085 qualified review remains blocked. No public, school, subject, legal or real-device approval.",
+  "batch2VerifiedEngineeringAndDesignTasks": 24,
+  "statusCaveat": "B1 46/50, B2 24/50 scoped engineering/design only. M35 exact-head CI including Git history and synthetic restored-page retention passed; no physical BFCache or external approval. FP-068 source registry remains empty, FP-085 teacher dependency blocked, 3308 reviews pending.",
   "newScienceDraftReviewRecords": 7,
-  "newAdvancedDraftReviewRecords": 12,
+  "newAdvancedDraftReviewRecords": 16,
   "m34CandidateWork": {
     "branch": "m34-teacher-organizer-safety-design",
     "designAndImplementationHead": "08001d7a61a66e9b4049f2bcbdff33626199a301",
@@ -2169,12 +2207,41 @@
     "ciRunId": "45350106713"
   },
   "m35CandidateWork": {
-    "status": "IN_PROGRESS",
+    "status": "MERGED_PARTIAL_ACCEPTANCE",
     "taskIds": [
       "FP-008",
       "FP-068"
     ],
     "approvedSources": 0,
-    "publicReleaseApproved": false
-  }
+    "publicReleaseApproved": false,
+    "verifiedHead": "ced1a802eb49827ad97c705dd93eec13929b29d0",
+    "mergedMainSha": "d90c20b8084f40b965aeaef1dafe32527d487234",
+    "ciRunId": "45351860435",
+    "exactHeadCiPending": false,
+    "verifiedIds": [
+      "FP-008",
+      "FP-079"
+    ],
+    "blockedIds": [
+      "FP-068"
+    ]
+  },
+  "m36CandidateWork": {
+    "status": "IN_PROGRESS",
+    "taskIds": [
+      "FP-016",
+      "FP-017",
+      "FP-018",
+      "FP-019",
+      "FP-020"
+    ],
+    "scope": "Draft navigation and reviewer discovery only; all human curriculum gates unchanged",
+    "approvedSources": 0,
+    "publicReleaseApproved": false,
+    "newInteractiveModels": 4,
+    "totalInteractiveModels": 28,
+    "reviewRecordsAdded": 4,
+    "currentPendingContentRecords": 3308
+  },
+  "newM36DraftReviewRecords": 4
 }

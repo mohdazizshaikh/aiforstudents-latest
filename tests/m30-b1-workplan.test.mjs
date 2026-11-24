@@ -11,7 +11,7 @@ test('M30 B1 dashboard derives 46 evidence-backed engineering/design tasks, not 
  assert.equal(result.byBatch.B1.verified,46);
  assert.equal(result.byBatch.B1.total,50);
  assert.equal(result.byBatch.B1.blockedExternal,4);
- assert.equal(result.byBatch.B2.verified,22);
+ assert.equal(result.byBatch.B2.verified,24);
  assert.equal(result.humanApprovalAuthenticated,false);
  assert.equal(result.publicReleaseApproved,false);
  assert.equal(formatWorkPlanDashboard(manifest),load('docs/B1_PROGRESS_DASHBOARD.md'));
@@ -25,7 +25,7 @@ test('M30 B1 verified tasks have source and test evidence and valid completed de
   for(const dep of task.dependsOn)assert.equal(byId.get(dep).status,'DONE_VERIFIED');
  }
  assert.equal(manifest.items.length,100);
- assert.equal(manifest.currentPendingContentRecords,3304);
+ assert.equal(manifest.currentPendingContentRecords,3308);
  assert.equal(manifest.existingUnreviewedContentRecords,3282);
 });
 test('M30 workplan validator rejects fake signoff, absent evidence, wrong count or bad dependencies',()=>{
@@ -43,7 +43,7 @@ test('M30 workplan validator rejects fake signoff, absent evidence, wrong count 
 test('M30 dashboard and status remain source-backed without learner info or live-host claims',()=>{
  const dashboard=load('docs/B1_PROGRESS_DASHBOARD.md');
  assert.match(dashboard,/46 \| 50 \| 4/);
- assert.match(dashboard,/3,304 pending subject\/Hindi reviews/);
+ assert.match(dashboard,/3,308 pending subject\/Hindi reviews/);
  assert.match(dashboard,/NOT AUTHENTICATED/);
  assert.match(dashboard,/publicReleaseApproved: false/);
  assert.doesNotMatch(dashboard,/@gmail\.com|api[_-]?key|Bearer /);

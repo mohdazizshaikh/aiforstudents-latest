@@ -1,5 +1,7 @@
 # M29 — 100-work-item master execution plan (2 × 50)
 
+**M35 verified / M36 candidate — 2026-11-24: B1 46/50, B2 24/50.** FP-008 immutable Git-reference verification and FP-079 bounded browser retention/deletion audit passed exact-head CI. Physical-device and independent approval gates are unchanged; M36 curriculum discovery remains draft, not chapter verification.
+
 **M34 verified / M35 candidate — 2026-11-24: B1 46/50, B2 22/50.** Five bounded design contracts verified by exact-head M34 CI; FP-086/088 code tested but FP-085 dependency not fulfilled. FP-089 template awaiting review. FP-008 trace and FP-068 retrieval remain incomplete; full product and public release blocked.
 
 **M33 checkpoint, 2026-11-24: B1 46/50 scoped engineering/design tasks; B2 17/50 scoped engineering/design tasks.** Twelve additional unreviewed Maths/Science conceptual models, offline coverage for all 24 static routes and explicit shared-device reset fixes. FP-036 awaits educator review; all 3,304 educational records require qualified human decisions. **FULL PRODUCT NOT COMPLETE; PUBLIC CHILD LAUNCH BLOCKED.** Previous M32 46/50 and 2/50 values are historical. Engineering tests are not educational, legal, accessibility-device or live-host approvals.
@@ -7,13 +9,13 @@
 ## Fast batch execution rules
 
 - **B1 (50 tasks):** first five entries in each of ten workstreams. Lock scope, reusable foundations, representative safe labs and initial QA. **Current completion: 46/50**.
-- **B2 (50 tasks):** last five entries in each workstream. Broader Maths/Physics/Chemistry/Biology, governed AI/adaptive features, teacher depth, source and field reviews. **Current completion: 22/50**.
+- **B2 (50 tasks):** last five entries in each workstream. Broader Maths/Physics/Chemistry/Biology, governed AI/adaptive features, teacher depth, source and field reviews. **Current completion: 24/50**.
 - **Efficiency:** plan/triage each 50-task batch in one coordinated work cycle instead of requesting tiny steps. Run independent streams concurrently, use small coherent feature PRs rather than one unreviewable giant merge, run tests at each ~10–15-task checkpoint and consolidate progress into a single verified batch report.
 - **Non-negotiable:** a human review, real school trial, live Hostinger verification or legal approval remains **BLOCKED_EXTERNAL** unless a real authorized reviewer/operator supplies evidence. A successful Node/Chromium test or a prepared template is not that evidence.
 - **Completion status:** NOT_STARTED → IN_PROGRESS → CODE_COMPLETE_TESTED → REVIEW_PENDING → DONE_VERIFIED; BLOCKED_EXTERNAL when dependencies cannot be fulfilled. Code output needs commit, tests, screenshot/QA where appropriate; real-world gates require actual human/field proof.
 - **100 tasks are a delivery register, not an assertion that two batches will finish every Class 1–12 chapter and every state board.** Full chapter/edition-by-chapter coverage requires later enumerated content records and review, not invented percentages.
 
-**GitHub execution tickets:** [Batch B1 — 46 of 50 engineering tasks evidenced](https://github.com/mohdazizshaikh/aiforstudents-latest/issues/16) · [Batch B2 — 22 of 50 scoped engineering tasks evidenced](https://github.com/mohdazizshaikh/aiforstudents-latest/issues/17). These are two coordination issues, not 100 separate noisy issues; task detail and evidence stay in this tracked register.
+**GitHub execution tickets:** [Batch B1 — 46 of 50 engineering tasks evidenced](https://github.com/mohdazizshaikh/aiforstudents-latest/issues/16) · [Batch B2 — 24 of 50 scoped engineering tasks evidenced](https://github.com/mohdazizshaikh/aiforstudents-latest/issues/17). These are two coordination issues, not 100 separate noisy issues; task detail and evidence stay in this tracked register.
 
 ## Work breakdown — 10 streams × 10 items
 
@@ -30,7 +32,7 @@
 | FP-005 | B1 | Record 100-work plan acceptance rules | No claimed completion without task-specific evidence | DONE_VERIFIED |
 | FP-006 | B2 | Build CI plan consistency checker | Assert 100 IDs, 2 × 50 and valid state transitions | DONE_VERIFIED |
 | FP-007 | B2 | Create role/owner ledger | Real accountable owners confirmed privately; TBD is not approval | BLOCKED_EXTERNAL |
-| FP-008 | B2 | Create source/test/evidence traceability | Each completed item links commit and relevant proof | IN_PROGRESS |
+| FP-008 | B2 | Create source/test/evidence traceability | Each completed item links commit and relevant proof | DONE_VERIFIED |
 | FP-009 | B2 | Create controlled scope-change protocol | No silent product-complete or release language | DONE_VERIFIED |
 | FP-010 | B2 | Conduct independent batch completion review | Human signoff separate from engineering checklist | BLOCKED_EXTERNAL |
 
@@ -150,7 +152,7 @@
 | FP-076 | B2 | Write adaptive mastery calibration protocol | Evidence thresholds documented; not yet validated | DONE_VERIFIED |
 | FP-077 | B2 | Specify anonymous aggregate classroom view | No individual minor scores or rosters | DONE_VERIFIED |
 | FP-078 | B2 | Define safe shared-device session boundaries | Cannot identify children solely through a browser | DONE_VERIFIED |
-| FP-079 | B2 | Audit opt-in data retention and deletion | Local/session, background tabs and print paths tested | IN_PROGRESS |
+| FP-079 | B2 | Audit opt-in data retention and deletion | Local/session, background tabs and print paths tested | DONE_VERIFIED |
 | FP-080 | B2 | Run ethical learning-outcome validation | Consented study and independent evidence required | BLOCKED_EXTERNAL |
 
 ### 9. Teacher planning and classrooms — TEACH
@@ -219,3 +221,11 @@ Fifteen newly source/test-backed B2 engineering task scopes: 11 deterministic la
 ### M34 candidate checkpoint — draft PR #23 (2026-11-24)
 
 B1 **46/50**, B2 **17/50** remain verified. Ten B2 items moved to IN_PROGRESS (FP-066/067/076–079/086–089); six design contracts and bounded teacher organizer code are present. FP-079/087/088 have partial audit/worksheet/projector coverage, not full acceptance. FP-086–089 depend on external FP-085. Initial Chromium mobile overflow failed; fixes and new browser regression cases committed. Exact-head CI and full evidence reconciliation pending. No changes to 3,304 review records or public-release gate. [M34 design and QA](M34_B2_DESIGN_AND_ACCEPTANCE.md) · [Draft PR #23](https://github.com/mohdazizshaikh/aiforstudents-latest/pull/23).
+
+### M36 discovery candidate
+
+[Draft Class 1–12 topic discovery](M36_CURRICULUM_DISCOVERY.md) adds 48 illustrative topic lenses and links to the 24 existing interactive models; FP-016–020 remain BLOCKED_EXTERNAL, with zero board chapter/edition verification. M35 verified 70 scoped engineering/design tasks; M36 exact-head CI pending.
+
+### M36 expanded interactive candidate
+
+Four new original bilingual computer-only models: square function, ideal net force, symbolic atom count and hypothetical cell diagram scale. Inventory now 28 interactive lab models (16 advanced); 3,308 educational records require human review. Actual chapter mapping and all external approvals remain blocked. 70/100 scoped work items unchanged; new code pending exact-head CI.

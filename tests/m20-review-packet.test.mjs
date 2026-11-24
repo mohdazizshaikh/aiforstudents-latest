@@ -7,15 +7,15 @@ import {buildReviewRows,buildSummary,csvCell,packetCsv,exportPacket} from '../to
 
 test('M20 exports the current six source review inventories, not fabricated approvals',()=>{
  const rows=buildReviewRows(),summary=buildSummary(undefined,rows);
- assert.equal(rows.length,3304);
- assert.equal(summary.totalRows,3304);
- assert.equal(summary.pendingHumanReviewRecords,3304);
+ assert.equal(rows.length,3308);
+ assert.equal(summary.totalRows,3308);
+ assert.equal(summary.pendingHumanReviewRecords,3308);
  assert.deepEqual(Object.fromEntries(Object.entries(summary.byQueue).map(([kind,count])=>[kind,count.total])),{
-  game:3200,study:32,studio:4,experiment:4,classroom:10,digital:32,maths:3,science:7,advanced:12
+  game:3200,study:32,studio:4,experiment:4,classroom:10,digital:32,maths:3,science:7,advanced:16
  });
  assert.equal(summary.publicReleaseApproved,false);
  assert.equal(summary.humanApprovalGrantedByTool,false);
- assert.equal(new Set(rows.map(x=>x.queue+':'+x.content_id)).size,3304);
+ assert.equal(new Set(rows.map(x=>x.queue+':'+x.content_id)).size,3308);
  for(const row of rows){
   assert.ok(row.source_file);
   assert.ok(row.line>0);

@@ -1,0 +1,589 @@
+{
+  "schema": "aifs-m36-draft-discovery-v1",
+  "publicReleaseApproved": false,
+  "curriculumVerified": false,
+  "sourceEditionVerified": false,
+  "notice": "Illustrative reviewer discovery, not recommended grade placement, board chapter mapping or complete syllabus. Science labels are topic lenses, not formal subjects for every class.",
+  "grades": [
+    {
+      "grade": 1,
+      "board": "UNMAPPED",
+      "chapter": null,
+      "edition": null,
+      "reviewStatus": "PENDING",
+      "topics": [
+        {
+          "subject": "maths",
+          "en": "Counting and comparing",
+          "hi": "गिनती और तुलना",
+          "modelIds": [],
+          "coverage": "GAP",
+          "reviewStatus": "PENDING"
+        },
+        {
+          "subject": "physics",
+          "en": "Everyday movement",
+          "hi": "रोज़मर्रा की गति",
+          "modelIds": [],
+          "coverage": "GAP",
+          "reviewStatus": "PENDING"
+        },
+        {
+          "subject": "chemistry",
+          "en": "Objects and materials",
+          "hi": "वस्तुएँ और सामग्री",
+          "modelIds": [],
+          "coverage": "GAP",
+          "reviewStatus": "PENDING"
+        },
+        {
+          "subject": "biology",
+          "en": "Living and nonliving things",
+          "hi": "सजीव और निर्जीव",
+          "modelIds": [],
+          "coverage": "GAP",
+          "reviewStatus": "PENDING"
+        }
+      ]
+    },
+    {
+      "grade": 2,
+      "board": "UNMAPPED",
+      "chapter": null,
+      "edition": null,
+      "reviewStatus": "PENDING",
+      "topics": [
+        {
+          "subject": "maths",
+          "en": "Place value",
+          "hi": "स्थानीय मान",
+          "modelIds": [],
+          "coverage": "GAP",
+          "reviewStatus": "PENDING"
+        },
+        {
+          "subject": "physics",
+          "en": "Comparing lengths",
+          "hi": "लंबाई की तुलना",
+          "modelIds": [
+            "advanced:measurement"
+          ],
+          "coverage": "RELATED_DRAFT_ONLY",
+          "reviewStatus": "PENDING"
+        },
+        {
+          "subject": "chemistry",
+          "en": "Solid and liquid observations",
+          "hi": "ठोस और द्रव का अवलोकन",
+          "modelIds": [],
+          "coverage": "GAP",
+          "reviewStatus": "PENDING"
+        },
+        {
+          "subject": "biology",
+          "en": "Plants around us",
+          "hi": "आसपास के पौधे",
+          "modelIds": [],
+          "coverage": "GAP",
+          "reviewStatus": "PENDING"
+        }
+      ]
+    },
+    {
+      "grade": 3,
+      "board": "UNMAPPED",
+      "chapter": null,
+      "edition": null,
+      "reviewStatus": "PENDING",
+      "topics": [
+        {
+          "subject": "maths",
+          "en": "Equal shares",
+          "hi": "बराबर हिस्से",
+          "modelIds": [
+            "experiment:fractions-lab"
+          ],
+          "coverage": "RELATED_DRAFT_ONLY",
+          "reviewStatus": "PENDING"
+        },
+        {
+          "subject": "physics",
+          "en": "Movement and distance",
+          "hi": "गति और दूरी",
+          "modelIds": [],
+          "coverage": "GAP",
+          "reviewStatus": "PENDING"
+        },
+        {
+          "subject": "chemistry",
+          "en": "Materials in daily life",
+          "hi": "दैनिक जीवन की सामग्री",
+          "modelIds": [],
+          "coverage": "GAP",
+          "reviewStatus": "PENDING"
+        },
+        {
+          "subject": "biology",
+          "en": "Animals and habitats",
+          "hi": "जानवर और आवास",
+          "modelIds": [],
+          "coverage": "GAP",
+          "reviewStatus": "PENDING"
+        }
+      ]
+    },
+    {
+      "grade": 4,
+      "board": "UNMAPPED",
+      "chapter": null,
+      "edition": null,
+      "reviewStatus": "PENDING",
+      "topics": [
+        {
+          "subject": "maths",
+          "en": "Area and perimeter",
+          "hi": "क्षेत्रफल और परिमाप",
+          "modelIds": [
+            "workshop:rectangle"
+          ],
+          "coverage": "RELATED_DRAFT_ONLY",
+          "reviewStatus": "PENDING"
+        },
+        {
+          "subject": "physics",
+          "en": "Light and shadows",
+          "hi": "प्रकाश और छाया",
+          "modelIds": [],
+          "coverage": "GAP",
+          "reviewStatus": "PENDING"
+        },
+        {
+          "subject": "chemistry",
+          "en": "States of matter",
+          "hi": "पदार्थ की अवस्थाएँ",
+          "modelIds": [
+            "science:matter"
+          ],
+          "coverage": "RELATED_DRAFT_ONLY",
+          "reviewStatus": "PENDING"
+        },
+        {
+          "subject": "biology",
+          "en": "Food relationships",
+          "hi": "भोजन संबंध",
+          "modelIds": [
+            "science:food-chain"
+          ],
+          "coverage": "RELATED_DRAFT_ONLY",
+          "reviewStatus": "PENDING"
+        }
+      ]
+    },
+    {
+      "grade": 5,
+      "board": "UNMAPPED",
+      "chapter": null,
+      "edition": null,
+      "reviewStatus": "PENDING",
+      "topics": [
+        {
+          "subject": "maths",
+          "en": "Fractions and tables",
+          "hi": "भिन्न और सारणियाँ",
+          "modelIds": [
+            "experiment:fractions-lab",
+            "workshop:data-table"
+          ],
+          "coverage": "RELATED_DRAFT_ONLY",
+          "reviewStatus": "PENDING"
+        },
+        {
+          "subject": "physics",
+          "en": "Simple paths in a diagram",
+          "hi": "चित्र में सरल परिपथ",
+          "modelIds": [
+            "experiment:series-circuit"
+          ],
+          "coverage": "RELATED_DRAFT_ONLY",
+          "reviewStatus": "PENDING"
+        },
+        {
+          "subject": "chemistry",
+          "en": "Changes in materials",
+          "hi": "सामग्री में परिवर्तन",
+          "modelIds": [
+            "science:changes"
+          ],
+          "coverage": "RELATED_DRAFT_ONLY",
+          "reviewStatus": "PENDING"
+        },
+        {
+          "subject": "biology",
+          "en": "Food chains",
+          "hi": "खाद्य शृंखलाएँ",
+          "modelIds": [
+            "science:food-chain"
+          ],
+          "coverage": "RELATED_DRAFT_ONLY",
+          "reviewStatus": "PENDING"
+        }
+      ]
+    },
+    {
+      "grade": 6,
+      "board": "UNMAPPED",
+      "chapter": null,
+      "edition": null,
+      "reviewStatus": "PENDING",
+      "topics": [
+        {
+          "subject": "maths",
+          "en": "Integers and ratios",
+          "hi": "पूर्णांक और अनुपात",
+          "modelIds": [
+            "workshop:number-line",
+            "advanced:ratio-algebra"
+          ],
+          "coverage": "RELATED_DRAFT_ONLY",
+          "reviewStatus": "PENDING"
+        },
+        {
+          "subject": "physics",
+          "en": "Measurement and magnets",
+          "hi": "मापन और चुंबक",
+          "modelIds": [
+            "advanced:measurement",
+            "advanced:magnetism"
+          ],
+          "coverage": "RELATED_DRAFT_ONLY",
+          "reviewStatus": "PENDING"
+        },
+        {
+          "subject": "chemistry",
+          "en": "Particle models",
+          "hi": "कण मॉडल",
+          "modelIds": [
+            "science:matter"
+          ],
+          "coverage": "RELATED_DRAFT_ONLY",
+          "reviewStatus": "PENDING"
+        },
+        {
+          "subject": "biology",
+          "en": "Habitats and food webs",
+          "hi": "आवास और खाद्य जाल",
+          "modelIds": [
+            "advanced:ecosystem"
+          ],
+          "coverage": "RELATED_DRAFT_ONLY",
+          "reviewStatus": "PENDING"
+        }
+      ]
+    },
+    {
+      "grade": 7,
+      "board": "UNMAPPED",
+      "chapter": null,
+      "edition": null,
+      "reviewStatus": "PENDING",
+      "topics": [
+        {
+          "subject": "maths",
+          "en": "Algebra and symmetry",
+          "hi": "बीजगणित और सममिति",
+          "modelIds": [
+            "advanced:ratio-algebra",
+            "advanced:symmetry"
+          ],
+          "coverage": "RELATED_DRAFT_ONLY",
+          "reviewStatus": "PENDING"
+        },
+        {
+          "subject": "physics",
+          "en": "Heat and motion",
+          "hi": "ऊष्मा और गति",
+          "modelIds": [
+            "advanced:temperature",
+            "science:motion"
+          ],
+          "coverage": "RELATED_DRAFT_ONLY",
+          "reviewStatus": "PENDING"
+        },
+        {
+          "subject": "chemistry",
+          "en": "Physical and chemical changes",
+          "hi": "भौतिक और रासायनिक परिवर्तन",
+          "modelIds": [
+            "science:changes"
+          ],
+          "coverage": "RELATED_DRAFT_ONLY",
+          "reviewStatus": "PENDING"
+        },
+        {
+          "subject": "biology",
+          "en": "Cells and ecosystems",
+          "hi": "कोशिकाएँ और पारितंत्र",
+          "modelIds": [
+            "science:cells",
+            "advanced:ecosystem"
+          ],
+          "coverage": "RELATED_DRAFT_ONLY",
+          "reviewStatus": "PENDING"
+        }
+      ]
+    },
+    {
+      "grade": 8,
+      "board": "UNMAPPED",
+      "chapter": null,
+      "edition": null,
+      "reviewStatus": "PENDING",
+      "topics": [
+        {
+          "subject": "maths",
+          "en": "Graphs and probability",
+          "hi": "आलेख और प्रायिकता",
+          "modelIds": [
+            "advanced:coordinate",
+            "advanced:probability"
+          ],
+          "coverage": "RELATED_DRAFT_ONLY",
+          "reviewStatus": "PENDING"
+        },
+        {
+          "subject": "physics",
+          "en": "Sound and energy",
+          "hi": "ध्वनि और ऊर्जा",
+          "modelIds": [
+            "advanced:sound",
+            "science:energy"
+          ],
+          "coverage": "RELATED_DRAFT_ONLY",
+          "reviewStatus": "PENDING"
+        },
+        {
+          "subject": "chemistry",
+          "en": "Elements, compounds and symbolic atom counts",
+          "hi": "तत्व, यौगिक और प्रतीकात्मक परमाणु गिनती",
+          "modelIds": [
+            "advanced:periodic",
+            "advanced:atom-count"
+          ],
+          "coverage": "RELATED_DRAFT_ONLY",
+          "reviewStatus": "PENDING"
+        },
+        {
+          "subject": "biology",
+          "en": "Cell structure and diagram scale",
+          "hi": "कोशिका संरचना और चित्र पैमाना",
+          "modelIds": [
+            "science:cells",
+            "advanced:cell-scale"
+          ],
+          "coverage": "RELATED_DRAFT_ONLY",
+          "reviewStatus": "PENDING"
+        }
+      ]
+    },
+    {
+      "grade": 9,
+      "board": "UNMAPPED",
+      "chapter": null,
+      "edition": null,
+      "reviewStatus": "PENDING",
+      "topics": [
+        {
+          "subject": "maths",
+          "en": "Coordinates and data",
+          "hi": "निर्देशांक और आँकड़े",
+          "modelIds": [
+            "advanced:coordinate",
+            "workshop:data-table"
+          ],
+          "coverage": "RELATED_DRAFT_ONLY",
+          "reviewStatus": "PENDING"
+        },
+        {
+          "subject": "physics",
+          "en": "Motion, net force and reflection",
+          "hi": "गति, परिणामी बल और परावर्तन",
+          "modelIds": [
+            "science:motion",
+            "science:reflection",
+            "advanced:force-motion"
+          ],
+          "coverage": "RELATED_DRAFT_ONLY",
+          "reviewStatus": "PENDING"
+        },
+        {
+          "subject": "chemistry",
+          "en": "Atoms and mass balance",
+          "hi": "परमाणु और द्रव्यमान संतुलन",
+          "modelIds": [
+            "advanced:mass-balance",
+            "advanced:periodic"
+          ],
+          "coverage": "RELATED_DRAFT_ONLY",
+          "reviewStatus": "PENDING"
+        },
+        {
+          "subject": "biology",
+          "en": "Cells and variation",
+          "hi": "कोशिकाएँ और विविधता",
+          "modelIds": [
+            "science:cells",
+            "advanced:heredity"
+          ],
+          "coverage": "RELATED_DRAFT_ONLY",
+          "reviewStatus": "PENDING"
+        }
+      ]
+    },
+    {
+      "grade": 10,
+      "board": "UNMAPPED",
+      "chapter": null,
+      "edition": null,
+      "reviewStatus": "PENDING",
+      "topics": [
+        {
+          "subject": "maths",
+          "en": "Linear and square graphs; trigonometric gaps",
+          "hi": "रैखिक और वर्ग आलेख; त्रिकोणमिति बाकी",
+          "modelIds": [
+            "advanced:coordinate",
+            "advanced:quadratic"
+          ],
+          "coverage": "RELATED_DRAFT_ONLY",
+          "reviewStatus": "PENDING"
+        },
+        {
+          "subject": "physics",
+          "en": "Reflection and circuits",
+          "hi": "परावर्तन और परिपथ",
+          "modelIds": [
+            "science:reflection",
+            "experiment:series-circuit"
+          ],
+          "coverage": "RELATED_DRAFT_ONLY",
+          "reviewStatus": "PENDING"
+        },
+        {
+          "subject": "chemistry",
+          "en": "Periodic patterns and conservation",
+          "hi": "आवर्त पैटर्न और संरक्षण",
+          "modelIds": [
+            "advanced:periodic",
+            "advanced:mass-balance"
+          ],
+          "coverage": "RELATED_DRAFT_ONLY",
+          "reviewStatus": "PENDING"
+        },
+        {
+          "subject": "biology",
+          "en": "Heredity and ecosystem",
+          "hi": "आनुवंशिकता और पारितंत्र",
+          "modelIds": [
+            "advanced:heredity",
+            "advanced:ecosystem"
+          ],
+          "coverage": "RELATED_DRAFT_ONLY",
+          "reviewStatus": "PENDING"
+        }
+      ]
+    },
+    {
+      "grade": 11,
+      "board": "UNMAPPED",
+      "chapter": null,
+      "edition": null,
+      "reviewStatus": "PENDING",
+      "topics": [
+        {
+          "subject": "maths",
+          "en": "Functions and probability; calculus gap",
+          "hi": "फलन और प्रायिकता; कलन बाकी",
+          "modelIds": [
+            "advanced:coordinate",
+            "advanced:probability"
+          ],
+          "coverage": "RELATED_DRAFT_ONLY",
+          "reviewStatus": "PENDING"
+        },
+        {
+          "subject": "physics",
+          "en": "Waves and energy; mechanics gaps",
+          "hi": "तरंगें और ऊर्जा; यांत्रिकी बाकी",
+          "modelIds": [
+            "advanced:sound",
+            "science:energy"
+          ],
+          "coverage": "RELATED_DRAFT_ONLY",
+          "reviewStatus": "PENDING"
+        },
+        {
+          "subject": "chemistry",
+          "en": "Atomic structure and bonding gaps",
+          "hi": "परमाणु संरचना और बंधन बाकी",
+          "modelIds": [],
+          "coverage": "GAP",
+          "reviewStatus": "PENDING"
+        },
+        {
+          "subject": "biology",
+          "en": "Cell biology; physiology gaps",
+          "hi": "कोशिका जीवविज्ञान; शरीर क्रिया बाकी",
+          "modelIds": [
+            "science:cells"
+          ],
+          "coverage": "RELATED_DRAFT_ONLY",
+          "reviewStatus": "PENDING"
+        }
+      ]
+    },
+    {
+      "grade": 12,
+      "board": "UNMAPPED",
+      "chapter": null,
+      "edition": null,
+      "reviewStatus": "PENDING",
+      "topics": [
+        {
+          "subject": "maths",
+          "en": "Calculus and advanced statistics gaps",
+          "hi": "कलन और उच्च सांख्यिकी बाकी",
+          "modelIds": [],
+          "coverage": "GAP",
+          "reviewStatus": "PENDING"
+        },
+        {
+          "subject": "physics",
+          "en": "Electromagnetism and optics gaps",
+          "hi": "विद्युतचुंबकत्व और प्रकाशिकी बाकी",
+          "modelIds": [],
+          "coverage": "GAP",
+          "reviewStatus": "PENDING"
+        },
+        {
+          "subject": "chemistry",
+          "en": "Equilibrium and organic chemistry gaps",
+          "hi": "साम्य और कार्बनिक रसायन बाकी",
+          "modelIds": [],
+          "coverage": "GAP",
+          "reviewStatus": "PENDING"
+        },
+        {
+          "subject": "biology",
+          "en": "Inheritance and ecology; molecular gaps",
+          "hi": "आनुवंशिकता और पारिस्थितिकी; आणविक विषय बाकी",
+          "modelIds": [
+            "advanced:heredity",
+            "advanced:ecosystem"
+          ],
+          "coverage": "RELATED_DRAFT_ONLY",
+          "reviewStatus": "PENDING"
+        }
+      ]
+    }
+  ]
+}
