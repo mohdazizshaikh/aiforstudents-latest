@@ -12,3 +12,7 @@ Total 1,232 bounded states per language, 2,464 bilingual test cases. Browser reg
 ## Baseline verification update
 
 M64 subsequently passed full CI 45460668549 and merged PR #54 at 744a6a2a322b43ee0c38b1c9ca2c81d0fe2a1a32. M65 remains a candidate; its own exact-head results are required.
+
+## Verified outcome
+
+Exact-head CI 45461190980 completed successfully. PR #55 merged at f1a14dc8a3235742fffb9e098f447c029525138d. Four revised review fingerprints remain unapproved; no real-world gate is satisfied by CI.

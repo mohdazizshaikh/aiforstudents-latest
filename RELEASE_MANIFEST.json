@@ -1,5 +1,5 @@
 {
-  "release": "M64 verified prototype / M65 cross-subject supplemental candidate — PRIVATE ONLY",
+  "release": "M65 verified prototype / M66 teacher supplemental worksheet candidate — PRIVATE ONLY",
   "release_date": "2026-11-24",
   "hosting_zip": "aiforstudents_hostinger_staging_m33.zip",
   "source_zip": "aiforstudents_m33_source_tests.zip",
@@ -22,7 +22,7 @@
   "study_question_records": 32,
   "study_items_expert_approved": 0,
   "isolated_browser_study_checks": 32,
-  "currentMilestone": "M64_VERIFIED_M65_CANDIDATE",
+  "currentMilestone": "M65_VERIFIED_M66_CANDIDATE",
   "status": "private-staging-prototype-unreviewed",
   "date": "2026-11-24",
   "studioLessons": 2,
@@ -66,7 +66,7 @@
   "sensitiveSourcePathExposureCheckAvailable": true,
   "sensitiveSourcePathExposureVerifiedOnLiveHost": false,
   "releaseZipSourceHashParityVerifiedInCI": true,
-  "swCacheVersion": "aifs-discovery-m33-2026-11-24-m65-r1",
+  "swCacheVersion": "aifs-discovery-m33-2026-11-24-m66-r1",
   "crossTabPrivacyResetImplemented": true,
   "crossTabPrivacyRealDeviceVerified": false,
   "existingUnreviewedContentRecords": 3282,
@@ -114,9 +114,9 @@
   "printableLabActivityApprovals": 0,
   "printableLabActivityStoresStudentData": false,
   "verifiedCheckpoint": {
-    "milestone": "M64",
-    "mergeSha": "744a6a2a322b43ee0c38b1c9ca2c81d0fe2a1a32",
-    "ciRun": 45460668549
+    "milestone": "M65",
+    "mergeSha": "f1a14dc8a3235742fffb9e098f447c029525138d",
+    "ciRun": 45461190980
   },
   "legacyPackagingBaseline": "M33 artifact filenames and historical baseline counters retained; not latest test counts or live deployment evidence",
   "interactiveDraftModels": 60,
@@ -193,7 +193,7 @@
   "generatedB2PriorityWorklistCandidate": false,
   "m64FirstCiRun": 45460383399,
   "m64FirstCiDocumentationChecksFailed": true,
-  "crossSubjectExtensionsCandidate": true,
+  "crossSubjectExtensionsCandidate": false,
   "crossSubjectSupplementalActivities": 4,
   "totalSupplementalActivities": 6,
   "crossSubjectExtensionsHumanReviewed": false,
@@ -205,5 +205,13 @@
   ],
   "crossSubjectExtensionsBilingualInputCombinations": 2464,
   "advancedConceptFinderEngineeringVerified": true,
-  "generatedB2PriorityWorklistEngineeringVerified": true
+  "generatedB2PriorityWorklistEngineeringVerified": true,
+  "crossSubjectExtensionsEngineeringVerified": true,
+  "teacherSupplementWorksheetCandidate": true,
+  "teacherSupplementWorksheetActivities": 6,
+  "teacherSupplementWorksheetLanguages": 2,
+  "teacherSupplementWorksheetHumanReviewed": false,
+  "teacherSupplementWorksheetRightsAuthenticated": false,
+  "teacherSupplementWorksheetStoresStudentData": false,
+  "teacherSupplementWorksheetAnswerKeys": false
 }

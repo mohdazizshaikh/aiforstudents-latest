@@ -1,4 +1,4 @@
-import {ADVANCED_IDS,ADVANCED_MODELS} from './advanced-lab-engine.js';
+import {ADVANCED_IDS,ADVANCED_MODELS,advancedExtensionIds,advancedExtension} from './advanced-lab-engine.js';
 /** M32 private classroom paper cards: source-derived, anonymous, not approved lessons. */
 import {CLASSROOM_IDS,CLASSROOM_LESSONS,CLASSROOM_ROLES,classroomStep,classroomText} from './classroom-engine.js';
 export const ROTATION_ROLES=CLASSROOM_ROLES;
@@ -89,4 +89,16 @@ export function printableLabActivity(id,lang='en'){
 export function printableDemoAgenda(agenda,lang='en'){
  const rows=teacherAgendaRows(agenda,lang);
  return {language:lang,items:rows.map(({position,id,title,prompt,caveat})=>({position,id,title,prompt,caveat})),humanReviewed:false,publicReleaseApproved:false,localOnly:true,hasStudentNames:false};
+}
+
+/** M66 source-derived supplemental paper activity, without hints or computed results. */
+export function teacherSupplementOptions(id,lang='en'){
+ if(!validDemo(id)||!['en','hi'].includes(lang))throw Error('Unknown supplemental worksheet model or language');
+ const i=lang==='hi'?1:0;
+ return advancedExtensionIds(id).map(mode=>({mode,title:advancedExtension(id,mode).title[i]}));
+}
+export function printableSupplementActivity(id,mode,lang='en'){
+ if(!teacherSupplementOptions(id,lang).some(x=>x.mode===mode))throw Error('Unknown supplemental worksheet activity');
+ const base=printableLabActivity(id,lang),m=advancedExtension(id,mode),i=lang==='hi'?1:0;
+ return {...base,mode,title:m.title[i],prompt:m.prompt[i],caveat:m.caveat[i]};
 }

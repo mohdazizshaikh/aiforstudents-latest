@@ -723,6 +723,34 @@ def run():
                 phone.emulate_media(media='screen')
                 phone.locator('#card-language').select_option('hi')
                 check('डीएनए' in phone.locator('#lab-activity-heading').inner_text(), 'Hindi lab print title missing')
+                for subject, model, mode in [
+                    ('maths','ratio-algebra','ratio'),
+                    ('maths','ratio-algebra','equation'),
+                    ('maths','coordinate','linear'),
+                    ('physics','force-motion','net'),
+                    ('chemistry','mass-balance','missing'),
+                    ('biology','cell-doubling','rounds'),
+                ]:
+                    phone.locator('#lab-print-subject').select_option(subject)
+                    phone.locator('#lab-print-model').select_option(model)
+                    check(phone.locator('#lab-print-activity').is_enabled(), 'Supplement selector missing')
+                    phone.locator('#lab-print-activity').select_option(mode)
+                    check(phone.locator('#lab-activity-steps section').count() == 3, 'Supplement paper steps missing')
+                    check(phone.locator('#card-skip').get_attribute('href') == '#lab-activity-heading', 'Skip target not active worksheet')
+                    hi_title=phone.locator('#lab-activity-heading').inner_text()
+                    phone.locator('#card-language').select_option('en')
+                    check(phone.locator('#lab-print-activity').input_value() == mode, 'Language switch lost selected supplement')
+                    check(phone.locator('#lab-activity-heading').inner_text() != hi_title, 'Supplement title not bilingual')
+                    phone.emulate_media(media='print')
+                    check(phone.locator('#lab-activity').is_visible(), 'Supplement print missing')
+                    check(phone.locator('#lab-print-controls').is_hidden(), 'Supplement controls leaked')
+                    check(phone.locator('#teacher-guidance').is_hidden(), 'Supplement print leaked teacher guidance')
+                    phone.emulate_media(media='screen')
+                    phone.locator('#card-language').select_option('hi')
+                phone.locator('#lab-print-model').select_option('dna-complement')
+                check(phone.locator('#lab-print-activity').is_hidden(), 'Supplement selector visible for unrelated model')
+                check(phone.locator('#lab-print-activity').input_value() == 'main', 'Old supplement retained across models')
+                report['checks'].append('M66 all six bilingual supplemental offline worksheets and print isolation')
                 phone.locator('#card-view').select_option('single')
                 check(phone.locator('#lab-activity').is_hidden(), 'Lab print remains in single mode')
                 report['checks'].append('M50 offline bilingual lab activity sheets, three paper steps, print privacy and mode restore')

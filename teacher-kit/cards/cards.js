@@ -1,5 +1,5 @@
 import {CLASSROOM_IDS,CLASSROOM_LESSONS,classroomText} from '../../assets/classroom-engine.js';
-import {printableClassroomCard,printableAssignmentPack,printableLabActivity,teacherLabOptions,TEACHER_LAB_SUBJECTS} from '../../assets/teacher-cards-engine.js';
+import {printableClassroomCard,printableAssignmentPack,printableLabActivity,teacherLabOptions,TEACHER_LAB_SUBJECTS,teacherSupplementOptions,printableSupplementActivity} from '../../assets/teacher-cards-engine.js';
 const $=id=>document.getElementById(id);
 const lang=()=>$('card-language').value;
 function render(){
@@ -20,6 +20,8 @@ function render(){
  $('card-warning').textContent=l==='hi'?'असमीक्षित कक्षा मसौदा':'UNREVIEWED original lesson draft';
  $('card-no-data').textContent=l==='hi'?'कागज़ पर लिखें। यह पृष्ठ कोई उत्तर या जानकारी सेव नहीं करता।':'Write on paper. This page does not store or submit any answer.';
  document.documentElement.lang=l;
+ $('card-skip').textContent=l==='hi'?'अभ्यास पत्र पर जाएँ':'Skip to the learner worksheet';
+ $('card-skip').href='#'+($('card-view').value==='lab'?'lab-activity-heading':$('card-view').value==='pack'?'assignment-heading':'card-heading');
  renderPack(lesson,l);
  renderLab(l);
 }
@@ -45,7 +47,7 @@ function renderLab(l){
  const active=$('card-view').value==='lab';
  $('lab-print-controls').hidden=!active;$('lab-activity').hidden=!active;
  const host=$('lab-activity-steps');host.replaceChildren();
- if(!active)return;
+ if(!active){$('lab-print-activity').value='main';return;}
  const p=(en,hi)=>l==='hi'?hi:en;
  const subject=$('lab-print-subject'),model=$('lab-print-model'),previous=model.value;
  const chosen=subject.value||'maths';subject.replaceChildren();
@@ -55,7 +57,15 @@ function renderLab(l){
  const options=teacherLabOptions(chosen,l);model.replaceChildren();
  for(const item of options){const o=el('option',item.title);o.value=item.id;model.append(o)}
  if(options.some(x=>x.id===previous))model.value=previous;
- const a=printableLabActivity(model.value,l);
+ const activity=$('lab-print-activity'),previousActivity=activity.value;
+ const supplements=teacherSupplementOptions(model.value,l);activity.replaceChildren();
+ const main=el('option',p('Main model','मुख्य मॉडल'));main.value='main';activity.append(main);
+ for(const item of supplements){const option=el('option',item.title);option.value=item.mode;activity.append(option)}
+ activity.value=supplements.some(x=>x.mode===previousActivity)&&previous===model.value?previousActivity:'main';
+ $('lab-print-activity-control').hidden=!supplements.length;
+ activity.disabled=!supplements.length;
+ $('lab-print-activity-label').textContent=p('Choose a draft activity','मसौदा गतिविधि चुनें');
+ const a=activity.value==='main'?printableLabActivity(model.value,l):printableSupplementActivity(model.value,activity.value,l);
  $('lab-activity-heading').textContent=a.title;$('lab-activity-prompt').textContent=a.prompt;
  $('lab-activity-warning').textContent=p('Original unreviewed computer-only activity. Permission and educational review pending.','मूल असमीक्षित कंप्यूटर गतिविधि। अनुमति और शैक्षिक समीक्षा बाकी है।');
  $('lab-activity-caveat').textContent=a.caveat;
@@ -67,7 +77,10 @@ function renderLab(l){
   const space=el('div','');space.className='writing';space.setAttribute('aria-label',p('Paper response space','कागज़ पर उत्तर की जगह'));section.append(space);host.append(section);
  }
 }
-for(const id of ['lab-print-subject','lab-print-model'])$(id).addEventListener('change',()=>renderLab(lang()));
+for(const id of ['lab-print-subject','lab-print-model','lab-print-activity'])$(id).addEventListener('change',()=>{
+ if(id!=='lab-print-activity')$('lab-print-activity').value='main';
+ renderLab(lang());
+});
 for(const id of ['card-language','card-lesson','card-step','card-view'])$(id).addEventListener('change',()=>{
  if(id==='card-lesson')$('card-step').value='0';
  render();$( $('card-view').value==='lab'?'lab-activity-heading':$('card-view').value==='pack'?'assignment-heading':'card-heading').focus();
