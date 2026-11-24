@@ -9,8 +9,8 @@ import {studioCheck,STUDIO_LESSONS} from '../assets/studio-engine.js';
 const read=path=>readFileSync(new URL('../'+path,import.meta.url),'utf8');
 
 test('M32 offline hint selector uses only original source-backed drafts, no unauthorised AI/chat review claims',()=>{
- assert.equal(GUIDED_TOPIC_IDS.length,12);
- assert.equal(new Set(GUIDED_TOPIC_IDS).size,12);
+ assert.equal(GUIDED_TOPIC_IDS.length,28);
+ assert.equal(new Set(GUIDED_TOPIC_IDS).size,28);
  for(const id of GUIDED_TOPIC_IDS){
   const model=practiceTopic(id,'hi');
   assert.equal(model.id,id);assert.ok(model.title.length>4);
@@ -18,7 +18,7 @@ test('M32 offline hint selector uses only original source-backed drafts, no unau
    const hint=guidedHint(id,lang);
    assert.equal(hint.kind,'draft-hint');assert.ok(hint.text.length>5);
    assert.equal(hint.reviewStatus,REFERENCE_STATUS);assert.equal(hint.allowRemoteChat,false);
-   assert.ok(['assets/science-engine.js','assets/studio-engine.js','assets/experiment-engine.js'].includes(hint.source));
+   assert.ok(['assets/science-engine.js','assets/studio-engine.js','assets/experiment-engine.js','assets/advanced-lab-engine.js'].includes(hint.source));
    assert.match(hint.attribution,/draft|मसौदा/);
   }
  }

@@ -5,7 +5,8 @@ const node=(tag,text)=>{const e=document.createElement(tag);if(text!==undefined)
 const lang=()=>$('lang').value==='hi'?'hi':'en';
 const p=(en,hi)=>lang()==='hi'?hi:en;
 const t=pair=>pair[lang()==='hi'?1:0];
-let id=ADVANCED_IDS[0],state={...modelAdvanced(id).initial},feedback=null;
+const selected=new URLSearchParams(location.search).get('advanced');
+let id=ADVANCED_IDS.includes(selected)?selected:ADVANCED_IDS[0],state={...modelAdvanced(id).initial},feedback=null;
 const button=(text,action,label,disabled=false,pressed=null)=>{
  const b=node('button',text);b.type='button';b.className='btn outline compact';b.dataset.advancedAction=action;
  b.disabled=disabled;if(label)b.setAttribute('aria-label',label);
