@@ -255,3 +255,27 @@ export function renderMainWorksheetLink(anchor,id,lang){
  anchor.textContent=(lang==='hi'?'मसौदा अभ्यास पत्र खोलें: ':'Open draft worksheet: ')+plan.title;
  anchor.hidden=false;
 }
+
+/** M93 supplemental worksheet route, with original M92 main routes unchanged. */
+export function activityWorksheet(key,lang='en'){
+ const plan=teacherActivityLaunch(key,lang);
+ if(plan.mode==='main')return {...mainModelWorksheet(plan.id,lang),key,mode:'main'};
+ return {id:plan.id,key,mode:plan.mode,subject:plan.subject,title:plan.title,language:lang,href:'./teacher-kit/cards/?worksheet='+encodeURIComponent(plan.id)+'&extension='+encodeURIComponent(plan.mode)+'&language='+lang+'#lab-activity',localOnly:true,storesStudentData:false,humanReviewed:false,publicReleaseApproved:false};
+}
+export function resolveActivityWorksheet(search){
+ const main=resolveMainWorksheet(search);
+ if(main)return {...main,key:main.id+':main',mode:'main'};
+ if(typeof search!=='string'||search.length>256)return null;
+ const p=new URLSearchParams(search);
+ if([...p.keys()].length!==3||['worksheet','extension','language'].some(k=>p.getAll(k).length!==1)||p.get('extension')==='main')return null;
+ try{return activityWorksheet(p.get('worksheet')+':'+p.get('extension'),p.get('language'))}catch{return null}
+}
+export function renderActivityWorksheetLink(anchor,key,lang){
+ const plan=activityWorksheet(key,lang);anchor.href=plan.href;
+ anchor.textContent=(lang==='hi'?'मसौदा अभ्यास पत्र खोलें: ':'Open draft worksheet: ')+plan.title;anchor.hidden=false;
+}
+/** Language-specific return route from the exact selected worksheet, not query input. */
+export function worksheetReturnLaunch(key,lang='en'){
+ const plan=teacherActivityLaunch(key,lang),[query,fragment]=plan.href.split('#');
+ return {...plan,language:lang,href:query+'&lang='+lang+'#'+fragment};
+}

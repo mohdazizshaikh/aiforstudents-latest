@@ -1,4 +1,4 @@
-import {renderMainWorksheetLink} from './teacher-cards-engine.js';
+import {renderMainWorksheetLink,renderActivityWorksheetLink} from './teacher-cards-engine.js';
 /** M33: original draft-only conceptual labs, all activity state is transient. */
 import {ADVANCED_IDS,modelAdvanced,evaluateAdvanced,advancedResultRows,advancedExampleFeedback,advancedVariableComparison,ADVANCED_SUBJECT_FILTERS,advancedSubjectOptions,ADVANCED_GUIDED_STAGES,advancedGuidedStage,advancedExtensionIds,advancedExtension,evaluateAdvancedExtension,findAdvancedConcepts,compareAdvancedExtension} from './advanced-lab-engine.js';
 import {SNAPSHOT_LIMIT,snapshotState,restoreSnapshot,snapshotRows,removeSnapshot} from './advanced-snapshots.js';
@@ -240,12 +240,13 @@ function resetExtension(){extensionSnapshots.clear();extensionBaseline=null;exte
 function renderExtension(){
  const host=$('advanced-ratio-extension'),controls=$('ratio-extension-controls'),values=$('ratio-extension-values');
  host.hidden=!advancedExtensionIds(id).length;controls.replaceChildren();values.replaceChildren();
- if(host.hidden){extensionSnapshots.render(false);renderExtensionComparison();return;}
+ if(host.hidden){$('extension-worksheet-link').hidden=true;$('extension-worksheet-link').removeAttribute('href');extensionSnapshots.render(false);renderExtensionComparison();return;}
  $('ratio-extension-heading').textContent=id==='ratio-algebra'?p('More ratio and algebra exploration','अनुपात और बीजगणित की अधिक खोज'):p('More concept exploration','अवधारणा की अधिक खोज');
  $('ratio-extension-mode-label').textContent=p('Choose a supplemental draft activity','अतिरिक्त मसौदा गतिविधि चुनें');
  const mode=$('ratio-extension-mode');mode.replaceChildren();
  for(const k of advancedExtensionIds(id)){const o=node('option',t(advancedExtension(id,k).title));o.value=k;mode.append(o)}mode.value=extensionMode;
  const m=advancedExtension(id,extensionMode),r=evaluateAdvancedExtension(id,extensionMode,extensionState,lang());
+ renderActivityWorksheetLink($('extension-worksheet-link'),id+':'+extensionMode,lang());
  $('ratio-extension-prompt').textContent=r.prompt;$('ratio-extension-hint').textContent=r.hint;$('ratio-extension-caveat').textContent=r.caveat;
  $('ratio-extension-quantity').textContent=p('Quantity','राशि');$('ratio-extension-value').textContent=p('Value','मान');
  $('ratio-extension-reset').textContent=p('Reset supplemental activity','अतिरिक्त गतिविधि फिर शुरू करें');
