@@ -1,5 +1,5 @@
 import {CLASSROOM_IDS,CLASSROOM_LESSONS,classroomText} from '../../assets/classroom-engine.js';
-import {printableClassroomCard,printableAssignmentPack} from '../../assets/teacher-cards-engine.js';
+import {printableClassroomCard,printableAssignmentPack,printableLabActivity,teacherLabOptions,TEACHER_LAB_SUBJECTS} from '../../assets/teacher-cards-engine.js';
 const $=id=>document.getElementById(id);
 const lang=()=>$('card-language').value;
 function render(){
@@ -21,11 +21,13 @@ function render(){
  $('card-no-data').textContent=l==='hi'?'कागज़ पर लिखें। यह पृष्ठ कोई उत्तर या जानकारी सेव नहीं करता।':'Write on paper. This page does not store or submit any answer.';
  document.documentElement.lang=l;
  renderPack(lesson,l);
+ renderLab(l);
 }
 function renderPack(lesson,l){
- const full=$('card-view').value==='pack';
+ const full=$('card-view').value==='pack',lab=$('card-view').value==='lab';
  $('learner-card').hidden=full;$('teacher-guidance').hidden=full;$('assignment-pack').hidden=!full;
- $('card-step').disabled=full;
+ $('card-step').disabled=full||lab;$('card-lesson').disabled=lab;
+ if(lab){$('learner-card').hidden=true;$('teacher-guidance').hidden=true;$('assignment-pack').hidden=true;}
  $('card-print').textContent=full?(l==='hi'?'पूरा अभ्यास पैक छापें':'Print full learner pack'):(l==='hi'?'अभ्यास कार्ड छापें':'Print learner card');
  const host=$('assignment-pages');host.replaceChildren();
  if(!full)return;
@@ -39,8 +41,35 @@ function renderPack(lesson,l){
   const space=el('div','');space.className='writing';space.setAttribute('aria-label',l==='hi'?'कागज़ पर लिखने की जगह':'Space for paper response');section.append(space);host.append(section);
  }
 }
+function renderLab(l){
+ const active=$('card-view').value==='lab';
+ $('lab-print-controls').hidden=!active;$('lab-activity').hidden=!active;
+ const host=$('lab-activity-steps');host.replaceChildren();
+ if(!active)return;
+ const p=(en,hi)=>l==='hi'?hi:en;
+ const subject=$('lab-print-subject'),model=$('lab-print-model'),previous=model.value;
+ const chosen=subject.value||'maths';subject.replaceChildren();
+ const names={maths:['Mathematics','गणित'],physics:['Physics','भौतिकी'],chemistry:['Chemistry','रसायन'],biology:['Biology','जीवविज्ञान']};
+ const el=(tag,value)=>{const e=document.createElement(tag);e.textContent=value;return e};
+ for(const s of TEACHER_LAB_SUBJECTS){const o=el('option',p(...names[s]));o.value=s;subject.append(o)}subject.value=chosen;
+ const options=teacherLabOptions(chosen,l);model.replaceChildren();
+ for(const item of options){const o=el('option',item.title);o.value=item.id;model.append(o)}
+ if(options.some(x=>x.id===previous))model.value=previous;
+ const a=printableLabActivity(model.value,l);
+ $('lab-activity-heading').textContent=a.title;$('lab-activity-prompt').textContent=a.prompt;
+ $('lab-activity-warning').textContent=p('Original unreviewed computer-only activity. Permission and educational review pending.','मूल असमीक्षित कंप्यूटर गतिविधि। अनुमति और शैक्षिक समीक्षा बाकी है।');
+ $('lab-activity-caveat').textContent=a.caveat;
+ $('lab-activity-private').textContent=p('Write on paper; no names or online submission. Printouts cannot be remotely deleted.','कागज़ पर लिखें; नाम या ऑनलाइन जमा नहीं करें। प्रिंट दूर से मिटाया नहीं जा सकता।');
+ $('lab-print-subject-label').textContent=p('Lab subject','प्रयोग विषय');$('lab-print-model-label').textContent=p('Draft model','मसौदा मॉडल');
+ $('card-print').textContent=p('Print lab activity','प्रयोग गतिविधि छापें');
+ for(const [i,step] of a.steps.entries()){
+  const section=el('section','');section.className='assignment-page';section.append(el('h3',(i+1)+'. '+step));
+  const space=el('div','');space.className='writing';space.setAttribute('aria-label',p('Paper response space','कागज़ पर उत्तर की जगह'));section.append(space);host.append(section);
+ }
+}
+for(const id of ['lab-print-subject','lab-print-model'])$(id).addEventListener('change',()=>renderLab(lang()));
 for(const id of ['card-language','card-lesson','card-step','card-view'])$(id).addEventListener('change',()=>{
  if(id==='card-lesson')$('card-step').value='0';
- render();$( $('card-view').value==='pack'?'assignment-heading':'card-heading').focus();
+ render();$( $('card-view').value==='lab'?'lab-activity-heading':$('card-view').value==='pack'?'assignment-heading':'card-heading').focus();
 });
 render();
