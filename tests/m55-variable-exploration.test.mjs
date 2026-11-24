@@ -21,5 +21,5 @@ test('M55 multiple changed controls never show single-control comparison; invali
  for(const f of m.fields)after[f.id]=alternative(f,before[f.id]);
  const r=advancedVariableComparison('counting',before,after);assert.equal(r.mode,'MULTIPLE_CONTROLS');assert.deepEqual(r.comparisons,[]);
  assert.throws(()=>advancedVariableComparison('counting',before,{...after,student:'synthetic'}));assert.throws(()=>advancedVariableComparison('unknown',{},{}));assert.throws(()=>advancedVariableComparison('counting',before,after,'xx'));
- const app=readFileSync(new URL('../assets/advanced-lab-app.js',import.meta.url),'utf8');assert.match(app,/variableBaseline=null;render\(\)/);assert.doesNotMatch(app,/localStorage|sessionStorage|fetch\(|XMLHttpRequest/);
+ const app=readFileSync(new URL('../assets/advanced-lab-app.js',import.meta.url),'utf8');assert.match(app,/variableBaseline=null;(?:guidedIndex=null;)?render\(\)/);assert.doesNotMatch(app,/localStorage|sessionStorage|fetch\(|XMLHttpRequest/);
 });
