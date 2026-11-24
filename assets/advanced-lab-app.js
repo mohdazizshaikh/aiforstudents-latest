@@ -27,6 +27,29 @@ function visualize(metrics){
   line(10,cy,310,cy,'#304f47',2);line(cx,10,cx,170,'#304f47',2);txt(300,cy-5,'x');txt(cx+5,14,'y');
   if(id==='coordinate'){line(cx-5*sc,cy+9*sc,cx+5*sc,cy-11*sc,'#26785d',2);dot(cx+metrics.x*sc,cy-metrics.y*sc,'#9b5620');txt(14,14,'y = 2x + 1')}
   else{dot(cx+state.x*sc,cy-state.y*sc,'#296cba');dot(cx+metrics.transformedX*sc,cy-metrics.transformedY*sc,'#9b5620');txt(14,14,'P → P′')}
+ }else if(id==='arithmetic-sequence'){
+  for(let i=0;i<state.n;i++){const v=state.first+i*state.diff,h=v/30*110,x=22+i*48;shape('rect',{x,y:140-h,width:32,height:h,fill:i===state.n-1?'#ad7525':'#39826b'});txt(x,135-h,String(v));txt(x,157,String(i+1))}
+ }else if(id==='square-slope'){
+  const cx=125,cy=150,sx=32,sy=7,points=[];line(10,cy,310,cy,'#304f47',2);line(cx,8,cx,160,'#304f47',2);
+  for(let x=-3;x<=4;x+=0.1)points.push((cx+x*sx)+','+(cy-x*x*sy));shape('polyline',{points:points.join(' '),stroke:'#26785d','stroke-width':2,fill:'none'});
+  const a=state.x,b=a+metrics.h;dot(cx+a*sx,cy-a*a*sy,'#ad7525');dot(cx+b*sx,cy-b*b*sy,'#346b9e');line(cx+a*sx,cy-a*a*sy,cx+b*sx,cy-b*b*sy,'#346b9e',3);
+  const l=a-0.4,r=a+0.4;line(cx+l*sx,cy-(a*a+metrics.tangentSlope*(l-a))*sy,cx+r*sx,cy-(a*a+metrics.tangentSlope*(r-a))*sy,'#ad7525',3);txt(12,18,'y = x²');
+ }else if(id==='constant-acceleration'){
+  const x=26,y=140;line(x,y,300,y,'#304f47',2);line(x,y,x,20,'#304f47',2);
+  line(x,y,x+state.seconds*48,y-metrics.finalSpeed*4,'#39826b',3);dot(x+state.seconds*48,y-metrics.finalSpeed*4,'#ad7525');txt(12,15,p('Speed vs time','चाल बनाम समय'));txt(240,158,'t (s)');
+ }else if(id==='thin-lens'){
+  line(15,90,305,90,'#304f47');shape('ellipse',{cx:160,cy:90,rx:12,ry:65,fill:'#b6d5ef',stroke:'#346b9e'});
+  const u=metrics.objectCm,v=metrics.imageCm,scale=120/Math.max(u,v),ox=160-u*scale,ix=160+v*scale;
+  line(ox,90,ox,35,'#39826b',4);line(ox,35,ix,90+55*metrics.magnitude,'#ad7525',1);line(ix,90,ix,90+55*metrics.magnitude,'#346b9e',4);
+  txt(10,170,p('Ideal distances; diagram not to scale','आदर्श दूरियाँ; चित्र पैमाने पर नहीं'));
+ }else if(id==='ion-charge'){
+  for(const [v,y,label,fill] of [[state.protons,48,'p⁺','#ad7525'],[state.electrons,115,'e⁻','#346b9e']]){txt(10,y+5,label);for(let i=0;i<v;i++)dot(45+i*22,y,fill)}
+ }else if(id==='mass-fraction'){
+  const w=260*state.a/(state.a+state.b);shape('rect',{x:30,y:55,width:w,height:55,fill:'#39826b'});shape('rect',{x:30+w,y:55,width:260-w,height:55,fill:'#b6d5ef'});txt(30,40,'A: '+state.a+' · B: '+state.b);txt(30,140,Number(metrics.massPercent.toFixed(2))+'% A');
+ }else if(id==='cell-doubling'){
+  for(let i=0;i<metrics.finalCells;i++)shape('circle',{cx:30+(i%8)*35,cy:35+Math.floor(i/8)*47,r:12,fill:'#d8eee3',stroke:'#39826b'});
+ }else if(id==='plant-process'){
+  const rows=advancedResultRows(metrics,lang());for(let i=0;i<2;i++){shape('rect',{x:12,y:15+i*76,width:296,height:58,rx:6,fill:i?'#d8eee3':'#b6d5ef'});txt(20,32+i*76,rows[i].label);const words=rows[i].value.split(' ');let lineText='',dy=0;for(const word of words){if((lineText+' '+word).length>38&&lineText){txt(20,48+i*76+dy,lineText);dy+=14;lineText=''}lineText+=(lineText?' ':'')+word}if(lineText)txt(20,48+i*76+dy,lineText)}
  }else if(id==='counting'){
   txt(15,25,'A');txt(15,95,'B');
   for(const [value,y,fill] of [[state.a,50,'#26785d'],[state.b,120,'#346b9e']])for(let i=0;i<value;i++)dot(35+i*29,y,fill);
@@ -118,7 +141,7 @@ function visualize(metrics){
 function render(){
  const m=modelAdvanced(id),result=evaluateAdvanced(id,state,lang());
  $('advanced-nav').textContent=p('Explore Labs','प्रयोग खोजें');
- $('advanced-title').textContent=p('Explore Maths & Science Labs — 24 draft models','गणित और विज्ञान प्रयोग — 24 मसौदा मॉडल');
+ $('advanced-title').textContent=p('Explore Maths & Science Labs — 32 draft models','गणित और विज्ञान प्रयोग — 32 मसौदा मॉडल');
  $('advanced-intro').textContent=p('Offline computer-only concepts: Maths, Physics, Chemistry and Biology.','ऑफ़लाइन कंप्यूटर आधारित गणित, भौतिकी, रसायन और जीवविज्ञान अवधारणाएँ।');
  $('advanced-notice').textContent=p('UNREVIEWED original teaching drafts. Independent subject, Hindi and safety review pending. No grade mapping or real experiments.','असमीक्षित मूल शिक्षण मसौदे। विषय, हिंदी और सुरक्षा समीक्षा बाकी है। कक्षा मिलान या असली प्रयोग नहीं।');
  $('advanced-topic-label').textContent=p('Choose a concept','अवधारणा चुनें');
