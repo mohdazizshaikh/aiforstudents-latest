@@ -39,6 +39,15 @@ jobs:
           npm run curriculum:progress -- --summary
           npm run curriculum:progress -- --summary cbse-001.json
           npm run curriculum:progress -- --require-all cbse-001.json cbse-002.json maharashtra-001.json
+      - name: Reconcile local educational review progress (NOT approval)
+        run: |
+          npm run review:batches -- --template pilot-001 m81-pilot-local
+          npm run review:progress -- --summary
+          npm run review:progress -- --summary m81-pilot-local
+          if npm run review:progress -- --require-all m81-pilot-local; then
+            echo 'ERROR: incomplete batch collection accepted as complete'
+            exit 1
+          fi
       - name: Validate pending M23 review-evidence template (NOT human approval)
         run: |
           npm run review-evidence:template

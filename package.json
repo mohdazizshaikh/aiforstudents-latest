@@ -24,6 +24,8 @@
     "review:compare": "node tools/review-change-workbench.mjs --compare",
     "curriculum:plan": "node tools/curriculum-planning-workbench.mjs",
     "curriculum:batches": "node tools/board-review-batches.mjs",
-    "curriculum:progress": "node tools/board-review-progress.mjs"
+    "curriculum:progress": "node tools/board-review-progress.mjs",
+    "review:batches": "node tools/review-batches.mjs",
+    "review:progress": "node tools/educational-review-progress.mjs"
   }
 }
