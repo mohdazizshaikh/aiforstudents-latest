@@ -1,0 +1,7 @@
+# M37 — offline assignment pack candidate (FP-087)
+
+Stacked on M36 at bf677fdbab7a9ecdbebebca9a4af075c15ae3cff; this branch is not merged. Two existing original classroom lessons (fractions and conceptual two-switch circuits) now support a single learner card or full five-step assignment pack in English or Hindi, using the existing offline cached cards page. Ten source-derived steps; no new educational prompts or altered source hashes. The full pack payload only exposes step index, stage, question and learner action: no teacher guidance, teacher speech, personal fields or scores. Teacher guidance remains on the existing single-card screen and is hidden in print. Pack controls are hidden in print and the existing native Print / Save as PDF destination remains local. No upload, storage, identity, new route or external resource copy.
+
+Rights: original draft source file assets/classroom-engine.js. Rights/permission are NOT authenticated; no license granted or publisher endorsement claimed here. FP-087 remains IN_PROGRESS pending exact-head verification and FP-085 human review plus rights approval. School/public use remains blocked. No physical printer or PDF page count certification.
+
+Evidence: tests/m37-assignment-pack.test.mjs and added offline Chromium print-emulation checks for both lessons and return to single-card mode, plus static cache update. Current 3,308 pending educational records unchanged.

@@ -1,8 +1,8 @@
 /** M32: no input logs, no remote requests, no user accounts, and no AI model. */
-import {GUIDED_TOPIC_IDS,PRACTICE_SUBJECTS,PRACTICE_DIFFICULTIES,practiceTopic,guidedHint,recommendPractice,optionalReviewDay,fractionStage,FRACTION_FIVE_STAGES} from './practice-engine.js';
+import {GUIDED_TOPIC_IDS,PRACTICE_SUBJECTS,PRACTICE_DIFFICULTIES,practiceTopic,guidedHint,recommendPractice,optionalReviewDay,fractionStage,FRACTION_FIVE_STAGES,nextPracticeChoice,NEXT_PRACTICE_CHOICES} from './practice-engine.js';
 const $=x=>document.getElementById(x);
 const n=(tag,cls,text)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(text!==undefined)e.textContent=text;return e};
-const state={subject:'maths',difficulty:'gentle',language:'en',hintId:'studio:fractions',response:null,recommendation:null,scheduled:null,fracStage:0,shaded:0,showSensitive:false};
+const state={subject:'maths',difficulty:'gentle',language:'en',hintId:'studio:fractions',response:null,recommendation:null,scheduled:null,fracStage:0,shaded:0,showSensitive:false,nextChoice:null};
 const t=(en,hi)=>state.language==='hi'?hi:en;
 function render(){
  $('local-guide-nav').textContent=t('Practice Guide','अभ्यास मार्गदर्शक');
@@ -40,6 +40,14 @@ function render(){
   $('local-guide-target').href=state.recommendation.href;
   $('local-guide-target').textContent=t('Open the existing local practice','मौजूदा स्थानीय अभ्यास खोलें');
  }
+ $('local-guide-next-heading').textContent=t('Choose your next practice step (no score)','अगला अभ्यास स्वयं चुनें (कोई अंक नहीं)');
+ for(const [id,en,hi] of [['repeat','Repeat this model','मॉडल फिर करें'],['explain','Explain the idea','विचार समझाएँ'],['different','Try a related topic','संबंधित विषय आज़माएँ'],['next-clear','Clear choice','विकल्प हटाएँ']])$('local-guide-'+id).textContent=t(en,hi);
+ $('local-guide-next-result').hidden=state.nextChoice===null;
+ if(state.nextChoice!==null){
+  const x=nextPracticeChoice({id:state.hintId,choice:state.nextChoice,lang:state.language});
+  $('local-guide-next-reason').textContent=x.title+' — '+x.reason+' '+t('Unreviewed draft; choose the topic yourself if opening a lab section.','असमीक्षित मसौदा; प्रयोग अनुभाग में विषय स्वयं चुनें।');
+  $('local-guide-next-link').href=x.href;$('local-guide-next-link').textContent=t('Open draft practice','मसौदा अभ्यास खोलें');
+ }
  $('local-guide-review-label').textContent=t('Optional next-day paper reminder (not saved)','वैकल्पिक कागज़ी दोहराव दिन (सहेजा नहीं जाएगा)');
  $('local-guide-review-1').textContent=t('Tomorrow (+1 day)','कल (+1 दिन)');
  $('local-guide-review-3').textContent=t('In 3 days','3 दिन में');
@@ -68,15 +76,17 @@ function render(){
  $('local-guide-fraction-prev').textContent=t('Previous stage','पिछला चरण');
  $('local-guide-fraction-next').textContent=t('Next stage (no score required)','अगला चरण (अंक आवश्यक नहीं)');
 }
-function resetGuide(){state.response=null;state.recommendation=null;state.scheduled=null;state.fracStage=0;state.shaded=0;delete state.fracFeedback;render()}
+function resetGuide(){state.hintId='studio:fractions';state.subject='maths';state.difficulty='gentle';state.nextChoice=null;state.response=null;state.recommendation=null;state.scheduled=null;state.fracStage=0;state.shaded=0;delete state.fracFeedback;render()}
 $('local-guide-subject').addEventListener('change',e=>{state.subject=e.target.value;state.recommendation=null;render()});
 $('local-guide-difficulty').addEventListener('change',e=>{state.difficulty=e.target.value;state.recommendation=null;render()});
-$('local-guide-language').addEventListener('change',e=>{state.language=e.target.value;render()});
-$('local-guide-topic').addEventListener('change',e=>{state.hintId=e.target.value;state.response=null;render()});
+$('local-guide-language').addEventListener('change',e=>{state.language=e.target.value;state.response=null;state.recommendation=null;render()});
+$('local-guide-topic').addEventListener('change',e=>{state.hintId=e.target.value;state.response=null;state.nextChoice=null;render()});
 $('local-guide-suggest').addEventListener('click',()=>{state.recommendation=recommendPractice({subject:state.subject,difficulty:state.difficulty,lang:state.language});render();$('local-guide-reason').focus()});
 $('local-guide-decline').addEventListener('click',()=>{state.recommendation=null;render();$('local-guide-suggest').focus()});
 $('local-guide-hint').addEventListener('click',()=>{state.response=guidedHint(state.hintId,state.language);render();$('local-guide-draft-hint').focus()});
 $('local-guide-sensitive').addEventListener('click',()=>{state.response=guidedHint('',state.language,'sensitive');render();$('local-guide-draft-hint').focus()});
+for(const choice of NEXT_PRACTICE_CHOICES)$('local-guide-'+choice).addEventListener('click',()=>{state.nextChoice=choice;render();$('local-guide-next-reason').focus()});
+$('local-guide-next-clear').addEventListener('click',()=>{state.nextChoice=null;render();$('local-guide-repeat').focus()});
 for(const gap of [1,3,7])$('local-guide-review-'+gap).addEventListener('click',()=>{
  state.scheduled=optionalReviewDay(new Date().toISOString().slice(0,10),gap);render();$('local-guide-day').focus()
 });

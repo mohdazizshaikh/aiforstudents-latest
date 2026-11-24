@@ -1,5 +1,8 @@
 # Project Status Dashboard — AI for Students
 
+> **M40 CANDIDATE — 2026-11-24:** M37 offline assignment packs and M38 practice choices are tested and merged. M40 adds eight original unreviewed concept models; candidate inventory 36 interactive models, 36 source-backed draft hints, 3,316 pending educational reviews. CI pending; 70/100 scoped engineering/design items unchanged. No actual syllabus mapping, expert approval or public release.
+
+
 > **M36 EXPANDED CANDIDATE — 2026-11-24:** 28 interactive models (16 advanced), including four newly coded original draft simulations; 12 class discovery rows and 48 illustrative topic lenses, no verified chapter placement. 3,308 educational reviews pending; 70/100 scoped engineering/design tasks in candidate tracker. Exact-head CI pending; public launch remains blocked. M35/M33 historical baselines below.
 
 

@@ -12,10 +12,11 @@
 <a class="skip no-print" href="#learner-card">Skip to the learner worksheet</a>
 <header class="no-print"><a href="../../#classroom">Back to classroom / कक्षा में लौटें</a>
 <h1>Original learner-only discussion cards · कक्षा चर्चा कार्ड</h1>
-<p>UNREVIEWED teacher kit. No student names, homework uploads, grades or dashboards. Teacher answers visible on screen but always hidden from the A4 learner printout.</p></header>
+<p>UNREVIEWED teacher kit. No student names, homework uploads, grades or dashboards. Teacher answers visible on screen for one card but always hidden from the A4 learner printout. Full lesson packs contain only learner questions and actions. Original drafts; permission and educational review are not authenticated.</p></header>
 <div class="controls no-print">
  <label for="card-language">Language / भाषा <select id="card-language"><option value="en">English</option><option value="hi">हिन्दी</option></select></label>
  <label for="card-lesson">Lesson / पाठ <select id="card-lesson"><option value="fractions">Fractions</option><option value="circuits">Circuits</option></select></label>
+ <label for="card-view">Print mode / प्रिंट का प्रकार <select id="card-view"><option value="single">One discussion card / एक चर्चा कार्ड</option><option value="pack">Full five-step pack / पाँच चरणों का पैक</option></select></label>
  <label for="card-step">Step / चरण <select id="card-step"></select></label>
  <button type="button" class="btn" id="card-print" data-print-worksheet>Print learner card / अभ्यास कार्ड छापें</button>
 </div>
@@ -30,6 +31,11 @@
  <div class="writing" aria-label="Empty writing space for learner's answer"></div>
  <p id="card-no-data">Write on your paper. Nothing is submitted or stored by this page.</p>
 </section>
+<div id="assignment-pack" hidden aria-labelledby="assignment-heading">
+ <h2 id="assignment-heading" tabindex="-1"></h2>
+ <p id="assignment-notice"></p>
+ <div id="assignment-pages"></div>
+</div>
 <section class="teacher-notes" id="teacher-guidance" aria-labelledby="card-answer-heading">
  <h2 id="card-answer-heading">Teacher-only guidance — NEVER on printed learner sheet</h2>
  <p id="card-teacher-speech"></p><p id="card-answer"></p>

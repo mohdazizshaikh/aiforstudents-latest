@@ -5,7 +5,8 @@ const node=(tag,text)=>{const e=document.createElement(tag);if(text!==undefined)
 const lang=()=>$('lang').value==='hi'?'hi':'en';
 const p=(en,hi)=>lang()==='hi'?hi:en;
 const t=pair=>pair[lang()==='hi'?1:0];
-let id=ADVANCED_IDS[0],state={...modelAdvanced(id).initial},feedback=null;
+const selected=new URLSearchParams(location.search).get('advanced');
+let id=ADVANCED_IDS.includes(selected)?selected:ADVANCED_IDS[0],state={...modelAdvanced(id).initial},feedback=null;
 const button=(text,action,label,disabled=false,pressed=null)=>{
  const b=node('button',text);b.type='button';b.className='btn outline compact';b.dataset.advancedAction=action;
  b.disabled=disabled;if(label)b.setAttribute('aria-label',label);
@@ -26,6 +27,37 @@ function visualize(metrics){
   line(10,cy,310,cy,'#304f47',2);line(cx,10,cx,170,'#304f47',2);txt(300,cy-5,'x');txt(cx+5,14,'y');
   if(id==='coordinate'){line(cx-5*sc,cy+9*sc,cx+5*sc,cy-11*sc,'#26785d',2);dot(cx+metrics.x*sc,cy-metrics.y*sc,'#9b5620');txt(14,14,'y = 2x + 1')}
   else{dot(cx+state.x*sc,cy-state.y*sc,'#296cba');dot(cx+metrics.transformedX*sc,cy-metrics.transformedY*sc,'#9b5620');txt(14,14,'P → P′')}
+ }else if(id==='counting'){
+  txt(15,25,'A');txt(15,95,'B');
+  for(const [value,y,fill] of [[state.a,50,'#26785d'],[state.b,120,'#346b9e']])for(let i=0;i<value;i++)dot(35+i*29,y,fill);
+ }else if(id==='place-value'){
+  txt(15,18,p('Tens','दहाई'));txt(15,116,p('Ones','इकाई'));
+  for(let i=0;i<state.tens;i++)for(let j=0;j<10;j++)shape('rect',{x:18+i*29,y:25+j*7,width:23,height:6,fill:'#26785d'});
+  for(let i=0;i<state.ones;i++)shape('rect',{x:18+i*29,y:125,width:23,height:12,fill:'#346b9e'});
+ }else if(id==='length-compare'){
+  for(const [v,y,label] of [[state.a,40,'A'],[state.b,105,'B']]){txt(15,y-9,label+' · '+v+' cm');shape('rect',{x:15,y,width:v*27,height:25,fill:'#39826b'});}line(15,25,15,145,'#304f47',2);
+ }else if(id==='shadow-ray'){
+  dot(25,85,'#ad7525');line(25,85,state.blocker==='opaque'?145:290,85,'#ad7525',3);
+  if(state.blocker==='opaque'){shape('rect',{x:145,y:45,width:20,height:80,fill:'#304f47'});shape('rect',{x:275,y:60,width:15,height:50,fill:'#304f47'})}
+  line(290,25,290,145,'#73968a',2);txt(12,165,p('Symbolic light path','प्रतीकात्मक प्रकाश मार्ग'));
+ }else if(id==='material-state'){
+  shape('rect',{x:55,y:30,width:210,height:115,rx:5,fill:'#f3f8f6',stroke:'#73968a'});
+  if(state.example==='ice')shape('rect',{x:125,y:65,width:70,height:65,fill:'#b6d5ef',stroke:'#346b9e'});
+  else shape('rect',{x:58,y:85,width:204,height:57,fill:'#b6d5ef'});
+  txt(65,160,state.example==='ice'?p('Solid ice','ठोस बर्फ'):p('Liquid water','द्रव जल'));
+ }else if(id==='material-objects'){
+  if(state.object==='glass')shape('circle',{cx:160,cy:85,r:42,fill:'#b6d5ef',stroke:'#346b9e'});
+  else shape('rect',{x:85,y:45,width:150,height:state.object==='wood'?85:12,fill:state.object==='wood'?'#b78a58':'#e6f2ea',stroke:'#73968a'});
+  txt(15,160,t(modelAdvanced(id).fields[0].options.find(o=>o.value===state.object).label));
+ }else if(id==='plant-parts'){
+  line(160,95,160,30,state.part==='stem'?'#ad7525':'#26785d',8);shape('ellipse',{cx:125,cy:48,rx:36,ry:16,fill:state.part==='leaf'?'#ad7525':'#39826b'});
+  shape('ellipse',{cx:195,cy:60,rx:36,ry:16,fill:state.part==='leaf'?'#ad7525':'#39826b'});
+  for(const x of [110,135,160,185,210])line(160,95,x,150,state.part==='root'?'#ad7525':'#805731',4);
+  txt(15,170,t(modelAdvanced(id).fields[0].options.find(o=>o.value===state.part).label));
+ }else if(id==='living-examples'){
+  if(state.example==='stone')shape('polygon',{points:'90,120 115,55 195,45 230,95 200,130',fill:'#81958e',stroke:'#304f47'});
+  else{line(160,145,160,35,'#26785d',8);shape('ellipse',{cx:125,cy:65,rx:36,ry:18,fill:'#39826b'});shape('ellipse',{cx:195,cy:90,rx:36,ry:18,fill:'#39826b'})}
+  txt(15,165,t(modelAdvanced(id).fields[0].options.find(o=>o.value===state.example).label));
  }else if(id==='quadratic'){
   const cx=160,cy=153,sx=23,sy=5;
   line(18,cy,302,cy,'#304f47',2);line(cx,12,cx,165,'#304f47',2);
@@ -86,7 +118,7 @@ function visualize(metrics){
 function render(){
  const m=modelAdvanced(id),result=evaluateAdvanced(id,state,lang());
  $('advanced-nav').textContent=p('Explore Labs','प्रयोग खोजें');
- $('advanced-title').textContent=p('Explore Maths & Science Labs — 16 draft models','गणित और विज्ञान प्रयोग — 16 मसौदा मॉडल');
+ $('advanced-title').textContent=p('Explore Maths & Science Labs — 24 draft models','गणित और विज्ञान प्रयोग — 24 मसौदा मॉडल');
  $('advanced-intro').textContent=p('Offline computer-only concepts: Maths, Physics, Chemistry and Biology.','ऑफ़लाइन कंप्यूटर आधारित गणित, भौतिकी, रसायन और जीवविज्ञान अवधारणाएँ।');
  $('advanced-notice').textContent=p('UNREVIEWED original teaching drafts. Independent subject, Hindi and safety review pending. No grade mapping or real experiments.','असमीक्षित मूल शिक्षण मसौदे। विषय, हिंदी और सुरक्षा समीक्षा बाकी है। कक्षा मिलान या असली प्रयोग नहीं।');
  $('advanced-topic-label').textContent=p('Choose a concept','अवधारणा चुनें');

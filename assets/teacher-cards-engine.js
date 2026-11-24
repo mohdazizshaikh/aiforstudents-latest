@@ -14,3 +14,16 @@ export function printableClassroomCard(lessonId,index,lang='en'){
   humanReviewed:false,hasStudentNames:false,quizScore:null,
   worksheetMode:'learner-only',approval:'PENDING',localOnly:true};
 }
+
+/** M37 source-derived print pack, not a licensed/approved curriculum release. Learner payload omits answer keys. */
+export function printableAssignmentPack(lessonId,lang='en'){
+ if(!CLASSROOM_IDS.includes(lessonId)||!['en','hi'].includes(lang))throw Error('Unknown assignment pack');
+ const lesson=CLASSROOM_LESSONS[lessonId];
+ const cards=lesson.steps.map((_,index)=>{
+  const {stepIndex,stage,question,action}=printableClassroomCard(lessonId,index,lang);
+  return {stepIndex,stage,question,action};
+ });
+ return {lesson:classroomText(lesson.title,lang),lessonId,language:lang,cards,
+  sourceFile:'assets/classroom-engine.js',rightsStatus:'ORIGINAL_DRAFT_PERMISSION_NOT_AUTHENTICATED',
+  humanReviewed:false,publicReleaseApproved:false,localOnly:true,hasStudentNames:false};
+}
