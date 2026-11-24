@@ -66,7 +66,7 @@
   "sensitiveSourcePathExposureCheckAvailable": true,
   "sensitiveSourcePathExposureVerifiedOnLiveHost": false,
   "releaseZipSourceHashParityVerifiedInCI": true,
-  "swCacheVersion": "aifs-discovery-m33-2026-11-24-m56-combined-r1",
+  "swCacheVersion": "aifs-discovery-m33-2026-11-24-m58-r1",
   "crossTabPrivacyResetImplemented": true,
   "crossTabPrivacyRealDeviceVerified": false,
   "existingUnreviewedContentRecords": 3282,
@@ -146,5 +146,10 @@
   "tutorBoundaryAuditCandidate": true,
   "tutorBoundaryAuditCases": 224,
   "tutorIndependentRedTeamCompleted": false,
-  "tutorProviderTested": false
+  "tutorProviderTested": false,
+  "advancedGuidedStagesCandidate": true,
+  "advancedGuidedStagesModels": 48,
+  "advancedGuidedStagesPerModel": 5,
+  "advancedGuidedStagesPersists": false,
+  "advancedGuidedStagesMasteryValidated": false
 }

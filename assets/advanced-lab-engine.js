@@ -341,3 +341,25 @@ export function advancedSubjectOptions(subject='all',lang='en'){
  if(!ADVANCED_SUBJECT_FILTERS.includes(subject)||!['en','hi'].includes(lang))throw Error('Unknown subject or language');
  return ADVANCED_IDS.filter(id=>subject==='all'||ADVANCED_MODELS[id].subject===subject).map(id=>({id,subject:ADVANCED_MODELS[id].subject,title:text(ADVANCED_MODELS[id].title,lang),gradeVerified:false,humanReviewed:false}));
 }
+
+/** M58 optional learner-directed stages; no response collection, gate or mastery inference. */
+export const ADVANCED_GUIDED_STAGES=Object.freeze(['predict','explore','compare','explain','reflect']);
+const stageLabels=Object.freeze({
+ predict:P('Predict','अनुमान लगाएँ'),explore:P('Explore','खोजें'),compare:P('Compare','तुलना करें'),
+ explain:P('Explain','समझाएँ'),reflect:P('Reflect','विचार करें')
+});
+export function advancedGuidedStage(id,stage,lang='en'){
+ if(!ADVANCED_GUIDED_STAGES.includes(stage)||!['en','hi'].includes(lang))throw Error('Unknown stage or language');
+ const m=modelAdvanced(id);
+ const instructions={
+  predict:P('Read the draft question. Before changing controls, make a prediction on paper or in your mind.','मसौदा प्रश्न पढ़ें। नियंत्रण बदलने से पहले कागज़ पर या मन में अनुमान लगाएँ।'),
+  explore:P('Inspect the model and change one allowed control. Notice the calculated values; do not perform a physical experiment.','मॉडल देखें और एक अनुमत नियंत्रण बदलें। गणना किए गए मान देखें; वास्तविक प्रयोग न करें।'),
+  compare:P('If you want, mark a starting state in the comparison panel below, then change one control. Compare only the displayed model values.','चाहें तो नीचे तुलना पैनल में आरंभिक स्थिति चुनें, फिर एक नियंत्रण बदलें। केवल दिखाए गए मॉडल मान मिलाएँ।'),
+  explain:P('Use the draft hint and explain your reasoning aloud or on paper. Ask a teacher to check it.','मसौदा संकेत का उपयोग करके अपना कारण बोलकर या कागज़ पर समझाएँ। शिक्षक से जाँच कराएँ।'),
+  reflect:P('Think of one question or another allowed value to explore. You can repeat, leave, or return to any stage; no answer is submitted.','एक और सवाल या खोजने योग्य अनुमत मान सोचें। किसी भी चरण में लौटें, दोहराएँ या छोड़ें; कोई उत्तर जमा नहीं होता।')
+ };
+ const index=ADVANCED_GUIDED_STAGES.indexOf(stage);
+ return {id,stage,index,total:ADVANCED_GUIDED_STAGES.length,label:text(stageLabels[stage],lang),instruction:text(instructions[stage],lang),
+  sourcePrompt:text(m.prompt,lang),sourceHint:stage==='explain'?text(m.hint,lang):null,caveat:text(m.caveat,lang),
+  source:'assets/advanced-lab-engine.js',optional:true,storesResponses:false,masteryPrediction:false,publicReleaseApproved:false};
+}
