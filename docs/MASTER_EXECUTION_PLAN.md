@@ -273,3 +273,7 @@ M56 combined CI 45453496959 and M57 CI 45453774394 passed and merged. M58 extend
 ### M58 corrected / M59 physical validation candidate
 
 M58 initial Chromium passed; legacy M55 reset assertion corrected without removing privacy requirements. M59 provides 12 commit-bound physical validation worksheet scenarios across Android, assistive technology, offline, shared-device privacy, projector and A4. [M59 handoff](M59_PHYSICAL_VALIDATION_HANDOFF.md). Zero actual device results; FP-030 and FP-096 stay blocked. All 30 incomplete scoped tasks retain status. Exact-head integrated CI required.
+
+### M59 verified / M60 synthetic mastery calibration candidate
+
+M58 and M59 passed exact-head CI and merged. M60 exercises the disabled M34 mastery hypothesis using eight fixed fictional fixtures (four classified, four abstentions) and checks per-context 80% threshold, distinct tasks and session coverage. [M60 calibration](M60_SYNTHETIC_MASTERY_CALIBRATION.md). This is not a real learning-outcome study; FP-080 remains blocked. 70/100 scoped tasks; all external gates unchanged. M60 exact-head CI pending.

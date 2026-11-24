@@ -87,3 +87,5 @@ M55 merged; M56 combined candidate CI pending. M57 deterministic negative-test r
 M56 and M57 now verified and merged. M58 guided stage candidate advances learner-facing smart lab pedagogy, not independently validated mastery or full curriculum. All external acceptance dependencies remain unchanged.
 
 M59 candidate provides a local physical-validation worksheet for 12 real-device scenarios. No actual equipment, device operator or accessibility approval authenticated. FP-030/096 remain blocked; M58 corrected CI pending. See M59_PHYSICAL_VALIDATION_HANDOFF.md.
+
+M58 and M59 verified and merged. M60 fixed synthetic mastery calibration candidate advances FP-080 engineering preparation only. No real reviewed task pool, study evidence, validated threshold or activated learner profiling. The 12 physical validation scenarios still require actual devices and authorized operators.

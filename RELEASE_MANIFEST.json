@@ -1,5 +1,5 @@
 {
-  "release": "M57 verified prototype / M58–M59 candidates — PRIVATE ONLY",
+  "release": "M59 verified prototype / M60 synthetic calibration candidate — PRIVATE ONLY",
   "release_date": "2026-11-24",
   "hosting_zip": "aiforstudents_hostinger_staging_m33.zip",
   "source_zip": "aiforstudents_m33_source_tests.zip",
@@ -22,7 +22,7 @@
   "study_question_records": 32,
   "study_items_expert_approved": 0,
   "isolated_browser_study_checks": 32,
-  "currentMilestone": "M57_VERIFIED_M58_M59_CANDIDATES",
+  "currentMilestone": "M59_VERIFIED_M60_CANDIDATE",
   "status": "private-staging-prototype-unreviewed",
   "date": "2026-11-24",
   "studioLessons": 2,
@@ -114,9 +114,9 @@
   "printableLabActivityApprovals": 0,
   "printableLabActivityStoresStudentData": false,
   "verifiedCheckpoint": {
-    "milestone": "M57",
-    "mergeSha": "5178025bc42c3acb49b1391353981a3f112315a6",
-    "ciRun": 45453774394
+    "milestone": "M59",
+    "mergeSha": "64e28e3f3f57503ea88ab11ed80a03730a50f9c1",
+    "ciRun": 45455083010
   },
   "legacyPackagingBaseline": "M33 artifact filenames and historical baseline counters retained; not latest test counts or live deployment evidence",
   "interactiveDraftModels": 60,
@@ -147,15 +147,20 @@
   "tutorBoundaryAuditCases": 224,
   "tutorIndependentRedTeamCompleted": false,
   "tutorProviderTested": false,
-  "advancedGuidedStagesCandidate": true,
+  "advancedGuidedStagesCandidate": false,
   "advancedGuidedStagesModels": 48,
   "advancedGuidedStagesPerModel": 5,
   "advancedGuidedStagesPersists": false,
   "advancedGuidedStagesMasteryValidated": false,
   "advancedSubjectFilterEngineeringVerified": true,
   "tutorBoundaryAuditEngineeringVerified": true,
-  "physicalValidationWorksheetCandidate": true,
+  "physicalValidationWorksheetCandidate": false,
   "physicalValidationScenarios": 12,
   "physicalValidationScenariosAuthenticated": 0,
-  "physicalEvidenceAuthenticated": false
+  "physicalEvidenceAuthenticated": false,
+  "advancedGuidedStagesEngineeringVerified": true,
+  "physicalValidationWorksheetEngineeringVerified": true,
+  "syntheticMasteryCalibrationCandidate": true,
+  "syntheticMasteryCalibrationFixtures": 8,
+  "masteryEnabled": false
 }

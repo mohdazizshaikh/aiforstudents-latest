@@ -1,5 +1,8 @@
 # Project Status Dashboard — AI for Students
 
+> **M59 VERIFIED / M60 CANDIDATE — 2026-11-24:** M58 guided stages and M59 physical-validation worksheet passed CI and merged (PRs #47–48). M60 fixed synthetic adaptive-calibration harness tests the disabled M34 hypothesis; no real learner evidence or enabled mastery. 60 draft labs (48 advanced), 22 CBSE proposals, 34 review batches / 3,340 pending records, six safeguarding gates; 12 physical scenarios remain untested. 70/100 scoped engineering/design tasks. FULL PRODUCT NOT COMPLETE; PUBLIC LAUNCH NOT APPROVED. M33/M29 historical baselines retained.
+
+
 > **M57 VERIFIED / M58 CORRECTED / M59 CANDIDATE — 2026-11-24:** M55–M57 verified and merged. M58 guided stages initial Chromium passed, legacy reset assertion corrected; exact-head CI pending. M59 physical validation worksheet: 12 scenarios, no actual device evidence. 60 draft labs (48 advanced), 22 CBSE proposals, 34 review batches / 3,340 pending records, six safeguarding gates. 70/100 scoped tasks. FULL PRODUCT NOT COMPLETE; PUBLIC LAUNCH NOT APPROVED. M33/M29 historical baselines retained.
 
 
