@@ -13,13 +13,13 @@ const exampleRow=Object.freeze({
  content_sha256:'a'.repeat(64),priority:'pilot-first'
 });
 const review=(ref)=>({decision:'pass',reviewerRef:ref,reviewDate:'2026-11-23',rationale:'Checked against source and learner explanation.'});
-test('M23 pilots start with exactly 40 review records; no human approvals',()=>{
+test('M23 pilots start with exactly 44 review records; no human approvals',()=>{
  const rows=buildReviewRows();
  assert.equal(rows.length,3308);
  const data=makeReviewTemplate(rows);
  assert.equal(data.schema,EVIDENCE_SCHEMA);
  assert.equal(data.scope,'pilot-first');
- assert.equal(data.records.length,40);
+ assert.equal(data.records.length,44);
  assert.deepEqual(Object.fromEntries(['studio','experiment','classroom','maths','science','advanced'].map(k=>[k,data.records.filter(x=>x.queue===k).length])),{studio:4,experiment:4,classroom:10,maths:3,science:7,advanced:16});
  const result=validateReviewEvidence(data,rows);
  assert.equal(result.schemaValid,true);
