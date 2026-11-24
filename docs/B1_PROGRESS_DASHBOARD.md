@@ -17,7 +17,7 @@ FP-013 (BLOCKED_EXTERNAL), FP-062 (BLOCKED_EXTERNAL), FP-085 (BLOCKED_EXTERNAL),
 
 ## Unchanged hard launch stops
 
-- Original 3,282 unreviewed educational records + 3 M30 Maths + 7 M31 Science + 12 M33 expanded models + 4 M36 models + 8 M40 models = **3,316 pending subject/Hindi reviews**, with no qualified approvals recorded.
+- Original 3,282 unreviewed educational records + 3 M30 Maths + 7 M31 Science + 12 M33 expanded models + 4 M36 models + 8 M40 models + 8 M41 models = **3,324 pending subject/Hindi reviews**, with no qualified approvals recorded.
 - All six actual safeguarding/legal operation human gates remain pending.
 - Actual restricted Hostinger HTTPS deployment, rollback, real low-end Android/assistive-technology and properly permitted classroom trial remain pending.
 - Prototype scope is NOT a comprehensive Class 1–12 mathematics/science curriculum, full teacher dashboard or real generative AI tutor.

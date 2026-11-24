@@ -6,9 +6,9 @@ import {buildReviewRows} from '../tools/build-review-packet.mjs';
 const catalog=JSON.parse(readFileSync(new URL('../docs/M36_DRAFT_CURRICULUM_DISCOVERY.json',import.meta.url),'utf8'));
 const rows=buildReviewRows(),base=makeCurriculumWorklist(catalog,rows);
 const check=x=>validateCurriculumWorklist(x,catalog,rows);
-test('M39 48 unverified class/subject slots resolve all 36 models to 38 exact canonical review records',()=>{
+test('M39 48 unverified class/subject slots resolve all 44 models to 46 exact canonical review records',()=>{
  const r=check(base);assert.equal(r.valid,true,r.errors.join('; '));assert.equal(r.slots,48);
- assert.equal(r.uniqueModels,36);assert.equal(r.uniqueReviewRecords,38);assert.ok(r.gaps>0);
+ assert.equal(r.uniqueModels,44);assert.equal(r.uniqueReviewRecords,46);assert.ok(r.gaps>0);
  assert.equal(r.proposedCandidates,0);assert.equal(r.verifiedChapters,0);assert.equal(r.publicReleaseApproved,false);
  for(const s of base.slots)for(const m of s.models)for(const ref of m.reviewRefs){
   const row=rows.find(r=>r.queue===ref.queue&&r.content_id===ref.id);

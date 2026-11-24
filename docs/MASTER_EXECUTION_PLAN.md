@@ -237,3 +237,7 @@ FP-087: two original-source five-step bilingual learner print packs in existing 
 ### M40 foundational interactive candidate
 
 Eight new original bilingual computer-only conceptual models, two per subject lens, bring the candidate to 36 interactive models, 36 fixed draft hints and 3,316 pending content reviews. Seven former draft discovery gaps now have related models (not curriculum verification). M37 and M38 have passed exact-head CI and merged. M40 awaits exact-head CI; 70/100 scoped engineering/design tasks unchanged, external approvals remain blocked. [M40 models](M40_FOUNDATION_MODELS.md).
+
+### M41 secondary interactive candidate
+
+M40 passed exact-head CI and merged. M41 adds eight original bilingual computer-only secondary concept models, bringing candidate inventory to 44 interactive models, 44 fixed draft hints and 3,324 pending content reviews. M39 worklist was reconciled to M40 and needs integrated CI. 70/100 scoped engineering/design tasks unchanged; no human or public approval. [M41 secondary models](M41_SECONDARY_MODELS.md).

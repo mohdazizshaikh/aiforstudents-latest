@@ -3,15 +3,15 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {GUIDED_TOPIC_IDS,practiceTopic,guidedHint,nextPracticeChoice,NEXT_PRACTICE_CHOICES} from '../assets/practice-engine.js';
 import {ADVANCED_IDS,ADVANCED_MODELS} from '../assets/advanced-lab-engine.js';
-test('M38 all 24 advanced draft hints are exact bilingual source references, never remote or approved',()=>{
+test('M38 all 32 advanced draft hints are exact bilingual source references, never remote or approved',()=>{
  for(const id of ADVANCED_IDS)for(const [lang,i] of [['en',0],['hi',1]]){
   const key='advanced:'+id,m=ADVANCED_MODELS[id],r=guidedHint(key,lang);
   assert.equal(r.text,m.hint[i]);assert.equal(r.source,'assets/advanced-lab-engine.js');assert.equal(r.contentId,key);assert.equal(r.allowRemoteChat,false);
   assert.equal(practiceTopic(key,lang).subject,m.subject.toLowerCase());
  }
- assert.equal(GUIDED_TOPIC_IDS.length,36);
+ assert.equal(GUIDED_TOPIC_IDS.length,44);
 });
-test('M38 216 choice combinations are explicit, subject bounded, transient and never mastery predictions',()=>{
+test('M38 264 choice combinations are explicit, subject bounded, transient and never mastery predictions',()=>{
  for(const id of GUIDED_TOPIC_IDS)for(const choice of NEXT_PRACTICE_CHOICES)for(const lang of ['en','hi']){
   const x=nextPracticeChoice({id,choice,lang});
   assert.equal(practiceTopic(x.topicId,lang).subject,practiceTopic(id,lang).subject);
