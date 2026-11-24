@@ -1,5 +1,5 @@
 /** M33: original draft-only conceptual labs, all activity state is transient. */
-import {ADVANCED_IDS,modelAdvanced,evaluateAdvanced,advancedResultRows,advancedExampleFeedback,advancedVariableComparison,ADVANCED_SUBJECT_FILTERS,advancedSubjectOptions,ADVANCED_GUIDED_STAGES,advancedGuidedStage} from './advanced-lab-engine.js';
+import {ADVANCED_IDS,modelAdvanced,evaluateAdvanced,advancedResultRows,advancedExampleFeedback,advancedVariableComparison,ADVANCED_SUBJECT_FILTERS,advancedSubjectOptions,ADVANCED_GUIDED_STAGES,advancedGuidedStage,RATIO_EXTENSION_IDS,ratioExtension,evaluateRatioExtension} from './advanced-lab-engine.js';
 const $=id=>document.getElementById(id);
 const node=(tag,text)=>{const e=document.createElement(tag);if(text!==undefined)e.textContent=text;return e};
 const lang=()=>$('lang').value==='hi'?'hi':'en';
@@ -7,6 +7,7 @@ const p=(en,hi)=>lang()==='hi'?hi:en;
 const t=pair=>pair[lang()==='hi'?1:0];
 const selected=new URLSearchParams(location.search).get('advanced');
 let id=ADVANCED_IDS.includes(selected)?selected:ADVANCED_IDS[0],state={...modelAdvanced(id).initial},feedback=null,comparisonOpen=false,variableBaseline=null,subjectFilter='all',guidedIndex=null;
+let extensionMode='ratio',extensionState={...ratioExtension('ratio').initial};
 const button=(text,action,label,disabled=false,pressed=null)=>{
  const b=node('button',text);b.type='button';b.className='btn outline compact';b.dataset.advancedAction=action;
  b.disabled=disabled;if(label)b.setAttribute('aria-label',label);
@@ -205,6 +206,30 @@ function renderGuidedStage(){
  $('advanced-guided-hint').textContent=r.sourceHint||'';$('advanced-guided-hint').hidden=r.sourceHint===null;
  prev.disabled=r.index===0;next.disabled=r.index===r.total-1;
 }
+function resetExtension(){extensionMode='ratio';extensionState={...ratioExtension('ratio').initial}}
+function renderExtension(){
+ const host=$('advanced-ratio-extension'),controls=$('ratio-extension-controls'),values=$('ratio-extension-values');
+ host.hidden=id!=='ratio-algebra';controls.replaceChildren();values.replaceChildren();
+ if(host.hidden)return;
+ $('ratio-extension-heading').textContent=p('More ratio and algebra exploration','अनुपात और बीजगणित की अधिक खोज');
+ $('ratio-extension-mode-label').textContent=p('Choose a supplemental draft activity','अतिरिक्त मसौदा गतिविधि चुनें');
+ const mode=$('ratio-extension-mode');mode.replaceChildren();
+ for(const k of RATIO_EXTENSION_IDS){const o=node('option',t(ratioExtension(k).title));o.value=k;mode.append(o)}mode.value=extensionMode;
+ const m=ratioExtension(extensionMode),r=evaluateRatioExtension(extensionMode,extensionState,lang());
+ $('ratio-extension-prompt').textContent=r.prompt;$('ratio-extension-hint').textContent=r.hint;$('ratio-extension-caveat').textContent=r.caveat;
+ $('ratio-extension-quantity').textContent=p('Quantity','राशि');$('ratio-extension-value').textContent=p('Value','मान');
+ $('ratio-extension-reset').textContent=p('Reset supplemental activity','अतिरिक्त गतिविधि फिर शुरू करें');
+ for(const f of m.fields){
+  const group=node('div');group.className='science-control-group';group.append(node('strong',t(f.label)));
+  const row=node('div');row.className='science-number-control';row.setAttribute('role','group');row.setAttribute('aria-label',t(f.label));
+  const out=node('output',String(extensionState[f.id]));out.id='ratio-extension-output-'+f.id;out.setAttribute('aria-label',t(f.label));
+  for(const [op,sign,disabled] of [['dec','−',extensionState[f.id]===f.min],['inc','+',extensionState[f.id]===f.max]]){
+   if(op==='inc')row.append(out);
+   const b=node('button',sign);b.type='button';b.className='btn outline compact';b.dataset.extensionAction=op+':'+f.id;b.disabled=disabled;b.setAttribute('aria-label',(op==='inc'?p('Increase ','बढ़ाएँ '):p('Decrease ','घटाएँ '))+t(f.label));row.append(b);
+  }group.append(row);controls.append(group)
+ }
+ for(const item of r.rows){const row=node('tr'),head=node('th',item.label);head.scope='row';row.append(head,node('td',item.value));values.append(row)}
+}
 function render(){
  const m=modelAdvanced(id),result=evaluateAdvanced(id,state,lang());
  $('advanced-nav').textContent=p('Explore Labs','प्रयोग खोजें');
@@ -235,7 +260,7 @@ function render(){
  }
  const values=$('advanced-values');values.replaceChildren();
  for(const item of advancedResultRows(result.metrics,lang())){const row=node('tr'),head=node('th',item.label);head.scope='row';row.append(head,node('td',item.value));values.append(row)}
- visualize(result.metrics);renderVariableComparison();renderGuidedStage();
+ visualize(result.metrics);renderVariableComparison();renderGuidedStage();renderExtension();
  $('advanced-check').textContent=p('Check example','उदाहरण जाँचें');$('advanced-reset').textContent=p('Reset model','मॉडल फिर शुरू करें');
  $('advanced-feedback').hidden=feedback===null;
  if(feedback!==null)$('advanced-feedback').textContent=(feedback?p('Matches the example. ','उदाहरण से मेल खाता है। '):p('Compare the chosen values with the hint. ','चुने मान संकेत से मिलाएँ। '))+result.explanation
@@ -268,7 +293,18 @@ $('advanced-controls').addEventListener('click',e=>{
  feedback=null;comparisonOpen=false;render();
  const buttons=[...$('advanced-controls').querySelectorAll('button')];(buttons.find(x=>x.dataset.advancedAction===action&&!x.disabled)||buttons.find(x=>x.dataset.advancedAction.endsWith(':'+k)&&!x.disabled))?.focus()
 });
-function reset(){if(subjectFilter!=='all'&&modelAdvanced(id).subject!==subjectFilter)subjectFilter='all';state={...modelAdvanced(id).initial};feedback=null;comparisonOpen=false;variableBaseline=null;guidedIndex=null;render()}
+function reset(){resetExtension();if(subjectFilter!=='all'&&modelAdvanced(id).subject!==subjectFilter)subjectFilter='all';state={...modelAdvanced(id).initial};feedback=null;comparisonOpen=false;variableBaseline=null;guidedIndex=null;render()}
+$('ratio-extension-mode').addEventListener('change',e=>{
+ if(!RATIO_EXTENSION_IDS.includes(e.target.value))return;extensionMode=e.target.value;extensionState={...ratioExtension(extensionMode).initial};renderExtension();$('ratio-extension-mode').focus();
+});
+$('ratio-extension-reset').addEventListener('click',()=>{extensionState={...ratioExtension(extensionMode).initial};renderExtension();$('ratio-extension-reset').focus()});
+$('ratio-extension-controls').addEventListener('click',e=>{
+ const b=e.target.closest('button[data-extension-action]');if(!b||id!=='ratio-algebra')return;
+ const [op,key]=b.dataset.extensionAction.split(':'),f=ratioExtension(extensionMode).fields.find(x=>x.id===key);
+ if(!f||!['inc','dec'].includes(op))return;
+ extensionState[key]=Math.max(f.min,Math.min(f.max,extensionState[key]+(op==='inc'?1:-1)));renderExtension();
+ const buttons=[...$('ratio-extension-controls').querySelectorAll('button')];(buttons.find(x=>x.dataset.extensionAction===op+':'+key&&!x.disabled)||buttons.find(x=>x.dataset.extensionAction.endsWith(':'+key)&&!x.disabled))?.focus()
+});
 $('advanced-topic').addEventListener('change',e=>{id=e.target.value;reset();$('advanced-heading').focus()});
 $('advanced-subject-filter').addEventListener('change',e=>{
  const next=e.target.value;if(!ADVANCED_SUBJECT_FILTERS.includes(next))return;

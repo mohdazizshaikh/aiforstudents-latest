@@ -1,5 +1,8 @@
 # Release gates — M28 private prototype and M29 full-product plan
 
+> **M62 VERIFIED / M63 CANDIDATE — 2026-11-24:** M62 CI 45457642411 passed and merged PR #51 (32 board mapping proposals / 180 review checks; eight-model printable teacher agenda). M63 adds two bilingual supplemental ratio and linear-equation activities to existing ratio-algebra draft, 1,270 input combinations in regression tests; candidate CI pending. Existing ratio-algebra review fingerprint changes; regenerate/re-review affected worksheets. 60 top-level draft labs (48 advanced), 3,340 pending reviews, zero verified chapters, six safeguarding gates. 70/100 scoped tasks. FULL PRODUCT NOT COMPLETE; PUBLIC LAUNCH NOT APPROVED. M33/M29 historical baselines retained.
+
+
 > **M61 VERIFIED / M62 CANDIDATE — 2026-11-24:** M61 Maharashtra crosswalk passed CI 45456846207 and merged PR #50. M62 consolidates 32 source-linked proposals into 180 board-specific pending review checks, plus an optional printable eight-model teacher demonstration sequence. No approved chapters, verified current-session Maharashtra applicability, real teacher administration or actual physical print evidence. 60 draft labs (48 advanced), 34 review batches / 3,340 pending educational records, six safeguarding gates. 70/100 scoped tasks. FULL PRODUCT NOT COMPLETE; PUBLIC LAUNCH NOT APPROVED. M33/M29 historical baselines retained.
 
 

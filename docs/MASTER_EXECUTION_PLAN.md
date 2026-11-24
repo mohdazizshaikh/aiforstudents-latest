@@ -285,3 +285,7 @@ M60 passed exact-head CI 45455901159 and merged PR #49. M61 proposes ten Maharas
 ### M61 verified / M62 multi-board review and teacher print candidates
 
 M61 CI 45456846207 passed and merged PR #50. M62 combines 22 CBSE + 10 Maharashtra proposals in a 180-cell board-specific independent review worksheet (no automatic migration of prior decisions); Maharashtra current-session applicability and medium-language fit are additional mandatory checks. M62 also adds the optional learner-safe printable teacher demonstration sequence (up to eight models). [Review worklist](M62_MULTIBOARD_REVIEW.md) · [Print sequence](M62_PRINTABLE_DEMO_AGENDA.md). No approvals or physical A4 evidence; 70/100 scoped tasks and external gates unchanged. Exact-head CI pending.
+
+### M62 verified / M63 ratio and linear-equation activities candidate
+
+M62 CI 45457642411 passed and merged PR #51. M63 adds equivalent-ratio scaling and bounded ax+b=12 substitution to the existing ratio-algebra review record; 1,270 bilingual input combinations in exhaustive tests. [M63 implementation](M63_RATIO_EQUATION_PRACTICE.md). The changed record fingerprint invalidates earlier worksheets referencing it, requiring regeneration and independent review. FP-036 remains REVIEW_PENDING; no change to 70/100 scoped items or 3,340 pending canonical records. Exact-head CI required.
