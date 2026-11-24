@@ -16,3 +16,7 @@ Snapshot and supplemental output are exclusively created under ignored review-pa
 - Tests: full inventory, deterministic digest, synthetic changes, changed behavior detection and fail-closed validation. CI generates local-only files and compares a fresh baseline; not attached as release artifacts.
 
 M68 exact-head CI pending. No new content, validated curriculum, human signoff, release approval or master-task completion. 70/100 scoped verified, 3,340 pending educational records. 
+
+## Baseline verification update
+
+M67 passed full CI 45462660318 and merged PR #57 at 688405f95a3677bc62e63113ff9c70c3138a7e84. M68 requires its own exact-head CI before merge.

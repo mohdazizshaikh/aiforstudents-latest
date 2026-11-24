@@ -1,5 +1,5 @@
 {
-  "release": "M66 verified prototype / M67–M68 candidates — PRIVATE ONLY",
+  "release": "M67 verified prototype / M68 review workbench candidate — PRIVATE ONLY",
   "release_date": "2026-11-24",
   "hosting_zip": "aiforstudents_hostinger_staging_m33.zip",
   "source_zip": "aiforstudents_m33_source_tests.zip",
@@ -22,7 +22,7 @@
   "study_question_records": 32,
   "study_items_expert_approved": 0,
   "isolated_browser_study_checks": 32,
-  "currentMilestone": "M66_VERIFIED_M67_M68_CANDIDATES",
+  "currentMilestone": "M67_VERIFIED_M68_CANDIDATE",
   "status": "private-staging-prototype-unreviewed",
   "date": "2026-11-24",
   "studioLessons": 2,
@@ -114,9 +114,9 @@
   "printableLabActivityApprovals": 0,
   "printableLabActivityStoresStudentData": false,
   "verifiedCheckpoint": {
-    "milestone": "M66",
-    "mergeSha": "1ceeb22b5e19243013dde0f44da3313aca812c03",
-    "ciRun": 45462053139
+    "milestone": "M67",
+    "mergeSha": "688405f95a3677bc62e63113ff9c70c3138a7e84",
+    "ciRun": 45462660318
   },
   "legacyPackagingBaseline": "M33 artifact filenames and historical baseline counters retained; not latest test counts or live deployment evidence",
   "interactiveDraftModels": 60,
@@ -214,7 +214,7 @@
   "teacherSupplementWorksheetRightsAuthenticated": false,
   "teacherSupplementWorksheetStoresStudentData": false,
   "teacherSupplementWorksheetAnswerKeys": false,
-  "customLabPackCandidate": true,
+  "customLabPackCandidate": false,
   "customLabPackSourceActivities": 54,
   "customLabPackMaxActivities": 6,
   "customLabPackStoresStudentData": false,
@@ -226,5 +226,6 @@
   "reviewChangeCanonicalRecords": 3340,
   "reviewChangeSupplementBehaviorIndicators": 6,
   "reviewChangeSupplementBilingualCombinations": 3734,
-  "reviewChangeHumanApprovalGranted": false
+  "reviewChangeHumanApprovalGranted": false,
+  "customLabPackEngineeringVerified": true
 }
