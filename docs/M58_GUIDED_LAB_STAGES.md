@@ -5,3 +5,5 @@ Stacked on M57 candidate 519d7edc053abaf77cf0270b39b9da39063e2b55. M56 integrate
 M57 subsequently passed CI 45453774394 and merged at 5178025bc42c3acb49b1391353981a3f112315a6. M58 remains candidate; exact-head CI required.
 
 Initial CI 45454257470: Chromium passed; legacy M55 static assertion required immediate render after clearing the variable baseline, whereas M58 additionally clears guidedIndex. Updated assertion preserves baseline-clear requirement and permits the additional reset. Corrected exact-head CI required.
+
+Verified corrected CI 45454723981 passed and merged PR #47 at 471f23c056d88a144616e6a9e2cceded16d352b0. Guided stages engineering verified only.
