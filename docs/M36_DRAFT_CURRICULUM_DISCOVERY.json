@@ -16,8 +16,10 @@
           "subject": "maths",
           "en": "Counting and comparing",
           "hi": "गिनती और तुलना",
-          "modelIds": [],
-          "coverage": "GAP",
+          "modelIds": [
+            "advanced:counting"
+          ],
+          "coverage": "RELATED_DRAFT_ONLY",
           "reviewStatus": "PENDING"
         },
         {
@@ -32,16 +34,20 @@
           "subject": "chemistry",
           "en": "Objects and materials",
           "hi": "वस्तुएँ और सामग्री",
-          "modelIds": [],
-          "coverage": "GAP",
+          "modelIds": [
+            "advanced:material-objects"
+          ],
+          "coverage": "RELATED_DRAFT_ONLY",
           "reviewStatus": "PENDING"
         },
         {
           "subject": "biology",
           "en": "Living and nonliving things",
           "hi": "सजीव और निर्जीव",
-          "modelIds": [],
-          "coverage": "GAP",
+          "modelIds": [
+            "advanced:living-examples"
+          ],
+          "coverage": "RELATED_DRAFT_ONLY",
           "reviewStatus": "PENDING"
         }
       ]
@@ -57,8 +63,10 @@
           "subject": "maths",
           "en": "Place value",
           "hi": "स्थानीय मान",
-          "modelIds": [],
-          "coverage": "GAP",
+          "modelIds": [
+            "advanced:place-value"
+          ],
+          "coverage": "RELATED_DRAFT_ONLY",
           "reviewStatus": "PENDING"
         },
         {
@@ -66,7 +74,7 @@
           "en": "Comparing lengths",
           "hi": "लंबाई की तुलना",
           "modelIds": [
-            "advanced:measurement"
+            "advanced:length-compare"
           ],
           "coverage": "RELATED_DRAFT_ONLY",
           "reviewStatus": "PENDING"
@@ -75,16 +83,20 @@
           "subject": "chemistry",
           "en": "Solid and liquid observations",
           "hi": "ठोस और द्रव का अवलोकन",
-          "modelIds": [],
-          "coverage": "GAP",
+          "modelIds": [
+            "advanced:material-state"
+          ],
+          "coverage": "RELATED_DRAFT_ONLY",
           "reviewStatus": "PENDING"
         },
         {
           "subject": "biology",
           "en": "Plants around us",
           "hi": "आसपास के पौधे",
-          "modelIds": [],
-          "coverage": "GAP",
+          "modelIds": [
+            "advanced:plant-parts"
+          ],
+          "coverage": "RELATED_DRAFT_ONLY",
           "reviewStatus": "PENDING"
         }
       ]
@@ -153,8 +165,10 @@
           "subject": "physics",
           "en": "Light and shadows",
           "hi": "प्रकाश और छाया",
-          "modelIds": [],
-          "coverage": "GAP",
+          "modelIds": [
+            "advanced:shadow-ray"
+          ],
+          "coverage": "RELATED_DRAFT_ONLY",
           "reviewStatus": "PENDING"
         },
         {
