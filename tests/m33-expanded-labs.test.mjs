@@ -5,8 +5,8 @@ import {ADVANCED_IDS,ADVANCED_MODELS,calculateAdvanced,evaluateAdvanced,auditAdv
 import {auditContentQueues} from '../tools/release-preflight.mjs';
 import {buildReviewRows,resolvePilotContent} from '../tools/build-review-packet.mjs';
 const read=p=>readFileSync(new URL('../'+p,import.meta.url),'utf8');
-test('M36 forty distinct draft labs have bilingual controls and bounded valid states',()=>{
- assert.equal(ADVANCED_IDS.length,40);assert.equal(new Set(ADVANCED_IDS).size,40);
+test('M36 forty-eight distinct draft labs have bilingual controls and bounded valid states',()=>{
+ assert.equal(ADVANCED_IDS.length,48);assert.equal(new Set(ADVANCED_IDS).size,48);
  assert.deepEqual(auditAdvancedPairs(),[]);
  for(const id of ADVANCED_IDS){
   const m=ADVANCED_MODELS[id],r=evaluateAdvanced(id,m.target,'hi');
@@ -75,9 +75,9 @@ test('M33 Biology: simplified interactions and abstract Mendelian grid, never pe
  assert.match(ADVANCED_MODELS.heredity.caveat[0],/not human genetic diagnosis/);
  assert.match(evaluateAdvanced('ecosystem',{pair:'flower-bee'},'en').explanation,/Grass → grasshopper → frog/);
 });
-test('M36 review packet includes forty pending versioned draft records and complete controls',()=>{
- const q=auditContentQueues();assert.equal(q.total,3332);assert.equal(q.pending,3332);assert.equal(q.counts.advanced.pending,40);
- const r=buildReviewRows().filter(x=>x.queue==='advanced');assert.equal(r.length,40);
+test('M36 review packet includes forty-eight pending versioned draft records and complete controls',()=>{
+ const q=auditContentQueues();assert.equal(q.total,3340);assert.equal(q.pending,3340);assert.equal(q.counts.advanced.pending,48);
+ const r=buildReviewRows().filter(x=>x.queue==='advanced');assert.equal(r.length,48);
  for(const x of r){assert.match(x.content_sha256,/^[a-f0-9]{64}$/);assert.ok(x.hindi_draft.length>10);assert.ok(x.context_hindi.length>20);assert.match(x.answer_or_guidance,/state-dependent/);assert.equal(x.human_decision,'NO DECISION RECORDED BY THIS EXPORT')}
  assert.throws(()=>resolvePilotContent('advanced',{id:'advanced:sound',contentVersion:999}),/version/);
 });

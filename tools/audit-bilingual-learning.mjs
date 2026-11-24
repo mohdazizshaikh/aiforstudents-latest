@@ -78,7 +78,7 @@ export function auditBilingualLearning({
    if((digitalTasks[topic.id]?.[age]||[]).length!==2)errors.push('Missing digital age tasks '+topic.id+'/'+age);
   }
  }
- if(count.study!==32||count.studio!==2||count.experiments!==2||count.maths!==3||count.science!==7||count.advanced!==40||count.classroomSteps!==10||count.digital!==32)errors.push('Unexpected learning source breadth: '+JSON.stringify(count));
+ if(count.study!==32||count.studio!==2||count.experiments!==2||count.maths!==3||count.science!==7||count.advanced!==48||count.classroomSteps!==10||count.digital!==32)errors.push('Unexpected learning source breadth: '+JSON.stringify(count));
  return {valid:errors.length===0,errors,counts:count,
   structuralOnly:true,educationalReviewPassed:false,translationQualityVerified:false,publicReleaseApproved:false};
 }
