@@ -462,11 +462,12 @@
       "topics": [
         {
           "subject": "maths",
-          "en": "Linear and square graphs; trigonometric gaps",
-          "hi": "रैखिक और वर्ग आलेख; त्रिकोणमिति बाकी",
+          "en": "Linear and square graphs, arithmetic sequences; trigonometry gap",
+          "hi": "रैखिक और वर्ग आलेख, समांतर श्रेणी; त्रिकोणमिति बाकी",
           "modelIds": [
             "advanced:coordinate",
-            "advanced:quadratic"
+            "advanced:quadratic",
+            "advanced:arithmetic-sequence"
           ],
           "coverage": "RELATED_DRAFT_ONLY",
           "reviewStatus": "PENDING"
@@ -484,22 +485,24 @@
         },
         {
           "subject": "chemistry",
-          "en": "Periodic patterns and conservation",
-          "hi": "आवर्त पैटर्न और संरक्षण",
+          "en": "Periodic patterns, conservation and symbolic mass fraction",
+          "hi": "आवर्त पैटर्न, संरक्षण और प्रतीकात्मक द्रव्यमान अंश",
           "modelIds": [
             "advanced:periodic",
-            "advanced:mass-balance"
+            "advanced:mass-balance",
+            "advanced:mass-fraction"
           ],
           "coverage": "RELATED_DRAFT_ONLY",
           "reviewStatus": "PENDING"
         },
         {
           "subject": "biology",
-          "en": "Heredity and ecosystem",
-          "hi": "आनुवंशिकता और पारितंत्र",
+          "en": "Heredity, ecosystem and plant energy processes",
+          "hi": "आनुवंशिकता, पारितंत्र और पौधों की ऊर्जा प्रक्रियाएँ",
           "modelIds": [
             "advanced:heredity",
-            "advanced:ecosystem"
+            "advanced:ecosystem",
+            "advanced:plant-process"
           ],
           "coverage": "RELATED_DRAFT_ONLY",
           "reviewStatus": "PENDING"
@@ -526,29 +529,33 @@
         },
         {
           "subject": "physics",
-          "en": "Waves and energy; mechanics gaps",
-          "hi": "तरंगें और ऊर्जा; यांत्रिकी बाकी",
+          "en": "Waves, energy and ideal accelerated motion; mechanics gaps",
+          "hi": "तरंगें, ऊर्जा और आदर्श त्वरित गति; यांत्रिकी बाकी",
           "modelIds": [
             "advanced:sound",
-            "science:energy"
+            "science:energy",
+            "advanced:constant-acceleration"
           ],
           "coverage": "RELATED_DRAFT_ONLY",
           "reviewStatus": "PENDING"
         },
         {
           "subject": "chemistry",
-          "en": "Atomic structure and bonding gaps",
-          "hi": "परमाणु संरचना और बंधन बाकी",
-          "modelIds": [],
-          "coverage": "GAP",
+          "en": "Symbolic atomic charge; bonding gaps",
+          "hi": "प्रतीकात्मक परमाणु आवेश; बंधन बाकी",
+          "modelIds": [
+            "advanced:ion-charge"
+          ],
+          "coverage": "RELATED_DRAFT_ONLY",
           "reviewStatus": "PENDING"
         },
         {
           "subject": "biology",
-          "en": "Cell biology; physiology gaps",
-          "hi": "कोशिका जीवविज्ञान; शरीर क्रिया बाकी",
+          "en": "Cell biology and idealised division counts; physiology gaps",
+          "hi": "कोशिका जीवविज्ञान और आदर्श विभाजन गिनती; शरीर क्रिया बाकी",
           "modelIds": [
-            "science:cells"
+            "science:cells",
+            "advanced:cell-doubling"
           ],
           "coverage": "RELATED_DRAFT_ONLY",
           "reviewStatus": "PENDING"
@@ -564,18 +571,22 @@
       "topics": [
         {
           "subject": "maths",
-          "en": "Calculus and advanced statistics gaps",
-          "hi": "कलन और उच्च सांख्यिकी बाकी",
-          "modelIds": [],
-          "coverage": "GAP",
+          "en": "Square-function derivative; advanced calculus and statistics gaps",
+          "hi": "वर्ग फलन का अवकलज; उच्च कलन और सांख्यिकी बाकी",
+          "modelIds": [
+            "advanced:square-slope"
+          ],
+          "coverage": "RELATED_DRAFT_ONLY",
           "reviewStatus": "PENDING"
         },
         {
           "subject": "physics",
-          "en": "Electromagnetism and optics gaps",
-          "hi": "विद्युतचुंबकत्व और प्रकाशिकी बाकी",
-          "modelIds": [],
-          "coverage": "GAP",
+          "en": "Ideal converging lens; electromagnetism and wider optics gaps",
+          "hi": "आदर्श अभिसारी लेंस; विद्युतचुंबकत्व और अन्य प्रकाशिकी बाकी",
+          "modelIds": [
+            "advanced:thin-lens"
+          ],
+          "coverage": "RELATED_DRAFT_ONLY",
           "reviewStatus": "PENDING"
         },
         {
