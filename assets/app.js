@@ -197,6 +197,14 @@ window.AIFS_TEAM_BRIDGE={
  summary:age=>teamSummary(ST.history,age),
  record:session=>{ST.history=recordTeamSession(ST.history,session);store();renderDashboard();window.dispatchEvent(new Event('aifs-team-history-changed'))}
 };
+// M35: a restored back-forward-cache page may have missed a peer clear signal.
+ // Drop this tab's stale session state and reinitialize from the current opt-in store.
+ // Do not erase another tab's valid persistent preference or transmit any history.
+ window.addEventListener('pageshow',event=>{
+  if(!event.persisted)return;
+  for(const key of [SESSION_KEY,OLD_SESSION,V1_SESSION])remove(safeStorage('sessionStorage'),key);
+  location.reload();
+ });
 window.AIFS_ACTIVITY={solo:false,team:false};
 load();try{const url=new URL(location.href);const param=url.searchParams.get('game');if(GAME_IDS.includes(param)){ST.game=param;ST.category=gameMeta().category}if(['en','hi'].includes(url.searchParams.get('lang')))ST.lang=url.searchParams.get('lang')}catch{}
 $('age-select').value=ST.age;updateLocale();$('privacy-status').textContent=ST.remember?tr('Progress is saved on this browser only.','प्रगति केवल इसी ब्राउज़र पर सेव है।'):tr('Progress stays in this tab unless you choose to remember it.','जब तक याद रखने का विकल्प नहीं चुनते, प्रगति इसी टैब तक रहेगी।');

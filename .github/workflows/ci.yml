@@ -10,6 +10,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
@@ -40,6 +42,7 @@ jobs:
         run: |
           npm run plan:check
           npm run plan:trace
+          node tools/verify-evidence-snapshot.mjs --require-git
       - name: Audit all static offline dependencies and guide routes
         run: npm run audit:offline
       - name: Verify static release

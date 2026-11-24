@@ -15,3 +15,9 @@ This verifies every reference against the historical Git object and fails if his
 The maintainer-only tool accepts only a fixed source ID, SHA-256 version hash and supported language. It does not accept free text, URLs, caller approval flags or arbitrary metadata. Registry is empty/frozen because there are zero authenticated approved sources. All valid requests return unavailable; malformed inputs return invalid request. No remote AI, network, model, student UI integration, or source passage is shipped. Future content requires independently authenticated subject/Hindi/rights approval, revocation/version handling, reviewed passages and separate safety/legal/child gates. This code cannot make an approved source or certify reviewers.
 
 FP-068 stays BLOCKED_EXTERNAL. Generative AI remains disabled. 3,304 educational records await review, publicReleaseApproved false.
+
+## FP-079 candidate — restored-page retention safety
+
+The earlier M34 browser runs cover explicit opt-in local persistence, session-only storage, peer reset (BroadcastChannel and storage fallback), and teacher/learner-only print surfaces. M35 conservatively drops the restoring tab's session keys and reloads on a persisted `pageshow` event, so a restored page cannot resurrect its stale in-memory learner session. This does not delete another tab's valid persistent opt-in history. Added synthetic persisted-pageshow Chromium regression; this exercises the hook, not a real physical-device BFCache study. Updated static cache suffix to avoid stale offline code. Remaining: validate exact head and actual suspended browser/device behavior, retained files/OS backups and operating procedures. FP-079 remains IN_PROGRESS until scoped evidence is reconciled.
+
+Git-history checking is now required in the Node CI job with full checkout. It does not make the underlying educational evidence independent human approval.
