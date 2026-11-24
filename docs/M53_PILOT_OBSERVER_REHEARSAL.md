@@ -9,3 +9,5 @@ Commands:
 - node tools/pilot-observer-rehearsal.mjs --check rehearsal-fractions.json
 
 Only local ignored review-evidence/ files, exclusive creation. No names, narrative, timestamps, ages, class sizes, school IDs, scores, images, audio, uploads or child observations. The actual independent school/guardian/ethics and safeguarding authorization workflow remains external. FP-089 remains REVIEW_PENDING and FP-090/080 remain BLOCKED_EXTERNAL. No new DONE_VERIFIED status; 70/100 scoped tasks, 3,340 pending educational records. Exact-head CI required.
+
+Verified checkpoint: exact-head CI 45447537186 passed, merged PR #42 at 5325521774e89de2f84e141367488ece657060d5. Adult rehearsal only; no actual school trial or independent approval.

@@ -1,5 +1,5 @@
 {
-  "release": "M47 expanded 48 advanced Maths and Science draft concept models — PRIVATE ONLY",
+  "release": "M53 verified prototype / M54 review batch candidate — PRIVATE ONLY",
   "release_date": "2026-11-24",
   "hosting_zip": "aiforstudents_hostinger_staging_m33.zip",
   "source_zip": "aiforstudents_m33_source_tests.zip",
@@ -22,7 +22,7 @@
   "study_question_records": 32,
   "study_items_expert_approved": 0,
   "isolated_browser_study_checks": 32,
-  "currentMilestone": "M33_B2_EXPANDED_LABS_OFFLINE_PRIVACY",
+  "currentMilestone": "M53_VERIFIED_M54_REVIEW_BATCH_CANDIDATE",
   "status": "private-staging-prototype-unreviewed",
   "date": "2026-11-24",
   "studioLessons": 2,
@@ -112,5 +112,22 @@
   "teacherDemoAgendaPersists": false,
   "printableLabActivityDrafts": 48,
   "printableLabActivityApprovals": 0,
-  "printableLabActivityStoresStudentData": false
+  "printableLabActivityStoresStudentData": false,
+  "verifiedCheckpoint": {
+    "milestone": "M53",
+    "mergeSha": "5325521774e89de2f84e141367488ece657060d5",
+    "ciRun": 45447537186
+  },
+  "legacyPackagingBaseline": "M33 artifact filenames and historical baseline counters retained; not latest test counts or live deployment evidence",
+  "interactiveDraftModels": 60,
+  "cbseSyllabusMappingProposals": 22,
+  "cbseVerifiedChapters": 0,
+  "cbsePendingMappingReviewChecks": 110,
+  "adultOnlyRehearsalChecklist": true,
+  "realChildPilotAuthorized": false,
+  "reviewBatchCandidate": true,
+  "reviewBatchCount": 34,
+  "reviewBatchPilotRecords": 76,
+  "reviewBatchPendingCriteria": 20040,
+  "reviewBatchHumanApprovalAuthenticated": false
 }
