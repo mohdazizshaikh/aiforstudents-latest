@@ -241,3 +241,7 @@ Eight new original bilingual computer-only conceptual models, two per subject le
 ### M41 secondary interactive candidate
 
 M40 passed exact-head CI and merged. M41 adds eight original bilingual computer-only secondary concept models, bringing candidate inventory to 44 interactive models, 44 fixed draft hints and 3,324 pending content reviews. M39 worklist was reconciled to M40 and needs integrated CI. 70/100 scoped engineering/design tasks unchanged; no human or public approval. [M41 secondary models](M41_SECONDARY_MODELS.md).
+
+### M46 remaining discovery-lens candidates
+
+M42–M45 passed their exact-head CI and merged; teacher launcher, synthetic tutor contract, example feedback and local draft review rubric are implemented. M46 adds eight original draft models and fills all five previously empty illustrative lenses, yielding 48/48 nonempty draft topic slots, 52 interactive models and 3,332 pending review records. Zero verified chapter mappings. 70/100 scoped engineering/design tasks unchanged. [M46 models](M46_DISCOVERY_GAP_LABS.md).

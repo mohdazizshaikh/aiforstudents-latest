@@ -34,7 +34,7 @@ function visualize(metrics){
  }else if(id==='position-change'){
   line(30,90,286,90,'#304f47',2);for(let i=0;i<=8;i++){line(30+i*32,85,30+i*32,95,'#304f47');txt(25+i*32,112,String(i))}dot(30+state.start*32,70,'#346b9e');dot(30+state.end*32,55,'#ad7525');txt(15,25,p('Start / end','आरंभ / अंत'));
  }else if(id==='path-distance'){
-  line(30,135,285,135,'#304f47',2);const x=30+state.out*34,y=x-state.back*34;line(30,50,x,50,'#39826b',4);dot(x,50,'#39826b');line(x,95,y,95,'#346b9e',4);dot(y,95,'#346b9e');txt(15,30,p('Outward ','आगे ')+state.out);txt(15,78,p('Return ','वापसी ')+state.back);txt(15,162,p('Total ','कुल ')+metrics.pathLength);
+  line(20,135,300,135,'#304f47',2);const origin=150,x=origin+state.out*22,y=x-state.back*22;line(origin,50,x,50,'#39826b',4);dot(x,50,'#39826b');line(x,95,y,95,'#346b9e',4);dot(y,95,'#346b9e');txt(15,30,p('Outward ','आगे ')+state.out);txt(15,78,p('Return ','वापसी ')+state.back);txt(15,162,p('Total ','कुल ')+metrics.pathLength);
  }else if(id==='material-property'){
   shape('rect',{x:125,y:30,width:65,height:105,fill:state.example==='glass'?'#d6edf8':'#b78a58',stroke:'#304f47'});line(20,80,state.example==='glass'?295:125,80,'#ad7525',3);txt(15,158,t(modelAdvanced(id).fields[0].options.find(o=>o.value===state.example).label));
  }else if(id==='dynamic-balance'){
