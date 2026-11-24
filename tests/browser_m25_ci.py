@@ -690,6 +690,27 @@ def run():
                     phone.locator('#extension-compare-restore').click()
                     check(phone.locator('#ratio-extension-values tr').first.locator('td').inner_text() == expected, 'M71 restore '+model)
                 report['checks'].append('M71 eight new offline activities and comparison')
+                for model, mode, control, expected, after in [
+                    ('symmetry', 'axis-reflections', 'x', '2', '3'),
+                    ('vector-components', 'vector-addition', 'a', '1', '2'),
+                    ('temperature', 'energy-required', 'c', '200', '300'),
+                    ('measurement', 'average-speed', 'a', '5', '6'),
+                    ('periodic', 'neutral-counts', 'z', '3', '4'),
+                    ('alkane-count', 'formula-compare', 'a', '6', '8'),
+                    ('heredity', 'grid-counts', 'a', '8', '12'),
+                    ('plant-process', 'oxygen-account', 'p', '12', '18'),
+                ]:
+                    phone.locator('#advanced-topic').select_option(model)
+                    phone.locator('#ratio-extension-mode').select_option(mode)
+                    check(phone.locator('#ratio-extension-values tr').first.locator('td').inner_text() == expected, 'M72 initial result '+model)
+                    phone.locator('#extension-compare-mark').click()
+                    phone.locator('#ratio-extension-controls button[data-extension-action="inc:'+control+'"]').focus()
+                    phone.keyboard.press('Enter')
+                    check(phone.locator('#ratio-extension-values tr').first.locator('td').inner_text() == after, 'M72 changed result '+model)
+                    check(phone.locator('#extension-compare-changes li').count() == 1, 'M72 changed control '+model)
+                    phone.locator('#extension-compare-restore').click()
+                    check(phone.locator('#ratio-extension-values tr').first.locator('td').inner_text() == expected, 'M72 restore '+model)
+                report['checks'].append('M72 eight new offline activities and comparison')
                 phone.locator('#advanced-topic').select_option('heredity')
                 check('4' in phone.locator('#advanced-values').inner_text(), 'Offline model result missing')
                 check(phone.locator('#local-guide-topic option').count() == 60, 'Offline practice guide missing')
@@ -812,6 +833,14 @@ def run():
                     ('chemistry', 'bond-pair-count', 'bond-symbols'),
                     ('biology', 'food-web-links', 'energy-account'),
                     ('biology', 'habitat-match', 'survey-count'),
+                    ('maths', 'symmetry', 'axis-reflections'),
+                    ('maths', 'vector-components', 'vector-addition'),
+                    ('physics', 'temperature', 'energy-required'),
+                    ('physics', 'measurement', 'average-speed'),
+                    ('chemistry', 'periodic', 'neutral-counts'),
+                    ('chemistry', 'alkane-count', 'formula-compare'),
+                    ('biology', 'heredity', 'grid-counts'),
+                    ('biology', 'plant-process', 'oxygen-account'),
                 ]:
                     phone.locator('#lab-print-subject').select_option(subject)
                     phone.locator('#lab-print-model').select_option(model)
