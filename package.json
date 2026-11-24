@@ -22,6 +22,7 @@
     "review:snapshot": "node tools/review-change-workbench.mjs --snapshot review-packet/change-snapshot.json",
     "review:supplements": "node tools/review-change-workbench.mjs --supplements review-packet/supplemental-review.json",
     "review:compare": "node tools/review-change-workbench.mjs --compare",
-    "curriculum:plan": "node tools/curriculum-planning-workbench.mjs"
+    "curriculum:plan": "node tools/curriculum-planning-workbench.mjs",
+    "curriculum:batches": "node tools/board-review-batches.mjs"
   }
 }

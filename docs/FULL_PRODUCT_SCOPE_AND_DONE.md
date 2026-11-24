@@ -1,5 +1,7 @@
 # M29 — Full-product scope and completion criteria
 
+> **M78 CANDIDATE — 2026-11-25:** M77 merged at `71abd08b0351ee0ef2d8815b48b690a694c8c0e9`. M78 partitions 32 existing source proposals / 180 pending curriculum checks into three whole-mapping review batches (55, 55, 70 checks), with local templates, inventory fingerprints and existing M62 decision validation. No new source verification or approval. Exact-head CI pending. 60 draft main models, 49 supplements, 109 printable activities / 218 bilingual variants, 3,340 pending educational reviews, zero verified chapters, six safeguarding gates, 70/100 scoped tasks unchanged. FULL PRODUCT NOT COMPLETE; PUBLIC LAUNCH NOT APPROVED. [M78 procedure](M78_BOARD_REVIEW_BATCHES.md).
+
 > **M62 VERIFIED / M63 CANDIDATE — 2026-11-24:** M62 CI 45457642411 passed and merged PR #51 (32 board mapping proposals / 180 review checks; eight-model printable teacher agenda). M63 adds two bilingual supplemental ratio and linear-equation activities to existing ratio-algebra draft, 1,270 input combinations in regression tests; candidate CI pending. Existing ratio-algebra review fingerprint changes; regenerate/re-review affected worksheets. 60 top-level draft labs (48 advanced), 3,340 pending reviews, zero verified chapters, six safeguarding gates. 70/100 scoped tasks. FULL PRODUCT NOT COMPLETE; PUBLIC LAUNCH NOT APPROVED. M33/M29 historical baselines retained.
 
 

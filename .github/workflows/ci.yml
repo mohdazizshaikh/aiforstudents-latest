@@ -27,6 +27,13 @@ jobs:
           npm run review:compare -- review-packet/change-snapshot.json
       - name: Build local grade-by-subject curriculum gap report (NOT verified coverage)
         run: npm run curriculum:plan -- --export curriculum-planning.json
+      - name: Generate and validate three local curriculum review batches (NOT approval)
+        run: |
+          npm run curriculum:batches -- --index
+          for id in cbse-001 cbse-002 maharashtra-001; do
+            npm run curriculum:batches -- --template "$id" "$id.json"
+            npm run curriculum:batches -- --check "$id.json"
+          done
       - name: Validate pending M23 review-evidence template (NOT human approval)
         run: |
           npm run review-evidence:template
