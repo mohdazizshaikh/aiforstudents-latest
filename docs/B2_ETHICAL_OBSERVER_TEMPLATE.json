@@ -1,0 +1,66 @@
+{
+  "schema": "aifs-observer-checklist-draft-v1",
+  "status": "BLOCKED_UNTIL_AUTHORIZED_SCHOOL_GUARDIAN_ETHICS_REVIEW",
+  "publicReleaseApproved": false,
+  "childDataCollected": false,
+  "fields": [
+    {
+      "id": "reviewed_permission_present",
+      "type": "boolean",
+      "label": "All required permissions verified by the authorized observer outside the app"
+    },
+    {
+      "id": "keyboard_controls_reachable",
+      "type": "enum",
+      "options": [
+        "not-observed",
+        "yes",
+        "no"
+      ]
+    },
+    {
+      "id": "offline_loading",
+      "type": "enum",
+      "options": [
+        "not-observed",
+        "yes",
+        "no"
+      ]
+    },
+    {
+      "id": "teacher_can_hide_answers",
+      "type": "enum",
+      "options": [
+        "not-observed",
+        "yes",
+        "no"
+      ]
+    },
+    {
+      "id": "hindi_english_clarity",
+      "type": "enum",
+      "options": [
+        "not-observed",
+        "needs-review",
+        "reviewable"
+      ]
+    },
+    {
+      "id": "stop_if_safety_concern",
+      "type": "boolean",
+      "label": "Stop session; route concern to authorized safety contact without including child details here"
+    }
+  ],
+  "prohibited": [
+    "student names",
+    "school/class identifiers",
+    "attendance",
+    "photos or audio",
+    "free-text student disclosures",
+    "medical or ability labels",
+    "precise locations",
+    "individual scores",
+    "device fingerprints"
+  ],
+  "note": "Blank design template only. No observation has been performed or recorded. Retention and research procedure require real human approval."
+}
