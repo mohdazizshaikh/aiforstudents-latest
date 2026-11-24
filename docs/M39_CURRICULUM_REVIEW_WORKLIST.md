@@ -17,3 +17,5 @@ M40 integrated baseline 67eac4145b01517e870e2a526f9e6b0d01859393; M40 exact-head
 M39 merged in 2574f2b47989cc47639f6bd3cd9e8f311d3a743c after CI 45376279051 passed. M41 extends the catalog to 44 interactive models and 46 canonical review records. Combined candidate requires exact-head CI. Historical M40 baseline remains valid as a checkpoint, not the current inventory.
 
 M46 candidate expands to 52 models and 54 canonical linked review records across all 48 nonempty illustrative slots; 3,332 pending educational records. This is not comprehensive chapter coverage. Historical counts above describe the previous checkpoints.
+
+M47 candidate inventory: 60 interactive models and 62 linked canonical review records across 48 nonempty illustrative lenses. Zero verified chapter placements.

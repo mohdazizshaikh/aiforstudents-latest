@@ -1,6 +1,9 @@
 # Project Status Dashboard — AI for Students
 
-> **M46 CANDIDATE — 2026-11-24:** M41–M45 passed CI and merged. M46 adds eight draft models (52 total), 48/48 illustrative topic lenses with related drafts and 3,332 pending educational reviews. Exact-head CI pending. M33/M29 historical baselines follow; FULL PRODUCT NOT COMPLETE; PUBLIC LAUNCH NOT APPROVED. 70/100 scoped engineering/design items, zero verified chapters.
+> **M47 CANDIDATE — 2026-11-24:** M46 passed CI and merged. M47 adds eight senior-secondary draft models (60 total), 48/48 illustrative lenses and 3,340 pending reviews. Exact-head CI pending. M33/M29 historical baselines follow; FULL PRODUCT NOT COMPLETE; PUBLIC LAUNCH NOT APPROVED. 70/100 scoped tasks, zero verified chapters.
+
+
+> **M46 HISTORICAL CHECKPOINT — 2026-11-24:** M41–M45 passed CI and merged. M46 added eight draft models (52 total), 48/48 illustrative topic lenses and 3,332 pending educational reviews. CI passed and merged PR #35. M33/M29 historical baselines follow; FULL PRODUCT NOT COMPLETE; PUBLIC LAUNCH NOT APPROVED. 70/100 scoped engineering/design items, zero verified chapters.
 
 
 > **M41 CANDIDATE — 2026-11-24:** M40 eight foundational models passed CI and merged. M41 adds eight secondary draft models: candidate 44 interactive models, 44 source-backed draft hints and 3,324 pending educational reviews. CI pending; 70/100 scoped engineering/design items unchanged. No verified syllabus mapping, teacher approval or public release. M33 and M29 historical baselines follow; FULL PRODUCT NOT COMPLETE; PUBLIC LAUNCH NOT APPROVED.

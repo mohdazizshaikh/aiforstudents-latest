@@ -245,3 +245,7 @@ M40 passed exact-head CI and merged. M41 adds eight original bilingual computer-
 ### M46 remaining discovery-lens candidates
 
 M42–M45 passed their exact-head CI and merged; teacher launcher, synthetic tutor contract, example feedback and local draft review rubric are implemented. M46 adds eight original draft models and fills all five previously empty illustrative lenses, yielding 48/48 nonempty draft topic slots, 52 interactive models and 3,332 pending review records. Zero verified chapter mappings. 70/100 scoped engineering/design tasks unchanged. [M46 models](M46_DISCOVERY_GAP_LABS.md).
+
+### M47 senior-secondary candidate
+
+M46 exact-head CI passed and merged. M47 adds eight original draft senior-secondary models, 60 interactive models, 60 source hints, 48 nonempty illustrative lenses and 3,340 pending educational reviews. All chapter placements remain unverified. 70/100 scoped engineering/design items unchanged. [M47 models](M47_SENIOR_SECONDARY_MODELS.md).

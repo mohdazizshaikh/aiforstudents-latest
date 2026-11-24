@@ -37,7 +37,7 @@ function visualize(metrics){
  }else if(id==='capacitor-charge'){
   shape('rect',{x:100,y:35,width:12,height:100,fill:'#39826b'});shape('rect',{x:208,y:35,width:12,height:100,fill:'#346b9e'});for(let i=0;i<state.volt;i++){txt(83,50+i*18,'+');txt(230,50+i*18,'−')}txt(20,155,'Q = '+state.cap+' × '+state.volt+' = '+metrics.chargeUnits);
  }else if(id==='alkane-count'){
-  for(let i=0;i<state.carbon;i++){const x=35+i*48;dot(x,55,'#39826b');txt(x-4,77,'C')}for(let i=0;i<metrics.hydrogenCount;i++){const x=15+(i%7)*44,y=106+Math.floor(i/7)*35;dot(x,y,'#346b9e');txt(x+7,y+4,'H')}txt(12,20,metrics.alkaneFormula);
+  for(let i=0;i<state.carbon;i++){const x=35+i*48;dot(x,55,'#39826b');txt(x-4,77,'C')}for(let i=0;i<metrics.hydrogenCount;i++){const x=15+(i%7)*44,y=100+Math.floor(i/7)*30;dot(x,y,'#346b9e');txt(x+7,y+4,'H')}txt(12,20,metrics.alkaneFormula);
  }else if(id==='bond-pair-count'){
   shape('circle',{cx:85,cy:80,r:28,fill:'#d8eee3',stroke:'#39826b'});shape('circle',{cx:235,cy:80,r:28,fill:'#d8eee3',stroke:'#39826b'});for(let i=0;i<state.pairs;i++){const y=80+(i-(state.pairs-1)/2)*18;line(113,y,207,y,'#346b9e',3);dot(151,y,'#ad7525');dot(169,y,'#ad7525')}txt(10,155,p('Shared electrons ','साझा इलेक्ट्रॉन ')+metrics.sharedElectrons);
  }else if(id==='dna-complement'){
