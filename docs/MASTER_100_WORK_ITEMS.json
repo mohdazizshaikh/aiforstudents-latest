@@ -2174,12 +2174,12 @@
     }
   ],
   "updatedOn": "2026-11-24",
-  "currentEngineeringMilestone": "M61_VERIFIED_M62_CANDIDATE",
+  "currentEngineeringMilestone": "M62_VERIFIED_M63_CANDIDATE",
   "additionalNewMathsDrafts": 3,
   "currentPendingContentRecords": 3340,
   "batch1VerifiedEngineeringAndDesignTasks": 46,
   "batch2VerifiedEngineeringAndDesignTasks": 24,
-  "statusCaveat": "70/100 scoped tasks. M61 verified merged; M62 multi-board review and teacher print sequence candidates. 32 unverified proposals, 180 proposed review cells, 3340 pending educational reviews, six safeguarding gates and zero verified chapters. No full teacher administration, actual AI tutor, validated mastery, real devices, pilot or public launch.",
+  "statusCaveat": "70/100 scoped tasks. M62 verified merged; M63 supplemental maths activities candidate. Ratio-algebra canonical fingerprint changed; affected worksheets need regeneration and independent review. 32 mapping proposals, 180 mapping checks, 3340 pending educational reviews, six safeguarding gates, zero verified chapters. No actual tutor, validated mastery, full teacher administration, physical device evidence, pilot or public launch.",
   "newScienceDraftReviewRecords": 7,
   "newAdvancedDraftReviewRecords": 48,
   "m34CandidateWork": {
@@ -2466,7 +2466,7 @@
     "ciRun": 45456846207
   },
   "m62CandidateWork": {
-    "status": "IN_PROGRESS",
+    "status": "CI_VERIFIED_MERGED",
     "mappingProposals": 32,
     "mappingReviewCells": 180,
     "cbseReviewCells": 110,
@@ -2475,6 +2475,21 @@
     "teacherPrintableAgendaPersists": false,
     "verifiedChapters": 0,
     "humanApprovalAuthenticated": false,
+    "newDoneVerifiedTasks": 0,
+    "mergeSha": "0620740a118d7a1befd95015f185059bc69d0060",
+    "ciRun": 45457642411
+  },
+  "m63CandidateWork": {
+    "status": "IN_PROGRESS",
+    "supplementalActivities": 2,
+    "bilingualInputCombinations": 1270,
+    "topLevelModels": 60,
+    "canonicalRecordId": "advanced:ratio-algebra",
+    "reviewFingerprintChanged": true,
+    "humanReviewed": false,
+    "taskIds": [
+      "FP-036"
+    ],
     "newDoneVerifiedTasks": 0
   }
 }

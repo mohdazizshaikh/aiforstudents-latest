@@ -5,3 +5,5 @@ Stacked on M61 candidate 19f266c2888f6afe0f82051e8ba639f9b8e676f7. Consolidates 
 Run `node tools/multiboard-mapping-review.mjs --template multiboard.json`, then `node tools/multiboard-mapping-review.mjs --check multiboard.json`. Local ignored review-evidence only; no automatic migration of earlier reviewer decisions, no student data, no textbook copying or verified curriculum claims. Completed opaque references are only structurally ready for independent audit, not approval. No new review content records or verified task IDs. 3,340 pending records, zero verified chapters, 70/100 scoped tasks. Exact-head CI required.
 
 M61 subsequently passed CI 45456846207 and merged PR #50 at 142653a3e208499cec1894bed94652d89a15a57a. M62 exact-head CI still required.
+
+Verified CI 45457642411 passed and merged PR #51 at 0620740a118d7a1befd95015f185059bc69d0060. M63 subsequently changes the ratio-algebra record fingerprint; regenerate affected worksheets before independent review.
