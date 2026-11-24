@@ -332,11 +332,15 @@ def run():
                 b.locator('#digital-choices button').first.click()
                 a.locator('#remember').check()
                 a.locator('#remember').uncheck()
-                # Barrier through storage event delivery, not sleep.
-                b.evaluate("""() => new Promise(resolve => {
-                  addEventListener('storage', e => { if(e.key==='aifs-test-barrier') resolve() }, {once:false});
-                  setTimeout(resolve, 300);
-                })""")
+                # A separate synthetic barrier verifies storage event delivery deterministically.
+                b.evaluate("""() => {
+                  window.__testStorageBarrier = false;
+                  addEventListener('storage', e => {
+                    if(e.key==='aifs-test-barrier' && e.newValue==='1') window.__testStorageBarrier = true;
+                  });
+                }""")
+                a.evaluate("localStorage.setItem('aifs-test-barrier','1'); localStorage.removeItem('aifs-test-barrier')")
+                b.wait_for_function('window.__testStorageBarrier === true')
                 check(b.evaluate('window.AIFS_DIGITAL_BRIDGE.getHistory().digitalAttempts.length') == 1,
                       'Disabling remember erased another tab session')
                 a.locator('#clear-progress').click()
@@ -442,6 +446,9 @@ def run():
                 check(phone.locator('#teacher-guidance').evaluate('(e) => getComputedStyle(e).display') == 'none',
                       'Offline print card shows teacher guidance')
                 phone.emulate_media(media='screen')
+                for route in ["/games/creative-studio/","/games/fix-the-machine/","/games/number-market/","/games/pattern-quest/","/games/perspective-explorer/","/games/shape-builder/","/games/story-detective/","/games/strategy-island/"]:
+                    phone.goto(origin + route, wait_until='load')
+                    check(phone.locator('h1').inner_text() != '', 'Offline guide missing: ' + route)
                 check_no_runtime_errors(phone, mobile_errors)
                 report['checks'].append('M33 offline expanded labs, local hint and complete teacher card dependency graph')
                 report['checks'].append('M31 SW installs 40+ assets and loads Studio guide + learner app offline')

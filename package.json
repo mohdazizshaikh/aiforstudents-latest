@@ -1,6 +1,6 @@
 {
-  "name": "aifs-discovery-m32",
-  "version": "0.20.0",
+  "name": "aifs-discovery-m33",
+  "version": "0.21.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -17,6 +17,7 @@
     "plan:check": "node tools/workplan-status.mjs --check",
     "curriculum:check": "node tools/validate-curriculum-map.mjs",
     "audit:bilingual": "node tools/audit-bilingual-learning.mjs",
-    "plan:trace": "node tools/plan-evidence-check.mjs"
+    "plan:trace": "node tools/plan-evidence-check.mjs",
+    "audit:offline": "node tools/audit-offline-dependencies.mjs"
   }
 }
