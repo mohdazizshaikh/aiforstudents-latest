@@ -52,13 +52,13 @@ test('M30 data table comparison is arithmetic, not a learner scoring or talent r
 });
 test('M30 Maths review queue is integrated with original 3,282-record human review pipeline',()=>{
  const audit=auditContentQueues();
- assert.equal(audit.total,3332);
- assert.equal(audit.pending,3332);
+ assert.equal(audit.total,3340);
+ assert.equal(audit.pending,3340);
  assert.equal(audit.counts.maths.total,3);
  assert.equal(audit.counts.maths.pending,3);
  const rows=buildReviewRows(),summary=buildSummary(undefined,rows);
- assert.equal(rows.length,3332);
- assert.equal(summary.pendingHumanReviewRecords,3332);
+ assert.equal(rows.length,3340);
+ assert.equal(summary.pendingHumanReviewRecords,3340);
  const maths=rows.filter(x=>x.queue==='maths');
  assert.equal(maths.length,3);
  for(const row of maths){

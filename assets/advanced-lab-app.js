@@ -27,6 +27,23 @@ function visualize(metrics){
   line(10,cy,310,cy,'#304f47',2);line(cx,10,cx,170,'#304f47',2);txt(300,cy-5,'x');txt(cx+5,14,'y');
   if(id==='coordinate'){line(cx-5*sc,cy+9*sc,cx+5*sc,cy-11*sc,'#26785d',2);dot(cx+metrics.x*sc,cy-metrics.y*sc,'#9b5620');txt(14,14,'y = 2x + 1')}
   else{dot(cx+state.x*sc,cy-state.y*sc,'#296cba');dot(cx+metrics.transformedX*sc,cy-metrics.transformedY*sc,'#9b5620');txt(14,14,'P → P′')}
+ }else if(id==='integral-area'){
+  const cx=32,cy=145,x=cx+state.bound*48,y=cy-metrics.endpointY*6;line(cx,cy,300,cy,'#304f47',2);line(cx,cy,cx,10,'#304f47',2);shape('polygon',{points:cx+','+cy+' '+x+','+cy+' '+x+','+y,fill:'#d8eee3',stroke:'#39826b'});line(cx,cy,x,y,'#39826b',3);txt(x-10,160,String(state.bound));txt(40,20,'y = '+state.slope+'x');txt(40,38,p('Area ','क्षेत्रफल ')+metrics.integralArea);
+ }else if(id==='vector-components'){
+  const cx=160,cy=85,x=cx+state.x*24,y=cy-state.y*13;line(12,cy,308,cy,'#304f47',2);line(cx,8,cx,162,'#304f47',2);line(cx,cy,x,cy,'#346b9e',2);line(x,cy,x,y,'#346b9e',2);line(cx,cy,x,y,'#ad7525',3);dot(x,y,'#ad7525');txt(8,16,p('Magnitude ','परिमाण ')+Number(metrics.vectorMagnitude.toFixed(2)));
+ }else if(id==='magnetic-flux'){
+  const parallel=state.orientation==='parallel';for(let i=0;i<state.field;i++){const y=44+i*21;line(18,y,298,y,'#346b9e',2);shape('polygon',{points:'298,'+y+' 289,'+(y-4)+' 289,'+(y+4),fill:'#346b9e'})}
+  if(parallel)shape('rect',{x:150,y:25,width:20,height:120,fill:'#39826b','fill-opacity':0.5,stroke:'#304f47'});else shape('rect',{x:87,y:83,width:146,height:16,fill:'#39826b','fill-opacity':0.5,stroke:'#304f47'});txt(8,165,p('Symbolic flux ','प्रतीकात्मक फ्लक्स ')+metrics.fluxUnits);
+ }else if(id==='capacitor-charge'){
+  shape('rect',{x:100,y:35,width:12,height:100,fill:'#39826b'});shape('rect',{x:208,y:35,width:12,height:100,fill:'#346b9e'});for(let i=0;i<state.volt;i++){txt(83,50+i*18,'+');txt(230,50+i*18,'−')}txt(20,155,'Q = '+state.cap+' × '+state.volt+' = '+metrics.chargeUnits);
+ }else if(id==='alkane-count'){
+  for(let i=0;i<state.carbon;i++){const x=35+i*48;dot(x,55,'#39826b');txt(x-4,77,'C')}for(let i=0;i<metrics.hydrogenCount;i++){const x=15+(i%7)*44,y=100+Math.floor(i/7)*30;dot(x,y,'#346b9e');txt(x+7,y+4,'H')}txt(12,20,metrics.alkaneFormula);
+ }else if(id==='bond-pair-count'){
+  shape('circle',{cx:85,cy:80,r:28,fill:'#d8eee3',stroke:'#39826b'});shape('circle',{cx:235,cy:80,r:28,fill:'#d8eee3',stroke:'#39826b'});for(let i=0;i<state.pairs;i++){const y=80+(i-(state.pairs-1)/2)*18;line(113,y,207,y,'#346b9e',3);dot(151,y,'#ad7525');dot(169,y,'#ad7525')}txt(10,155,p('Shared electrons ','साझा इलेक्ट्रॉन ')+metrics.sharedElectrons);
+ }else if(id==='dna-complement'){
+  shape('rect',{x:35,y:48,width:105,height:65,rx:8,fill:'#d8eee3',stroke:'#39826b'});shape('rect',{x:180,y:48,width:105,height:65,rx:8,fill:'#b6d5ef',stroke:'#346b9e'});line(140,81,180,81,'#304f47',3);txt(84,84,metrics.dnaBase);txt(229,84,metrics.complementBase);txt(12,150,p('Symbolic pair','प्रतीकात्मक युग्म'));
+ }else if(id==='gas-exchange'){
+  shape('rect',{x:15,y:40,width:125,height:100,rx:10,fill:'#d8eee3'});shape('rect',{x:180,y:40,width:125,height:100,rx:10,fill:'#b6d5ef'});txt(22,65,p('Alveolar air','वायुकोष की हवा'));txt(192,65,p('Blood','रक्त'));const a=state.gas==='o2'?80:240,b=state.gas==='o2'?240:80,dir=Math.sign(b-a);line(a,100,b,100,'#ad7525',4);shape('polygon',{points:b+',100 '+(b-dir*12)+',94 '+(b-dir*12)+',106',fill:'#ad7525'});txt(125,28,state.gas==='o2'?'O₂':'CO₂');
  }else if(id==='triangle-area'){
   const w=state.base*30,h=state.height*19;shape('polygon',{points:'35,145 '+(35+w)+',145 35,'+(145-h),fill:'#d8eee3',stroke:'#39826b','stroke-width':2});txt(35,162,p('Base ','आधार ')+state.base);txt(38,24,p('Height ','ऊँचाई ')+state.height);
  }else if(id==='right-triangle-ratio'){
@@ -157,7 +174,7 @@ function visualize(metrics){
 function render(){
  const m=modelAdvanced(id),result=evaluateAdvanced(id,state,lang());
  $('advanced-nav').textContent=p('Explore Labs','प्रयोग खोजें');
- $('advanced-title').textContent=p('Explore Maths & Science Labs — 40 draft models','गणित और विज्ञान प्रयोग — 40 मसौदा मॉडल');
+ $('advanced-title').textContent=p('Explore Maths & Science Labs — 48 draft models','गणित और विज्ञान प्रयोग — 48 मसौदा मॉडल');
  $('advanced-intro').textContent=p('Offline computer-only concepts: Maths, Physics, Chemistry and Biology.','ऑफ़लाइन कंप्यूटर आधारित गणित, भौतिकी, रसायन और जीवविज्ञान अवधारणाएँ।');
  $('advanced-notice').textContent=p('UNREVIEWED original teaching drafts. Independent subject, Hindi and safety review pending. No grade mapping or real experiments.','असमीक्षित मूल शिक्षण मसौदे। विषय, हिंदी और सुरक्षा समीक्षा बाकी है। कक्षा मिलान या असली प्रयोग नहीं।');
  $('advanced-topic-label').textContent=p('Choose a concept','अवधारणा चुनें');

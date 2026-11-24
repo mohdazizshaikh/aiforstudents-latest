@@ -25,7 +25,7 @@ test('M30 B1 verified tasks have source and test evidence and valid completed de
   for(const dep of task.dependsOn)assert.equal(byId.get(dep).status,'DONE_VERIFIED');
  }
  assert.equal(manifest.items.length,100);
- assert.equal(manifest.currentPendingContentRecords,3332);
+ assert.equal(manifest.currentPendingContentRecords,3340);
  assert.equal(manifest.existingUnreviewedContentRecords,3282);
 });
 test('M30 workplan validator rejects fake signoff, absent evidence, wrong count or bad dependencies',()=>{
@@ -43,7 +43,7 @@ test('M30 workplan validator rejects fake signoff, absent evidence, wrong count 
 test('M30 dashboard and status remain source-backed without learner info or live-host claims',()=>{
  const dashboard=load('docs/B1_PROGRESS_DASHBOARD.md');
  assert.match(dashboard,/46 \| 50 \| 4/);
- assert.match(dashboard,/3,332 pending subject\/Hindi reviews/);
+ assert.match(dashboard,/3,340 pending subject\/Hindi reviews/);
  assert.match(dashboard,/NOT AUTHENTICATED/);
  assert.match(dashboard,/publicReleaseApproved: false/);
  assert.doesNotMatch(dashboard,/@gmail\.com|api[_-]?key|Bearer /);

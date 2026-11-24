@@ -529,11 +529,12 @@
       "topics": [
         {
           "subject": "maths",
-          "en": "Functions and probability; calculus gap",
-          "hi": "फलन और प्रायिकता; कलन बाकी",
+          "en": "Functions, probability and vectors; wider calculus gaps",
+          "hi": "फलन, प्रायिकता और सदिश; विस्तृत कलन बाकी",
           "modelIds": [
             "advanced:coordinate",
-            "advanced:probability"
+            "advanced:probability",
+            "advanced:vector-components"
           ],
           "coverage": "RELATED_DRAFT_ONLY",
           "reviewStatus": "PENDING"
@@ -552,21 +553,23 @@
         },
         {
           "subject": "chemistry",
-          "en": "Symbolic atomic charge; bonding gaps",
-          "hi": "प्रतीकात्मक परमाणु आवेश; बंधन बाकी",
+          "en": "Symbolic atomic charge and Lewis bond pairs; wider bonding gaps",
+          "hi": "प्रतीकात्मक परमाणु आवेश और लुईस बंध युग्म; अन्य बंधन विषय बाकी",
           "modelIds": [
-            "advanced:ion-charge"
+            "advanced:ion-charge",
+            "advanced:bond-pair-count"
           ],
           "coverage": "RELATED_DRAFT_ONLY",
           "reviewStatus": "PENDING"
         },
         {
           "subject": "biology",
-          "en": "Cell biology and idealised division counts; physiology gaps",
-          "hi": "कोशिका जीवविज्ञान और आदर्श विभाजन गिनती; शरीर क्रिया बाकी",
+          "en": "Cell biology, idealised division and lung gas-exchange directions; wider physiology gaps",
+          "hi": "कोशिका जीवविज्ञान, आदर्श विभाजन और फेफड़े में गैस विनिमय दिशा; अन्य शरीर क्रिया बाकी",
           "modelIds": [
             "science:cells",
-            "advanced:cell-doubling"
+            "advanced:cell-doubling",
+            "advanced:gas-exchange"
           ],
           "coverage": "RELATED_DRAFT_ONLY",
           "reviewStatus": "PENDING"
@@ -582,41 +585,46 @@
       "topics": [
         {
           "subject": "maths",
-          "en": "Square-function derivative; advanced calculus and statistics gaps",
-          "hi": "वर्ग फलन का अवकलज; उच्च कलन और सांख्यिकी बाकी",
+          "en": "Square-function derivative, linear integral; advanced statistics gaps",
+          "hi": "वर्ग फलन का अवकलज, रैखिक समाकल; उच्च सांख्यिकी बाकी",
           "modelIds": [
-            "advanced:square-slope"
+            "advanced:square-slope",
+            "advanced:integral-area"
           ],
           "coverage": "RELATED_DRAFT_ONLY",
           "reviewStatus": "PENDING"
         },
         {
           "subject": "physics",
-          "en": "Ideal converging lens; electromagnetism and wider optics gaps",
-          "hi": "आदर्श अभिसारी लेंस; विद्युतचुंबकत्व और अन्य प्रकाशिकी बाकी",
+          "en": "Ideal converging lens and symbolic magnetic flux; induction and wider optics gaps",
+          "hi": "आदर्श अभिसारी लेंस और प्रतीकात्मक चुंबकीय फ्लक्स; प्रेरण और अन्य प्रकाशिकी बाकी",
           "modelIds": [
-            "advanced:thin-lens"
+            "advanced:thin-lens",
+            "advanced:magnetic-flux",
+            "advanced:capacitor-charge"
           ],
           "coverage": "RELATED_DRAFT_ONLY",
           "reviewStatus": "PENDING"
         },
         {
           "subject": "chemistry",
-          "en": "Symbolic dynamic rate balance; equilibrium constants and organic chemistry gaps",
-          "hi": "प्रतीकात्मक गतिशील दर संतुलन; साम्य स्थिरांक और कार्बनिक रसायन बाकी",
+          "en": "Symbolic dynamic balance and alkane formulas; wider organic chemistry and equilibrium constants gaps",
+          "hi": "प्रतीकात्मक गतिशील संतुलन और ऐल्केन सूत्र; अन्य कार्बनिक रसायन और साम्य स्थिरांक बाकी",
           "modelIds": [
-            "advanced:dynamic-balance"
+            "advanced:dynamic-balance",
+            "advanced:alkane-count"
           ],
           "coverage": "RELATED_DRAFT_ONLY",
           "reviewStatus": "PENDING"
         },
         {
           "subject": "biology",
-          "en": "Inheritance and ecology; molecular gaps",
-          "hi": "आनुवंशिकता और पारिस्थितिकी; आणविक विषय बाकी",
+          "en": "Inheritance, ecology and DNA base pairing; molecular biology gaps remain",
+          "hi": "आनुवंशिकता, पारिस्थितिकी और डीएनए क्षार युग्मन; आणविक जीवविज्ञान बाकी",
           "modelIds": [
             "advanced:heredity",
-            "advanced:ecosystem"
+            "advanced:ecosystem",
+            "advanced:dna-complement"
           ],
           "coverage": "RELATED_DRAFT_ONLY",
           "reviewStatus": "PENDING"

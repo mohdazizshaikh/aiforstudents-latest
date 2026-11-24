@@ -4,8 +4,8 @@ import {readFileSync} from 'node:fs';
 import {renderDiscovery,validateDiscovery} from '../tools/curriculum-discovery.mjs';
 const read=p=>readFileSync(new URL('../'+p,import.meta.url),'utf8');
 const d=JSON.parse(read('docs/M36_DRAFT_CURRICULUM_DISCOVERY.json'));
-test('M36 12 grade rows, 48 bilingual lenses, all 52 existing models and no empty illustrative slots, zero verified chapters',()=>{
- const r=validateDiscovery(d);assert.equal(r.valid,true,r.errors.join('; '));assert.equal(r.grades,12);assert.equal(r.slots,48);assert.equal(r.uniqueExistingModels,52);assert.equal(r.gaps,0);assert.equal(r.verifiedChapters,0);assert.equal(r.publicReleaseApproved,false);
+test('M36 12 grade rows, 48 bilingual lenses, all 60 existing models and no empty illustrative slots, zero verified chapters',()=>{
+ const r=validateDiscovery(d);assert.equal(r.valid,true,r.errors.join('; '));assert.equal(r.grades,12);assert.equal(r.slots,48);assert.equal(r.uniqueExistingModels,60);assert.equal(r.gaps,0);assert.equal(r.verifiedChapters,0);assert.equal(r.publicReleaseApproved,false);
 });
 test('M36 rejects invented model IDs, false approval, duplicate grade, wrong subject and missing Hindi',()=>{
  for(const mutate of [x=>x.curriculumVerified=true,x=>x.grades[0].grade=2,x=>x.grades[0].chapter='fake',x=>x.grades[1].topics[1].modelIds=['advanced:fake'],x=>x.grades[1].topics[1].modelIds=['advanced:probability'],x=>x.grades[1].topics[1].hi='English']){
