@@ -1,5 +1,5 @@
 {
-  "release": "M57 verified prototype / M58 guided stages candidate — PRIVATE ONLY",
+  "release": "M57 verified prototype / M58–M59 candidates — PRIVATE ONLY",
   "release_date": "2026-11-24",
   "hosting_zip": "aiforstudents_hostinger_staging_m33.zip",
   "source_zip": "aiforstudents_m33_source_tests.zip",
@@ -22,7 +22,7 @@
   "study_question_records": 32,
   "study_items_expert_approved": 0,
   "isolated_browser_study_checks": 32,
-  "currentMilestone": "M57_VERIFIED_M58_GUIDED_STAGES_CANDIDATE",
+  "currentMilestone": "M57_VERIFIED_M58_M59_CANDIDATES",
   "status": "private-staging-prototype-unreviewed",
   "date": "2026-11-24",
   "studioLessons": 2,
@@ -153,5 +153,9 @@
   "advancedGuidedStagesPersists": false,
   "advancedGuidedStagesMasteryValidated": false,
   "advancedSubjectFilterEngineeringVerified": true,
-  "tutorBoundaryAuditEngineeringVerified": true
+  "tutorBoundaryAuditEngineeringVerified": true,
+  "physicalValidationWorksheetCandidate": true,
+  "physicalValidationScenarios": 12,
+  "physicalValidationScenariosAuthenticated": 0,
+  "physicalEvidenceAuthenticated": false
 }

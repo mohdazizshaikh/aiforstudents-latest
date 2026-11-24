@@ -1,5 +1,8 @@
 # Hostinger Business — Private Staging Operator Checklist
 
+> **M57 VERIFIED / M58 CORRECTED / M59 CANDIDATE — 2026-11-24:** M55–M57 verified and merged. M58 guided stages initial Chromium passed, legacy reset assertion corrected; exact-head CI pending. M59 physical validation worksheet: 12 scenarios, no actual device evidence. 60 draft labs (48 advanced), 22 CBSE proposals, 34 review batches / 3,340 pending records, six safeguarding gates. 70/100 scoped tasks. FULL PRODUCT NOT COMPLETE; PUBLIC LAUNCH NOT APPROVED. M33/M29 historical baselines retained.
+
+
 > **M33 CURRENT CHECKPOINT — 2026-11-24:** B1 **46/50** scoped engineering/design tasks, four actual external expert gates remain blocked. B2 **17/50** bounded engineering task outputs subject to exact-head CI. Twelve new original **UNREVIEWED** conceptual models (4 Maths, 4 Physics, 2 Chemistry, 2 Biology) use local keyboard controls, visual/text alternatives and safe non-hardware examples. All **24 static HTML routes** and their local JS/style dependencies are covered by offline audit. Explicit shared-device reset is distinct from remembering preference; low-ink learner card print hides teacher guidance. **3,304 educational records await qualified subject/Hindi review**, including ratio/algebra educator acceptance. This is NOT full Class 1–12 curriculum, a real generative tutor, validated mastery, teacher administration, a live restricted Hostinger deployment, physical accessibility or an authorized school pilot. Public child launch remains **NOT APPROVED**. [M33 evidence](docs/M33_EXPANDED_LABS_QA.md) · [Current tracker](docs/B1_PROGRESS_DASHBOARD.md).
 
 
@@ -85,3 +88,7 @@ The `--full` read-only audit derives allowable routes/assets from repository sou
 - [ ] Test sleeping/background/discarded tabs, browsers without BroadcastChannel, multiple browser profiles, physical reset, browser restart and actual upgrade from M24 service worker to **aifs-discovery-m28-2026-11-23**; record issues and qualified operator/guardian review.
 - [ ] Run [M27 byte-integrity checker](docs/M27_STAGING_INTEGRITY.md) against **actual authorized HTTPS staging**, and manually verify backup/rollback, headers and no source-only files exposed.
 - [ ] Explain that clearing this browser does **not** erase other devices, backups or hosting logs. Child-oriented public release remains NOT APPROVED.
+
+### M59 physical-device handoff candidate
+
+Use the local worksheet from [M59](docs/M59_PHYSICAL_VALIDATION_HANDOFF.md), bound to the actual staged source commit, not the historical artifact label. Twelve pending scenarios; opaque references only. Actual devices, operator authorization, access control, rollback and real staging remain required. No child access authorized.
