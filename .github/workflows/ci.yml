@@ -58,6 +58,8 @@ jobs:
           npm run safety-handoff:check
       - name: Rehearse disabled tutor boundary across all canonical records (NOT provider evaluation)
         run: npm run tutor:audit-corpus
+      - name: Exhaustive fictional mastery rule grid (NOT empirical validation)
+        run: npm run mastery:audit-grid
       - name: Assert public preflight remains blocked
         run: |
           if node tools/release-preflight.mjs --public > /dev/null; then
