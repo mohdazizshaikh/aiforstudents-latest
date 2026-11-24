@@ -113,3 +113,14 @@ h1,h2,h3,p{margin-top:0}h1,h2,h3{line-height:1.16;letter-spacing:-.04em}h1{font-
 
 /* M33 interactive conceptual models: visual equivalents plus accessible numeric tables. */
 #advanced-topic{display:block;width:100%;padding:12px;min-height:48px;margin:8px 0 16px;border:1px solid #bdd5ce;border-radius:9px;background:white;color:#19343b}.advanced-results{width:100%;border-collapse:collapse;table-layout:fixed;overflow-wrap:anywhere}.advanced-results caption{text-align:left;font-weight:700;padding:10px 0}.advanced-results td,.advanced-results th{padding:8px;border-bottom:1px solid #bed7cb;text-align:left}.advanced-visual svg{width:100%;max-width:460px;height:auto;display:block;background:white;border:1px solid #c6d9cf;border-radius:9px}.advanced-visual{margin:12px 0}.advanced-surface label{font-weight:700}.advanced-surface .science-control-group{min-width:0}.advanced-results th:first-child{width:56%}
+
+/* M34: keep the organizer bounded even for long Hindi labels. */
+.classroom-organizer{display:grid;grid-template-columns:minmax(0,1fr);gap:10px;min-width:0;max-width:100%;margin:14px 0;overflow-wrap:anywhere}
+.classroom-organizer h3,.classroom-organizer p{margin:0}
+.classroom-organizer label{font-weight:700}
+.classroom-organizer select{width:100%;min-width:0;max-width:100%;min-height:44px;padding:9px;border:1px solid #bdd5ce;border-radius:9px;background:white;color:var(--ink)}
+.classroom-queue-actions{display:flex;flex-wrap:wrap;gap:8px;min-width:0}
+.classroom-queue-actions .btn{min-height:44px;max-width:100%;white-space:normal;overflow-wrap:anywhere;text-align:center}
+.classroom-organizer select:focus-visible{outline:3px solid #ad7525;outline-offset:3px}
+@media(max-width:480px){.classroom-organizer{padding:12px}.classroom-queue-actions .btn{flex:1 1 100%}}
+@media print{.classroom-organizer,.classroom-guidance{display:none!important}}

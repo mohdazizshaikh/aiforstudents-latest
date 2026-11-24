@@ -52,3 +52,7 @@ Observer must not record identifiable narrative in this form. Safety incidents g
 ## Evidence and release discipline
 
 This document advances design candidates FP-066, FP-067, FP-076, FP-077, FP-078, FP-089. FP-086 is a separate code/test candidate. FP-079, FP-087, FP-088 need remaining implementation or audit; external gates retain status. Update canonical JSON, dashboard and plan together after exact-head test evidence. No fabricated owner, source approval, school pilot or real Hostinger evidence.
+
+## M34 follow-up: first CI result and corrective work
+
+Initial exact head 97fcc31: Node/static/package job passed; Chromium failed at 390px (708px document width). Corrective candidate replaces row-flex notice with bounded single-column grid and wrapped controls; retains normal overflow detection. Adds real browser cases for reorder/start/reset, peer-tab clear, offline projector, Hindi mobile bounds, learner-only main print and both existing worksheet routes. Service worker cache identifier changes to m34-r1 suffix (M33 packaging baseline remains) to invalidate old static cache. No real device, licensing, subject review or launch approval implied. New head still requires CI. Existing original worksheets are reused, not a complete licensed assignment pack.

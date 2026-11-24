@@ -8,14 +8,14 @@ const txt=p=>classroomText(p,lang());
 const both=(en,hi)=>lang()==='hi'?hi:en;
 const make=(tag,cls,text)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(text!==undefined)e.textContent=text;return e};
 // Existing route, no storage or remote service. Fixed controls retain focus on language/lesson changes.
-const organizer=make('section','notice');
+const organizer=make('section','notice classroom-organizer');
 organizer.setAttribute('aria-labelledby','classroom-queue-title');
 const queueTitle=make('h3','');queueTitle.id='classroom-queue-title';
 const queueNote=make('p','');
 const queueLabel=make('label','');queueLabel.htmlFor='classroom-queue-choice';
 const queueChoice=make('select','');queueChoice.id='classroom-queue-choice';
 const queueStatus=make('p','');queueStatus.setAttribute('role','status');queueStatus.setAttribute('aria-live','polite');
-const queueButtons=make('div','');
+const queueButtons=make('div','classroom-queue-actions');
 const queueControls={};
 function queueAction(type){
  const id=queueChoice.value;
