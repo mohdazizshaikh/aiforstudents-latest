@@ -248,7 +248,7 @@ export function advancedResultRows(metrics,lang='en'){
 export function evaluateAdvanced(id,state,lang='en'){
  if(!['en','hi'].includes(lang))throw Error('Unknown language');
  const m=modelAdvanced(id),result=calculateAdvanced(id,state);
- const optional=id==='probability'?['seed','draws']:id==='sound'?['amplitude']:[];
+ const optional=optionalExampleFields(id);
  const correct=m.fields.filter(f=>!optional.includes(f.id)).every(f=>state[f.id]===m.target[f.id]);
  const numbers=advancedResultRows(result,lang).map(x=>x.label+' = '+x.value).join('; ');
  return {id,correct,metrics:result,explanation:text(m.title,lang)+': '+numbers+'. '+text(m.caveat,lang),
@@ -268,4 +268,18 @@ export function auditAdvancedPairs(models=ADVANCED_MODELS){
   try{validateAdvancedState(id,m.initial);validateAdvancedState(id,m.target);if(!evaluateAdvanced(id,m.target).correct)errors.push(id+': wrong target')}catch(e){errors.push(id+': '+e.message)}
  }
  return errors;
+}
+
+/** M44 bounded, example-specific feedback. Compare the current controls to the authored example,
+ * not the learner's knowledge. No attempt count, identity, score, history or inferred mastery. */
+function optionalExampleFields(id){return id==='probability'?['seed','draws']:id==='sound'?['amplitude']:[];}
+export function advancedExampleFeedback(id,state,lang='en'){
+ const result=evaluateAdvanced(id,state,lang),m=modelAdvanced(id);
+ const optional=optionalExampleFields(id);
+ const format=(f,v)=>f.options?text(f.options.find(o=>o.value===v).label,lang):String(v)+(f.unit?' '+f.unit:'');
+ const fields=m.fields.map(f=>({id:f.id,label:text(f.label,lang),current:format(f,state[f.id]),example:optional.includes(f.id)?null:format(f,m.target[f.id]),kind:optional.includes(f.id)?'explore':state[f.id]===m.target[f.id]?'matches':'compare'}));
+ const first=fields.find(f=>f.kind==='compare');
+ const next=first?{fieldId:first.id,reason:text(P('Compare this control with the example. Other allowed values are valid explorations.','इस नियंत्रण को उदाहरण से मिलाएँ। दूसरे अनुमत मान भी सही खोज विकल्प हैं।'),lang)}:
+ {fieldId:null,reason:text(P('The specified example matches. Try changing one control and explaining the result.','दिया गया उदाहरण मेल खाता है। एक नियंत्रण बदलकर परिणाम समझाएँ।'),lang)};
+ return {id,exampleMatches:result.correct,fields,next,source:result.source,draftStatus:result.draftStatus,declinable:true,persists:false,usesHistory:false,masteryPrediction:false,publicReleaseApproved:false};
 }
