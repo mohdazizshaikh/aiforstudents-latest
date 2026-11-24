@@ -1,12 +1,12 @@
 /** M33: original draft-only conceptual labs, all activity state is transient. */
-import {ADVANCED_IDS,modelAdvanced,evaluateAdvanced,advancedResultRows,advancedExampleFeedback,advancedVariableComparison} from './advanced-lab-engine.js';
+import {ADVANCED_IDS,modelAdvanced,evaluateAdvanced,advancedResultRows,advancedExampleFeedback,advancedVariableComparison,ADVANCED_SUBJECT_FILTERS,advancedSubjectOptions} from './advanced-lab-engine.js';
 const $=id=>document.getElementById(id);
 const node=(tag,text)=>{const e=document.createElement(tag);if(text!==undefined)e.textContent=text;return e};
 const lang=()=>$('lang').value==='hi'?'hi':'en';
 const p=(en,hi)=>lang()==='hi'?hi:en;
 const t=pair=>pair[lang()==='hi'?1:0];
 const selected=new URLSearchParams(location.search).get('advanced');
-let id=ADVANCED_IDS.includes(selected)?selected:ADVANCED_IDS[0],state={...modelAdvanced(id).initial},feedback=null,comparisonOpen=false,variableBaseline=null;
+let id=ADVANCED_IDS.includes(selected)?selected:ADVANCED_IDS[0],state={...modelAdvanced(id).initial},feedback=null,comparisonOpen=false,variableBaseline=null,subjectFilter='all';
 const button=(text,action,label,disabled=false,pressed=null)=>{
  const b=node('button',text);b.type='button';b.className='btn outline compact';b.dataset.advancedAction=action;
  b.disabled=disabled;if(label)b.setAttribute('aria-label',label);
@@ -197,8 +197,12 @@ function render(){
  $('advanced-intro').textContent=p('Offline computer-only concepts: Maths, Physics, Chemistry and Biology.','ऑफ़लाइन कंप्यूटर आधारित गणित, भौतिकी, रसायन और जीवविज्ञान अवधारणाएँ।');
  $('advanced-notice').textContent=p('UNREVIEWED original teaching drafts. Independent subject, Hindi and safety review pending. No grade mapping or real experiments.','असमीक्षित मूल शिक्षण मसौदे। विषय, हिंदी और सुरक्षा समीक्षा बाकी है। कक्षा मिलान या असली प्रयोग नहीं।');
  $('advanced-topic-label').textContent=p('Choose a concept','अवधारणा चुनें');
- const select=$('advanced-topic');select.replaceChildren();
- for(const key of ADVANCED_IDS){const o=node('option',t(modelAdvanced(key).title));o.value=key;select.append(o)}select.value=id;
+ const filter=$('advanced-subject-filter'),names={all:['All subjects','सभी विषय'],maths:['Mathematics','गणित'],physics:['Physics','भौतिकी'],chemistry:['Chemistry','रसायन'],biology:['Biology','जीवविज्ञान']};
+ $('advanced-subject-label').textContent=p('Filter concepts by subject','विषय के अनुसार अवधारणाएँ चुनें');
+ filter.replaceChildren();for(const key of ADVANCED_SUBJECT_FILTERS){const o=node('option',p(...names[key]));o.value=key;filter.append(o)}filter.value=subjectFilter;
+ const options=advancedSubjectOptions(subjectFilter,lang()),select=$('advanced-topic');select.replaceChildren();
+ for(const item of options){const o=node('option',item.title);o.value=item.id;select.append(o)}select.value=id;
+ $('advanced-filter-count').textContent=p(options.length+' original draft concepts; no verified grade placement.',options.length+' मूल मसौदा अवधारणाएँ; कोई सत्यापित कक्षा मिलान नहीं।');
  $('advanced-heading').textContent=t(m.title);$('advanced-prompt').textContent=t(m.prompt);$('advanced-hint').textContent=t(m.hint);$('advanced-caveat').textContent=t(m.caveat);
  $('advanced-result-caption').textContent=p('Calculated model values (not observations)','गणना किए गए मॉडल मान (वास्तविक अवलोकन नहीं)');
  $('advanced-field-label').textContent=p('Quantity','राशि');$('advanced-value-label').textContent=p('Value','मान');
@@ -249,8 +253,14 @@ $('advanced-controls').addEventListener('click',e=>{
  feedback=null;comparisonOpen=false;render();
  const buttons=[...$('advanced-controls').querySelectorAll('button')];(buttons.find(x=>x.dataset.advancedAction===action&&!x.disabled)||buttons.find(x=>x.dataset.advancedAction.endsWith(':'+k)&&!x.disabled))?.focus()
 });
-function reset(){state={...modelAdvanced(id).initial};feedback=null;comparisonOpen=false;variableBaseline=null;render()}
+function reset(){if(subjectFilter!=='all'&&modelAdvanced(id).subject!==subjectFilter)subjectFilter='all';state={...modelAdvanced(id).initial};feedback=null;comparisonOpen=false;variableBaseline=null;render()}
 $('advanced-topic').addEventListener('change',e=>{id=e.target.value;reset();$('advanced-heading').focus()});
+$('advanced-subject-filter').addEventListener('change',e=>{
+ const next=e.target.value;if(!ADVANCED_SUBJECT_FILTERS.includes(next))return;
+ subjectFilter=next;const options=advancedSubjectOptions(next,lang());
+ if(!options.some(x=>x.id===id)){id=options[0].id;reset()}else render();
+ $('advanced-subject-filter').focus();
+});
 $('advanced-check').addEventListener('click',()=>{feedback=evaluateAdvanced(id,state,lang()).correct;comparisonOpen=false;render();$('advanced-feedback').focus()});
 $('advanced-compare-toggle').addEventListener('click',()=>{if(feedback===null)return;comparisonOpen=!comparisonOpen;render();$('advanced-compare-toggle').focus()});
 $('advanced-reset').addEventListener('click',()=>{reset();$('advanced-heading').focus()});
@@ -258,5 +268,5 @@ $('advanced-variable-mark').addEventListener('click',()=>{variableBaseline={...s
 $('advanced-variable-clear').addEventListener('click',()=>{variableBaseline=null;renderVariableComparison();$('advanced-variable-mark').focus()});
 $('lang').addEventListener('change',render);
 window.addEventListener('aifs-teacher-demo',event=>{if(!ADVANCED_IDS.includes(event.detail))return;id=event.detail;reset();$('advanced-heading').focus();});
-window.addEventListener('aifs-history-cleared',()=>{id=ADVANCED_IDS[0];reset()});
+window.addEventListener('aifs-history-cleared',()=>{subjectFilter='all';id=ADVANCED_IDS[0];reset()});
 render();

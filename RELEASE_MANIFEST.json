@@ -1,5 +1,5 @@
 {
-  "release": "M54 verified prototype / M55 variable exploration candidate — PRIVATE ONLY",
+  "release": "M55 verified / M56 integrated candidate — PRIVATE ONLY",
   "release_date": "2026-11-24",
   "hosting_zip": "aiforstudents_hostinger_staging_m33.zip",
   "source_zip": "aiforstudents_m33_source_tests.zip",
@@ -22,7 +22,7 @@
   "study_question_records": 32,
   "study_items_expert_approved": 0,
   "isolated_browser_study_checks": 32,
-  "currentMilestone": "M54_VERIFIED_M55_VARIABLE_EXPLORATION_CANDIDATE",
+  "currentMilestone": "M55_VERIFIED_M56_INTEGRATED_CANDIDATE",
   "status": "private-staging-prototype-unreviewed",
   "date": "2026-11-24",
   "studioLessons": 2,
@@ -66,7 +66,7 @@
   "sensitiveSourcePathExposureCheckAvailable": true,
   "sensitiveSourcePathExposureVerifiedOnLiveHost": false,
   "releaseZipSourceHashParityVerifiedInCI": true,
-  "swCacheVersion": "aifs-discovery-m33-2026-11-24-m55-r1",
+  "swCacheVersion": "aifs-discovery-m33-2026-11-24-m56-combined-r1",
   "crossTabPrivacyResetImplemented": true,
   "crossTabPrivacyRealDeviceVerified": false,
   "existingUnreviewedContentRecords": 3282,
@@ -114,9 +114,9 @@
   "printableLabActivityApprovals": 0,
   "printableLabActivityStoresStudentData": false,
   "verifiedCheckpoint": {
-    "milestone": "M54",
-    "mergeSha": "e7624d80e1fef13bb6cca29c7c8684cc5a7a81da",
-    "ciRun": 45449812650
+    "milestone": "M55",
+    "mergeSha": "0a00571f6f6a9a847782030914e4c26d72745e1b",
+    "ciRun": 45451915463
   },
   "legacyPackagingBaseline": "M33 artifact filenames and historical baseline counters retained; not latest test counts or live deployment evidence",
   "interactiveDraftModels": 60,
@@ -135,5 +135,12 @@
   "variableExplorationPersists": false,
   "variableExplorationMasteryValidated": false,
   "reviewBatchEngineeringVerified": true,
-  "variableExplorationCandidate": true
+  "variableExplorationCandidate": false,
+  "advancedSubjectFilterDraft": true,
+  "advancedSubjectFilterPersists": false,
+  "advancedSubjectFilterModels": 48,
+  "ncertMiddleStageTextbookListingsLocated": 6,
+  "ncertMiddleStagePrelimPdfsRetrieved": 0,
+  "advancedSubjectFilterCandidate": true,
+  "variableExplorationEngineeringVerified": true
 }

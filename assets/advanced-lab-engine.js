@@ -334,3 +334,10 @@ export function advancedVariableComparison(id,before,after,lang='en'){
  const guidance=text(mode==='UNCHANGED'?P('Change just one control to compare its displayed model results.','दिखाए गए मॉडल परिणामों की तुलना के लिए केवल एक नियंत्रण बदलें।'):mode==='MULTIPLE_CONTROLS'?P('More than one control changed. Restore all but one, or mark a new starting state.','एक से अधिक नियंत्रण बदले। एक को छोड़कर बाकी लौटाएँ, या नई आरंभिक स्थिति चुनें।'):P('Compare the displayed values in this simplified model. An unchanged displayed value may hide rounding; this is not a real-world causal experiment.','इस सरल मॉडल में दिखाए गए मान मिलाएँ। अपरिवर्तित दिखता मान गोलाई के कारण हो सकता है; यह वास्तविक कारणात्मक प्रयोग नहीं है।'),lang);
  return {id,mode,changedControls,comparisons,guidance,source:'assets/advanced-lab-engine.js',persists:false,usesLearnerHistory:false,masteryPrediction:false,publicReleaseApproved:false};
 }
+
+/** M56: local subject discovery; no age/grade or learning-ability inference. */
+export const ADVANCED_SUBJECT_FILTERS=Object.freeze(['all','maths','physics','chemistry','biology']);
+export function advancedSubjectOptions(subject='all',lang='en'){
+ if(!ADVANCED_SUBJECT_FILTERS.includes(subject)||!['en','hi'].includes(lang))throw Error('Unknown subject or language');
+ return ADVANCED_IDS.filter(id=>subject==='all'||ADVANCED_MODELS[id].subject===subject).map(id=>({id,subject:ADVANCED_MODELS[id].subject,title:text(ADVANCED_MODELS[id].title,lang),gradeVerified:false,humanReviewed:false}));
+}
