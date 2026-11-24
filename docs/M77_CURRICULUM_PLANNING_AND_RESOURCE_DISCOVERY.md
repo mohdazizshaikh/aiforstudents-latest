@@ -7,3 +7,7 @@ Curriculum planning CLI: `npm run curriculum:plan` prints the summary; `npm run 
 Teacher card page now offers a fixed subject/type resource finder for 12 basic main, 48 advanced main and 49 supplemental activities. Direct selection feeds the existing worksheet and pack interface. Filters stay in memory only and clear on leaving the mode or privacy reset. No learner inputs, tracking or grade recommendations. All 109 choices / 218 bilingual variants remain drafts.
 
 Added automated inventory reconciliation, bilingual discovery and invalid-filter tests; CI generates the ignored gap report and Chromium exercises offline selection, language, print isolation and reset. Exact-head CI pending; 70/100 scoped tasks unchanged, zero verified chapters and public launch blocked.
+
+## Verified outcome
+
+Exact-head CI 45484039541 passed both jobs; PR #67 merged at 71abd08b0351ee0ef2d8815b48b690a694c8c0e9. No independent educational approval or verified chapters.
