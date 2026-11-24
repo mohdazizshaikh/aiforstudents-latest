@@ -1,5 +1,8 @@
 # B1 — Engineering Workstream Progress Dashboard (M35 verified)
 
+> **M63 VERIFIED / M64 CANDIDATE — 2026-11-24:** M63 CI 45458529448 passed; merged 05646a8. M64 adds local bilingual title/ID discovery across 48 advanced draft models, subject-aware matching, explicit model opening, clear-search and shared-device privacy reset. Candidate CI pending. No new content record, chapter mapping, inferred ability, or remote data. 60 top-level draft labs plus two supplemental activities; 3,340 pending educational reviews, 32 mapping proposals / 180 review checks, six safeguarding gates, 70/100 scoped items unchanged. FULL PRODUCT NOT COMPLETE; PUBLIC LAUNCH NOT APPROVED.
+
+
 **Computed from the machine-readable 100-task tracker.** This is engineering evidence ONLY. Human educational, legal, safety, actual Hostinger and school approvals are **NOT AUTHENTICATED**.
 
 | Batch | Verified engineering/design tasks | Total | Still to implement / externally verify |

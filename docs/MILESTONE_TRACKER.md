@@ -1,5 +1,8 @@
 # Milestone and Release Tracker
 
+> **M63 VERIFIED / M64 CANDIDATE — 2026-11-24:** M63 CI 45458529448 passed; merged 05646a8. M64 adds local bilingual title/ID discovery across 48 advanced draft models, subject-aware matching, explicit model opening, clear-search and shared-device privacy reset. Candidate CI pending. No new content record, chapter mapping, inferred ability, or remote data. 60 top-level draft labs plus two supplemental activities; 3,340 pending educational reviews, 32 mapping proposals / 180 review checks, six safeguarding gates, 70/100 scoped items unchanged. FULL PRODUCT NOT COMPLETE; PUBLIC LAUNCH NOT APPROVED.
+
+
 > **M62 VERIFIED / M63 CANDIDATE — 2026-11-24:** M62 CI 45457642411 passed and merged PR #51 (32 board mapping proposals / 180 review checks; eight-model printable teacher agenda). M63 adds two bilingual supplemental ratio and linear-equation activities to existing ratio-algebra draft, 1,270 input combinations in regression tests; candidate CI pending. Existing ratio-algebra review fingerprint changes; regenerate/re-review affected worksheets. 60 top-level draft labs (48 advanced), 3,340 pending reviews, zero verified chapters, six safeguarding gates. 70/100 scoped tasks. FULL PRODUCT NOT COMPLETE; PUBLIC LAUNCH NOT APPROVED. M33/M29 historical baselines retained.
 
 

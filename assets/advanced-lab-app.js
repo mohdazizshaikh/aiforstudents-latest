@@ -1,5 +1,5 @@
 /** M33: original draft-only conceptual labs, all activity state is transient. */
-import {ADVANCED_IDS,modelAdvanced,evaluateAdvanced,advancedResultRows,advancedExampleFeedback,advancedVariableComparison,ADVANCED_SUBJECT_FILTERS,advancedSubjectOptions,ADVANCED_GUIDED_STAGES,advancedGuidedStage,RATIO_EXTENSION_IDS,ratioExtension,evaluateRatioExtension} from './advanced-lab-engine.js';
+import {ADVANCED_IDS,modelAdvanced,evaluateAdvanced,advancedResultRows,advancedExampleFeedback,advancedVariableComparison,ADVANCED_SUBJECT_FILTERS,advancedSubjectOptions,ADVANCED_GUIDED_STAGES,advancedGuidedStage,RATIO_EXTENSION_IDS,ratioExtension,evaluateRatioExtension,findAdvancedConcepts} from './advanced-lab-engine.js';
 const $=id=>document.getElementById(id);
 const node=(tag,text)=>{const e=document.createElement(tag);if(text!==undefined)e.textContent=text;return e};
 const lang=()=>$('lang').value==='hi'?'hi':'en';
@@ -8,6 +8,7 @@ const t=pair=>pair[lang()==='hi'?1:0];
 const selected=new URLSearchParams(location.search).get('advanced');
 let id=ADVANCED_IDS.includes(selected)?selected:ADVANCED_IDS[0],state={...modelAdvanced(id).initial},feedback=null,comparisonOpen=false,variableBaseline=null,subjectFilter='all',guidedIndex=null;
 let extensionMode='ratio',extensionState={...ratioExtension('ratio').initial};
+let finderQuery='',finderChoice='';
 const button=(text,action,label,disabled=false,pressed=null)=>{
  const b=node('button',text);b.type='button';b.className='btn outline compact';b.dataset.advancedAction=action;
  b.disabled=disabled;if(label)b.setAttribute('aria-label',label);
@@ -230,6 +231,21 @@ function renderExtension(){
  }
  for(const item of r.rows){const row=node('tr'),head=node('th',item.label);head.scope='row';row.append(head,node('td',item.value));values.append(row)}
 }
+function renderFinder(){
+ const query=$('advanced-finder-query'),results=$('advanced-finder-results'),open=$('advanced-finder-open');
+ $('advanced-finder-label').textContent=p('Find a draft concept by title','शीर्षक से मसौदा अवधारणा खोजें');
+ $('advanced-finder-help').textContent=p('Search English or Hindi titles in the selected subject. Do not enter personal information. Search stays on this page only.','चुने विषय में अंग्रेज़ी या हिंदी शीर्षक खोजें। निजी जानकारी न लिखें। खोज केवल इसी पृष्ठ पर रहती है।');
+ $('advanced-finder-results-label').textContent=p('Matching concepts','मेल खाती अवधारणाएँ');
+ $('advanced-finder-clear').textContent=p('Clear search','खोज मिटाएँ');
+ open.textContent=p('Open selected concept','चुनी अवधारणा खोलें');
+ if(query.value!==finderQuery)query.value=finderQuery;
+ const matches=findAdvancedConcepts(finderQuery,subjectFilter,lang());
+ results.replaceChildren();
+ for(const item of matches){const option=node('option',item.title);option.value=item.id;results.append(option)}
+ finderChoice=matches.some(x=>x.id===finderChoice)?finderChoice:(matches[0]?.id||'');
+ results.value=finderChoice;results.disabled=!matches.length;open.disabled=!matches.length;
+ $('advanced-finder-status').textContent=!finderQuery.trim()?p('Enter a title or part of a title.','शीर्षक या उसका हिस्सा लिखें।'):matches.length?p(matches.length+' matching draft concepts.',matches.length+' मेल खाती मसौदा अवधारणाएँ।'):p('No matching draft concepts in this subject. Try another title or change the subject.','इस विषय में कोई मेल खाती मसौदा अवधारणा नहीं। दूसरा शीर्षक या विषय चुनें।');
+}
 function render(){
  const m=modelAdvanced(id),result=evaluateAdvanced(id,state,lang());
  $('advanced-nav').textContent=p('Explore Labs','प्रयोग खोजें');
@@ -260,7 +276,7 @@ function render(){
  }
  const values=$('advanced-values');values.replaceChildren();
  for(const item of advancedResultRows(result.metrics,lang())){const row=node('tr'),head=node('th',item.label);head.scope='row';row.append(head,node('td',item.value));values.append(row)}
- visualize(result.metrics);renderVariableComparison();renderGuidedStage();renderExtension();
+ visualize(result.metrics);renderVariableComparison();renderGuidedStage();renderExtension();renderFinder();
  $('advanced-check').textContent=p('Check example','उदाहरण जाँचें');$('advanced-reset').textContent=p('Reset model','मॉडल फिर शुरू करें');
  $('advanced-feedback').hidden=feedback===null;
  if(feedback!==null)$('advanced-feedback').textContent=(feedback?p('Matches the example. ','उदाहरण से मेल खाता है। '):p('Compare the chosen values with the hint. ','चुने मान संकेत से मिलाएँ। '))+result.explanation
@@ -305,6 +321,15 @@ $('ratio-extension-controls').addEventListener('click',e=>{
  extensionState[key]=Math.max(f.min,Math.min(f.max,extensionState[key]+(op==='inc'?1:-1)));renderExtension();
  const buttons=[...$('ratio-extension-controls').querySelectorAll('button')];(buttons.find(x=>x.dataset.extensionAction===op+':'+key&&!x.disabled)||buttons.find(x=>x.dataset.extensionAction.endsWith(':'+key)&&!x.disabled))?.focus()
 });
+$('advanced-finder-query').addEventListener('input',e=>{
+ finderQuery=e.target.value.slice(0,80);finderChoice='';renderFinder();
+});
+$('advanced-finder-results').addEventListener('change',e=>{finderChoice=e.target.value});
+$('advanced-finder-clear').addEventListener('click',()=>{finderQuery='';finderChoice='';renderFinder();$('advanced-finder-query').focus()});
+$('advanced-finder-open').addEventListener('click',()=>{
+ if(!findAdvancedConcepts(finderQuery,subjectFilter,lang()).some(x=>x.id===finderChoice))return;
+ id=finderChoice;reset();$('advanced-heading').focus();
+});
 $('advanced-topic').addEventListener('change',e=>{id=e.target.value;reset();$('advanced-heading').focus()});
 $('advanced-subject-filter').addEventListener('change',e=>{
  const next=e.target.value;if(!ADVANCED_SUBJECT_FILTERS.includes(next))return;
@@ -325,5 +350,5 @@ $('advanced-variable-mark').addEventListener('click',()=>{variableBaseline={...s
 $('advanced-variable-clear').addEventListener('click',()=>{variableBaseline=null;renderVariableComparison();$('advanced-variable-mark').focus()});
 $('lang').addEventListener('change',render);
 window.addEventListener('aifs-teacher-demo',event=>{if(!ADVANCED_IDS.includes(event.detail))return;id=event.detail;reset();$('advanced-heading').focus();});
-window.addEventListener('aifs-history-cleared',()=>{subjectFilter='all';id=ADVANCED_IDS[0];reset()});
+window.addEventListener('aifs-history-cleared',()=>{subjectFilter='all';finderQuery='';finderChoice='';id=ADVANCED_IDS[0];reset()});
 render();
