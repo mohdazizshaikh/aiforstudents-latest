@@ -26,6 +26,7 @@
     "curriculum:batches": "node tools/board-review-batches.mjs",
     "curriculum:progress": "node tools/board-review-progress.mjs",
     "review:batches": "node tools/review-batches.mjs",
-    "review:progress": "node tools/educational-review-progress.mjs"
+    "review:progress": "node tools/educational-review-progress.mjs",
+    "tutor:audit-corpus": "node tools/full-tutor-corpus-audit.mjs"
   }
 }
