@@ -15,12 +15,12 @@ const exampleRow=Object.freeze({
 const review=(ref)=>({decision:'pass',reviewerRef:ref,reviewDate:'2026-11-23',rationale:'Checked against source and learner explanation.'});
 test('M23 pilots start with exactly 40 review records; no human approvals',()=>{
  const rows=buildReviewRows();
- assert.equal(rows.length,3304);
+ assert.equal(rows.length,3308);
  const data=makeReviewTemplate(rows);
  assert.equal(data.schema,EVIDENCE_SCHEMA);
  assert.equal(data.scope,'pilot-first');
  assert.equal(data.records.length,40);
- assert.deepEqual(Object.fromEntries(['studio','experiment','classroom','maths','science','advanced'].map(k=>[k,data.records.filter(x=>x.queue===k).length])),{studio:4,experiment:4,classroom:10,maths:3,science:7,advanced:12});
+ assert.deepEqual(Object.fromEntries(['studio','experiment','classroom','maths','science','advanced'].map(k=>[k,data.records.filter(x=>x.queue===k).length])),{studio:4,experiment:4,classroom:10,maths:3,science:7,advanced:16});
  const result=validateReviewEvidence(data,rows);
  assert.equal(result.schemaValid,true);
  assert.equal(result.recordsReadyForIndependentHumanAudit,0);
@@ -28,11 +28,11 @@ test('M23 pilots start with exactly 40 review records; no human approvals',()=>{
  assert.equal(result.humanApprovalAuthenticated,false);
  assert.ok(data.records.every(x=>x.subjectReview.decision==='pending'&&x.hindiReview.decision==='pending'));
 });
-test('M23 all-scope worklist can represent complete 3,304-record inventory',()=>{
+test('M23 all-scope worklist can represent complete 3,308-record inventory',()=>{
  const rows=buildReviewRows();
  const data=makeReviewTemplate(rows,'all');
- assert.equal(data.records.length,3304);
- assert.equal(validateReviewEvidence(data,rows).expectedRecords,3304);
+ assert.equal(data.records.length,3308);
+ assert.equal(validateReviewEvidence(data,rows).expectedRecords,3308);
 });
 test('M23 stale fingerprints, stale versions, missing items and duplicates fail closed',()=>{
  const original=makeReviewTemplate([exampleRow]);

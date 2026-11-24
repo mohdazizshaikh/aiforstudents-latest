@@ -17,3 +17,7 @@ Full Class 1–12 content authoring, subject/Hindi review, school pilot, real de
 ## M36 first CI correction
 
 Push CI 45352316632: Node/static job passed, Chromium failed navigating to the precached `/virtual-experiment-lab/#curriculum-discovery` URL offline. Service worker navigation cache key now strips the fragment as well as query, preserving the original browser navigation URL; only exact allowlisted static paths are returned. Cache suffix incremented to m36-r2. Existing offline fragment browser regression stays intact; corrected head still needs CI.
+
+## Four additional interactive models — M36 expanded candidate
+
+New: square function y=x² and opposite inputs, ideal one-dimensional F=ma, symbolic H₂O atom counts, hypothetical cell diagram magnification in millimetres. Reuse existing keyboard controls, bilingual numeric tables and SVGs; no real measurements or procedures. Review queue: four new unreviewed version-1 entries, current total 3,308. Discovery catalog now references all 28 existing model IDs; still zero verified chapters. No new HTML route, storage, external content or AI service. New and expanded browser/Node tests pending exact-head CI.

@@ -225,3 +225,7 @@ B1 **46/50**, B2 **17/50** remain verified. Ten B2 items moved to IN_PROGRESS (F
 ### M36 discovery candidate
 
 [Draft Class 1–12 topic discovery](M36_CURRICULUM_DISCOVERY.md) adds 48 illustrative topic lenses and links to the 24 existing interactive models; FP-016–020 remain BLOCKED_EXTERNAL, with zero board chapter/edition verification. M35 verified 70 scoped engineering/design tasks; M36 exact-head CI pending.
+
+### M36 expanded interactive candidate
+
+Four new original bilingual computer-only models: square function, ideal net force, symbolic atom count and hypothetical cell diagram scale. Inventory now 28 interactive lab models (16 advanced); 3,308 educational records require human review. Actual chapter mapping and all external approvals remain blocked. 70/100 scoped work items unchanged; new code pending exact-head CI.

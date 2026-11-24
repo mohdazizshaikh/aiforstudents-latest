@@ -60,7 +60,7 @@ ${pending.map(x=>`${x.id} (${x.status})`).join(', ')||'None'}
 
 ## Unchanged hard launch stops
 
-- Original 3,282 unreviewed educational records + 3 M30 Maths + 7 M31 Science + 12 M33 expanded models = **3,304 pending subject/Hindi reviews**, with no qualified approvals recorded.
+- Original 3,282 unreviewed educational records + 3 M30 Maths + 7 M31 Science + 12 M33 expanded models + 4 M36 models = **3,308 pending subject/Hindi reviews**, with no qualified approvals recorded.
 - All six actual safeguarding/legal operation human gates remain pending.
 - Actual restricted Hostinger HTTPS deployment, rollback, real low-end Android/assistive-technology and properly permitted classroom trial remain pending.
 - Prototype scope is NOT a comprehensive Class 1–12 mathematics/science curriculum, full teacher dashboard or real generative AI tutor.

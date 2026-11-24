@@ -7,7 +7,7 @@ import {SCIENCE_MODELS} from '../assets/science-engine.js';
 test('M31 structural bilingual audit covers 3,200 game drafts and all later learner teaching tracks',()=>{
  const r=auditBilingualLearning();
  assert.equal(r.valid,true,r.errors.join('; '));
- assert.deepEqual(r.counts,{gameTasks:3200,study:32,studio:2,experiments:2,maths:3,science:7,advanced:12,classroomSteps:10,digital:32});
+ assert.deepEqual(r.counts,{gameTasks:3200,study:32,studio:2,experiments:2,maths:3,science:7,advanced:16,classroomSteps:10,digital:32});
  assert.equal(r.educationalReviewPassed,false);
  assert.equal(r.translationQualityVerified,false);
  assert.equal(r.publicReleaseApproved,false);
