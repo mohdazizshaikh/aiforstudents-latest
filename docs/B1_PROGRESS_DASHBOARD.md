@@ -1,8 +1,5 @@
 # B1 — Engineering Workstream Progress Dashboard (M35 verified)
 
-> **M63 VERIFIED / M64 CANDIDATE — 2026-11-24:** M63 CI 45458529448 passed; merged 05646a8. M64 adds local bilingual title/ID discovery across 48 advanced draft models, subject-aware matching, explicit model opening, clear-search and shared-device privacy reset. Candidate CI pending. No new content record, chapter mapping, inferred ability, or remote data. 60 top-level draft labs plus two supplemental activities; 3,340 pending educational reviews, 32 mapping proposals / 180 review checks, six safeguarding gates, 70/100 scoped items unchanged. FULL PRODUCT NOT COMPLETE; PUBLIC LAUNCH NOT APPROVED.
-
-
 **Computed from the machine-readable 100-task tracker.** This is engineering evidence ONLY. Human educational, legal, safety, actual Hostinger and school approvals are **NOT AUTHENTICATED**.
 
 | Batch | Verified engineering/design tasks | Total | Still to implement / externally verify |
@@ -17,6 +14,49 @@ FP-001, FP-002, FP-003, FP-004, FP-005, FP-006, FP-008, FP-009, FP-011, FP-012, 
 ## B1 remaining task IDs
 
 FP-013 (BLOCKED_EXTERNAL), FP-062 (BLOCKED_EXTERNAL), FP-085 (BLOCKED_EXTERNAL), FP-092 (BLOCKED_EXTERNAL)
+
+## All remaining tasks by status
+
+| Status | Count |
+|---|---:|
+| BLOCKED_EXTERNAL | 25 |
+| REVIEW_PENDING | 2 |
+| CODE_COMPLETE_TESTED | 2 |
+| IN_PROGRESS | 1 |
+| NOT_STARTED | 0 |
+
+## B2 remaining tasks (priority, then ID)
+
+| ID | Priority | Task | Status | Unmet register dependencies |
+|---|---|---|---|---|
+| FP-007 | P0 | Create role/owner ledger | BLOCKED_EXTERNAL | None |
+| FP-010 | P0 | Conduct independent batch completion review | BLOCKED_EXTERNAL | None |
+| FP-096 | P0 | Perform physical Android/AT/A4 testing | BLOCKED_EXTERNAL | None |
+| FP-097 | P0 | Deploy real restricted HTTPS Hostinger staging | BLOCKED_EXTERNAL | None |
+| FP-098 | P0 | Complete 3,282 existing content record reviews | BLOCKED_EXTERNAL | None |
+| FP-099 | P0 | Complete six human safeguarding operational gates | BLOCKED_EXTERNAL | None |
+| FP-100 | P0 | Independent school/launch go-no-go decision | BLOCKED_EXTERNAL | None |
+| FP-016 | P1 | Verify Grade 3–5 chapter map | BLOCKED_EXTERNAL | None |
+| FP-017 | P1 | Verify Grade 6–8 chapter map | BLOCKED_EXTERNAL | None |
+| FP-018 | P1 | Verify Grade 9–10 chapter map | BLOCKED_EXTERNAL | None |
+| FP-019 | P1 | Verify Grade 11–12 chapter map | BLOCKED_EXTERNAL | None |
+| FP-020 | P1 | Authorize selected curriculum pilot slice | BLOCKED_EXTERNAL | None |
+| FP-030 | P1 | Run physical accessibility usability checks | BLOCKED_EXTERNAL | None |
+| FP-036 | P1 | Build ratios and algebra lab | REVIEW_PENDING | None |
+| FP-040 | P1 | Obtain independent Maths/Hindi pilot approval | BLOCKED_EXTERNAL | None |
+| FP-050 | P1 | Obtain subject and classroom safety review | BLOCKED_EXTERNAL | None |
+| FP-060 | P1 | Obtain independent science/Hindi safety approval | BLOCKED_EXTERNAL | None |
+| FP-068 | P1 | Prototype approved-source retrieval flow | BLOCKED_EXTERNAL | None |
+| FP-069 | P1 | Conduct adversarial bias/hallucination review | BLOCKED_EXTERNAL | None |
+| FP-070 | P1 | Approve or reject AI tutor public use | BLOCKED_EXTERNAL | None |
+| FP-080 | P1 | Run ethical learning-outcome validation | BLOCKED_EXTERNAL | None |
+| FP-086 | P1 | Build local teacher lesson organizer | CODE_COMPLETE_TESTED | FP-085 |
+| FP-087 | P1 | Create licensed offline assignment packs | IN_PROGRESS | FP-085 |
+| FP-088 | P1 | Implement no-internet projector handoff | CODE_COMPLETE_TESTED | FP-085 |
+| FP-089 | P1 | Prepare ethical observer feedback template | REVIEW_PENDING | FP-085 |
+| FP-090 | P1 | Complete authorized supervised classroom pilot | BLOCKED_EXTERNAL | FP-085 |
+
+A row with no unmet register dependency may still require independent real-world evidence. Do not treat it as ready for automated completion.
 
 ## Unchanged hard launch stops
 

@@ -234,7 +234,7 @@ function renderExtension(){
 function renderFinder(){
  const query=$('advanced-finder-query'),results=$('advanced-finder-results'),open=$('advanced-finder-open');
  $('advanced-finder-label').textContent=p('Find a draft concept by title','शीर्षक से मसौदा अवधारणा खोजें');
- $('advanced-finder-help').textContent=p('Search English or Hindi titles in the selected subject. Do not enter personal information. Search stays on this page only.','चुने विषय में अंग्रेज़ी या हिंदी शीर्षक खोजें। निजी जानकारी न लिखें। खोज केवल इसी पृष्ठ पर रहती है।');
+ $('advanced-finder-help').textContent=p('Search English or Hindi titles in the selected subject. Press Enter for a single match, or choose a result and open it. Do not enter personal information. Search stays on this page only.','चुने विषय में अंग्रेज़ी या हिंदी शीर्षक खोजें। एक मेल हो तो Enter दबाएँ, या परिणाम चुनकर खोलें। निजी जानकारी न लिखें। खोज केवल इसी पृष्ठ पर रहती है।');
  $('advanced-finder-results-label').textContent=p('Matching concepts','मेल खाती अवधारणाएँ');
  $('advanced-finder-clear').textContent=p('Clear search','खोज मिटाएँ');
  open.textContent=p('Open selected concept','चुनी अवधारणा खोलें');
@@ -326,9 +326,13 @@ $('advanced-finder-query').addEventListener('input',e=>{
 });
 $('advanced-finder-results').addEventListener('change',e=>{finderChoice=e.target.value});
 $('advanced-finder-clear').addEventListener('click',()=>{finderQuery='';finderChoice='';renderFinder();$('advanced-finder-query').focus()});
-$('advanced-finder-open').addEventListener('click',()=>{
+function openFinderChoice(){
  if(!findAdvancedConcepts(finderQuery,subjectFilter,lang()).some(x=>x.id===finderChoice))return;
- id=finderChoice;reset();$('advanced-heading').focus();
+ id=finderChoice;finderQuery='';finderChoice='';reset();$('advanced-heading').focus();
+}
+$('advanced-finder-open').addEventListener('click',openFinderChoice);
+$('advanced-finder-query').addEventListener('keydown',e=>{
+ if(e.key==='Enter'&&!e.isComposing){e.preventDefault();if(findAdvancedConcepts(finderQuery,subjectFilter,lang()).length===1)openFinderChoice()}
 });
 $('advanced-topic').addEventListener('change',e=>{id=e.target.value;reset();$('advanced-heading').focus()});
 $('advanced-subject-filter').addEventListener('change',e=>{

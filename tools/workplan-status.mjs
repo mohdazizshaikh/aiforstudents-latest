@@ -41,6 +41,9 @@ export function formatWorkPlanDashboard(p){
  const audit=auditWorkPlan(p);if(!audit.valid)throw Error(audit.errors.join('; '));
  const ids=p.items.filter(x=>x.status==='DONE_VERIFIED').map(x=>x.id);
  const pending=p.items.filter(x=>x.batch==='B1'&&x.status!=='DONE_VERIFIED');
+ const allPending=p.items.filter(x=>x.status!=='DONE_VERIFIED'),byId=new Map(p.items.map(x=>[x.id,x]));
+ const statusCounts=['BLOCKED_EXTERNAL','REVIEW_PENDING','CODE_COMPLETE_TESTED','IN_PROGRESS','NOT_STARTED'].map(s=>'| '+s+' | '+allPending.filter(x=>x.status===s).length+' |').join('\n');
+ const b2Rows=allPending.filter(x=>x.batch==='B2').sort((a,b)=>a.priority.localeCompare(b.priority)||a.id.localeCompare(b.id)).map(x=>'| '+x.id+' | '+x.priority+' | '+x.title+' | '+x.status+' | '+(x.dependsOn.filter(d=>byId.get(d)?.status!=='DONE_VERIFIED').join(', ')||'None')+' |').join('\n');
  return `# B1 — Engineering Workstream Progress Dashboard (M35 verified)
 
 **Computed from the machine-readable 100-task tracker.** This is engineering evidence ONLY. Human educational, legal, safety, actual Hostinger and school approvals are **NOT AUTHENTICATED**.
@@ -57,6 +60,20 @@ ${ids.length?ids.join(', '):'None'}
 ## B1 remaining task IDs
 
 ${pending.map(x=>`${x.id} (${x.status})`).join(', ')||'None'}
+
+## All remaining tasks by status
+
+| Status | Count |
+|---|---:|
+${statusCounts}
+
+## B2 remaining tasks (priority, then ID)
+
+| ID | Priority | Task | Status | Unmet register dependencies |
+|---|---|---|---|---|
+${b2Rows}
+
+A row with no unmet register dependency may still require independent real-world evidence. Do not treat it as ready for automated completion.
 
 ## Unchanged hard launch stops
 

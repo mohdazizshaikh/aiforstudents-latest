@@ -1,5 +1,7 @@
 # AI for Students — Product Roadmap
 
+> **M63 VERIFIED / M64 CORRECTED CANDIDATE — 2026-11-24:** M63 CI 45458529448 passed. M64 adds bilingual local concept finding across 48 advanced models, keyboard opening, explicit clear and shared-device reset, plus generated B2 priority/dependency worklist. Initial CI 45460383399 failed two documentation checks; corrected revision awaits CI. 60 draft labs + two supplemental activities, 3,340 educational reviews pending, 32 mapping proposals / 180 checks, zero verified chapters, six safeguarding gates, 70/100 scoped tasks. FULL PRODUCT NOT COMPLETE; PUBLIC LAUNCH NOT APPROVED. M33/M29 historical baselines retained.
+
 > **M62 VERIFIED / M63 CANDIDATE — 2026-11-24:** M62 CI 45457642411 passed and merged PR #51 (32 board mapping proposals / 180 review checks; eight-model printable teacher agenda). M63 adds two bilingual supplemental ratio and linear-equation activities to existing ratio-algebra draft, 1,270 input combinations in regression tests; candidate CI pending. Existing ratio-algebra review fingerprint changes; regenerate/re-review affected worksheets. 60 top-level draft labs (48 advanced), 3,340 pending reviews, zero verified chapters, six safeguarding gates. 70/100 scoped tasks. FULL PRODUCT NOT COMPLETE; PUBLIC LAUNCH NOT APPROVED. M33/M29 historical baselines retained.
 
 

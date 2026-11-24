@@ -1,7 +1,6 @@
 # M29 — 100-work-item master execution plan (2 × 50)
 
-> **M63 VERIFIED / M64 CANDIDATE — 2026-11-24:** M63 CI 45458529448 passed; merged 05646a8. M64 adds local bilingual title/ID discovery across 48 advanced draft models, subject-aware matching, explicit model opening, clear-search and shared-device privacy reset. Candidate CI pending. No new content record, chapter mapping, inferred ability, or remote data. 60 top-level draft labs plus two supplemental activities; 3,340 pending educational reviews, 32 mapping proposals / 180 review checks, six safeguarding gates, 70/100 scoped items unchanged. FULL PRODUCT NOT COMPLETE; PUBLIC LAUNCH NOT APPROVED.
-
+> **M63 VERIFIED / M64 CORRECTED CANDIDATE — 2026-11-24:** M63 CI 45458529448 passed. M64 adds bilingual local concept finding across 48 advanced models, keyboard opening, explicit clear and shared-device reset, plus generated B2 priority/dependency worklist. Initial CI 45460383399 failed two documentation checks; corrected revision awaits CI. 60 draft labs + two supplemental activities, 3,340 educational reviews pending, 32 mapping proposals / 180 checks, zero verified chapters, six safeguarding gates, 70/100 scoped tasks. FULL PRODUCT NOT COMPLETE; PUBLIC LAUNCH NOT APPROVED. M33/M29 historical baselines retained.
 
 **M35 verified / M36 candidate — 2026-11-24: B1 46/50, B2 24/50.** FP-008 immutable Git-reference verification and FP-079 bounded browser retention/deletion audit passed exact-head CI. Physical-device and independent approval gates are unchanged; M36 curriculum discovery remains draft, not chapter verification.
 

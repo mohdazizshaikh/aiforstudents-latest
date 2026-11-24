@@ -66,7 +66,7 @@
   "sensitiveSourcePathExposureCheckAvailable": true,
   "sensitiveSourcePathExposureVerifiedOnLiveHost": false,
   "releaseZipSourceHashParityVerifiedInCI": true,
-  "swCacheVersion": "aifs-discovery-m33-2026-11-24-m64-r1",
+  "swCacheVersion": "aifs-discovery-m33-2026-11-24-m64-r2",
   "crossTabPrivacyResetImplemented": true,
   "crossTabPrivacyRealDeviceVerified": false,
   "existingUnreviewedContentRecords": 3282,
@@ -187,5 +187,10 @@
   "advancedConceptFinderModels": 48,
   "advancedConceptFinderPersists": false,
   "advancedConceptFinderUsesLearnerHistory": false,
-  "advancedConceptFinderHumanReviewed": false
+  "advancedConceptFinderHumanReviewed": false,
+  "advancedConceptFinderSingleMatchEnter": true,
+  "advancedConceptFinderClearsAfterOpen": true,
+  "generatedB2PriorityWorklistCandidate": true,
+  "m64FirstCiRun": 45460383399,
+  "m64FirstCiDocumentationChecksFailed": true
 }
