@@ -2174,12 +2174,12 @@
     }
   ],
   "updatedOn": "2026-11-24",
-  "currentEngineeringMilestone": "M55_VERIFIED_M56_M57_CANDIDATES",
+  "currentEngineeringMilestone": "M57_VERIFIED_M58_CANDIDATE",
   "additionalNewMathsDrafts": 3,
   "currentPendingContentRecords": 3340,
   "batch1VerifiedEngineeringAndDesignTasks": 46,
   "batch2VerifiedEngineeringAndDesignTasks": 24,
-  "statusCaveat": "70/100 scoped tasks. M55 merged; M56 integrated CI pending; M57 stacked candidate. 3340 pending reviews, six human safeguarding gates, zero verified chapters. AI tutor remains disabled; no independent red-team or provider approval. NCERT middle-stage PDF retrieval blocked.",
+  "statusCaveat": "70/100 scoped tasks. M55–M57 verified and merged; M58 guided exploration candidate. 3340 pending reviews, six human safeguarding gates, zero verified chapters. No real AI tutor, independent evaluation, validated mastery or public launch.",
   "newScienceDraftReviewRecords": 7,
   "newAdvancedDraftReviewRecords": 48,
   "m34CandidateWork": {
@@ -2382,7 +2382,7 @@
     "ciRun": 45451915463
   },
   "m56CandidateWork": {
-    "status": "INTEGRATED_CI_PENDING",
+    "status": "CI_VERIFIED_MERGED",
     "subjectFilterModels": 48,
     "filters": 5,
     "persists": false,
@@ -2390,10 +2390,12 @@
     "ncertPrelimPdfsRetrieved": 0,
     "verifiedChapters": 0,
     "newDoneVerifiedTasks": 0,
-    "independentCi": 45452310648
+    "independentCi": 45452310648,
+    "mergeSha": "31760bf1b0d9bd6273405566d59b9894212e2901",
+    "ciRun": 45453496959
   },
   "m57CandidateWork": {
-    "status": "IN_PROGRESS",
+    "status": "CI_VERIFIED_MERGED",
     "deterministicBoundaryCases": 224,
     "canonicalPilotDenials": 152,
     "malformedRequestDenials": 30,
@@ -2402,6 +2404,17 @@
     "independentRedTeamCompleted": false,
     "providerTested": false,
     "generativeTutorEnabled": false,
+    "newDoneVerifiedTasks": 0,
+    "mergeSha": "5178025bc42c3acb49b1391353981a3f112315a6",
+    "ciRun": 45453774394
+  },
+  "m58CandidateWork": {
+    "status": "IN_PROGRESS",
+    "guidedModels": 48,
+    "stagesPerModel": 5,
+    "bilingualCombinations": 480,
+    "persists": false,
+    "masteryPrediction": false,
     "newDoneVerifiedTasks": 0
   }
 }
