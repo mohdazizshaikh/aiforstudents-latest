@@ -578,7 +578,7 @@ def run():
                 phone.evaluate("window.dispatchEvent(new Event('aifs-history-cleared'))")
                 check(phone.locator('#ratio-extension-mode').input_value() == 'ratio', 'Privacy clear retained extension')
                 phone.locator('#advanced-topic').select_option('counting')
-                check(phone.locator('#advanced-ratio-extension').is_hidden(), 'Extension visible on unrelated lab')
+                check(phone.locator('#ratio-extension-mode').input_value() == 'group-total', 'Old extension retained on counting model')
                 report['checks'].append('M63 offline supplemental ratios and equations, keyboard and reset')
                 phone.locator('#advanced-finder-query').fill('ratio-algebra')
                 check(phone.locator('#advanced-finder-results option').count() == 1, 'Finder ID match failed')
@@ -619,7 +619,7 @@ def run():
                     phone.locator('#ratio-extension-reset').click()
                     check(phone.locator('#ratio-extension-values tr').first.locator('td').inner_text() == expected, 'Supplement reset: '+model)
                 phone.locator('#advanced-topic').select_option('counting')
-                check(phone.locator('#advanced-ratio-extension').is_hidden(), 'Supplement leaked to unrelated model')
+                check(phone.locator('#ratio-extension-mode').input_value() == 'group-total', 'Old supplemental model leaked to counting')
                 phone.locator('#advanced-topic').select_option('cell-doubling')
                 phone.evaluate("window.dispatchEvent(new Event('aifs-history-cleared'))")
                 check(phone.locator('#ratio-extension-mode').input_value() == 'ratio', 'Privacy clear retained cross-subject activity')
@@ -732,6 +732,30 @@ def run():
                     phone.locator('#extension-compare-restore').click()
                     check(phone.locator('#ratio-extension-values tr').first.locator('td').inner_text() == expected, 'M73 restore '+model)
                 report['checks'].append('M73 eight new offline activities and comparison')
+                for model, mode, control, expected, after in [
+                    ('counting', 'group-total', 'a', '5', '6'),
+                    ('probability', 'two-draws', 'r', '5', '6'),
+                    ('square-slope', 'symmetric-secant', 'x', '-1', '0'),
+                    ('magnetism', 'pole-pairs', 'same', '2', '3'),
+                    ('thin-lens', 'lens-distance-compare', 'f', '6', '8'),
+                    ('position-change', 'signed-positions', 'e', '5', '6'),
+                    ('shadow-ray', 'ray-account', 'n', '4', '5'),
+                    ('material-objects', 'material-groups', 'p', '5', '6'),
+                    ('material-property', 'property-groups', 't', '5', '6'),
+                    ('ecosystem', 'interaction-examples', 'p', '6', '7'),
+                    ('living-examples', 'living-groups', 'p', '5', '6'),
+                ]:
+                    phone.locator('#advanced-topic').select_option(model)
+                    phone.locator('#ratio-extension-mode').select_option(mode)
+                    check(phone.locator('#ratio-extension-values tr').first.locator('td').inner_text() == expected, 'M74 initial result '+model)
+                    phone.locator('#extension-compare-mark').click()
+                    phone.locator('#ratio-extension-controls button[data-extension-action="inc:'+control+'"]').focus()
+                    phone.keyboard.press('Enter')
+                    check(phone.locator('#ratio-extension-values tr').first.locator('td').inner_text() == after, 'M74 changed result '+model)
+                    check(phone.locator('#extension-compare-changes li').count() == 1, 'M74 changed control '+model)
+                    phone.locator('#extension-compare-restore').click()
+                    check(phone.locator('#ratio-extension-values tr').first.locator('td').inner_text() == expected, 'M74 restore '+model)
+                report['checks'].append('M74 eleven new offline activities and comparison')
                 phone.locator('#advanced-topic').select_option('heredity')
                 check('4' in phone.locator('#advanced-values').inner_text(), 'Offline model result missing')
                 check(phone.locator('#local-guide-topic option').count() == 60, 'Offline practice guide missing')
@@ -870,6 +894,17 @@ def run():
                     ('chemistry', 'dynamic-balance', 'net-over-steps'),
                     ('biology', 'gas-exchange', 'symbolic-transfer'),
                     ('biology', 'plant-parts', 'leaf-diagram'),
+                    ('maths', 'counting', 'group-total'),
+                    ('maths', 'probability', 'two-draws'),
+                    ('maths', 'square-slope', 'symmetric-secant'),
+                    ('physics', 'magnetism', 'pole-pairs'),
+                    ('physics', 'thin-lens', 'lens-distance-compare'),
+                    ('physics', 'position-change', 'signed-positions'),
+                    ('physics', 'shadow-ray', 'ray-account'),
+                    ('chemistry', 'material-objects', 'material-groups'),
+                    ('chemistry', 'material-property', 'property-groups'),
+                    ('biology', 'ecosystem', 'interaction-examples'),
+                    ('biology', 'living-examples', 'living-groups'),
                 ]:
                     phone.locator('#lab-print-subject').select_option(subject)
                     phone.locator('#lab-print-model').select_option(model)
@@ -888,7 +923,7 @@ def run():
                     phone.emulate_media(media='screen')
                     phone.locator('#card-language').select_option('hi')
                 phone.locator('#lab-print-model').select_option('living-examples')
-                check(phone.locator('#lab-print-activity').is_hidden(), 'Supplement selector visible for unrelated model')
+                check(phone.locator('#lab-print-activity').is_visible(), 'New supplemental selector missing')
                 check(phone.locator('#lab-print-activity').input_value() == 'main', 'Old supplement retained across models')
                 report['checks'].append('M66 all six bilingual supplemental offline worksheets and print isolation')
                 phone.locator('#card-view').select_option('lab-pack')

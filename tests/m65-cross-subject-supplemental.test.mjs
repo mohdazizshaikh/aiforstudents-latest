@@ -31,7 +31,8 @@ test('M65 extension definitions are bounded, bilingual and included in existing 
   assert.throws(()=>evaluateAdvancedExtension(id,mode,m.initial,'invalid'));
   assert.ok(rows.find(x=>x.content_id==='advanced:'+id).answer_or_guidance.includes(m.title[0]));
  }
- assert.deepEqual(advancedExtensionIds('counting'),[]);
+ assert.deepEqual(advancedExtensionIds('counting'),['group-total']);
+ assert.throws(()=>advancedExtensionIds('unknown-model'));
  assert.deepEqual(advancedExtensionIds('ratio-algebra'),['ratio','equation']);
  assert.deepEqual(evaluateAdvancedExtension('ratio-algebra','ratio',{a:2,b:3,k:2}),evaluateRatioExtension('ratio',{a:2,b:3,k:2}));
 });
