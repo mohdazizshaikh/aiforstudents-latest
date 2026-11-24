@@ -183,7 +183,7 @@ def run():
                 report['checks'].append('M31 reflection, safe chemistry sorter, cell text and Hindi/English equivalence')
 
                 # M32: no chatbot or private learner data; only fixed source-backed drafts.
-                check(page.locator('#local-guide-topic option').count() == 12,
+                check(page.locator('#local-guide-topic option').count() == 28,
                       'M32 local hint selector expected twelve fixed draft source topics')
                 page.locator('#local-guide-topic').select_option('science:motion')
                 page.locator('#local-guide-hint').click()
@@ -473,7 +473,24 @@ def run():
                 check(phone.locator('#advanced-topic option').count() == 16, 'Offline expanded labs not loaded')
                 phone.locator('#advanced-topic').select_option('heredity')
                 check('4' in phone.locator('#advanced-values').inner_text(), 'Offline model result missing')
-                check(phone.locator('#local-guide-topic option').count() == 12, 'Offline practice guide missing')
+                check(phone.locator('#local-guide-topic option').count() == 28, 'Offline practice guide missing')
+                phone.locator('#local-guide-topic').select_option('advanced:quadratic')
+                phone.locator('#local-guide-hint').click()
+                check('advanced-lab-engine.js' in phone.locator('#local-guide-draft-hint').inner_text(), 'Advanced source hint missing')
+                phone.locator('#local-guide-repeat').click()
+                check(phone.locator('#local-guide-next-result').is_visible(), 'Explicit practice choice missing')
+                check(phone.locator('#local-guide-next-link').get_attribute('href') == '?advanced=quadratic#advanced-labs', 'Specific draft route missing')
+                with phone.expect_navigation(wait_until='load'):
+                    phone.locator('#local-guide-next-link').click()
+                phone.locator('#advanced-topic option').first.wait_for(state='attached')
+                check(phone.locator('#advanced-topic').input_value() == 'quadratic', 'Offline specific draft route not selected')
+                phone.locator('#local-guide-topic').select_option('advanced:quadratic')
+                phone.locator('#local-guide-different').click()
+                check(phone.locator('#local-guide-next-result').is_visible(), 'Related topic missing')
+                phone.locator('#clear-progress').click()
+                check(phone.locator('#local-guide-next-result').is_hidden(), 'Clear history left practice choice')
+                check(phone.locator('#local-guide-topic').input_value() == 'studio:fractions', 'Clear history left old topic')
+                report['checks'].append('M38 offline advanced hint, direct model navigation, explicit next choice and privacy reset')
                 phone.locator('#local-guide-hint').click()
                 check(phone.locator('#local-guide-draft-hint').is_visible(), 'Offline hint missing')
                 phone.locator('#classroom-queue-choice').select_option('circuits')
