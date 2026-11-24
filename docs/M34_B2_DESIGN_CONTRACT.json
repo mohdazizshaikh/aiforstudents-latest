@@ -1,0 +1,61 @@
+{
+  "schema": "aifs-m34-disabled-tutor-design-v1",
+  "publicReleaseApproved": false,
+  "generativeTutorEnabled": false,
+  "approvedSourceIds": [],
+  "core": {
+    "apiBudgetInr": 0,
+    "offline": true
+  },
+  "optionalPilot": {
+    "enabled": false,
+    "approvedBudgetInr": 0,
+    "requestsPerDay": 20,
+    "days": 20,
+    "inputTokensPerRequest": 800,
+    "outputTokensPerRequest": 250,
+    "remoteTimeoutMs": 8000,
+    "localRetrievalTargetMs": 2000,
+    "sendChildIdentifiers": false,
+    "storeTranscripts": false
+  },
+  "mastery": {
+    "enabled": false,
+    "validated": false,
+    "minimumDistinctTasks": 3,
+    "minimumContexts": 2,
+    "minimumSessions": 2,
+    "candidateThresholdPercent": 80,
+    "highStakesUse": false
+  },
+  "aggregate": {
+    "enabled": false,
+    "minimumGroupSize": 10,
+    "minimumCellCount": 5,
+    "suppressComplementaryCells": true,
+    "individualScores": false,
+    "crossSessionJoins": false
+  },
+  "sharedDevice": {
+    "queuePersistence": "memory-only",
+    "identityInference": false,
+    "clearAll": true
+  },
+  "observer": {
+    "enabled": false,
+    "authorizedPilot": false,
+    "allowIdentifiableData": false,
+    "allowedAnswers": [
+      "yes",
+      "no",
+      "not assessed"
+    ]
+  },
+  "approval": {
+    "educator": false,
+    "legal": false,
+    "safeguarding": false,
+    "provider": false,
+    "school": false
+  }
+}
