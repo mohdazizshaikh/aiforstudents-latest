@@ -1,9 +1,9 @@
 # Project Status Dashboard — AI for Students
 
-> **M41 CANDIDATE — 2026-11-24:** M40 eight foundational models passed CI and merged. M41 adds eight secondary draft models: candidate 44 interactive models, 44 source-backed draft hints and 3,324 pending educational reviews. CI pending; 70/100 scoped engineering/design items unchanged. No verified syllabus mapping, teacher approval or public release.
+> **M41 CANDIDATE — 2026-11-24:** M40 eight foundational models passed CI and merged. M41 adds eight secondary draft models: candidate 44 interactive models, 44 source-backed draft hints and 3,324 pending educational reviews. CI pending; 70/100 scoped engineering/design items unchanged. No verified syllabus mapping, teacher approval or public release. M33 and M29 historical baselines follow; FULL PRODUCT NOT COMPLETE; PUBLIC LAUNCH NOT APPROVED.
 
 
-> **M40 CANDIDATE — 2026-11-24:** M37 offline assignment packs and M38 practice choices are tested and merged. M40 adds eight original unreviewed concept models; candidate inventory 36 interactive models, 36 source-backed draft hints, 3,316 pending educational reviews. CI pending; 70/100 scoped engineering/design items unchanged. No actual syllabus mapping, expert approval or public release.
+> **M40 HISTORICAL CHECKPOINT — 2026-11-24:** M37 offline assignment packs and M38 practice choices are tested and merged. M40 adds eight original unreviewed concept models; candidate inventory 36 interactive models, 36 source-backed draft hints, 3,316 pending educational reviews. M40 CI subsequently passed and merged (PR #29). No actual syllabus mapping, expert approval or public release.
 
 
 > **M36 EXPANDED CANDIDATE — 2026-11-24:** 28 interactive models (16 advanced), including four newly coded original draft simulations; 12 class discovery rows and 48 illustrative topic lenses, no verified chapter placement. 3,308 educational reviews pending; 70/100 scoped engineering/design tasks in candidate tracker. Exact-head CI pending; public launch remains blocked. M35/M33 historical baselines below.
