@@ -2174,12 +2174,12 @@
     }
   ],
   "updatedOn": "2026-11-24",
-  "currentEngineeringMilestone": "M62_VERIFIED_M63_CANDIDATE",
+  "currentEngineeringMilestone": "M63_VERIFIED_M64_CANDIDATE",
   "additionalNewMathsDrafts": 3,
   "currentPendingContentRecords": 3340,
   "batch1VerifiedEngineeringAndDesignTasks": 46,
   "batch2VerifiedEngineeringAndDesignTasks": 24,
-  "statusCaveat": "70/100 scoped tasks. M62 verified merged; M63 supplemental maths activities candidate. Ratio-algebra canonical fingerprint changed; affected worksheets need regeneration and independent review. 32 mapping proposals, 180 mapping checks, 3340 pending educational reviews, six safeguarding gates, zero verified chapters. No actual tutor, validated mastery, full teacher administration, physical device evidence, pilot or public launch.",
+  "statusCaveat": "70/100 scoped tasks. M63 verified merged; M64 12 supplemental activities candidate across six changed canonical records. 60 top-level models plus 14 supplemental activities (candidate total), 32 mapping proposals, 180 mapping checks, 3340 pending educational reviews, six safeguarding gates, zero verified chapters. External acceptance not completed. No actual tutor, validated mastery, full teacher administration, physical evidence, pilot or public launch.",
   "newScienceDraftReviewRecords": 7,
   "newAdvancedDraftReviewRecords": 48,
   "m34CandidateWork": {
@@ -2480,7 +2480,7 @@
     "ciRun": 45457642411
   },
   "m63CandidateWork": {
-    "status": "IN_PROGRESS",
+    "status": "CI_VERIFIED_MERGED",
     "supplementalActivities": 2,
     "bilingualInputCombinations": 1270,
     "topLevelModels": 60,
@@ -2490,6 +2490,27 @@
     "taskIds": [
       "FP-036"
     ],
+    "newDoneVerifiedTasks": 0,
+    "mergeSha": "05646a87e5ca2c76c1f614126921dd3b4d68ce18",
+    "ciRun": 45458529448
+  },
+  "m64CandidateWork": {
+    "status": "IN_PROGRESS",
+    "newSupplementalActivities": 12,
+    "totalSupplementalActivities": 14,
+    "topLevelModels": 60,
+    "advancedModels": 48,
+    "bilingualInputCombinations": 4204,
+    "changedCanonicalRecordIds": [
+      "advanced:triangle-area",
+      "advanced:force-motion",
+      "advanced:atom-count",
+      "advanced:mass-fraction",
+      "advanced:cell-scale",
+      "advanced:cell-doubling"
+    ],
+    "reviewFingerprintsChanged": true,
+    "humanReviewed": false,
     "newDoneVerifiedTasks": 0
   }
 }
