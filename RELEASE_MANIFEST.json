@@ -1,5 +1,5 @@
 {
-  "release": "M66 verified prototype / M67 custom assignment pack candidate — PRIVATE ONLY",
+  "release": "M66 verified prototype / M67–M68 candidates — PRIVATE ONLY",
   "release_date": "2026-11-24",
   "hosting_zip": "aiforstudents_hostinger_staging_m33.zip",
   "source_zip": "aiforstudents_m33_source_tests.zip",
@@ -22,7 +22,7 @@
   "study_question_records": 32,
   "study_items_expert_approved": 0,
   "isolated_browser_study_checks": 32,
-  "currentMilestone": "M66_VERIFIED_M67_CANDIDATE",
+  "currentMilestone": "M66_VERIFIED_M67_M68_CANDIDATES",
   "status": "private-staging-prototype-unreviewed",
   "date": "2026-11-24",
   "studioLessons": 2,
@@ -221,5 +221,10 @@
   "customLabPackPersists": false,
   "customLabPackHumanReviewed": false,
   "customLabPackRightsAuthenticated": false,
-  "teacherSupplementWorksheetEngineeringVerified": true
+  "teacherSupplementWorksheetEngineeringVerified": true,
+  "reviewChangeWorkbenchCandidate": true,
+  "reviewChangeCanonicalRecords": 3340,
+  "reviewChangeSupplementBehaviorIndicators": 6,
+  "reviewChangeSupplementBilingualCombinations": 3734,
+  "reviewChangeHumanApprovalGranted": false
 }
