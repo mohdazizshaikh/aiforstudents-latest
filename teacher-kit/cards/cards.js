@@ -1,5 +1,5 @@
 import {CLASSROOM_IDS,CLASSROOM_LESSONS,classroomText} from '../../assets/classroom-engine.js';
-import {printableClassroomCard,printableAssignmentPack,printableLabActivity,teacherLabOptions,TEACHER_LAB_SUBJECTS,teacherSupplementOptions,printableSupplementActivity,LAB_PACK_LIMIT,editLabPack,printableLabPack} from '../../assets/teacher-cards-engine.js';
+import {printableClassroomCard,printableAssignmentPack,printableAnyLabActivity,teacherPrintableOptions,TEACHER_LAB_SUBJECTS,teacherPrintableSupplementOptions,LAB_PACK_LIMIT,editLabPack,printableLabPack} from '../../assets/teacher-cards-engine.js';
 const $=id=>document.getElementById(id);
 const lang=()=>$('card-language').value;
 let labPack=[];
@@ -60,18 +60,18 @@ function renderLab(l){
  const names={maths:['Mathematics','गणित'],physics:['Physics','भौतिकी'],chemistry:['Chemistry','रसायन'],biology:['Biology','जीवविज्ञान']};
  const el=(tag,value)=>{const e=document.createElement(tag);e.textContent=value;return e};
  for(const s of TEACHER_LAB_SUBJECTS){const o=el('option',p(...names[s]));o.value=s;subject.append(o)}subject.value=chosen;
- const options=teacherLabOptions(chosen,l);model.replaceChildren();
+ const options=teacherPrintableOptions(chosen,l);model.replaceChildren();
  for(const item of options){const o=el('option',item.title);o.value=item.id;model.append(o)}
  if(options.some(x=>x.id===previous))model.value=previous;
  const activity=$('lab-print-activity'),previousActivity=activity.value;
- const supplements=teacherSupplementOptions(model.value,l);activity.replaceChildren();
+ const supplements=teacherPrintableSupplementOptions(model.value,l);activity.replaceChildren();
  const main=el('option',p('Main model','मुख्य मॉडल'));main.value='main';activity.append(main);
  for(const item of supplements){const option=el('option',item.title);option.value=item.mode;activity.append(option)}
  activity.value=supplements.some(x=>x.mode===previousActivity)&&previous===model.value?previousActivity:'main';
  $('lab-print-activity-control').hidden=!supplements.length;
  activity.disabled=!supplements.length;
  $('lab-print-activity-label').textContent=p('Choose a draft activity','मसौदा गतिविधि चुनें');
- const a=activity.value==='main'?printableLabActivity(model.value,l):printableSupplementActivity(model.value,activity.value,l);
+ const a=printableAnyLabActivity(model.value,activity.value,l);
  $('lab-activity-heading').textContent=a.title;$('lab-activity-prompt').textContent=a.prompt;
  $('lab-activity-warning').textContent=p('Original unreviewed computer-only activity. Permission and educational review pending.','मूल असमीक्षित कंप्यूटर गतिविधि। अनुमति और शैक्षिक समीक्षा बाकी है।');
  $('lab-activity-caveat').textContent=a.caveat;
