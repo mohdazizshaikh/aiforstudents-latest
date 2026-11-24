@@ -98,6 +98,14 @@
    <h4 id="science-question" tabindex="-1">Explore the idea.</h4>
    <p class="small muted" id="science-hint"></p>
    <div class="science-controls" id="science-controls" role="group" aria-label="Keyboard accessible science controls" hidden></div>
+   <section id="science-snapshot-panel" class="local-guide-result" aria-labelledby="science-snapshot-heading" hidden>
+    <h4 id="science-snapshot-heading">Temporary model snapshots</h4><p id="science-snapshot-notice" class="small muted"></p>
+    <div class="science-actions"><button type="button" class="btn outline compact" id="science-snapshot-add" disabled>Capture current state</button><button type="button" class="btn outline compact" id="science-snapshot-clear" disabled>Clear snapshots</button></div>
+    <p id="science-snapshot-status" role="status" aria-live="polite" tabindex="-1"></p>
+    <label for="science-snapshot-select" id="science-snapshot-select-label">State to restore</label><select id="science-snapshot-select" disabled></select>
+    <button type="button" id="science-snapshot-restore" class="btn outline compact" disabled>Restore selected state</button>
+    <div id="science-snapshot-rows"></div>
+   </section>
    <div id="science-quiz" hidden></div>
    <p id="science-understand" class="science-explanation" hidden></p>
    <p id="science-mission" class="science-explanation" hidden></p>

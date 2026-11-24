@@ -28,7 +28,7 @@ function check(response){const exercise=studioExercise(state.journey,state.stage
 }
 $('studio-retry').addEventListener('click',()=>{state.feedback=null;render();$('studio-controls button')?.focus()});$('studio-start').addEventListener('click',()=>advance('try'));$('studio-check').addEventListener('click',()=>check(state.journey==='fractions'?state.count:state.closed));$('studio-forward').addEventListener('click',()=>advance(state.stage==='try'?'play':'understand'));
 $('studio-understand-next').addEventListener('click',()=>advance('grow'));$('studio-again').addEventListener('click',()=>{state.count=0;state.closed=false;advance('learn')});
-$('lang')?.addEventListener('change',render);$('age-select')?.addEventListener('change',render);window.addEventListener('aifs-history-cleared',()=>{state.feedback=null;state.stage='learn';render()});window.addEventListener('aifs-teacher-demo',event=>{
+$('lang')?.addEventListener('change',render);$('age-select')?.addEventListener('change',render);window.addEventListener('aifs-history-cleared',()=>{state.journey='fractions';state.count=0;state.closed=false;state.feedback=null;state.stage='learn';$('studio-controls').replaceChildren();$('studio-feedback').textContent='';render()});window.addEventListener('aifs-teacher-demo',event=>{
  const id=typeof event.detail==='string'&&event.detail.startsWith('studio/')?event.detail.slice(7):null;
  if(!STUDIO_IDS.includes(id))return;state.journey=id;state.stage='learn';state.count=0;state.closed=false;state.feedback=null;render();$('studio-lesson-title').focus();
 });window.addEventListener('aifs-studio-history-changed',render);render();

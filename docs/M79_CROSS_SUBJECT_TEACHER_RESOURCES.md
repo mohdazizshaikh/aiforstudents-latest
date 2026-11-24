@@ -1,5 +1,7 @@
 # M79 — Cross-subject teacher resource discovery and direct assignment planning (candidate)
 
+**Verified:** CI runs 45486611507 and 45486600601 passed both jobs; PR #70 merged at 8aa9f6a2d5110d1c6a6c506790ca605f4b0e2ad5. No human approval.
+
 M79 initial Node CI 45486315344 failed the M29 historical baseline prominence assertion; corrected status wording, no test relaxation. New exact-head CI required.
 
 Dependent on M78 candidate `8ba499ba98d737b8fb55f6e3b7b2e7ef2def7742`; M78 exact-head CI was still running at branch creation. Extends the M77 teacher resource finder with current/all subject scope and bilingual subject labels. All 109 fixed draft activities (12 basic, 48 advanced, 49 supplemental) can be discovered with existing kind filters, opened in their correct subject/model/activity, or directly added to a six-item local learner assignment pack without changing the currently displayed worksheet. Duplicate and full-pack additions remain disabled; no free-text search, saved student data, external links, recommendations or grade claims. Controls hidden in learner print; mode exit and privacy clear reset the scope and pack. Both languages use the same fixed keys.
