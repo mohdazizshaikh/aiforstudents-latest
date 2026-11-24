@@ -249,3 +249,7 @@ M42–M45 passed their exact-head CI and merged; teacher launcher, synthetic tut
 ### M47 senior-secondary candidate
 
 M46 exact-head CI passed and merged. M47 adds eight original draft senior-secondary models, 60 interactive models, 60 source hints, 48 nonempty illustrative lenses and 3,340 pending educational reviews. All chapter placements remain unverified. 70/100 scoped engineering/design items unchanged. [M47 models](M47_SENIOR_SECONDARY_MODELS.md).
+
+### M52 verified checkpoint and M53 candidate
+
+M47–M52 merged after exact-head CI. Current inventory: 60 draft interactive models, 48 advanced printable activity variants, 22 CBSE candidate mappings and 110 pending mapping checks. 3,340 pending educational reviews, six safeguarding gates, zero verified chapter mappings. M53 adult-only rehearsal checklist candidate is not an authorized child trial. 70/100 scoped items unchanged. See [remaining execution handoff](M53_REMAINING_EXECUTION_HANDOFF.md).

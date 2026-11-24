@@ -2174,7 +2174,7 @@
     }
   ],
   "updatedOn": "2026-11-24",
-  "currentEngineeringMilestone": "M35_VERIFIED_M36_CURRICULUM_CANDIDATES",
+  "currentEngineeringMilestone": "M52_VERIFIED_M53_CANDIDATE",
   "additionalNewMathsDrafts": 3,
   "currentPendingContentRecords": 3340,
   "batch1VerifiedEngineeringAndDesignTasks": 46,
@@ -2294,7 +2294,7 @@
   },
   "newM47DraftReviewRecords": 8,
   "m47CandidateWork": {
-    "status": "IN_PROGRESS",
+    "status": "CI_VERIFIED_MERGED",
     "newInteractiveModels": 8,
     "totalInteractiveModels": 60,
     "guidedDraftHints": 60,
@@ -2302,6 +2302,55 @@
     "currentPendingContentRecords": 3340,
     "nonemptyIllustrativeSlots": 48,
     "verifiedChapters": 0,
-    "publicReleaseApproved": false
+    "publicReleaseApproved": false,
+    "mergeSha": "00fce1c3a5e158e5ab42a479a5ac4ca367be9316",
+    "ciRun": 45389003541
+  },
+  "m52VerifiedCheckpoint": {
+    "mergeSha": "93021a4dcd061cf496bf6bfc02ae200a85952c09",
+    "ciRun": 45446879366,
+    "interactiveModels": 60,
+    "advancedModels": 48,
+    "draftHints": 60,
+    "printableLabActivities": 48,
+    "cbseMappingProposals": 22,
+    "mappingReviewChecks": 110,
+    "verifiedChapters": 0,
+    "pendingEducationalReviews": 3340,
+    "publicReleaseApproved": false,
+    "verifiedMilestones": [
+      {
+        "id": "M48",
+        "pr": 37,
+        "ci": 45390247667
+      },
+      {
+        "id": "M49",
+        "pr": 38,
+        "ci": 45390499081
+      },
+      {
+        "id": "M50",
+        "pr": 39,
+        "ci": 45446693214
+      },
+      {
+        "id": "M51",
+        "pr": 40,
+        "ci": 45443051061
+      },
+      {
+        "id": "M52",
+        "pr": 41,
+        "ci": 45446879366
+      }
+    ]
+  },
+  "m53CandidateWork": {
+    "status": "IN_PROGRESS",
+    "adultOnly": true,
+    "realChildPilotAuthorized": false,
+    "observerChecks": 7,
+    "newDoneVerifiedTasks": 0
   }
 }

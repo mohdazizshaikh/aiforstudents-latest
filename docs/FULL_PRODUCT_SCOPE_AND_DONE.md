@@ -1,6 +1,9 @@
 # M29 — Full-product scope and completion criteria
 
-> **M47 CANDIDATE — 2026-11-24:** M46 passed CI and merged. M47 adds eight senior-secondary draft models (60 total), 48/48 illustrative lenses and 3,340 pending reviews. Exact-head CI pending. M33/M29 historical baselines follow; FULL PRODUCT NOT COMPLETE; PUBLIC LAUNCH NOT APPROVED. 70/100 scoped tasks, zero verified chapters.
+> **M52 VERIFIED CHECKPOINT — 2026-11-24:** M47–M52 passed exact-head CI and merged. 60 interactive draft models (48 advanced), 60 draft hints, 48 printable lab activity variants, 22 CBSE syllabus proposals and 110 pending mapping checks. 3,340 pending educational reviews, zero verified chapters, six human safeguarding gates pending. M53 adult-only rehearsal candidate requires CI. FULL PRODUCT NOT COMPLETE; PUBLIC LAUNCH NOT APPROVED. M33/M29 historical baselines follow; 70/100 scoped engineering/design tasks.
+
+
+> **M47 HISTORICAL CHECKPOINT — 2026-11-24:** M46 passed CI and merged. M47 added eight senior-secondary draft models (60 total), 48/48 illustrative lenses and 3,340 pending reviews. CI passed and merged PR #36. M33/M29 historical baselines follow; FULL PRODUCT NOT COMPLETE; PUBLIC LAUNCH NOT APPROVED. 70/100 scoped tasks, zero verified chapters.
 
 
 > **M46 HISTORICAL CHECKPOINT — 2026-11-24:** M41–M45 passed CI and merged. M46 added eight draft models (52 total), 48/48 illustrative topic lenses and 3,332 pending educational reviews. CI passed and merged PR #35. M33/M29 historical baselines follow; FULL PRODUCT NOT COMPLETE; PUBLIC LAUNCH NOT APPROVED. 70/100 scoped engineering/design items, zero verified chapters.
