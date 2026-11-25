@@ -2,7 +2,7 @@ import {miniControlLabels} from './mini-snapshots.js';
 import {SCIENCE_IDS,SCIENCE_MODELS} from './science-engine.js';
 import {WORKSHOP_MODES,WORKSHOP_CONTENT} from './experiment-engine.js';
 import {STUDIO_IDS,STUDIO_LESSONS} from './studio-engine.js';
-import {ADVANCED_IDS,ADVANCED_MODELS,advancedExtensionIds,advancedExtension,evaluateAdvancedExtension} from './advanced-lab-engine.js';
+import {ADVANCED_IDS,ADVANCED_MODELS,advancedExtensionIds,advancedExtension,evaluateAdvancedExtension,calculateAdvanced,advancedResultRows} from './advanced-lab-engine.js';
 /** M32 private classroom paper cards: source-derived, anonymous, not approved lessons. */
 import {CLASSROOM_IDS,CLASSROOM_LESSONS,CLASSROOM_ROLES,classroomStep,classroomText} from './classroom-engine.js';
 export const ROTATION_ROLES=CLASSROOM_ROLES;
@@ -360,4 +360,133 @@ export function teacherSupplementControlGuide(id,mode,lang='en'){
  const quantityLabels=evaluateAdvancedExtension(id,mode,m.initial,lang).rows.map(r=>r.label);
  if(!quantityLabels.length||quantityLabels.some(s=>typeof s!=='string'||!s.trim()))throw Error('Invalid quantity label');
  return {id,mode,title:a.title,caveat:a.caveat,controls,quantityLabels,teacherOnly:true,humanReviewed:false,publicReleaseApproved:false,storesStudentData:false};
+}
+
+/** M101 main model output labels only. Advanced labels derive from canonical
+ * calculation rows; basic labels are explicit bilingual draft descriptions
+ * of existing model displays, not new calculations or approved answers. */
+const MAIN_BASIC_OBSERVATIONS={
+ "science/motion": [
+  [
+   "Ideal constant speed (m/s)",
+   "आदर्श समान चाल (m/s)"
+  ]
+ ],
+ "science/reflection": [
+  [
+   "Incident angle from normal",
+   "अभिलंब से आपतन कोण"
+  ],
+  [
+   "Selected reflected angle from normal",
+   "अभिलंब से चुना परावर्तन कोण"
+  ],
+  [
+   "Angle equality",
+   "कोणों की समानता"
+  ]
+ ],
+ "science/energy": [
+  [
+   "Input energy (J)",
+   "आगत ऊर्जा (J)"
+  ],
+  [
+   "Useful energy (J)",
+   "उपयोगी ऊर्जा (J)"
+  ],
+  [
+   "Thermal energy (J)",
+   "ऊष्मीय ऊर्जा (J)"
+  ]
+ ],
+ "science/matter": [
+  [
+   "Particle arrangement",
+   "कणों की व्यवस्था"
+  ],
+  [
+   "Particle motion",
+   "कणों की गति"
+  ]
+ ],
+ "science/changes": [
+  [
+   "Example classification",
+   "उदाहरण का वर्गीकरण"
+  ],
+  [
+   "Selected classification",
+   "चुना वर्गीकरण"
+  ]
+ ],
+ "science/cells": [
+  [
+   "Cell structures",
+   "कोशिका की संरचनाएँ"
+  ]
+ ],
+ "science/food-chain": [
+  [
+   "Selected food chain order",
+   "चुनी खाद्य शृंखला का क्रम"
+  ]
+ ],
+ "maths/number-line": [
+  [
+   "Position on number line",
+   "संख्या रेखा पर स्थिति"
+  ]
+ ],
+ "maths/rectangle": [
+  [
+   "Area (square units)",
+   "क्षेत्रफल (वर्ग इकाई)"
+  ],
+  [
+   "Perimeter (units)",
+   "परिमाप (इकाई)"
+  ]
+ ],
+ "maths/data-table": [
+  [
+   "Group A count",
+   "समूह A की संख्या"
+  ],
+  [
+   "Group B count",
+   "समूह B की संख्या"
+  ],
+  [
+   "Difference A − B",
+   "अंतर A − B"
+  ]
+ ],
+ "studio/fractions": [
+  [
+   "Shaded equal parts",
+   "रंगे बराबर हिस्से"
+  ],
+  [
+   "Total equal parts",
+   "कुल बराबर हिस्से"
+  ]
+ ],
+ "studio/circuit-path": [
+  [
+   "Model bulb state",
+   "मॉडल बल्ब की स्थिति"
+  ],
+  [
+   "Path continuity",
+   "परिपथ पथ की निरंतरता"
+  ]
+ ]
+};
+export function teacherMainObservationGuide(id,lang='en'){
+ if(!['en','hi'].includes(lang)||(!ADVANCED_IDS.includes(id)&&!BASIC_PRINT_IDS.includes(id)))throw Error('Unknown main observation guide');
+ const i=lang==='hi'?1:0,advanced=ADVANCED_IDS.includes(id);
+ const labels=advanced?advancedResultRows(calculateAdvanced(id,ADVANCED_MODELS[id].initial),lang).map(r=>r.label):MAIN_BASIC_OBSERVATIONS[id].map(pair=>pair[i]);
+ if(!labels.length||labels.some(x=>typeof x!=='string'||!x.trim()))throw Error('Invalid observation labels');
+ return {id,labels,source:advanced?'CANONICAL_CALCULATION_LABELS':'DRAFT_DISPLAY_DESCRIPTIONS',teacherOnly:true,humanReviewed:false,publicReleaseApproved:false,storesStudentData:false};
 }

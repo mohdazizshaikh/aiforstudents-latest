@@ -1,5 +1,5 @@
 import {CLASSROOM_IDS,CLASSROOM_LESSONS,classroomText} from '../../assets/classroom-engine.js';
-import {printableClassroomCard,printableAssignmentPack,printableAnyLabActivity,teacherPrintableOptions,TEACHER_LAB_SUBJECTS,teacherPrintableSupplementOptions,TEACHER_ACTIVITY_KINDS,searchTeacherResources,TEACHER_QUERY_LIMIT,teacherActivityLaunch,resolveActivityWorksheet,worksheetReturnLaunch,teacherMainControlGuide,teacherSupplementControlGuide,LAB_PACK_LIMIT,editLabPack,printableLabPack} from '../../assets/teacher-cards-engine.js';
+import {printableClassroomCard,printableAssignmentPack,printableAnyLabActivity,teacherPrintableOptions,TEACHER_LAB_SUBJECTS,teacherPrintableSupplementOptions,TEACHER_ACTIVITY_KINDS,searchTeacherResources,TEACHER_QUERY_LIMIT,teacherActivityLaunch,resolveActivityWorksheet,worksheetReturnLaunch,teacherMainControlGuide,teacherSupplementControlGuide,teacherMainObservationGuide,LAB_PACK_LIMIT,editLabPack,printableLabPack} from '../../assets/teacher-cards-engine.js';
 const $=id=>document.getElementById(id);
 const lang=()=>$('card-language').value;
 let labPack=[];
@@ -59,11 +59,10 @@ function renderActivityControlGuide(id,mode,l,active){
  $('lab-teacher-control-title').textContent=p('Teacher preparation — computer control guide','शिक्षक तैयारी — कंप्यूटर नियंत्रण मार्गदर्शिका')+' · '+g.title;
  $('lab-teacher-control-notice').textContent=p('Unreviewed draft. Computer settings only; no target values or model answers. Keep the existing safety caution.','असमीक्षित मसौदा। केवल कंप्यूटर की स्थितियाँ; लक्ष्य मान या मॉडल के उत्तर नहीं। मौजूदा सुरक्षा सावधानी का पालन करें।');
  for(const c of g.controls){const term=document.createElement('dt'),desc=document.createElement('dd');term.textContent=c.label;desc.textContent=c.settings;rows.append(term,desc)}
- if(mode!=='main'){
-  $('lab-teacher-quantity-title').textContent=p('Calculated quantities (labels only)','गणना की गई राशियाँ (केवल नाम)');
-  for(const label of g.quantityLabels){const item=document.createElement('li');item.textContent=label;quantities.append(item)}
-  quantityPanel.hidden=false;
- }
+ const labels=mode==='main'?teacherMainObservationGuide(id,l).labels:g.quantityLabels;
+ $('lab-teacher-quantity-title').textContent=mode==='main'?p('Model outputs to observe (labels only)','देखने योग्य मॉडल परिणाम (केवल नाम)'):p('Calculated quantities (labels only)','गणना की गई राशियाँ (केवल नाम)');
+ for(const label of labels){const item=document.createElement('li');item.textContent=label;quantities.append(item)}
+ quantityPanel.hidden=false;
  const key=id+':'+mode+':'+l;if(panel.dataset.guideKey!==key){panel.open=false;panel.dataset.guideKey=key}
 }
 function renderLab(l){
