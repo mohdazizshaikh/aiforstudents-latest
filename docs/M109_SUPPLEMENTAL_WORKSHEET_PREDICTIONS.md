@@ -1,5 +1,7 @@
 # M109 — Supplemental worksheet predictions and teacher pre-prediction discussion (candidate)
 
+**Verified engineering receipt:** M109 corrected push/PR 45677028703/45677039536 passed, merged #99 at ef31e420f7ad69975b0c66bba779fa20259f9c5a; M110 45677053762/45677070061 passed, merged #100 at 687f692483b7b50fe357dcaba351033a532cc283; M111 45677246422/45677260241 passed, merged #101 at 7d617fb5df06388454c045a08f3b6b19efcb62b2. All three merged trees identical to tested heads.
+
 > **M109 CI correction:** Original PR run 45676113511 Node: 2,177 passed, one M29 documentation prominence assertion failed because M33 was displaced by the long banner. Chromium result not yet final when corrected. Restored prominent baseline, preserved the original test; fresh exact-head CI required.
 
 > **M110 CI correction:** Original PR run 45676670132 Node: 2,238 passed, one inherited M29 documentation prominence assertion failed. Chromium result not yet final when corrected. Integrated the M109 correction and preserved the original assertion; fresh exact-head CI required.

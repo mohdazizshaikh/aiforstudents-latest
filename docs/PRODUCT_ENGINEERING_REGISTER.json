@@ -1,0 +1,355 @@
+{
+  "schema": "aifs-product-engineering-register-v1",
+  "scope": "Proposed expanded engineering backlog, not a full-product percentage. Static core remains free/offline. Independent educational, safety, rights, host and pilot gates remain unchanged.",
+  "legacyTracker": "MASTER_100_WORK_ITEMS.json",
+  "legacyVerified": 70,
+  "legacyTotal": 100,
+  "publicReleaseApproved": false,
+  "items": [
+    {
+      "id": "ENG-001",
+      "stream": "Foundation",
+      "title": "Versioned in-memory relational repository",
+      "acceptance": "SQLite schema v1, foreign keys, no disk writes; exact 109 source keys.",
+      "status": "IMPLEMENTED_AWAITING_CI",
+      "evidence": [
+        {
+          "source": "tools/pilot-store.mjs",
+          "test": "tests/m112-platform-backend.test.mjs"
+        }
+      ]
+    },
+    {
+      "id": "ENG-002",
+      "stream": "Foundation",
+      "title": "Bilingual activity catalog service",
+      "acceptance": "Exact fixed-key catalog; subject/kind/language filters and invalid-filter rejection.",
+      "status": "IMPLEMENTED_AWAITING_CI",
+      "evidence": [
+        {
+          "source": "tools/pilot-store.mjs",
+          "test": "tests/m112-platform-backend.test.mjs"
+        }
+      ]
+    },
+    {
+      "id": "ENG-003",
+      "stream": "Foundation",
+      "title": "Curriculum planning service",
+      "acceptance": "All 96 planning cells match source, retain draft status; no verified chapter inference.",
+      "status": "IMPLEMENTED_AWAITING_CI",
+      "evidence": [
+        {
+          "source": "tools/pilot-store.mjs",
+          "test": "tests/m112-platform-backend.test.mjs"
+        }
+      ]
+    },
+    {
+      "id": "ENG-004",
+      "stream": "Foundation",
+      "title": "Bounded synthetic teacher rehearsal repository",
+      "acceptance": "Atomic ordered selection of up to six exact keys, rejection and clear, no identity or persistence.",
+      "status": "IMPLEMENTED_AWAITING_CI",
+      "evidence": [
+        {
+          "source": "tools/pilot-store.mjs",
+          "test": "tests/m112-platform-backend.test.mjs"
+        }
+      ]
+    },
+    {
+      "id": "ENG-005",
+      "stream": "Foundation",
+      "title": "Authenticated developer-only HTTP gateway",
+      "acceptance": "Loopback bind, token auth, Host/Origin guard, bounded inputs, fail-closed routes, no child services.",
+      "status": "IMPLEMENTED_AWAITING_CI",
+      "evidence": [
+        {
+          "source": "tools/pilot-backend.mjs",
+          "test": "tests/m112-platform-backend.test.mjs"
+        }
+      ]
+    },
+    {
+      "id": "ENG-006",
+      "stream": "Foundation",
+      "title": "Deployment target and production storage decision",
+      "acceptance": "Compare existing Hostinger capabilities and define approved migration path without changing static core.",
+      "status": "PLANNED",
+      "evidence": []
+    },
+    {
+      "id": "ENG-007",
+      "stream": "Foundation",
+      "title": "Production migration and recovery tooling",
+      "acceptance": "Dry-run migration, rollback, backup restore on synthetic database; no real learner data.",
+      "status": "PLANNED",
+      "evidence": []
+    },
+    {
+      "id": "ENG-008",
+      "stream": "Foundation",
+      "title": "Adult operator access architecture",
+      "acceptance": "Role isolation, expiration, revocation, authorization tests; no activation before approval.",
+      "status": "PLANNED",
+      "evidence": []
+    },
+    {
+      "id": "ENG-009",
+      "stream": "Smart Lab",
+      "title": "Grade 1–5 coverage definition and gap audit",
+      "acceptance": "Explicit concept matrix with distinction between proposed and independently verified chapters.",
+      "status": "PLANNED",
+      "evidence": []
+    },
+    {
+      "id": "ENG-010",
+      "stream": "Smart Lab",
+      "title": "Grade 6–8 coverage definition and gap audit",
+      "acceptance": "Board-specific concept prerequisites and resource gaps; no inferred alignment.",
+      "status": "PLANNED",
+      "evidence": []
+    },
+    {
+      "id": "ENG-011",
+      "stream": "Smart Lab",
+      "title": "Grade 9–10 coverage definition and gap audit",
+      "acceptance": "Board-specific concept prerequisites and resource gaps.",
+      "status": "PLANNED",
+      "evidence": []
+    },
+    {
+      "id": "ENG-012",
+      "stream": "Smart Lab",
+      "title": "Grade 11–12 coverage definition and gap audit",
+      "acceptance": "Stream-specific concept prerequisites and resource gaps.",
+      "status": "PLANNED",
+      "evidence": []
+    },
+    {
+      "id": "ENG-013",
+      "stream": "Smart Lab",
+      "title": "Missing primary mathematics interaction set",
+      "acceptance": "New interactive models from gap matrix, keyboard/text alternatives and independent reference requirements.",
+      "status": "PLANNED",
+      "evidence": []
+    },
+    {
+      "id": "ENG-014",
+      "stream": "Smart Lab",
+      "title": "Missing secondary mathematics interaction set",
+      "acceptance": "New interactive models with source-based test fixtures and accessibility.",
+      "status": "PLANNED",
+      "evidence": []
+    },
+    {
+      "id": "ENG-015",
+      "stream": "Smart Lab",
+      "title": "Missing physics interaction set",
+      "acceptance": "New safe virtual models with numerical invariants and no real hardware procedures.",
+      "status": "PLANNED",
+      "evidence": []
+    },
+    {
+      "id": "ENG-016",
+      "stream": "Smart Lab",
+      "title": "Missing chemistry interaction set",
+      "acceptance": "New safe symbolic models with numerical checks and no physical procedures.",
+      "status": "PLANNED",
+      "evidence": []
+    },
+    {
+      "id": "ENG-017",
+      "stream": "Smart Lab",
+      "title": "Missing biology interaction set",
+      "acceptance": "New safe conceptual models with no diagnostic claims and accessible text.",
+      "status": "PLANNED",
+      "evidence": []
+    },
+    {
+      "id": "ENG-018",
+      "stream": "Smart Lab",
+      "title": "Reusable simulation experiment comparison engine",
+      "acceptance": "Consistent prediction, controlled comparison, reset and keyboard/text output.",
+      "status": "PLANNED",
+      "evidence": []
+    },
+    {
+      "id": "ENG-019",
+      "stream": "Curriculum",
+      "title": "Versioned board and chapter catalog",
+      "acceptance": "Edition-specific source and provenance schema, pending/verified separation.",
+      "status": "PLANNED",
+      "evidence": []
+    },
+    {
+      "id": "ENG-020",
+      "stream": "Curriculum",
+      "title": "Chapter navigation and prerequisite UI",
+      "acceptance": "Grade, board, edition and concept navigation; visibly mark unreviewed coverage.",
+      "status": "PLANNED",
+      "evidence": []
+    },
+    {
+      "id": "ENG-021",
+      "stream": "Curriculum",
+      "title": "Reviewed-resource ingestion boundary",
+      "acceptance": "Rights and provenance checked, revocation supported, no unauthorized copies.",
+      "status": "PLANNED",
+      "evidence": []
+    },
+    {
+      "id": "ENG-022",
+      "stream": "Tutor",
+      "title": "Restricted lesson-scoped tutor interface",
+      "acceptance": "Adult synthetic rehearsal only, fixed approved-source contract; no open child chat.",
+      "status": "PLANNED",
+      "evidence": []
+    },
+    {
+      "id": "ENG-023",
+      "stream": "Tutor",
+      "title": "Source retrieval and citation verification service",
+      "acceptance": "Exact versioned allowlist, missing/revoked source denial and grounding tests.",
+      "status": "PLANNED",
+      "evidence": []
+    },
+    {
+      "id": "ENG-024",
+      "stream": "Tutor",
+      "title": "Provider-neutral model adapter in disabled sandbox",
+      "acceptance": "Mock provider, bounded time and tokens, no child identifiers, no live API without approval.",
+      "status": "PLANNED",
+      "evidence": []
+    },
+    {
+      "id": "ENG-025",
+      "stream": "Tutor",
+      "title": "Safety/fallback and quota enforcement",
+      "acceptance": "Reject unsupported requests, fail closed to local fallback; test timeout, malformed output, quota.",
+      "status": "PLANNED",
+      "evidence": []
+    },
+    {
+      "id": "ENG-026",
+      "stream": "Tutor",
+      "title": "Bilingual tutor quality evaluation pipeline",
+      "acceptance": "Synthetic adversarial fixtures plus independent reviewer handoff; no auto approval.",
+      "status": "PLANNED",
+      "evidence": []
+    },
+    {
+      "id": "ENG-027",
+      "stream": "Adaptive",
+      "title": "Concept prerequisite graph",
+      "acceptance": "Explicit versioned graph with cycle checks and no aptitude labels.",
+      "status": "PLANNED",
+      "evidence": []
+    },
+    {
+      "id": "ENG-028",
+      "stream": "Adaptive",
+      "title": "Local session practice recommendation engine",
+      "acceptance": "Explainable recommendations with skip/reset and no high-stakes scores.",
+      "status": "PLANNED",
+      "evidence": []
+    },
+    {
+      "id": "ENG-029",
+      "stream": "Adaptive",
+      "title": "Reviewed-task evidence interface",
+      "acceptance": "Separate synthetic/real approved pools, no profiling before authorized study.",
+      "status": "PLANNED",
+      "evidence": []
+    },
+    {
+      "id": "ENG-030",
+      "stream": "Adaptive",
+      "title": "Calibration evaluation interface",
+      "acceptance": "Held-out transfer, abstention, uncertainty and evaluation reports on synthetic data.",
+      "status": "PLANNED",
+      "evidence": []
+    },
+    {
+      "id": "ENG-031",
+      "stream": "Student experience",
+      "title": "Unified learner activity dashboard",
+      "acceptance": "Local-only navigation across learning modules, no new account dependency.",
+      "status": "PLANNED",
+      "evidence": []
+    },
+    {
+      "id": "ENG-032",
+      "stream": "Student experience",
+      "title": "Session learning plan",
+      "acceptance": "Bounded fixed activity list, next/skip/reset, no persisted identifiers.",
+      "status": "PLANNED",
+      "evidence": []
+    },
+    {
+      "id": "ENG-033",
+      "stream": "Student experience",
+      "title": "Accessible progress summary",
+      "acceptance": "Task-local progress and opt-in existing history; no mastery or aptitude claims.",
+      "status": "PLANNED",
+      "evidence": []
+    },
+    {
+      "id": "ENG-034",
+      "stream": "Teacher experience",
+      "title": "Unified teacher planning dashboard",
+      "acceptance": "Lesson sequence, resources and projector handoff from one workspace.",
+      "status": "PLANNED",
+      "evidence": []
+    },
+    {
+      "id": "ENG-035",
+      "stream": "Teacher experience",
+      "title": "Teacher classroom lesson workflow",
+      "acceptance": "Start/pause/next/reset with offline alternative and no pupil roster.",
+      "status": "PLANNED",
+      "evidence": []
+    },
+    {
+      "id": "ENG-036",
+      "stream": "Teacher experience",
+      "title": "Adult synthetic aggregate rehearsal",
+      "acceptance": "Minimum-count suppression, no individual scores, disabled until approval.",
+      "status": "PLANNED",
+      "evidence": []
+    },
+    {
+      "id": "ENG-037",
+      "stream": "Quality",
+      "title": "Cross-module privacy and security regression",
+      "acceptance": "No unintended persistence or network requests; source and endpoint exposure negative tests.",
+      "status": "PLANNED",
+      "evidence": []
+    },
+    {
+      "id": "ENG-038",
+      "stream": "Quality",
+      "title": "Low-bandwidth and performance regression",
+      "acceptance": "Measure budgets and offline install/update behavior; real devices separately gated.",
+      "status": "PLANNED",
+      "evidence": []
+    },
+    {
+      "id": "ENG-039",
+      "stream": "Quality",
+      "title": "Accessibility and localization integration regression",
+      "acceptance": "Keyboard, text alternatives, English/Hindi consistency; human AT review separate.",
+      "status": "PLANNED",
+      "evidence": []
+    },
+    {
+      "id": "ENG-040",
+      "stream": "Operations",
+      "title": "Reproducible restricted deployment and rollback rehearsal",
+      "acceptance": "Dry-run artifacts, approved-host verification procedure, rollback proof separate from live release.",
+      "status": "PLANNED",
+      "evidence": []
+    }
+  ]
+}
