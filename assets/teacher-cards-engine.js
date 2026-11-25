@@ -490,3 +490,16 @@ export function teacherMainObservationGuide(id,lang='en'){
  if(!labels.length||labels.some(x=>typeof x!=='string'||!x.trim()))throw Error('Invalid observation labels');
  return {id,labels,source:advanced?'CANONICAL_CALCULATION_LABELS':'DRAFT_DISPLAY_DESCRIPTIONS',teacherOnly:true,humanReviewed:false,publicReleaseApproved:false,storesStudentData:false};
 }
+
+/** M102 ordered, transient teacher rehearsal agenda; never part of a learner print pack. */
+export function teacherPackPreparation(keys,lang='en'){
+ validateLabPack(keys);
+ if(!['en','hi'].includes(lang))throw Error('Unknown preparation language');
+ const items=keys.map((key,index)=>{
+  const [id,mode]=key.split(':'),a=mode==='main'?teacherMainControlGuide(id,lang):teacherSupplementControlGuide(id,mode,lang);
+  const observationLabels=mode==='main'?teacherMainObservationGuide(id,lang).labels:a.quantityLabels;
+  const route=worksheetReturnLaunch(key,lang);
+  return {key,position:index+1,title:a.title,caveat:a.caveat,controls:a.controls,observationLabels,href:route.href};
+ });
+ return {language:lang,items,teacherOnly:true,localOnly:true,storesStudentData:false,humanReviewed:false,publicReleaseApproved:false};
+}

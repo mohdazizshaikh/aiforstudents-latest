@@ -127,3 +127,5 @@ M95/M96 corrected exact-head CI passed and merged. M99 candidate adds 60 teacher
 M97–M99 verified merged. M100 candidate adds 49 supplemental control guides and 49 quantity label lists; no educational approval, verified references or rights decision. FP-087/FP-092 acceptance unchanged.
 
 M100 verified merged. M101 candidate adds 60 main model output/observation label guides. No educational approval or rights decision; FP-087/FP-092 acceptance unchanged.
+
+M101 verified merged. M102 candidate adds mixed assignment pack preparation across 109 resources; FP-087 rights and independent educational review remain pending.
