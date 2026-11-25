@@ -69,6 +69,11 @@ jobs:
           rm review-evidence/m89-ci-rights.json
       - name: Generate pending main-model reference fixture summary (NOT expert answers)
         run: npm run review:main-fixtures -- --summary
+      - name: Generate and validate combined local activity reference worklist (NOT independent answers)
+        run: |
+          npm run review:activity-fixtures -- --template m98-ci-fixtures.json
+          npm run review:activity-fixtures -- --check m98-ci-fixtures.json
+          rm review-evidence/m98-ci-fixtures.json
       - name: Assert public preflight remains blocked
         run: |
           if node tools/release-preflight.mjs --public > /dev/null; then

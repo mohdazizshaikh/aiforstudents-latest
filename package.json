@@ -31,6 +31,7 @@
     "mastery:audit-grid": "node tools/synthetic-mastery-grid.mjs",
     "staging:restricted": "node tools/restricted-staging-audit.mjs",
     "teacher:rights": "node tools/teacher-rights-worklist.mjs",
-    "review:main-fixtures": "node tools/main-model-fixture-worklist.mjs"
+    "review:main-fixtures": "node tools/main-model-fixture-worklist.mjs",
+    "review:activity-fixtures": "node tools/all-activity-fixture-worklist.mjs"
   }
 }
