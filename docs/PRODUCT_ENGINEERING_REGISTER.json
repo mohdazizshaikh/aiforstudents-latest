@@ -382,6 +382,18 @@
             "pullRequestRun": 45714211060,
             "treeIdentical": true
           }
+        },
+        {
+          "source": "assets/visual-lab-engine.js",
+          "test": "tests/m122-visual-lab.test.mjs",
+          "status": "VERIFIED_MERGED",
+          "verification": {
+            "head": "6dfda8b3187470ce435bf003a657dd779b041a6e",
+            "merged": "991f1ddf51165c107cf392eec9d966f64031361b",
+            "pushRun": 45715765262,
+            "pullRequestRun": 45715771384,
+            "treeIdentical": true
+          }
         }
       ]
     },
@@ -422,6 +434,18 @@
             "merged": "58a9920b5a3a7d4d0efb2e703871c977dbdab32f",
             "pushRun": 45714199810,
             "pullRequestRun": 45714211060,
+            "treeIdentical": true
+          }
+        },
+        {
+          "source": "assets/visual-lab-engine.js",
+          "test": "tests/m122-visual-lab.test.mjs",
+          "status": "VERIFIED_MERGED",
+          "verification": {
+            "head": "6dfda8b3187470ce435bf003a657dd779b041a6e",
+            "merged": "991f1ddf51165c107cf392eec9d966f64031361b",
+            "pushRun": 45715765262,
+            "pullRequestRun": 45715771384,
             "treeIdentical": true
           }
         }
@@ -466,6 +490,18 @@
             "pullRequestRun": 45714211060,
             "treeIdentical": true
           }
+        },
+        {
+          "source": "assets/visual-lab-engine.js",
+          "test": "tests/m122-visual-lab.test.mjs",
+          "status": "VERIFIED_MERGED",
+          "verification": {
+            "head": "6dfda8b3187470ce435bf003a657dd779b041a6e",
+            "merged": "991f1ddf51165c107cf392eec9d966f64031361b",
+            "pushRun": 45715765262,
+            "pullRequestRun": 45715771384,
+            "treeIdentical": true
+          }
         }
       ]
     },
@@ -506,6 +542,18 @@
             "merged": "58a9920b5a3a7d4d0efb2e703871c977dbdab32f",
             "pushRun": 45714199810,
             "pullRequestRun": 45714211060,
+            "treeIdentical": true
+          }
+        },
+        {
+          "source": "assets/visual-lab-engine.js",
+          "test": "tests/m122-visual-lab.test.mjs",
+          "status": "VERIFIED_MERGED",
+          "verification": {
+            "head": "6dfda8b3187470ce435bf003a657dd779b041a6e",
+            "merged": "991f1ddf51165c107cf392eec9d966f64031361b",
+            "pushRun": 45715765262,
+            "pullRequestRun": 45715771384,
             "treeIdentical": true
           }
         }
@@ -598,6 +646,18 @@
             "pullRequestRun": 45714211060,
             "treeIdentical": true
           }
+        },
+        {
+          "source": "assets/visual-lab-engine.js",
+          "test": "tests/m122-visual-lab.test.mjs",
+          "status": "VERIFIED_MERGED",
+          "verification": {
+            "head": "6dfda8b3187470ce435bf003a657dd779b041a6e",
+            "merged": "991f1ddf51165c107cf392eec9d966f64031361b",
+            "pushRun": 45715765262,
+            "pullRequestRun": 45715771384,
+            "treeIdentical": true
+          }
         }
       ]
     },
@@ -643,7 +703,33 @@
         "pushRun": 45687164500,
         "pullRequestRun": 45687177551,
         "treeIdentical": true
-      }
+      },
+      "followUpEvidence": [
+        {
+          "source": "tools/tutor-transport-rehearsal.mjs",
+          "test": "tests/m123-tutor-transport.test.mjs",
+          "status": "VERIFIED_MERGED",
+          "verification": {
+            "head": "6b9fab6084e8ebed8a8a67dded5cca61494dab46",
+            "merged": "d5a07ce8707db69dc081aea29cc7482eb6bd6b49",
+            "pushRun": 45715779823,
+            "pullRequestRun": 45715786960,
+            "treeIdentical": true
+          }
+        },
+        {
+          "source": "tools/tutor-activation-boundary.mjs",
+          "test": "tests/m123-tutor-transport.test.mjs",
+          "status": "VERIFIED_MERGED",
+          "verification": {
+            "head": "6b9fab6084e8ebed8a8a67dded5cca61494dab46",
+            "merged": "d5a07ce8707db69dc081aea29cc7482eb6bd6b49",
+            "pushRun": 45715779823,
+            "pullRequestRun": 45715786960,
+            "treeIdentical": true
+          }
+        }
+      ]
     },
     {
       "id": "ENG-023",
@@ -663,7 +749,33 @@
         "pushRun": 45687164500,
         "pullRequestRun": 45687177551,
         "treeIdentical": true
-      }
+      },
+      "followUpEvidence": [
+        {
+          "source": "tools/tutor-transport-rehearsal.mjs",
+          "test": "tests/m123-tutor-transport.test.mjs",
+          "status": "VERIFIED_MERGED",
+          "verification": {
+            "head": "6b9fab6084e8ebed8a8a67dded5cca61494dab46",
+            "merged": "d5a07ce8707db69dc081aea29cc7482eb6bd6b49",
+            "pushRun": 45715779823,
+            "pullRequestRun": 45715786960,
+            "treeIdentical": true
+          }
+        },
+        {
+          "source": "tools/tutor-activation-boundary.mjs",
+          "test": "tests/m123-tutor-transport.test.mjs",
+          "status": "VERIFIED_MERGED",
+          "verification": {
+            "head": "6b9fab6084e8ebed8a8a67dded5cca61494dab46",
+            "merged": "d5a07ce8707db69dc081aea29cc7482eb6bd6b49",
+            "pushRun": 45715779823,
+            "pullRequestRun": 45715786960,
+            "treeIdentical": true
+          }
+        }
+      ]
     },
     {
       "id": "ENG-024",
@@ -683,7 +795,33 @@
         "pushRun": 45687164500,
         "pullRequestRun": 45687177551,
         "treeIdentical": true
-      }
+      },
+      "followUpEvidence": [
+        {
+          "source": "tools/tutor-transport-rehearsal.mjs",
+          "test": "tests/m123-tutor-transport.test.mjs",
+          "status": "VERIFIED_MERGED",
+          "verification": {
+            "head": "6b9fab6084e8ebed8a8a67dded5cca61494dab46",
+            "merged": "d5a07ce8707db69dc081aea29cc7482eb6bd6b49",
+            "pushRun": 45715779823,
+            "pullRequestRun": 45715786960,
+            "treeIdentical": true
+          }
+        },
+        {
+          "source": "tools/tutor-activation-boundary.mjs",
+          "test": "tests/m123-tutor-transport.test.mjs",
+          "status": "VERIFIED_MERGED",
+          "verification": {
+            "head": "6b9fab6084e8ebed8a8a67dded5cca61494dab46",
+            "merged": "d5a07ce8707db69dc081aea29cc7482eb6bd6b49",
+            "pushRun": 45715779823,
+            "pullRequestRun": 45715786960,
+            "treeIdentical": true
+          }
+        }
+      ]
     },
     {
       "id": "ENG-025",
@@ -703,7 +841,33 @@
         "pushRun": 45687164500,
         "pullRequestRun": 45687177551,
         "treeIdentical": true
-      }
+      },
+      "followUpEvidence": [
+        {
+          "source": "tools/tutor-transport-rehearsal.mjs",
+          "test": "tests/m123-tutor-transport.test.mjs",
+          "status": "VERIFIED_MERGED",
+          "verification": {
+            "head": "6b9fab6084e8ebed8a8a67dded5cca61494dab46",
+            "merged": "d5a07ce8707db69dc081aea29cc7482eb6bd6b49",
+            "pushRun": 45715779823,
+            "pullRequestRun": 45715786960,
+            "treeIdentical": true
+          }
+        },
+        {
+          "source": "tools/tutor-activation-boundary.mjs",
+          "test": "tests/m123-tutor-transport.test.mjs",
+          "status": "VERIFIED_MERGED",
+          "verification": {
+            "head": "6b9fab6084e8ebed8a8a67dded5cca61494dab46",
+            "merged": "d5a07ce8707db69dc081aea29cc7482eb6bd6b49",
+            "pushRun": 45715779823,
+            "pullRequestRun": 45715786960,
+            "treeIdentical": true
+          }
+        }
+      ]
     },
     {
       "id": "ENG-026",
@@ -723,7 +887,33 @@
         "pushRun": 45687164500,
         "pullRequestRun": 45687177551,
         "treeIdentical": true
-      }
+      },
+      "followUpEvidence": [
+        {
+          "source": "tools/tutor-transport-rehearsal.mjs",
+          "test": "tests/m123-tutor-transport.test.mjs",
+          "status": "VERIFIED_MERGED",
+          "verification": {
+            "head": "6b9fab6084e8ebed8a8a67dded5cca61494dab46",
+            "merged": "d5a07ce8707db69dc081aea29cc7482eb6bd6b49",
+            "pushRun": 45715779823,
+            "pullRequestRun": 45715786960,
+            "treeIdentical": true
+          }
+        },
+        {
+          "source": "tools/tutor-activation-boundary.mjs",
+          "test": "tests/m123-tutor-transport.test.mjs",
+          "status": "VERIFIED_MERGED",
+          "verification": {
+            "head": "6b9fab6084e8ebed8a8a67dded5cca61494dab46",
+            "merged": "d5a07ce8707db69dc081aea29cc7482eb6bd6b49",
+            "pushRun": 45715779823,
+            "pullRequestRun": 45715786960,
+            "treeIdentical": true
+          }
+        }
+      ]
     },
     {
       "id": "ENG-027",
@@ -743,7 +933,21 @@
         "pushRun": 45688811654,
         "pullRequestRun": 45688825555,
         "treeIdentical": true
-      }
+      },
+      "followUpEvidence": [
+        {
+          "source": "assets/visual-lab-engine.js",
+          "test": "tests/m122-visual-lab.test.mjs",
+          "status": "VERIFIED_MERGED",
+          "verification": {
+            "head": "6dfda8b3187470ce435bf003a657dd779b041a6e",
+            "merged": "991f1ddf51165c107cf392eec9d966f64031361b",
+            "pushRun": 45715765262,
+            "pullRequestRun": 45715771384,
+            "treeIdentical": true
+          }
+        }
+      ]
     },
     {
       "id": "ENG-028",
@@ -916,6 +1120,18 @@
             "pullRequestRun": 45714211060,
             "treeIdentical": true
           }
+        },
+        {
+          "source": "assets/visual-lab-engine.js",
+          "test": "tests/m122-visual-lab.test.mjs",
+          "status": "VERIFIED_MERGED",
+          "verification": {
+            "head": "6dfda8b3187470ce435bf003a657dd779b041a6e",
+            "merged": "991f1ddf51165c107cf392eec9d966f64031361b",
+            "pushRun": 45715765262,
+            "pullRequestRun": 45715771384,
+            "treeIdentical": true
+          }
         }
       ]
     },
@@ -954,6 +1170,18 @@
             "pullRequestRun": 45714211060,
             "treeIdentical": true
           }
+        },
+        {
+          "source": "assets/visual-lab-engine.js",
+          "test": "tests/m122-visual-lab.test.mjs",
+          "status": "VERIFIED_MERGED",
+          "verification": {
+            "head": "6dfda8b3187470ce435bf003a657dd779b041a6e",
+            "merged": "991f1ddf51165c107cf392eec9d966f64031361b",
+            "pushRun": 45715765262,
+            "pullRequestRun": 45715771384,
+            "treeIdentical": true
+          }
         }
       ]
     },
@@ -983,7 +1211,7 @@
       "stream": "Quality",
       "title": "Cross-module privacy and security regression",
       "acceptance": "No unintended persistence or network requests; source and endpoint exposure negative tests.",
-      "status": "IMPLEMENTED_AWAITING_CI",
+      "status": "VERIFIED_MERGED",
       "evidence": [
         {
           "source": "assets/workspace-app.js",
@@ -994,14 +1222,21 @@
           "test": "tests/browser_m25_ci.py"
         }
       ],
-      "limitation": "Source checks and local cross-tab browser regression; real host probes and independent security/privacy audit remain pending."
+      "limitation": "Source checks and local cross-tab browser regression; real host probes and independent security/privacy audit remain pending.",
+      "verification": {
+        "head": "12cff775f7a1520d3655a16de9c0d127d5731b32",
+        "merged": "0deb88a0760f3462465baba008e776f10f9c4c99",
+        "pushRun": 45713750023,
+        "pullRequestRun": 45713758230,
+        "treeIdentical": true
+      }
     },
     {
       "id": "ENG-038",
       "stream": "Quality",
       "title": "Low-bandwidth and performance regression",
       "acceptance": "Measure budgets and offline install/update behavior; real devices separately gated.",
-      "status": "IMPLEMENTED_AWAITING_CI",
+      "status": "VERIFIED_MERGED",
       "evidence": [
         {
           "source": "tools/quality-regression.mjs",
@@ -1012,14 +1247,21 @@
           "test": "tests/m120-quality-regression.test.mjs"
         }
       ],
-      "limitation": "Gzip estimates, simulated service-worker lifecycle and existing real local offline Chromium; real mobile network/device measurement pending."
+      "limitation": "Gzip estimates, simulated service-worker lifecycle and existing real local offline Chromium; real mobile network/device measurement pending.",
+      "verification": {
+        "head": "12cff775f7a1520d3655a16de9c0d127d5731b32",
+        "merged": "0deb88a0760f3462465baba008e776f10f9c4c99",
+        "pushRun": 45713750023,
+        "pullRequestRun": 45713758230,
+        "treeIdentical": true
+      }
     },
     {
       "id": "ENG-039",
       "stream": "Quality",
       "title": "Accessibility and localization integration regression",
       "acceptance": "Keyboard, text alternatives, English/Hindi consistency; human AT review separate.",
-      "status": "IMPLEMENTED_AWAITING_CI",
+      "status": "VERIFIED_MERGED",
       "evidence": [
         {
           "source": "tests/browser_m25_ci.py",
@@ -1030,14 +1272,21 @@
           "test": "tests/browser_m25_ci.py"
         }
       ],
-      "limitation": "Native keyboard and structural bilingual checks only; independent translation and physical assistive-technology review pending."
+      "limitation": "Native keyboard and structural bilingual checks only; independent translation and physical assistive-technology review pending.",
+      "verification": {
+        "head": "12cff775f7a1520d3655a16de9c0d127d5731b32",
+        "merged": "0deb88a0760f3462465baba008e776f10f9c4c99",
+        "pushRun": 45713750023,
+        "pullRequestRun": 45713758230,
+        "treeIdentical": true
+      }
     },
     {
       "id": "ENG-040",
       "stream": "Operations",
       "title": "Reproducible restricted deployment and rollback rehearsal",
       "acceptance": "Dry-run artifacts, approved-host verification procedure, rollback proof separate from live release.",
-      "status": "IMPLEMENTED_AWAITING_CI",
+      "status": "VERIFIED_MERGED",
       "evidence": [
         {
           "source": "tools/rehearse-static-rollback.py",
@@ -1048,7 +1297,14 @@
           "test": "tests/m120-quality-regression.test.mjs"
         }
       ],
-      "limitation": "Local deterministic archive and exact historical rollback rehearsal; real restricted Hostinger deployment, backup and recovery evidence pending."
+      "limitation": "Local deterministic archive and exact historical rollback rehearsal; real restricted Hostinger deployment, backup and recovery evidence pending.",
+      "verification": {
+        "head": "12cff775f7a1520d3655a16de9c0d127d5731b32",
+        "merged": "0deb88a0760f3462465baba008e776f10f9c4c99",
+        "pushRun": 45713750023,
+        "pullRequestRun": 45713758230,
+        "treeIdentical": true
+      }
     }
   ]
 }

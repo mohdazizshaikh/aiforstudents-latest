@@ -151,3 +151,6 @@ h1,h2,h3,p{margin-top:0}h1,h2,h3{line-height:1.16;letter-spacing:-.04em}h1{font-
 /* M121 explicit draft print mode, never ordinary session print. */
 .prototype-paper{border:1px solid #bdd5ce;padding:12px;margin:12px 0;break-inside:avoid}.prototype-paper li{margin-bottom:12px}.prototype-writing-lines{height:48px;border-bottom:1px solid #657578;background:repeating-linear-gradient(to bottom,transparent 0,transparent 23px,#b1bcb9 23px,#b1bcb9 24px)}
 @media print{body.prototype-pack-print #teacher-main> *:not(#prototype-pack){display:none!important}body.prototype-pack-print #prototype-pack{display:block!important;border:0;padding:0;background:#fff;color:#000}body.prototype-pack-print #pp-controls,body.prototype-pack-print #pp-title,body.prototype-pack-print #pp-notice{display:none!important}body.prototype-pack-print .prototype-paper{border:0;margin:0;padding:0;break-inside:avoid;break-after:page}body.prototype-pack-print .prototype-paper:last-child{break-after:auto}body.prototype-pack-print .prototype-writing-lines{background:none;border-top:1px solid #888;border-bottom:1px solid #888}}
+
+/* M122 visual diagrams retain equivalent text results and bounded responsive size. */
+.visual-lab-diagram{display:block;width:100%;max-width:440px;height:auto;background:white;border:1px solid #bdd5ce;border-radius:8px}
