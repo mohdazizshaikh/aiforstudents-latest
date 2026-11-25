@@ -2,6 +2,8 @@
 
 > **M109 CI correction:** Original PR run 45676113511 Node: 2,177 passed, one M29 documentation prominence assertion failed because M33 was displaced by the long banner. Chromium result not yet final when corrected. Restored prominent baseline, preserved the original test; fresh exact-head CI required.
 
+> **M110 CI correction:** Original PR run 45676670132 Node: 2,238 passed, one inherited M29 documentation prominence assertion failed. Chromium result not yet final when corrected. Integrated the M109 correction and preserved the original assertion; fresh exact-head CI required.
+
 
 M107 exact-head push [45650368004](https://github.com/mohdazizshaikh/aiforstudents-latest/actions/runs/45650368004) and PR [45650388221](https://github.com/mohdazizshaikh/aiforstudents-latest/actions/runs/45650388221) passed; [PR #97](https://github.com/mohdazizshaikh/aiforstudents-latest/pull/97) merged into main at `875b60ea7a699b2b7b9cb7c0599711e37b471daf` with identical tree to tested head.
 

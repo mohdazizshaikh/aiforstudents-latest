@@ -1,5 +1,5 @@
 import {CLASSROOM_IDS,CLASSROOM_LESSONS,classroomText} from '../../assets/classroom-engine.js';
-import {printableClassroomCard,printableAssignmentPack,printableAnyLabActivity,teacherPrintableOptions,TEACHER_LAB_SUBJECTS,teacherPrintableSupplementOptions,TEACHER_ACTIVITY_KINDS,searchTeacherResources,TEACHER_QUERY_LIMIT,teacherActivityLaunch,resolveActivityWorksheet,worksheetReturnLaunch,teacherMainControlGuide,teacherSupplementControlGuide,teacherMainObservationGuide,teacherPackPreparation,teacherPackReflectionGuide,teacherPackDemoLaunch,teacherResourcePreview,teacherPackHandoff,resolveTeacherPackHandoff,PACK_HANDOFF_PREFIX,LAB_PACK_LIMIT,editLabPack,printableLabPack} from '../../assets/teacher-cards-engine.js';
+import {printableClassroomCard,printableAssignmentPack,printableAnyLabActivity,teacherPrintableOptions,TEACHER_LAB_SUBJECTS,teacherPrintableSupplementOptions,TEACHER_ACTIVITY_KINDS,searchTeacherResources,TEACHER_QUERY_LIMIT,teacherActivityLaunch,resolveActivityWorksheet,worksheetReturnLaunch,teacherMainControlGuide,teacherSupplementControlGuide,teacherMainObservationGuide,teacherMainBoundaryGuide,teacherPackPreparation,teacherPackReflectionGuide,teacherPackDemoLaunch,teacherResourcePreview,teacherPackHandoff,resolveTeacherPackHandoff,PACK_HANDOFF_PREFIX,LAB_PACK_LIMIT,editLabPack,printableLabPack} from '../../assets/teacher-cards-engine.js';
 const $=id=>document.getElementById(id);
 const lang=()=>$('card-language').value;
 let labPack=[];
@@ -53,6 +53,8 @@ function renderPack(lesson,l){
 function renderActivityControlGuide(id,mode,l,active){
  const panel=$('lab-teacher-control-guide'),rows=$('lab-teacher-control-rows');
  const quantities=$('lab-teacher-quantity-rows'),quantityPanel=$('lab-teacher-quantity-panel');
+ const boundary=$('lab-teacher-boundary-panel'),boundaryText=$('lab-teacher-boundary-prompt');
+ boundary.hidden=true;boundaryText.textContent='';
  rows.replaceChildren();quantities.replaceChildren();quantityPanel.hidden=true;panel.hidden=!active;
  if(panel.hidden){panel.open=false;$('lab-teacher-control-title').textContent='';$('lab-teacher-control-notice').textContent='';return}
  const g=mode==='main'?teacherMainControlGuide(id,l):teacherSupplementControlGuide(id,mode,l),p=(en,hi)=>l==='hi'?hi:en;
@@ -63,6 +65,10 @@ function renderActivityControlGuide(id,mode,l,active){
  $('lab-teacher-quantity-title').textContent=mode==='main'?p('Model outputs to observe (labels only)','देखने योग्य मॉडल परिणाम (केवल नाम)'):p('Calculated quantities (labels only)','गणना की गई राशियाँ (केवल नाम)');
  for(const label of labels){const item=document.createElement('li');item.textContent=label;quantities.append(item)}
  quantityPanel.hidden=false;
+ if(mode==='main'){
+  $('lab-teacher-boundary-title').textContent=p('Discuss the model limits (unreviewed draft)','मॉडल की सीमाओं पर चर्चा (असमीक्षित मसौदा)');
+  boundaryText.textContent=teacherMainBoundaryGuide(id,l).prompt;boundary.hidden=false;
+ }
  const key=id+':'+mode+':'+l;if(panel.dataset.guideKey!==key){panel.open=false;panel.dataset.guideKey=key}
 }
 function renderLab(l){
@@ -196,6 +202,11 @@ function renderPackPreparation(l){
   const dl=el('dl');for(const c of item.controls)dl.append(el('dt',c.label),el('dd',c.settings));section.append(dl);
   section.append(el('h4',p('Model outputs to observe (labels only)','देखने योग्य मॉडल परिणाम (केवल नाम)')));
   const ul=el('ul');for(const label of item.observationLabels)ul.append(el('li',label));section.append(ul);
+  const [id,mode]=item.key.split(':');
+  if(mode==='main'){
+   const boundary=el('p',teacherMainBoundaryGuide(id,l).prompt);boundary.className='teacher-model-boundary';
+   section.append(el('h4',p('Discuss the model limits (unreviewed draft)','मॉडल की सीमाओं पर चर्चा (असमीक्षित मसौदा)')),boundary);
+  }
   const launch=teacherPackDemoLaunch(labPack,item.key,l);
   const link=el('a',p('Open fresh computer model (new tab): ','नया कंप्यूटर मॉडल खोलें (नया टैब): ')+launch.title);
   link.href=launch.href;link.target=launch.target;link.rel=launch.rel;section.append(link);host.append(section);
