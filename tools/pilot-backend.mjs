@@ -10,6 +10,8 @@ import {prototypeChoices} from '../assets/extended-lab-catalog.js';
 import {curriculumCatalog} from '../assets/curriculum-catalog.js';
 import {createIngestionBoundary,resourceFixture} from './resource-ingestion-boundary.mjs';
 import {syntheticAggregateReport} from './teacher-aggregate-rehearsal.mjs';
+import {createTransportRehearsal,transportCatalog} from './tutor-transport-rehearsal.mjs';
+import {tutorActivationStatus} from './tutor-activation-boundary.mjs';
 
 const MAX_BODY=4096,MAX_URL=512;
 class HttpError extends Error{constructor(status){super('Request rejected');this.status=status}}
@@ -40,7 +42,7 @@ async function body(req){
 }
 export async function startPilotBackend({port=0,token=randomBytes(32).toString('hex'),operatorAccess=null}={}){
  if(!Number.isInteger(port)||port<0||port>65535||typeof token!=='string'||! /^[a-f0-9]{64}$/.test(token))throw Error('Invalid local configuration');
- const store=createPilotStore(),tutor=createTutorSandbox(),ingestion=createIngestionBoundary();
+ const store=createPilotStore(),tutor=createTutorSandbox(),ingestion=createIngestionBoundary(),transport=createTransportRehearsal();
  const server=createServer({maxHeaderSize:8192,requestTimeout:5000,headersTimeout:5000,keepAliveTimeout:1000},async(req,res)=>{
   try{
    const expectedHost='127.0.0.1:'+server.address().port;
@@ -89,6 +91,12 @@ export async function startPilotBackend({port=0,token=randomBytes(32).toString('
     const r=evaluateAdaptiveEvidence(q);
     return json(res,r.status==='synthetic-evaluation'?200:422,r);
    }
+   if(route==='/v1/tutor-transport-rehearsal'){
+    if(!developer)fail(403);query(u,[]);
+    if(method==='GET')return json(res,200,{...transportCatalog(),quota:transport.status(),activation:tutorActivationStatus()});
+    if(method==='PUT'){const r=await transport.rehearse(await body(req));return json(res,r.status==='synthetic-match'?200:r.reason==='INVALID_REQUEST'?400:['BUSY','QUOTA_EXHAUSTED'].includes(r.reason)?429:422,r)}
+    fail(405);
+   }
    if(route==='/v1/tutor-rehearsal'){
     query(u,[]);
     if(method==='GET')return json(res,200,{...tutorSandboxFixtures(),quota:tutor.status()});
@@ -116,7 +124,7 @@ export async function startPilotBackend({port=0,token=randomBytes(32).toString('
  server.maxConnections=8;
  try{await new Promise((resolve,reject)=>{server.once('error',reject);server.listen(port,'127.0.0.1',()=>{server.removeListener('error',reject);resolve()})})}catch(e){store.close();throw e}
  let closed=false;
- return {url:'http://127.0.0.1:'+server.address().port,token,close:async()=>{if(closed)return;closed=true;await new Promise(resolve=>{server.close(resolve);server.closeAllConnections()});store.close();operatorAccess?.close()}};
+ return {url:'http://127.0.0.1:'+server.address().port,token,close:async()=>{if(closed)return;closed=true;await new Promise(resolve=>{server.close(resolve);server.closeAllConnections()});store.close();transport.close();operatorAccess?.close()}};
 }
 if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)){
  if(process.argv.length!==2||!process.env.AIFS_DEV_TOKEN){console.error('Set a fresh 64-character lowercase hex AIFS_DEV_TOKEN for this adult-only loopback rehearsal.');process.exitCode=1}
