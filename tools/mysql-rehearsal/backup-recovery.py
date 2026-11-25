@@ -1,5 +1,6 @@
 """M126: disposable CI MySQL full logical dump/restore. Never run against hosting."""
 import hashlib
+import difflib
 import json
 import os
 import re
@@ -49,6 +50,13 @@ def run():
         require(before.keys()==after.keys(),"Table inventory differs")
         for table in before:
             for field in ("ddl","rows"):
+                if field == "ddl" and before[table][field] != after[table][field]:
+                    # Fixed disposable schema only; expose exact DDL mismatch, never row data.
+                    # MySQL batch escapes newlines; render them for readable diagnostics.
+                    left = before[table][field].decode("utf-8", errors="backslashreplace").replace(r"\n", "\n").splitlines()
+                    right = after[table][field].decode("utf-8", errors="backslashreplace").replace(r"\n", "\n").splitlines()
+                    for line in difflib.unified_diff(left, right, fromfile="source/"+table, tofile="restored/"+table, lineterm=""):
+                        print(line, file=sys.stderr)
                 require(before[table][field]==after[table][field], "Restored "+table+" "+field+" differs")
     def snapshot_digest(snap):
         # Length-framed binary digest of all ordered schema and row bytes.

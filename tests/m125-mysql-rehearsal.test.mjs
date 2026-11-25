@@ -23,3 +23,9 @@ test('M126 database backup rehearsal is isolated, source-only, and validates res
  assert.match(s,/GITHUB_ACTIONS/);assert.match(s,/aifs_recovery_m126/);assert.match(s,/compare_snapshot\(before,restored_snapshot\)/);assert.match(s,/compare_snapshot\(before,snapshot\(SOURCE\)\)/);assert.match(s,/SHOW CREATE TABLE/);assert.match(s,/SELECT \* FROM/);assert.match(s,/3819,3819,3819,1452/);assert.match(s,/DROP DATABASE "\+RESTORE/);assert.doesNotMatch(s,/DROP DATABASE "\+SOURCE/);assert.match(wf,/backup-recovery\.py/);
  assert.ok(FULL_TARGETS.every(x=>!x.startsWith('/tools/mysql-rehearsal/')));
 });
+
+test('M130 recovery failure reports exact disposable schema diff without weakening parity or logging rows',()=>{
+ const s=read('tools/mysql-rehearsal/backup-recovery.py');
+ assert.match(s,/difflib\.unified_diff/);assert.match(s,/field == "ddl"/);
+ assert.match(s,/print\(line, file=sys\.stderr\)/);assert.match(s,/require\(before\[table\]\[field\]==after\[table\]\[field\]/);
+});
