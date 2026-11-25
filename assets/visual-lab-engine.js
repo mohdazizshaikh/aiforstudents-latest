@@ -25,7 +25,7 @@ export function evaluateVisual(id,v,lang='en'){
  if(!v||typeof v!=='object'||Array.isArray(v)||Object.keys(v).length!==d.fields.length||d.fields.some(f=>!Object.hasOwn(v,f.id)||!f.options.includes(v[f.id])))throw Error('Invalid diagram controls');
  let visual,rows;
  if(id==='matrix-transform'){
-  const base=[[0,0],[2,0],[0,1]],{a,b,c,d}=v,points=base.map(([x,y])=>[a*x+b*y,c*x+d*y]),det=a*d-b*c;
+  const base=[[0,0],[2,0],[0,1]],{a,b,c,d}=v,points=base.map(([x,y])=>[(a*x+b*y)||0,(c*x+d*y)||0]),det=a*d-b*c;
   visual={kind:'matrix',base,points};rows=[[p('Transformed vertices','रूपांतरित शीर्ष'),points.map(q=>'('+q.join(', ')+')').join('; ')],[p('Determinant','सारणिक'),det],[p('Area (square units)','क्षेत्रफल (वर्ग इकाई)'),Math.abs(det)]];
  }else if(id==='velocity-graph'){
   const {v:u,a,t}=v,points=R(0,t).map(x=>[x,u+a*x]),end=u+a*t,displacement=(u+end)*t/2;
