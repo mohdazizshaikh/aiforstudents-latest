@@ -1298,6 +1298,13 @@ def run():
                 phone.locator('#lab-resource-add').click()
                 check(phone.locator('#lab-pack-pages .paper-comparison').count() == 2, 'M96 main plus supplemental pack')
                 check(phone.locator('#lab-pack-pages .paper-comparison tbody td').all_inner_texts() == [''] * 8, 'M96 pack cells blank')
+                # M96 loop ends with a Hindi circuit worksheet. Start M102 with its own explicit fixture.
+                phone.goto(origin + '/teacher-kit/cards/?worksheet=maths%2Frectangle&language=en#lab-activity', wait_until='load')
+                phone.locator('#card-view').select_option('lab-pack')
+                phone.locator('#lab-pack-add').click()
+                phone.locator('#lab-resource-scope').select_option('all')
+                phone.locator('#lab-resource-query').fill('ratio-algebra:equation')
+                phone.locator('#lab-resource-add').click()
                 prep=phone.locator('#lab-pack-preparation')
                 prep_items=phone.locator('#lab-pack-preparation-items section')
                 check(prep.is_visible() and not prep.evaluate('(el) => el.open'), 'M102 pack guide starts collapsed')
