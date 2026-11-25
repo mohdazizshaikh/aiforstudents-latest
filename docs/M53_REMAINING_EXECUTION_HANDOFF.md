@@ -123,3 +123,5 @@ M94 verified merged; M95/M96 browser renderer scope corrected. M97 creates 60 in
 M98 candidate adds 49 supplemental reference fixtures and combined local operator workflow for 109 activities / 218 cases. FP-092 remains externally blocked pending independent reference evidence.
 
 M95/M96 corrected exact-head CI passed and merged. M99 candidate adds 60 teacher-only control preparation guides; no learner worksheet changes or external approvals.
+
+M97–M99 verified merged. M100 candidate adds 49 supplemental control guides and 49 quantity label lists; no educational approval, verified references or rights decision. FP-087/FP-092 acceptance unchanged.
