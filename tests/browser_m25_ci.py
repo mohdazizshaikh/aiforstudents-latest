@@ -1203,6 +1203,28 @@ def run():
                 check(phone.locator('#ratio-extension-mode').input_value() != 'equation', 'M90 normal switch retained previous launch')
                 phone.goto(origin + '/teacher-kit/cards/', wait_until='load')
                 report['checks'].append('M90 exact offline supplemental launch from teacher pack, basic route, no-match and print isolation')
+                for route, prefix, model in [
+                    ('/?advanced=plant-parts#advanced-labs','advanced','plant-parts'),
+                    ('/?demo=science%2Fmotion#science-lab','science','science/motion'),
+                    ('/?demo=maths%2Frectangle#math-workshop','workshop','maths/rectangle'),
+                    ('/?demo=studio%2Ffractions#smart-studio','studio','studio/fractions'),
+                ]:
+                    phone.goto(origin + route, wait_until='load')
+                    phone.locator('#lang').select_option('hi')
+                    link=phone.locator('#'+prefix+'-worksheet-link')
+                    check(link.is_visible(), 'M92 worksheet link missing '+prefix)
+                    check('language=hi' in link.get_attribute('href'), 'M92 worksheet language '+prefix)
+                    with phone.expect_navigation(wait_until='load'):
+                        link.click()
+                    check(phone.locator('#card-view').input_value() == 'lab', 'M92 exact print mode '+prefix)
+                    check(phone.locator('#card-language').input_value() == 'hi', 'M92 exact worksheet language '+prefix)
+                    check(phone.locator('#lab-print-model').input_value() == model, 'M92 exact worksheet model '+prefix)
+                    check(phone.locator('#lab-print-activity').input_value() == 'main', 'M92 main worksheet '+prefix)
+                    check(phone.locator('#lab-activity').is_visible() and phone.locator('#teacher-guidance').is_hidden(), 'M92 learner-only worksheet '+prefix)
+                phone.goto(origin + '/teacher-kit/cards/?worksheet=unknown&language=hi', wait_until='load')
+                check(phone.locator('#card-view').input_value() == 'single', 'M92 invalid selector fallback')
+                phone.goto(origin + '/teacher-kit/cards/', wait_until='load')
+                report['checks'].append('M92 offline main-model worksheet links across all four families, Hindi and invalid selector fallback')
                 phone.locator('#card-view').select_option('single')
                 check(phone.locator('#lab-activity').is_hidden(), 'Lab print remains in single mode')
                 report['checks'].append('M50 offline bilingual lab activity sheets, three paper steps, print privacy and mode restore')

@@ -236,3 +236,22 @@ export function teacherPackLaunches(keys,lang='en'){
  if(!['en','hi'].includes(lang))throw Error('Unknown language');
  return keys.map(key=>teacherActivityLaunch(key,lang));
 }
+
+/** M92 main-model worksheet links. The only URL fields are fixed model ID and language. */
+export function mainModelWorksheet(id,lang='en'){
+ if(typeof id!=='string'||(!ADVANCED_IDS.includes(id)&&!BASIC_PRINT_IDS.includes(id))||!['en','hi'].includes(lang))throw Error('Unknown main worksheet');
+ const a=printableAnyLabActivity(id,'main',lang);
+ return {id,subject:a.subject,title:a.title,language:lang,href:'./teacher-kit/cards/?worksheet='+encodeURIComponent(id)+'&language='+lang+'#lab-activity',localOnly:true,storesStudentData:false,humanReviewed:false,publicReleaseApproved:false};
+}
+export function resolveMainWorksheet(search){
+ if(typeof search!=='string'||search.length>256)return null;
+ const p=new URLSearchParams(search);
+ if([...p.keys()].length!==2||p.getAll('worksheet').length!==1||p.getAll('language').length!==1)return null;
+ try{return mainModelWorksheet(p.get('worksheet'),p.get('language'))}catch{return null}
+}
+export function renderMainWorksheetLink(anchor,id,lang){
+ const plan=mainModelWorksheet(id,lang);
+ anchor.href=plan.href;
+ anchor.textContent=(lang==='hi'?'मसौदा अभ्यास पत्र खोलें: ':'Open draft worksheet: ')+plan.title;
+ anchor.hidden=false;
+}
