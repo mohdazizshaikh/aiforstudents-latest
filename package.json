@@ -40,6 +40,7 @@
     "audit:quality": "node tools/quality-regression.mjs",
     "staging:rollback-rehearsal": "python3 tools/rehearse-static-rollback.py",
     "tutor:transport-rehearsal": "node tools/tutor-transport-evaluation.mjs",
-    "review:prototypes": "node tools/prototype-review-worklist.mjs"
+    "review:prototypes": "node tools/prototype-review-worklist.mjs",
+    "review:prototype-batches": "node tools/prototype-review-batches.mjs"
   }
 }

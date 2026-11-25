@@ -80,6 +80,13 @@ jobs:
           npm run review:prototypes -- --template m124-ci-prototypes.json
           npm run review:prototypes -- --check m124-ci-prototypes.json
           rm review-evidence/m124-ci-prototypes.json
+      - name: Reconcile four private prototype subject batches (NOT approval)
+        run: |
+          for s in maths physics chemistry biology; do
+            npm run review:prototype-batches -- --template "$s" "m124-ci-$s.json"
+          done
+          npm run review:prototype-batches -- --reconcile m124-ci-maths.json m124-ci-physics.json m124-ci-chemistry.json m124-ci-biology.json
+          rm review-evidence/m124-ci-{maths,physics,chemistry,biology}.json
       - name: Assert public preflight remains blocked
         run: |
           if node tools/release-preflight.mjs --public > /dev/null; then

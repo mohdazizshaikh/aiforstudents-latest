@@ -870,6 +870,11 @@
           "source": "tools/prototype-review-worklist.mjs",
           "test": "tests/m124-prototype-review-worklist.test.mjs",
           "status": "AWAITING_CI"
+        },
+        {
+          "source": "tools/prototype-review-batches.mjs",
+          "test": "tests/m124-prototype-review-batches.test.mjs",
+          "status": "AWAITING_CI"
         }
       ]
     },
@@ -1009,6 +1014,11 @@
         {
           "source": "tools/prototype-review-worklist.mjs",
           "test": "tests/m124-prototype-review-worklist.test.mjs",
+          "status": "AWAITING_CI"
+        },
+        {
+          "source": "tools/prototype-review-batches.mjs",
+          "test": "tests/m124-prototype-review-batches.test.mjs",
           "status": "AWAITING_CI"
         }
       ]
@@ -1155,6 +1165,11 @@
         {
           "source": "tools/prototype-review-worklist.mjs",
           "test": "tests/m124-prototype-review-worklist.test.mjs",
+          "status": "AWAITING_CI"
+        },
+        {
+          "source": "tools/prototype-review-batches.mjs",
+          "test": "tests/m124-prototype-review-batches.test.mjs",
           "status": "AWAITING_CI"
         }
       ]
