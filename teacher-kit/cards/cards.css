@@ -32,3 +32,7 @@ select{border:1px solid #6f9f90;border-radius:9px;padding:9px;background:white;c
  .lab-pack-page .assignment-page{break-inside:avoid}
  .lab-pack-page .writing{height:17mm}
 }
+
+/* M95 paper-only observation table; native semantics and bounded width. */
+.paper-comparison{width:100%;table-layout:fixed;border-collapse:collapse;margin:10px 0;overflow-wrap:anywhere}.paper-comparison caption{text-align:left;font-weight:700;margin:6px 0}.paper-comparison th,.paper-comparison td{border:1px solid #555;padding:8px;vertical-align:top}.paper-comparison th:first-child{width:18%}.paper-comparison td{height:3rem;background:white}.paper-comparison tbody th{text-align:left}
+@media print{.paper-comparison{break-inside:avoid;color:#000;background:#fff}.paper-comparison th,.paper-comparison td{color:#000;background:#fff}.paper-comparison td{height:14mm}}
