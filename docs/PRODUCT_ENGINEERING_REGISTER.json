@@ -44,7 +44,14 @@
         "pushRun": 45685940000,
         "pullRequestRun": 45685953432,
         "treeIdentical": true
-      }
+      },
+      "followUpEvidence": [
+        {
+          "source": "tools/mysql-rehearsal/repository.php",
+          "test": "tools/mysql-rehearsal/run.php",
+          "status": "AWAITING_CI"
+        }
+      ]
     },
     {
       "id": "ENG-003",
@@ -64,7 +71,14 @@
         "pushRun": 45685940000,
         "pullRequestRun": 45685953432,
         "treeIdentical": true
-      }
+      },
+      "followUpEvidence": [
+        {
+          "source": "tools/mysql-rehearsal/repository.php",
+          "test": "tools/mysql-rehearsal/run.php",
+          "status": "AWAITING_CI"
+        }
+      ]
     },
     {
       "id": "ENG-004",
@@ -84,7 +98,14 @@
         "pushRun": 45685940000,
         "pullRequestRun": 45685953432,
         "treeIdentical": true
-      }
+      },
+      "followUpEvidence": [
+        {
+          "source": "tools/mysql-rehearsal/repository.php",
+          "test": "tools/mysql-rehearsal/run.php",
+          "status": "AWAITING_CI"
+        }
+      ]
     },
     {
       "id": "ENG-005",
@@ -125,7 +146,14 @@
         "pushRun": 45699507063,
         "pullRequestRun": 45699521759,
         "treeIdentical": true
-      }
+      },
+      "followUpEvidence": [
+        {
+          "source": "tools/mysql-rehearsal/repository.php",
+          "test": "tools/mysql-rehearsal/run.php",
+          "status": "AWAITING_CI"
+        }
+      ]
     },
     {
       "id": "ENG-007",
@@ -146,7 +174,14 @@
         "pushRun": 45699507063,
         "pullRequestRun": 45699521759,
         "treeIdentical": true
-      }
+      },
+      "followUpEvidence": [
+        {
+          "source": "tools/mysql-rehearsal/repository.php",
+          "test": "tools/mysql-rehearsal/run.php",
+          "status": "AWAITING_CI"
+        }
+      ]
     },
     {
       "id": "ENG-008",
