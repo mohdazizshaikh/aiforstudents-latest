@@ -503,3 +503,25 @@ export function teacherPackPreparation(keys,lang='en'){
  });
  return {language:lang,items,teacherOnly:true,localOnly:true,storesStudentData:false,humanReviewed:false,publicReleaseApproved:false};
 }
+
+/** M103 portable teacher-only selection recipe. Fragment is not sent in HTTP requests.
+ * Fixed activity keys and language only; never include learner state, names or answers. */
+export const PACK_HANDOFF_PREFIX='#pack-v1:';
+export const PACK_HANDOFF_MAX=512;
+export function teacherPackHandoff(keys,lang='en'){
+ validateLabPack(keys);
+ if(!keys.length||!['en','hi'].includes(lang))throw Error('Invalid pack handoff');
+ const fragment=PACK_HANDOFF_PREFIX+lang+':'+keys.map(encodeURIComponent).join(',');
+ if(fragment.length>PACK_HANDOFF_MAX)throw Error('Pack handoff too long');
+ return {keys:[...keys],language:lang,fragment,href:'./'+fragment,localOnly:true,storesStudentData:false,humanReviewed:false,publicReleaseApproved:false};
+}
+export function resolveTeacherPackHandoff(fragment){
+ if(typeof fragment!=='string'||fragment.length>PACK_HANDOFF_MAX||!fragment.startsWith(PACK_HANDOFF_PREFIX))return null;
+ const encoded=fragment.slice(PACK_HANDOFF_PREFIX.length),split=encoded.indexOf(':');
+ if(split<0)return null;
+ try{
+  const lang=encoded.slice(0,split),keys=encoded.slice(split+1).split(',').map(decodeURIComponent);
+  const plan=teacherPackHandoff(keys,lang);
+  return plan.fragment===fragment?plan:null;
+ }catch{return null}
+}

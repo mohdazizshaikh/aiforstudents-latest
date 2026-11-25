@@ -1,6 +1,8 @@
 # M29 — Full-product scope and completion criteria
 
-> **M102 SECOND CORRECTION:** M33/M29 historical baselines retained. Corrected runs 45633725371 and 45633710158: Node/static passed; Chromium progressed past M102 and failed legacy M99 guide visibility after returning to the identical worksheet URL while pack mode was still active. Explicit reload initializes fresh worksheet mode; existing assertions retained. Fresh CI pending; no merge or human approval.
+> **M103 CORRECTED CANDIDATE:** M33/M29 historical baselines retained. Original M103 runs 45633916571 and 45633883396 passed Node/static; Chromium progressed past M103 and failed inherited M99 guide visibility after returning to the same URL. Integrated M102 second correction 02977c7 with explicit reload; fresh CI pending.
+
+> **M103 CANDIDATE — 2026-11-25:** M33/M29 historical baselines retained. M102 original Node passed, Chromium failed test fixture; corrected head 4fff6a2 fresh CI pending. M103 adds a bounded fragment-only fresh-pack handoff for all 109 fixed activities, ordered up to six, English/Hindi, strict canonical parsing, new-tab isolation, address fragment consumption, print exclusion, 110 named Node tests and offline Chromium regression. No learner data, storage or tracking service; copied links/history may remain. Exact-head CI pending. 3,340 pending educational reviews, 327 rights criteria, 180 mapping checks, zero verified chapters, six safeguarding gates, 70/100 scoped tasks unchanged. FULL PRODUCT NOT COMPLETE; PUBLIC LAUNCH NOT APPROVED. [M103 procedure](M103_OFFLINE_PACK_HANDOFF.md).
 
 > **M102 CORRECTED CANDIDATE:** M33/M29 historical baselines retained. Original push/PR CI 45611236490 and 45611255917: Node passed; Chromium failed M102 selected-order assertion because the preceding M96 loop ended on Hindi circuit, not English rectangle. Explicit fresh English rectangle + equation fixture added; original M96 checks retained. Fresh CI pending; no merge or approval yet.
 

@@ -1,5 +1,5 @@
 import {CLASSROOM_IDS,CLASSROOM_LESSONS,classroomText} from '../../assets/classroom-engine.js';
-import {printableClassroomCard,printableAssignmentPack,printableAnyLabActivity,teacherPrintableOptions,TEACHER_LAB_SUBJECTS,teacherPrintableSupplementOptions,TEACHER_ACTIVITY_KINDS,searchTeacherResources,TEACHER_QUERY_LIMIT,teacherActivityLaunch,resolveActivityWorksheet,worksheetReturnLaunch,teacherMainControlGuide,teacherSupplementControlGuide,teacherMainObservationGuide,teacherPackPreparation,LAB_PACK_LIMIT,editLabPack,printableLabPack} from '../../assets/teacher-cards-engine.js';
+import {printableClassroomCard,printableAssignmentPack,printableAnyLabActivity,teacherPrintableOptions,TEACHER_LAB_SUBJECTS,teacherPrintableSupplementOptions,TEACHER_ACTIVITY_KINDS,searchTeacherResources,TEACHER_QUERY_LIMIT,teacherActivityLaunch,resolveActivityWorksheet,worksheetReturnLaunch,teacherMainControlGuide,teacherSupplementControlGuide,teacherMainObservationGuide,teacherPackPreparation,teacherPackHandoff,resolveTeacherPackHandoff,PACK_HANDOFF_PREFIX,LAB_PACK_LIMIT,editLabPack,printableLabPack} from '../../assets/teacher-cards-engine.js';
 const $=id=>document.getElementById(id);
 const lang=()=>$('card-language').value;
 let labPack=[];
@@ -69,7 +69,7 @@ function renderLab(l){
  const active=isLab(),pack=isLabPack();
  $('lab-print-controls').hidden=!active;$('lab-activity').hidden=!active||pack;
  $('lab-pack-controls').hidden=!pack;$('lab-pack-output').hidden=!pack;
- if(!pack){clearLaunch('lab-pack-launch');labPack=[];renderPackPreparation(l);$('lab-pack-pages').replaceChildren();$('lab-pack-choice').replaceChildren();$('card-print').disabled=false;}
+ if(!pack){clearLaunch('lab-pack-launch');clearLaunch('lab-pack-handoff');$('lab-pack-handoff-notice').textContent='';labPack=[];renderPackPreparation(l);$('lab-pack-pages').replaceChildren();$('lab-pack-choice').replaceChildren();$('card-print').disabled=false;}
  const host=$('lab-activity-steps');host.replaceChildren();
  if(!active){renderActivityControlGuide('','',l,false);$('lab-print-activity').value='main';resourceKind='all';resourceScope='current';resourceQuery='';$('lab-resource-query').value='';$('lab-resource-result').replaceChildren();$('lab-resource-kind').value='all';$('lab-resource-scope').value='current';$('lab-resource-add').hidden=true;$('lab-resource-add').disabled=true;clearLaunch('lab-resource-launch');clearLaunch('lab-pack-launch');clearLaunch('lab-worksheet-return');return;}
  const p=(en,hi)=>l==='hi'?hi:en;
@@ -197,6 +197,9 @@ function renderLabPack(l){
  const current=$('lab-print-model').value+':'+$('lab-print-activity').value;
  const data=printableLabPack(labPack,l),choice=$('lab-pack-choice'),previous=choice.value;
  renderPackPreparation(l);
+ const handoff=$('lab-pack-handoff');
+ $('lab-pack-handoff-notice').textContent=p('Open a fresh copy in another tab or copy the link manually. It contains only selected activity IDs and language; copied links and browser history may remain. No learner data is included.','दूसरे टैब में नई प्रति खोलें या लिंक स्वयं कॉपी करें। इसमें केवल चुनी गतिविधियों के पहचान कोड और भाषा हैं; कॉपी किए लिंक और ब्राउज़र इतिहास रह सकते हैं। विद्यार्थी का कोई डेटा नहीं है।');
+ if(labPack.length){handoff.href=teacherPackHandoff(labPack,l).href;handoff.hidden=false;handoff.textContent=p('Open a fresh pack copy (new tab)','पैक की नई प्रति खोलें (नया टैब)')}else clearLaunch('lab-pack-handoff');
  $('lab-pack-heading').textContent=p('Custom learner lab assignment pack','चुना हुआ विद्यार्थी प्रयोग अभ्यास पैक');
  $('lab-pack-notice').textContent=p('Original unreviewed draft. Rights and educational review pending. Write on paper without names or online submission. Printed copies cannot be remotely deleted.','मूल असमीक्षित मसौदा। अनुमति और शैक्षिक समीक्षा बाकी है। बिना नाम या ऑनलाइन जमा किए कागज़ पर लिखें। प्रिंट दूर से मिटाया नहीं जा सकता।');
  $('lab-pack-status').textContent=labPack.length+' / '+LAB_PACK_LIMIT+' '+p('activities selected','गतिविधियाँ चुनी गईं');
@@ -233,8 +236,16 @@ for(const id of ['card-language','card-lesson','card-step','card-view'])$(id).ad
  render();$(activeHeading()).focus();
 });
 // Resolve the URL once. It contains only an allowlisted model ID and language, never a response.
+const rawFragment=location.hash;
+const initialPack=!location.search?resolveTeacherPackHandoff(rawFragment):null;
+// Consume only the recognized handoff namespace; do not reflect malformed text into the UI.
+if(rawFragment.startsWith(PACK_HANDOFF_PREFIX)){
+ try{history.replaceState(history.state,'',location.pathname+location.search+(initialPack?'#lab-pack-output':''))}catch{}
+}
 const initialWorksheet=resolveActivityWorksheet(location.search);
-if(initialWorksheet){
+if(initialPack){
+ labPack=[...initialPack.keys];$('card-language').value=initialPack.language;$('card-view').value='lab-pack';render();
+}else if(initialWorksheet){
  $('card-language').value=initialWorksheet.language;
  $('card-view').value='lab';
  render();
