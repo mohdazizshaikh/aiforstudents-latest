@@ -27,8 +27,8 @@ test('ENG-033 explicit session summary only; skipped and visited separated; no s
 });
 test('ENG-034 teacher workspace exact 109 resources, bilingual local model and worksheet routes',()=>{
  for(const lang of ['en','hi']){
-  const choices=workspaceChoices('teacher',lang);assert.equal(choices.length,109);assert.deepEqual(choices.map(x=>x.key).sort(),labPackKeys().sort());
-  for(const x of choices){assert.equal(x.href,'../'+worksheetReturnLaunch(x.key,lang).href);assert.equal(x.worksheetHref,'../'+activityWorksheet(x.key,lang).href);assert.equal(x.humanReviewed,false)}
+  const choices=workspaceChoices('teacher',lang);assert.equal(choices.length,121);assert.deepEqual(choices.filter(x=>x.kind!=='prototype').map(x=>x.key).sort(),labPackKeys().sort());
+  for(const x of choices.filter(x=>x.kind!=='prototype')){assert.equal(x.href,'../'+worksheetReturnLaunch(x.key,lang).href);assert.equal(x.worksheetHref,'../'+activityWorksheet(x.key,lang).href);assert.equal(x.humanReviewed,false)}
  }
  assert.throws(()=>act(createWorkspace('teacher'),'add','games'));assert.throws(()=>act(createWorkspace('learner'),'add','ratio-algebra:equation'));assert.throws(()=>workspaceChoices('teacher','xx'));
 });

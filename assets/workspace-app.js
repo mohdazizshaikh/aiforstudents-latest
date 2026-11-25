@@ -40,7 +40,7 @@ function render(){
  $('workspace-current').replaceChildren();
  if(view.current){
   $('workspace-current').append(node('p',view.current.title));
-  if(running){$('workspace-current').append(link(p('Open activity (new tab)','गतिविधि खोलें (नया टैब)'),view.current.href));if(teacher)$('workspace-current').append(link(p('Open draft worksheet (new tab)','मसौदा अभ्यास पत्र खोलें (नया टैब)'),view.current.worksheetHref))}
+  if(running){$('workspace-current').append(link(p('Open activity (new tab)','गतिविधि खोलें (नया टैब)'),view.current.href));if(teacher&&view.current.worksheetHref)$('workspace-current').append(link(p('Open draft worksheet (new tab)','मसौदा अभ्यास पत्र खोलें (नया टैब)'),view.current.worksheetHref))}
  }else $('workspace-current').append(node('p',p('No active activity','कोई सक्रिय गतिविधि नहीं')));
  $('workspace-list-title').textContent=p('Selected sequence','चुना क्रम');
  $('workspace-list').replaceChildren(...view.items.map(x=>node('li',x.title+' — '+status[x.status])));

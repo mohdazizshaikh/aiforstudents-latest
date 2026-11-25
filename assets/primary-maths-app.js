@@ -1,3 +1,4 @@
+import {resolvePrototypeLaunch} from './extended-lab-catalog.js';
 import {PRIMARY_IDS,primaryDefinition,primaryInitial,evaluatePrimary} from './primary-maths-lab.js';
 const $=id=>document.getElementById(id),root=$('primary-maths-lab');
 let id=PRIMARY_IDS[0],lang='en',values=primaryInitial(id);
@@ -40,5 +41,7 @@ window.addEventListener('aifs-history-cleared',reset);
 try{const channel=new BroadcastChannel('aifs-discovery-privacy-reset-v1');channel.addEventListener('message',ev=>{if(ev.data?.type==='clear-history')reset()})}catch{}
 window.addEventListener('storage',ev=>{if(ev.key==='aifs-privacy-clear-signal-v1'&&ev.newValue==='clear')reset()});
 window.addEventListener('pageshow',ev=>{if(ev.persisted)reset()});
+const launch=resolvePrototypeLaunch(location.search,PRIMARY_IDS);if(launch){id=launch.id;lang=launch.lang;values=primaryInitial(id);$('primary-lang').value=lang}
+
 render();
 if('serviceWorker' in navigator&&(location.protocol==='https:'||location.hostname==='localhost'))navigator.serviceWorker.register('../service-worker.js').catch(()=>{});
