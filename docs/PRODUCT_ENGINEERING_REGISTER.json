@@ -135,40 +135,85 @@
       "stream": "Smart Lab",
       "title": "Grade 1–5 coverage definition and gap audit",
       "acceptance": "Explicit concept matrix with distinction between proposed and independently verified chapters.",
-      "status": "PLANNED",
-      "evidence": []
+      "status": "IMPLEMENTED_AWAITING_CI",
+      "evidence": [
+        {
+          "source": "tools/smart-lab-gap-audit.mjs",
+          "test": "tests/m116-smart-lab-coverage.test.mjs"
+        },
+        {
+          "source": "docs/M116_CONCEPT_GAP_MATRIX.json",
+          "test": "tests/m116-smart-lab-coverage.test.mjs"
+        }
+      ]
     },
     {
       "id": "ENG-010",
       "stream": "Smart Lab",
       "title": "Grade 6–8 coverage definition and gap audit",
       "acceptance": "Board-specific concept prerequisites and resource gaps; no inferred alignment.",
-      "status": "PLANNED",
-      "evidence": []
+      "status": "IMPLEMENTED_AWAITING_CI",
+      "evidence": [
+        {
+          "source": "tools/smart-lab-gap-audit.mjs",
+          "test": "tests/m116-smart-lab-coverage.test.mjs"
+        },
+        {
+          "source": "docs/M116_CONCEPT_GAP_MATRIX.json",
+          "test": "tests/m116-smart-lab-coverage.test.mjs"
+        }
+      ]
     },
     {
       "id": "ENG-011",
       "stream": "Smart Lab",
       "title": "Grade 9–10 coverage definition and gap audit",
       "acceptance": "Board-specific concept prerequisites and resource gaps.",
-      "status": "PLANNED",
-      "evidence": []
+      "status": "IMPLEMENTED_AWAITING_CI",
+      "evidence": [
+        {
+          "source": "tools/smart-lab-gap-audit.mjs",
+          "test": "tests/m116-smart-lab-coverage.test.mjs"
+        },
+        {
+          "source": "docs/M116_CONCEPT_GAP_MATRIX.json",
+          "test": "tests/m116-smart-lab-coverage.test.mjs"
+        }
+      ]
     },
     {
       "id": "ENG-012",
       "stream": "Smart Lab",
       "title": "Grade 11–12 coverage definition and gap audit",
       "acceptance": "Stream-specific concept prerequisites and resource gaps.",
-      "status": "PLANNED",
-      "evidence": []
+      "status": "IMPLEMENTED_AWAITING_CI",
+      "evidence": [
+        {
+          "source": "tools/smart-lab-gap-audit.mjs",
+          "test": "tests/m116-smart-lab-coverage.test.mjs"
+        },
+        {
+          "source": "docs/M116_CONCEPT_GAP_MATRIX.json",
+          "test": "tests/m116-smart-lab-coverage.test.mjs"
+        }
+      ]
     },
     {
       "id": "ENG-013",
       "stream": "Smart Lab",
       "title": "Missing primary mathematics interaction set",
       "acceptance": "New interactive models from gap matrix, keyboard/text alternatives and independent reference requirements.",
-      "status": "PLANNED",
-      "evidence": []
+      "status": "IMPLEMENTED_AWAITING_CI",
+      "evidence": [
+        {
+          "source": "assets/primary-maths-lab.js",
+          "test": "tests/m116-smart-lab-coverage.test.mjs"
+        },
+        {
+          "source": "assets/primary-maths-app.js",
+          "test": "tests/browser_m25_ci.py"
+        }
+      ]
     },
     {
       "id": "ENG-014",
@@ -339,20 +384,27 @@
       "stream": "Adaptive",
       "title": "Concept prerequisite graph",
       "acceptance": "Explicit versioned graph with cycle checks and no aptitude labels.",
-      "status": "IMPLEMENTED_AWAITING_CI",
+      "status": "VERIFIED_MERGED",
       "evidence": [
         {
           "source": "assets/concept-pathways.js",
           "test": "tests/m115-adaptive-learning.test.mjs"
         }
-      ]
+      ],
+      "verification": {
+        "head": "26fb20775207aece0860798278daa8d55d922c7f",
+        "merged": "ffd0f5c9714340da9ad90a0b7c39c771242037b2",
+        "pushRun": 45688811654,
+        "pullRequestRun": 45688825555,
+        "treeIdentical": true
+      }
     },
     {
       "id": "ENG-028",
       "stream": "Adaptive",
       "title": "Local session practice recommendation engine",
       "acceptance": "Explainable recommendations with skip/reset and no high-stakes scores.",
-      "status": "IMPLEMENTED_AWAITING_CI",
+      "status": "VERIFIED_MERGED",
       "evidence": [
         {
           "source": "assets/concept-pathways.js",
@@ -362,33 +414,54 @@
           "source": "assets/concept-pathways-app.js",
           "test": "tests/browser_m25_ci.py"
         }
-      ]
+      ],
+      "verification": {
+        "head": "26fb20775207aece0860798278daa8d55d922c7f",
+        "merged": "ffd0f5c9714340da9ad90a0b7c39c771242037b2",
+        "pushRun": 45688811654,
+        "pullRequestRun": 45688825555,
+        "treeIdentical": true
+      }
     },
     {
       "id": "ENG-029",
       "stream": "Adaptive",
       "title": "Reviewed-task evidence interface",
       "acceptance": "Separate synthetic/real approved pools, no profiling before authorized study.",
-      "status": "IMPLEMENTED_AWAITING_CI",
+      "status": "VERIFIED_MERGED",
       "evidence": [
         {
           "source": "tools/adaptive-evidence-interface.mjs",
           "test": "tests/m115-adaptive-learning.test.mjs"
         }
-      ]
+      ],
+      "verification": {
+        "head": "26fb20775207aece0860798278daa8d55d922c7f",
+        "merged": "ffd0f5c9714340da9ad90a0b7c39c771242037b2",
+        "pushRun": 45688811654,
+        "pullRequestRun": 45688825555,
+        "treeIdentical": true
+      }
     },
     {
       "id": "ENG-030",
       "stream": "Adaptive",
       "title": "Calibration evaluation interface",
       "acceptance": "Held-out transfer, abstention, uncertainty and evaluation reports on synthetic data.",
-      "status": "IMPLEMENTED_AWAITING_CI",
+      "status": "VERIFIED_MERGED",
       "evidence": [
         {
           "source": "tools/adaptive-evidence-interface.mjs",
           "test": "tests/m115-adaptive-learning.test.mjs"
         }
-      ]
+      ],
+      "verification": {
+        "head": "26fb20775207aece0860798278daa8d55d922c7f",
+        "merged": "ffd0f5c9714340da9ad90a0b7c39c771242037b2",
+        "pushRun": 45688811654,
+        "pullRequestRun": 45688825555,
+        "treeIdentical": true
+      }
     },
     {
       "id": "ENG-031",
