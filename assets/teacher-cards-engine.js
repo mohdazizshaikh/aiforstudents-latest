@@ -849,10 +849,213 @@ export function supplementalWorksheetReflection(id,mode,lang='en'){
  if(!['en','hi'].includes(lang)||!ADVANCED_IDS.includes(id)||!advancedExtensionIds(id).includes(mode)||!Object.hasOwn(SUPPLEMENT_REFLECTIONS,mode))throw Error('Unknown supplemental reflection');
  return SUPPLEMENT_REFLECTIONS[mode][lang==='hi'?1:0]+(lang==='hi'?' कागज़ पर अपने मॉडल अवलोकन से कारण दें। मॉडल उपलब्ध न हो तो केवल अपने अनुमान पर चर्चा करें।':' Explain using your model observations on paper. If the model is unavailable, discuss your prediction only.');
 }
+/** M109 original supplemental prediction drafts, paper only. */
+const SUPPLEMENT_PREDICTIONS=Object.freeze({
+ "ratio": [
+  "What do you expect to happen to the scaled ratio if only the scale factor increases?",
+  "केवल मापनी गुणक बढ़ने पर गुणित अनुपात में क्या होने की अपेक्षा है?"
+ ],
+ "equation": [
+  "Before changing the substitution, what do you expect the left and right sides to show?",
+  "प्रतिस्थापन बदलने से पहले बाएँ और दाएँ पक्ष क्या दिखाएँगे, इसका अनुमान लगाएँ।"
+ ],
+ "axis-reflections": [
+  "Which coordinate signs do you expect to change when the selected point is reflected across each axis?",
+  "चुने बिंदु को प्रत्येक अक्ष पर प्रतिबिंबित करने से किन निर्देशांकों के चिह्न बदलने की अपेक्षा है?"
+ ],
+ "linear": [
+  "What change in y do you predict when only x is increased on the selected line?",
+  "चुनी रेखा पर केवल x बढ़ाने से y में किस परिवर्तन का अनुमान है?"
+ ],
+ "energy-required": [
+  "If only the ideal temperature-change control increases, what do you predict for the calculated energy?",
+  "आदर्श तापमान-परिवर्तन नियंत्रण अकेले बढ़ने पर गणितीय ऊर्जा का क्या अनुमान है?"
+ ],
+ "period-compare": [
+  "Which of two selected periods do you predict will correspond to the greater frequency?",
+  "चुने दो आवर्तकालों में से किसकी आवृत्ति अधिक होने का अनुमान है?"
+ ],
+ "average-speed": [
+  "If one duration increases while distances are unchanged, what do you predict for overall average speed?",
+  "दूरियाँ समान रहते हुए एक समय बढ़ने पर कुल औसत चाल का क्या अनुमान है?"
+ ],
+ "neutral-counts": [
+  "What change in the displayed particle counts do you expect when one symbolic input changes?",
+  "एक प्रतीकात्मक आगत बदलने पर प्रदर्शित कण गिनती में किस परिवर्तन की अपेक्षा है?"
+ ],
+ "missing": [
+  "How do you expect remaining symbolic mass to respond if one known output mass increases?",
+  "एक ज्ञात निर्गत द्रव्यमान बढ़ने पर शेष प्रतीकात्मक द्रव्यमान में क्या परिवर्तन अपेक्षित है?"
+ ],
+ "grid-counts": [
+  "What genotype-square counts do you predict for your chosen imaginary grid?",
+  "अपनी चुनी काल्पनिक तालिका में जीनोटाइप खानों की कौन सी गिनती का अनुमान है?"
+ ],
+ "shift": [
+  "What do you predict for the square value when the shift changes and x stays fixed?",
+  "x समान रखकर स्थानांतरण बदलने पर वर्ग मान का क्या अनुमान है?"
+ ],
+ "net": [
+  "Which sign do you predict for the net force when the selected opposing forces are compared?",
+  "चुने विपरीत बलों की तुलना में परिणामी बल के किस चिह्न का अनुमान है?"
+ ],
+ "two-formulas": [
+  "Which symbolic atom counts do you expect to change when only one molecule count increases?",
+  "केवल एक अणु संख्या बढ़ने पर किन प्रतीकात्मक परमाणु गिनतियों के बदलने की अपेक्षा है?"
+ ],
+ "reverse-scale": [
+  "If diagram length stays fixed and magnification increases, what do you predict for estimated actual length?",
+  "चित्र की लंबाई समान रहे और आवर्धन बढ़े, तो अनुमानित वास्तविक लंबाई का क्या अनुमान है?"
+ ],
+ "regroup": [
+  "How do you predict the tens and ones will regroup when the selected ones count changes?",
+  "चुनी इकाई संख्या बदलने पर दहाई और इकाई किस तरह पुनः समूहित होंगी, इसका अनुमान लगाएँ।"
+ ],
+ "unit-conversion": [
+  "Before converting, which selected length do you predict will be greater in a common unit?",
+  "रूपांतरण से पहले समान इकाई में कौन सी चुनी लंबाई अधिक होगी, इसका अनुमान लगाएँ।"
+ ],
+ "state-account": [
+  "What do you expect the total particle count to show when one symbolic state group changes?",
+  "एक प्रतीकात्मक अवस्था समूह बदलने पर कुल कण गिनती क्या दिखाएगी, इसका अनुमान लगाएँ।"
+ ],
+ "leaf-diagram": [
+  "How do you predict the total drawn leaves will change when one branch count increases?",
+  "एक शाखा संख्या बढ़ाने पर चित्रित पत्तियों की कुल संख्या कैसे बदलेगी, इसका अनुमान लगाएँ।"
+ ],
+ "sum": [
+  "What do you expect the finite sequence sum to do when you increase the number of terms in your setting?",
+  "अपनी स्थिति में पदों की संख्या बढ़ाने पर सीमित श्रेणी के योग में क्या होने की अपेक्षा है?"
+ ],
+ "initial-speed": [
+  "How do you predict final speed and displacement will respond to a change in initial speed alone?",
+  "केवल आरंभिक चाल बदलने पर अंतिम चाल और विस्थापन का क्या अनुमान है?"
+ ],
+ "mass-number": [
+  "Which of atomic number and mass number do you expect to change when one neutron is added symbolically?",
+  "प्रतीकात्मक रूप से एक न्यूट्रॉन जोड़ने पर परमाणु क्रमांक और द्रव्यमान संख्या में से किसके बदलने की अपेक्षा है?"
+ ],
+ "three-components": [
+  "How do you expect the displayed percentages to respond when one component mass increases?",
+  "एक घटक द्रव्यमान बढ़ने पर प्रदर्शित प्रतिशतों में क्या परिवर्तन अपेक्षित है?"
+ ],
+ "rounds": [
+  "What final symbolic cell count do you predict after changing the selected doubling rounds?",
+  "चुने दुगुना चरण बदलने पर अंतिम प्रतीकात्मक कोशिका संख्या का क्या अनुमान है?"
+ ],
+ "oxygen-account": [
+  "Which net oxygen balance do you predict for the selected symbolic production and consumption counts?",
+  "चुनी प्रतीकात्मक उत्पादन और उपभोग गिनतियों के लिए कुल ऑक्सीजन संतुलन का क्या अनुमान है?"
+ ],
+ "area-compare": [
+  "With the shared base fixed, which triangle do you predict will have the greater area?",
+  "समान आधार स्थिर रखने पर किस त्रिभुज का क्षेत्रफल अधिक होने का अनुमान है?"
+ ],
+ "similar-triangles": [
+  "How do you expect side lengths and area to change when the scale factor changes?",
+  "मापनी गुणक बदलने पर भुजाओं की लंबाइयों और क्षेत्रफल में किस परिवर्तन की अपेक्षा है?"
+ ],
+ "three-legs": [
+  "What do you predict for total distance and signed displacement in your chosen three-leg path?",
+  "अपने चुने तीन-भाग वाले मार्ग में कुल दूरी और चिह्न सहित विस्थापन का क्या अनुमान है?"
+ ],
+ "net-over-steps": [
+  "What signed net change do you expect from the selected forward and reverse event counts?",
+  "चुनी अग्र और पश्च घटना गिनतियों से चिह्न सहित किस कुल परिवर्तन की अपेक्षा है?"
+ ],
+ "survey-count": [
+  "Before changing the imaginary pond count, predict what will happen to the total and signed difference.",
+  "काल्पनिक तालाब गिनती बदलने से पहले कुल और चिह्न सहित अंतर का अनुमान लगाएँ।"
+ ],
+ "energy-account": [
+  "What do you predict for the symbolic retained and remaining energy when one control changes?",
+  "एक नियंत्रण बदलने पर प्रतीकात्मक बची और शेष ऊर्जा का क्या अनुमान है?"
+ ],
+ "interval-area": [
+  "How do you predict the displayed area will respond when you change the selected interval?",
+  "चुना अंतराल बदलने पर प्रदर्शित क्षेत्रफल का क्या अनुमान है?"
+ ],
+ "vector-addition": [
+  "Which resulting vector component do you expect to change when one input component changes?",
+  "एक आगत घटक बदलने पर परिणामी सदिश के किस घटक के बदलने की अपेक्षा है?"
+ ],
+ "surface-compare": [
+  "At the selected field and orientation, which surface do you predict will show the larger flux magnitude?",
+  "चुने क्षेत्र और दिशा पर किस सतह का फ्लक्स परिमाण बड़ा होने का अनुमान है?"
+ ],
+ "charge-compare": [
+  "At the shared potential difference, which capacitance do you predict will correspond to the larger charge magnitude?",
+  "समान विभवांतर पर किस धारिता के लिए अधिक आवेश परिमाण का अनुमान है?"
+ ],
+ "formula-compare": [
+  "What hydrogen count do you predict for each selected symbolic alkane carbon count?",
+  "चुनी प्रत्येक प्रतीकात्मक ऐल्केन कार्बन संख्या के लिए हाइड्रोजन गिनती का क्या अनुमान है?"
+ ],
+ "bond-symbols": [
+  "What change in shared-pair and electron counts do you predict when one bond-symbol count increases?",
+  "एक बंध-प्रतीक संख्या बढ़ने पर साझा युग्म और इलेक्ट्रॉन गिनती में क्या परिवर्तन अनुमानित है?"
+ ],
+ "pair-count": [
+  "What change in symbolic pair totals and base-type counts do you predict when one input changes?",
+  "एक आगत बदलने पर प्रतीकात्मक युग्म कुल और क्षार प्रकारों की गिनती में क्या अनुमानित परिवर्तन है?"
+ ],
+ "symbolic-transfer": [
+  "Before checking the model, which proposed transfer count do you expect to fit the available symbolic oxygen count?",
+  "मॉडल जाँचने से पहले कौन सी प्रस्तावित स्थानांतरण गिनती उपलब्ध प्रतीकात्मक ऑक्सीजन संख्या में संभव लगती है?"
+ ],
+ "group-total": [
+  "How do you predict the combined group count and signed difference will change when one group grows?",
+  "एक समूह बढ़ने पर संयुक्त गिनती और चिह्न सहित अंतर कैसे बदलेंगे, इसका अनुमान लगाएँ।"
+ ],
+ "two-draws": [
+  "What do you predict for the displayed red-draw probabilities when the imaginary bag composition changes?",
+  "काल्पनिक थैली की संरचना बदलने पर लाल आने की प्रदर्शित प्रायिकताओं का क्या अनुमान है?"
+ ],
+ "symmetric-secant": [
+  "How do you expect the symmetric secant and tangent slopes to compare for the selected settings?",
+  "चुनी स्थितियों में सममित छेदक और स्पर्शरेखा की ढालों की कैसी तुलना अपेक्षित है?"
+ ],
+ "pole-pairs": [
+  "Which attraction and repulsion counts do you predict for the selected symbolic pole pairs?",
+  "चुने प्रतीकात्मक ध्रुव युग्मों में आकर्षण और प्रतिकर्षण की किस गिनती का अनुमान है?"
+ ],
+ "lens-distance-compare": [
+  "Which selected object distance do you predict will produce the larger image-distance magnitude in the ideal model?",
+  "आदर्श मॉडल में किस चुनी वस्तु दूरी से प्रतिबिंब दूरी का अधिक परिमाण अनुमानित है?"
+ ],
+ "signed-positions": [
+  "What sign and magnitude do you predict for the change between your selected positions?",
+  "चुनी स्थितियों के बीच परिवर्तन के किस चिह्न और परिमाण का अनुमान है?"
+ ],
+ "ray-account": [
+  "Which proposed blocked-ray count do you predict will fit the available symbolic rays?",
+  "कौन सी प्रस्तावित रुकी किरण गिनती उपलब्ध प्रतीकात्मक किरणों में संभव होने का अनुमान है?"
+ ],
+ "material-groups": [
+  "How do you predict the total will change when one labelled material group count increases?",
+  "एक नामांकित सामग्री समूह की गिनती बढ़ने पर कुल में क्या परिवर्तन अनुमानित है?"
+ ],
+ "property-groups": [
+  "What counts do you predict for the selected transparent and opaque example groups after changing one input?",
+  "एक आगत बदलने के बाद चुने पारदर्शी और अपारदर्शी उदाहरण समूहों की किस गिनती का अनुमान है?"
+ ],
+ "interaction-examples": [
+  "How do you predict the symbolic interaction-card total will change when one category count changes?",
+  "एक श्रेणी की गिनती बदलने पर प्रतीकात्मक पारस्परिक क्रिया कार्डों के कुल में क्या परिवर्तन अनुमानित है?"
+ ],
+ "living-groups": [
+  "What do you predict for the imaginary living-plant and stone group counts after changing one selected count?",
+  "एक चुनी गिनती बदलने के बाद काल्पनिक जीवित पौधे और पत्थर समूहों की गिनती का क्या अनुमान है?"
+ ]
+});
+export function supplementalWorksheetPrediction(id,mode,lang='en'){
+ if(!['en','hi'].includes(lang)||!ADVANCED_IDS.includes(id)||!advancedExtensionIds(id).includes(mode)||!Object.hasOwn(SUPPLEMENT_PREDICTIONS,mode))throw Error('Unknown supplemental prediction');
+ return SUPPLEMENT_PREDICTIONS[mode][lang==='hi'?1:0]+(lang==='hi'?' मॉडल चलाने से पहले अपना कारण कागज़ पर लिखें।':' Write your reasoning on paper before using the model.');
+}
 export function printableSupplementActivity(id,mode,lang='en'){
  if(!teacherSupplementOptions(id,lang).some(x=>x.mode===mode))throw Error('Unknown supplemental worksheet activity');
  const base=printableLabActivity(id,lang),m=advancedExtension(id,mode),i=lang==='hi'?1:0;
- return {...base,mode,title:m.title[i],prompt:m.prompt[i],caveat:m.caveat[i],steps:[lang==='hi'?'मॉडल चलाने से पहले परिणाम का अनुमान लगाएँ। अपना कारण कागज़ पर लिखें।':'Predict the result before using the model. Write your reasoning on paper.',supplementalWorksheetInvestigation(id,mode,lang),supplementalWorksheetReflection(id,mode,lang)],comparison:supplementalWorksheetComparison(id,mode,lang)};
+ return {...base,mode,title:m.title[i],prompt:m.prompt[i],caveat:m.caveat[i],steps:[supplementalWorksheetPrediction(id,mode,lang),supplementalWorksheetInvestigation(id,mode,lang),supplementalWorksheetReflection(id,mode,lang)],comparison:supplementalWorksheetComparison(id,mode,lang)};
 }
 
 /** M75 basic model worksheets use only existing source prompts and cautions, not answer keys. */
@@ -1245,5 +1448,5 @@ export function teacherPackReflectionGuide(keys,lang='en'){
  validateLabPack(keys);
  if(!['en','hi'].includes(lang))throw Error('Unknown reflection language');
  if(keys.length<2)return null;
- return {language:lang,prompt:lang==='hi'?'पैक की दो गतिविधियों में एक समानता और एक अंतर पहचानें। बताएँ कि कौन सा निष्कर्ष केवल मॉडल पर लागू होता है और कौन सा प्रश्न अभी खुला है। कागज़ या मौखिक चर्चा तक सीमित रखें; कोई उत्तर जमा न करें।':'Identify one similarity and one difference between two activities in this pack. Explain which conclusion applies only to the model and what question remains open. Discuss orally or on paper; do not submit an answer.',teacherOnly:true,humanReviewed:false,publicReleaseApproved:false,storesStudentData:false};
+ return {language:lang,prompt:lang==='hi'?'दो गतिविधियों को चलाने से पहले अनुमान लगाएँ कि किस नियंत्रण या विचार की तुलना उपयोगी होगी। पैक की दो गतिविधियों में एक समानता और एक अंतर पहचानें। बताएँ कि कौन सा निष्कर्ष केवल मॉडल पर लागू होता है और कौन सा प्रश्न अभी खुला है। कागज़ या मौखिक चर्चा तक सीमित रखें; कोई उत्तर जमा न करें।':'Before running two activities, predict which control or concept would make a useful comparison. Identify one similarity and one difference between two activities in this pack. Explain which conclusion applies only to the model and what question remains open. Discuss orally or on paper; do not submit an answer.',teacherOnly:true,humanReviewed:false,publicReleaseApproved:false,storesStudentData:false};
 }

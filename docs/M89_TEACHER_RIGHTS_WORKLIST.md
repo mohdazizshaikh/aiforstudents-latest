@@ -1,5 +1,7 @@
 # M89 — Individual teacher resource rights handoff (candidate)
 
+**M109 candidate fingerprint change:** 49 supplemental first-step predictions change exact printable content hashes; regenerate pending worksheet after verified checkout, and never reuse stale evidence.
+
 **M96 candidate fingerprint change:** 60 main worksheet comparison descriptors and fallback instructions change printable hashes again. Regenerate pending evidence worksheet from final verified checkout; do not carry forward stale evidence.
 
 **M95 candidate fingerprint change:** 49 supplemental worksheets now have extension-specific instructions and a blank comparison-table descriptor. These are part of exact printable object fingerprints; regenerate local pending worksheet, never reuse stale decisions.

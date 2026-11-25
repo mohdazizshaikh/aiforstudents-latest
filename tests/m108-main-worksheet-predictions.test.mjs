@@ -12,12 +12,11 @@ for(const id of ids)test('M108 individualized main prediction '+id,()=>{
   assert.deepEqual(a.comparison.rows.map(r=>r.cells),[['',''],['','']]);assert.equal(a.humanReviewed,false);assert.equal(a.hasStudentNames,false);assert.equal(a.publicReleaseApproved,false);
  }
 });
-test('M108 inventory, distinct bilingual prompts, unchanged supplemental prediction and invalid selectors',()=>{
+test('M108 inventory, distinct bilingual prompts, separate supplemental prediction and invalid selectors',()=>{
  assert.equal(ids.length,60);assert.deepEqual(Object.keys(authored).sort(),ids.slice().sort());
  for(const lang of ['en','hi'])assert.equal(new Set(ids.map(id=>mainWorksheetPrediction(id,lang))).size,60);
  let count=0;for(const id of ADVANCED_IDS)for(const mode of advancedExtensionIds(id)){
-  count++;assert.equal(printableAnyLabActivity(id,mode,'en').steps[0],'Predict the result before using the model. Write your reasoning on paper.');
-  assert.equal(printableAnyLabActivity(id,mode,'hi').steps[0],'मॉडल चलाने से पहले परिणाम का अनुमान लगाएँ। अपना कारण कागज़ पर लिखें।');
+  count++;for(const lang of ['en','hi'])assert.notEqual(printableAnyLabActivity(id,mode,lang).steps[0],mainWorksheetPrediction(id,lang));
  }
  assert.equal(count,49);
  for(const id of [null,'unknown','ratio-algebra:equation','__proto__'])assert.throws(()=>mainWorksheetPrediction(id));
