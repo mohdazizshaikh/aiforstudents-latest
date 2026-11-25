@@ -49,7 +49,7 @@ export const FORBIDDEN_PUBLIC_PATHS=Object.freeze([
  '/LAB_CONTENT_REVIEW_QUEUE.jsonl','/docs/CONTENT_REVIEW_QUEUE.jsonl.gz',
  '/review-evidence/pilot-first.json','/safety-handoff/operations.json',
  '/tools/pilot-backend.mjs','/tools/pilot-store.mjs','/tools/adult-operator-rehearsal.mjs',
- '/tools/synthetic-db-recovery.mjs','/tools/teacher-aggregate-rehearsal.mjs','/tools/resource-ingestion-boundary.mjs','/tools/tutor-transport-rehearsal.mjs','/tools/tutor-activation-boundary.mjs',
+ '/tools/synthetic-db-recovery.mjs','/tools/teacher-aggregate-rehearsal.mjs','/tools/resource-ingestion-boundary.mjs','/tools/mysql-rehearsal/repository.php','/tools/mysql-rehearsal/run.php','/tools/mysql-rehearsal/schema-v1.sql','/tools/mysql-rehearsal/schema-v2.sql','/tools/mysql-rehearsal/backup-recovery.py','/tools/mysql-rehearsal/fixture-catalog.mjs','/tools/tutor-transport-rehearsal.mjs','/tools/tutor-activation-boundary.mjs',
  '/v1/health','/v1/catalog','/v1/plan','/v1/tutor-rehearsal','/v1/tutor-transport-rehearsal','/v1/adaptive-rehearsal','/v1/resource-rehearsal','/v1/aggregate-rehearsal','/v1/students','/v1/chat','/v1/mastery'
 ]);
 if(FORBIDDEN_PUBLIC_PATHS.some(x=>!pathAllowed(x)))throw Error('Invalid forbidden source path');

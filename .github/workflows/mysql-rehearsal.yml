@@ -1,0 +1,56 @@
+name: M125 isolated PHP MySQL rehearsal
+on:
+  push:
+    paths:
+      - 'tools/mysql-rehearsal/**'
+      - '.github/workflows/mysql-rehearsal.yml'
+      - 'assets/**'
+  pull_request:
+    paths:
+      - 'tools/mysql-rehearsal/**'
+      - '.github/workflows/mysql-rehearsal.yml'
+      - 'assets/**'
+permissions:
+  contents: read
+jobs:
+  isolated-mysql:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    services:
+      mysql:
+        image: mysql:8.4
+        env:
+          MYSQL_ROOT_PASSWORD: m125-ephemeral-root-only
+          MYSQL_DATABASE: aifs_rehearsal_m125
+          MYSQL_USER: aifs_fixture
+          MYSQL_PASSWORD: m125-ephemeral-fixture-only
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping -h 127.0.0.1 --silent"
+          --health-interval=5s
+          --health-timeout=3s
+          --health-retries=30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: PHP syntax and PDO availability
+        run: |
+          php -v
+          php -l tools/mysql-rehearsal/repository.php
+          php -l tools/mysql-rehearsal/run.php
+          php -r 'if (!extension_loaded("pdo_mysql")) exit(1);'
+      - name: Isolated fixture migration, data parity and recovery (NOT hosting)
+        env:
+          AIFS_MYSQL_REHEARSAL: '1'
+          AIFS_MYSQL_FIXTURE_PASSWORD: m125-ephemeral-fixture-only
+        run: |
+          set -o pipefail
+          node tools/mysql-rehearsal/fixture-catalog.mjs | php tools/mysql-rehearsal/run.php
+      - name: Full logical database dump and separate-schema restore (NOT physical backup or hosting)
+        env:
+          AIFS_MYSQL_REHEARSAL: '1'
+          AIFS_MYSQL_SERVICE_CONTAINER: ${{ job.services.mysql.id }}
+        run: python3 tools/mysql-rehearsal/backup-recovery.py

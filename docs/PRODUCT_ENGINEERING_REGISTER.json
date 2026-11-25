@@ -44,7 +44,14 @@
         "pushRun": 45685940000,
         "pullRequestRun": 45685953432,
         "treeIdentical": true
-      }
+      },
+      "followUpEvidence": [
+        {
+          "source": "tools/mysql-rehearsal/repository.php",
+          "test": "tools/mysql-rehearsal/run.php",
+          "status": "AWAITING_CI"
+        }
+      ]
     },
     {
       "id": "ENG-003",
@@ -64,7 +71,14 @@
         "pushRun": 45685940000,
         "pullRequestRun": 45685953432,
         "treeIdentical": true
-      }
+      },
+      "followUpEvidence": [
+        {
+          "source": "tools/mysql-rehearsal/repository.php",
+          "test": "tools/mysql-rehearsal/run.php",
+          "status": "AWAITING_CI"
+        }
+      ]
     },
     {
       "id": "ENG-004",
@@ -84,7 +98,14 @@
         "pushRun": 45685940000,
         "pullRequestRun": 45685953432,
         "treeIdentical": true
-      }
+      },
+      "followUpEvidence": [
+        {
+          "source": "tools/mysql-rehearsal/repository.php",
+          "test": "tools/mysql-rehearsal/run.php",
+          "status": "AWAITING_CI"
+        }
+      ]
     },
     {
       "id": "ENG-005",
@@ -125,7 +146,14 @@
         "pushRun": 45699507063,
         "pullRequestRun": 45699521759,
         "treeIdentical": true
-      }
+      },
+      "followUpEvidence": [
+        {
+          "source": "tools/mysql-rehearsal/repository.php",
+          "test": "tools/mysql-rehearsal/run.php",
+          "status": "AWAITING_CI"
+        }
+      ]
     },
     {
       "id": "ENG-007",
@@ -139,14 +167,26 @@
           "test": "tests/m119-backend-recovery-operator.test.mjs"
         }
       ],
-      "limitation": "Fixed SQLite fixture recovery only; actual PHP/MySQL target migration pending.",
+      "limitation": "MySQL repository/migration passed combined PR job 45718193876, but raw dump equality failed. Exact schema/ordered-row recovery correction awaits CI; no physical backup or actual host verification.",
       "verification": {
         "head": "34e5de6d228680eb32df99dcc1945ae9b4598fc3",
         "merged": "0ec46e2947cbabc28c44ee80b36ba9d4544b7dac",
         "pushRun": 45699507063,
         "pullRequestRun": 45699521759,
         "treeIdentical": true
-      }
+      },
+      "followUpEvidence": [
+        {
+          "source": "tools/mysql-rehearsal/repository.php",
+          "test": "tools/mysql-rehearsal/run.php",
+          "status": "AWAITING_CI"
+        },
+        {
+          "source": "tools/mysql-rehearsal/backup-recovery.py",
+          "test": ".github/workflows/mysql-rehearsal.yml",
+          "status": "AWAITING_CI"
+        }
+      ]
     },
     {
       "id": "ENG-008",
@@ -292,7 +332,14 @@
         {
           "source": "assets/prototype-worksheet-engine.js",
           "test": "tests/m121-prototype-worksheet-packs.test.mjs",
-          "status": "AWAITING_CI"
+          "status": "VERIFIED_MERGED",
+          "verification": {
+            "head": "20c110520937d82598624448af3a93a41b170141",
+            "merged": "58a9920b5a3a7d4d0efb2e703871c977dbdab32f",
+            "pushRun": 45714199810,
+            "pullRequestRun": 45714211060,
+            "treeIdentical": true
+          }
         }
       ]
     },
@@ -327,12 +374,26 @@
         {
           "source": "assets/prototype-worksheet-engine.js",
           "test": "tests/m121-prototype-worksheet-packs.test.mjs",
-          "status": "AWAITING_CI"
+          "status": "VERIFIED_MERGED",
+          "verification": {
+            "head": "20c110520937d82598624448af3a93a41b170141",
+            "merged": "58a9920b5a3a7d4d0efb2e703871c977dbdab32f",
+            "pushRun": 45714199810,
+            "pullRequestRun": 45714211060,
+            "treeIdentical": true
+          }
         },
         {
           "source": "assets/visual-lab-engine.js",
           "test": "tests/m122-visual-lab.test.mjs",
-          "status": "AWAITING_CI"
+          "status": "VERIFIED_MERGED",
+          "verification": {
+            "head": "6dfda8b3187470ce435bf003a657dd779b041a6e",
+            "merged": "991f1ddf51165c107cf392eec9d966f64031361b",
+            "pushRun": 45715765262,
+            "pullRequestRun": 45715771384,
+            "treeIdentical": true
+          }
         }
       ]
     },
@@ -367,12 +428,26 @@
         {
           "source": "assets/prototype-worksheet-engine.js",
           "test": "tests/m121-prototype-worksheet-packs.test.mjs",
-          "status": "AWAITING_CI"
+          "status": "VERIFIED_MERGED",
+          "verification": {
+            "head": "20c110520937d82598624448af3a93a41b170141",
+            "merged": "58a9920b5a3a7d4d0efb2e703871c977dbdab32f",
+            "pushRun": 45714199810,
+            "pullRequestRun": 45714211060,
+            "treeIdentical": true
+          }
         },
         {
           "source": "assets/visual-lab-engine.js",
           "test": "tests/m122-visual-lab.test.mjs",
-          "status": "AWAITING_CI"
+          "status": "VERIFIED_MERGED",
+          "verification": {
+            "head": "6dfda8b3187470ce435bf003a657dd779b041a6e",
+            "merged": "991f1ddf51165c107cf392eec9d966f64031361b",
+            "pushRun": 45715765262,
+            "pullRequestRun": 45715771384,
+            "treeIdentical": true
+          }
         }
       ]
     },
@@ -407,12 +482,26 @@
         {
           "source": "assets/prototype-worksheet-engine.js",
           "test": "tests/m121-prototype-worksheet-packs.test.mjs",
-          "status": "AWAITING_CI"
+          "status": "VERIFIED_MERGED",
+          "verification": {
+            "head": "20c110520937d82598624448af3a93a41b170141",
+            "merged": "58a9920b5a3a7d4d0efb2e703871c977dbdab32f",
+            "pushRun": 45714199810,
+            "pullRequestRun": 45714211060,
+            "treeIdentical": true
+          }
         },
         {
           "source": "assets/visual-lab-engine.js",
           "test": "tests/m122-visual-lab.test.mjs",
-          "status": "AWAITING_CI"
+          "status": "VERIFIED_MERGED",
+          "verification": {
+            "head": "6dfda8b3187470ce435bf003a657dd779b041a6e",
+            "merged": "991f1ddf51165c107cf392eec9d966f64031361b",
+            "pushRun": 45715765262,
+            "pullRequestRun": 45715771384,
+            "treeIdentical": true
+          }
         }
       ]
     },
@@ -447,12 +536,26 @@
         {
           "source": "assets/prototype-worksheet-engine.js",
           "test": "tests/m121-prototype-worksheet-packs.test.mjs",
-          "status": "AWAITING_CI"
+          "status": "VERIFIED_MERGED",
+          "verification": {
+            "head": "20c110520937d82598624448af3a93a41b170141",
+            "merged": "58a9920b5a3a7d4d0efb2e703871c977dbdab32f",
+            "pushRun": 45714199810,
+            "pullRequestRun": 45714211060,
+            "treeIdentical": true
+          }
         },
         {
           "source": "assets/visual-lab-engine.js",
           "test": "tests/m122-visual-lab.test.mjs",
-          "status": "AWAITING_CI"
+          "status": "VERIFIED_MERGED",
+          "verification": {
+            "head": "6dfda8b3187470ce435bf003a657dd779b041a6e",
+            "merged": "991f1ddf51165c107cf392eec9d966f64031361b",
+            "pushRun": 45715765262,
+            "pullRequestRun": 45715771384,
+            "treeIdentical": true
+          }
         }
       ]
     },
@@ -535,12 +638,26 @@
         {
           "source": "assets/prototype-worksheet-engine.js",
           "test": "tests/m121-prototype-worksheet-packs.test.mjs",
-          "status": "AWAITING_CI"
+          "status": "VERIFIED_MERGED",
+          "verification": {
+            "head": "20c110520937d82598624448af3a93a41b170141",
+            "merged": "58a9920b5a3a7d4d0efb2e703871c977dbdab32f",
+            "pushRun": 45714199810,
+            "pullRequestRun": 45714211060,
+            "treeIdentical": true
+          }
         },
         {
           "source": "assets/visual-lab-engine.js",
           "test": "tests/m122-visual-lab.test.mjs",
-          "status": "AWAITING_CI"
+          "status": "VERIFIED_MERGED",
+          "verification": {
+            "head": "6dfda8b3187470ce435bf003a657dd779b041a6e",
+            "merged": "991f1ddf51165c107cf392eec9d966f64031361b",
+            "pushRun": 45715765262,
+            "pullRequestRun": 45715771384,
+            "treeIdentical": true
+          }
         }
       ]
     },
@@ -591,12 +708,26 @@
         {
           "source": "tools/tutor-transport-rehearsal.mjs",
           "test": "tests/m123-tutor-transport.test.mjs",
-          "status": "AWAITING_CI"
+          "status": "VERIFIED_MERGED",
+          "verification": {
+            "head": "6b9fab6084e8ebed8a8a67dded5cca61494dab46",
+            "merged": "d5a07ce8707db69dc081aea29cc7482eb6bd6b49",
+            "pushRun": 45715779823,
+            "pullRequestRun": 45715786960,
+            "treeIdentical": true
+          }
         },
         {
           "source": "tools/tutor-activation-boundary.mjs",
           "test": "tests/m123-tutor-transport.test.mjs",
-          "status": "AWAITING_CI"
+          "status": "VERIFIED_MERGED",
+          "verification": {
+            "head": "6b9fab6084e8ebed8a8a67dded5cca61494dab46",
+            "merged": "d5a07ce8707db69dc081aea29cc7482eb6bd6b49",
+            "pushRun": 45715779823,
+            "pullRequestRun": 45715786960,
+            "treeIdentical": true
+          }
         }
       ]
     },
@@ -623,12 +754,26 @@
         {
           "source": "tools/tutor-transport-rehearsal.mjs",
           "test": "tests/m123-tutor-transport.test.mjs",
-          "status": "AWAITING_CI"
+          "status": "VERIFIED_MERGED",
+          "verification": {
+            "head": "6b9fab6084e8ebed8a8a67dded5cca61494dab46",
+            "merged": "d5a07ce8707db69dc081aea29cc7482eb6bd6b49",
+            "pushRun": 45715779823,
+            "pullRequestRun": 45715786960,
+            "treeIdentical": true
+          }
         },
         {
           "source": "tools/tutor-activation-boundary.mjs",
           "test": "tests/m123-tutor-transport.test.mjs",
-          "status": "AWAITING_CI"
+          "status": "VERIFIED_MERGED",
+          "verification": {
+            "head": "6b9fab6084e8ebed8a8a67dded5cca61494dab46",
+            "merged": "d5a07ce8707db69dc081aea29cc7482eb6bd6b49",
+            "pushRun": 45715779823,
+            "pullRequestRun": 45715786960,
+            "treeIdentical": true
+          }
         }
       ]
     },
@@ -655,12 +800,26 @@
         {
           "source": "tools/tutor-transport-rehearsal.mjs",
           "test": "tests/m123-tutor-transport.test.mjs",
-          "status": "AWAITING_CI"
+          "status": "VERIFIED_MERGED",
+          "verification": {
+            "head": "6b9fab6084e8ebed8a8a67dded5cca61494dab46",
+            "merged": "d5a07ce8707db69dc081aea29cc7482eb6bd6b49",
+            "pushRun": 45715779823,
+            "pullRequestRun": 45715786960,
+            "treeIdentical": true
+          }
         },
         {
           "source": "tools/tutor-activation-boundary.mjs",
           "test": "tests/m123-tutor-transport.test.mjs",
-          "status": "AWAITING_CI"
+          "status": "VERIFIED_MERGED",
+          "verification": {
+            "head": "6b9fab6084e8ebed8a8a67dded5cca61494dab46",
+            "merged": "d5a07ce8707db69dc081aea29cc7482eb6bd6b49",
+            "pushRun": 45715779823,
+            "pullRequestRun": 45715786960,
+            "treeIdentical": true
+          }
         }
       ]
     },
@@ -687,12 +846,26 @@
         {
           "source": "tools/tutor-transport-rehearsal.mjs",
           "test": "tests/m123-tutor-transport.test.mjs",
-          "status": "AWAITING_CI"
+          "status": "VERIFIED_MERGED",
+          "verification": {
+            "head": "6b9fab6084e8ebed8a8a67dded5cca61494dab46",
+            "merged": "d5a07ce8707db69dc081aea29cc7482eb6bd6b49",
+            "pushRun": 45715779823,
+            "pullRequestRun": 45715786960,
+            "treeIdentical": true
+          }
         },
         {
           "source": "tools/tutor-activation-boundary.mjs",
           "test": "tests/m123-tutor-transport.test.mjs",
-          "status": "AWAITING_CI"
+          "status": "VERIFIED_MERGED",
+          "verification": {
+            "head": "6b9fab6084e8ebed8a8a67dded5cca61494dab46",
+            "merged": "d5a07ce8707db69dc081aea29cc7482eb6bd6b49",
+            "pushRun": 45715779823,
+            "pullRequestRun": 45715786960,
+            "treeIdentical": true
+          }
         }
       ]
     },
@@ -719,12 +892,26 @@
         {
           "source": "tools/tutor-transport-rehearsal.mjs",
           "test": "tests/m123-tutor-transport.test.mjs",
-          "status": "AWAITING_CI"
+          "status": "VERIFIED_MERGED",
+          "verification": {
+            "head": "6b9fab6084e8ebed8a8a67dded5cca61494dab46",
+            "merged": "d5a07ce8707db69dc081aea29cc7482eb6bd6b49",
+            "pushRun": 45715779823,
+            "pullRequestRun": 45715786960,
+            "treeIdentical": true
+          }
         },
         {
           "source": "tools/tutor-activation-boundary.mjs",
           "test": "tests/m123-tutor-transport.test.mjs",
-          "status": "AWAITING_CI"
+          "status": "VERIFIED_MERGED",
+          "verification": {
+            "head": "6b9fab6084e8ebed8a8a67dded5cca61494dab46",
+            "merged": "d5a07ce8707db69dc081aea29cc7482eb6bd6b49",
+            "pushRun": 45715779823,
+            "pullRequestRun": 45715786960,
+            "treeIdentical": true
+          }
         }
       ]
     },
@@ -751,7 +938,14 @@
         {
           "source": "assets/visual-lab-engine.js",
           "test": "tests/m122-visual-lab.test.mjs",
-          "status": "AWAITING_CI"
+          "status": "VERIFIED_MERGED",
+          "verification": {
+            "head": "6dfda8b3187470ce435bf003a657dd779b041a6e",
+            "merged": "991f1ddf51165c107cf392eec9d966f64031361b",
+            "pushRun": 45715765262,
+            "pullRequestRun": 45715771384,
+            "treeIdentical": true
+          }
         }
       ]
     },
@@ -918,12 +1112,26 @@
         {
           "source": "assets/prototype-worksheet-engine.js",
           "test": "tests/m121-prototype-worksheet-packs.test.mjs",
-          "status": "AWAITING_CI"
+          "status": "VERIFIED_MERGED",
+          "verification": {
+            "head": "20c110520937d82598624448af3a93a41b170141",
+            "merged": "58a9920b5a3a7d4d0efb2e703871c977dbdab32f",
+            "pushRun": 45714199810,
+            "pullRequestRun": 45714211060,
+            "treeIdentical": true
+          }
         },
         {
           "source": "assets/visual-lab-engine.js",
           "test": "tests/m122-visual-lab.test.mjs",
-          "status": "AWAITING_CI"
+          "status": "VERIFIED_MERGED",
+          "verification": {
+            "head": "6dfda8b3187470ce435bf003a657dd779b041a6e",
+            "merged": "991f1ddf51165c107cf392eec9d966f64031361b",
+            "pushRun": 45715765262,
+            "pullRequestRun": 45715771384,
+            "treeIdentical": true
+          }
         }
       ]
     },
@@ -954,12 +1162,26 @@
         {
           "source": "assets/prototype-worksheet-engine.js",
           "test": "tests/m121-prototype-worksheet-packs.test.mjs",
-          "status": "AWAITING_CI"
+          "status": "VERIFIED_MERGED",
+          "verification": {
+            "head": "20c110520937d82598624448af3a93a41b170141",
+            "merged": "58a9920b5a3a7d4d0efb2e703871c977dbdab32f",
+            "pushRun": 45714199810,
+            "pullRequestRun": 45714211060,
+            "treeIdentical": true
+          }
         },
         {
           "source": "assets/visual-lab-engine.js",
           "test": "tests/m122-visual-lab.test.mjs",
-          "status": "AWAITING_CI"
+          "status": "VERIFIED_MERGED",
+          "verification": {
+            "head": "6dfda8b3187470ce435bf003a657dd779b041a6e",
+            "merged": "991f1ddf51165c107cf392eec9d966f64031361b",
+            "pushRun": 45715765262,
+            "pullRequestRun": 45715771384,
+            "treeIdentical": true
+          }
         }
       ]
     },

@@ -1,0 +1,32 @@
+# M125 — PHP/PDO MySQL target-shaped database rehearsal
+
+**Candidate, not production approval. M33/M29 retained.** Independent branch from verified M121 main; M122–M124 are separate pending PRs. ENG-006 conditional design remains externally pending, ENG-007 SQLite rehearsal verified previously. This follow-up adds actual MySQL-specific schema and PHP repository code plus a dedicated ephemeral MySQL 8.4 CI service; no actual Hostinger connection or deployment.
+
+## Implemented scope
+- Five InnoDB tables: version, bilingual activity, draft curriculum cell, synthetic plan, ordered plan item. Exact source-derived inventory (121 draft activities / 242 languages in M121 baseline; dynamic on later merges), 96 board/grade/subject cells, no verified chapters. Prepared statements and enumerated filter allowlists.
+- Single fixed CLI-only loopback DSN and dummy ephemeral test credentials, explicit local rehearsal opt-in; refuse nonempty schema, no arbitrary endpoint or production credentials.
+- v1→v2 adds pending review-state column. MySQL DDL implicitly commits, so test interruption after DDL, verify expected column and resume version advancement. This is not atomic DDL rollback or a general migration manager.
+- Ordered max-six unique activity plan, foreign key, transactional replacement with injected failure rollback; digest-checked logical plan snapshot and restore, not physical database backup.
+- Dedicated CI job PHP syntax/PDO availability and MySQL data parity (40 filter combinations, 96 cells, two language inventories), invalid plan rejection, DML rollback, interrupted migration resume and logical restore. Two Node static/source tests. Actual service execution pending CI.
+- Private PHP/SQL source included only in source archive; excluded from static ZIP and negative host probes added. No web API or real operator authentication.
+
+## Remaining
+Account compatibility and actual MySQL/MariaDB/PHP versions, restricted HTTPS staging, credential management, physical backup/recovery, concurrency/load review, real adult identity, legal/safeguarding/educator reviews and owner approval. Original master plan 70/100 unchanged; 39 scoped engineering implementations verified and one architecture decision externally pending. Do not deploy this rehearsal on shared hosting or run it against a real database. No child records, public launch or paid service. Rollback by reverting candidate commits; CI database is disposable.
+
+## M126 follow-up — full logical database recovery
+
+**M126 CANDIDATE — M33/M29 retained; FULL PRODUCT NOT COMPLETE; PUBLIC LAUNCH NOT APPROVED.** M122 exact-head push/PR 45715765262/45715771384 passed, #112 merged 991f1ddf51165c107cf392eec9d966f64031361b (identical tree). Main now 125 draft activities / 250 bilingual variants / 50 optional concept nodes. M125 initial isolated MySQL push 45717283305 succeeded on 3dc90af600ca34cc43103113eadd90f4293c69ac; M126 adds full logical SQL dump and separate empty-schema restore, byte parity and four restored constraint denials. New exact-head CI pending; no real hosting/physical backup approval. M123/M124 full verification pending. Original 70/100 unchanged; scoped 39/40 verified implementations, one conditional approval pending. [M125/M126 handoff](M125_MYSQL_REHEARSAL.md).
+
+The first actual MySQL service job passed. New CI-only `backup-recovery.py` verifies the disposable service container image/fixture configuration, creates a mode-0600 dump in a temporary directory, records its SHA-256, restores into a separate empty database, compares full ordered logical dump bytes, confirms the source remains unchanged, checks five tables/v2/96 cells/six plan rows, and rejects invalid review state, grade, plan position and foreign key in the restored schema. Drops only the temporary restore schema and cleans local dump. No source database deletion, arbitrary host, physical backup, hosting access or public approval. The new restore step has not yet run. Exact-head CI required. M125 branch is independent of M122–M124; integrate against current main and verify combined tree before merge.
+
+## M127 combined integration
+
+**M127 INTEGRATION CANDIDATE — M33/M29 retained; FULL PRODUCT NOT COMPLETE; PUBLIC LAUNCH NOT APPROVED.** M122 exact-head CI 45715765262/45715771384 passed, #112 merged at 991f1ddf51165c107cf392eec9d966f64031361b. M123 exact-head CI 45715779823/45715786960 passed, #113 merged at d5a07ce8707db69dc081aea29cc7482eb6bd6b49. Both merged trees identical to tested heads. Main: 125 draft activities / 250 language variants / 50 optional concept nodes; verified synthetic tutor HTTP transport, not live AI. M125 initial disposable MySQL service CI 45717283305 passed; M126 full logical backup/restore candidate integrated with current main, fresh combined CI required. M124 separate PR pending. Original 70/100 unchanged; scoped 39/40 implementations verified, conditional production architecture approval pending. [MySQL handoff](M125_MYSQL_REHEARSAL.md).
+
+Merge current verified main into the independent database branch without discarding tutor transport security probes or review follow-up evidence. Dynamic source-derived fixture now expects 125 activities / 250 language variants. All code, schema and workflow changes await combined exact-head CI; no live host, actual adult auth or public release.
+
+## M127 recovery regression correction
+
+**M127 recovery correction — M33/M29 retained; FULL PRODUCT NOT COMPLETE; PUBLIC LAUNCH NOT APPROVED.** Combined PHP/PDO MySQL repository/migration step passed in PR job 45718193876, but full logical recovery failed raw dump byte equality. Corrected recovery compares exact SHOW CREATE TABLE output and all ordered rows across every table, separately reports raw dump parity, verifies expected constraint error codes and source unchanged, retains backup checksum. New exact-head CI required. Original 70/100 unchanged.
+
+The prior raw dump mismatch did not establish a schema or row mismatch; no precise difference was logged. Recovery now requires exact actual table definitions and every ordered row, using a length-framed SHA-256 digest and exact per-table comparisons before/after restore and after denied writes. Raw dump equality is measured separately and is not claimed if false. Four invalid writes must fail with MySQL check-constraint (3819) or foreign-key (1452) error rather than unrelated failures. Original SQL backup bytes are still checksum-verified before restore. New CI pending; no production or physical backup claim.
