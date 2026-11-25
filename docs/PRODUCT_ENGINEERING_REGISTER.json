@@ -276,40 +276,85 @@
       "stream": "Student experience",
       "title": "Unified learner activity dashboard",
       "acceptance": "Local-only navigation across learning modules, no new account dependency.",
-      "status": "PLANNED",
-      "evidence": []
+      "status": "IMPLEMENTED_AWAITING_CI",
+      "evidence": [
+        {
+          "source": "assets/workspace-engine.js",
+          "test": "tests/m113-workspaces.test.mjs"
+        },
+        {
+          "source": "assets/workspace-app.js",
+          "test": "tests/browser_m25_ci.py"
+        }
+      ]
     },
     {
       "id": "ENG-032",
       "stream": "Student experience",
       "title": "Session learning plan",
       "acceptance": "Bounded fixed activity list, next/skip/reset, no persisted identifiers.",
-      "status": "PLANNED",
-      "evidence": []
+      "status": "IMPLEMENTED_AWAITING_CI",
+      "evidence": [
+        {
+          "source": "assets/workspace-engine.js",
+          "test": "tests/m113-workspaces.test.mjs"
+        },
+        {
+          "source": "assets/workspace-app.js",
+          "test": "tests/browser_m25_ci.py"
+        }
+      ]
     },
     {
       "id": "ENG-033",
       "stream": "Student experience",
       "title": "Accessible progress summary",
       "acceptance": "Task-local progress and opt-in existing history; no mastery or aptitude claims.",
-      "status": "PLANNED",
-      "evidence": []
+      "status": "IMPLEMENTED_AWAITING_CI",
+      "evidence": [
+        {
+          "source": "assets/workspace-engine.js",
+          "test": "tests/m113-workspaces.test.mjs"
+        },
+        {
+          "source": "assets/workspace-app.js",
+          "test": "tests/browser_m25_ci.py"
+        }
+      ]
     },
     {
       "id": "ENG-034",
       "stream": "Teacher experience",
       "title": "Unified teacher planning dashboard",
       "acceptance": "Lesson sequence, resources and projector handoff from one workspace.",
-      "status": "PLANNED",
-      "evidence": []
+      "status": "IMPLEMENTED_AWAITING_CI",
+      "evidence": [
+        {
+          "source": "assets/workspace-engine.js",
+          "test": "tests/m113-workspaces.test.mjs"
+        },
+        {
+          "source": "assets/workspace-app.js",
+          "test": "tests/browser_m25_ci.py"
+        }
+      ]
     },
     {
       "id": "ENG-035",
       "stream": "Teacher experience",
       "title": "Teacher classroom lesson workflow",
       "acceptance": "Start/pause/next/reset with offline alternative and no pupil roster.",
-      "status": "PLANNED",
-      "evidence": []
+      "status": "IMPLEMENTED_AWAITING_CI",
+      "evidence": [
+        {
+          "source": "assets/workspace-engine.js",
+          "test": "tests/m113-workspaces.test.mjs"
+        },
+        {
+          "source": "assets/workspace-app.js",
+          "test": "tests/browser_m25_ci.py"
+        }
+      ]
     },
     {
       "id": "ENG-036",

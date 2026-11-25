@@ -140,3 +140,7 @@ h1,h2,h3,p{margin-top:0}h1,h2,h3{line-height:1.16;letter-spacing:-.04em}h1{font-
  body.agenda-paper-open #classroom-agenda-paper li{break-inside:avoid}
  body.agenda-paper-open .agenda-paper-actions{display:none!important}
 }
+
+/* M113 shared local workspaces: native controls, no overflow and no printed session state. */
+.workspace{max-width:100%;min-width:0;overflow-wrap:anywhere;border:1px solid var(--border);padding:16px;border-radius:12px;background:#fff;color:#19343b}
+.workspace-controls{display:grid;grid-template-columns:minmax(0,1fr);gap:8px}.workspace label{font-weight:700}.workspace select{display:block;width:100%;max-width:100%;min-width:0;min-height:44px;padding:8px;border:1px solid #bdd5ce;border-radius:9px;background:white;color:#19343b}.workspace-actions{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}.workspace-actions .btn{min-height:44px;white-space:normal;max-width:100%}.workspace [hidden]{display:none!important}.workspace a{display:block;padding:9px 0}.workspace :focus-visible{outline:3px solid #ad7525;outline-offset:3px}@media(max-width:480px){.workspace-actions .btn{flex:1 1 100%}}@media print{.workspace{display:none!important}}
