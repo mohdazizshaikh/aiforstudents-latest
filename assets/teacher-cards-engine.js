@@ -1,3 +1,4 @@
+import {miniControlLabels} from './mini-snapshots.js';
 import {SCIENCE_IDS,SCIENCE_MODELS} from './science-engine.js';
 import {WORKSHOP_MODES,WORKSHOP_CONTENT} from './experiment-engine.js';
 import {STUDIO_IDS,STUDIO_LESSONS} from './studio-engine.js';
@@ -81,6 +82,26 @@ export function teacherAgendaRows(agenda,lang='en'){
 
 /** M50 printable source-derived lab activity: no hints, target values, answers or learner fields.
  * The authored prompt may specify a control example, not a calculated solution. */
+/** M94 source-bound paper investigation. Lists existing computer controls only, never target values, hints or learner responses. */
+export function mainWorksheetControls(id,lang='en'){
+ if(!['en','hi'].includes(lang))throw Error('Unknown language');
+ const i=lang==='hi'?1:0;
+ let controls;
+ if(ADVANCED_IDS.includes(id))controls=ADVANCED_MODELS[id].fields.map(f=>f.label[i]);
+ else if(BASIC_PRINT_IDS.includes(id)){
+  const [family,key]=id.split('/');
+  controls=family==='science'?SCIENCE_MODELS[key].fields.map(f=>f.label[i]):miniControlLabels(id,lang);
+ }else throw Error('Unknown main worksheet');
+ if(!controls.length||controls.some(x=>typeof x!=='string'||!x.trim()))throw Error('Missing model control labels');
+ return controls;
+}
+export function mainWorksheetInvestigation(id,lang='en'){
+ const controls=mainWorksheetControls(id,lang),list=controls.join('; ');
+ return lang==='hi'?'केवल कंप्यूटर मॉडल में इन नियंत्रणों में से एक चुनें: '+list+'। शिक्षक के साथ दो अलग स्थितियाँ आज़माएँ; जहाँ संभव हो बाकी नियंत्रण न बदलें। कागज़ पर दोनों स्थितियाँ और मॉडल में दिखा परिणाम लिखें। मॉडल न मिले तो केवल अपना अनुमान लिखें।':
+ 'In the computer model, choose one of these controls: '+list+'. With a teacher, try two different settings; keep the other controls unchanged where possible. On paper, note both settings and what the model shows. If the model is unavailable, write only your prediction.';
+}
+const originalAdvancedObservation=lang=>lang==='hi'?'शिक्षक के साथ केवल कंप्यूटर मॉडल देखें और दिखाए गए मान अपने अनुमान से मिलाएँ।':'With a teacher, inspect the computer-only model and compare the displayed values with your prediction.';
+
 export function printableLabActivity(id,lang='en'){
  if(!validDemo(id)||!['en','hi'].includes(lang))throw Error('Unknown printable lab activity');
  const m=ADVANCED_MODELS[id],i=lang==='hi'?1:0;
@@ -88,7 +109,7 @@ export function printableLabActivity(id,lang='en'){
  return {id,subject:m.subject,language:lang,title:m.title[i],prompt:m.prompt[i],caveat:m.caveat[i],
   steps:[
    p('Predict the result before using the model. Write your reasoning on paper.','मॉडल चलाने से पहले परिणाम का अनुमान लगाएँ। अपना कारण कागज़ पर लिखें।'),
-   p('With a teacher, inspect the computer-only model and compare the displayed values with your prediction.','शिक्षक के साथ केवल कंप्यूटर मॉडल देखें और दिखाए गए मान अपने अनुमान से मिलाएँ।'),
+   mainWorksheetInvestigation(id,lang),
    p('Explain one difference or similarity. If the model is unavailable, discuss your prediction only.','एक अंतर या समानता समझाएँ। मॉडल उपलब्ध न हो तो केवल अनुमान पर चर्चा करें।')
   ],sourceFile:'assets/advanced-lab-engine.js',rightsStatus:'ORIGINAL_DRAFT_PERMISSION_NOT_AUTHENTICATED',humanReviewed:false,publicReleaseApproved:false,localOnly:true,hasStudentNames:false};
 }
@@ -108,7 +129,7 @@ export function teacherSupplementOptions(id,lang='en'){
 export function printableSupplementActivity(id,mode,lang='en'){
  if(!teacherSupplementOptions(id,lang).some(x=>x.mode===mode))throw Error('Unknown supplemental worksheet activity');
  const base=printableLabActivity(id,lang),m=advancedExtension(id,mode),i=lang==='hi'?1:0;
- return {...base,mode,title:m.title[i],prompt:m.prompt[i],caveat:m.caveat[i]};
+ return {...base,mode,title:m.title[i],prompt:m.prompt[i],caveat:m.caveat[i],steps:[base.steps[0],originalAdvancedObservation(lang),base.steps[2]]};
 }
 
 /** M75 basic model worksheets use only existing source prompts and cautions, not answer keys. */
@@ -148,7 +169,7 @@ export function printableBasicLabActivity(id,lang='en'){
  const m=basicPrintDefinition(id),i=lang==='hi'?1:0,p=(en,hi)=>lang==='hi'?hi:en;
  return {id,subject:m.subject,language:lang,title:m.title[i],prompt:m.prompt[i],caveat:m.caveat[i],steps:[
  p('Predict what the computer model will show. Write your reasoning on paper.','अनुमान लगाएँ कि कंप्यूटर मॉडल क्या दिखाएगा। अपना कारण कागज़ पर लिखें।'),
- p('With a teacher, inspect the computer-only model and compare its result with your prediction.','शिक्षक के साथ केवल कंप्यूटर मॉडल देखें और परिणाम को अपने अनुमान से मिलाएँ।'),
+ mainWorksheetInvestigation(id,lang),
  p('Explain one thing you noticed. If the model is unavailable, discuss your prediction only.','एक बात समझाएँ जो आपने देखी। मॉडल उपलब्ध न हो तो केवल अनुमान पर चर्चा करें।')
  ],sourceFile:m.sourceFile,rightsStatus:'ORIGINAL_DRAFT_PERMISSION_NOT_AUTHENTICATED',humanReviewed:false,publicReleaseApproved:false,localOnly:true,hasStudentNames:false};
 }

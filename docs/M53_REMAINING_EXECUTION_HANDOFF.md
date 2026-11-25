@@ -111,3 +111,5 @@ M88–M90 verified merged. M91 candidate adds 49 supplemental snapshots plus ind
 M91 verified merged. M92 candidate adds 60 fixed main-model-to-worksheet routes; FP-087 remains in progress pending rights and educational review.
 
 M93 candidate completes forward worksheet route coverage and adds language-preserving exact return links. FP-087 remains in progress pending rights and educational review.
+
+M92–M93 verified and merged. M94 candidate adds 60 main-model source-control-specific paper investigations; M89 rights inventory changed, regenerate local blank worklist. FP-087 remains in progress pending rights and educational review.
