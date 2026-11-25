@@ -541,6 +541,11 @@
           "source": "assets/visual-lab-engine.js",
           "test": "tests/m122-visual-lab.test.mjs",
           "status": "AWAITING_CI"
+        },
+        {
+          "source": "assets/activity-explorer-engine.js",
+          "test": "tests/m128-activity-explorer.test.mjs",
+          "status": "AWAITING_CI"
         }
       ]
     },
@@ -841,7 +846,14 @@
         "pushRun": 45686453792,
         "pullRequestRun": 45686469492,
         "treeIdentical": true
-      }
+      },
+      "followUpEvidence": [
+        {
+          "source": "assets/activity-explorer-engine.js",
+          "test": "tests/m128-activity-explorer.test.mjs",
+          "status": "AWAITING_CI"
+        }
+      ]
     },
     {
       "id": "ENG-032",
@@ -1057,7 +1069,14 @@
         "pushRun": 45713750023,
         "pullRequestRun": 45713758230,
         "treeIdentical": true
-      }
+      },
+      "followUpEvidence": [
+        {
+          "source": "assets/activity-explorer-engine.js",
+          "test": "tests/m128-activity-explorer.test.mjs",
+          "status": "AWAITING_CI"
+        }
+      ]
     },
     {
       "id": "ENG-040",

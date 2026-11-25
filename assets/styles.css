@@ -154,3 +154,6 @@ h1,h2,h3,p{margin-top:0}h1,h2,h3{line-height:1.16;letter-spacing:-.04em}h1{font-
 
 /* M122 visual diagrams retain equivalent text results and bounded responsive size. */
 .visual-lab-diagram{display:block;width:100%;max-width:440px;height:auto;background:white;border:1px solid #bdd5ce;border-radius:8px}
+
+/* M128 bounded activity discovery cards */
+.activity-explorer-results{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:12px;list-style:none;padding:0}.activity-explorer-results li{min-width:0;border:1px solid #bdd5ce;border-radius:8px;padding:12px}.activity-explorer-results h3{font-size:1rem;margin-top:0}.activity-explorer-results a{display:inline-block;max-width:100%;overflow-wrap:anywhere}@media print{#activity-explorer{display:none!important}}
