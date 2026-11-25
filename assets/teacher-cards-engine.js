@@ -2,7 +2,7 @@ import {miniControlLabels} from './mini-snapshots.js';
 import {SCIENCE_IDS,SCIENCE_MODELS} from './science-engine.js';
 import {WORKSHOP_MODES,WORKSHOP_CONTENT} from './experiment-engine.js';
 import {STUDIO_IDS,STUDIO_LESSONS} from './studio-engine.js';
-import {ADVANCED_IDS,ADVANCED_MODELS,advancedExtensionIds,advancedExtension} from './advanced-lab-engine.js';
+import {ADVANCED_IDS,ADVANCED_MODELS,advancedExtensionIds,advancedExtension,evaluateAdvancedExtension} from './advanced-lab-engine.js';
 /** M32 private classroom paper cards: source-derived, anonymous, not approved lessons. */
 import {CLASSROOM_IDS,CLASSROOM_LESSONS,CLASSROOM_ROLES,classroomStep,classroomText} from './classroom-engine.js';
 export const ROTATION_ROLES=CLASSROOM_ROLES;
@@ -345,4 +345,19 @@ export function teacherMainControlGuide(id,lang='en'){
   return {label:labels[j],kind:'range',settings:p(f.min+' to '+f.max+'; step '+f.step,f.min+' से '+f.max+'; कदम '+f.step)+(f.unit?' ('+f.unit+')':'')};
  });
  return {id,title:a.title,caveat:a.caveat,controls,teacherOnly:true,humanReviewed:false,publicReleaseApproved:false,storesStudentData:false};
+}
+
+/** M100 teacher-only supplemental preparation. Only source labels and control bounds,
+ * never calculated values, targets, learner states or independently approved answers. */
+export function teacherSupplementControlGuide(id,mode,lang='en'){
+ if(!['en','hi'].includes(lang)||!ADVANCED_IDS.includes(id)||!advancedExtensionIds(id).includes(mode))throw Error('Unknown supplemental guide');
+ const m=advancedExtension(id,mode),a=printableSupplementActivity(id,mode,lang),i=lang==='hi'?1:0;
+ const p=(en,hi)=>lang==='hi'?hi:en;
+ const controls=m.fields.map(f=>{
+  if(!Number.isInteger(f.min)||!Number.isInteger(f.max)||f.max<f.min)throw Error('Invalid supplemental control bounds');
+  return {label:f.label[i],kind:'range',settings:p(f.min+' to '+f.max+'; step 1',f.min+' से '+f.max+'; कदम 1')+(f.unit?' ('+f.unit+')':'')};
+ });
+ const quantityLabels=evaluateAdvancedExtension(id,mode,m.initial,lang).rows.map(r=>r.label);
+ if(!quantityLabels.length||quantityLabels.some(s=>typeof s!=='string'||!s.trim()))throw Error('Invalid quantity label');
+ return {id,mode,title:a.title,caveat:a.caveat,controls,quantityLabels,teacherOnly:true,humanReviewed:false,publicReleaseApproved:false,storesStudentData:false};
 }
