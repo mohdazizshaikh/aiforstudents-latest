@@ -34,6 +34,7 @@
     "review:main-fixtures": "node tools/main-model-fixture-worklist.mjs",
     "review:activity-fixtures": "node tools/all-activity-fixture-worklist.mjs",
     "pilot:backend": "node tools/pilot-backend.mjs",
-    "tutor:rehearsal": "node tools/tutor-sandbox-evaluation.mjs"
+    "tutor:rehearsal": "node tools/tutor-sandbox-evaluation.mjs",
+    "smartlab:gaps": "node tools/smart-lab-gap-audit.mjs"
   }
 }

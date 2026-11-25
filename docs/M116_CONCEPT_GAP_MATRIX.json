@@ -1,0 +1,463 @@
+{
+  "schema": "aifs-m116-gap-hypotheses-v1",
+  "scope": "Original proposed engineering model targets, not authoritative board syllabus or exhaustive missing chapter list",
+  "boards": [
+    "CBSE",
+    "Maharashtra"
+  ],
+  "verifiedChapters": 0,
+  "publicReleaseApproved": false,
+  "grades": [
+    {
+      "grade": 1,
+      "targets": [
+        {
+          "subject": "maths",
+          "proposedGap": "2D polygon side count",
+          "prototypeIds": [
+            "polygon-sides"
+          ],
+          "reviewStatus": "PENDING",
+          "officialChapter": null,
+          "edition": null
+        },
+        {
+          "subject": "physics",
+          "proposedGap": "Different motion paths",
+          "prototypeIds": [],
+          "reviewStatus": "PENDING",
+          "officialChapter": null,
+          "edition": null
+        },
+        {
+          "subject": "chemistry",
+          "proposedGap": "Sorting by material property",
+          "prototypeIds": [],
+          "reviewStatus": "PENDING",
+          "officialChapter": null,
+          "edition": null
+        },
+        {
+          "subject": "biology",
+          "proposedGap": "Needs of living things",
+          "prototypeIds": [],
+          "reviewStatus": "PENDING",
+          "officialChapter": null,
+          "edition": null
+        }
+      ]
+    },
+    {
+      "grade": 2,
+      "targets": [
+        {
+          "subject": "maths",
+          "proposedGap": "Joining and taking away quantities",
+          "prototypeIds": [],
+          "reviewStatus": "PENDING",
+          "officialChapter": null,
+          "edition": null
+        },
+        {
+          "subject": "physics",
+          "proposedGap": "Comparing duration",
+          "prototypeIds": [],
+          "reviewStatus": "PENDING",
+          "officialChapter": null,
+          "edition": null
+        },
+        {
+          "subject": "chemistry",
+          "proposedGap": "Water as solid, liquid and gas",
+          "prototypeIds": [],
+          "reviewStatus": "PENDING",
+          "officialChapter": null,
+          "edition": null
+        },
+        {
+          "subject": "biology",
+          "proposedGap": "Plant growth stages",
+          "prototypeIds": [],
+          "reviewStatus": "PENDING",
+          "officialChapter": null,
+          "edition": null
+        }
+      ]
+    },
+    {
+      "grade": 3,
+      "targets": [
+        {
+          "subject": "maths",
+          "proposedGap": "Equal groups and multiplication",
+          "prototypeIds": [
+            "equal-groups"
+          ],
+          "reviewStatus": "PENDING",
+          "officialChapter": null,
+          "edition": null
+        },
+        {
+          "subject": "physics",
+          "proposedGap": "Speed comparison from equal time",
+          "prototypeIds": [],
+          "reviewStatus": "PENDING",
+          "officialChapter": null,
+          "edition": null
+        },
+        {
+          "subject": "chemistry",
+          "proposedGap": "Separating symbolic mixtures",
+          "prototypeIds": [],
+          "reviewStatus": "PENDING",
+          "officialChapter": null,
+          "edition": null
+        },
+        {
+          "subject": "biology",
+          "proposedGap": "Animal life cycles",
+          "prototypeIds": [],
+          "reviewStatus": "PENDING",
+          "officialChapter": null,
+          "edition": null
+        }
+      ]
+    },
+    {
+      "grade": 4,
+      "targets": [
+        {
+          "subject": "maths",
+          "proposedGap": "Multi-digit addition with exchange",
+          "prototypeIds": [],
+          "reviewStatus": "PENDING",
+          "officialChapter": null,
+          "edition": null
+        },
+        {
+          "subject": "physics",
+          "proposedGap": "Direction and shadow change",
+          "prototypeIds": [],
+          "reviewStatus": "PENDING",
+          "officialChapter": null,
+          "edition": null
+        },
+        {
+          "subject": "chemistry",
+          "proposedGap": "Reversible changes comparison",
+          "prototypeIds": [],
+          "reviewStatus": "PENDING",
+          "officialChapter": null,
+          "edition": null
+        },
+        {
+          "subject": "biology",
+          "proposedGap": "Food-chain energy transfer",
+          "prototypeIds": [],
+          "reviewStatus": "PENDING",
+          "officialChapter": null,
+          "edition": null
+        }
+      ]
+    },
+    {
+      "grade": 5,
+      "targets": [
+        {
+          "subject": "maths",
+          "proposedGap": "Decimal hundredths and rectangular prism volume",
+          "prototypeIds": [
+            "decimal-hundredths",
+            "cube-volume"
+          ],
+          "reviewStatus": "PENDING",
+          "officialChapter": null,
+          "edition": null
+        },
+        {
+          "subject": "physics",
+          "proposedGap": "Parallel path diagram",
+          "prototypeIds": [],
+          "reviewStatus": "PENDING",
+          "officialChapter": null,
+          "edition": null
+        },
+        {
+          "subject": "chemistry",
+          "proposedGap": "Dissolving and recovery model",
+          "prototypeIds": [],
+          "reviewStatus": "PENDING",
+          "officialChapter": null,
+          "edition": null
+        },
+        {
+          "subject": "biology",
+          "proposedGap": "Plant water transport",
+          "prototypeIds": [],
+          "reviewStatus": "PENDING",
+          "officialChapter": null,
+          "edition": null
+        }
+      ]
+    },
+    {
+      "grade": 6,
+      "targets": [
+        {
+          "subject": "maths",
+          "proposedGap": "Signed-number operations and fraction arithmetic",
+          "prototypeIds": [],
+          "reviewStatus": "PENDING",
+          "officialChapter": null,
+          "edition": null
+        },
+        {
+          "subject": "physics",
+          "proposedGap": "Balanced and unbalanced forces",
+          "prototypeIds": [],
+          "reviewStatus": "PENDING",
+          "officialChapter": null,
+          "edition": null
+        },
+        {
+          "subject": "chemistry",
+          "proposedGap": "Particle spacing and diffusion",
+          "prototypeIds": [],
+          "reviewStatus": "PENDING",
+          "officialChapter": null,
+          "edition": null
+        },
+        {
+          "subject": "biology",
+          "proposedGap": "Habitat resource constraints",
+          "prototypeIds": [],
+          "reviewStatus": "PENDING",
+          "officialChapter": null,
+          "edition": null
+        }
+      ]
+    },
+    {
+      "grade": 7,
+      "targets": [
+        {
+          "subject": "maths",
+          "proposedGap": "Rational-number operations and percentage",
+          "prototypeIds": [],
+          "reviewStatus": "PENDING",
+          "officialChapter": null,
+          "edition": null
+        },
+        {
+          "subject": "physics",
+          "proposedGap": "Heat transfer comparison",
+          "prototypeIds": [],
+          "reviewStatus": "PENDING",
+          "officialChapter": null,
+          "edition": null
+        },
+        {
+          "subject": "chemistry",
+          "proposedGap": "Acid/base indicator colour concept",
+          "prototypeIds": [],
+          "reviewStatus": "PENDING",
+          "officialChapter": null,
+          "edition": null
+        },
+        {
+          "subject": "biology",
+          "proposedGap": "Cell organelle roles",
+          "prototypeIds": [],
+          "reviewStatus": "PENDING",
+          "officialChapter": null,
+          "edition": null
+        }
+      ]
+    },
+    {
+      "grade": 8,
+      "targets": [
+        {
+          "subject": "maths",
+          "proposedGap": "Linear equation balance and data spread",
+          "prototypeIds": [],
+          "reviewStatus": "PENDING",
+          "officialChapter": null,
+          "edition": null
+        },
+        {
+          "subject": "physics",
+          "proposedGap": "Pressure and area relationship",
+          "prototypeIds": [],
+          "reviewStatus": "PENDING",
+          "officialChapter": null,
+          "edition": null
+        },
+        {
+          "subject": "chemistry",
+          "proposedGap": "Element/compound/mixture distinctions",
+          "prototypeIds": [],
+          "reviewStatus": "PENDING",
+          "officialChapter": null,
+          "edition": null
+        },
+        {
+          "subject": "biology",
+          "proposedGap": "Cell division stages",
+          "prototypeIds": [],
+          "reviewStatus": "PENDING",
+          "officialChapter": null,
+          "edition": null
+        }
+      ]
+    },
+    {
+      "grade": 9,
+      "targets": [
+        {
+          "subject": "maths",
+          "proposedGap": "Geometric congruence and scatterplot",
+          "prototypeIds": [],
+          "reviewStatus": "PENDING",
+          "officialChapter": null,
+          "edition": null
+        },
+        {
+          "subject": "physics",
+          "proposedGap": "Velocity-time graph and acceleration",
+          "prototypeIds": [],
+          "reviewStatus": "PENDING",
+          "officialChapter": null,
+          "edition": null
+        },
+        {
+          "subject": "chemistry",
+          "proposedGap": "Conservation in symbolic formula equations",
+          "prototypeIds": [],
+          "reviewStatus": "PENDING",
+          "officialChapter": null,
+          "edition": null
+        },
+        {
+          "subject": "biology",
+          "proposedGap": "Tissue organisation",
+          "prototypeIds": [],
+          "reviewStatus": "PENDING",
+          "officialChapter": null,
+          "edition": null
+        }
+      ]
+    },
+    {
+      "grade": 10,
+      "targets": [
+        {
+          "subject": "maths",
+          "proposedGap": "Quadratic roots and grouped statistics",
+          "prototypeIds": [],
+          "reviewStatus": "PENDING",
+          "officialChapter": null,
+          "edition": null
+        },
+        {
+          "subject": "physics",
+          "proposedGap": "Ideal resistance and parallel circuits",
+          "prototypeIds": [],
+          "reviewStatus": "PENDING",
+          "officialChapter": null,
+          "edition": null
+        },
+        {
+          "subject": "chemistry",
+          "proposedGap": "Symbolic pH scale and reaction categories",
+          "prototypeIds": [],
+          "reviewStatus": "PENDING",
+          "officialChapter": null,
+          "edition": null
+        },
+        {
+          "subject": "biology",
+          "proposedGap": "Inheritance variation and reproduction models",
+          "prototypeIds": [],
+          "reviewStatus": "PENDING",
+          "officialChapter": null,
+          "edition": null
+        }
+      ]
+    },
+    {
+      "grade": 11,
+      "targets": [
+        {
+          "subject": "maths",
+          "proposedGap": "Sets, functions and limits",
+          "prototypeIds": [],
+          "reviewStatus": "PENDING",
+          "officialChapter": null,
+          "edition": null
+        },
+        {
+          "subject": "physics",
+          "proposedGap": "Momentum and ideal collisions",
+          "prototypeIds": [],
+          "reviewStatus": "PENDING",
+          "officialChapter": null,
+          "edition": null
+        },
+        {
+          "subject": "chemistry",
+          "proposedGap": "Mole ratios and ideal equilibrium",
+          "prototypeIds": [],
+          "reviewStatus": "PENDING",
+          "officialChapter": null,
+          "edition": null
+        },
+        {
+          "subject": "biology",
+          "proposedGap": "Plant transport and organ-system relationships",
+          "prototypeIds": [],
+          "reviewStatus": "PENDING",
+          "officialChapter": null,
+          "edition": null
+        }
+      ]
+    },
+    {
+      "grade": 12,
+      "targets": [
+        {
+          "subject": "maths",
+          "proposedGap": "Probability distributions and matrices",
+          "prototypeIds": [],
+          "reviewStatus": "PENDING",
+          "officialChapter": null,
+          "edition": null
+        },
+        {
+          "subject": "physics",
+          "proposedGap": "Induction and wider optics",
+          "prototypeIds": [],
+          "reviewStatus": "PENDING",
+          "officialChapter": null,
+          "edition": null
+        },
+        {
+          "subject": "chemistry",
+          "proposedGap": "Equilibrium constants and electrochemical notation",
+          "prototypeIds": [],
+          "reviewStatus": "PENDING",
+          "officialChapter": null,
+          "edition": null
+        },
+        {
+          "subject": "biology",
+          "proposedGap": "Gene expression and population ecology",
+          "prototypeIds": [],
+          "reviewStatus": "PENDING",
+          "officialChapter": null,
+          "edition": null
+        }
+      ]
+    }
+  ]
+}
