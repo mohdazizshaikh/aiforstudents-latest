@@ -5,6 +5,7 @@ import {fileURLToPath} from 'node:url';
 import path from 'node:path';
 import {createPilotStore,PilotInputError} from './pilot-store.mjs';
 import {createTutorSandbox,tutorSandboxFixtures} from './tutor-sandbox.mjs';
+import {adaptiveEvidenceCatalog,evaluateAdaptiveEvidence} from './adaptive-evidence-interface.mjs';
 
 const MAX_BODY=4096,MAX_URL=512;
 class HttpError extends Error{constructor(status){super('Request rejected');this.status=status}}
@@ -58,6 +59,13 @@ export async function startPilotBackend({port=0,token=randomBytes(32).toString('
     const q=query(u,['board','grade','subject'],['board','grade','subject']);
     if(!/^(?:[1-9]|1[0-2])$/.test(q.grade))fail(400);
     return json(res,200,store.curriculum({...q,grade:Number(q.grade)}));
+   }
+   if(route==='/v1/adaptive-rehearsal'){
+    if(method!=='GET')fail(405);
+    const q=query(u,['pool','version','scenario']);
+    if(!Object.keys(q).length)return json(res,200,adaptiveEvidenceCatalog());
+    const r=evaluateAdaptiveEvidence(q);
+    return json(res,r.status==='synthetic-evaluation'?200:422,r);
    }
    if(route==='/v1/tutor-rehearsal'){
     query(u,[]);
