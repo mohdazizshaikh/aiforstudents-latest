@@ -1,5 +1,5 @@
 import {CLASSROOM_IDS,CLASSROOM_LESSONS,classroomText} from '../../assets/classroom-engine.js';
-import {printableClassroomCard,printableAssignmentPack,printableAnyLabActivity,teacherPrintableOptions,TEACHER_LAB_SUBJECTS,teacherPrintableSupplementOptions,TEACHER_ACTIVITY_KINDS,searchTeacherResources,TEACHER_QUERY_LIMIT,teacherActivityLaunch,resolveActivityWorksheet,worksheetReturnLaunch,teacherMainControlGuide,teacherSupplementControlGuide,teacherMainObservationGuide,teacherMainBoundaryGuide,teacherPackPreparation,teacherPackReflectionGuide,teacherPackDemoLaunch,teacherResourcePreview,teacherPackHandoff,resolveTeacherPackHandoff,PACK_HANDOFF_PREFIX,LAB_PACK_LIMIT,editLabPack,printableLabPack} from '../../assets/teacher-cards-engine.js';
+import {printableClassroomCard,printableAssignmentPack,printableAnyLabActivity,teacherPrintableOptions,TEACHER_LAB_SUBJECTS,teacherPrintableSupplementOptions,TEACHER_ACTIVITY_KINDS,searchTeacherResources,TEACHER_QUERY_LIMIT,teacherActivityLaunch,resolveActivityWorksheet,worksheetReturnLaunch,teacherMainControlGuide,teacherSupplementControlGuide,teacherMainObservationGuide,teacherActivityBoundaryGuide,teacherPackPreparation,teacherPackReflectionGuide,teacherPackDemoLaunch,teacherResourcePreview,teacherPackHandoff,resolveTeacherPackHandoff,PACK_HANDOFF_PREFIX,LAB_PACK_LIMIT,editLabPack,printableLabPack} from '../../assets/teacher-cards-engine.js';
 const $=id=>document.getElementById(id);
 const lang=()=>$('card-language').value;
 let labPack=[];
@@ -59,16 +59,14 @@ function renderActivityControlGuide(id,mode,l,active){
  if(panel.hidden){panel.open=false;$('lab-teacher-control-title').textContent='';$('lab-teacher-control-notice').textContent='';return}
  const g=mode==='main'?teacherMainControlGuide(id,l):teacherSupplementControlGuide(id,mode,l),p=(en,hi)=>l==='hi'?hi:en;
  $('lab-teacher-control-title').textContent=p('Teacher preparation — computer control guide','शिक्षक तैयारी — कंप्यूटर नियंत्रण मार्गदर्शिका')+' · '+g.title;
- $('lab-teacher-control-notice').textContent=p('Unreviewed draft. Computer settings only; no target values or model answers. Keep the existing safety caution.','असमीक्षित मसौदा। केवल कंप्यूटर की स्थितियाँ; लक्ष्य मान या मॉडल के उत्तर नहीं। मौजूदा सुरक्षा सावधानी का पालन करें।');
+ $('lab-teacher-control-notice').textContent=p('Unreviewed draft. Computer settings, output labels and optional discussion only; no target values or model answers. Keep the existing safety caution.','असमीक्षित मसौदा। केवल कंप्यूटर की स्थितियाँ, परिणामों के नाम और वैकल्पिक चर्चा; लक्ष्य मान या मॉडल के उत्तर नहीं। मौजूदा सुरक्षा सावधानी का पालन करें।');
  for(const c of g.controls){const term=document.createElement('dt'),desc=document.createElement('dd');term.textContent=c.label;desc.textContent=c.settings;rows.append(term,desc)}
  const labels=mode==='main'?teacherMainObservationGuide(id,l).labels:g.quantityLabels;
  $('lab-teacher-quantity-title').textContent=mode==='main'?p('Model outputs to observe (labels only)','देखने योग्य मॉडल परिणाम (केवल नाम)'):p('Calculated quantities (labels only)','गणना की गई राशियाँ (केवल नाम)');
  for(const label of labels){const item=document.createElement('li');item.textContent=label;quantities.append(item)}
  quantityPanel.hidden=false;
- if(mode==='main'){
-  $('lab-teacher-boundary-title').textContent=p('Discuss the model limits (unreviewed draft)','मॉडल की सीमाओं पर चर्चा (असमीक्षित मसौदा)');
-  boundaryText.textContent=teacherMainBoundaryGuide(id,l).prompt;boundary.hidden=false;
- }
+ $('lab-teacher-boundary-title').textContent=p('Discuss the model limits (unreviewed draft)','मॉडल की सीमाओं पर चर्चा (असमीक्षित मसौदा)');
+ boundaryText.textContent=teacherActivityBoundaryGuide(id+':'+mode,l).prompt;boundary.hidden=false;
  const key=id+':'+mode+':'+l;if(panel.dataset.guideKey!==key){panel.open=false;panel.dataset.guideKey=key}
 }
 function renderLab(l){
@@ -189,7 +187,7 @@ function renderPackPreparation(l){
  const data=teacherPackPreparation(isLabPack()?labPack:[],l);
  host.replaceChildren();panel.hidden=!data.items.length;
  $('lab-pack-preparation-title').textContent=p('Teacher preparation — selected pack','शिक्षक तैयारी — चुना पैक');
- $('lab-pack-preparation-notice').textContent=p('Unreviewed rehearsal guide. Computer settings and output labels only, not answers or verified lesson plans. Demonstration links open fresh models in separate tabs; keep this pack tab open. The pack is not saved on reload or close.','असमीक्षित पूर्वाभ्यास मार्गदर्शिका। केवल कंप्यूटर की स्थितियाँ और परिणाम के नाम, उत्तर या सत्यापित पाठ योजना नहीं। प्रदर्शन लिंक अलग टैब में नए मॉडल खोलते हैं; पैक का टैब खुला रखें। फिर लोड करने या बंद करने पर पैक सहेजा नहीं जाता।');
+ $('lab-pack-preparation-notice').textContent=p('Unreviewed rehearsal guide. Computer settings, output labels and optional discussion only, not answers or verified lesson plans. Demonstration links open fresh models in separate tabs; keep this pack tab open. The pack is not saved on reload or close.','असमीक्षित पूर्वाभ्यास मार्गदर्शिका। केवल कंप्यूटर की स्थितियाँ, परिणाम के नाम और वैकल्पिक चर्चा, उत्तर या सत्यापित पाठ योजना नहीं। प्रदर्शन लिंक अलग टैब में नए मॉडल खोलते हैं; पैक का टैब खुला रखें। फिर लोड करने या बंद करने पर पैक सहेजा नहीं जाता।');
  const key=JSON.stringify([l,...data.items.map(x=>x.key)]);
  if(panel.hidden||panel.dataset.preparationKey!==key)panel.open=false;
  panel.dataset.preparationKey=key;
@@ -202,11 +200,8 @@ function renderPackPreparation(l){
   const dl=el('dl');for(const c of item.controls)dl.append(el('dt',c.label),el('dd',c.settings));section.append(dl);
   section.append(el('h4',p('Model outputs to observe (labels only)','देखने योग्य मॉडल परिणाम (केवल नाम)')));
   const ul=el('ul');for(const label of item.observationLabels)ul.append(el('li',label));section.append(ul);
-  const [id,mode]=item.key.split(':');
-  if(mode==='main'){
-   const boundary=el('p',teacherMainBoundaryGuide(id,l).prompt);boundary.className='teacher-model-boundary';
-   section.append(el('h4',p('Discuss the model limits (unreviewed draft)','मॉडल की सीमाओं पर चर्चा (असमीक्षित मसौदा)')),boundary);
-  }
+  const boundary=el('p',teacherActivityBoundaryGuide(item.key,l).prompt);boundary.className='teacher-model-boundary';
+  section.append(el('h4',p('Discuss the model limits (unreviewed draft)','मॉडल की सीमाओं पर चर्चा (असमीक्षित मसौदा)')),boundary);
   const launch=teacherPackDemoLaunch(labPack,item.key,l);
   const link=el('a',p('Open fresh computer model (new tab): ','नया कंप्यूटर मॉडल खोलें (नया टैब): ')+launch.title);
   link.href=launch.href;link.target=launch.target;link.rel=launch.rel;section.append(link);host.append(section);
