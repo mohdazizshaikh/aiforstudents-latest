@@ -19,6 +19,10 @@ function checked(id,s){
  if(id==='studio/circuit-path'&&typeof s.closed!=='boolean')throw Error('Invalid circuit');
  return {...s};
 }
+export function miniControlLabels(id,lang='en'){
+ if(!Object.hasOwn(specs,id)||!['en','hi'].includes(lang))throw Error('Unknown mini controls');
+ return specs[id].map(([,en,hi])=>pair(lang,en,hi));
+}
 export const MINI_SNAPSHOT_IDS=Object.freeze([...WORKSHOP_MODES.map(m=>'maths/'+m),...STUDIO_IDS.map(m=>'studio/'+m)]);
 const equal=(a,b)=>Object.keys(a).every(k=>a[k]===b[k]);
 function validate(id,states){

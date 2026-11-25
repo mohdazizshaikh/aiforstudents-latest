@@ -1,5 +1,7 @@
 # M89 — Individual teacher resource rights handoff (candidate)
 
+**M94 candidate fingerprint change:** 60 main-model printable worksheets now include source-control-specific investigations. Regenerate the local 109-record worklist from the matching checkout; prior inventory hash must fail closed. No rights decisions authenticated.
+
 **Verified:** both CI runs 45493925987 and 45493903756 passed; PR #79 merged at dc4832f76bb8c7f7b993704f9abd3a8bd3264e7e. No external approval.
 
 M85–M87 verified and merged; main 80c1da58d933be9f635eb381b740e123d96b2096. M88 initial Chromium passed, Node legacy input assertion corrected b0d2afd, fresh CI pending.
