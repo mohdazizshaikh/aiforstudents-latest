@@ -1352,6 +1352,27 @@ def run():
                 copy_page.close()
                 phone.locator('#card-language').select_option('en')
                 report['checks'].append('M103 offline fresh pack copy, language/order, fragment consumption, invalid recipe and print isolation')
+                # Explicitly open the Hindi selected-pack preparation and demonstrate its first activity.
+                phone.locator('#card-language').select_option('hi')
+                if not prep.evaluate('(el) => el.open'):
+                    prep.locator('summary').click()
+                demo_link=prep_items.first.locator('a')
+                check(demo_link.get_attribute('target') == '_blank', 'M104 demo opens independent tab')
+                check(demo_link.get_attribute('rel') == 'noopener noreferrer', 'M104 isolated opener/referrer')
+                with phone.expect_popup() as demo_info:
+                    demo_link.click()
+                demo_page=demo_info.value
+                demo_page.wait_for_load_state('load')
+                demo_page.locator('#ratio-extension-mode').wait_for()
+                check(demo_page.locator('#advanced-topic').input_value() == 'ratio-algebra', 'M104 exact demo model')
+                check(demo_page.locator('#ratio-extension-mode').input_value() == 'equation', 'M104 exact demo supplement')
+                check(demo_page.locator('#lang').input_value() == 'hi', 'M104 exact demo language')
+                check(demo_page.evaluate('window.opener === null'), 'M104 no opener')
+                demo_page.close()
+                check(phone.locator('#lab-pack-pages .lab-pack-page').evaluate_all("(els) => els.map(e => e.dataset.activityKey)") == ['ratio-algebra:equation','maths/rectangle:main'], 'M104 original pack remains intact')
+                check(phone.locator('#card-language').input_value() == 'hi', 'M104 original language remains intact')
+                phone.locator('#card-language').select_option('en')
+                report['checks'].append('M104 isolated offline demonstration tab, exact model/mode/language, original pack preserved')
                 phone.locator('#lab-pack-clear').click()
                 check(phone.locator('#lab-pack-pages .paper-comparison').count() == 0, 'M96 pack clear')
                 check(prep.is_hidden() and prep_items.count() == 0, 'M102 empty pack clears guide')

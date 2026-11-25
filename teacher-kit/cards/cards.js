@@ -1,5 +1,5 @@
 import {CLASSROOM_IDS,CLASSROOM_LESSONS,classroomText} from '../../assets/classroom-engine.js';
-import {printableClassroomCard,printableAssignmentPack,printableAnyLabActivity,teacherPrintableOptions,TEACHER_LAB_SUBJECTS,teacherPrintableSupplementOptions,TEACHER_ACTIVITY_KINDS,searchTeacherResources,TEACHER_QUERY_LIMIT,teacherActivityLaunch,resolveActivityWorksheet,worksheetReturnLaunch,teacherMainControlGuide,teacherSupplementControlGuide,teacherMainObservationGuide,teacherPackPreparation,teacherPackHandoff,resolveTeacherPackHandoff,PACK_HANDOFF_PREFIX,LAB_PACK_LIMIT,editLabPack,printableLabPack} from '../../assets/teacher-cards-engine.js';
+import {printableClassroomCard,printableAssignmentPack,printableAnyLabActivity,teacherPrintableOptions,TEACHER_LAB_SUBJECTS,teacherPrintableSupplementOptions,TEACHER_ACTIVITY_KINDS,searchTeacherResources,TEACHER_QUERY_LIMIT,teacherActivityLaunch,resolveActivityWorksheet,worksheetReturnLaunch,teacherMainControlGuide,teacherSupplementControlGuide,teacherMainObservationGuide,teacherPackPreparation,teacherPackDemoLaunch,teacherPackHandoff,resolveTeacherPackHandoff,PACK_HANDOFF_PREFIX,LAB_PACK_LIMIT,editLabPack,printableLabPack} from '../../assets/teacher-cards-engine.js';
 const $=id=>document.getElementById(id);
 const lang=()=>$('card-language').value;
 let labPack=[];
@@ -177,7 +177,7 @@ function renderPackPreparation(l){
  const data=teacherPackPreparation(isLabPack()?labPack:[],l);
  host.replaceChildren();panel.hidden=!data.items.length;
  $('lab-pack-preparation-title').textContent=p('Teacher preparation — selected pack','शिक्षक तैयारी — चुना पैक');
- $('lab-pack-preparation-notice').textContent=p('Unreviewed rehearsal guide. Computer settings and output labels only, not answers or verified lesson plans. Links open fresh models; the current pack is not saved when leaving this page.','असमीक्षित पूर्वाभ्यास मार्गदर्शिका। केवल कंप्यूटर की स्थितियाँ और परिणाम के नाम, उत्तर या सत्यापित पाठ योजना नहीं। लिंक नया मॉडल खोलते हैं; पृष्ठ छोड़ने पर वर्तमान पैक सहेजा नहीं जाता।');
+ $('lab-pack-preparation-notice').textContent=p('Unreviewed rehearsal guide. Computer settings and output labels only, not answers or verified lesson plans. Demonstration links open fresh models in separate tabs; keep this pack tab open. The pack is not saved on reload or close.','असमीक्षित पूर्वाभ्यास मार्गदर्शिका। केवल कंप्यूटर की स्थितियाँ और परिणाम के नाम, उत्तर या सत्यापित पाठ योजना नहीं। प्रदर्शन लिंक अलग टैब में नए मॉडल खोलते हैं; पैक का टैब खुला रखें। फिर लोड करने या बंद करने पर पैक सहेजा नहीं जाता।');
  const key=JSON.stringify([l,...data.items.map(x=>x.key)]);
  if(panel.hidden||panel.dataset.preparationKey!==key)panel.open=false;
  panel.dataset.preparationKey=key;
@@ -188,8 +188,9 @@ function renderPackPreparation(l){
   const dl=el('dl');for(const c of item.controls)dl.append(el('dt',c.label),el('dd',c.settings));section.append(dl);
   section.append(el('h4',p('Model outputs to observe (labels only)','देखने योग्य मॉडल परिणाम (केवल नाम)')));
   const ul=el('ul');for(const label of item.observationLabels)ul.append(el('li',label));section.append(ul);
-  const link=el('a',p('Open fresh computer model: ','नया कंप्यूटर मॉडल खोलें: ')+item.title);
-  link.href='../../'+item.href;section.append(link);host.append(section);
+  const launch=teacherPackDemoLaunch(labPack,item.key,l);
+  const link=el('a',p('Open fresh computer model (new tab): ','नया कंप्यूटर मॉडल खोलें (नया टैब): ')+launch.title);
+  link.href=launch.href;link.target=launch.target;link.rel=launch.rel;section.append(link);host.append(section);
  }
 }
 function renderLabPack(l){
