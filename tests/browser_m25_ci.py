@@ -1331,6 +1331,8 @@ def run():
                 check(prep.is_hidden() and prep_items.count() == 0, 'M102 empty pack clears guide')
                 report['checks'].append('M96 main-model comparison tables across four families, Hindi, mixed pack and print isolation')
                 phone.goto(origin + '/teacher-kit/cards/?worksheet=maths%2Frectangle&language=en#lab-activity', wait_until='load')
+                # Explicit reload: prior M102 pack uses the identical worksheet URL.
+                phone.reload(wait_until='load')
                 guide=phone.locator('#lab-teacher-control-guide')
                 check(guide.is_visible(), 'M99 main teacher control guide missing')
                 guide.locator('summary').click()
