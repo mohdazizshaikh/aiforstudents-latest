@@ -1,5 +1,7 @@
 # M94 — Main worksheet investigations (candidate)
 
+**Verified:** runs 45560335355 and 45560319882 succeeded; PR #84 merged at 843c8ee852f33100f5735d56380fad8542bef789. No external approval.
+
 M92 and M93 verified and merged, main 8335d32e151f0354e4e63d1009ed805e3f12fdb3. M94 adds 60 source-bound paper investigations (48 advanced, seven foundational science, three Maths Workshop and two Studio), in English and Hindi. Each replaces the generic second worksheet step with actual computer control labels, two settings, holding other controls unchanged where possible and noting displayed model outputs on paper. If unavailable, discuss/write a prediction only. Existing caveats and three-step structure retained. No numeric targets, new answer keys, real experiments, student fields, storage or assessment. 49 supplemental worksheets preserve prior exact wording. Single and mixed pack prints reuse the same source. 61 named Node tests plus offline Chromium regression. No physical print test.
 
 M89 fingerprints cover the changed printable object automatically; all 60 main resource content hashes and full inventory fingerprint change, so regenerate local pending rights worksheet and do not reuse stale decisions. Existing canonical learning-content queues unchanged; the newly authored bilingual instructions require qualified education/language/rights review as part of resource review, not approved content. FP-087 remains in progress. No launch authorization. 70/100 scoped tasks unchanged. Exact-head CI pending.
