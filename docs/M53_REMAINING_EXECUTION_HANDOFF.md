@@ -115,3 +115,5 @@ M93 candidate completes forward worksheet route coverage and adds language-prese
 M92–M93 verified and merged. M94 candidate adds 60 main-model source-control-specific paper investigations; M89 rights inventory changed, regenerate local blank worklist. FP-087 remains in progress pending rights and educational review.
 
 M95 candidate adds 49 supplemental investigations plus 49 paper comparison tables. Regenerate M89 pending worklist after exact checkout; FP-087 remains in progress, no real approvals.
+
+M96 candidate adds 60 main-model blank paper comparison tables; all 109 activities now share the paper format in candidate. Regenerate M89 local pending worklist after final verified checkout; FP-087 remains in progress.

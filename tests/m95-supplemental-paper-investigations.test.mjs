@@ -24,9 +24,9 @@ for(const [id,mode] of keys){
   }
  });
 }
-test('M95 exact inventory, main worksheets unchanged, invalid supplemental selectors rejected',()=>{
+test('M95 exact supplemental inventory, M96 main tables, invalid supplemental selectors rejected',()=>{
  assert.equal(keys.length,49);
- for(const id of ADVANCED_IDS)assert.equal(Object.hasOwn(printableAnyLabActivity(id,'main'),'comparison'),false);
+ for(const id of ADVANCED_IDS)assert.equal(Object.hasOwn(printableAnyLabActivity(id,'main'),'comparison'),true);
  for(const fn of [supplementalWorksheetControls,supplementalWorksheetInvestigation,supplementalWorksheetComparison]){
   assert.throws(()=>fn('unknown','ratio'));assert.throws(()=>fn('ratio-algebra','unknown'));assert.throws(()=>fn('ratio-algebra','ratio','xx'));
  }
