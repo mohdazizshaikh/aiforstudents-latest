@@ -109,3 +109,5 @@ M90 candidate adds direct fixed demonstration links for 109 teacher resources. F
 M88–M90 verified merged. M91 candidate adds 49 supplemental snapshots plus individual deletion across 109 models. No new human-gate decisions.
 
 M91 verified merged. M92 candidate adds 60 fixed main-model-to-worksheet routes; FP-087 remains in progress pending rights and educational review.
+
+M93 candidate completes forward worksheet route coverage and adds language-preserving exact return links. FP-087 remains in progress pending rights and educational review.

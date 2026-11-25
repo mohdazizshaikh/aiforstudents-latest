@@ -1,5 +1,5 @@
 import {CLASSROOM_IDS,CLASSROOM_LESSONS,classroomText} from '../../assets/classroom-engine.js';
-import {printableClassroomCard,printableAssignmentPack,printableAnyLabActivity,teacherPrintableOptions,TEACHER_LAB_SUBJECTS,teacherPrintableSupplementOptions,TEACHER_ACTIVITY_KINDS,searchTeacherResources,TEACHER_QUERY_LIMIT,teacherActivityLaunch,resolveMainWorksheet,LAB_PACK_LIMIT,editLabPack,printableLabPack} from '../../assets/teacher-cards-engine.js';
+import {printableClassroomCard,printableAssignmentPack,printableAnyLabActivity,teacherPrintableOptions,TEACHER_LAB_SUBJECTS,teacherPrintableSupplementOptions,TEACHER_ACTIVITY_KINDS,searchTeacherResources,TEACHER_QUERY_LIMIT,teacherActivityLaunch,resolveActivityWorksheet,worksheetReturnLaunch,LAB_PACK_LIMIT,editLabPack,printableLabPack} from '../../assets/teacher-cards-engine.js';
 const $=id=>document.getElementById(id);
 const lang=()=>$('card-language').value;
 let labPack=[];
@@ -56,7 +56,7 @@ function renderLab(l){
  $('lab-pack-controls').hidden=!pack;$('lab-pack-output').hidden=!pack;
  if(!pack){clearLaunch('lab-pack-launch');labPack=[];$('lab-pack-pages').replaceChildren();$('lab-pack-choice').replaceChildren();$('card-print').disabled=false;}
  const host=$('lab-activity-steps');host.replaceChildren();
- if(!active){$('lab-print-activity').value='main';resourceKind='all';resourceScope='current';resourceQuery='';$('lab-resource-query').value='';$('lab-resource-result').replaceChildren();$('lab-resource-kind').value='all';$('lab-resource-scope').value='current';$('lab-resource-add').hidden=true;$('lab-resource-add').disabled=true;clearLaunch('lab-resource-launch');clearLaunch('lab-pack-launch');return;}
+ if(!active){$('lab-print-activity').value='main';resourceKind='all';resourceScope='current';resourceQuery='';$('lab-resource-query').value='';$('lab-resource-result').replaceChildren();$('lab-resource-kind').value='all';$('lab-resource-scope').value='current';$('lab-resource-add').hidden=true;$('lab-resource-add').disabled=true;clearLaunch('lab-resource-launch');clearLaunch('lab-pack-launch');clearLaunch('lab-worksheet-return');return;}
  const p=(en,hi)=>l==='hi'?hi:en;
  const subject=$('lab-print-subject'),model=$('lab-print-model'),previous=model.value;
  const chosen=subject.value||'maths';subject.replaceChildren();
@@ -76,6 +76,7 @@ function renderLab(l){
  $('lab-print-activity-label').textContent=p('Choose a draft activity','मसौदा गतिविधि चुनें');
  renderResourceFinder(l);
  const a=printableAnyLabActivity(model.value,activity.value,l);
+ if(pack)clearLaunch('lab-worksheet-return');else {const plan=worksheetReturnLaunch(model.value+':'+activity.value,l),link=$('lab-worksheet-return');link.href='../../'+plan.href;link.hidden=false;link.textContent=p('Return to exact computer model: ','ठीक उसी कंप्यूटर मॉडल पर लौटें: ')+plan.title;}
  $('lab-activity-heading').textContent=a.title;$('lab-activity-prompt').textContent=a.prompt;
  $('lab-activity-warning').textContent=p('Original unreviewed computer-only activity. Permission and educational review pending.','मूल असमीक्षित कंप्यूटर गतिविधि। अनुमति और शैक्षिक समीक्षा बाकी है।');
  $('lab-activity-caveat').textContent=a.caveat;
@@ -183,7 +184,7 @@ for(const id of ['card-language','card-lesson','card-step','card-view'])$(id).ad
  render();$(activeHeading()).focus();
 });
 // Resolve the URL once. It contains only an allowlisted model ID and language, never a response.
-const initialWorksheet=resolveMainWorksheet(location.search);
+const initialWorksheet=resolveActivityWorksheet(location.search);
 if(initialWorksheet){
  $('card-language').value=initialWorksheet.language;
  $('card-view').value='lab';
@@ -192,5 +193,7 @@ if(initialWorksheet){
  renderLab(lang());
  $('lab-print-model').value=initialWorksheet.id;
  $('lab-print-activity').value='main';
+ renderLab(lang());
+ $('lab-print-activity').value=initialWorksheet.mode;
  renderLab(lang());
 }else render();
