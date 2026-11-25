@@ -1,5 +1,5 @@
 import {CLASSROOM_IDS,CLASSROOM_LESSONS,classroomText} from '../../assets/classroom-engine.js';
-import {printableClassroomCard,printableAssignmentPack,printableAnyLabActivity,teacherPrintableOptions,TEACHER_LAB_SUBJECTS,teacherPrintableSupplementOptions,TEACHER_ACTIVITY_KINDS,searchTeacherResources,TEACHER_QUERY_LIMIT,teacherActivityLaunch,resolveActivityWorksheet,worksheetReturnLaunch,teacherMainControlGuide,teacherSupplementControlGuide,teacherMainObservationGuide,teacherPackPreparation,teacherPackDemoLaunch,teacherPackHandoff,resolveTeacherPackHandoff,PACK_HANDOFF_PREFIX,LAB_PACK_LIMIT,editLabPack,printableLabPack} from '../../assets/teacher-cards-engine.js';
+import {printableClassroomCard,printableAssignmentPack,printableAnyLabActivity,teacherPrintableOptions,TEACHER_LAB_SUBJECTS,teacherPrintableSupplementOptions,TEACHER_ACTIVITY_KINDS,searchTeacherResources,TEACHER_QUERY_LIMIT,teacherActivityLaunch,resolveActivityWorksheet,worksheetReturnLaunch,teacherMainControlGuide,teacherSupplementControlGuide,teacherMainObservationGuide,teacherPackPreparation,teacherPackDemoLaunch,teacherResourcePreview,teacherPackHandoff,resolveTeacherPackHandoff,PACK_HANDOFF_PREFIX,LAB_PACK_LIMIT,editLabPack,printableLabPack} from '../../assets/teacher-cards-engine.js';
 const $=id=>document.getElementById(id);
 const lang=()=>$('card-language').value;
 let labPack=[];
@@ -69,9 +69,9 @@ function renderLab(l){
  const active=isLab(),pack=isLabPack();
  $('lab-print-controls').hidden=!active;$('lab-activity').hidden=!active||pack;
  $('lab-pack-controls').hidden=!pack;$('lab-pack-output').hidden=!pack;
- if(!pack){clearLaunch('lab-pack-launch');clearLaunch('lab-pack-handoff');$('lab-pack-handoff-notice').textContent='';labPack=[];renderPackPreparation(l);$('lab-pack-pages').replaceChildren();$('lab-pack-choice').replaceChildren();$('card-print').disabled=false;}
+ if(!pack){clearLaunch('lab-pack-preview');clearLaunch('lab-pack-launch');clearLaunch('lab-pack-handoff');$('lab-pack-handoff-notice').textContent='';labPack=[];renderPackPreparation(l);$('lab-pack-pages').replaceChildren();$('lab-pack-choice').replaceChildren();$('card-print').disabled=false;}
  const host=$('lab-activity-steps');host.replaceChildren();
- if(!active){renderActivityControlGuide('','',l,false);$('lab-print-activity').value='main';resourceKind='all';resourceScope='current';resourceQuery='';$('lab-resource-query').value='';$('lab-resource-result').replaceChildren();$('lab-resource-kind').value='all';$('lab-resource-scope').value='current';$('lab-resource-add').hidden=true;$('lab-resource-add').disabled=true;clearLaunch('lab-resource-launch');clearLaunch('lab-pack-launch');clearLaunch('lab-worksheet-return');return;}
+ if(!active){renderActivityControlGuide('','',l,false);$('lab-print-activity').value='main';resourceKind='all';resourceScope='current';resourceQuery='';$('lab-resource-query').value='';$('lab-resource-result').replaceChildren();$('lab-resource-kind').value='all';$('lab-resource-scope').value='current';$('lab-resource-add').hidden=true;$('lab-resource-add').disabled=true;clearLaunch('lab-resource-launch');clearLaunch('lab-resource-preview');clearLaunch('lab-pack-launch');clearLaunch('lab-pack-preview');clearLaunch('lab-worksheet-return');return;}
  const p=(en,hi)=>l==='hi'?hi:en;
  const subject=$('lab-print-subject'),model=$('lab-print-model'),previous=model.value;
  const chosen=subject.value||'maths';subject.replaceChildren();
@@ -114,7 +114,13 @@ function syncLaunch(id,key){
  a.href='../../'+plan.href;a.hidden=false;
  a.textContent=lang()==='hi'?'कंप्यूटर मॉडल खोलें: '+plan.title:'Open computer model: '+plan.title;
 }
-function syncResourceAdd(){const button=$('lab-resource-add'),key=$('lab-resource-result').value;button.hidden=!isLabPack();button.disabled=!isLabPack()||!key||labPack.includes(key)||labPack.length>=LAB_PACK_LIMIT;syncLaunch('lab-resource-launch',isLab()?key:'');}
+function syncPreview(id,key,selectedOnly=false){
+ if(!key){clearLaunch(id);return}
+ const plan=selectedOnly?teacherPackDemoLaunch(labPack,key,lang()):teacherResourcePreview(key,lang()),a=$(id);
+ a.href=plan.href;a.target=plan.target;a.rel=plan.rel;a.hidden=false;
+ a.textContent=(lang()==='hi'?'नया टैब में मॉडल देखें: ':'Preview model (new tab): ')+plan.title;
+}
+function syncResourceAdd(){const button=$('lab-resource-add'),key=$('lab-resource-result').value;button.hidden=!isLabPack();button.disabled=!isLabPack()||!key||labPack.includes(key)||labPack.length>=LAB_PACK_LIMIT;syncLaunch('lab-resource-launch',isLab()?key:'');syncPreview('lab-resource-preview',isLab()?key:'');}
 function renderResourceFinder(l){
  const p=(en,hi)=>l==='hi'?hi:en,kind=$('lab-resource-kind'),result=$('lab-resource-result'),previous=result.value;
  const make=(value,label)=>{const o=document.createElement('option');o.value=value;o.textContent=label;return o};
@@ -208,7 +214,7 @@ function renderLabPack(l){
  for(const [id,en,hi] of [['add','Add selected lab activity','चुनी प्रयोग गतिविधि जोड़ें'],['remove','Remove','हटाएँ'],['up','Move earlier','पहले करें'],['down','Move later','बाद में करें'],['clear','Clear pack','पैक मिटाएँ']])$('lab-pack-'+id).textContent=p(en,hi);
  choice.replaceChildren();for(const item of data.items){const option=el('option',item.position+'. '+item.title);option.value=item.key;choice.append(option)}
  if(labPack.includes(previous))choice.value=previous;
- const index=labPack.indexOf(choice.value);syncLaunch('lab-pack-launch',index<0?'':choice.value);
+ const index=labPack.indexOf(choice.value);syncLaunch('lab-pack-launch',index<0?'':choice.value);syncPreview('lab-pack-preview',index<0?'':choice.value,true);
  $('lab-pack-add').disabled=labPack.includes(current)||labPack.length>=LAB_PACK_LIMIT;syncResourceAdd();
  choice.disabled=!labPack.length;$('lab-pack-remove').disabled=index<0;$('lab-pack-up').disabled=index<=0;$('lab-pack-down').disabled=index<0||index===labPack.length-1;$('lab-pack-clear').disabled=!labPack.length;
  $('card-print').textContent=p('Print selected lab pack','चुना प्रयोग पैक छापें');$('card-print').disabled=!labPack.length;

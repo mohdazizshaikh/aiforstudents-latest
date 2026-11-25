@@ -534,3 +534,10 @@ export function teacherPackDemoLaunch(keys,key,lang='en'){
  const plan=worksheetReturnLaunch(key,lang);
  return {key,title:plan.title,language:lang,href:'../../'+plan.href,target:'_blank',rel:'noopener noreferrer',preservesOriginalPack:true,localOnly:true,storesStudentData:false,humanReviewed:false,publicReleaseApproved:false};
 }
+
+/** M105 fixed-resource preview for discovery before pack selection.
+ * No query text, answers, learner state or pack contents in the URL. */
+export function teacherResourcePreview(key,lang='en'){
+ const plan=worksheetReturnLaunch(key,lang);
+ return {key,title:plan.title,language:lang,href:'../../'+plan.href,target:'_blank',rel:'noopener noreferrer',localOnly:true,storesStudentData:false,humanReviewed:false,publicReleaseApproved:false};
+}

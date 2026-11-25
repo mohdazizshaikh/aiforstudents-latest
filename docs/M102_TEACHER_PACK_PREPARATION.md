@@ -1,5 +1,7 @@
 # M102 — Mixed assignment pack preparation (candidate)
 
+**Verified:** both exact-head CI runs 45636750762 and 45636738750 passed; PR #92 merged at f5b70d3ed0cbf60f95593b8f6b684672240e03dc. No independent educational approval.
+
 > **M102 SECOND CORRECTION:** M33/M29 historical baselines retained. Corrected runs 45633725371 and 45633710158: Node/static passed; Chromium progressed past M102 and failed legacy M99 guide visibility after returning to the identical worksheet URL while pack mode was still active. Explicit reload initializes fresh worksheet mode; existing assertions retained. Fresh CI pending; no merge or human approval.
 
 > **M102 CORRECTED CANDIDATE:** M33/M29 historical baselines retained. Original push/PR CI 45611236490 and 45611255917: Node passed; Chromium failed M102 selected-order assertion because the preceding M96 loop ended on Hindi circuit, not English rectangle. Explicit fresh English rectangle + equation fixture added; original M96 checks retained. Fresh CI pending; no merge or approval yet.

@@ -1,5 +1,7 @@
 # M103 — Offline fresh-pack handoff (candidate)
 
+**Verified:** both exact-head CI runs 45636826596 and 45636813451 passed; PR #93 merged at 183658653d8e5072829a619d00637b3b91708c9c. No independent educational approval.
+
 > **M103 CORRECTED CANDIDATE:** M33/M29 historical baselines retained. Original M103 runs 45633916571 and 45633883396 passed Node/static; Chromium progressed past M103 and failed inherited M99 guide visibility after returning to the same URL. Integrated M102 second correction 02977c7 with explicit reload; fresh CI pending.
 
 M102 original Node/static checks passed, Chromium failed the selected-order assertion (prior M96 fixture was Hindi circuit). Corrected head 4fff6a202f1e5bdd754b19495ff76f362ebc0cda establishes fresh English rectangle + equation fixture; corrected CI pending at M103 branch creation.
