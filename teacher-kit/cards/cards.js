@@ -1,5 +1,5 @@
 import {CLASSROOM_IDS,CLASSROOM_LESSONS,classroomText} from '../../assets/classroom-engine.js';
-import {printableClassroomCard,printableAssignmentPack,printableAnyLabActivity,teacherPrintableOptions,TEACHER_LAB_SUBJECTS,teacherPrintableSupplementOptions,TEACHER_ACTIVITY_KINDS,searchTeacherResources,TEACHER_QUERY_LIMIT,teacherActivityLaunch,resolveActivityWorksheet,worksheetReturnLaunch,LAB_PACK_LIMIT,editLabPack,printableLabPack} from '../../assets/teacher-cards-engine.js';
+import {printableClassroomCard,printableAssignmentPack,printableAnyLabActivity,teacherPrintableOptions,TEACHER_LAB_SUBJECTS,teacherPrintableSupplementOptions,TEACHER_ACTIVITY_KINDS,searchTeacherResources,TEACHER_QUERY_LIMIT,teacherActivityLaunch,resolveActivityWorksheet,worksheetReturnLaunch,teacherMainControlGuide,LAB_PACK_LIMIT,editLabPack,printableLabPack} from '../../assets/teacher-cards-engine.js';
 const $=id=>document.getElementById(id);
 const lang=()=>$('card-language').value;
 let labPack=[];
@@ -50,13 +50,23 @@ function renderPack(lesson,l){
   const space=el('div','');space.className='writing';space.setAttribute('aria-label',l==='hi'?'कागज़ पर लिखने की जगह':'Space for paper response');section.append(space);host.append(section);
  }
 }
+function renderMainControlGuide(id,mode,l,active){
+ const panel=$('lab-teacher-control-guide'),rows=$('lab-teacher-control-rows');
+ rows.replaceChildren();panel.hidden=!active||mode!=='main';
+ if(panel.hidden){panel.open=false;$('lab-teacher-control-title').textContent='';$('lab-teacher-control-notice').textContent='';return}
+ const g=teacherMainControlGuide(id,l),p=(en,hi)=>l==='hi'?hi:en;
+ $('lab-teacher-control-title').textContent=p('Teacher preparation — computer control guide','शिक्षक तैयारी — कंप्यूटर नियंत्रण मार्गदर्शिका')+' · '+g.title;
+ $('lab-teacher-control-notice').textContent=p('Unreviewed draft. Computer settings only; no target values or model answers. Keep the existing safety caution.','असमीक्षित मसौदा। केवल कंप्यूटर की स्थितियाँ; लक्ष्य मान या मॉडल के उत्तर नहीं। मौजूदा सुरक्षा सावधानी का पालन करें।');
+ for(const c of g.controls){const term=document.createElement('dt'),desc=document.createElement('dd');term.textContent=c.label;desc.textContent=c.settings;rows.append(term,desc)}
+ const key=id+':'+l;if(panel.dataset.guideKey!==key){panel.open=false;panel.dataset.guideKey=key}
+}
 function renderLab(l){
  const active=isLab(),pack=isLabPack();
  $('lab-print-controls').hidden=!active;$('lab-activity').hidden=!active||pack;
  $('lab-pack-controls').hidden=!pack;$('lab-pack-output').hidden=!pack;
  if(!pack){clearLaunch('lab-pack-launch');labPack=[];$('lab-pack-pages').replaceChildren();$('lab-pack-choice').replaceChildren();$('card-print').disabled=false;}
  const host=$('lab-activity-steps');host.replaceChildren();
- if(!active){$('lab-print-activity').value='main';resourceKind='all';resourceScope='current';resourceQuery='';$('lab-resource-query').value='';$('lab-resource-result').replaceChildren();$('lab-resource-kind').value='all';$('lab-resource-scope').value='current';$('lab-resource-add').hidden=true;$('lab-resource-add').disabled=true;clearLaunch('lab-resource-launch');clearLaunch('lab-pack-launch');clearLaunch('lab-worksheet-return');return;}
+ if(!active){renderMainControlGuide('','',l,false);$('lab-print-activity').value='main';resourceKind='all';resourceScope='current';resourceQuery='';$('lab-resource-query').value='';$('lab-resource-result').replaceChildren();$('lab-resource-kind').value='all';$('lab-resource-scope').value='current';$('lab-resource-add').hidden=true;$('lab-resource-add').disabled=true;clearLaunch('lab-resource-launch');clearLaunch('lab-pack-launch');clearLaunch('lab-worksheet-return');return;}
  const p=(en,hi)=>l==='hi'?hi:en;
  const subject=$('lab-print-subject'),model=$('lab-print-model'),previous=model.value;
  const chosen=subject.value||'maths';subject.replaceChildren();
@@ -76,6 +86,7 @@ function renderLab(l){
  $('lab-print-activity-label').textContent=p('Choose a draft activity','मसौदा गतिविधि चुनें');
  renderResourceFinder(l);
  const a=printableAnyLabActivity(model.value,activity.value,l);
+ renderMainControlGuide(model.value,activity.value,l,!pack);
  if(pack)clearLaunch('lab-worksheet-return');else {const plan=worksheetReturnLaunch(model.value+':'+activity.value,l),link=$('lab-worksheet-return');link.href='../../'+plan.href;link.hidden=false;link.textContent=p('Return to exact computer model: ','ठीक उसी कंप्यूटर मॉडल पर लौटें: ')+plan.title;}
  $('lab-activity-heading').textContent=a.title;$('lab-activity-prompt').textContent=a.prompt;
  $('lab-activity-warning').textContent=p('Original unreviewed computer-only activity. Permission and educational review pending.','मूल असमीक्षित कंप्यूटर गतिविधि। अनुमति और शैक्षिक समीक्षा बाकी है।');

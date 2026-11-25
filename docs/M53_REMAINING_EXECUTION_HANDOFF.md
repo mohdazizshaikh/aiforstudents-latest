@@ -121,3 +121,5 @@ M96 candidate adds 60 main-model blank paper comparison tables; all 109 activiti
 M94 verified merged; M95/M96 browser renderer scope corrected. M97 creates 60 independent-reference fixture work items (120 fixed cases); FP-092 remains BLOCKED_EXTERNAL pending qualified expert reference evidence. No approval.
 
 M98 candidate adds 49 supplemental reference fixtures and combined local operator workflow for 109 activities / 218 cases. FP-092 remains externally blocked pending independent reference evidence.
+
+M95/M96 corrected exact-head CI passed and merged. M99 candidate adds 60 teacher-only control preparation guides; no learner worksheet changes or external approvals.
