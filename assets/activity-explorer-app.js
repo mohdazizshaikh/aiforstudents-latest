@@ -21,6 +21,11 @@ function render(){
  $('ae-results').replaceChildren(...v.items.map(x=>{
   const li=n('li'),heading=n('h3',x.title),metadata=n('p',subjects[x.subject]+' · '+kinds[x.kind]),actions=n('div');
   actions.className='workspace-actions';actions.append(link(p('Open activity (new tab)','गतिविधि खोलें (नया टैब)'),x.href),link(p('Open draft worksheet (new tab)','मसौदा अभ्यास पत्र खोलें (नया टैब)'),x.worksheetHref));
+  const add=n('button',p('Add to my learning plan','मेरी अध्ययन योजना में जोड़ें'));add.type='button';add.className='btn outline';
+  add.addEventListener('click',()=>{
+   const accepted=!window.dispatchEvent(new CustomEvent('aifs-learner-add-activity',{detail:x.key,cancelable:true}));
+   $('ae-plan-status').textContent=accepted?p('Added to learning plan: ','अध्ययन योजना में जोड़ा: ')+x.title:p('Not added. Check for a duplicate, a full six-item plan or an active session.','नहीं जोड़ा। समान गतिविधि, छह गतिविधियों की पूरी योजना या चल रहे सत्र की जाँच करें।');
+  });actions.append(add);
   li.append(heading,metadata,actions);return li;
  }));
  $('ae-empty').hidden=v.total!==0;$('ae-empty').textContent=p('No matching draft. Try another filter.','कोई मेल खाता मसौदा नहीं। दूसरा फ़िल्टर चुनें।');
@@ -32,7 +37,7 @@ $('ae-lang').addEventListener('change',()=>{language=$('ae-lang').value;render()
 $('ae-subject').addEventListener('change',()=>{subject=$('ae-subject').value;page=1;render()});
 $('ae-kind').addEventListener('change',()=>{kind=$('ae-kind').value;page=1;render()});
 for(const [id,delta] of [['ae-prev',-1],['ae-next',1]])$(id).addEventListener('click',()=>{page+=delta;render();$('ae-status').focus()});
-function reset(){subject='all';kind='all';page=1;render()}
+function reset(){subject='all';kind='all';page=1;$('ae-plan-status').textContent='';render()}
 $('ae-clear').addEventListener('click',()=>{reset();$('ae-status').focus()});
 window.addEventListener('aifs-history-cleared',reset);
 let channel=null;function connect(){if(channel)return;try{channel=new BroadcastChannel('aifs-discovery-privacy-reset-v1');channel.addEventListener('message',e=>{if(e.data?.type==='clear-history')reset()})}catch{channel=null}}

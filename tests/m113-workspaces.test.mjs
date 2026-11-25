@@ -8,7 +8,7 @@ const select=(role,keys)=>keys.reduce((s,key)=>act(s,'add',key),createWorkspace(
 test('ENG-031 learner dashboard links exact module anchors in both languages',()=>{
  const root=readFileSync(new URL('../index.html',import.meta.url),'utf8');
  for(const lang of ['en','hi']){
-  const items=workspaceChoices('learner',lang);assert.equal(items.length,11);assert.equal(new Set(items.map(x=>x.key)).size,11);
+  const all=workspaceChoices('learner',lang),items=all.filter(x=>!x.kind);assert.equal(items.length,11);assert.equal(all.length,136);assert.equal(new Set(all.map(x=>x.key)).size,136);
   for(const x of items){const u=new URL(x.href,'https://fixture.invalid/study-lab/');assert.equal(u.origin,'https://fixture.invalid');assert.equal(u.pathname,'/');assert.equal(u.searchParams.get('lang'),lang);assert.ok(root.includes('id="'+u.hash.slice(1)+'"'));assert.equal(x.storesStudentData,false)}
  }
 });
@@ -30,7 +30,7 @@ test('ENG-034 teacher workspace exact 109 resources, bilingual local model and w
   const choices=workspaceChoices('teacher',lang);assert.equal(choices.length,125);assert.deepEqual(choices.filter(x=>x.kind!=='prototype').map(x=>x.key).sort(),labPackKeys().sort());
   for(const x of choices.filter(x=>x.kind!=='prototype')){assert.equal(x.href,'../'+worksheetReturnLaunch(x.key,lang).href);assert.equal(x.worksheetHref,'../'+activityWorksheet(x.key,lang).href);assert.equal(x.humanReviewed,false)}
  }
- assert.throws(()=>act(createWorkspace('teacher'),'add','games'));assert.throws(()=>act(createWorkspace('learner'),'add','ratio-algebra:equation'));assert.throws(()=>workspaceChoices('teacher','xx'));
+ assert.throws(()=>act(createWorkspace('teacher'),'add','games'));assert.deepEqual(act(createWorkspace('learner'),'add','ratio-algebra:equation').keys,['ratio-algebra:equation']);assert.throws(()=>workspaceChoices('teacher','xx'));
 });
 test('ENG-035 teacher lesson flow pause/resume/advance/reset; independent transient workspaces',()=>{
  const keys=['maths/rectangle:main','ratio-algebra:equation','studio/circuit-path:main'];let s=act(select('teacher',keys),'start');

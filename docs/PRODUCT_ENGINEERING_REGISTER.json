@@ -852,6 +852,11 @@
           "source": "assets/activity-explorer-engine.js",
           "test": "tests/m128-activity-explorer.test.mjs",
           "status": "AWAITING_CI"
+        },
+        {
+          "source": "assets/workspace-engine.js",
+          "test": "tests/m129-learner-activity-plan.test.mjs",
+          "status": "AWAITING_CI"
         }
       ]
     },
@@ -877,7 +882,14 @@
         "pushRun": 45686453792,
         "pullRequestRun": 45686469492,
         "treeIdentical": true
-      }
+      },
+      "followUpEvidence": [
+        {
+          "source": "assets/workspace-engine.js",
+          "test": "tests/m129-learner-activity-plan.test.mjs",
+          "status": "AWAITING_CI"
+        }
+      ]
     },
     {
       "id": "ENG-033",
@@ -901,7 +913,14 @@
         "pushRun": 45686453792,
         "pullRequestRun": 45686469492,
         "treeIdentical": true
-      }
+      },
+      "followUpEvidence": [
+        {
+          "source": "assets/workspace-engine.js",
+          "test": "tests/m129-learner-activity-plan.test.mjs",
+          "status": "AWAITING_CI"
+        }
+      ]
     },
     {
       "id": "ENG-034",
