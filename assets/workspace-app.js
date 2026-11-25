@@ -35,7 +35,7 @@ function render(){
  $('workspace-direct-title').textContent=p('Open any resource (new tab)','कोई संसाधन खोलें (नया टैब)');
  const chosen=options.find(x=>x.key===$('workspace-choice').value);
  $('workspace-direct').replaceChildren();
- if(chosen)$('workspace-direct').append(link(chosen.title,chosen.href));
+ if(chosen){$('workspace-direct').append(link(chosen.title,chosen.href));if(teacher&&chosen.worksheetHref)$('workspace-direct').append(link(p('Open draft worksheet (new tab)','मसौदा अभ्यास पत्र खोलें (नया टैब)'),chosen.worksheetHref))}
  $('workspace-current-title').textContent=p('Current activity','वर्तमान गतिविधि');
  $('workspace-current').replaceChildren();
  if(view.current){

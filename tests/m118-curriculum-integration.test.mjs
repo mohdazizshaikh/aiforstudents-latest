@@ -30,10 +30,10 @@ test('ENG-021 metadata-only synthetic stage/revoke, stale and caller approval de
  assert.equal(s.apply({action:'revoke',metadata:m}).state,'SYNTHETIC_REVOKED');
  assert.equal(s.apply({action:'stage',metadata:m}).accepted,false);assert.equal(s.status().mayRedistribute,false);assert.equal(s.status().realApprovedCount,0);
 });
-test('All twelve prototypes exact local launch, teacher rehearsal without worksheet and optional adaptive sequence',()=>{
+test('All twelve prototypes exact local launch, teacher rehearsal with explicit draft worksheet and optional adaptive sequence',()=>{
  for(const lang of ['en','hi'])for(const x of prototypeChoices(lang)){
  const u=new URL(x.href,'https://fixture.invalid/teacher-kit/');assert.deepEqual(resolvePrototypeLaunch(u.search,[x.id]),{id:x.id,lang});
- assert.equal(x.worksheetHref,null);let s=workspaceAction(createWorkspace('teacher'),{type:'add',key:x.key});s=workspaceAction(s,{type:'start'});
+ assert.match(x.worksheetHref,/teacher-kit\/\?prototype=/);let s=workspaceAction(createWorkspace('teacher'),{type:'add',key:x.key});s=workspaceAction(s,{type:'start'});
  assert.equal(workspaceView(s,lang).current.href,x.href);assert.equal(conceptSuggestion(createConceptSession(x.key),lang).target.href,x.href)}
  assert.equal(PROTOTYPE_KEYS.length,12);assert.equal(resolvePrototypeLaunch('?model=unknown&lang=en',['polygon-sides']),null);
  assert.equal(resolvePrototypeLaunch('?model=polygon-sides&lang=en&lang=hi',['polygon-sides']),null);
