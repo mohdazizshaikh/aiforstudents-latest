@@ -144,7 +144,11 @@ const PROMPTS={
    "फिर छह से शुरू करें; चार काटें। शेष गिनतियों की तुलना करें।",
    "इस काल्पनिक हिसाब में घटाव समझाएँ, वास्तविक पौध परिवहन नहीं।"
   ]
- }
+ },
+"matrix-transform":{"en":["Draw a triangle with vertices (0,0), (2,0), (0,1).","Apply the matrix with rows (2,0) and (0,1) to each vertex. Draw the new triangle.","Compare the areas and explain the determinant."],"hi":["(0,0), (2,0), (0,1) शीर्ष वाला त्रिभुज बनाएँ।","(2,0) और (0,1) पंक्तियों वाला आव्यूह हर शीर्ष पर लगाएँ। नया त्रिभुज बनाएँ।","क्षेत्रफलों की तुलना करें और सारणिक समझाएँ।"]},
+"velocity-graph":{"en":["For initial velocity 2 and acceleration 1, make a table at times 0,1,2,3.","Draw the velocity–time line and calculate signed area for the three time units.","Explain why signed displacement is not always distance."],"hi":["प्रारंभिक वेग 2 और त्वरण 1 के लिए समय 0,1,2,3 पर तालिका बनाएँ।","वेग–समय रेखा बनाएँ और तीन समय इकाइयों का चिह्न सहित क्षेत्रफल निकालें।","समझाएँ कि विस्थापन हमेशा दूरी क्यों नहीं है।"]},
+"particle-mixing":{"en":["Draw four rows of A A B B tokens.","Exchange an adjacent A and B in one row. Count both types again.","Explain why this paper exchange conserves tokens but does not measure diffusion."],"hi":["A A B B टोकन की चार पंक्तियाँ बनाएँ।","एक पंक्ति में पास के A और B का स्थान बदलें। दोनों प्रकार फिर गिनें।","समझाएँ कि इस कागज़ी बदलाव में टोकन बचते हैं, पर विसरण नहीं मापा जाता।"]},
+"cell-division-stages":{"en":["Sketch two replicated chromosomes as two X symbols.","Sketch the separated chromatids moving into two groups.","Draw two daughter cells with two chromosomes each and explain the change in counting."],"hi":["दो प्रतिकृत गुणसूत्रों को दो X प्रतीकों से बनाएँ।","अलग हुए क्रोमैटिड को दो समूहों में जाते दिखाएँ।","दो-दो गुणसूत्र वाली दो पुत्री कोशिकाएँ बनाएँ और गिनती का बदलाव समझाएँ।"]}
 };
 export const PROTOTYPE_PACK_LIMIT=6;
 const exact=(o,keys)=>o&&typeof o==='object'&&!Array.isArray(o)&&Object.keys(o).length===keys.length&&keys.every(k=>Object.hasOwn(o,k));

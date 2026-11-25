@@ -6,7 +6,7 @@ import {auditOfflineDependencies} from './audit-offline-dependencies.mjs';
 import {FULL_TARGETS,FORBIDDEN_PUBLIC_PATHS,staticIntegrityManifest} from './check-live-staging.mjs';
 const ROOT=new URL('../',import.meta.url);
 const budget=Object.freeze({uniquePrecacheBytes:1400000,uniquePrecacheGzipBytes:400000,maxAssetBytes:180000,guideDependencyGzipBytes:180000});
-const paths=['assets/workspace-app.js','assets/workspace-engine.js','assets/concept-pathways.js','assets/concept-pathways-app.js','assets/primary-maths-lab.js','assets/primary-maths-app.js','assets/comparison-lab-engine.js','assets/comparison-lab-app.js','assets/curriculum-catalog.js','assets/curriculum-catalog-app.js','assets/extended-lab-catalog.js','assets/prototype-worksheet-engine.js','assets/prototype-worksheet-app.js'];
+const paths=['assets/workspace-app.js','assets/workspace-engine.js','assets/concept-pathways.js','assets/concept-pathways-app.js','assets/primary-maths-lab.js','assets/primary-maths-app.js','assets/comparison-lab-engine.js','assets/comparison-lab-app.js','assets/curriculum-catalog.js','assets/curriculum-catalog-app.js','assets/extended-lab-catalog.js','assets/prototype-worksheet-engine.js','assets/prototype-worksheet-app.js','assets/visual-lab-engine.js','assets/visual-lab-app.js'];
 const resolve=p=>p==='/'?'index.html':p.endsWith('/')?p.slice(1)+'index.html':p.slice(1);
 export function auditQuality(){
  const issues=[],sw=readFileSync(new URL('service-worker.js',ROOT),'utf8'),m=sw.match(/\bconst FILES\s*=\s*\[([\s\S]*?)\];/);
