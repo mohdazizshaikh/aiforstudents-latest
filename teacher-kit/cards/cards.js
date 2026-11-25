@@ -1,5 +1,5 @@
 import {CLASSROOM_IDS,CLASSROOM_LESSONS,classroomText} from '../../assets/classroom-engine.js';
-import {printableClassroomCard,printableAssignmentPack,printableAnyLabActivity,teacherPrintableOptions,TEACHER_LAB_SUBJECTS,teacherPrintableSupplementOptions,TEACHER_ACTIVITY_KINDS,searchTeacherResources,TEACHER_QUERY_LIMIT,teacherActivityLaunch,resolveActivityWorksheet,worksheetReturnLaunch,teacherMainControlGuide,teacherSupplementControlGuide,teacherMainObservationGuide,LAB_PACK_LIMIT,editLabPack,printableLabPack} from '../../assets/teacher-cards-engine.js';
+import {printableClassroomCard,printableAssignmentPack,printableAnyLabActivity,teacherPrintableOptions,TEACHER_LAB_SUBJECTS,teacherPrintableSupplementOptions,TEACHER_ACTIVITY_KINDS,searchTeacherResources,TEACHER_QUERY_LIMIT,teacherActivityLaunch,resolveActivityWorksheet,worksheetReturnLaunch,teacherMainControlGuide,teacherSupplementControlGuide,teacherMainObservationGuide,teacherPackPreparation,LAB_PACK_LIMIT,editLabPack,printableLabPack} from '../../assets/teacher-cards-engine.js';
 const $=id=>document.getElementById(id);
 const lang=()=>$('card-language').value;
 let labPack=[];
@@ -69,7 +69,7 @@ function renderLab(l){
  const active=isLab(),pack=isLabPack();
  $('lab-print-controls').hidden=!active;$('lab-activity').hidden=!active||pack;
  $('lab-pack-controls').hidden=!pack;$('lab-pack-output').hidden=!pack;
- if(!pack){clearLaunch('lab-pack-launch');labPack=[];$('lab-pack-pages').replaceChildren();$('lab-pack-choice').replaceChildren();$('card-print').disabled=false;}
+ if(!pack){clearLaunch('lab-pack-launch');labPack=[];renderPackPreparation(l);$('lab-pack-pages').replaceChildren();$('lab-pack-choice').replaceChildren();$('card-print').disabled=false;}
  const host=$('lab-activity-steps');host.replaceChildren();
  if(!active){renderActivityControlGuide('','',l,false);$('lab-print-activity').value='main';resourceKind='all';resourceScope='current';resourceQuery='';$('lab-resource-query').value='';$('lab-resource-result').replaceChildren();$('lab-resource-kind').value='all';$('lab-resource-scope').value='current';$('lab-resource-add').hidden=true;$('lab-resource-add').disabled=true;clearLaunch('lab-resource-launch');clearLaunch('lab-pack-launch');clearLaunch('lab-worksheet-return');return;}
  const p=(en,hi)=>l==='hi'?hi:en;
@@ -172,10 +172,31 @@ function paperComparison(data){
   for(const value of r.cells){const td=document.createElement('td');td.textContent=value;row.append(td)}body.append(row)}
  table.append(body);return table;
 }
+function renderPackPreparation(l){
+ const panel=$('lab-pack-preparation'),host=$('lab-pack-preparation-items'),p=(en,hi)=>l==='hi'?hi:en;
+ const data=teacherPackPreparation(isLabPack()?labPack:[],l);
+ host.replaceChildren();panel.hidden=!data.items.length;
+ $('lab-pack-preparation-title').textContent=p('Teacher preparation — selected pack','शिक्षक तैयारी — चुना पैक');
+ $('lab-pack-preparation-notice').textContent=p('Unreviewed rehearsal guide. Computer settings and output labels only, not answers or verified lesson plans. Links open fresh models; the current pack is not saved when leaving this page.','असमीक्षित पूर्वाभ्यास मार्गदर्शिका। केवल कंप्यूटर की स्थितियाँ और परिणाम के नाम, उत्तर या सत्यापित पाठ योजना नहीं। लिंक नया मॉडल खोलते हैं; पृष्ठ छोड़ने पर वर्तमान पैक सहेजा नहीं जाता।');
+ const key=JSON.stringify([l,...data.items.map(x=>x.key)]);
+ if(panel.hidden||panel.dataset.preparationKey!==key)panel.open=false;
+ panel.dataset.preparationKey=key;
+ const el=(tag,text)=>{const e=document.createElement(tag);if(text!==undefined)e.textContent=text;return e};
+ for(const item of data.items){
+  const section=el('section');section.dataset.activityKey=item.key;
+  section.append(el('h3',item.position+'. '+item.title),el('p',item.caveat));
+  const dl=el('dl');for(const c of item.controls)dl.append(el('dt',c.label),el('dd',c.settings));section.append(dl);
+  section.append(el('h4',p('Model outputs to observe (labels only)','देखने योग्य मॉडल परिणाम (केवल नाम)')));
+  const ul=el('ul');for(const label of item.observationLabels)ul.append(el('li',label));section.append(ul);
+  const link=el('a',p('Open fresh computer model: ','नया कंप्यूटर मॉडल खोलें: ')+item.title);
+  link.href='../../'+item.href;section.append(link);host.append(section);
+ }
+}
 function renderLabPack(l){
  const p=(en,hi)=>l==='hi'?hi:en,el=(tag,value)=>{const e=document.createElement(tag);e.textContent=value;return e};
  const current=$('lab-print-model').value+':'+$('lab-print-activity').value;
  const data=printableLabPack(labPack,l),choice=$('lab-pack-choice'),previous=choice.value;
+ renderPackPreparation(l);
  $('lab-pack-heading').textContent=p('Custom learner lab assignment pack','चुना हुआ विद्यार्थी प्रयोग अभ्यास पैक');
  $('lab-pack-notice').textContent=p('Original unreviewed draft. Rights and educational review pending. Write on paper without names or online submission. Printed copies cannot be remotely deleted.','मूल असमीक्षित मसौदा। अनुमति और शैक्षिक समीक्षा बाकी है। बिना नाम या ऑनलाइन जमा किए कागज़ पर लिखें। प्रिंट दूर से मिटाया नहीं जा सकता।');
  $('lab-pack-status').textContent=labPack.length+' / '+LAB_PACK_LIMIT+' '+p('activities selected','गतिविधियाँ चुनी गईं');
