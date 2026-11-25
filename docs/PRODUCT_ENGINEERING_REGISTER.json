@@ -220,40 +220,105 @@
       "stream": "Smart Lab",
       "title": "Missing secondary mathematics interaction set",
       "acceptance": "New interactive models with source-based test fixtures and accessibility.",
-      "status": "PLANNED",
-      "evidence": []
+      "status": "IMPLEMENTED_AWAITING_CI",
+      "evidence": [
+        {
+          "source": "assets/comparison-lab-engine.js",
+          "test": "tests/m117-comparison-lab.test.mjs"
+        },
+        {
+          "source": "assets/comparison-lab-app.js",
+          "test": "tests/browser_m25_ci.py"
+        },
+        {
+          "source": "docs/M117_MODEL_REVIEW_MANIFEST.json",
+          "test": "tests/m117-comparison-lab.test.mjs"
+        }
+      ]
     },
     {
       "id": "ENG-015",
       "stream": "Smart Lab",
       "title": "Missing physics interaction set",
       "acceptance": "New safe virtual models with numerical invariants and no real hardware procedures.",
-      "status": "PLANNED",
-      "evidence": []
+      "status": "IMPLEMENTED_AWAITING_CI",
+      "evidence": [
+        {
+          "source": "assets/comparison-lab-engine.js",
+          "test": "tests/m117-comparison-lab.test.mjs"
+        },
+        {
+          "source": "assets/comparison-lab-app.js",
+          "test": "tests/browser_m25_ci.py"
+        },
+        {
+          "source": "docs/M117_MODEL_REVIEW_MANIFEST.json",
+          "test": "tests/m117-comparison-lab.test.mjs"
+        }
+      ]
     },
     {
       "id": "ENG-016",
       "stream": "Smart Lab",
       "title": "Missing chemistry interaction set",
       "acceptance": "New safe symbolic models with numerical checks and no physical procedures.",
-      "status": "PLANNED",
-      "evidence": []
+      "status": "IMPLEMENTED_AWAITING_CI",
+      "evidence": [
+        {
+          "source": "assets/comparison-lab-engine.js",
+          "test": "tests/m117-comparison-lab.test.mjs"
+        },
+        {
+          "source": "assets/comparison-lab-app.js",
+          "test": "tests/browser_m25_ci.py"
+        },
+        {
+          "source": "docs/M117_MODEL_REVIEW_MANIFEST.json",
+          "test": "tests/m117-comparison-lab.test.mjs"
+        }
+      ]
     },
     {
       "id": "ENG-017",
       "stream": "Smart Lab",
       "title": "Missing biology interaction set",
       "acceptance": "New safe conceptual models with no diagnostic claims and accessible text.",
-      "status": "PLANNED",
-      "evidence": []
+      "status": "IMPLEMENTED_AWAITING_CI",
+      "evidence": [
+        {
+          "source": "assets/comparison-lab-engine.js",
+          "test": "tests/m117-comparison-lab.test.mjs"
+        },
+        {
+          "source": "assets/comparison-lab-app.js",
+          "test": "tests/browser_m25_ci.py"
+        },
+        {
+          "source": "docs/M117_MODEL_REVIEW_MANIFEST.json",
+          "test": "tests/m117-comparison-lab.test.mjs"
+        }
+      ]
     },
     {
       "id": "ENG-018",
       "stream": "Smart Lab",
       "title": "Reusable simulation experiment comparison engine",
       "acceptance": "Consistent prediction, controlled comparison, reset and keyboard/text output.",
-      "status": "PLANNED",
-      "evidence": []
+      "status": "IMPLEMENTED_AWAITING_CI",
+      "evidence": [
+        {
+          "source": "assets/comparison-lab-engine.js",
+          "test": "tests/m117-comparison-lab.test.mjs"
+        },
+        {
+          "source": "assets/comparison-lab-app.js",
+          "test": "tests/browser_m25_ci.py"
+        },
+        {
+          "source": "docs/M117_MODEL_REVIEW_MANIFEST.json",
+          "test": "tests/m117-comparison-lab.test.mjs"
+        }
+      ]
     },
     {
       "id": "ENG-019",
