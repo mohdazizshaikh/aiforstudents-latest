@@ -16,3 +16,5 @@ Migration sequence: snapshot existing static release; inventory fixed reference 
 ## M125 implementation follow-up (candidate, not production approval)
 
 A separate PHP/PDO MySQL 8.4 CLI-only rehearsal is prepared in `tools/mysql-rehearsal/`, with a dedicated ephemeral CI service, source-derived bilingual draft metadata, 96 planning cells, transaction-protected synthetic plan, interrupted-DDL resume and logical plan snapshot restore. No live Hostinger connection or real database backup/restore; actual host version, PHP extensions, privileges, isolation, authenticated adult access and operational approval remain unverified. See [M125 handoff](M125_MYSQL_REHEARSAL.md).
+
+M126 follow-up: first disposable MySQL 8.4 CI job passed (45717283305 at 3dc90af600ca34cc43103113eadd90f4293c69ac). Full logical dump and separate-schema recovery verification added; new head pending. This is not actual Hostinger compatibility or physical backup evidence.

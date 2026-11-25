@@ -17,3 +17,9 @@ test('M125 schema and repository are CLI-only and never included in static targe
  for(const p of ['repository.php','run.php','schema-v1.sql','schema-v2.sql'])assert.ok(FORBIDDEN_PUBLIC_PATHS.includes('/tools/mysql-rehearsal/'+p));
  assert.ok(FULL_TARGETS.every(x=>!x.startsWith('/tools/mysql-rehearsal/')));
 });
+
+test('M126 database backup rehearsal is isolated, source-only, and validates restored constraints',()=>{
+ const s=read('tools/mysql-rehearsal/backup-recovery.py'),wf=read('.github/workflows/mysql-rehearsal.yml');
+ assert.match(s,/GITHUB_ACTIONS/);assert.match(s,/aifs_recovery_m126/);assert.match(s,/restored==data/);assert.match(s,/dump\(SOURCE\)==data/);assert.match(s,/DROP DATABASE "\+RESTORE/);assert.doesNotMatch(s,/DROP DATABASE "\+SOURCE/);assert.match(wf,/backup-recovery\.py/);
+ assert.ok(FULL_TARGETS.every(x=>!x.startsWith('/tools/mysql-rehearsal/')));
+});

@@ -49,3 +49,8 @@ jobs:
         run: |
           set -o pipefail
           node tools/mysql-rehearsal/fixture-catalog.mjs | php tools/mysql-rehearsal/run.php
+      - name: Full logical database dump and separate-schema restore (NOT physical backup or hosting)
+        env:
+          AIFS_MYSQL_REHEARSAL: '1'
+          AIFS_MYSQL_SERVICE_CONTAINER: ${{ job.services.mysql.id }}
+        run: python3 tools/mysql-rehearsal/backup-recovery.py

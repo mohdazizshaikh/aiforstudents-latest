@@ -167,7 +167,7 @@
           "test": "tests/m119-backend-recovery-operator.test.mjs"
         }
       ],
-      "limitation": "Fixed SQLite fixture recovery only; actual PHP/MySQL target migration pending.",
+      "limitation": "Initial disposable MySQL 8.4 CI migration/plan rehearsal passed; full logical restore candidate awaits CI. Actual hosting and physical database recovery pending.",
       "verification": {
         "head": "34e5de6d228680eb32df99dcc1945ae9b4598fc3",
         "merged": "0ec46e2947cbabc28c44ee80b36ba9d4544b7dac",
@@ -179,6 +179,11 @@
         {
           "source": "tools/mysql-rehearsal/repository.php",
           "test": "tools/mysql-rehearsal/run.php",
+          "status": "AWAITING_CI"
+        },
+        {
+          "source": "tools/mysql-rehearsal/backup-recovery.py",
+          "test": ".github/workflows/mysql-rehearsal.yml",
           "status": "AWAITING_CI"
         }
       ]
@@ -327,7 +332,14 @@
         {
           "source": "assets/prototype-worksheet-engine.js",
           "test": "tests/m121-prototype-worksheet-packs.test.mjs",
-          "status": "AWAITING_CI"
+          "status": "VERIFIED_MERGED",
+          "verification": {
+            "head": "20c110520937d82598624448af3a93a41b170141",
+            "merged": "58a9920b5a3a7d4d0efb2e703871c977dbdab32f",
+            "pushRun": 45714199810,
+            "pullRequestRun": 45714211060,
+            "treeIdentical": true
+          }
         }
       ]
     },
@@ -362,7 +374,14 @@
         {
           "source": "assets/prototype-worksheet-engine.js",
           "test": "tests/m121-prototype-worksheet-packs.test.mjs",
-          "status": "AWAITING_CI"
+          "status": "VERIFIED_MERGED",
+          "verification": {
+            "head": "20c110520937d82598624448af3a93a41b170141",
+            "merged": "58a9920b5a3a7d4d0efb2e703871c977dbdab32f",
+            "pushRun": 45714199810,
+            "pullRequestRun": 45714211060,
+            "treeIdentical": true
+          }
         }
       ]
     },
@@ -397,7 +416,14 @@
         {
           "source": "assets/prototype-worksheet-engine.js",
           "test": "tests/m121-prototype-worksheet-packs.test.mjs",
-          "status": "AWAITING_CI"
+          "status": "VERIFIED_MERGED",
+          "verification": {
+            "head": "20c110520937d82598624448af3a93a41b170141",
+            "merged": "58a9920b5a3a7d4d0efb2e703871c977dbdab32f",
+            "pushRun": 45714199810,
+            "pullRequestRun": 45714211060,
+            "treeIdentical": true
+          }
         }
       ]
     },
@@ -432,7 +458,14 @@
         {
           "source": "assets/prototype-worksheet-engine.js",
           "test": "tests/m121-prototype-worksheet-packs.test.mjs",
-          "status": "AWAITING_CI"
+          "status": "VERIFIED_MERGED",
+          "verification": {
+            "head": "20c110520937d82598624448af3a93a41b170141",
+            "merged": "58a9920b5a3a7d4d0efb2e703871c977dbdab32f",
+            "pushRun": 45714199810,
+            "pullRequestRun": 45714211060,
+            "treeIdentical": true
+          }
         }
       ]
     },
@@ -467,7 +500,14 @@
         {
           "source": "assets/prototype-worksheet-engine.js",
           "test": "tests/m121-prototype-worksheet-packs.test.mjs",
-          "status": "AWAITING_CI"
+          "status": "VERIFIED_MERGED",
+          "verification": {
+            "head": "20c110520937d82598624448af3a93a41b170141",
+            "merged": "58a9920b5a3a7d4d0efb2e703871c977dbdab32f",
+            "pushRun": 45714199810,
+            "pullRequestRun": 45714211060,
+            "treeIdentical": true
+          }
         }
       ]
     },
@@ -550,7 +590,14 @@
         {
           "source": "assets/prototype-worksheet-engine.js",
           "test": "tests/m121-prototype-worksheet-packs.test.mjs",
-          "status": "AWAITING_CI"
+          "status": "VERIFIED_MERGED",
+          "verification": {
+            "head": "20c110520937d82598624448af3a93a41b170141",
+            "merged": "58a9920b5a3a7d4d0efb2e703871c977dbdab32f",
+            "pushRun": 45714199810,
+            "pullRequestRun": 45714211060,
+            "treeIdentical": true
+          }
         }
       ]
     },
@@ -861,7 +908,14 @@
         {
           "source": "assets/prototype-worksheet-engine.js",
           "test": "tests/m121-prototype-worksheet-packs.test.mjs",
-          "status": "AWAITING_CI"
+          "status": "VERIFIED_MERGED",
+          "verification": {
+            "head": "20c110520937d82598624448af3a93a41b170141",
+            "merged": "58a9920b5a3a7d4d0efb2e703871c977dbdab32f",
+            "pushRun": 45714199810,
+            "pullRequestRun": 45714211060,
+            "treeIdentical": true
+          }
         }
       ]
     },
@@ -892,7 +946,14 @@
         {
           "source": "assets/prototype-worksheet-engine.js",
           "test": "tests/m121-prototype-worksheet-packs.test.mjs",
-          "status": "AWAITING_CI"
+          "status": "VERIFIED_MERGED",
+          "verification": {
+            "head": "20c110520937d82598624448af3a93a41b170141",
+            "merged": "58a9920b5a3a7d4d0efb2e703871c977dbdab32f",
+            "pushRun": 45714199810,
+            "pullRequestRun": 45714211060,
+            "treeIdentical": true
+          }
         }
       ]
     },
