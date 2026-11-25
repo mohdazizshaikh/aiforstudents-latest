@@ -1,5 +1,7 @@
 # M89 — Individual teacher resource rights handoff (candidate)
 
+**M95 candidate fingerprint change:** 49 supplemental worksheets now have extension-specific instructions and a blank comparison-table descriptor. These are part of exact printable object fingerprints; regenerate local pending worksheet, never reuse stale decisions.
+
 **M94 candidate fingerprint change:** 60 main-model printable worksheets now include source-control-specific investigations. Regenerate the local 109-record worklist from the matching checkout; prior inventory hash must fail closed. No rights decisions authenticated.
 
 **Verified:** both CI runs 45493925987 and 45493903756 passed; PR #79 merged at dc4832f76bb8c7f7b993704f9abd3a8bd3264e7e. No external approval.

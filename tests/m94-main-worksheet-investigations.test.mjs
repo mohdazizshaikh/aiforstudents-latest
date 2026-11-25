@@ -18,12 +18,12 @@ for(const id of ids)test('M94 source-bound paper investigation '+id,()=>{
   for(const forbidden of ['initial','target','answer','teacherGuidance','score'])assert.ok(!Object.hasOwn(a,forbidden));
  }
 });
-test('M94 all 60 main models covered; 49 supplemental worksheets keep prior observation wording',()=>{
+test('M94 all 60 main models covered; M95 supplemental investigations use their own source controls',()=>{
  assert.equal(ids.length,60);let count=0;
  for(const id of ADVANCED_IDS)for(const mode of advancedExtensionIds(id)){
   count++;
-  assert.equal(printableAnyLabActivity(id,mode,'en').steps[1],'With a teacher, inspect the computer-only model and compare the displayed values with your prediction.');
-  assert.equal(printableAnyLabActivity(id,mode,'hi').steps[1],'शिक्षक के साथ केवल कंप्यूटर मॉडल देखें और दिखाए गए मान अपने अनुमान से मिलाएँ।');
+  assert.match(printableAnyLabActivity(id,mode,'en').steps[1],/supplemental computer model/);
+  assert.match(printableAnyLabActivity(id,mode,'hi').steps[1],/अतिरिक्त कंप्यूटर मॉडल/);
  }
  assert.equal(count,49);for(const id of [null,'unknown','ratio-algebra:equation'])assert.throws(()=>mainWorksheetControls(id));assert.throws(()=>mainWorksheetInvestigation(ids[0],'xx'));
 });

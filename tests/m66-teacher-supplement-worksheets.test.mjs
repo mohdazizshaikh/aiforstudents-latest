@@ -13,7 +13,7 @@ test('M66/M70 forty-nine bilingual source-derived worksheets, no hint, answers o
    assert.equal(r.title,m.title[i]);assert.equal(r.prompt,m.prompt[i]);assert.equal(r.caveat,m.caveat[i]);assert.equal(r.steps.length,3);
    assert.equal(r.humanReviewed,false);assert.equal(r.publicReleaseApproved,false);assert.equal(r.hasStudentNames,false);assert.equal(r.localOnly,true);
    assert.equal(r.rightsStatus,'ORIGINAL_DRAFT_PERMISSION_NOT_AUTHENTICATED');
-   assert.deepEqual(Object.keys(r).sort(),['id','subject','language','title','prompt','caveat','steps','sourceFile','rightsStatus','humanReviewed','publicReleaseApproved','localOnly','hasStudentNames','mode'].sort());
+   assert.deepEqual(Object.keys(r).sort(),['id','subject','language','title','prompt','caveat','steps','sourceFile','rightsStatus','humanReviewed','publicReleaseApproved','localOnly','hasStudentNames','mode','comparison'].sort());
    assert.ok(!JSON.stringify(r).includes(m.hint[i]));
    count++;
   }

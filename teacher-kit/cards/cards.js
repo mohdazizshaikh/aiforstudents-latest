@@ -86,7 +86,7 @@ function renderLab(l){
  if(pack){renderLabPack(l);return;}
  for(const [i,step] of a.steps.entries()){
   const section=el('section','');section.className='assignment-page';section.append(el('h3',(i+1)+'. '+step));
-  const space=el('div','');space.className='writing';space.setAttribute('aria-label',p('Paper response space','कागज़ पर उत्तर की जगह'));section.append(space);host.append(section);
+  const space=el('div','');space.className='writing';space.setAttribute('aria-label',p('Paper response space','कागज़ पर उत्तर की जगह'));section.append(i===1&&a.comparison?paperComparison(a.comparison):space);host.append(section);
  }
 }
 function matchingResources(){try{return searchTeacherResources(resourceScope==='all'?'all':$('lab-print-subject').value,resourceKind,lang(),resourceQuery)}catch{return []}}
@@ -144,6 +144,18 @@ $('lab-resource-open').addEventListener('click',()=>{
  $('lab-print-activity').value=x.mode;renderLab(lang());
  $(activeHeading()).focus();
 });
+// M95: blank, noninteractive paper cells; no learner data or calculated answers.
+function paperComparison(data){
+ const table=document.createElement('table');table.className='paper-comparison';
+ const caption=document.createElement('caption');caption.textContent=data.caption;table.append(caption);
+ const head=document.createElement('thead'),header=document.createElement('tr');
+ for(const label of data.columns){const th=document.createElement('th');th.scope='col';th.textContent=label;header.append(th)}
+ head.append(header);table.append(head);
+ const body=document.createElement('tbody');
+ for(const r of data.rows){const row=document.createElement('tr'),th=document.createElement('th');th.scope='row';th.textContent=r.label;row.append(th);
+  for(const value of r.cells){const td=document.createElement('td');td.textContent=value;row.append(td)}body.append(row)}
+ table.append(body);return table;
+}
 function renderLabPack(l){
  const p=(en,hi)=>l==='hi'?hi:en,el=(tag,value)=>{const e=document.createElement(tag);e.textContent=value;return e};
  const current=$('lab-print-model').value+':'+$('lab-print-activity').value;
@@ -163,7 +175,7 @@ function renderLabPack(l){
  for(const item of data.items){
   const section=el('section','');section.className='lab-pack-page';section.dataset.activityKey=item.key;
   section.append(el('h3',item.position+'. '+item.title),el('p',item.prompt),el('p',item.caveat));
-  for(const step of item.steps){const group=el('div','');group.className='assignment-page';group.append(el('p',step));const space=el('div','');space.className='writing';space.setAttribute('aria-label',p('Paper response space','कागज़ पर उत्तर की जगह'));group.append(space);section.append(group)}
+  for(const [i,step] of item.steps.entries()){const group=el('div','');group.className='assignment-page';group.append(el('p',step));const space=el('div','');space.className='writing';space.setAttribute('aria-label',p('Paper response space','कागज़ पर उत्तर की जगह'));group.append(i===1&&item.comparison?paperComparison(item.comparison):space);section.append(group)}
   pages.append(section);
  }
 }

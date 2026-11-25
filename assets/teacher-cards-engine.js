@@ -100,7 +100,23 @@ export function mainWorksheetInvestigation(id,lang='en'){
  return lang==='hi'?'केवल कंप्यूटर मॉडल में इन नियंत्रणों में से एक चुनें: '+list+'। शिक्षक के साथ दो अलग स्थितियाँ आज़माएँ; जहाँ संभव हो बाकी नियंत्रण न बदलें। कागज़ पर दोनों स्थितियाँ और मॉडल में दिखा परिणाम लिखें। मॉडल न मिले तो केवल अपना अनुमान लिखें।':
  'In the computer model, choose one of these controls: '+list+'. With a teacher, try two different settings; keep the other controls unchanged where possible. On paper, note both settings and what the model shows. If the model is unavailable, write only your prediction.';
 }
-const originalAdvancedObservation=lang=>lang==='hi'?'शिक्षक के साथ केवल कंप्यूटर मॉडल देखें और दिखाए गए मान अपने अनुमान से मिलाएँ।':'With a teacher, inspect the computer-only model and compare the displayed values with your prediction.';
+/** M95 supplemental paper investigations use the extension's own controls, not the parent model's. */
+export function supplementalWorksheetControls(id,mode,lang='en'){
+ if(!['en','hi'].includes(lang))throw Error('Unknown language');
+ const i=lang==='hi'?1:0,labels=advancedExtension(id,mode).fields.map(f=>f.label[i]);
+ if(!labels.length||labels.some(x=>typeof x!=='string'||!x.trim()))throw Error('Missing supplemental control labels');
+ return labels;
+}
+export function supplementalWorksheetInvestigation(id,mode,lang='en'){
+ const labels=supplementalWorksheetControls(id,mode,lang).join('; ');
+ return lang==='hi'?'केवल अतिरिक्त कंप्यूटर मॉडल में इनमें से एक नियंत्रण चुनें: '+labels+'। शिक्षक के साथ दो अलग स्थितियाँ आज़माएँ; जहाँ संभव हो बाकी नियंत्रण न बदलें। नीचे की तालिका कागज़ पर भरें। मॉडल उपलब्ध न हो तो तालिका खाली रखें और केवल अपना अनुमान लिखें।':
+ 'In this supplemental computer model, choose one control: '+labels+'. With a teacher, try two different settings; keep other controls unchanged where possible. Complete the table on paper. If the model is unavailable, leave the table blank and write only your prediction.';
+}
+export function supplementalWorksheetComparison(id,mode,lang='en'){
+ supplementalWorksheetControls(id,mode,lang);
+ const p=(en,hi)=>lang==='hi'?hi:en;
+ return {caption:p('Two computer model settings — paper notes only','कंप्यूटर मॉडल की दो स्थितियाँ — केवल कागज़ पर नोट'),columns:[p('Trial','स्थिति'),p('Control and setting','नियंत्रण और मान'),p('What the model shows','मॉडल में दिखा परिणाम')],rows:[{label:'A',cells:['','']},{label:'B',cells:['','']}]};
+}
 
 export function printableLabActivity(id,lang='en'){
  if(!validDemo(id)||!['en','hi'].includes(lang))throw Error('Unknown printable lab activity');
@@ -129,7 +145,7 @@ export function teacherSupplementOptions(id,lang='en'){
 export function printableSupplementActivity(id,mode,lang='en'){
  if(!teacherSupplementOptions(id,lang).some(x=>x.mode===mode))throw Error('Unknown supplemental worksheet activity');
  const base=printableLabActivity(id,lang),m=advancedExtension(id,mode),i=lang==='hi'?1:0;
- return {...base,mode,title:m.title[i],prompt:m.prompt[i],caveat:m.caveat[i],steps:[base.steps[0],originalAdvancedObservation(lang),base.steps[2]]};
+ return {...base,mode,title:m.title[i],prompt:m.prompt[i],caveat:m.caveat[i],steps:[base.steps[0],supplementalWorksheetInvestigation(id,mode,lang),base.steps[2]],comparison:supplementalWorksheetComparison(id,mode,lang)};
 }
 
 /** M75 basic model worksheets use only existing source prompts and cautions, not answer keys. */
