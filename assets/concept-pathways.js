@@ -1,7 +1,7 @@
 /** M115 optional draft concept sequence, never validated prerequisites or mastery. */
 import {labPackKeys,worksheetReturnLaunch,teacherResourceChoices} from './teacher-cards-engine.js';
 import {PROTOTYPE_KEYS,prototypeChoices} from './extended-lab-catalog.js';
-export const CONCEPT_GRAPH_VERSION='m118-draft-v2';
+export const CONCEPT_GRAPH_VERSION='m122-draft-v3';
 const GRAPH=Object.freeze(Object.fromEntries(Object.entries({
  "counting:main": [],
  "place-value:main": [
@@ -121,7 +121,11 @@ const GRAPH=Object.freeze(Object.fromEntries(Object.entries({
 "prototype:mixture-count":["science/matter:main"],
 "prototype:formula-ratio":["atom-count:main","ratio-algebra:main"],
 "prototype:habitat-tokens":["living-examples:main"],
-"prototype:plant-water-tokens":["plant-parts:main"]
+"prototype:plant-water-tokens":["plant-parts:main"],
+"prototype:matrix-transform":["coordinate:main"],
+"prototype:velocity-graph":["constant-acceleration:main"],
+"prototype:particle-mixing":["science/matter:main","prototype:mixture-count"],
+"prototype:cell-division-stages":["science/cells:main","cell-doubling:main"]
 }).map(([k,v])=>[k,Object.freeze(v)])));
 const known=new Set([...labPackKeys(),...PROTOTYPE_KEYS]),keys=Object.keys(GRAPH),langs=['en','hi'];
 export function auditConceptGraph(graph=GRAPH){

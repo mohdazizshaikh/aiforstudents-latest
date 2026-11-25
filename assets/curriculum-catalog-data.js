@@ -866,4 +866,9 @@ export const PROTOTYPE_LINKS=[
   "subject": "biology",
   "family": "comparison"
  }
+,
+{"id":"matrix-transform","grade":12,"subject":"maths","family":"visual"},
+{"id":"velocity-graph","grade":9,"subject":"physics","family":"visual"},
+{"id":"particle-mixing","grade":6,"subject":"chemistry","family":"visual"},
+{"id":"cell-division-stages","grade":8,"subject":"biology","family":"visual"}
 ];

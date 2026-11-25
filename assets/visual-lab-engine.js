@@ -38,7 +38,7 @@ export function evaluateVisual(id,v,lang='en'){
   let unlike=0;for(let n=0;n<16;n++){if(n%4!==3&&cells[n]!==cells[n+1])unlike++;if(n<12&&cells[n]!==cells[n+4])unlike++}
   visual={kind:'particles',cells};rows=[[p('A tokens','A टोकन'),cells.filter(x=>x==='A').length],[p('B tokens','B टोकन'),cells.filter(x=>x==='B').length],[p('Unlike neighboring pairs','असमान पड़ोसी जोड़ियाँ'),unlike],[p('Grid rows','ग्रिड पंक्तियाँ'),R(0,3).map(r=>cells.slice(r*4,r*4+4).join(' ')).join(' / ')]];
  }else{
-  const s=STAGES[v.stage];visual={kind:'division',stage:v.stage};rows=[[p('Stage','चरण'),s[0][i]],[p('Total chromosomes across shown cells','दिखाई गई कोशिकाओं में कुल गुणसूत्र'),s[1]],[p('Total DNA copies represented','दिखाई गई कुल डीएनए प्रतियाँ'),s[2]],[p('Cells shown','दिखाई गई कोशिकाएँ'),s[3]],[p('Description','विवरण'),s[4][i]]];
+  const s=STAGES[v.stage];visual={kind:'division',stage:v.stage};rows=[[p('Stage','चरण'),s[0][i]],[p('Total chromosomes across shown cells','दिखाई गई कोशिकाओं में कुल गुणसूत्र'),s[1]],[p('Chromatid/DNA-molecule count (schematic)','क्रोमैटिड/डीएनए अणु संख्या (चित्रात्मक)'),s[2]],[p('Cells shown','दिखाई गई कोशिकाएँ'),s[3]],[p('Description','विवरण'),s[4][i]]];
  }
  return {id,visual,rows:rows.map(([label,value])=>({label,value})),...flags()};
 }
