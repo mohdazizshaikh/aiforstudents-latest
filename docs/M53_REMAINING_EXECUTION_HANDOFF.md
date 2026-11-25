@@ -137,3 +137,5 @@ M102/M103 Node passed; inherited same-URL browser fixture corrected on both bran
 M102–M104 verified merged. M105 adds independent discovery previews and selected pack shortcut across all 109 resources. FP-087 external rights and educational acceptance unchanged.
 
 M105 verified merged. M106 candidate adds 60 model-specific paper reflections (120 bilingual variants), main printable fingerprints change. FP-087 external rights/educational acceptance unchanged.
+
+M107 candidate adds 49 supplemental model-specific paper reflections plus one teacher-only cross-activity discussion prompt. Supplemental rights fingerprints change; regenerate pending worklist. FP-087 external acceptance unchanged.
