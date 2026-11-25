@@ -36,6 +36,8 @@
     "pilot:backend": "node tools/pilot-backend.mjs",
     "tutor:rehearsal": "node tools/tutor-sandbox-evaluation.mjs",
     "smartlab:gaps": "node tools/smart-lab-gap-audit.mjs",
-    "db:recovery-rehearsal": "node tools/synthetic-db-recovery.mjs"
+    "db:recovery-rehearsal": "node tools/synthetic-db-recovery.mjs",
+    "audit:quality": "node tools/quality-regression.mjs",
+    "staging:rollback-rehearsal": "python3 tools/rehearse-static-rollback.py"
   }
 }
