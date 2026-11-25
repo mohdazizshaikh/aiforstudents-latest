@@ -135,3 +135,5 @@ M102 original Chromium fixture failure corrected, CI pending. M103 adds fixed-ID
 M102/M103 Node passed; inherited same-URL browser fixture corrected on both branches, fresh CI pending. M104 adds isolated per-activity demonstration tabs across 109 resources. FP-087 rights and independent educational review remain pending.
 
 M102–M104 verified merged. M105 adds independent discovery previews and selected pack shortcut across all 109 resources. FP-087 external rights and educational acceptance unchanged.
+
+M105 verified merged. M106 candidate adds 60 model-specific paper reflections (120 bilingual variants), main printable fingerprints change. FP-087 external rights/educational acceptance unchanged.
