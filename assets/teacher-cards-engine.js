@@ -525,3 +525,12 @@ export function resolveTeacherPackHandoff(fragment){
   return plan.fragment===fragment?plan:null;
  }catch{return null}
 }
+
+/** M104 fresh demonstration tabs for the current selected pack only.
+ * No arbitrary URL, pack recipe, learner state or opener access. */
+export function teacherPackDemoLaunch(keys,key,lang='en'){
+ validateLabPack(keys);
+ if(!keys.includes(key)||!['en','hi'].includes(lang))throw Error('Unknown selected pack demonstration');
+ const plan=worksheetReturnLaunch(key,lang);
+ return {key,title:plan.title,language:lang,href:'../../'+plan.href,target:'_blank',rel:'noopener noreferrer',preservesOriginalPack:true,localOnly:true,storesStudentData:false,humanReviewed:false,publicReleaseApproved:false};
+}
