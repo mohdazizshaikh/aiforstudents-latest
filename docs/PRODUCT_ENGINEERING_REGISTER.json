@@ -11,65 +11,100 @@
       "stream": "Foundation",
       "title": "Versioned in-memory relational repository",
       "acceptance": "SQLite schema v1, foreign keys, no disk writes; exact 109 source keys.",
-      "status": "IMPLEMENTED_AWAITING_CI",
+      "status": "VERIFIED_MERGED",
       "evidence": [
         {
           "source": "tools/pilot-store.mjs",
           "test": "tests/m112-platform-backend.test.mjs"
         }
-      ]
+      ],
+      "verification": {
+        "head": "71e8c5f997f893091529dcb14c3629e850f98111",
+        "merged": "e35f5ace5fd89ce04e6816d0fc58682755bb2bcd",
+        "pushRun": 45685940000,
+        "pullRequestRun": 45685953432,
+        "treeIdentical": true
+      }
     },
     {
       "id": "ENG-002",
       "stream": "Foundation",
       "title": "Bilingual activity catalog service",
       "acceptance": "Exact fixed-key catalog; subject/kind/language filters and invalid-filter rejection.",
-      "status": "IMPLEMENTED_AWAITING_CI",
+      "status": "VERIFIED_MERGED",
       "evidence": [
         {
           "source": "tools/pilot-store.mjs",
           "test": "tests/m112-platform-backend.test.mjs"
         }
-      ]
+      ],
+      "verification": {
+        "head": "71e8c5f997f893091529dcb14c3629e850f98111",
+        "merged": "e35f5ace5fd89ce04e6816d0fc58682755bb2bcd",
+        "pushRun": 45685940000,
+        "pullRequestRun": 45685953432,
+        "treeIdentical": true
+      }
     },
     {
       "id": "ENG-003",
       "stream": "Foundation",
       "title": "Curriculum planning service",
       "acceptance": "All 96 planning cells match source, retain draft status; no verified chapter inference.",
-      "status": "IMPLEMENTED_AWAITING_CI",
+      "status": "VERIFIED_MERGED",
       "evidence": [
         {
           "source": "tools/pilot-store.mjs",
           "test": "tests/m112-platform-backend.test.mjs"
         }
-      ]
+      ],
+      "verification": {
+        "head": "71e8c5f997f893091529dcb14c3629e850f98111",
+        "merged": "e35f5ace5fd89ce04e6816d0fc58682755bb2bcd",
+        "pushRun": 45685940000,
+        "pullRequestRun": 45685953432,
+        "treeIdentical": true
+      }
     },
     {
       "id": "ENG-004",
       "stream": "Foundation",
       "title": "Bounded synthetic teacher rehearsal repository",
       "acceptance": "Atomic ordered selection of up to six exact keys, rejection and clear, no identity or persistence.",
-      "status": "IMPLEMENTED_AWAITING_CI",
+      "status": "VERIFIED_MERGED",
       "evidence": [
         {
           "source": "tools/pilot-store.mjs",
           "test": "tests/m112-platform-backend.test.mjs"
         }
-      ]
+      ],
+      "verification": {
+        "head": "71e8c5f997f893091529dcb14c3629e850f98111",
+        "merged": "e35f5ace5fd89ce04e6816d0fc58682755bb2bcd",
+        "pushRun": 45685940000,
+        "pullRequestRun": 45685953432,
+        "treeIdentical": true
+      }
     },
     {
       "id": "ENG-005",
       "stream": "Foundation",
       "title": "Authenticated developer-only HTTP gateway",
       "acceptance": "Loopback bind, token auth, Host/Origin guard, bounded inputs, fail-closed routes, no child services.",
-      "status": "IMPLEMENTED_AWAITING_CI",
+      "status": "VERIFIED_MERGED",
       "evidence": [
         {
           "source": "tools/pilot-backend.mjs",
           "test": "tests/m112-platform-backend.test.mjs"
         }
-      ]
+      ],
+      "verification": {
+        "head": "71e8c5f997f893091529dcb14c3629e850f98111",
+        "merged": "e35f5ace5fd89ce04e6816d0fc58682755bb2bcd",
+        "pushRun": 45685940000,
+        "pullRequestRun": 45685953432,
+        "treeIdentical": true
+      }
     },
     {
       "id": "ENG-006",
@@ -204,104 +239,163 @@
       "stream": "Tutor",
       "title": "Restricted lesson-scoped tutor interface",
       "acceptance": "Adult synthetic rehearsal only, fixed approved-source contract; no open child chat.",
-      "status": "IMPLEMENTED_AWAITING_CI",
+      "status": "VERIFIED_MERGED",
       "evidence": [
         {
           "source": "tools/pilot-backend.mjs",
           "test": "tests/m114-tutor-sandbox.test.mjs"
         }
-      ]
+      ],
+      "verification": {
+        "head": "f20cd741fb0013f0fbf3a9b4fa3b89d09c59069e",
+        "merged": "0d2ff7412b9cdbf5f692c7c33c887ca410278682",
+        "pushRun": 45687164500,
+        "pullRequestRun": 45687177551,
+        "treeIdentical": true
+      }
     },
     {
       "id": "ENG-023",
       "stream": "Tutor",
       "title": "Source retrieval and citation verification service",
       "acceptance": "Exact versioned allowlist, missing/revoked source denial and grounding tests.",
-      "status": "IMPLEMENTED_AWAITING_CI",
+      "status": "VERIFIED_MERGED",
       "evidence": [
         {
           "source": "tools/tutor-sandbox.mjs",
           "test": "tests/m114-tutor-sandbox.test.mjs"
         }
-      ]
+      ],
+      "verification": {
+        "head": "f20cd741fb0013f0fbf3a9b4fa3b89d09c59069e",
+        "merged": "0d2ff7412b9cdbf5f692c7c33c887ca410278682",
+        "pushRun": 45687164500,
+        "pullRequestRun": 45687177551,
+        "treeIdentical": true
+      }
     },
     {
       "id": "ENG-024",
       "stream": "Tutor",
       "title": "Provider-neutral model adapter in disabled sandbox",
       "acceptance": "Mock provider, bounded time and tokens, no child identifiers, no live API without approval.",
-      "status": "IMPLEMENTED_AWAITING_CI",
+      "status": "VERIFIED_MERGED",
       "evidence": [
         {
           "source": "tools/tutor-sandbox.mjs",
           "test": "tests/m114-tutor-sandbox.test.mjs"
         }
-      ]
+      ],
+      "verification": {
+        "head": "f20cd741fb0013f0fbf3a9b4fa3b89d09c59069e",
+        "merged": "0d2ff7412b9cdbf5f692c7c33c887ca410278682",
+        "pushRun": 45687164500,
+        "pullRequestRun": 45687177551,
+        "treeIdentical": true
+      }
     },
     {
       "id": "ENG-025",
       "stream": "Tutor",
       "title": "Safety/fallback and quota enforcement",
       "acceptance": "Reject unsupported requests, fail closed to local fallback; test timeout, malformed output, quota.",
-      "status": "IMPLEMENTED_AWAITING_CI",
+      "status": "VERIFIED_MERGED",
       "evidence": [
         {
           "source": "tools/tutor-sandbox.mjs",
           "test": "tests/m114-tutor-sandbox.test.mjs"
         }
-      ]
+      ],
+      "verification": {
+        "head": "f20cd741fb0013f0fbf3a9b4fa3b89d09c59069e",
+        "merged": "0d2ff7412b9cdbf5f692c7c33c887ca410278682",
+        "pushRun": 45687164500,
+        "pullRequestRun": 45687177551,
+        "treeIdentical": true
+      }
     },
     {
       "id": "ENG-026",
       "stream": "Tutor",
       "title": "Bilingual tutor quality evaluation pipeline",
       "acceptance": "Synthetic adversarial fixtures plus independent reviewer handoff; no auto approval.",
-      "status": "IMPLEMENTED_AWAITING_CI",
+      "status": "VERIFIED_MERGED",
       "evidence": [
         {
           "source": "tools/tutor-sandbox-evaluation.mjs",
           "test": "tests/m114-tutor-sandbox.test.mjs"
         }
-      ]
+      ],
+      "verification": {
+        "head": "f20cd741fb0013f0fbf3a9b4fa3b89d09c59069e",
+        "merged": "0d2ff7412b9cdbf5f692c7c33c887ca410278682",
+        "pushRun": 45687164500,
+        "pullRequestRun": 45687177551,
+        "treeIdentical": true
+      }
     },
     {
       "id": "ENG-027",
       "stream": "Adaptive",
       "title": "Concept prerequisite graph",
       "acceptance": "Explicit versioned graph with cycle checks and no aptitude labels.",
-      "status": "PLANNED",
-      "evidence": []
+      "status": "IMPLEMENTED_AWAITING_CI",
+      "evidence": [
+        {
+          "source": "assets/concept-pathways.js",
+          "test": "tests/m115-adaptive-learning.test.mjs"
+        }
+      ]
     },
     {
       "id": "ENG-028",
       "stream": "Adaptive",
       "title": "Local session practice recommendation engine",
       "acceptance": "Explainable recommendations with skip/reset and no high-stakes scores.",
-      "status": "PLANNED",
-      "evidence": []
+      "status": "IMPLEMENTED_AWAITING_CI",
+      "evidence": [
+        {
+          "source": "assets/concept-pathways.js",
+          "test": "tests/m115-adaptive-learning.test.mjs"
+        },
+        {
+          "source": "assets/concept-pathways-app.js",
+          "test": "tests/browser_m25_ci.py"
+        }
+      ]
     },
     {
       "id": "ENG-029",
       "stream": "Adaptive",
       "title": "Reviewed-task evidence interface",
       "acceptance": "Separate synthetic/real approved pools, no profiling before authorized study.",
-      "status": "PLANNED",
-      "evidence": []
+      "status": "IMPLEMENTED_AWAITING_CI",
+      "evidence": [
+        {
+          "source": "tools/adaptive-evidence-interface.mjs",
+          "test": "tests/m115-adaptive-learning.test.mjs"
+        }
+      ]
     },
     {
       "id": "ENG-030",
       "stream": "Adaptive",
       "title": "Calibration evaluation interface",
       "acceptance": "Held-out transfer, abstention, uncertainty and evaluation reports on synthetic data.",
-      "status": "PLANNED",
-      "evidence": []
+      "status": "IMPLEMENTED_AWAITING_CI",
+      "evidence": [
+        {
+          "source": "tools/adaptive-evidence-interface.mjs",
+          "test": "tests/m115-adaptive-learning.test.mjs"
+        }
+      ]
     },
     {
       "id": "ENG-031",
       "stream": "Student experience",
       "title": "Unified learner activity dashboard",
       "acceptance": "Local-only navigation across learning modules, no new account dependency.",
-      "status": "IMPLEMENTED_AWAITING_CI",
+      "status": "VERIFIED_MERGED",
       "evidence": [
         {
           "source": "assets/workspace-engine.js",
@@ -311,14 +405,21 @@
           "source": "assets/workspace-app.js",
           "test": "tests/browser_m25_ci.py"
         }
-      ]
+      ],
+      "verification": {
+        "head": "669154e8e0e7897ae8936563e7c1a5a175910f5f",
+        "merged": "60e3f00648d8ec3d68cc451e6d7f71ec15711d36",
+        "pushRun": 45686453792,
+        "pullRequestRun": 45686469492,
+        "treeIdentical": true
+      }
     },
     {
       "id": "ENG-032",
       "stream": "Student experience",
       "title": "Session learning plan",
       "acceptance": "Bounded fixed activity list, next/skip/reset, no persisted identifiers.",
-      "status": "IMPLEMENTED_AWAITING_CI",
+      "status": "VERIFIED_MERGED",
       "evidence": [
         {
           "source": "assets/workspace-engine.js",
@@ -328,14 +429,21 @@
           "source": "assets/workspace-app.js",
           "test": "tests/browser_m25_ci.py"
         }
-      ]
+      ],
+      "verification": {
+        "head": "669154e8e0e7897ae8936563e7c1a5a175910f5f",
+        "merged": "60e3f00648d8ec3d68cc451e6d7f71ec15711d36",
+        "pushRun": 45686453792,
+        "pullRequestRun": 45686469492,
+        "treeIdentical": true
+      }
     },
     {
       "id": "ENG-033",
       "stream": "Student experience",
       "title": "Accessible progress summary",
       "acceptance": "Task-local progress and opt-in existing history; no mastery or aptitude claims.",
-      "status": "IMPLEMENTED_AWAITING_CI",
+      "status": "VERIFIED_MERGED",
       "evidence": [
         {
           "source": "assets/workspace-engine.js",
@@ -345,14 +453,21 @@
           "source": "assets/workspace-app.js",
           "test": "tests/browser_m25_ci.py"
         }
-      ]
+      ],
+      "verification": {
+        "head": "669154e8e0e7897ae8936563e7c1a5a175910f5f",
+        "merged": "60e3f00648d8ec3d68cc451e6d7f71ec15711d36",
+        "pushRun": 45686453792,
+        "pullRequestRun": 45686469492,
+        "treeIdentical": true
+      }
     },
     {
       "id": "ENG-034",
       "stream": "Teacher experience",
       "title": "Unified teacher planning dashboard",
       "acceptance": "Lesson sequence, resources and projector handoff from one workspace.",
-      "status": "IMPLEMENTED_AWAITING_CI",
+      "status": "VERIFIED_MERGED",
       "evidence": [
         {
           "source": "assets/workspace-engine.js",
@@ -362,14 +477,21 @@
           "source": "assets/workspace-app.js",
           "test": "tests/browser_m25_ci.py"
         }
-      ]
+      ],
+      "verification": {
+        "head": "669154e8e0e7897ae8936563e7c1a5a175910f5f",
+        "merged": "60e3f00648d8ec3d68cc451e6d7f71ec15711d36",
+        "pushRun": 45686453792,
+        "pullRequestRun": 45686469492,
+        "treeIdentical": true
+      }
     },
     {
       "id": "ENG-035",
       "stream": "Teacher experience",
       "title": "Teacher classroom lesson workflow",
       "acceptance": "Start/pause/next/reset with offline alternative and no pupil roster.",
-      "status": "IMPLEMENTED_AWAITING_CI",
+      "status": "VERIFIED_MERGED",
       "evidence": [
         {
           "source": "assets/workspace-engine.js",
@@ -379,7 +501,14 @@
           "source": "assets/workspace-app.js",
           "test": "tests/browser_m25_ci.py"
         }
-      ]
+      ],
+      "verification": {
+        "head": "669154e8e0e7897ae8936563e7c1a5a175910f5f",
+        "merged": "60e3f00648d8ec3d68cc451e6d7f71ec15711d36",
+        "pushRun": 45686453792,
+        "pullRequestRun": 45686469492,
+        "treeIdentical": true
+      }
     },
     {
       "id": "ENG-036",
