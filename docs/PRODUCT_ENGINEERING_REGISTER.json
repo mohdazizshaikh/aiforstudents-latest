@@ -304,7 +304,14 @@
         {
           "source": "tools/prototype-review-worklist.mjs",
           "test": "tests/m124-prototype-review-worklist.test.mjs",
-          "status": "AWAITING_CI"
+          "status": "VERIFIED_MERGED",
+          "verification": {
+            "head": "594eaebfd75c7053c186aeb277be257fdee72ec2",
+            "merged": "3edb96d373d721e580d9f9cacae390fafd9ae9b5",
+            "pushRun": 45716495743,
+            "pullRequestRun": 45716502544,
+            "treeIdentical": true
+          }
         }
       ]
     },
@@ -356,7 +363,14 @@
         {
           "source": "tools/prototype-review-worklist.mjs",
           "test": "tests/m124-prototype-review-worklist.test.mjs",
-          "status": "AWAITING_CI"
+          "status": "VERIFIED_MERGED",
+          "verification": {
+            "head": "594eaebfd75c7053c186aeb277be257fdee72ec2",
+            "merged": "3edb96d373d721e580d9f9cacae390fafd9ae9b5",
+            "pushRun": 45716495743,
+            "pullRequestRun": 45716502544,
+            "treeIdentical": true
+          }
         }
       ]
     },
@@ -408,7 +422,14 @@
         {
           "source": "tools/prototype-review-worklist.mjs",
           "test": "tests/m124-prototype-review-worklist.test.mjs",
-          "status": "AWAITING_CI"
+          "status": "VERIFIED_MERGED",
+          "verification": {
+            "head": "594eaebfd75c7053c186aeb277be257fdee72ec2",
+            "merged": "3edb96d373d721e580d9f9cacae390fafd9ae9b5",
+            "pushRun": 45716495743,
+            "pullRequestRun": 45716502544,
+            "treeIdentical": true
+          }
         }
       ]
     },
@@ -460,7 +481,14 @@
         {
           "source": "tools/prototype-review-worklist.mjs",
           "test": "tests/m124-prototype-review-worklist.test.mjs",
-          "status": "AWAITING_CI"
+          "status": "VERIFIED_MERGED",
+          "verification": {
+            "head": "594eaebfd75c7053c186aeb277be257fdee72ec2",
+            "merged": "3edb96d373d721e580d9f9cacae390fafd9ae9b5",
+            "pushRun": 45716495743,
+            "pullRequestRun": 45716502544,
+            "treeIdentical": true
+          }
         }
       ]
     },
@@ -512,7 +540,14 @@
         {
           "source": "tools/prototype-review-worklist.mjs",
           "test": "tests/m124-prototype-review-worklist.test.mjs",
-          "status": "AWAITING_CI"
+          "status": "VERIFIED_MERGED",
+          "verification": {
+            "head": "594eaebfd75c7053c186aeb277be257fdee72ec2",
+            "merged": "3edb96d373d721e580d9f9cacae390fafd9ae9b5",
+            "pushRun": 45716495743,
+            "pullRequestRun": 45716502544,
+            "treeIdentical": true
+          }
         }
       ]
     },
@@ -607,6 +642,11 @@
         {
           "source": "assets/visual-lab-engine.js",
           "test": "tests/m122-visual-lab.test.mjs",
+          "status": "AWAITING_CI"
+        },
+        {
+          "source": "assets/activity-explorer-engine.js",
+          "test": "tests/m128-activity-explorer.test.mjs",
           "status": "AWAITING_CI"
         }
       ]
@@ -869,12 +909,26 @@
         {
           "source": "tools/prototype-review-worklist.mjs",
           "test": "tests/m124-prototype-review-worklist.test.mjs",
-          "status": "AWAITING_CI"
+          "status": "VERIFIED_MERGED",
+          "verification": {
+            "head": "594eaebfd75c7053c186aeb277be257fdee72ec2",
+            "merged": "3edb96d373d721e580d9f9cacae390fafd9ae9b5",
+            "pushRun": 45716495743,
+            "pullRequestRun": 45716502544,
+            "treeIdentical": true
+          }
         },
         {
           "source": "tools/prototype-review-batches.mjs",
           "test": "tests/m124-prototype-review-batches.test.mjs",
-          "status": "AWAITING_CI"
+          "status": "VERIFIED_MERGED",
+          "verification": {
+            "head": "594eaebfd75c7053c186aeb277be257fdee72ec2",
+            "merged": "3edb96d373d721e580d9f9cacae390fafd9ae9b5",
+            "pushRun": 45716495743,
+            "pullRequestRun": 45716502544,
+            "treeIdentical": true
+          }
         }
       ]
     },
@@ -920,7 +974,19 @@
         "pushRun": 45686453792,
         "pullRequestRun": 45686469492,
         "treeIdentical": true
-      }
+      },
+      "followUpEvidence": [
+        {
+          "source": "assets/activity-explorer-engine.js",
+          "test": "tests/m128-activity-explorer.test.mjs",
+          "status": "AWAITING_CI"
+        },
+        {
+          "source": "assets/workspace-engine.js",
+          "test": "tests/m129-learner-activity-plan.test.mjs",
+          "status": "AWAITING_CI"
+        }
+      ]
     },
     {
       "id": "ENG-032",
@@ -944,7 +1010,14 @@
         "pushRun": 45686453792,
         "pullRequestRun": 45686469492,
         "treeIdentical": true
-      }
+      },
+      "followUpEvidence": [
+        {
+          "source": "assets/workspace-engine.js",
+          "test": "tests/m129-learner-activity-plan.test.mjs",
+          "status": "AWAITING_CI"
+        }
+      ]
     },
     {
       "id": "ENG-033",
@@ -968,7 +1041,14 @@
         "pushRun": 45686453792,
         "pullRequestRun": 45686469492,
         "treeIdentical": true
-      }
+      },
+      "followUpEvidence": [
+        {
+          "source": "assets/workspace-engine.js",
+          "test": "tests/m129-learner-activity-plan.test.mjs",
+          "status": "AWAITING_CI"
+        }
+      ]
     },
     {
       "id": "ENG-034",
@@ -1014,12 +1094,26 @@
         {
           "source": "tools/prototype-review-worklist.mjs",
           "test": "tests/m124-prototype-review-worklist.test.mjs",
-          "status": "AWAITING_CI"
+          "status": "VERIFIED_MERGED",
+          "verification": {
+            "head": "594eaebfd75c7053c186aeb277be257fdee72ec2",
+            "merged": "3edb96d373d721e580d9f9cacae390fafd9ae9b5",
+            "pushRun": 45716495743,
+            "pullRequestRun": 45716502544,
+            "treeIdentical": true
+          }
         },
         {
           "source": "tools/prototype-review-batches.mjs",
           "test": "tests/m124-prototype-review-batches.test.mjs",
-          "status": "AWAITING_CI"
+          "status": "VERIFIED_MERGED",
+          "verification": {
+            "head": "594eaebfd75c7053c186aeb277be257fdee72ec2",
+            "merged": "3edb96d373d721e580d9f9cacae390fafd9ae9b5",
+            "pushRun": 45716495743,
+            "pullRequestRun": 45716502544,
+            "treeIdentical": true
+          }
         }
       ]
     },
@@ -1165,11 +1259,30 @@
         {
           "source": "tools/prototype-review-worklist.mjs",
           "test": "tests/m124-prototype-review-worklist.test.mjs",
-          "status": "AWAITING_CI"
+          "status": "VERIFIED_MERGED",
+          "verification": {
+            "head": "594eaebfd75c7053c186aeb277be257fdee72ec2",
+            "merged": "3edb96d373d721e580d9f9cacae390fafd9ae9b5",
+            "pushRun": 45716495743,
+            "pullRequestRun": 45716502544,
+            "treeIdentical": true
+          }
         },
         {
           "source": "tools/prototype-review-batches.mjs",
           "test": "tests/m124-prototype-review-batches.test.mjs",
+          "status": "VERIFIED_MERGED",
+          "verification": {
+            "head": "594eaebfd75c7053c186aeb277be257fdee72ec2",
+            "merged": "3edb96d373d721e580d9f9cacae390fafd9ae9b5",
+            "pushRun": 45716495743,
+            "pullRequestRun": 45716502544,
+            "treeIdentical": true
+          }
+        },
+        {
+          "source": "assets/activity-explorer-engine.js",
+          "test": "tests/m128-activity-explorer.test.mjs",
           "status": "AWAITING_CI"
         }
       ]

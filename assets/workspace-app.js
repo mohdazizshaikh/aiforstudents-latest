@@ -35,12 +35,12 @@ function render(){
  $('workspace-direct-title').textContent=p('Open any resource (new tab)','कोई संसाधन खोलें (नया टैब)');
  const chosen=options.find(x=>x.key===$('workspace-choice').value);
  $('workspace-direct').replaceChildren();
- if(chosen){$('workspace-direct').append(link(chosen.title,chosen.href));if(teacher&&chosen.worksheetHref)$('workspace-direct').append(link(p('Open draft worksheet (new tab)','मसौदा अभ्यास पत्र खोलें (नया टैब)'),chosen.worksheetHref))}
+ if(chosen){$('workspace-direct').append(link(chosen.title,chosen.href));if(chosen.worksheetHref)$('workspace-direct').append(link(p('Open draft worksheet (new tab)','मसौदा अभ्यास पत्र खोलें (नया टैब)'),chosen.worksheetHref))}
  $('workspace-current-title').textContent=p('Current activity','वर्तमान गतिविधि');
  $('workspace-current').replaceChildren();
  if(view.current){
   $('workspace-current').append(node('p',view.current.title));
-  if(running){$('workspace-current').append(link(p('Open activity (new tab)','गतिविधि खोलें (नया टैब)'),view.current.href));if(teacher&&view.current.worksheetHref)$('workspace-current').append(link(p('Open draft worksheet (new tab)','मसौदा अभ्यास पत्र खोलें (नया टैब)'),view.current.worksheetHref))}
+  if(running){$('workspace-current').append(link(p('Open activity (new tab)','गतिविधि खोलें (नया टैब)'),view.current.href));if(view.current.worksheetHref)$('workspace-current').append(link(p('Open draft worksheet (new tab)','मसौदा अभ्यास पत्र खोलें (नया टैब)'),view.current.worksheetHref))}
  }else $('workspace-current').append(node('p',p('No active activity','कोई सक्रिय गतिविधि नहीं')));
  $('workspace-list-title').textContent=p('Selected sequence','चुना क्रम');
  $('workspace-list').replaceChildren(...view.items.map(x=>node('li',x.title+' — '+status[x.status])));
@@ -48,6 +48,12 @@ function render(){
 for(const t of ['add','remove','up','down','start','clear','visited','skip','next','pause','resume'])$('workspace-'+t).addEventListener('click',()=>change(t,t==='add'?$('workspace-choice').value:['remove','up','down'].includes(t)?$('workspace-queue').value:undefined));
 for(const id of ['workspace-choice','workspace-queue'])$(id).addEventListener('change',render);
 $('workspace-lang').addEventListener('change',()=>{language=$('workspace-lang').value;render()});
+if(role==='learner')window.addEventListener('aifs-learner-add-activity',e=>{
+ const k=e.detail;
+ if(typeof k!=='string'||state.phase!=='planning'||state.keys.includes(k)||state.keys.length>=WORKSPACE_LIMIT)return;
+ if(!workspaceChoices('learner',language).some(x=>x.key===k&&x.kind))return;
+ change('add',k);e.preventDefault();
+});
 function reset(){state=createWorkspace(role);render()}
 window.addEventListener('aifs-history-cleared',reset);
 let privacyChannel=null;
