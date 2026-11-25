@@ -3,7 +3,7 @@ Run from the project root with Python 3. No network or paid dependencies.
 Note: ZIP creation does NOT deploy or test the actual Hostinger webserver.
 """
 from pathlib import Path
-from zipfile import ZipFile, ZIP_DEFLATED
+from zipfile import ZipFile, ZipInfo, ZIP_DEFLATED
 import json, sys
 ROOT=Path(__file__).resolve().parent.parent
 OUT=ROOT.parent
@@ -18,6 +18,10 @@ SOURCE_ROOT_FILES={'.htaccess','.gitignore','robots.txt'}
 def static_files():
     files=[]
     for p in ROOT.rglob('*'):
+        if p.is_symlink():
+            if p.relative_to(ROOT).parts[0] in SITE_DIRS or p.relative_to(ROOT).as_posix() in ROOT_DEPLOY:
+                raise ValueError('Symlink in static tree')
+            continue
         if not p.is_file():continue
         rel=p.relative_to(ROOT)
         if (len(rel.parts)==1 and rel.as_posix() in ROOT_DEPLOY) or (rel.parts[0] in SITE_DIRS and (rel.suffix.lower() in ('.html','.js','.css','.svg','.webmanifest') or rel.name=='robots.txt')):
@@ -33,7 +37,12 @@ def source_files():
 
 def build(files,dest):
     with ZipFile(dest,'w',ZIP_DEFLATED,compresslevel=9) as z:
-        for p in files:z.write(p,p.relative_to(ROOT).as_posix())
+        for p in sorted(files):
+            if p.is_symlink() or not p.resolve().is_relative_to(ROOT):raise ValueError('Unsafe source member')
+            info=ZipInfo(p.relative_to(ROOT).as_posix(),date_time=(2000,1,1,0,0,0))
+            info.create_system=3
+            info.external_attr=0o100644 << 16
+            z.writestr(info,p.read_bytes(),compress_type=ZIP_DEFLATED,compresslevel=9)
     with ZipFile(dest) as z:
         names=z.namelist()
         assert len(names)==len(set(names)), 'Duplicate ZIP entries'

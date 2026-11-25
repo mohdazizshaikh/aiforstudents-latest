@@ -47,7 +47,10 @@ export const FULL_TARGETS=Object.freeze([...new Set([...TARGETS,...staticPages()
 export const FORBIDDEN_PUBLIC_PATHS=Object.freeze([
  '/.htaccess','/RELEASE_MANIFEST.json','/CONTENT_REVIEW_QUEUE.jsonl',
  '/LAB_CONTENT_REVIEW_QUEUE.jsonl','/docs/CONTENT_REVIEW_QUEUE.jsonl.gz',
- '/review-evidence/pilot-first.json','/safety-handoff/operations.json'
+ '/review-evidence/pilot-first.json','/safety-handoff/operations.json',
+ '/tools/pilot-backend.mjs','/tools/pilot-store.mjs','/tools/adult-operator-rehearsal.mjs',
+ '/tools/synthetic-db-recovery.mjs','/tools/teacher-aggregate-rehearsal.mjs','/tools/resource-ingestion-boundary.mjs',
+ '/v1/health','/v1/catalog','/v1/plan','/v1/tutor-rehearsal','/v1/adaptive-rehearsal','/v1/resource-rehearsal','/v1/aggregate-rehearsal','/v1/students','/v1/chat','/v1/mastery'
 ]);
 if(FORBIDDEN_PUBLIC_PATHS.some(x=>!pathAllowed(x)))throw Error('Invalid forbidden source path');
 

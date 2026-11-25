@@ -50,8 +50,11 @@ for(const id of ['workspace-choice','workspace-queue'])$(id).addEventListener('c
 $('workspace-lang').addEventListener('change',()=>{language=$('workspace-lang').value;render()});
 function reset(){state=createWorkspace(role);render()}
 window.addEventListener('aifs-history-cleared',reset);
-try{const channel=new BroadcastChannel('aifs-discovery-privacy-reset-v1');channel.addEventListener('message',e=>{if(e.data?.type==='clear-history')reset()});window.addEventListener('pagehide',()=>channel.close(),{once:true})}catch{}
+let privacyChannel=null;
+function connectPrivacy(){if(privacyChannel)return;try{privacyChannel=new BroadcastChannel('aifs-discovery-privacy-reset-v1');privacyChannel.addEventListener('message',e=>{if(e.data?.type==='clear-history')reset()})}catch{privacyChannel=null}}
+connectPrivacy();
+window.addEventListener('pagehide',()=>{privacyChannel?.close();privacyChannel=null});
 window.addEventListener('storage',e=>{if(e.key==='aifs-privacy-clear-signal-v1'&&e.newValue==='clear')reset()});
-window.addEventListener('pageshow',e=>{if(e.persisted)reset()});
+window.addEventListener('pageshow',e=>{connectPrivacy();if(e.persisted)reset()});
 render();
 if('serviceWorker' in navigator&&(location.protocol==='https:'||location.hostname==='localhost'))navigator.serviceWorker.register('../service-worker.js').catch(()=>{});
