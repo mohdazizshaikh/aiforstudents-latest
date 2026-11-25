@@ -111,42 +111,63 @@
       "stream": "Foundation",
       "title": "Deployment target and production storage decision",
       "acceptance": "Compare existing Hostinger capabilities and define approved migration path without changing static core.",
-      "status": "IMPLEMENTED_AWAITING_CI",
+      "status": "DESIGN_VERIFIED_EXTERNAL_APPROVAL_PENDING",
       "evidence": [
         {
           "source": "docs/M119_PRODUCTION_ARCHITECTURE_DECISION.md",
           "test": "tests/m119-backend-recovery-operator.test.mjs"
         }
       ],
-      "limitation": "Conditional architecture proposal only; actual Hostinger account capability and owner approval pending; no production database or deployment."
+      "limitation": "Conditional design document CI-verified, not the acceptance of an approved production architecture; actual account inspection and owner approval remain externally pending.",
+      "verification": {
+        "head": "34e5de6d228680eb32df99dcc1945ae9b4598fc3",
+        "merged": "0ec46e2947cbabc28c44ee80b36ba9d4544b7dac",
+        "pushRun": 45699507063,
+        "pullRequestRun": 45699521759,
+        "treeIdentical": true
+      }
     },
     {
       "id": "ENG-007",
       "stream": "Foundation",
       "title": "Production migration and recovery tooling",
       "acceptance": "Dry-run migration, rollback, backup restore on synthetic database; no real learner data.",
-      "status": "IMPLEMENTED_AWAITING_CI",
+      "status": "VERIFIED_MERGED",
       "evidence": [
         {
           "source": "tools/synthetic-db-recovery.mjs",
           "test": "tests/m119-backend-recovery-operator.test.mjs"
         }
       ],
-      "limitation": "Fixed SQLite fixture recovery only; actual PHP/MySQL target migration pending."
+      "limitation": "Fixed SQLite fixture recovery only; actual PHP/MySQL target migration pending.",
+      "verification": {
+        "head": "34e5de6d228680eb32df99dcc1945ae9b4598fc3",
+        "merged": "0ec46e2947cbabc28c44ee80b36ba9d4544b7dac",
+        "pushRun": 45699507063,
+        "pullRequestRun": 45699521759,
+        "treeIdentical": true
+      }
     },
     {
       "id": "ENG-008",
       "stream": "Foundation",
       "title": "Adult operator access architecture",
       "acceptance": "Role isolation, expiration, revocation, authorization tests; no activation before approval.",
-      "status": "IMPLEMENTED_AWAITING_CI",
+      "status": "VERIFIED_MERGED",
       "evidence": [
         {
           "source": "tools/adult-operator-rehearsal.mjs",
           "test": "tests/m119-backend-recovery-operator.test.mjs"
         }
       ],
-      "limitation": "Optional synthetic role authorization; real adult identity and production session management not activated."
+      "limitation": "Optional synthetic role authorization; real adult identity and production session management not activated.",
+      "verification": {
+        "head": "34e5de6d228680eb32df99dcc1945ae9b4598fc3",
+        "merged": "0ec46e2947cbabc28c44ee80b36ba9d4544b7dac",
+        "pushRun": 45699507063,
+        "pullRequestRun": 45699521759,
+        "treeIdentical": true
+      }
     },
     {
       "id": "ENG-009",
@@ -789,46 +810,93 @@
       "stream": "Teacher experience",
       "title": "Adult synthetic aggregate rehearsal",
       "acceptance": "Minimum-count suppression, no individual scores, disabled until approval.",
-      "status": "IMPLEMENTED_AWAITING_CI",
+      "status": "VERIFIED_MERGED",
       "evidence": [
         {
           "source": "tools/teacher-aggregate-rehearsal.mjs",
           "test": "tests/m119-backend-recovery-operator.test.mjs"
         }
       ],
-      "limitation": "Fixed invented aggregates only; no live classroom data or real analytics."
+      "limitation": "Fixed invented aggregates only; no live classroom data or real analytics.",
+      "verification": {
+        "head": "34e5de6d228680eb32df99dcc1945ae9b4598fc3",
+        "merged": "0ec46e2947cbabc28c44ee80b36ba9d4544b7dac",
+        "pushRun": 45699507063,
+        "pullRequestRun": 45699521759,
+        "treeIdentical": true
+      }
     },
     {
       "id": "ENG-037",
       "stream": "Quality",
       "title": "Cross-module privacy and security regression",
       "acceptance": "No unintended persistence or network requests; source and endpoint exposure negative tests.",
-      "status": "PLANNED",
-      "evidence": []
+      "status": "IMPLEMENTED_AWAITING_CI",
+      "evidence": [
+        {
+          "source": "assets/workspace-app.js",
+          "test": "tests/m120-quality-regression.test.mjs"
+        },
+        {
+          "source": "tools/check-live-staging.mjs",
+          "test": "tests/browser_m25_ci.py"
+        }
+      ],
+      "limitation": "Source checks and local cross-tab browser regression; real host probes and independent security/privacy audit remain pending."
     },
     {
       "id": "ENG-038",
       "stream": "Quality",
       "title": "Low-bandwidth and performance regression",
       "acceptance": "Measure budgets and offline install/update behavior; real devices separately gated.",
-      "status": "PLANNED",
-      "evidence": []
+      "status": "IMPLEMENTED_AWAITING_CI",
+      "evidence": [
+        {
+          "source": "tools/quality-regression.mjs",
+          "test": "tests/m120-quality-regression.test.mjs"
+        },
+        {
+          "source": "service-worker.js",
+          "test": "tests/m120-quality-regression.test.mjs"
+        }
+      ],
+      "limitation": "Gzip estimates, simulated service-worker lifecycle and existing real local offline Chromium; real mobile network/device measurement pending."
     },
     {
       "id": "ENG-039",
       "stream": "Quality",
       "title": "Accessibility and localization integration regression",
       "acceptance": "Keyboard, text alternatives, English/Hindi consistency; human AT review separate.",
-      "status": "PLANNED",
-      "evidence": []
+      "status": "IMPLEMENTED_AWAITING_CI",
+      "evidence": [
+        {
+          "source": "tests/browser_m25_ci.py",
+          "test": "tests/m120-quality-regression.test.mjs"
+        },
+        {
+          "source": "virtual-experiment-lab/index.html",
+          "test": "tests/browser_m25_ci.py"
+        }
+      ],
+      "limitation": "Native keyboard and structural bilingual checks only; independent translation and physical assistive-technology review pending."
     },
     {
       "id": "ENG-040",
       "stream": "Operations",
       "title": "Reproducible restricted deployment and rollback rehearsal",
       "acceptance": "Dry-run artifacts, approved-host verification procedure, rollback proof separate from live release.",
-      "status": "PLANNED",
-      "evidence": []
+      "status": "IMPLEMENTED_AWAITING_CI",
+      "evidence": [
+        {
+          "source": "tools/rehearse-static-rollback.py",
+          "test": "tests/m120-quality-regression.test.mjs"
+        },
+        {
+          "source": "tools/package-release.py",
+          "test": "tests/m120-quality-regression.test.mjs"
+        }
+      ],
+      "limitation": "Local deterministic archive and exact historical rollback rehearsal; real restricted Hostinger deployment, backup and recovery evidence pending."
     }
   ]
 }
