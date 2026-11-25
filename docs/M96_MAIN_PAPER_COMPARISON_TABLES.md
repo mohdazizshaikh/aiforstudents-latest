@@ -1,5 +1,7 @@
 # M96 — Main-model paper comparison tables (candidate)
 
+**Verified:** corrected runs 45568346304 and 45568339246 passed; PR #86 merged at 3813d88868fd049c209dc01454ecf255c8681678. No external approval.
+
 **Correction:** Integrated corrected M95 parent e79e314. Legacy classroom pack restored; individual lab table renderer fixed. Original Chromium failed; fresh CI pending.
 
 M94–M95 exact-head Node/static checks passed; Chromium pending at branch creation. Adds 60 main-model blank comparison tables (48 advanced, seven foundational science, three Maths Workshop, two Studio) using the same semantic native table format as M95 supplemental activities. Two trial rows, blank control/setting and displayed-result cells, bilingual captions and column headers. Step two references the table; if no computer model is available, leave it blank and write a prediction only. Existing first/third paper spaces, exact source labels and safety caveats retained. All 109 activities now share paper format in candidate, 218 bilingual variants. No actual learner entries, identity, answer keys, persistence or assessment. Mixed pack integration uses existing renderer. 60 resource-level improvements; 61 named Node tests plus four-family offline browser regression and mixed-pack print checks. Updated M75 exact-key contract and M95 historical no-main-table assertion to reflect deliberate schema change.

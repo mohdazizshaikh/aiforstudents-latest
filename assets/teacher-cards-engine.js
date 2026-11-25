@@ -325,3 +325,24 @@ export function worksheetReturnLaunch(key,lang='en'){
  const plan=teacherActivityLaunch(key,lang),[query,fragment]=plan.href.split('#');
  return {...plan,language:lang,href:query+'&lang='+lang+'#'+fragment};
 }
+
+/** M99 teacher-only source-bound control ranges, not target settings or answer keys. */
+export function teacherMainControlGuide(id,lang='en'){
+ const labels=mainWorksheetControls(id,lang),a=printableAnyLabActivity(id,'main',lang),i=lang==='hi'?1:0;
+ const p=(en,hi)=>lang==='hi'?hi:en;
+ const mini={
+  'maths/number-line':[{min:-10,max:10,step:1}],
+  'maths/rectangle':[{min:1,max:12,step:1},{min:1,max:12,step:1}],
+  'maths/data-table':[{min:0,max:10,step:1},{min:0,max:10,step:1}],
+  'studio/fractions':[{min:0,max:4,step:1}],
+  'studio/circuit-path':[{options:[{label:['Open','खुला']},{label:['Closed','बंद']}]}]
+ };
+ const fields=ADVANCED_IDS.includes(id)?ADVANCED_MODELS[id].fields:id.startsWith('science/')?SCIENCE_MODELS[id.slice(8)].fields:mini[id];
+ if(!fields||fields.length!==labels.length)throw Error('Control guide source mismatch');
+ const controls=fields.map((f,j)=>{
+  if(f.options)return {label:labels[j],kind:'choice',settings:f.options.map(o=>o.label[i]).join('; ')};
+  if(!Number.isInteger(f.min)||!Number.isInteger(f.max)||!Number.isInteger(f.step)||f.step<1||f.max<f.min)throw Error('Invalid control range');
+  return {label:labels[j],kind:'range',settings:p(f.min+' to '+f.max+'; step '+f.step,f.min+' से '+f.max+'; कदम '+f.step)+(f.unit?' ('+f.unit+')':'')};
+ });
+ return {id,title:a.title,caveat:a.caveat,controls,teacherOnly:true,humanReviewed:false,publicReleaseApproved:false,storesStudentData:false};
+}

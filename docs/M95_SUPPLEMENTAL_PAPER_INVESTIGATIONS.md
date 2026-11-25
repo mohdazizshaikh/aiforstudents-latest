@@ -1,5 +1,7 @@
 # M95 — Supplemental paper investigations and comparison tables (candidate)
 
+**Verified:** corrected runs 45568271761 and 45568264561 passed; PR #85 merged at 06c30a562fff87ee6d625f3d155e723243c92560. No external approval.
+
 **Correction:** Initial browser runs failed the legacy classroom assignment-pack test due to a misplaced table-rendering replacement. Restored legacy renderer and applied the intended conditional only inside individual lab worksheet rendering. Fresh CI pending.
 
 M94 exact-head Node/static passed; Chromium pending at branch creation. All 49 supplemental activities receive their own exact extension-control labels rather than parent model labels, bilingual two-setting investigation prompts, and a blank two-row paper table (trial, control/setting, displayed result). The second writing box is replaced by the table; first and third steps, safety caveats and main worksheets unchanged. No answers, current simulation values, online input or persistence. If no model is available, leave the table blank and write a prediction only. Single and mixed pack outputs use the same native semantic table; browser print regression is not physical A4 verification.
