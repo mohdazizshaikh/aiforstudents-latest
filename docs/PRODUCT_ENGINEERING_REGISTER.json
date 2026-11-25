@@ -135,7 +135,7 @@
       "stream": "Smart Lab",
       "title": "Grade 1–5 coverage definition and gap audit",
       "acceptance": "Explicit concept matrix with distinction between proposed and independently verified chapters.",
-      "status": "IMPLEMENTED_AWAITING_CI",
+      "status": "VERIFIED_MERGED",
       "evidence": [
         {
           "source": "tools/smart-lab-gap-audit.mjs",
@@ -145,14 +145,21 @@
           "source": "docs/M116_CONCEPT_GAP_MATRIX.json",
           "test": "tests/m116-smart-lab-coverage.test.mjs"
         }
-      ]
+      ],
+      "verification": {
+        "head": "d46f9c45190f6e69c072b3c21d37d7fd32242dcf",
+        "merged": "81f2f1978bbd81820f24246482b7f5ed043e74f8",
+        "pushRun": 45693770530,
+        "pullRequestRun": 45693784463,
+        "treeIdentical": true
+      }
     },
     {
       "id": "ENG-010",
       "stream": "Smart Lab",
       "title": "Grade 6–8 coverage definition and gap audit",
       "acceptance": "Board-specific concept prerequisites and resource gaps; no inferred alignment.",
-      "status": "IMPLEMENTED_AWAITING_CI",
+      "status": "VERIFIED_MERGED",
       "evidence": [
         {
           "source": "tools/smart-lab-gap-audit.mjs",
@@ -162,14 +169,21 @@
           "source": "docs/M116_CONCEPT_GAP_MATRIX.json",
           "test": "tests/m116-smart-lab-coverage.test.mjs"
         }
-      ]
+      ],
+      "verification": {
+        "head": "d46f9c45190f6e69c072b3c21d37d7fd32242dcf",
+        "merged": "81f2f1978bbd81820f24246482b7f5ed043e74f8",
+        "pushRun": 45693770530,
+        "pullRequestRun": 45693784463,
+        "treeIdentical": true
+      }
     },
     {
       "id": "ENG-011",
       "stream": "Smart Lab",
       "title": "Grade 9–10 coverage definition and gap audit",
       "acceptance": "Board-specific concept prerequisites and resource gaps.",
-      "status": "IMPLEMENTED_AWAITING_CI",
+      "status": "VERIFIED_MERGED",
       "evidence": [
         {
           "source": "tools/smart-lab-gap-audit.mjs",
@@ -179,14 +193,21 @@
           "source": "docs/M116_CONCEPT_GAP_MATRIX.json",
           "test": "tests/m116-smart-lab-coverage.test.mjs"
         }
-      ]
+      ],
+      "verification": {
+        "head": "d46f9c45190f6e69c072b3c21d37d7fd32242dcf",
+        "merged": "81f2f1978bbd81820f24246482b7f5ed043e74f8",
+        "pushRun": 45693770530,
+        "pullRequestRun": 45693784463,
+        "treeIdentical": true
+      }
     },
     {
       "id": "ENG-012",
       "stream": "Smart Lab",
       "title": "Grade 11–12 coverage definition and gap audit",
       "acceptance": "Stream-specific concept prerequisites and resource gaps.",
-      "status": "IMPLEMENTED_AWAITING_CI",
+      "status": "VERIFIED_MERGED",
       "evidence": [
         {
           "source": "tools/smart-lab-gap-audit.mjs",
@@ -196,14 +217,21 @@
           "source": "docs/M116_CONCEPT_GAP_MATRIX.json",
           "test": "tests/m116-smart-lab-coverage.test.mjs"
         }
-      ]
+      ],
+      "verification": {
+        "head": "d46f9c45190f6e69c072b3c21d37d7fd32242dcf",
+        "merged": "81f2f1978bbd81820f24246482b7f5ed043e74f8",
+        "pushRun": 45693770530,
+        "pullRequestRun": 45693784463,
+        "treeIdentical": true
+      }
     },
     {
       "id": "ENG-013",
       "stream": "Smart Lab",
       "title": "Missing primary mathematics interaction set",
       "acceptance": "New interactive models from gap matrix, keyboard/text alternatives and independent reference requirements.",
-      "status": "IMPLEMENTED_AWAITING_CI",
+      "status": "VERIFIED_MERGED",
       "evidence": [
         {
           "source": "assets/primary-maths-lab.js",
@@ -213,14 +241,21 @@
           "source": "assets/primary-maths-app.js",
           "test": "tests/browser_m25_ci.py"
         }
-      ]
+      ],
+      "verification": {
+        "head": "d46f9c45190f6e69c072b3c21d37d7fd32242dcf",
+        "merged": "81f2f1978bbd81820f24246482b7f5ed043e74f8",
+        "pushRun": 45693770530,
+        "pullRequestRun": 45693784463,
+        "treeIdentical": true
+      }
     },
     {
       "id": "ENG-014",
       "stream": "Smart Lab",
       "title": "Missing secondary mathematics interaction set",
       "acceptance": "New interactive models with source-based test fixtures and accessibility.",
-      "status": "IMPLEMENTED_AWAITING_CI",
+      "status": "VERIFIED_MERGED",
       "evidence": [
         {
           "source": "assets/comparison-lab-engine.js",
@@ -234,14 +269,21 @@
           "source": "docs/M117_MODEL_REVIEW_MANIFEST.json",
           "test": "tests/m117-comparison-lab.test.mjs"
         }
-      ]
+      ],
+      "verification": {
+        "head": "205ef116a6735d0f06cf019215918a2261527ec1",
+        "merged": "6cb50d8aaa370f4c5ba3776af5515a5f71c45462",
+        "pushRun": 45694243610,
+        "pullRequestRun": 45694257089,
+        "treeIdentical": true
+      }
     },
     {
       "id": "ENG-015",
       "stream": "Smart Lab",
       "title": "Missing physics interaction set",
       "acceptance": "New safe virtual models with numerical invariants and no real hardware procedures.",
-      "status": "IMPLEMENTED_AWAITING_CI",
+      "status": "VERIFIED_MERGED",
       "evidence": [
         {
           "source": "assets/comparison-lab-engine.js",
@@ -255,14 +297,21 @@
           "source": "docs/M117_MODEL_REVIEW_MANIFEST.json",
           "test": "tests/m117-comparison-lab.test.mjs"
         }
-      ]
+      ],
+      "verification": {
+        "head": "205ef116a6735d0f06cf019215918a2261527ec1",
+        "merged": "6cb50d8aaa370f4c5ba3776af5515a5f71c45462",
+        "pushRun": 45694243610,
+        "pullRequestRun": 45694257089,
+        "treeIdentical": true
+      }
     },
     {
       "id": "ENG-016",
       "stream": "Smart Lab",
       "title": "Missing chemistry interaction set",
       "acceptance": "New safe symbolic models with numerical checks and no physical procedures.",
-      "status": "IMPLEMENTED_AWAITING_CI",
+      "status": "VERIFIED_MERGED",
       "evidence": [
         {
           "source": "assets/comparison-lab-engine.js",
@@ -276,14 +325,21 @@
           "source": "docs/M117_MODEL_REVIEW_MANIFEST.json",
           "test": "tests/m117-comparison-lab.test.mjs"
         }
-      ]
+      ],
+      "verification": {
+        "head": "205ef116a6735d0f06cf019215918a2261527ec1",
+        "merged": "6cb50d8aaa370f4c5ba3776af5515a5f71c45462",
+        "pushRun": 45694243610,
+        "pullRequestRun": 45694257089,
+        "treeIdentical": true
+      }
     },
     {
       "id": "ENG-017",
       "stream": "Smart Lab",
       "title": "Missing biology interaction set",
       "acceptance": "New safe conceptual models with no diagnostic claims and accessible text.",
-      "status": "IMPLEMENTED_AWAITING_CI",
+      "status": "VERIFIED_MERGED",
       "evidence": [
         {
           "source": "assets/comparison-lab-engine.js",
@@ -297,14 +353,21 @@
           "source": "docs/M117_MODEL_REVIEW_MANIFEST.json",
           "test": "tests/m117-comparison-lab.test.mjs"
         }
-      ]
+      ],
+      "verification": {
+        "head": "205ef116a6735d0f06cf019215918a2261527ec1",
+        "merged": "6cb50d8aaa370f4c5ba3776af5515a5f71c45462",
+        "pushRun": 45694243610,
+        "pullRequestRun": 45694257089,
+        "treeIdentical": true
+      }
     },
     {
       "id": "ENG-018",
       "stream": "Smart Lab",
       "title": "Reusable simulation experiment comparison engine",
       "acceptance": "Consistent prediction, controlled comparison, reset and keyboard/text output.",
-      "status": "IMPLEMENTED_AWAITING_CI",
+      "status": "VERIFIED_MERGED",
       "evidence": [
         {
           "source": "assets/comparison-lab-engine.js",
@@ -318,31 +381,65 @@
           "source": "docs/M117_MODEL_REVIEW_MANIFEST.json",
           "test": "tests/m117-comparison-lab.test.mjs"
         }
-      ]
+      ],
+      "verification": {
+        "head": "205ef116a6735d0f06cf019215918a2261527ec1",
+        "merged": "6cb50d8aaa370f4c5ba3776af5515a5f71c45462",
+        "pushRun": 45694243610,
+        "pullRequestRun": 45694257089,
+        "treeIdentical": true
+      }
     },
     {
       "id": "ENG-019",
       "stream": "Curriculum",
       "title": "Versioned board and chapter catalog",
       "acceptance": "Edition-specific source and provenance schema, pending/verified separation.",
-      "status": "PLANNED",
-      "evidence": []
+      "status": "IMPLEMENTED_AWAITING_CI",
+      "evidence": [
+        {
+          "source": "assets/curriculum-catalog-data.js",
+          "test": "tests/m118-curriculum-integration.test.mjs"
+        },
+        {
+          "source": "tools/pilot-backend.mjs",
+          "test": "tests/m118-curriculum-integration.test.mjs"
+        }
+      ]
     },
     {
       "id": "ENG-020",
       "stream": "Curriculum",
       "title": "Chapter navigation and prerequisite UI",
       "acceptance": "Grade, board, edition and concept navigation; visibly mark unreviewed coverage.",
-      "status": "PLANNED",
-      "evidence": []
+      "status": "IMPLEMENTED_AWAITING_CI",
+      "evidence": [
+        {
+          "source": "assets/curriculum-catalog-app.js",
+          "test": "tests/m118-curriculum-integration.test.mjs"
+        },
+        {
+          "source": "tools/pilot-backend.mjs",
+          "test": "tests/m118-curriculum-integration.test.mjs"
+        }
+      ]
     },
     {
       "id": "ENG-021",
       "stream": "Curriculum",
       "title": "Reviewed-resource ingestion boundary",
       "acceptance": "Rights and provenance checked, revocation supported, no unauthorized copies.",
-      "status": "PLANNED",
-      "evidence": []
+      "status": "IMPLEMENTED_AWAITING_CI",
+      "evidence": [
+        {
+          "source": "tools/resource-ingestion-boundary.mjs",
+          "test": "tests/m118-curriculum-integration.test.mjs"
+        },
+        {
+          "source": "tools/pilot-backend.mjs",
+          "test": "tests/m118-curriculum-integration.test.mjs"
+        }
+      ]
     },
     {
       "id": "ENG-022",

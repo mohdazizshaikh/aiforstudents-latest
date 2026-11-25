@@ -1,3 +1,4 @@
+import {resolvePrototypeLaunch} from './extended-lab-catalog.js';
 import {COMPARISON_IDS,DIRECTIONS,comparisonDefinition,comparisonInitial,comparisonValue,controlledComparison} from './comparison-lab-engine.js';
 const $=id=>document.getElementById(id),root=$('comparison-lab');
 let id=COMPARISON_IDS[0],lang='en',values=comparisonInitial(id),baseline=null,field=null,prediction='',result=null;
@@ -39,4 +40,6 @@ window.addEventListener('aifs-history-cleared',reset);
 try{const channel=new BroadcastChannel('aifs-discovery-privacy-reset-v1');channel.addEventListener('message',ev=>{if(ev.data?.type==='clear-history')reset()})}catch{}
 window.addEventListener('storage',ev=>{if(ev.key==='aifs-privacy-clear-signal-v1'&&ev.newValue==='clear')reset()});
 window.addEventListener('pageshow',ev=>{if(ev.persisted)reset()});
+const launch=resolvePrototypeLaunch(location.search,COMPARISON_IDS);if(launch){id=launch.id;lang=launch.lang;resetTrial();$('compare-lang').value=lang}
+
 render();

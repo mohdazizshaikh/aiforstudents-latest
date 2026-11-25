@@ -1,6 +1,7 @@
 /** M115 optional draft concept sequence, never validated prerequisites or mastery. */
 import {labPackKeys,worksheetReturnLaunch,teacherResourceChoices} from './teacher-cards-engine.js';
-export const CONCEPT_GRAPH_VERSION='m115-draft-v1';
+import {PROTOTYPE_KEYS,prototypeChoices} from './extended-lab-catalog.js';
+export const CONCEPT_GRAPH_VERSION='m118-draft-v2';
 const GRAPH=Object.freeze(Object.fromEntries(Object.entries({
  "counting:main": [],
  "place-value:main": [
@@ -108,8 +109,21 @@ const GRAPH=Object.freeze(Object.fromEntries(Object.entries({
  "probability:main": [
   "studio/fractions:main"
  ]
+,
+"prototype:polygon-sides":["counting:main"],
+"prototype:equal-groups":["counting:main"],
+"prototype:decimal-hundredths":["place-value:main","studio/fractions:main"],
+"prototype:cube-volume":["maths/rectangle:main"],
+"prototype:signed-sum":["maths/number-line:main"],
+"prototype:data-range":["counting:main"],
+"prototype:ideal-pressure":["maths/rectangle:main","measurement:main"],
+"prototype:ideal-momentum":["science/motion:main","position-change:main"],
+"prototype:mixture-count":["science/matter:main"],
+"prototype:formula-ratio":["atom-count:main","ratio-algebra:main"],
+"prototype:habitat-tokens":["living-examples:main"],
+"prototype:plant-water-tokens":["plant-parts:main"]
 }).map(([k,v])=>[k,Object.freeze(v)])));
-const known=new Set(labPackKeys()),keys=Object.keys(GRAPH),langs=['en','hi'];
+const known=new Set([...labPackKeys(),...PROTOTYPE_KEYS]),keys=Object.keys(GRAPH),langs=['en','hi'];
 export function auditConceptGraph(graph=GRAPH){
  if(!graph||typeof graph!=='object'||Array.isArray(graph))return {valid:false,reason:'INVALID_GRAPH'};
  const ids=Object.keys(graph),set=new Set(ids);
@@ -123,7 +137,7 @@ if(!auditConceptGraph().valid)throw Error('Invalid draft concept graph');
 const flags=()=>({localOnly:true,storesStudentData:false,gradeVerified:false,prerequisitesValidated:false,masteryValidated:false,publicReleaseApproved:false});
 export function conceptChoices(lang='en'){
  if(!langs.includes(lang))throw Error('Invalid language');
- const source=new Map(teacherResourceChoices('all','all',lang).map(x=>[x.key,x]));
+ const source=new Map([...teacherResourceChoices('all','all',lang),...prototypeChoices(lang)].map(x=>[x.key,x]));
  return keys.map(key=>({key,title:source.get(key).title,subject:source.get(key).subject,...flags()}));
 }
 export function conceptPath(target){
@@ -144,7 +158,7 @@ function validate(s){
 export function conceptSuggestion(s,lang='en'){
  const path=validate(s);if(!langs.includes(lang))throw Error('Invalid language');
  const done=new Set([...s.explored,...s.skipped]),next=path.find(k=>!done.has(k)),choices=new Map(conceptChoices(lang).map(x=>[x.key,x]));
- const item=k=>({...choices.get(k),href:'../'+worksheetReturnLaunch(k,lang).href});
+ const item=k=>({...choices.get(k),href:k.startsWith('prototype:')?prototypeChoices(lang).find(x=>x.key===k).href:'../'+worksheetReturnLaunch(k,lang).href});
  const p=(en,hi)=>lang==='hi'?hi:en;
  return {version:CONCEPT_GRAPH_VERSION,target:item(s.target),next:next?{...item(next),reason:next===s.target?p('Your chosen concept.','आपका चुना विषय।'):p('A suggested earlier concept for your chosen topic; optional, not a requirement.','चुने विषय से पहले का सुझाया विषय; वैकल्पिक, अनिवार्य नहीं।')}:null,
   sequence:path.map(k=>({...item(k),status:s.explored.includes(k)?'explored':s.skipped.includes(k)?'skipped':'suggested'})),

@@ -6,6 +6,9 @@ import path from 'node:path';
 import {createPilotStore,PilotInputError} from './pilot-store.mjs';
 import {createTutorSandbox,tutorSandboxFixtures} from './tutor-sandbox.mjs';
 import {adaptiveEvidenceCatalog,evaluateAdaptiveEvidence} from './adaptive-evidence-interface.mjs';
+import {prototypeChoices} from '../assets/extended-lab-catalog.js';
+import {curriculumCatalog} from '../assets/curriculum-catalog.js';
+import {createIngestionBoundary,resourceFixture} from './resource-ingestion-boundary.mjs';
 
 const MAX_BODY=4096,MAX_URL=512;
 class HttpError extends Error{constructor(status){super('Request rejected');this.status=status}}
@@ -36,7 +39,7 @@ async function body(req){
 }
 export async function startPilotBackend({port=0,token=randomBytes(32).toString('hex')}={}){
  if(!Number.isInteger(port)||port<0||port>65535||typeof token!=='string'||! /^[a-f0-9]{64}$/.test(token))throw Error('Invalid local configuration');
- const store=createPilotStore(),tutor=createTutorSandbox();
+ const store=createPilotStore(),tutor=createTutorSandbox(),ingestion=createIngestionBoundary();
  const server=createServer({maxHeaderSize:8192,requestTimeout:5000,headersTimeout:5000,keepAliveTimeout:1000},async(req,res)=>{
   try{
    const expectedHost='127.0.0.1:'+server.address().port;
@@ -50,6 +53,19 @@ export async function startPilotBackend({port=0,token=randomBytes(32).toString('
    if(route==='/v1/health'){
     if(method!=='GET')fail(405);query(u,[]);
     return json(res,200,{status:'ok',schemaVersion:store.version(),syntheticRehearsalOnly:true,generativeTutorEnabled:false,masteryEnabled:false,publicReleaseApproved:false});
+   }
+   if(route==='/v1/prototype-catalog'){
+    if(method!=='GET')fail(405);const q=query(u,['lang']);if(q.lang!==undefined&&!['en','hi'].includes(q.lang))fail(400);
+    return json(res,200,{items:prototypeChoices(q.lang??'en'),publicReleaseApproved:false});
+   }
+   if(route==='/v1/chapter-catalog'){
+    if(method!=='GET')fail(405);const q=query(u,['board','grade','subject','lang'],['board','grade','subject']);
+    if(!/^(?:[1-9]|1[0-2])$/.test(q.grade)||!['CBSE','Maharashtra'].includes(q.board)||!['maths','physics','chemistry','biology'].includes(q.subject)||(q.lang!==undefined&&!['en','hi'].includes(q.lang)))fail(400);
+    return json(res,200,curriculumCatalog({...q,grade:Number(q.grade)}));
+   }
+   if(route==='/v1/resource-rehearsal'){
+    query(u,[]);if(method==='GET')return json(res,200,{fixture:resourceFixture(),status:ingestion.status()});
+    if(method==='PUT'){const r=ingestion.apply(await body(req));return json(res,r.accepted?200:422,r)}fail(405);
    }
    if(route==='/v1/catalog'){
     if(method!=='GET')fail(405);return json(res,200,store.catalog(query(u,['subject','kind','lang'])));

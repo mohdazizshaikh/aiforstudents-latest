@@ -1,5 +1,6 @@
 /** M113 local-only learning and teacher workspaces. No learner identity, history or assessment. */
 import {teacherResourceChoices,labPackKeys,worksheetReturnLaunch,activityWorksheet} from './teacher-cards-engine.js';
+import {PROTOTYPE_KEYS,prototypeChoices} from './extended-lab-catalog.js';
 const modules=Object.freeze([
  ['games','Games','खेल','practice'],['study','Study Lab','अध्ययन लैब','study-lab'],
  ['studio','Smart Studio','स्मार्ट स्टूडियो','smart-studio'],['virtual','Virtual Lab','आभासी प्रयोगशाला','experiment-lab'],
@@ -11,12 +12,12 @@ const modules=Object.freeze([
 export const WORKSPACE_LIMIT=6;
 const roles=['learner','teacher'],langs=['en','hi'];
 const checked=(role,lang='en')=>{if(!roles.includes(role)||!langs.includes(lang))throw Error('Unknown workspace selection')};
-const keysets={learner:new Set(modules.map(x=>x[0])),teacher:new Set(labPackKeys())};
+const keysets={learner:new Set(modules.map(x=>x[0])),teacher:new Set([...labPackKeys(),...PROTOTYPE_KEYS])};
 const flags=()=>({localOnly:true,storesStudentData:false,humanReviewed:false,publicReleaseApproved:false});
 export function workspaceChoices(role,lang='en'){
  checked(role,lang);
  if(role==='learner')return modules.map(([key,en,hi,anchor])=>({key,title:lang==='hi'?hi:en,href:'../?lang='+lang+'#'+anchor,...flags()}));
- return teacherResourceChoices('all','all',lang).map(x=>({key:x.key,title:x.title,subject:x.subject,kind:x.kind,href:'../'+worksheetReturnLaunch(x.key,lang).href,worksheetHref:'../'+activityWorksheet(x.key,lang).href,...flags()}));
+ return [...teacherResourceChoices('all','all',lang).map(x=>({key:x.key,title:x.title,subject:x.subject,kind:x.kind,href:'../'+worksheetReturnLaunch(x.key,lang).href,worksheetHref:'../'+activityWorksheet(x.key,lang).href,...flags()})),...prototypeChoices(lang)];
 }
 export function createWorkspace(role){
  checked(role);
