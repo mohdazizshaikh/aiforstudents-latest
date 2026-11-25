@@ -35,6 +35,7 @@
     "review:activity-fixtures": "node tools/all-activity-fixture-worklist.mjs",
     "pilot:backend": "node tools/pilot-backend.mjs",
     "tutor:rehearsal": "node tools/tutor-sandbox-evaluation.mjs",
-    "smartlab:gaps": "node tools/smart-lab-gap-audit.mjs"
+    "smartlab:gaps": "node tools/smart-lab-gap-audit.mjs",
+    "db:recovery-rehearsal": "node tools/synthetic-db-recovery.mjs"
   }
 }
