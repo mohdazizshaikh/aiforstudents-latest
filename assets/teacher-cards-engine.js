@@ -97,8 +97,8 @@ export function mainWorksheetControls(id,lang='en'){
 }
 export function mainWorksheetInvestigation(id,lang='en'){
  const controls=mainWorksheetControls(id,lang),list=controls.join('; ');
- return lang==='hi'?'केवल कंप्यूटर मॉडल में इन नियंत्रणों में से एक चुनें: '+list+'। शिक्षक के साथ दो अलग स्थितियाँ आज़माएँ; जहाँ संभव हो बाकी नियंत्रण न बदलें। कागज़ पर दोनों स्थितियाँ और मॉडल में दिखा परिणाम लिखें। मॉडल न मिले तो केवल अपना अनुमान लिखें।':
- 'In the computer model, choose one of these controls: '+list+'. With a teacher, try two different settings; keep the other controls unchanged where possible. On paper, note both settings and what the model shows. If the model is unavailable, write only your prediction.';
+ return lang==='hi'?'केवल कंप्यूटर मॉडल में इन नियंत्रणों में से एक चुनें: '+list+'। शिक्षक के साथ दो अलग स्थितियाँ आज़माएँ; जहाँ संभव हो बाकी नियंत्रण न बदलें। नीचे की तालिका कागज़ पर भरें। मॉडल उपलब्ध न हो तो तालिका खाली रखें और केवल अपना अनुमान लिखें।':
+ 'In the computer model, choose one of these controls: '+list+'. With a teacher, try two different settings; keep the other controls unchanged where possible. On paper, complete the table below. If the model is unavailable, leave the table blank and write only your prediction.';
 }
 /** M95 supplemental paper investigations use the extension's own controls, not the parent model's. */
 export function supplementalWorksheetControls(id,mode,lang='en'){
@@ -112,10 +112,19 @@ export function supplementalWorksheetInvestigation(id,mode,lang='en'){
  return lang==='hi'?'केवल अतिरिक्त कंप्यूटर मॉडल में इनमें से एक नियंत्रण चुनें: '+labels+'। शिक्षक के साथ दो अलग स्थितियाँ आज़माएँ; जहाँ संभव हो बाकी नियंत्रण न बदलें। नीचे की तालिका कागज़ पर भरें। मॉडल उपलब्ध न हो तो तालिका खाली रखें और केवल अपना अनुमान लिखें।':
  'In this supplemental computer model, choose one control: '+labels+'. With a teacher, try two different settings; keep other controls unchanged where possible. Complete the table on paper. If the model is unavailable, leave the table blank and write only your prediction.';
 }
-export function supplementalWorksheetComparison(id,mode,lang='en'){
- supplementalWorksheetControls(id,mode,lang);
+function blankPaperComparison(lang){
  const p=(en,hi)=>lang==='hi'?hi:en;
  return {caption:p('Two computer model settings — paper notes only','कंप्यूटर मॉडल की दो स्थितियाँ — केवल कागज़ पर नोट'),columns:[p('Trial','स्थिति'),p('Control and setting','नियंत्रण और मान'),p('What the model shows','मॉडल में दिखा परिणाम')],rows:[{label:'A',cells:['','']},{label:'B',cells:['','']}]};
+}
+
+/** M96 main and supplemental activities share the same blank paper format. */
+export function mainWorksheetComparison(id,lang='en'){
+ mainWorksheetControls(id,lang);
+ return blankPaperComparison(lang);
+}
+export function supplementalWorksheetComparison(id,mode,lang='en'){
+ supplementalWorksheetControls(id,mode,lang);
+ return blankPaperComparison(lang);
 }
 
 export function printableLabActivity(id,lang='en'){
@@ -127,7 +136,7 @@ export function printableLabActivity(id,lang='en'){
    p('Predict the result before using the model. Write your reasoning on paper.','मॉडल चलाने से पहले परिणाम का अनुमान लगाएँ। अपना कारण कागज़ पर लिखें।'),
    mainWorksheetInvestigation(id,lang),
    p('Explain one difference or similarity. If the model is unavailable, discuss your prediction only.','एक अंतर या समानता समझाएँ। मॉडल उपलब्ध न हो तो केवल अनुमान पर चर्चा करें।')
-  ],sourceFile:'assets/advanced-lab-engine.js',rightsStatus:'ORIGINAL_DRAFT_PERMISSION_NOT_AUTHENTICATED',humanReviewed:false,publicReleaseApproved:false,localOnly:true,hasStudentNames:false};
+  ],comparison:mainWorksheetComparison(id,lang),sourceFile:'assets/advanced-lab-engine.js',rightsStatus:'ORIGINAL_DRAFT_PERMISSION_NOT_AUTHENTICATED',humanReviewed:false,publicReleaseApproved:false,localOnly:true,hasStudentNames:false};
 }
 
 /** M62 printable demonstration sequence, source-derived and deliberately omits teacher hints/answers. */
@@ -187,7 +196,7 @@ export function printableBasicLabActivity(id,lang='en'){
  p('Predict what the computer model will show. Write your reasoning on paper.','अनुमान लगाएँ कि कंप्यूटर मॉडल क्या दिखाएगा। अपना कारण कागज़ पर लिखें।'),
  mainWorksheetInvestigation(id,lang),
  p('Explain one thing you noticed. If the model is unavailable, discuss your prediction only.','एक बात समझाएँ जो आपने देखी। मॉडल उपलब्ध न हो तो केवल अनुमान पर चर्चा करें।')
- ],sourceFile:m.sourceFile,rightsStatus:'ORIGINAL_DRAFT_PERMISSION_NOT_AUTHENTICATED',humanReviewed:false,publicReleaseApproved:false,localOnly:true,hasStudentNames:false};
+ ],comparison:mainWorksheetComparison(id,lang),sourceFile:m.sourceFile,rightsStatus:'ORIGINAL_DRAFT_PERMISSION_NOT_AUTHENTICATED',humanReviewed:false,publicReleaseApproved:false,localOnly:true,hasStudentNames:false};
 }
 export function printableAnyLabActivity(id,mode='main',lang='en'){
  if(BASIC_PRINT_IDS.includes(id)){if(mode!=='main')throw Error('Unknown basic activity mode');return printableBasicLabActivity(id,lang);}

@@ -11,7 +11,7 @@ test('M75 twelve basic source-derived worksheets in two languages without answer
   const r=printableBasicLabActivity(id,lang);
   assert.equal(r.title,m.title[i]);assert.equal(r.prompt,(kind==='studio'?m.stages.find(s=>s.id==='try').question:m.prompt)[i]);
   assert.ok(r.caveat);assert.equal(r.steps.length,3);assert.equal(r.hasStudentNames,false);assert.equal(r.humanReviewed,false);assert.equal(r.publicReleaseApproved,false);assert.equal(r.localOnly,true);
-  assert.deepEqual(Object.keys(r).sort(),['id','subject','language','title','prompt','caveat','steps','sourceFile','rightsStatus','humanReviewed','publicReleaseApproved','localOnly','hasStudentNames'].sort());
+  assert.deepEqual(Object.keys(r).sort(),['id','subject','language','title','prompt','caveat','steps','sourceFile','rightsStatus','humanReviewed','publicReleaseApproved','localOnly','hasStudentNames','comparison'].sort());
   assert.deepEqual(teacherPrintableSupplementOptions(id,lang),[]);
   assert.deepEqual(printableAnyLabActivity(id,'main',lang),r);
   assert.throws(()=>printableAnyLabActivity(id,'invalid',lang));
