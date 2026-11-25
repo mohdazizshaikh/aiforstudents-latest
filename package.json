@@ -30,6 +30,7 @@
     "tutor:audit-corpus": "node tools/full-tutor-corpus-audit.mjs",
     "mastery:audit-grid": "node tools/synthetic-mastery-grid.mjs",
     "staging:restricted": "node tools/restricted-staging-audit.mjs",
-    "teacher:rights": "node tools/teacher-rights-worklist.mjs"
+    "teacher:rights": "node tools/teacher-rights-worklist.mjs",
+    "review:main-fixtures": "node tools/main-model-fixture-worklist.mjs"
   }
 }
