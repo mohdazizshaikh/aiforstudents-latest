@@ -167,7 +167,7 @@
           "test": "tests/m119-backend-recovery-operator.test.mjs"
         }
       ],
-      "limitation": "Initial disposable MySQL 8.4 CI migration/plan rehearsal passed; full logical restore candidate awaits CI. Actual hosting and physical database recovery pending.",
+      "limitation": "MySQL repository/migration passed combined PR job 45718193876, but raw dump equality failed. Exact schema/ordered-row recovery correction awaits CI; no physical backup or actual host verification.",
       "verification": {
         "head": "34e5de6d228680eb32df99dcc1945ae9b4598fc3",
         "merged": "0ec46e2947cbabc28c44ee80b36ba9d4544b7dac",

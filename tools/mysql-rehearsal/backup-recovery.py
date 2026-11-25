@@ -27,7 +27,7 @@ def run():
         return subprocess.run(["docker", "exec", "-i", "-e", "MYSQL_PWD="+FIXTURE, cid, program, "-uroot", *args],
                               input=data, stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=True, timeout=45).stdout
     def sql(query):
-        return command("mysql", ["--batch", "--skip-column-names", "-e", query])
+        return command("mysql", ["--batch", "--skip-column-names", "--default-character-set=utf8mb4", "-e", query])
     def dump(db):
         return command("mysqldump", ["--single-transaction", "--no-tablespaces", "--set-gtid-purged=OFF", "--skip-comments", "--skip-dump-date", "--order-by-primary", db])
     def require(condition, label):
@@ -35,10 +35,36 @@ def run():
             raise RuntimeError(label)
     def digest(data):
         return hashlib.sha256(data).hexdigest()
+    def snapshot(db):
+        # Compare actual schema definitions and every ordered row, not client dump formatting.
+        if db not in (SOURCE, RESTORE):
+            raise RuntimeError("Unexpected schema")
+        expected={"aifs_activity":"activity_key","aifs_curriculum":"board,grade,subject","aifs_plan":"singleton","aifs_plan_item":"position","aifs_version":"singleton"}
+        actual=sql("SELECT table_name FROM information_schema.tables WHERE table_schema='"+db+"' ORDER BY table_name").decode("ascii").splitlines()
+        require(actual==sorted(expected),"Unexpected table inventory")
+        return {table:{"ddl":sql("SHOW CREATE TABLE "+db+"."+table),
+                       "rows":sql("SELECT * FROM "+db+"."+table+" ORDER BY "+order)}
+                for table,order in expected.items()}
+    def compare_snapshot(before,after):
+        require(before.keys()==after.keys(),"Table inventory differs")
+        for table in before:
+            for field in ("ddl","rows"):
+                require(before[table][field]==after[table][field], "Restored "+table+" "+field+" differs")
+    def snapshot_digest(snap):
+        # Length-framed binary digest of all ordered schema and row bytes.
+        h=hashlib.sha256()
+        for table in sorted(snap):
+            h.update(table.encode("ascii")+b"\0")
+            for field in ("ddl","rows"):
+                data=snap[table][field]
+                h.update(len(data).to_bytes(8,"big"))
+                h.update(data)
+        return h.hexdigest()
     require(sql("SELECT version_number FROM "+SOURCE+".aifs_version WHERE singleton=1").strip()==b"2", "Expected migrated v2 source")
     require(sql("SELECT COUNT(*) FROM information_schema.schemata WHERE schema_name='"+RESTORE+"'").strip()==b"0", "Restore target already exists")
     # Dump fixed synthetic source. Never drop, overwrite, or mutate source.
     with tempfile.TemporaryDirectory(prefix="aifs-m126-") as temp:
+        before=snapshot(SOURCE)
         data = dump(SOURCE)
         require(0 < len(data) <= 2_000_000, "Unexpected dump size")
         backup=Path(temp)/"fixture.sql"
@@ -52,8 +78,12 @@ def run():
         try:
             command("mysql", [RESTORE], data=backup.read_bytes())
             restored=dump(RESTORE)
-            require(restored==data, "Restored logical dump differs")
-            require(dump(SOURCE)==data, "Source changed")
+            restored_snapshot=snapshot(RESTORE)
+            compare_snapshot(before,restored_snapshot)
+            compare_snapshot(before,snapshot(SOURCE))
+            require(snapshot_digest(restored_snapshot)==snapshot_digest(before),"Schema/row digest mismatch")
+            raw_dump_parity=restored==data
+            source_dump_parity=dump(SOURCE)==data
             tables=int(sql("SELECT COUNT(*) FROM information_schema.tables WHERE table_schema='"+RESTORE+"'").strip())
             require(tables==5,"Unexpected table count")
             require(sql("SELECT version_number FROM "+RESTORE+".aifs_version WHERE singleton=1").strip()==b"2","Restore schema version mismatch")
@@ -66,14 +96,16 @@ def run():
               "UPDATE "+RESTORE+".aifs_plan_item SET position=7 WHERE position=1",
               "UPDATE "+RESTORE+".aifs_plan_item SET activity_key='unknown:main' WHERE position=1",
             ]
-            for query in invalid:
+            for query,expected_error in zip(invalid,(3819,3819,3819,1452),strict=True):
                 try:
                     sql(query)
-                except subprocess.CalledProcessError:
+                except subprocess.CalledProcessError as error:
+                    require(re.search(rb"ERROR "+str(expected_error).encode("ascii")+rb"\b",error.stderr) is not None,"Unexpected constraint denial error")
                     continue
                 raise RuntimeError("Restored constraint accepted invalid fixture")
-            require(dump(RESTORE)==data,"Rejected writes changed restored database")
-            report={"valid":True,"schemaVersion":2,"tables":tables,"dumpBytes":len(data),"dumpSha256":checksum,"logicalDumpByteParity":True,"sourceUnchanged":True,"restoredConstraintDenials":len(invalid),"physicalBackupVerified":False,"liveHostingVerified":False,"publicReleaseApproved":False,"storesStudentData":False}
+            compare_snapshot(before,snapshot(RESTORE))
+            compare_snapshot(before,snapshot(SOURCE))
+            report={"valid":True,"schemaVersion":2,"tables":tables,"dumpBytes":len(data),"dumpSha256":checksum,"logicalDumpByteParity":raw_dump_parity,"sourceDumpByteParity":source_dump_parity,"fullSchemaAndRowParity":True,"schemaRowSha256":snapshot_digest(before),"sourceUnchanged":True,"restoredConstraintDenials":len(invalid),"physicalBackupVerified":False,"liveHostingVerified":False,"publicReleaseApproved":False,"storesStudentData":False}
         finally:
             sql("DROP DATABASE "+RESTORE)
         require(sql("SELECT COUNT(*) FROM information_schema.schemata WHERE schema_name='"+RESTORE+"'").strip()==b"0","Restore cleanup failed")
