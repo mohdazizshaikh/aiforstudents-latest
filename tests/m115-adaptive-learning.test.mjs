@@ -5,11 +5,11 @@ import {labPackKeys,worksheetReturnLaunch} from '../assets/teacher-cards-engine.
 import {adaptiveEvidenceCatalog,evaluateAdaptiveEvidence} from '../tools/adaptive-evidence-interface.mjs';
 import {startPilotBackend} from '../tools/pilot-backend.mjs';
 test('ENG-027 versioned draft acyclic concept graph and exact bilingual resource routes',()=>{
- const a=auditConceptGraph();assert.equal(a.valid,true);assert.equal(a.nodes,34);assert.ok(a.edges>25);
- const all=conceptChoices();assert.equal(new Set(all.map(x=>x.key)).size,34);
+ const a=auditConceptGraph();assert.equal(a.valid,true);assert.equal(a.nodes,46);assert.ok(a.edges>25);
+ const all=conceptChoices();assert.equal(new Set(all.map(x=>x.key)).size,46);
  for(const lang of ['en','hi'])for(const x of conceptChoices(lang)){
   const path=conceptPath(x.key);assert.equal(path.at(-1),x.key);assert.equal(new Set(path).size,path.length);
-  for(const y of conceptSuggestion(createConceptSession(x.key),lang).sequence){assert.ok(labPackKeys().includes(y.key));assert.equal(y.href,'../'+worksheetReturnLaunch(y.key,lang).href);assert.equal(y.masteryValidated,false)}
+  for(const y of conceptSuggestion(createConceptSession(x.key),lang).sequence){if(y.key.startsWith('prototype:'))assert.match(y.href,/virtual-experiment-lab/);else{assert.ok(labPackKeys().includes(y.key));assert.equal(y.href,'../'+worksheetReturnLaunch(y.key,lang).href)}assert.equal(y.masteryValidated,false)}
  }
  assert.equal(auditConceptGraph({'counting:main':['place-value:main'],'place-value:main':['counting:main']}).reason,'CYCLE');
  assert.equal(auditConceptGraph({'counting:main':['unknown:main']}).reason,'INVALID_EDGE');
