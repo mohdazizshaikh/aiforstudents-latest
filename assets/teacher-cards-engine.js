@@ -375,13 +375,260 @@ export function mainWorksheetReflection(id,lang='en'){
  const text=MAIN_REFLECTIONS[id][lang==='hi'?1:0];
  return text+(lang==='hi'?' कागज़ पर अपने मॉडल अवलोकन से कारण दें। मॉडल उपलब्ध न हो तो केवल अपने अनुमान पर चर्चा करें।':' Explain using your model observations on paper. If the model is unavailable, discuss your prediction only.');
 }
+/** M108 individualized predictions before changing the computer model. */
+const MAIN_PREDICTIONS=Object.freeze({
+ "ratio-algebra": [
+  "If you keep counters per group fixed and increase the number of groups, what do you expect to happen to the total?",
+  "हर समूह के काउंटर समान रखकर समूहों की संख्या बढ़ाएँ तो कुल में क्या परिवर्तन होने का अनुमान है?"
+ ],
+ "symmetry": [
+  "For a point away from the y-axis, predict which coordinate will change when you select its reflection in that axis.",
+  "y-अक्ष से दूर किसी बिंदु का उस अक्ष में प्रतिबिंब चुनने पर किस निर्देशांक के बदलने का अनुमान है?"
+ ],
+ "coordinate": [
+  "If you increase x on the displayed line, what do you predict will happen to y?",
+  "दिखाई गई रेखा पर x बढ़ाने से y में क्या परिवर्तन होने का अनुमान है?"
+ ],
+ "probability": [
+  "With the blue count fixed, predict how adding red counters would affect the theoretical probability of red.",
+  "नीले काउंटरों की संख्या समान रखते हुए लाल काउंटर बढ़ाने पर लाल की सैद्धांतिक प्रायिकता कैसे बदलने का अनुमान है?"
+ ],
+ "temperature": [
+  "For the fictional material, predict how increasing mass at the same energy transfer might affect the temperature change.",
+  "काल्पनिक पदार्थ में समान ऊर्जा हस्तांतरण पर द्रव्यमान बढ़ाने से तापमान परिवर्तन पर क्या प्रभाव होने का अनुमान है?"
+ ],
+ "sound": [
+  "Predict whether the displayed frequency will rise, fall or stay the same if you increase the period.",
+  "आवर्तकाल बढ़ाने पर प्रदर्शित आवृत्ति बढ़ेगी, घटेगी या समान रहेगी, इसका अनुमान लगाएँ।"
+ ],
+ "magnetism": [
+  "Predict what interaction the computer sketch will show when you change one of the two selected poles.",
+  "दो चुने ध्रुवों में से एक बदलने पर कंप्यूटर चित्र में किस पारस्परिक क्रिया का अनुमान है?"
+ ],
+ "measurement": [
+  "Predict how one model speed will change if its duration increases while its distance stays fixed.",
+  "एक मॉडल की दूरी समान रखकर समय बढ़ाने पर उसकी चाल कैसे बदलेगी, इसका अनुमान लगाएँ।"
+ ],
+ "periodic": [
+  "Predict whether a nearby atomic number will display the same group or period as your starting element in this table.",
+  "इस तालिका में पास के परमाणु क्रमांक पर आरंभिक तत्व के समान समूह या आवर्त दिखने का अनुमान है या नहीं?"
+ ],
+ "mass-balance": [
+  "Predict what happens to the comparison of totals when only one symbolic input mass increases.",
+  "केवल एक प्रतीकात्मक आगत द्रव्यमान बढ़ने पर कुल राशियों की तुलना कैसे बदलेगी, अनुमान लगाएँ।"
+ ],
+ "ecosystem": [
+  "Choose two organism-interaction examples and predict how their displayed relationship labels may differ.",
+  "जीवों के संबंधों के दो उदाहरण चुनें और अनुमान लगाएँ कि उनके प्रदर्शित संबंध लेबल कैसे अलग हो सकते हैं।"
+ ],
+ "heredity": [
+  "Predict how the symbolic genotype grid may differ if you change one hypothetical parent choice.",
+  "एक काल्पनिक अभिभावक विकल्प बदलने पर प्रतीकात्मक जीनोटाइप तालिका कैसे बदल सकती है, अनुमान लगाएँ।"
+ ],
+ "quadratic": [
+  "Predict how the displayed square compares for two x values with the same magnitude but opposite signs.",
+  "समान परिमाण और विपरीत चिह्न वाले दो x मानों के प्रदर्शित वर्गों की तुलना का अनुमान लगाएँ।"
+ ],
+ "force-motion": [
+  "At fixed ideal mass, predict how increasing acceleration will affect the calculated net force.",
+  "आदर्श द्रव्यमान समान रखकर त्वरण बढ़ाने पर गणितीय परिणामी बल कैसे बदलेगा, अनुमान लगाएँ।"
+ ],
+ "atom-count": [
+  "Predict how the symbolic hydrogen and oxygen counts will change if the molecule count increases.",
+  "प्रतीकात्मक अणुओं की संख्या बढ़ाने पर हाइड्रोजन और ऑक्सीजन की गिनती कैसे बदलेगी, अनुमान लगाएँ।"
+ ],
+ "cell-scale": [
+  "For a fixed hypothetical cell size, predict how greater magnification affects the diagram length.",
+  "काल्पनिक कोशिका आकार समान रखने पर अधिक आवर्धन से चित्र की लंबाई कैसे बदलेगी, अनुमान लगाएँ।"
+ ],
+ "counting": [
+  "Predict which group will contain more counters after you increase the count in just one group.",
+  "केवल एक समूह में काउंटर बढ़ाने के बाद किस समूह में अधिक काउंटर होंगे, अनुमान लगाएँ।"
+ ],
+ "place-value": [
+  "Predict how the displayed number will change if you increase tens but leave ones unchanged.",
+  "इकाई समान रखकर दहाई बढ़ाने पर प्रदर्शित संख्या कैसे बदलेगी, अनुमान लगाएँ।"
+ ],
+ "length-compare": [
+  "Predict how the length difference will change when one bar grows longer and the other stays fixed.",
+  "एक पट्टी लंबी करने और दूसरी समान रखने पर लंबाई का अंतर कैसे बदलेगा, अनुमान लगाएँ।"
+ ],
+ "shadow-ray": [
+  "Predict how the computer shadow diagram may differ for two blocker choices.",
+  "दो अवरोध विकल्पों के लिए कंप्यूटर छाया चित्र में क्या अंतर होगा, अनुमान लगाएँ।"
+ ],
+ "material-state": [
+  "Predict which state label will appear for two familiar example choices in the model.",
+  "मॉडल में दो परिचित उदाहरण चुनने पर कौन से अवस्था लेबल दिखेंगे, अनुमान लगाएँ।"
+ ],
+ "material-objects": [
+  "Predict which material labels the model will display for two object examples.",
+  "दो वस्तु उदाहरणों के लिए मॉडल कौन से सामग्री लेबल दिखाएगा, अनुमान लगाएँ।"
+ ],
+ "plant-parts": [
+  "Predict how the stated role will differ when you select two different parts of the plant diagram.",
+  "पौधे के चित्र के दो अलग भाग चुनने पर बताए गए कार्य कैसे अलग होंगे, अनुमान लगाएँ।"
+ ],
+ "living-examples": [
+  "Predict how the model will classify its plant and stone examples.",
+  "मॉडल पौधे और पत्थर के उदाहरणों का वर्गीकरण कैसे करेगा, अनुमान लगाएँ।"
+ ],
+ "arithmetic-sequence": [
+  "With the first term and common difference fixed, predict how a later term will compare with an earlier term.",
+  "पहला पद और सार्व अंतर समान रखकर बाद के पद की पहले के पद से तुलना का अनुमान लगाएँ।"
+ ],
+ "square-slope": [
+  "At a fixed x, predict how changing the allowed secant step might affect the gap between the two displayed slopes.",
+  "x समान रखकर अनुमत छेदक कदम बदलने पर प्रदर्शित ढालों का अंतर कैसे बदल सकता है, अनुमान लगाएँ।"
+ ],
+ "constant-acceleration": [
+  "With acceleration fixed, predict how a longer model duration affects the final speed and displacement from rest.",
+  "त्वरण समान रखकर मॉडल का समय बढ़ाने पर विराम से अंतिम चाल और विस्थापन कैसे बदलेंगे, अनुमान लगाएँ।"
+ ],
+ "thin-lens": [
+  "At a fixed focal length, predict how a larger allowed object distance will affect the displayed image distance.",
+  "फोकस दूरी समान रखकर अधिक अनुमत वस्तु दूरी पर प्रदर्शित प्रतिबिंब दूरी कैसे बदलेगी, अनुमान लगाएँ।"
+ ],
+ "ion-charge": [
+  "With proton count fixed, predict how adding symbolic electrons changes the net charge.",
+  "प्रोटॉन संख्या समान रखकर प्रतीकात्मक इलेक्ट्रॉन बढ़ाने पर कुल आवेश कैसे बदलेगा, अनुमान लगाएँ।"
+ ],
+ "mass-fraction": [
+  "If only component A increases, predict how its displayed share of the total mass will change.",
+  "केवल घटक A बढ़ने पर कुल द्रव्यमान में उसका प्रदर्शित हिस्सा कैसे बदलेगा, अनुमान लगाएँ।"
+ ],
+ "cell-doubling": [
+  "With the initial symbolic count fixed, predict how an additional doubling round affects the final count.",
+  "आरंभिक प्रतीकात्मक संख्या समान रखकर एक अतिरिक्त दुगुना चरण पर अंतिम संख्या कैसे बदलेगी, अनुमान लगाएँ।"
+ ],
+ "plant-process": [
+  "Predict how the labelled inputs and outputs may differ when switching between the two model processes.",
+  "दो मॉडल प्रक्रियाओं के बीच बदलने पर नामांकित आगत और निर्गत कैसे अलग हो सकते हैं, अनुमान लगाएँ।"
+ ],
+ "triangle-area": [
+  "With the base fixed, predict how increasing perpendicular height will affect the displayed triangle area.",
+  "आधार समान रखकर लंबवत ऊँचाई बढ़ाने पर प्रदर्शित त्रिभुज क्षेत्रफल कैसे बदलेगा, अनुमान लगाएँ।"
+ ],
+ "right-triangle-ratio": [
+  "Choose two allowed triangle examples and predict whether their displayed sine values will be the same or different.",
+  "दो अनुमत त्रिभुज उदाहरण चुनें और अनुमान लगाएँ कि उनके प्रदर्शित ज्या मान समान होंगे या अलग।"
+ ],
+ "position-change": [
+  "Predict how the signed change will differ if you exchange the start and end positions.",
+  "आरंभ और अंतिम स्थितियाँ आपस में बदलने पर चिह्न सहित परिवर्तन कैसे बदलेगा, अनुमान लगाएँ।"
+ ],
+ "path-distance": [
+  "Keep the outward distance fixed and predict how a longer return leg will affect both displayed quantities.",
+  "आगे की दूरी समान रखकर लंबी वापसी पर दोनों प्रदर्शित राशियों में क्या परिवर्तन होगा, अनुमान लगाएँ।"
+ ],
+ "material-property": [
+  "Predict how the stated optical property may differ for two labelled material examples.",
+  "दो नामांकित सामग्री उदाहरणों के बताए प्रकाश संबंधी गुण में क्या अंतर होगा, अनुमान लगाएँ।"
+ ],
+ "dynamic-balance": [
+  "Predict how the signed net change will respond if the forward event rate increases at a fixed reverse rate.",
+  "पश्च घटना दर समान रखकर अग्र दर बढ़ाने पर चिह्न सहित कुल परिवर्तन कैसे बदलेगा, अनुमान लगाएँ।"
+ ],
+ "habitat-match": [
+  "Predict which habitat label will accompany each of two selected example pictures.",
+  "दो चुने उदाहरण चित्रों में से प्रत्येक के साथ कौन सा आवास लेबल आएगा, अनुमान लगाएँ।"
+ ],
+ "food-web-links": [
+  "Predict the arrow direction for two selected food-energy links in the symbolic web.",
+  "प्रतीकात्मक खाद्य जाल में दो चुनी खाद्य ऊर्जा कड़ियों की तीर दिशा का अनुमान लगाएँ।"
+ ],
+ "integral-area": [
+  "With the positive slope fixed, predict how increasing the upper bound affects the displayed area under the line.",
+  "धनात्मक ढाल समान रखकर ऊपरी सीमा बढ़ाने पर रेखा के नीचे प्रदर्शित क्षेत्रफल कैसे बदलेगा, अनुमान लगाएँ।"
+ ],
+ "vector-components": [
+  "Keep one component fixed and predict whether increasing the magnitude of the other component changes the vector magnitude.",
+  "एक घटक समान रखकर दूसरे का परिमाण बढ़ाने पर सदिश का परिमाण बदलेगा या नहीं, अनुमान लगाएँ।"
+ ],
+ "magnetic-flux": [
+  "With the symbolic field and orientation fixed, predict how increasing surface area affects the displayed flux.",
+  "प्रतीकात्मक क्षेत्र और दिशा समान रखकर सतह क्षेत्रफल बढ़ाने पर प्रदर्शित फ्लक्स कैसे बदलेगा, अनुमान लगाएँ।"
+ ],
+ "capacitor-charge": [
+  "At a fixed symbolic voltage, predict how increasing capacitance affects the ideal charge.",
+  "प्रतीकात्मक वोल्टता समान रखकर धारिता बढ़ाने पर आदर्श आवेश कैसे बदलेगा, अनुमान लगाएँ।"
+ ],
+ "alkane-count": [
+  "Predict how the symbolic hydrogen count will change when the carbon count increases by one.",
+  "कार्बन संख्या एक बढ़ाने पर प्रतीकात्मक हाइड्रोजन संख्या कैसे बदलेगी, अनुमान लगाएँ।"
+ ],
+ "bond-pair-count": [
+  "Predict how the represented shared-pair count will change if you choose a higher-order bond symbol.",
+  "उच्च क्रम का बंध प्रतीक चुनने पर दर्शाई साझा युग्म संख्या कैसे बदलेगी, अनुमान लगाएँ।"
+ ],
+ "dna-complement": [
+  "Choose two different base symbols and predict their displayed complementary symbols.",
+  "दो अलग क्षार प्रतीक चुनें और उनके प्रदर्शित पूरक प्रतीकों का अनुमान लगाएँ।"
+ ],
+ "gas-exchange": [
+  "Predict how the labelled direction of transfer will differ for oxygen and carbon dioxide in the ideal diagram.",
+  "आदर्श चित्र में ऑक्सीजन और कार्बन डाइऑक्साइड की नामांकित स्थानांतरण दिशाएँ कैसे अलग होंगी, अनुमान लगाएँ।"
+ ],
+ "science/motion": [
+  "At fixed distance, predict what a longer model time will do to the displayed ideal speed.",
+  "दूरी समान रखकर मॉडल समय बढ़ाने पर प्रदर्शित आदर्श चाल कैसे बदलेगी, अनुमान लगाएँ।"
+ ],
+ "science/reflection": [
+  "Choose an incident angle and predict the reflected angle required by the ideal reflection model, measured from the normal.",
+  "एक आपतन कोण चुनें और आदर्श परावर्तन मॉडल में अभिलंब से मापे आवश्यक परावर्तन कोण का अनुमान लगाएँ।"
+ ],
+ "science/energy": [
+  "Predict how increasing the useful portion of the fixed input energy will affect the thermal portion in the two-path model.",
+  "दो-रास्ते मॉडल में निश्चित आगत ऊर्जा का उपयोगी हिस्सा बढ़ाने पर ऊष्मीय हिस्सा कैसे बदलेगा, अनुमान लगाएँ।"
+ ],
+ "science/matter": [
+  "Predict how particle arrangement and motion may differ between two selected state diagrams.",
+  "दो चुने अवस्था चित्रों में कणों की व्यवस्था और गति कैसे अलग हो सकती है, अनुमान लगाएँ।"
+ ],
+ "science/changes": [
+  "Predict the model classification of two selected change examples without carrying out a real experiment.",
+  "वास्तविक प्रयोग किए बिना दो चुने परिवर्तन उदाहरणों के मॉडल वर्गीकरण का अनुमान लगाएँ।"
+ ],
+ "science/cells": [
+  "Predict which listed structures may differ between two typical cell examples.",
+  "दो सामान्य कोशिका उदाहरणों में कौन सी सूचीबद्ध संरचनाएँ अलग हो सकती हैं, अनुमान लगाएँ।"
+ ],
+ "science/food-chain": [
+  "Predict which of two displayed organism orders represents a possible simplified feeding sequence.",
+  "दो प्रदर्शित जीव क्रमों में कौन सा एक संभव सरल खाद्य शृंखला क्रम है, अनुमान लगाएँ।"
+ ],
+ "maths/number-line": [
+  "Predict whether increasing the position value will move the marker left or right on the number line.",
+  "स्थिति का मान बढ़ाने पर संख्या रेखा का चिह्न बाईं या दाईं ओर जाएगा, अनुमान लगाएँ।"
+ ],
+ "maths/rectangle": [
+  "If width increases while height stays fixed, predict how both area and perimeter will change.",
+  "ऊँचाई समान रखकर चौड़ाई बढ़ाने पर क्षेत्रफल और परिमाप दोनों कैसे बदलेंगे, अनुमान लगाएँ।"
+ ],
+ "maths/data-table": [
+  "With group B fixed, predict how increasing group A will affect the displayed signed difference.",
+  "समूह B समान रखकर समूह A बढ़ाने पर प्रदर्शित चिह्न सहित अंतर कैसे बदलेगा, अनुमान लगाएँ।"
+ ],
+ "studio/fractions": [
+  "Predict how shading one more equal part will change the diagram while the whole stays the same.",
+  "पूरा आकार समान रखकर एक और बराबर हिस्सा रंगने पर चित्र कैसे बदलेगा, अनुमान लगाएँ।"
+ ],
+ "studio/circuit-path": [
+  "Predict the model bulb state for each of the two switch choices in the computer diagram.",
+  "कंप्यूटर चित्र में स्विच के दोनों विकल्पों के लिए मॉडल बल्ब की स्थिति का अनुमान लगाएँ।"
+ ]
+});
+export function mainWorksheetPrediction(id,lang='en'){
+ if(!['en','hi'].includes(lang)||!Object.hasOwn(MAIN_PREDICTIONS,id)||(!ADVANCED_IDS.includes(id)&&!BASIC_PRINT_IDS.includes(id)))throw Error('Unknown main prediction');
+ return MAIN_PREDICTIONS[id][lang==='hi'?1:0]+(lang==='hi'?' मॉडल चलाने से पहले अपना कारण कागज़ पर लिखें।':' Write your reasoning on paper before using the model.');
+}
 export function printableLabActivity(id,lang='en'){
  if(!validDemo(id)||!['en','hi'].includes(lang))throw Error('Unknown printable lab activity');
  const m=ADVANCED_MODELS[id],i=lang==='hi'?1:0;
  const p=(en,hi)=>lang==='hi'?hi:en;
  return {id,subject:m.subject,language:lang,title:m.title[i],prompt:m.prompt[i],caveat:m.caveat[i],
   steps:[
-   p('Predict the result before using the model. Write your reasoning on paper.','मॉडल चलाने से पहले परिणाम का अनुमान लगाएँ। अपना कारण कागज़ पर लिखें।'),
+   mainWorksheetPrediction(id,lang),
    mainWorksheetInvestigation(id,lang),
    mainWorksheetReflection(id,lang)
   ],comparison:mainWorksheetComparison(id,lang),sourceFile:'assets/advanced-lab-engine.js',rightsStatus:'ORIGINAL_DRAFT_PERMISSION_NOT_AUTHENTICATED',humanReviewed:false,publicReleaseApproved:false,localOnly:true,hasStudentNames:false};
@@ -605,7 +852,7 @@ export function supplementalWorksheetReflection(id,mode,lang='en'){
 export function printableSupplementActivity(id,mode,lang='en'){
  if(!teacherSupplementOptions(id,lang).some(x=>x.mode===mode))throw Error('Unknown supplemental worksheet activity');
  const base=printableLabActivity(id,lang),m=advancedExtension(id,mode),i=lang==='hi'?1:0;
- return {...base,mode,title:m.title[i],prompt:m.prompt[i],caveat:m.caveat[i],steps:[base.steps[0],supplementalWorksheetInvestigation(id,mode,lang),supplementalWorksheetReflection(id,mode,lang)],comparison:supplementalWorksheetComparison(id,mode,lang)};
+ return {...base,mode,title:m.title[i],prompt:m.prompt[i],caveat:m.caveat[i],steps:[lang==='hi'?'मॉडल चलाने से पहले परिणाम का अनुमान लगाएँ। अपना कारण कागज़ पर लिखें।':'Predict the result before using the model. Write your reasoning on paper.',supplementalWorksheetInvestigation(id,mode,lang),supplementalWorksheetReflection(id,mode,lang)],comparison:supplementalWorksheetComparison(id,mode,lang)};
 }
 
 /** M75 basic model worksheets use only existing source prompts and cautions, not answer keys. */
@@ -644,7 +891,7 @@ export function printableBasicLabActivity(id,lang='en'){
  if(!['en','hi'].includes(lang))throw Error('Unknown language');
  const m=basicPrintDefinition(id),i=lang==='hi'?1:0,p=(en,hi)=>lang==='hi'?hi:en;
  return {id,subject:m.subject,language:lang,title:m.title[i],prompt:m.prompt[i],caveat:m.caveat[i],steps:[
- p('Predict what the computer model will show. Write your reasoning on paper.','अनुमान लगाएँ कि कंप्यूटर मॉडल क्या दिखाएगा। अपना कारण कागज़ पर लिखें।'),
+ mainWorksheetPrediction(id,lang),
  mainWorksheetInvestigation(id,lang),
  mainWorksheetReflection(id,lang)
  ],comparison:mainWorksheetComparison(id,lang),sourceFile:m.sourceFile,rightsStatus:'ORIGINAL_DRAFT_PERMISSION_NOT_AUTHENTICATED',humanReviewed:false,publicReleaseApproved:false,localOnly:true,hasStudentNames:false};
