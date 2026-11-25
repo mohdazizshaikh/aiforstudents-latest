@@ -67,6 +67,8 @@ jobs:
           npm run teacher:rights -- --template m89-ci-rights.json
           npm run teacher:rights -- --check m89-ci-rights.json
           rm review-evidence/m89-ci-rights.json
+      - name: Generate pending main-model reference fixture summary (NOT expert answers)
+        run: npm run review:main-fixtures -- --summary
       - name: Assert public preflight remains blocked
         run: |
           if node tools/release-preflight.mjs --public > /dev/null; then
