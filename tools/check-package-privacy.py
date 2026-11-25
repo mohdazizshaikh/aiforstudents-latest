@@ -38,6 +38,6 @@ if __name__=='__main__':
     with ZipFile(HOST) as z:
         names=z.namelist()
         assert 'index.html' in names and 'service-worker.js' in names and '.htaccess' in names
-        assert not any(x.startswith('tests/') or x.startswith('docs/') for x in names)
+        assert not any(x.startswith(('tests/','docs/','tools/')) for x in names)
     print(dumps({'hostingStaticFiles':host,'sourceFiles':source,'privateEvidenceIncluded':False,
                  'sourceHashesVerified':True,'publicReleaseApproved':False},indent=2))
