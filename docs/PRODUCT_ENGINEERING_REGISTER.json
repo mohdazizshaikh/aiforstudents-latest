@@ -111,24 +111,42 @@
       "stream": "Foundation",
       "title": "Deployment target and production storage decision",
       "acceptance": "Compare existing Hostinger capabilities and define approved migration path without changing static core.",
-      "status": "PLANNED",
-      "evidence": []
+      "status": "IMPLEMENTED_AWAITING_CI",
+      "evidence": [
+        {
+          "source": "docs/M119_PRODUCTION_ARCHITECTURE_DECISION.md",
+          "test": "tests/m119-backend-recovery-operator.test.mjs"
+        }
+      ],
+      "limitation": "Conditional architecture proposal only; actual Hostinger account capability and owner approval pending; no production database or deployment."
     },
     {
       "id": "ENG-007",
       "stream": "Foundation",
       "title": "Production migration and recovery tooling",
       "acceptance": "Dry-run migration, rollback, backup restore on synthetic database; no real learner data.",
-      "status": "PLANNED",
-      "evidence": []
+      "status": "IMPLEMENTED_AWAITING_CI",
+      "evidence": [
+        {
+          "source": "tools/synthetic-db-recovery.mjs",
+          "test": "tests/m119-backend-recovery-operator.test.mjs"
+        }
+      ],
+      "limitation": "Fixed SQLite fixture recovery only; actual PHP/MySQL target migration pending."
     },
     {
       "id": "ENG-008",
       "stream": "Foundation",
       "title": "Adult operator access architecture",
       "acceptance": "Role isolation, expiration, revocation, authorization tests; no activation before approval.",
-      "status": "PLANNED",
-      "evidence": []
+      "status": "IMPLEMENTED_AWAITING_CI",
+      "evidence": [
+        {
+          "source": "tools/adult-operator-rehearsal.mjs",
+          "test": "tests/m119-backend-recovery-operator.test.mjs"
+        }
+      ],
+      "limitation": "Optional synthetic role authorization; real adult identity and production session management not activated."
     },
     {
       "id": "ENG-009",
@@ -395,7 +413,7 @@
       "stream": "Curriculum",
       "title": "Versioned board and chapter catalog",
       "acceptance": "Edition-specific source and provenance schema, pending/verified separation.",
-      "status": "IMPLEMENTED_AWAITING_CI",
+      "status": "VERIFIED_MERGED",
       "evidence": [
         {
           "source": "assets/curriculum-catalog-data.js",
@@ -405,14 +423,21 @@
           "source": "tools/pilot-backend.mjs",
           "test": "tests/m118-curriculum-integration.test.mjs"
         }
-      ]
+      ],
+      "verification": {
+        "head": "97c252b118c97b29af6e425f900664933266e4ff",
+        "merged": "fcfff831855af12030e2f41f28cb9aa7b0b64b66",
+        "pushRun": 45697893075,
+        "pullRequestRun": 45697905975,
+        "treeIdentical": true
+      }
     },
     {
       "id": "ENG-020",
       "stream": "Curriculum",
       "title": "Chapter navigation and prerequisite UI",
       "acceptance": "Grade, board, edition and concept navigation; visibly mark unreviewed coverage.",
-      "status": "IMPLEMENTED_AWAITING_CI",
+      "status": "VERIFIED_MERGED",
       "evidence": [
         {
           "source": "assets/curriculum-catalog-app.js",
@@ -422,14 +447,21 @@
           "source": "tools/pilot-backend.mjs",
           "test": "tests/m118-curriculum-integration.test.mjs"
         }
-      ]
+      ],
+      "verification": {
+        "head": "97c252b118c97b29af6e425f900664933266e4ff",
+        "merged": "fcfff831855af12030e2f41f28cb9aa7b0b64b66",
+        "pushRun": 45697893075,
+        "pullRequestRun": 45697905975,
+        "treeIdentical": true
+      }
     },
     {
       "id": "ENG-021",
       "stream": "Curriculum",
       "title": "Reviewed-resource ingestion boundary",
       "acceptance": "Rights and provenance checked, revocation supported, no unauthorized copies.",
-      "status": "IMPLEMENTED_AWAITING_CI",
+      "status": "VERIFIED_MERGED",
       "evidence": [
         {
           "source": "tools/resource-ingestion-boundary.mjs",
@@ -439,7 +471,14 @@
           "source": "tools/pilot-backend.mjs",
           "test": "tests/m118-curriculum-integration.test.mjs"
         }
-      ]
+      ],
+      "verification": {
+        "head": "97c252b118c97b29af6e425f900664933266e4ff",
+        "merged": "fcfff831855af12030e2f41f28cb9aa7b0b64b66",
+        "pushRun": 45697893075,
+        "pullRequestRun": 45697905975,
+        "treeIdentical": true
+      }
     },
     {
       "id": "ENG-022",
@@ -750,8 +789,14 @@
       "stream": "Teacher experience",
       "title": "Adult synthetic aggregate rehearsal",
       "acceptance": "Minimum-count suppression, no individual scores, disabled until approval.",
-      "status": "PLANNED",
-      "evidence": []
+      "status": "IMPLEMENTED_AWAITING_CI",
+      "evidence": [
+        {
+          "source": "tools/teacher-aggregate-rehearsal.mjs",
+          "test": "tests/m119-backend-recovery-operator.test.mjs"
+        }
+      ],
+      "limitation": "Fixed invented aggregates only; no live classroom data or real analytics."
     },
     {
       "id": "ENG-037",

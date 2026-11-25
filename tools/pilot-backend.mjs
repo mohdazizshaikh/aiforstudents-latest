@@ -9,6 +9,7 @@ import {adaptiveEvidenceCatalog,evaluateAdaptiveEvidence} from './adaptive-evide
 import {prototypeChoices} from '../assets/extended-lab-catalog.js';
 import {curriculumCatalog} from '../assets/curriculum-catalog.js';
 import {createIngestionBoundary,resourceFixture} from './resource-ingestion-boundary.mjs';
+import {syntheticAggregateReport} from './teacher-aggregate-rehearsal.mjs';
 
 const MAX_BODY=4096,MAX_URL=512;
 class HttpError extends Error{constructor(status){super('Request rejected');this.status=status}}
@@ -37,22 +38,27 @@ async function body(req){
  if(count!==Number(n))fail(400);
  try{return JSON.parse(Buffer.concat(chunks).toString('utf8'))}catch{fail(400)}
 }
-export async function startPilotBackend({port=0,token=randomBytes(32).toString('hex')}={}){
+export async function startPilotBackend({port=0,token=randomBytes(32).toString('hex'),operatorAccess=null}={}){
  if(!Number.isInteger(port)||port<0||port>65535||typeof token!=='string'||! /^[a-f0-9]{64}$/.test(token))throw Error('Invalid local configuration');
  const store=createPilotStore(),tutor=createTutorSandbox(),ingestion=createIngestionBoundary();
  const server=createServer({maxHeaderSize:8192,requestTimeout:5000,headersTimeout:5000,keepAliveTimeout:1000},async(req,res)=>{
   try{
    const expectedHost='127.0.0.1:'+server.address().port;
    if(req.socket.remoteAddress!=='127.0.0.1'||req.headers.host!==expectedHost||req.headers.origin!==undefined||req.headers['sec-fetch-site']!==undefined)fail(403);
-   if(!validAuth(req.headers.authorization,token))fail(401);
+   const developer=validAuth(req.headers.authorization,token);
+   if(!developer&&!operatorAccess)fail(401);
    if(typeof req.url!=='string'||req.url.length>MAX_URL||!req.url.startsWith('/')||req.url.startsWith('//')||req.url.includes('#'))fail(400);
    const u=new URL(req.url,'http://'+expectedHost);
    if(u.host!==expectedHost)fail(400);
    const route=u.pathname,method=req.method;
+   if(!developer){const access=operatorAccess.authorize(req.headers.authorization,method,route);if(!access.authenticated)fail(401);if(!access.allowed)fail(403)}
    if(method!=='PUT'&&(req.headers['transfer-encoding']!==undefined||Number(req.headers['content-length']||0)>0))fail(400);
    if(route==='/v1/health'){
     if(method!=='GET')fail(405);query(u,[]);
     return json(res,200,{status:'ok',schemaVersion:store.version(),syntheticRehearsalOnly:true,generativeTutorEnabled:false,masteryEnabled:false,publicReleaseApproved:false});
+   }
+   if(route==='/v1/aggregate-rehearsal'){
+    if(method!=='GET')fail(405);query(u,[]);return json(res,200,syntheticAggregateReport());
    }
    if(route==='/v1/prototype-catalog'){
     if(method!=='GET')fail(405);const q=query(u,['lang']);if(q.lang!==undefined&&!['en','hi'].includes(q.lang))fail(400);
@@ -110,7 +116,7 @@ export async function startPilotBackend({port=0,token=randomBytes(32).toString('
  server.maxConnections=8;
  try{await new Promise((resolve,reject)=>{server.once('error',reject);server.listen(port,'127.0.0.1',()=>{server.removeListener('error',reject);resolve()})})}catch(e){store.close();throw e}
  let closed=false;
- return {url:'http://127.0.0.1:'+server.address().port,token,close:async()=>{if(closed)return;closed=true;await new Promise(resolve=>{server.close(resolve);server.closeAllConnections()});store.close()}};
+ return {url:'http://127.0.0.1:'+server.address().port,token,close:async()=>{if(closed)return;closed=true;await new Promise(resolve=>{server.close(resolve);server.closeAllConnections()});store.close();operatorAccess?.close()}};
 }
 if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)){
  if(process.argv.length!==2||!process.env.AIFS_DEV_TOKEN){console.error('Set a fresh 64-character lowercase hex AIFS_DEV_TOKEN for this adult-only loopback rehearsal.');process.exitCode=1}
