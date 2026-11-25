@@ -328,6 +328,11 @@
           "source": "assets/prototype-worksheet-engine.js",
           "test": "tests/m121-prototype-worksheet-packs.test.mjs",
           "status": "AWAITING_CI"
+        },
+        {
+          "source": "assets/visual-lab-engine.js",
+          "test": "tests/m122-visual-lab.test.mjs",
+          "status": "AWAITING_CI"
         }
       ]
     },
@@ -362,6 +367,11 @@
         {
           "source": "assets/prototype-worksheet-engine.js",
           "test": "tests/m121-prototype-worksheet-packs.test.mjs",
+          "status": "AWAITING_CI"
+        },
+        {
+          "source": "assets/visual-lab-engine.js",
+          "test": "tests/m122-visual-lab.test.mjs",
           "status": "AWAITING_CI"
         }
       ]
@@ -398,6 +408,11 @@
           "source": "assets/prototype-worksheet-engine.js",
           "test": "tests/m121-prototype-worksheet-packs.test.mjs",
           "status": "AWAITING_CI"
+        },
+        {
+          "source": "assets/visual-lab-engine.js",
+          "test": "tests/m122-visual-lab.test.mjs",
+          "status": "AWAITING_CI"
         }
       ]
     },
@@ -432,6 +447,11 @@
         {
           "source": "assets/prototype-worksheet-engine.js",
           "test": "tests/m121-prototype-worksheet-packs.test.mjs",
+          "status": "AWAITING_CI"
+        },
+        {
+          "source": "assets/visual-lab-engine.js",
+          "test": "tests/m122-visual-lab.test.mjs",
           "status": "AWAITING_CI"
         }
       ]
@@ -515,6 +535,11 @@
         {
           "source": "assets/prototype-worksheet-engine.js",
           "test": "tests/m121-prototype-worksheet-packs.test.mjs",
+          "status": "AWAITING_CI"
+        },
+        {
+          "source": "assets/visual-lab-engine.js",
+          "test": "tests/m122-visual-lab.test.mjs",
           "status": "AWAITING_CI"
         }
       ]
@@ -661,7 +686,14 @@
         "pushRun": 45688811654,
         "pullRequestRun": 45688825555,
         "treeIdentical": true
-      }
+      },
+      "followUpEvidence": [
+        {
+          "source": "assets/visual-lab-engine.js",
+          "test": "tests/m122-visual-lab.test.mjs",
+          "status": "AWAITING_CI"
+        }
+      ]
     },
     {
       "id": "ENG-028",
@@ -827,6 +859,11 @@
           "source": "assets/prototype-worksheet-engine.js",
           "test": "tests/m121-prototype-worksheet-packs.test.mjs",
           "status": "AWAITING_CI"
+        },
+        {
+          "source": "assets/visual-lab-engine.js",
+          "test": "tests/m122-visual-lab.test.mjs",
+          "status": "AWAITING_CI"
         }
       ]
     },
@@ -857,6 +894,11 @@
         {
           "source": "assets/prototype-worksheet-engine.js",
           "test": "tests/m121-prototype-worksheet-packs.test.mjs",
+          "status": "AWAITING_CI"
+        },
+        {
+          "source": "assets/visual-lab-engine.js",
+          "test": "tests/m122-visual-lab.test.mjs",
           "status": "AWAITING_CI"
         }
       ]
