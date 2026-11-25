@@ -204,40 +204,65 @@
       "stream": "Tutor",
       "title": "Restricted lesson-scoped tutor interface",
       "acceptance": "Adult synthetic rehearsal only, fixed approved-source contract; no open child chat.",
-      "status": "PLANNED",
-      "evidence": []
+      "status": "IMPLEMENTED_AWAITING_CI",
+      "evidence": [
+        {
+          "source": "tools/pilot-backend.mjs",
+          "test": "tests/m114-tutor-sandbox.test.mjs"
+        }
+      ]
     },
     {
       "id": "ENG-023",
       "stream": "Tutor",
       "title": "Source retrieval and citation verification service",
       "acceptance": "Exact versioned allowlist, missing/revoked source denial and grounding tests.",
-      "status": "PLANNED",
-      "evidence": []
+      "status": "IMPLEMENTED_AWAITING_CI",
+      "evidence": [
+        {
+          "source": "tools/tutor-sandbox.mjs",
+          "test": "tests/m114-tutor-sandbox.test.mjs"
+        }
+      ]
     },
     {
       "id": "ENG-024",
       "stream": "Tutor",
       "title": "Provider-neutral model adapter in disabled sandbox",
       "acceptance": "Mock provider, bounded time and tokens, no child identifiers, no live API without approval.",
-      "status": "PLANNED",
-      "evidence": []
+      "status": "IMPLEMENTED_AWAITING_CI",
+      "evidence": [
+        {
+          "source": "tools/tutor-sandbox.mjs",
+          "test": "tests/m114-tutor-sandbox.test.mjs"
+        }
+      ]
     },
     {
       "id": "ENG-025",
       "stream": "Tutor",
       "title": "Safety/fallback and quota enforcement",
       "acceptance": "Reject unsupported requests, fail closed to local fallback; test timeout, malformed output, quota.",
-      "status": "PLANNED",
-      "evidence": []
+      "status": "IMPLEMENTED_AWAITING_CI",
+      "evidence": [
+        {
+          "source": "tools/tutor-sandbox.mjs",
+          "test": "tests/m114-tutor-sandbox.test.mjs"
+        }
+      ]
     },
     {
       "id": "ENG-026",
       "stream": "Tutor",
       "title": "Bilingual tutor quality evaluation pipeline",
       "acceptance": "Synthetic adversarial fixtures plus independent reviewer handoff; no auto approval.",
-      "status": "PLANNED",
-      "evidence": []
+      "status": "IMPLEMENTED_AWAITING_CI",
+      "evidence": [
+        {
+          "source": "tools/tutor-sandbox-evaluation.mjs",
+          "test": "tests/m114-tutor-sandbox.test.mjs"
+        }
+      ]
     },
     {
       "id": "ENG-027",

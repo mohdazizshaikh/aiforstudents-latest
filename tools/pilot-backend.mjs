@@ -4,6 +4,7 @@ import {randomBytes,timingSafeEqual} from 'node:crypto';
 import {fileURLToPath} from 'node:url';
 import path from 'node:path';
 import {createPilotStore,PilotInputError} from './pilot-store.mjs';
+import {createTutorSandbox,tutorSandboxFixtures} from './tutor-sandbox.mjs';
 
 const MAX_BODY=4096,MAX_URL=512;
 class HttpError extends Error{constructor(status){super('Request rejected');this.status=status}}
@@ -34,7 +35,7 @@ async function body(req){
 }
 export async function startPilotBackend({port=0,token=randomBytes(32).toString('hex')}={}){
  if(!Number.isInteger(port)||port<0||port>65535||typeof token!=='string'||! /^[a-f0-9]{64}$/.test(token))throw Error('Invalid local configuration');
- const store=createPilotStore();
+ const store=createPilotStore(),tutor=createTutorSandbox();
  const server=createServer({maxHeaderSize:8192,requestTimeout:5000,headersTimeout:5000,keepAliveTimeout:1000},async(req,res)=>{
   try{
    const expectedHost='127.0.0.1:'+server.address().port;
@@ -57,6 +58,16 @@ export async function startPilotBackend({port=0,token=randomBytes(32).toString('
     const q=query(u,['board','grade','subject'],['board','grade','subject']);
     if(!/^(?:[1-9]|1[0-2])$/.test(q.grade))fail(400);
     return json(res,200,store.curriculum({...q,grade:Number(q.grade)}));
+   }
+   if(route==='/v1/tutor-rehearsal'){
+    query(u,[]);
+    if(method==='GET')return json(res,200,{...tutorSandboxFixtures(),quota:tutor.status()});
+    if(method==='PUT'){
+     const r=await tutor.rehearse(await body(req));
+     const status=r.status==='synthetic-match'?200:r.reason==='INVALID_REQUEST'?400:['BUSY','QUOTA_EXHAUSTED'].includes(r.reason)?429:422;
+     return json(res,status,r);
+    }
+    fail(405);
    }
    if(route==='/v1/plan'){
     query(u,[]);
