@@ -127,6 +127,254 @@ export function supplementalWorksheetComparison(id,mode,lang='en'){
  return blankPaperComparison(lang);
 }
 
+/** M106 model-specific original draft reflection prompts, no answers or learner records. */
+const MAIN_REFLECTIONS=Object.freeze({
+ "ratio-algebra": [
+  "How did the total counter count respond when you changed only the number of groups?",
+  "केवल समूहों की संख्या बदलने पर कुल काउंटरों की संख्या कैसे बदली?"
+ ],
+ "symmetry": [
+  "Which coordinates changed and which stayed the same in the two point transformations you compared?",
+  "जिन दो बिंदु रूपांतरणों की तुलना की, उनमें कौन से निर्देशांक बदले और कौन से समान रहे?"
+ ],
+ "coordinate": [
+  "How did the displayed y-coordinate change when you changed x on this line?",
+  "इस रेखा पर x बदलने से प्रदर्शित y-निर्देशांक कैसे बदला?"
+ ],
+ "probability": [
+  "How did the theoretical red probability compare with the simulated red proportion in your trials?",
+  "अपनी स्थितियों में लाल की सैद्धांतिक प्रायिकता और अनुकरण में लाल के अनुपात की तुलना करें।"
+ ],
+ "temperature": [
+  "What happened to the calculated temperature change when you changed one control in the fictional material model?",
+  "काल्पनिक पदार्थ मॉडल में एक नियंत्रण बदलने पर गणितीय तापमान परिवर्तन कैसे बदला?"
+ ],
+ "sound": [
+  "How did the displayed frequency respond to changing the period in the silent waveform model?",
+  "मौन तरंग मॉडल में आवर्तकाल बदलने पर प्रदर्शित आवृत्ति कैसे बदली?"
+ ],
+ "magnetism": [
+  "Compare the displayed interaction for two different pole combinations in the sketch.",
+  "चित्र में ध्रुवों के दो अलग संयोजनों की प्रदर्शित पारस्परिक क्रिया की तुलना करें।"
+ ],
+ "measurement": [
+  "What did the two displayed speeds tell you about comparing distance and duration together?",
+  "दो प्रदर्शित चालों से दूरी और समय को साथ लेकर तुलना करने के बारे में क्या समझ आया?"
+ ],
+ "periodic": [
+  "What did you notice about the displayed group and period as you changed atomic number within this table?",
+  "इस तालिका में परमाणु क्रमांक बदलने पर प्रदर्शित समूह और आवर्त में क्या देखा?"
+ ],
+ "mass-balance": [
+  "How did changing one symbolic mass affect the comparison of input and output totals?",
+  "एक प्रतीकात्मक द्रव्यमान बदलने से आगत और निर्गत के कुल की तुलना कैसे बदली?"
+ ],
+ "ecosystem": [
+  "Compare the two example organism interactions shown; what does the sketch leave out?",
+  "दिखाए गए जीवों के दो उदाहरण संबंधों की तुलना करें; चित्र में क्या नहीं दिखाया गया है?"
+ ],
+ "heredity": [
+  "How did the symbolic genotype grid change between your two hypothetical parent combinations?",
+  "काल्पनिक अभिभावकों के दो संयोजनों के बीच प्रतीकात्मक जीनोटाइप तालिका कैसे बदली?"
+ ],
+ "quadratic": [
+  "What pattern did you notice between the selected x values and their displayed squares?",
+  "चुने हुए x मानों और उनके प्रदर्शित वर्गों में क्या पैटर्न देखा?"
+ ],
+ "force-motion": [
+  "How did the calculated net force change when you changed one control in the ideal model?",
+  "आदर्श मॉडल में एक नियंत्रण बदलने पर गणितीय परिणामी बल कैसे बदला?"
+ ],
+ "atom-count": [
+  "Compare the displayed hydrogen and oxygen counts for your two symbolic molecule counts.",
+  "अणुओं की अपनी दो प्रतीकात्मक संख्याओं के लिए प्रदर्शित हाइड्रोजन और ऑक्सीजन की गिनती मिलाएँ।"
+ ],
+ "cell-scale": [
+  "How did the diagram length respond when you changed one of the size or magnification controls?",
+  "आकार या आवर्धन में से एक नियंत्रण बदलने पर चित्र की लंबाई कैसे बदली?"
+ ],
+ "counting": [
+  "Which counter group was larger in each trial, and how did the difference change?",
+  "हर स्थिति में कौन सा समूह बड़ा था और अंतर कैसे बदला?"
+ ],
+ "place-value": [
+  "How did changing only tens or only ones affect the displayed two-digit number?",
+  "केवल दहाई या केवल इकाई बदलने पर प्रदर्शित दो अंकों की संख्या कैसे बदली?"
+ ],
+ "length-compare": [
+  "How did the difference between the two bars change when you changed just one length?",
+  "केवल एक लंबाई बदलने पर दोनों पट्टियों की लंबाई का अंतर कैसे बदला?"
+ ],
+ "shadow-ray": [
+  "Compare the light path and shadow shown for two blocker choices in the diagram.",
+  "चित्र में दो अवरोध विकल्पों के लिए दिखाए प्रकाश मार्ग और छाया की तुलना करें।"
+ ],
+ "material-state": [
+  "What differences did the labels show between the selected solid and liquid examples?",
+  "चुने हुए ठोस और द्रव उदाहरणों के लेबलों में क्या अंतर दिखा?"
+ ],
+ "material-objects": [
+  "Compare the stated materials of two pictured objects; what does the label not tell you about the whole object?",
+  "चित्रित दो वस्तुओं की बताई सामग्री मिलाएँ; लेबल पूरी वस्तु के बारे में क्या नहीं बताता?"
+ ],
+ "plant-parts": [
+  "Compare the stated roles of two selected parts of the flowering plant diagram.",
+  "फूलदार पौधे के चित्र के दो चुने भागों के बताए कार्यों की तुलना करें।"
+ ],
+ "living-examples": [
+  "What differences did the model describe between the living plant and stone examples?",
+  "जीवित पौधे और पत्थर के उदाहरणों में मॉडल ने क्या अंतर बताया?"
+ ],
+ "arithmetic-sequence": [
+  "How did changing the common difference or term number affect the displayed term?",
+  "सार्व अंतर या पद संख्या बदलने पर प्रदर्शित पद कैसे बदला?"
+ ],
+ "square-slope": [
+  "What did you notice about the gap between the secant and tangent slopes in your two settings?",
+  "अपनी दो स्थितियों में छेदक और स्पर्शरेखा की ढालों के अंतर में क्या देखा?"
+ ],
+ "constant-acceleration": [
+  "Compare how final speed and displacement changed between your two ideal settings.",
+  "अपनी दो आदर्श स्थितियों में अंतिम चाल और विस्थापन के परिवर्तन की तुलना करें।"
+ ],
+ "thin-lens": [
+  "Compare the displayed image distance and magnification magnitude in two allowed lens settings.",
+  "लेंस की दो अनुमत स्थितियों में प्रदर्शित प्रतिबिंब दूरी और आवर्धन के परिमाण की तुलना करें।"
+ ],
+ "ion-charge": [
+  "How did the symbolic net charge change when one particle count changed?",
+  "एक कण संख्या बदलने पर प्रतीकात्मक कुल आवेश कैसे बदला?"
+ ],
+ "mass-fraction": [
+  "How did changing one symbolic component mass affect the displayed percentage of A?",
+  "एक प्रतीकात्मक घटक का द्रव्यमान बदलने पर A का प्रदर्शित प्रतिशत कैसे बदला?"
+ ],
+ "cell-doubling": [
+  "Compare the final symbolic cell counts in your two settings; which model assumption matters to this comparison?",
+  "अपनी दो स्थितियों की अंतिम प्रतीकात्मक कोशिका संख्याएँ मिलाएँ; इस तुलना में मॉडल की कौन सी मान्यता महत्वपूर्ण है?"
+ ],
+ "plant-process": [
+  "Compare the labelled inputs and outputs in the two process diagrams.",
+  "दो प्रक्रिया चित्रों के नामांकित आगत और निर्गत की तुलना करें।"
+ ],
+ "triangle-area": [
+  "How did the displayed triangle area respond when you changed only its base or perpendicular height?",
+  "केवल आधार या लंबवत ऊँचाई बदलने पर प्रदर्शित त्रिभुज क्षेत्रफल कैसे बदला?"
+ ],
+ "right-triangle-ratio": [
+  "Compare the sine and cosine displayed for two allowed right-triangle choices.",
+  "समकोण त्रिभुज के दो अनुमत विकल्पों के लिए प्रदर्शित ज्या और कोज्या की तुलना करें।"
+ ],
+ "position-change": [
+  "How did the displayed signed position change depend on the start and end positions?",
+  "प्रदर्शित चिह्न सहित स्थिति परिवर्तन आरंभ और अंतिम स्थितियों पर कैसे निर्भर था?"
+ ],
+ "path-distance": [
+  "Compare total distance and signed position change in the two model paths.",
+  "दो मॉडल मार्गों में कुल दूरी और चिह्न सहित स्थिति परिवर्तन की तुलना करें।"
+ ],
+ "material-property": [
+  "What difference did the pictured examples show in their stated ability to let light through?",
+  "चित्रित उदाहरणों में प्रकाश गुजरने देने के बताए गुण में क्या अंतर दिखा?"
+ ],
+ "dynamic-balance": [
+  "Compare the forward and reverse rates with the displayed net change in your two settings.",
+  "अपनी दो स्थितियों में अग्र और पश्च दरों की प्रदर्शित कुल परिवर्तन से तुलना करें।"
+ ],
+ "habitat-match": [
+  "Compare the two depicted habitat examples; what other details would a real habitat description need?",
+  "चित्रित दो आवास उदाहरण मिलाएँ; वास्तविक आवास के वर्णन में और कौन सी बातें चाहिए?"
+ ],
+ "food-web-links": [
+  "Compare the direction of the two selected food-energy links in the symbolic web.",
+  "प्रतीकात्मक खाद्य जाल में चुनी दो खाद्य ऊर्जा कड़ियों की दिशा मिलाएँ।"
+ ],
+ "integral-area": [
+  "How did the displayed area under the line change when you changed one control?",
+  "एक नियंत्रण बदलने पर रेखा के नीचे प्रदर्शित क्षेत्रफल कैसे बदला?"
+ ],
+ "vector-components": [
+  "How did changing one vector component affect the displayed magnitude?",
+  "सदिश का एक घटक बदलने पर प्रदर्शित परिमाण कैसे बदला?"
+ ],
+ "magnetic-flux": [
+  "How did changing one of the symbolic field, area or orientation controls affect the displayed flux?",
+  "प्रतीकात्मक क्षेत्र, क्षेत्रफल या दिशा में से एक नियंत्रण बदलने पर प्रदर्शित फ्लक्स कैसे बदला?"
+ ],
+ "capacitor-charge": [
+  "Compare the calculated symbolic charge for two capacitance or voltage settings.",
+  "धारिता या वोल्टता की दो स्थितियों के लिए गणितीय प्रतीकात्मक आवेश की तुलना करें।"
+ ],
+ "alkane-count": [
+  "What pattern did you observe between the carbon and hydrogen counts in the two symbolic formulas?",
+  "दो प्रतीकात्मक सूत्रों में कार्बन और हाइड्रोजन की गिनती में क्या पैटर्न देखा?"
+ ],
+ "bond-pair-count": [
+  "Compare the displayed shared pairs and electron counts for two bond symbols.",
+  "दो बंध प्रतीकों के लिए प्रदर्शित साझा युग्म और इलेक्ट्रॉन संख्याओं की तुलना करें।"
+ ],
+ "dna-complement": [
+  "Compare the displayed complementary base symbols for your two selected bases.",
+  "अपने दो चुने क्षारों के लिए प्रदर्शित पूरक क्षार प्रतीकों की तुलना करें।"
+ ],
+ "gas-exchange": [
+  "Compare the labelled net transfer directions for oxygen and carbon dioxide in the diagram.",
+  "चित्र में ऑक्सीजन और कार्बन डाइऑक्साइड की नामांकित कुल स्थानांतरण दिशाओं की तुलना करें।"
+ ],
+ "science/motion": [
+  "How did the displayed ideal speed change between your two distance or time settings?",
+  "दूरी या समय की अपनी दो स्थितियों में प्रदर्शित आदर्श चाल कैसे बदली?"
+ ],
+ "science/reflection": [
+  "Compare the two selected reflected angles with their incident angles measured from the normal.",
+  "दो चुने परावर्तन कोणों को अभिलंब से मापे उनके आपतन कोणों से मिलाएँ।"
+ ],
+ "science/energy": [
+  "How did the displayed useful and thermal energy portions compare in your two settings?",
+  "अपनी दो स्थितियों में प्रदर्शित उपयोगी और ऊष्मीय ऊर्जा के हिस्सों की तुलना करें।"
+ ],
+ "science/matter": [
+  "Compare the particle arrangement and motion in two selected state diagrams.",
+  "दो चुने अवस्था चित्रों में कणों की व्यवस्था और गति की तुलना करें।"
+ ],
+ "science/changes": [
+  "Compare the model's classifications for two pictured changes and explain the difference using the labels.",
+  "चित्रित दो परिवर्तनों के मॉडल वर्गीकरणों को मिलाएँ और लेबलों की मदद से अंतर समझाएँ।"
+ ],
+ "science/cells": [
+  "Compare the listed cell structures for two selected cell examples.",
+  "दो चुने कोशिका उदाहरणों की सूचीबद्ध संरचनाओं की तुलना करें।"
+ ],
+ "science/food-chain": [
+  "Compare the organism order in two selected chain diagrams and discuss the arrow direction.",
+  "दो चुनी शृंखला के चित्रों में जीवों का क्रम मिलाएँ और तीरों की दिशा पर चर्चा करें।"
+ ],
+ "maths/number-line": [
+  "Compare your two positions on the number line: which is farther to the right, and why?",
+  "संख्या रेखा पर अपनी दो स्थितियाँ मिलाएँ: कौन सी अधिक दाईं ओर है और क्यों?"
+ ],
+ "maths/rectangle": [
+  "Compare how the displayed area and perimeter changed when you changed only width or height.",
+  "केवल चौड़ाई या ऊँचाई बदलने पर प्रदर्शित क्षेत्रफल और परिमाप कैसे बदले, इसकी तुलना करें।"
+ ],
+ "maths/data-table": [
+  "Compare the group counts and their displayed difference for two settings.",
+  "दो स्थितियों में समूहों की संख्या और उनके प्रदर्शित अंतर की तुलना करें।"
+ ],
+ "studio/fractions": [
+  "Compare the shaded equal parts in two diagrams and describe what remained the same.",
+  "दो चित्रों के रंगे बराबर हिस्सों की तुलना करें और बताएँ कि क्या समान रहा।"
+ ],
+ "studio/circuit-path": [
+  "Compare the model bulb state and path when you select the two switch choices.",
+  "स्विच के दो विकल्प चुनने पर मॉडल बल्ब की स्थिति और मार्ग की तुलना करें।"
+ ]
+});
+export function mainWorksheetReflection(id,lang='en'){
+ if(!['en','hi'].includes(lang)||!Object.hasOwn(MAIN_REFLECTIONS,id)||(!ADVANCED_IDS.includes(id)&&!BASIC_PRINT_IDS.includes(id)))throw Error('Unknown main reflection');
+ const text=MAIN_REFLECTIONS[id][lang==='hi'?1:0];
+ return text+(lang==='hi'?' कागज़ पर अपने मॉडल अवलोकन से कारण दें। मॉडल उपलब्ध न हो तो केवल अपने अनुमान पर चर्चा करें।':' Explain using your model observations on paper. If the model is unavailable, discuss your prediction only.');
+}
 export function printableLabActivity(id,lang='en'){
  if(!validDemo(id)||!['en','hi'].includes(lang))throw Error('Unknown printable lab activity');
  const m=ADVANCED_MODELS[id],i=lang==='hi'?1:0;
@@ -135,7 +383,7 @@ export function printableLabActivity(id,lang='en'){
   steps:[
    p('Predict the result before using the model. Write your reasoning on paper.','मॉडल चलाने से पहले परिणाम का अनुमान लगाएँ। अपना कारण कागज़ पर लिखें।'),
    mainWorksheetInvestigation(id,lang),
-   p('Explain one difference or similarity. If the model is unavailable, discuss your prediction only.','एक अंतर या समानता समझाएँ। मॉडल उपलब्ध न हो तो केवल अनुमान पर चर्चा करें।')
+   mainWorksheetReflection(id,lang)
   ],comparison:mainWorksheetComparison(id,lang),sourceFile:'assets/advanced-lab-engine.js',rightsStatus:'ORIGINAL_DRAFT_PERMISSION_NOT_AUTHENTICATED',humanReviewed:false,publicReleaseApproved:false,localOnly:true,hasStudentNames:false};
 }
 
@@ -154,7 +402,7 @@ export function teacherSupplementOptions(id,lang='en'){
 export function printableSupplementActivity(id,mode,lang='en'){
  if(!teacherSupplementOptions(id,lang).some(x=>x.mode===mode))throw Error('Unknown supplemental worksheet activity');
  const base=printableLabActivity(id,lang),m=advancedExtension(id,mode),i=lang==='hi'?1:0;
- return {...base,mode,title:m.title[i],prompt:m.prompt[i],caveat:m.caveat[i],steps:[base.steps[0],supplementalWorksheetInvestigation(id,mode,lang),base.steps[2]],comparison:supplementalWorksheetComparison(id,mode,lang)};
+ return {...base,mode,title:m.title[i],prompt:m.prompt[i],caveat:m.caveat[i],steps:[base.steps[0],supplementalWorksheetInvestigation(id,mode,lang),lang==='hi'?'एक अंतर या समानता समझाएँ। मॉडल उपलब्ध न हो तो केवल अनुमान पर चर्चा करें।':'Explain one difference or similarity. If the model is unavailable, discuss your prediction only.'],comparison:supplementalWorksheetComparison(id,mode,lang)};
 }
 
 /** M75 basic model worksheets use only existing source prompts and cautions, not answer keys. */
@@ -195,7 +443,7 @@ export function printableBasicLabActivity(id,lang='en'){
  return {id,subject:m.subject,language:lang,title:m.title[i],prompt:m.prompt[i],caveat:m.caveat[i],steps:[
  p('Predict what the computer model will show. Write your reasoning on paper.','अनुमान लगाएँ कि कंप्यूटर मॉडल क्या दिखाएगा। अपना कारण कागज़ पर लिखें।'),
  mainWorksheetInvestigation(id,lang),
- p('Explain one thing you noticed. If the model is unavailable, discuss your prediction only.','एक बात समझाएँ जो आपने देखी। मॉडल उपलब्ध न हो तो केवल अनुमान पर चर्चा करें।')
+ mainWorksheetReflection(id,lang)
  ],comparison:mainWorksheetComparison(id,lang),sourceFile:m.sourceFile,rightsStatus:'ORIGINAL_DRAFT_PERMISSION_NOT_AUTHENTICATED',humanReviewed:false,publicReleaseApproved:false,localOnly:true,hasStudentNames:false};
 }
 export function printableAnyLabActivity(id,mode='main',lang='en'){
