@@ -4,6 +4,7 @@ import {readFileSync,readdirSync,existsSync} from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {gunzipSync} from 'node:zlib';
+import {makePrototypeReviewWorklist,validatePrototypeReviewWorklist} from './prototype-review-worklist.mjs';
 const projectRoot=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 export const REVIEW_FILES={game:'CONTENT_REVIEW_QUEUE.jsonl',study:'LAB_CONTENT_REVIEW_QUEUE.jsonl',studio:'STUDIO_CONTENT_REVIEW_QUEUE.jsonl',experiment:'EXPERIMENT_CONTENT_REVIEW_QUEUE.jsonl',classroom:'CLASSROOM_CONTENT_REVIEW_QUEUE.jsonl',digital:'DIGITAL_CONTENT_REVIEW_QUEUE.jsonl',maths:'MATHS_CONTENT_REVIEW_QUEUE.jsonl',science:'SCIENCE_CONTENT_REVIEW_QUEUE.jsonl',advanced:'ADVANCED_CONTENT_REVIEW_QUEUE.jsonl'};
 const scan=dir=>readdirSync(dir,{withFileTypes:true}).flatMap(x=>x.isDirectory()?scan(path.join(dir,x.name)):[path.join(dir,x.name)]);
@@ -56,13 +57,21 @@ export function releaseAudit(root=projectRoot,mode='staging'){
  if(!['staging','public'].includes(mode))throw Error('mode must be staging or public');
  const staticAudit=auditStatic(root),review=auditContentQueues(root);
  const failures=[...staticAudit.problems,...review.problems];
+ // Only fingerprint the checkout that supplied the imported engines. Never attribute its evidence to a different root.
+ let prototypeReview=null;
+ if(path.resolve(root)===projectRoot){
+  try{const r=validatePrototypeReviewWorklist(makePrototypeReviewWorklist());if(!r.valid)throw Error('Invalid draft inventory');prototypeReview={models:r.totalModels,pendingCriteria:r.pendingCriteria,pendingReferenceCases:r.pendingCases,authenticatedApprovals:0,publicReleaseApproved:false};}
+  catch{failures.push('Standalone prototype review inventory unavailable or invalid');}
+ }
+ else if(mode==='public')failures.push('Standalone prototype review inventory not evaluated for supplied root');
  if(mode==='public'){
   if(review.pending)failures.push(`${review.pending} educational records lack human signoff`);
+  if(prototypeReview)failures.push(`${prototypeReview.models} standalone draft models lack authenticated independent approval (${prototypeReview.pendingCriteria} pending criteria; ${prototypeReview.pendingReferenceCases} pending reference cases)`);
   // Human/real-host approval must never be inferred from tests alone. A separate human
   // approval process is required, so this deterministic checker cannot approve public launch.
   failures.push('Public release requires human child-safety/legal, accessibility, and live-host approvals; not present in build');
  }
- return {mode,ready:failures.length===0,htmlPages:staticAudit.pages,reviewRecords:review.total,pendingReviews:review.pending,counts:review.counts,failures};
+ return {mode,ready:failures.length===0,htmlPages:staticAudit.pages,reviewRecords:review.total,pendingReviews:review.pending,counts:review.counts,prototypeReview,failures};
 }
 if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)){
  const mode=process.argv.includes('--public')?'public':'staging';const r=releaseAudit(projectRoot,mode);
