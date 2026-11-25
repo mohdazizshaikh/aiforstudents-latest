@@ -4,7 +4,7 @@ let lang='en',board='CBSE',grade=1,subject='maths',edition='all';
 const p=(en,hi)=>lang==='hi'?hi:en;
 const el=(tag,text)=>{const e=document.createElement(tag);e.textContent=text;return e};
 function fill(id,opts,v){const s=$(id);s.replaceChildren(...opts.map(([k,t])=>{const o=el('option',t);o.value=k;return o}));s.value=v}
-function list(id,items){$(id).replaceChildren(...items.map(x=>{const li=el('li',''),a=el('a',x.title);a.href=x.href;a.target='_blank';a.rel='noopener noreferrer';li.append(a);return li}));if(!items.length)$(id).append(el('li',p('None listed','सूची में कोई नहीं')))}
+function list(id,items){$(id).replaceChildren(...items.map(x=>{const li=el('li',''),a=el('a',x.title);a.href=x.href;a.target='_blank';a.rel='noopener noreferrer';li.append(a);if(x.worksheetHref){const w=el('a',p('Draft worksheet','मसौदा अभ्यास पत्र'));w.href=x.worksheetHref;w.target='_blank';w.rel='noopener noreferrer';li.append(w)}return li}));if(!items.length)$(id).append(el('li',p('None listed','सूची में कोई नहीं')))}
 function render(){
  root.lang=lang;const v=curriculumCatalog({board,grade,subject,lang});
  $('cc-title').textContent=p('Board and concept discovery (draft)','बोर्ड और विषय खोज (मसौदा)');
@@ -14,7 +14,7 @@ function render(){
  if(edition!=='all'&&!v.editionOptions.includes(edition))edition='all';
  fill('cc-edition',[['all',p('All versions','सभी संस्करण')],...v.editionOptions.map(x=>[x,x])],edition);
  $('cc-concept').textContent=v.concept;$('cc-earlier-title').textContent=p('Optional earlier concept','वैकल्पिक पहले का विषय')+(v.earlierConcept?' — '+v.earlierConcept:'');
- $('cc-drafts-title').textContent=p('Related drafts','संबंधित मसौदे');$('cc-prototypes-title').textContent=p('New prototypes (no worksheets yet)','नए मॉडल (अभ्यास पत्र अभी नहीं)');$('cc-sources-title').textContent=p('Pending source references','लंबित स्रोत संदर्भ');
+ $('cc-drafts-title').textContent=p('Related drafts','संबंधित मसौदे');$('cc-prototypes-title').textContent=p('New prototype activities and draft worksheets','नए मॉडल और मसौदा अभ्यास पत्र');$('cc-sources-title').textContent=p('Pending source references','लंबित स्रोत संदर्भ');
  list('cc-drafts',v.relatedDrafts);list('cc-earlier',v.earlierLinks);list('cc-prototypes',v.prototypes);
  $('cc-sources').replaceChildren(...v.sources.filter(x=>edition==='all'||x.edition===edition).map(x=>el('li',x.anchor+' · '+x.edition+' · '+x.source)));
  if(!$('cc-sources').children.length)$('cc-sources').append(el('li',p('No source proposal in inventory','सूची में स्रोत प्रस्ताव नहीं')));

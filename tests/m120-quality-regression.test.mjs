@@ -12,7 +12,7 @@ test('ENG-037 and 038 actual source budget and static privacy boundary',()=>{
  console.log('M120 source budgets',JSON.stringify(r));
 });
 function worker(fail){
- const events={},old='aifs-discovery-previous',current='aifs-discovery-m33-2026-11-24-m120-r1',keys=new Set([old,'unrelated-cache']);
+ const events={},old='aifs-discovery-previous',current=read('service-worker.js').match(/const CACHE='([^']+)'/)[1],keys=new Set([old,'unrelated-cache']);
  let skipped=false,claimed=false;
  const caches={open:async key=>{keys.add(key);return {addAll:async files=>{assert.ok(files.length>70);if(fail)throw Error('missing response')},match:async()=>null}},delete:async k=>keys.delete(k),keys:async()=>[...keys]};
  const self={registration:{scope:'https://fixture.invalid/'},location:{origin:'https://fixture.invalid'},addEventListener:(t,f)=>events[t]=f,skipWaiting:async()=>{skipped=true},clients:{claim:async()=>{claimed=true}}};
