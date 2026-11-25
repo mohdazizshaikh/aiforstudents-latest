@@ -119,3 +119,5 @@ M95 candidate adds 49 supplemental investigations plus 49 paper comparison table
 M96 candidate adds 60 main-model blank paper comparison tables; all 109 activities now share the paper format in candidate. Regenerate M89 local pending worklist after final verified checkout; FP-087 remains in progress.
 
 M94 verified merged; M95/M96 browser renderer scope corrected. M97 creates 60 independent-reference fixture work items (120 fixed cases); FP-092 remains BLOCKED_EXTERNAL pending qualified expert reference evidence. No approval.
+
+M98 candidate adds 49 supplemental reference fixtures and combined local operator workflow for 109 activities / 218 cases. FP-092 remains externally blocked pending independent reference evidence.

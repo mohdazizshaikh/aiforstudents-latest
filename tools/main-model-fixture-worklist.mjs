@@ -18,33 +18,36 @@ const mini={
  'studio/fractions':[{count:0},{count:1}],
  'studio/circuit-path':[{closed:false},{closed:true}]
 };
-function states(m){
+export function fixtureInputStates(m){
  const initial={...m.initial},f=m.fields.find(f=>f.options?f.options.some(o=>o.value!==initial[f.id]):f.max>f.min);
  if(!f)throw Error('Missing alternate control');
  const other=f.options?f.options.find(o=>o.value!==initial[f.id]).value:initial[f.id]===f.min?f.min+f.step:f.min;
  return [initial,{...initial,[f.id]:other}];
 }
-export function modelFixture(id){
+function mainFixtureData(id){
  if(!FIXTURE_IDS.includes(id))throw Error('Unknown main model');
  const isScience=id.startsWith('science/'),isMini=MINI_SNAPSHOT_IDS.includes(id),sourceId=isScience?id.slice(8):id;
- const inputs=isMini?mini[id].map(s=>({...s})):states(isScience?scienceModel(sourceId):modelAdvanced(id));
+ const inputs=isMini?mini[id].map(s=>({...s})):fixtureInputStates(isScience?scienceModel(sourceId):modelAdvanced(id));
  const rows=lang=>(isMini?miniSnapshotRows:isScience?scienceSnapshotRows:snapshotRows)(sourceId,inputs,lang);
  const en=printableAnyLabActivity(id,'main','en'),hi=printableAnyLabActivity(id,'main','hi');
  const actual=[rows('en'),rows('hi')];
  const cases=inputs.map((state,i)=>({id:i===0?'baseline':'one-control-change',state,englishControls:actual[0][i].controls,hindiControls:actual[1][i].controls,referenceStatus:'PENDING_INDEPENDENT_REFERENCE',referenceRef:'',reviewerRef:'',decision:'pending'}));
  // Bind to inputs and computed behavior while withholding actual outputs from the reviewer template.
- return {id,subject:en.subject,sourceFile:en.sourceFile,title:{en:en.title,hi:hi.title},caveat:{en:en.caveat,hi:hi.caveat},fixtureSha256:hash([id,inputs,actual,en.caveat,hi.caveat]),cases};
+ return {fixture:{id,subject:en.subject,sourceFile:en.sourceFile,title:{en:en.title,hi:hi.title},caveat:{en:en.caveat,hi:hi.caveat},fixtureSha256:hash([id,inputs,actual,en.caveat,hi.caveat]),cases},actual};
 }
+export function modelFixture(id){return mainFixtureData(id).fixture}
+export function mainComputedFixture(id){return mainFixtureData(id)}
 const flags=()=>({independentReferencesAuthenticated:false,subjectApprovalAuthenticated:false,publicReleaseApproved:false});
 export function makeFixtureWorklist(){
  const models=FIXTURE_IDS.map(modelFixture);return {schema,inventorySha256:hash(models),...flags(),models};
 }
 const exact=(o,keys)=>o!==null&&typeof o==='object'&&!Array.isArray(o)&&Object.keys(o).length===keys.length&&keys.every(k=>Object.hasOwn(o,k));
 const ref=x=>typeof x==='string'&&/^[A-Za-z0-9._-]{3,80}$/.test(x);
-export function validateFixtureWorklist(data){
- const expected=makeFixtureWorklist(),map=new Map(expected.models.map(m=>[m.id,m])),seen=new Set();
+export function validateFixtureWorklist(data){return validateFixtureCollection(data,makeFixtureWorklist())}
+export function validateFixtureCollection(data,expected){
+ const map=new Map(expected.models.map(m=>[m.id,m])),seen=new Set();
  const fail=()=>({valid:false,documentedCases:0,readyForIndependentAudit:0,...flags()});
- if(!exact(data,Object.keys(expected))||data.schema!==schema||data.inventorySha256!==expected.inventorySha256||Object.keys(flags()).some(k=>data[k]!==false)||!Array.isArray(data.models)||data.models.length!==map.size)return fail();
+ if(!exact(data,Object.keys(expected))||data.schema!==expected.schema||data.inventorySha256!==expected.inventorySha256||Object.keys(flags()).some(k=>data[k]!==false)||!Array.isArray(data.models)||data.models.length!==map.size)return fail();
  let documented=0,ready=0;
  for(const m of data.models){
   if(!m||!map.has(m.id)||seen.has(m.id))return fail();
