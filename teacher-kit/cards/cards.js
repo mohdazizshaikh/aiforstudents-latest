@@ -47,7 +47,7 @@ function renderPack(lesson,l){
  for(const card of pack.cards){
   const section=el('section','');section.className='assignment-page';
   section.append(el('h3',(card.stepIndex+1)+'. '+card.stage),el('h4',l==='hi'?'चर्चा का सवाल':'Discussion question'),el('p',card.question),el('h4',l==='hi'?'समूह का काम':'Group action'),el('p',card.action));
-  const space=el('div','');space.className='writing';space.setAttribute('aria-label',l==='hi'?'कागज़ पर लिखने की जगह':'Space for paper response');section.append(i===1&&a.comparison?paperComparison(a.comparison):space);host.append(section);
+  const space=el('div','');space.className='writing';space.setAttribute('aria-label',l==='hi'?'कागज़ पर लिखने की जगह':'Space for paper response');section.append(space);host.append(section);
  }
 }
 function renderLab(l){
@@ -86,7 +86,7 @@ function renderLab(l){
  if(pack){renderLabPack(l);return;}
  for(const [i,step] of a.steps.entries()){
   const section=el('section','');section.className='assignment-page';section.append(el('h3',(i+1)+'. '+step));
-  const space=el('div','');space.className='writing';space.setAttribute('aria-label',p('Paper response space','कागज़ पर उत्तर की जगह'));section.append(space);host.append(section);
+  const space=el('div','');space.className='writing';space.setAttribute('aria-label',p('Paper response space','कागज़ पर उत्तर की जगह'));section.append(i===1&&a.comparison?paperComparison(a.comparison):space);host.append(section);
  }
 }
 function matchingResources(){try{return searchTeacherResources(resourceScope==='all'?'all':$('lab-print-subject').value,resourceKind,lang(),resourceQuery)}catch{return []}}
