@@ -1450,3 +1450,251 @@ export function teacherPackReflectionGuide(keys,lang='en'){
  if(keys.length<2)return null;
  return {language:lang,prompt:lang==='hi'?'दो गतिविधियों को चलाने से पहले अनुमान लगाएँ कि किस नियंत्रण या विचार की तुलना उपयोगी होगी। पैक की दो गतिविधियों में एक समानता और एक अंतर पहचानें। बताएँ कि कौन सा निष्कर्ष केवल मॉडल पर लागू होता है और कौन सा प्रश्न अभी खुला है। कागज़ या मौखिक चर्चा तक सीमित रखें; कोई उत्तर जमा न करें।':'Before running two activities, predict which control or concept would make a useful comparison. Identify one similarity and one difference between two activities in this pack. Explain which conclusion applies only to the model and what question remains open. Discuss orally or on paper; do not submit an answer.',teacherOnly:true,humanReviewed:false,publicReleaseApproved:false,storesStudentData:false};
 }
+
+/** M110 original teacher-only discussion about model boundaries; no answers or learner records. */
+const MAIN_BOUNDARY_PROMPTS=Object.freeze({
+ "ratio-algebra": [
+  "Does doubling the number of groups change the counters in each group, or the total? Which quantity was fixed?",
+  "समूहों की संख्या दुगुनी करने पर हर समूह के काउंटर बदलते हैं या कुल? कौन सी राशि स्थिर थी?"
+ ],
+ "symmetry": [
+  "How can the class distinguish a reflected point from a point that has merely moved?",
+  "कक्षा प्रतिबिंबित बिंदु और केवल स्थान बदले बिंदु में अंतर कैसे पहचान सकती है?"
+ ],
+ "coordinate": [
+  "Does the displayed line describe every possible relationship between two variables? What is assumed here?",
+  "क्या प्रदर्शित रेखा दो चरों के बीच हर संभव संबंध बताती है? यहाँ क्या मान लिया गया है?"
+ ],
+ "probability": [
+  "Why might a short simulated trial give a proportion different from the theoretical probability?",
+  "छोटे अनुकरण में अनुपात सैद्धांतिक प्रायिकता से अलग क्यों हो सकता है?"
+ ],
+ "temperature": [
+  "Which properties of a real material might make its temperature response differ from this ideal calculation?",
+  "वास्तविक पदार्थ के कौन से गुण उसकी तापमान प्रतिक्रिया को इस आदर्श गणना से अलग बना सकते हैं?"
+ ],
+ "sound": [
+  "Why is the silent waveform diagram not evidence of how loud a real sound would be?",
+  "मौन तरंग चित्र किसी वास्तविक ध्वनि की प्रबलता का प्रमाण क्यों नहीं है?"
+ ],
+ "magnetism": [
+  "What does the pole-interaction sketch leave out about the distance and strength of real magnets?",
+  "ध्रुवों की पारस्परिक क्रिया का चित्र वास्तविक चुंबकों की दूरी और बल के बारे में क्या नहीं बताता?"
+ ],
+ "measurement": [
+  "Can two objects with the same average speed have different journeys? What does the calculation not show?",
+  "क्या समान औसत चाल वाले दो पिंडों की यात्राएँ अलग हो सकती हैं? गणना क्या नहीं दिखाती?"
+ ],
+ "periodic": [
+  "Why should the small element table not be treated as a complete account of every element's properties?",
+  "छोटी तत्व सारणी को हर तत्व के गुणों का पूरा विवरण क्यों नहीं मानना चाहिए?"
+ ],
+ "mass-balance": [
+  "What would need to be accounted for if mass appears to leave a real system? Discuss without conducting an experiment.",
+  "यदि वास्तविक तंत्र से द्रव्यमान निकलता दिखाई दे तो किसका लेखा आवश्यक होगा? बिना प्रयोग किए चर्चा करें।"
+ ],
+ "ecosystem": [
+  "Why does one depicted interaction not describe an organism's entire role in an ecosystem?",
+  "दिखाया गया एक संबंध किसी जीव की पारितंत्र में पूरी भूमिका क्यों नहीं बताता?"
+ ],
+ "heredity": [
+  "Why should a symbolic genotype grid not be used to predict the traits of a real child?",
+  "प्रतीकात्मक जीनोटाइप तालिका से वास्तविक बच्चे के लक्षणों की भविष्यवाणी क्यों नहीं करनी चाहिए?"
+ ],
+ "quadratic": [
+  "What distinction should learners make between the sampled square values and the entire graph?",
+  "विद्यार्थियों को चुने वर्ग मानों और पूरे आलेख में क्या अंतर समझना चाहिए?"
+ ],
+ "force-motion": [
+  "Why does the ideal force calculation alone not establish what will happen to a real moving object?",
+  "केवल आदर्श बल गणना से वास्तविक गतिमान पिंड के साथ क्या होगा, यह क्यों तय नहीं होता?"
+ ],
+ "atom-count": [
+  "Why are symbolic atom totals not pictures of the shapes or sizes of actual molecules?",
+  "प्रतीकात्मक परमाणु कुल वास्तविक अणुओं के आकार या माप के चित्र क्यों नहीं हैं?"
+ ],
+ "cell-scale": [
+  "Why does magnifying a diagram not increase the actual size of the object represented?",
+  "चित्र का आवर्धन दर्शाई गई वस्तु का वास्तविक आकार क्यों नहीं बढ़ाता?"
+ ],
+ "counting": [
+  "Would rearranging a group of counters change its count? How could the class distinguish arrangement from quantity?",
+  "काउंटरों के समूह को फिर से सजाने पर क्या गिनती बदलेगी? कक्षा व्यवस्था और संख्या में अंतर कैसे पहचाने?"
+ ],
+ "place-value": [
+  "Why must learners distinguish the digit in the tens position from the value that digit represents?",
+  "दहाई स्थान के अंक और उस अंक के मान में अंतर समझना क्यों आवश्यक है?"
+ ],
+ "length-compare": [
+  "Why must two lengths use comparable units before their numerical difference can be interpreted?",
+  "दो लंबाइयों के संख्यात्मक अंतर को समझने से पहले समान रूप से तुलनीय इकाइयाँ क्यों चाहिए?"
+ ],
+ "shadow-ray": [
+  "What effects of real light sources or blocker shapes are missing from the simple shadow sketch?",
+  "सरल छाया चित्र में वास्तविक प्रकाश स्रोत या अवरोध के आकार के कौन से प्रभाव नहीं दिखते?"
+ ],
+ "material-state": [
+  "Why should the chosen solid and liquid examples not be treated as a list of all possible materials?",
+  "चुने ठोस और द्रव उदाहरणों को सभी संभावित पदार्थों की सूची क्यों नहीं मानना चाहिए?"
+ ],
+ "material-objects": [
+  "Can an object consist of more than one material? What can a single pictured label establish?",
+  "क्या एक वस्तु एक से अधिक सामग्रियों से बनी हो सकती है? चित्र का एक लेबल क्या स्थापित कर सकता है?"
+ ],
+ "plant-parts": [
+  "Why might the functions of plant parts be more varied than those in a single flowering-plant diagram?",
+  "पौधे के भागों के कार्य एक फूलदार पौधे के चित्र से अधिक विविध क्यों हो सकते हैं?"
+ ],
+ "living-examples": [
+  "Why is a single observed feature not always enough to distinguish a living thing from a nonliving object?",
+  "एक देखा गया गुण जीवित और निर्जीव वस्तु में अंतर करने के लिए हमेशा पर्याप्त क्यों नहीं होता?"
+ ],
+ "arithmetic-sequence": [
+  "How can learners distinguish the term number from the value of that term?",
+  "विद्यार्थी पद संख्या और उस पद के मान में अंतर कैसे समझ सकते हैं?"
+ ],
+ "square-slope": [
+  "Why should a secant slope at two distinct points not automatically be called the tangent slope?",
+  "दो अलग बिंदुओं पर छेदक की ढाल को अपने आप स्पर्शरेखा की ढाल क्यों नहीं कहना चाहिए?"
+ ],
+ "constant-acceleration": [
+  "What changes in acceleration would make the ideal constant-acceleration calculation unsuitable for a journey?",
+  "त्वरण में कौन से परिवर्तन किसी यात्रा के लिए आदर्श समान त्वरण की गणना को अनुपयुक्त बना देंगे?"
+ ],
+ "thin-lens": [
+  "Which real optical effects are not represented by an ideal thin-lens calculation?",
+  "आदर्श पतले लेंस की गणना में कौन से वास्तविक प्रकाशीय प्रभाव नहीं दर्शाए गए हैं?"
+ ],
+ "ion-charge": [
+  "Why does counting symbolic charged particles not identify the full chemical behavior of a real ion?",
+  "प्रतीकात्मक आवेशित कणों की गिनती वास्तविक आयन का पूरा रासायनिक व्यवहार क्यों नहीं बताती?"
+ ],
+ "mass-fraction": [
+  "How should the class distinguish a component's mass percentage from its absolute mass?",
+  "कक्षा किसी घटक के द्रव्यमान प्रतिशत और उसके वास्तविक द्रव्यमान में अंतर कैसे समझे?"
+ ],
+ "cell-doubling": [
+  "Why should the ideal doubling sequence not be interpreted as a growth forecast for a real cell population?",
+  "आदर्श दुगुनी होने वाली श्रेणी को वास्तविक कोशिका समूह की वृद्धि का पूर्वानुमान क्यों नहीं मानना चाहिए?"
+ ],
+ "plant-process": [
+  "What factors affecting a living plant are absent from a simple input-output process diagram?",
+  "सरल आगत-निर्गत प्रक्रिया चित्र में जीवित पौधे को प्रभावित करने वाले कौन से कारक नहीं हैं?"
+ ],
+ "triangle-area": [
+  "Why is the perpendicular height relevant rather than just the length of a sloping side?",
+  "केवल तिरछी भुजा की लंबाई के बजाय लंबवत ऊँचाई का महत्व क्यों है?"
+ ],
+ "right-triangle-ratio": [
+  "Why must learners identify the reference angle before naming opposite and adjacent sides?",
+  "विपरीत और आसन्न भुजाएँ पहचानने से पहले संदर्भ कोण जानना क्यों आवश्यक है?"
+ ],
+ "position-change": [
+  "Why can the sign of position change depend on the chosen coordinate direction?",
+  "स्थिति परिवर्तन का चिह्न चुनी निर्देशांक दिशा पर क्यों निर्भर हो सकता है?"
+ ],
+ "path-distance": [
+  "Could returning to the start give zero displacement but nonzero distance? What does each quantity describe?",
+  "क्या आरंभ पर लौटने से विस्थापन शून्य लेकिन दूरी अशून्य हो सकती है? हर राशि क्या बताती है?"
+ ],
+ "material-property": [
+  "Why can a material's thickness or condition matter to whether light passes through it?",
+  "किसी सामग्री की मोटाई या अवस्था प्रकाश गुजरने के लिए क्यों महत्वपूर्ण हो सकती है?"
+ ],
+ "dynamic-balance": [
+  "Why should equal forward and reverse rates not be interpreted as an absence of events in the symbolic model?",
+  "प्रतीकात्मक मॉडल में समान अग्र और पश्च दरों को घटनाओं के अभाव के रूप में क्यों नहीं समझना चाहिए?"
+ ],
+ "habitat-match": [
+  "What environmental details are missing when a habitat is represented by a single example picture?",
+  "आवास को एक उदाहरण चित्र से दर्शाने पर कौन से पर्यावरणीय विवरण छूट जाते हैं?"
+ ],
+ "food-web-links": [
+  "Why should a food-energy arrow not be interpreted simply as the direction an organism moves?",
+  "खाद्य ऊर्जा के तीर को केवल जीव की गति की दिशा क्यों नहीं समझना चाहिए?"
+ ],
+ "integral-area": [
+  "When discussing an area represented under a line, why are the selected interval and sign convention important?",
+  "रेखा के नीचे दर्शाए क्षेत्रफल की चर्चा में चुना अंतराल और चिह्न की परंपरा क्यों महत्वपूर्ण है?"
+ ],
+ "vector-components": [
+  "Why is the magnitude of a vector different from either of its signed components?",
+  "सदिश का परिमाण उसके किसी एक चिह्न सहित घटक से अलग क्यों है?"
+ ],
+ "magnetic-flux": [
+  "What field and surface assumptions limit the interpretation of this ideal flux calculation?",
+  "कौन सी क्षेत्र और सतह संबंधी मान्यताएँ इस आदर्श फ्लक्स गणना की व्याख्या सीमित करती हैं?"
+ ],
+ "capacitor-charge": [
+  "Why must this symbolic charge calculation not be treated as a practical guide to connecting a real capacitor?",
+  "इस प्रतीकात्मक आवेश गणना को वास्तविक संधारित्र जोड़ने की व्यावहारिक मार्गदर्शिका क्यों नहीं मानना चाहिए?"
+ ],
+ "alkane-count": [
+  "Why does a symbolic carbon and hydrogen count not specify all details of a molecule's structure?",
+  "प्रतीकात्मक कार्बन और हाइड्रोजन गिनती अणु की संरचना के सभी विवरण क्यों नहीं बताती?"
+ ],
+ "bond-pair-count": [
+  "What is missing from a bond symbol when it is compared with a full description of molecular bonding?",
+  "आणविक बंधन के पूरे विवरण की तुलना में बंध प्रतीक में क्या नहीं दिखता?"
+ ],
+ "dna-complement": [
+  "Why does a single complementary base pair not determine a complete genetic sequence or a person's traits?",
+  "एक पूरक क्षार युग्म से पूरी आनुवंशिक शृंखला या किसी व्यक्ति के लक्षण क्यों तय नहीं होते?"
+ ],
+ "gas-exchange": [
+  "Why does a net-transfer diagram not measure the breathing or health of a real person?",
+  "कुल स्थानांतरण चित्र वास्तविक व्यक्ति के श्वसन या स्वास्थ्य को क्यों नहीं मापता?"
+ ],
+ "science/motion": [
+  "What changes in speed might a single distance-and-time calculation hide?",
+  "दूरी और समय की एक गणना चाल में होने वाले कौन से परिवर्तन छिपा सकती है?"
+ ],
+ "science/reflection": [
+  "Why must an angle of reflection be measured from the normal rather than the mirror surface?",
+  "परावर्तन कोण दर्पण की सतह के बजाय अभिलंब से क्यों मापना चाहिए?"
+ ],
+ "science/energy": [
+  "Why does the useful-versus-thermal split describe an energy accounting model rather than energy disappearing?",
+  "उपयोगी और ऊष्मीय भागों का बँटवारा ऊर्जा लुप्त होने के बजाय ऊर्जा लेखा मॉडल को क्यों दर्शाता है?"
+ ],
+ "science/matter": [
+  "Why are the drawn particles not scale photographs of actual particles?",
+  "चित्रित कण वास्तविक कणों के मापानुसार छायाचित्र क्यों नहीं हैं?"
+ ],
+ "science/changes": [
+  "What evidence would be needed beyond a picture to classify an unfamiliar change? Discuss only; do not test materials.",
+  "अपरिचित परिवर्तन के वर्गीकरण के लिए चित्र से अतिरिक्त कौन सा प्रमाण चाहिए? केवल चर्चा करें; सामग्री का परीक्षण न करें।"
+ ],
+ "science/cells": [
+  "Why should a simplified plant or animal cell diagram not be read as an inventory of every real cell?",
+  "सरल पादप या जंतु कोशिका चित्र को हर वास्तविक कोशिका की पूरी सूची क्यों नहीं समझना चाहिए?"
+ ],
+ "science/food-chain": [
+  "Why does one linear food chain omit other feeding relationships in a real habitat?",
+  "एक रैखिक खाद्य शृंखला वास्तविक आवास के अन्य भोजन संबंधों को क्यों नहीं दिखाती?"
+ ],
+ "maths/number-line": [
+  "Why does a position farther left not necessarily mean a smaller distance from zero?",
+  "बाईं ओर अधिक दूर की स्थिति का शून्य से कम दूरी होना आवश्यक क्यों नहीं है?"
+ ],
+ "maths/rectangle": [
+  "Why can equal areas have different perimeters? Discuss the distinction without giving a target setting.",
+  "समान क्षेत्रफल के परिमाप अलग क्यों हो सकते हैं? लक्ष्य मान बताए बिना अंतर पर चर्चा करें।"
+ ],
+ "maths/data-table": [
+  "Why is a difference between two group counts not the same as their total?",
+  "दो समूहों की गिनती का अंतर उनके कुल के समान क्यों नहीं है?"
+ ],
+ "studio/fractions": [
+  "Why must the whole and its equal parts be identified before comparing shaded fractions?",
+  "रंगे भिन्नों की तुलना से पहले पूरे और उसके बराबर भागों की पहचान क्यों आवश्यक है?"
+ ],
+ "studio/circuit-path": [
+  "Why is a computer path diagram not evidence that a real electrical connection is safe?",
+  "कंप्यूटर परिपथ चित्र वास्तविक विद्युत संयोजन के सुरक्षित होने का प्रमाण क्यों नहीं है?"
+ ]
+});
+export function teacherMainBoundaryGuide(id,lang='en'){
+ if(!['en','hi'].includes(lang)||(!ADVANCED_IDS.includes(id)&&!BASIC_PRINT_IDS.includes(id))||!Object.hasOwn(MAIN_BOUNDARY_PROMPTS,id))throw Error('Unknown main boundary guide');
+ return {id,language:lang,prompt:MAIN_BOUNDARY_PROMPTS[id][lang==='hi'?1:0],teacherOnly:true,localOnly:true,storesStudentData:false,humanReviewed:false,publicReleaseApproved:false};
+}
