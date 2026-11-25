@@ -74,6 +74,12 @@ jobs:
           npm run review:activity-fixtures -- --template m98-ci-fixtures.json
           npm run review:activity-fixtures -- --check m98-ci-fixtures.json
           rm review-evidence/m98-ci-fixtures.json
+      - name: Generate private prototype review worklist (NOT approval)
+        run: |
+          npm run review:prototypes -- --summary
+          npm run review:prototypes -- --template m124-ci-prototypes.json
+          npm run review:prototypes -- --check m124-ci-prototypes.json
+          rm review-evidence/m124-ci-prototypes.json
       - name: Assert public preflight remains blocked
         run: |
           if node tools/release-preflight.mjs --public > /dev/null; then

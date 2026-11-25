@@ -39,6 +39,7 @@
     "db:recovery-rehearsal": "node tools/synthetic-db-recovery.mjs",
     "audit:quality": "node tools/quality-regression.mjs",
     "staging:rollback-rehearsal": "python3 tools/rehearse-static-rollback.py",
-    "tutor:transport-rehearsal": "node tools/tutor-transport-evaluation.mjs"
+    "tutor:transport-rehearsal": "node tools/tutor-transport-evaluation.mjs",
+    "review:prototypes": "node tools/prototype-review-worklist.mjs"
   }
 }
