@@ -1,0 +1,95 @@
+{
+  "schema": "aifs-m117-review-candidates-v1",
+  "scope": "Eight standalone prototypes; gap links are hypotheses only, not official board alignment or gap closure.",
+  "publicReleaseApproved": false,
+  "models": [
+    {
+      "id": "signed-sum",
+      "subject": "maths",
+      "proposedGrade": 6,
+      "gapTarget": "Signed-number operations and fraction arithmetic",
+      "referenceRequirement": "Signed steps on a number line",
+      "officialChapter": null,
+      "edition": null,
+      "reviewStatus": "PENDING",
+      "humanReviewed": false
+    },
+    {
+      "id": "data-range",
+      "subject": "maths",
+      "proposedGrade": 8,
+      "gapTarget": "Linear equation balance and data spread",
+      "referenceRequirement": "Sort and subtract extremes",
+      "officialChapter": null,
+      "edition": null,
+      "reviewStatus": "PENDING",
+      "humanReviewed": false
+    },
+    {
+      "id": "ideal-pressure",
+      "subject": "physics",
+      "proposedGrade": 8,
+      "gapTarget": "Pressure and area relationship",
+      "referenceRequirement": "Uniform force divided by area",
+      "officialChapter": null,
+      "edition": null,
+      "reviewStatus": "PENDING",
+      "humanReviewed": false
+    },
+    {
+      "id": "ideal-momentum",
+      "subject": "physics",
+      "proposedGrade": 11,
+      "gapTarget": "Momentum and ideal collisions",
+      "referenceRequirement": "Repeated signed addition",
+      "officialChapter": null,
+      "edition": null,
+      "reviewStatus": "PENDING",
+      "humanReviewed": false
+    },
+    {
+      "id": "mixture-count",
+      "subject": "chemistry",
+      "proposedGrade": 3,
+      "gapTarget": "Separating symbolic mixtures",
+      "referenceRequirement": "Conservation of abstract distinguishable tokens",
+      "officialChapter": null,
+      "edition": null,
+      "reviewStatus": "PENDING",
+      "humanReviewed": false
+    },
+    {
+      "id": "formula-ratio",
+      "subject": "chemistry",
+      "proposedGrade": 11,
+      "gapTarget": "Mole ratios and ideal equilibrium",
+      "referenceRequirement": "Count A symbols in repeated abstract AAB groups",
+      "officialChapter": null,
+      "edition": null,
+      "reviewStatus": "PENDING",
+      "humanReviewed": false
+    },
+    {
+      "id": "habitat-tokens",
+      "subject": "biology",
+      "proposedGrade": 6,
+      "gapTarget": "Habitat resource constraints",
+      "referenceRequirement": "One-to-one token matching",
+      "officialChapter": null,
+      "edition": null,
+      "reviewStatus": "PENDING",
+      "humanReviewed": false
+    },
+    {
+      "id": "plant-water-tokens",
+      "subject": "biology",
+      "proposedGrade": 5,
+      "gapTarget": "Plant water transport",
+      "referenceRequirement": "Remove transferred tokens from initial count",
+      "officialChapter": null,
+      "edition": null,
+      "reviewStatus": "PENDING",
+      "humanReviewed": false
+    }
+  ]
+}
