@@ -139,3 +139,5 @@ M102–M104 verified merged. M105 adds independent discovery previews and select
 M105 verified merged. M106 candidate adds 60 model-specific paper reflections (120 bilingual variants), main printable fingerprints change. FP-087 external rights/educational acceptance unchanged.
 
 M107 candidate adds 49 supplemental model-specific paper reflections plus one teacher-only cross-activity discussion prompt. Supplemental rights fingerprints change; regenerate pending worklist. FP-087 external acceptance unchanged.
+
+M106 verified merged; M108 candidate adds 60 main-model prediction prompts (120 language variants). Main printable rights fingerprints change, FP-087 external acceptance unchanged.
