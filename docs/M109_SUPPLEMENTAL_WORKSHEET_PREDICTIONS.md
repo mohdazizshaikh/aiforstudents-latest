@@ -1,0 +1,10 @@
+# M109 — Supplemental worksheet predictions and teacher pre-prediction discussion (candidate)
+
+> **M109 CI correction:** Original PR run 45676113511 Node: 2,177 passed, one M29 documentation prominence assertion failed because M33 was displaced by the long banner. Chromium result not yet final when corrected. Restored prominent baseline, preserved the original test; fresh exact-head CI required.
+
+
+M107 exact-head push [45650368004](https://github.com/mohdazizshaikh/aiforstudents-latest/actions/runs/45650368004) and PR [45650388221](https://github.com/mohdazizshaikh/aiforstudents-latest/actions/runs/45650388221) passed; [PR #97](https://github.com/mohdazizshaikh/aiforstudents-latest/pull/97) merged into main at `875b60ea7a699b2b7b9cb7c0599711e37b471daf` with identical tree to tested head.
+
+M108 exact-head push [45650857960](https://github.com/mohdazizshaikh/aiforstudents-latest/actions/runs/45650857960) and PR [45650886135](https://github.com/mohdazizshaikh/aiforstudents-latest/actions/runs/45650886135) passed; [PR #98](https://github.com/mohdazizshaikh/aiforstudents-latest/pull/98) merged into main at `d78136a8805639e77c46acba3e0d7fa39700567f`.
+
+49 individually authored bilingual supplemental questions and one bilingual teacher-only pack pre-prediction prompt (50 items, 100 language variants). All 109 fixed activities now have source-specific prediction, investigation and reflection drafts. Existing paper-only reasoning, safety caveats, blank comparisons, main questions and supplemental reflections remain. Existing examples may reveal expected outcomes; not blinded assessment. No learner records, score, external experiment, approval, or verified curriculum mapping. 51 named Node tests and updated offline mixed-pack browser assertions; exact-head CI pending. Regenerate M89 pending rights inventory after verified checkout; no stale transfer. Independent education and Hindi review required. FP-087 remains IN_PROGRESS; 70/100 master scope unchanged. Public launch not approved.
